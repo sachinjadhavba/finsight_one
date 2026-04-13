@@ -1,33 +1,467 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="FinSight One — MSME Loan Advisory & Business Analytics. Get loans sanctioned faster. Make data work for your business." />
-    <meta name="keywords" content="MSME loan advisory, business analytics, credit appraisal, Power BI, Excel dashboard, financial analysis, Pune" />
-    <meta property="og:title" content="FinSight One — Smarter Capital & Sharper Data" />
-    <meta property="og:description" content="We help Indian MSMEs get loans sanctioned faster and use data to grow smarter. Built on 20 years inside Indian banking credit teams." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://finsightone.co" />
-    <title>FinSight One — MSME Loan Advisory & Business Analytics</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      html { scroll-behavior: smooth; }
-      body { background: #060B14; margin: 0; }
-      ::-webkit-scrollbar { width: 6px; }
-      ::-webkit-scrollbar-track { background: #060B14; }
-      ::-webkit-scrollbar-thumb { background: #6C3FC5; border-radius: 3px; }
-      input, textarea { outline: none; }
-      a { text-decoration: none; }
-      #root { min-height: 100vh; }
-    </style>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="FinSight One — MSME Loan Advisory & Business Analytics. Get loans sanctioned faster."/>
+<meta property="og:title" content="FinSight One — Smarter Capital & Sharper Data"/>
+<meta property="og:url" content="https://finsightone.co"/>
+<title>FinSight One — MSME Loan Advisory & Business Analytics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;700;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#060B14;color:#F0F4FF;font-family:'DM Sans',sans-serif;overflow-x:hidden}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-thumb{background:#6C3FC5;border-radius:3px}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 24px;transition:all .3s}
+nav.scrolled{background:rgba(6,11,20,.92);backdrop-filter:blur(20px);border-bottom:1px solid #1A2540}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-icon{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#6C3FC5,#9B6FE8);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;color:#fff;box-shadow:0 0 20px #6C3FC560}
+.logo-text{font-family:'Fraunces',serif;font-size:17px;font-weight:700;letter-spacing:-.5px}
+.logo-text span{color:#9B6FE8}
+.logo-sub{font-size:9px;color:#6B7FA3;letter-spacing:1.5px;text-transform:uppercase;margin-top:-2px}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{color:#6B7FA3;font-size:13px;font-weight:600;transition:color .2s}
+.nav-links a:hover{color:#9B6FE8}
+.nav-cta{background:linear-gradient(135deg,#6C3FC5,#9B6FE8);border:none;border-radius:8px;padding:9px 20px;color:#fff;font-size:13px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;box-shadow:0 4px 20px #6C3FC550}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:100px 24px 60px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(#1A254040 1px,transparent 1px),linear-gradient(90deg,#1A254040 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black 30%,transparent 100%)}
+.glow1{position:absolute;top:0;left:15%;width:70%;height:500px;background:radial-gradient(ellipse,#6C3FC518 0%,transparent 70%);filter:blur(50px)}
+.glow2{position:absolute;top:40%;right:-5%;width:350px;height:350px;background:radial-gradient(ellipse,#E8A02008 0%,transparent 70%);filter:blur(60px)}
+.hero-content{position:relative;z-index:1;max-width:900px;margin:0 auto;text-align:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:#6C3FC518;border:1px solid #6C3FC540;border-radius:100px;padding:6px 16px;margin-bottom:28px}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:#00C98B;box-shadow:0 0 8px #00C98B;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.badge-text{font-size:11px;color:#9B6FE8;font-weight:700;letter-spacing:1px}
+h1{font-family:'Fraunces',serif;font-size:clamp(30px,5.5vw,60px);font-weight:700;line-height:1.12;margin:0 0 20px;letter-spacing:-1px}
+.h1-gradient{background:linear-gradient(135deg,#E8A020,#9B6FE8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{font-size:17px;color:#6B7FA3;max-width:600px;margin:0 auto 40px;line-height:1.7}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:56px}
+.btn-gold{background:linear-gradient(135deg,#E8A020E0,#E8A020A0);border:none;border-radius:10px;padding:14px 28px;color:#0A0600;font-size:14px;font-weight:800;cursor:pointer;font-family:'DM Sans',sans-serif;box-shadow:0 8px 32px #E8A02040;transition:all .2s}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 40px #E8A02060}
+.btn-outline{background:transparent;border:1px solid #6C3FC580;border-radius:10px;padding:14px 28px;color:#9B6FE8;font-size:14px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
+.btn-outline:hover{background:#6C3FC520;border-color:#9B6FE8}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#1A2540;border-radius:12px;overflow:hidden;border:1px solid #1A2540}
+.stat{background:#0D1528;padding:20px 10px;text-align:center}
+.stat-val{font-family:'Fraunces',serif;font-size:26px;font-weight:700;color:#F0F4FF;margin-bottom:4px}
+.stat-label{font-size:10px;color:#6B7FA3;line-height:1.3}
+
+/* SERVICES */
+.services{padding:80px 24px;position:relative;z-index:1}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-tag{font-size:11px;color:#6C3FC5;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;text-align:center}
+h2{font-family:'Fraunces',serif;font-size:clamp(26px,4vw,40px);color:#F0F4FF;margin:0 0 48px;text-align:center}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.service-card{background:#0D1528;border-radius:16px;padding:24px;transition:all .3s;position:relative;overflow:hidden;cursor:default}
+.service-card:hover{transform:translateY(-4px)}
+.card-glow{position:absolute;top:0;left:0;right:0;height:1px;transition:all .3s}
+.card-tag-row{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.card-icon{font-size:28px}
+.card-tag{font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase}
+.card-title{font-family:'Fraunces',serif;font-size:20px;color:#F0F4FF;margin:0 0 10px}
+.card-desc{font-size:12px;color:#6B7FA3;line-height:1.7;margin:0 0 16px}
+.card-point{display:flex;gap:8px;margin-bottom:6px;align-items:flex-start}
+.card-dot{width:4px;height:4px;border-radius:50%;flex-shrink:0;margin-top:6px}
+.card-point span{font-size:12px;color:#94A3B8;line-height:1.5}
+.card-fee{margin-top:16px;padding:8px 12px;border-radius:8px;font-size:10px;font-weight:700}
+.card-footer{margin-top:8px;display:flex;justify-content:space-between;align-items:center}
+.card-target{font-size:10px;color:#2A3655}
+.card-cta{font-size:10px;font-weight:700;cursor:pointer}
+
+/* CASE STUDY */
+.case{padding:80px 24px;position:relative;z-index:1;background:linear-gradient(180deg,transparent,rgba(10,16,32,.6),transparent)}
+.case-box{background:#0D1528;border:1px solid #00C98B30;border-radius:20px;overflow:hidden}
+.case-header{background:linear-gradient(135deg,#00C98B15,#6C3FC515);border-bottom:1px solid #1A2540;padding:18px 28px;display:flex;gap:24px;flex-wrap:wrap}
+.case-meta{} 
+.case-meta-label{font-size:10px;color:#6B7FA3;margin-bottom:2px}
+.case-meta-val{font-size:13px;color:#F0F4FF;font-weight:700}
+.case-divider{width:1px;background:#1A2540}
+.case-body{padding:28px}
+.case-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px}
+.case-section-label{font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
+.case-text{font-size:13px;color:#6B7FA3;line-height:1.8;margin:0}
+.outcomes{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}
+.outcome{background:#00C98B10;border:1px solid #00C98B25;border-radius:12px;padding:14px 8px;text-align:center}
+.outcome-val{font-family:'Fraunces',serif;font-size:20px;color:#00C98B;margin-bottom:4px}
+.outcome-label{font-size:10px;color:#6B7FA3;line-height:1.3}
+.tools-row{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.tools-label{font-size:10px;color:#6B7FA3;margin-right:4px}
+.tool-tag{font-size:10px;background:#2A3655;color:#94A3B8;padding:3px 10px;border-radius:20px}
+
+/* PROCESS */
+.process{padding:80px 24px;position:relative;z-index:1}
+.process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:900px;margin:0 auto}
+.process-card{background:#0D1528;border:1px solid #1A2540;border-radius:16px;padding:24px;text-align:center}
+.process-step{font-family:'Fraunces',serif;font-size:11px;color:#6C3FC5;font-weight:700;letter-spacing:2px;margin-bottom:12px}
+.process-icon{font-size:32px;margin-bottom:14px}
+.process-title{font-family:'Fraunces',serif;font-size:17px;color:#F0F4FF;margin:0 0 10px}
+.process-desc{font-size:12px;color:#6B7FA3;line-height:1.7;margin:0}
+
+/* WHY US */
+.whyus{padding:60px 24px;position:relative;z-index:1}
+.whyus-box{background:linear-gradient(135deg,#0D1528,#0A1020);border:1px solid #1A2540;border-radius:20px;padding:48px 36px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;max-width:1000px;margin:0 auto}
+.whyus-tag{font-size:11px;color:#E8A020;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+.whyus-title{font-family:'Fraunces',serif;font-size:clamp(20px,3vw,30px);color:#F0F4FF;margin:0 0 16px;line-height:1.2}
+.whyus-desc{font-size:13px;color:#6B7FA3;line-height:1.8;margin:0}
+.trust-item{display:flex;gap:12px;margin-bottom:14px;align-items:flex-start}
+.trust-dot{width:20px;height:20px;border-radius:50%;background:#E8A02020;border:1px solid #E8A02040;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.trust-dot-inner{width:6px;height:6px;border-radius:50%;background:#E8A020}
+.trust-text{font-size:12px;color:#94A3B8;line-height:1.6}
+
+/* CONTACT */
+.contact{padding:80px 24px 40px;position:relative;z-index:1}
+.contact-inner{max-width:760px;margin:0 auto}
+.contact-sub{font-size:14px;color:#6B7FA3;text-align:center;margin:0 0 48px}
+.contact-box{background:#0D1528;border:1px solid #1A2540;border-radius:20px;padding:32px 28px}
+.tab-row{display:flex;gap:8px;margin-bottom:24px}
+.tab-btn{flex:1;padding:10px;border-radius:10px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;transition:all .2s;border:1px solid #1A2540;background:transparent;color:#6B7FA3}
+.tab-btn.active-loan{border-color:#E8A020;background:#E8A02015;color:#E8A020}
+.tab-btn.active-analytics{border-color:#9B6FE8;background:#6C3FC515;color:#9B6FE8}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.form-label{font-size:11px;color:#6B7FA3;display:block;margin-bottom:6px}
+.form-input{width:100%;background:#0A1020;border:1px solid #1A2540;border-radius:8px;padding:10px 14px;color:#F0F4FF;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;transition:border .2s;box-sizing:border-box}
+.form-input:focus{border-color:#6C3FC5}
+textarea.form-input{resize:none}
+.submit-btn{width:100%;padding:14px;border:none;border-radius:10px;font-size:14px;font-weight:800;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;margin-bottom:16px}
+.submit-loan{background:linear-gradient(135deg,#E8A020,#E8A02090);color:#0A0600;box-shadow:0 8px 30px #E8A02040}
+.submit-analytics{background:linear-gradient(135deg,#6C3FC5,#9B6FE8);color:#fff;box-shadow:0 8px 30px #6C3FC540}
+.contact-alt{text-align:center;font-size:12px;color:#6B7FA3}
+.contact-alt a{color:#9B6FE8}
+.success-box{text-align:center;padding:48px 28px}
+.success-icon{font-size:52px;margin-bottom:16px}
+.success-title{font-family:'Fraunces',serif;font-size:24px;color:#F0F4FF;margin:0 0 10px}
+.success-text{font-size:14px;color:#6B7FA3}
+
+/* FOOTER */
+footer{border-top:1px solid #1A2540;padding:28px 24px}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.footer-logo{display:flex;align-items:center;gap:10px}
+.footer-logo-icon{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#6C3FC5,#9B6FE8);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;color:#fff}
+.footer-links{display:flex;gap:20px}
+.footer-links a{font-size:11px;color:#6B7FA3}
+.footer-copy{font-size:10px;color:#2A3655}
+
+/* WA BUTTON */
+.wa-btn{position:fixed;bottom:24px;right:24px;z-index:200;width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,#25D366,#128C7E);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px #25D36660;font-size:26px;text-decoration:none;transition:transform .2s}
+.wa-btn:hover{transform:scale(1.1)}
+
+@media(max-width:768px){
+  .nav-links{display:none}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .services-grid{grid-template-columns:1fr}
+  .case-grid{grid-template-columns:1fr}
+  .outcomes{grid-template-columns:repeat(2,1fr)}
+  .process-grid{grid-template-columns:1fr}
+  .whyus-box{grid-template-columns:1fr;padding:28px 20px}
+  .form-grid{grid-template-columns:1fr}
+  .hero-btns{flex-direction:column;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <div class="logo">
+      <div class="logo-icon">F1</div>
+      <div>
+        <div class="logo-text">FinSight <span>One</span></div>
+        <div class="logo-sub">Analytics · Credit · Advisory</div>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#case">Case Study</a>
+      <a href="#process">Process</a>
+    </div>
+    <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Free Assessment</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="grid-bg"></div>
+    <div class="glow1"></div>
+    <div class="glow2"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <div class="badge-dot"></div>
+      <span class="badge-text">PUNE, INDIA · SERVING MSMES NATIONWIDE</span>
+    </div>
+    <h1>Your Business Deserves<br><span class="h1-gradient">Smarter Capital</span> &amp; Sharper Data</h1>
+    <p class="hero-sub">We help Indian MSMEs get loans sanctioned faster — and use their data to grow smarter. Built on 20 years inside Indian banking credit teams.</p>
+    <div class="hero-btns">
+      <button class="btn-gold" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">🏦 Book Free Loan Assessment</button>
+      <button class="btn-outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">📊 Discuss Analytics Project</button>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="stat-val">20+</div><div class="stat-label">Years in Banking Credit</div></div>
+      <div class="stat"><div class="stat-val">₹200Cr+</div><div class="stat-label">Loan Portfolio Experience</div></div>
+      <div class="stat"><div class="stat-val">50+</div><div class="stat-label">Projects Delivered</div></div>
+      <div class="stat"><div class="stat-val">1000+</div><div class="stat-label">Farmer Accounts Analysed</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-tag">What We Do</div>
+    <h2>Four Ways We Create Value</h2>
+    <div class="services-grid">
+
+      <div class="service-card" style="border:1px solid #E8A02025" onmouseenter="this.style.boxShadow='0 20px 60px #E8A02015'" onmouseleave="this.style.boxShadow='none'">
+        <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#E8A02080,transparent)"></div>
+        <div class="card-tag-row"><span class="card-icon">🏦</span><span class="card-tag" style="color:#E8A020">FinSight Credit</span></div>
+        <div class="card-title">MSME Loan Advisory</div>
+        <div class="card-desc">We've sat on the other side of the credit desk — 20 years evaluating loans, reading financials, knowing exactly what gets approved.</div>
+        <div class="card-point"><div class="card-dot" style="background:#E8A020"></div><span>Working capital &amp; term loan structuring</span></div>
+        <div class="card-point"><div class="card-dot" style="background:#E8A020"></div><span>Credit profile building &amp; banker preparation</span></div>
+        <div class="card-point"><div class="card-dot" style="background:#E8A020"></div><span>Agri / KCC / NABARD scheme advisory</span></div>
+        <div class="card-point"><div class="card-dot" style="background:#E8A020"></div><span>Loan rejection reversal — diagnosed &amp; fixed</span></div>
+        <div class="card-fee" style="background:#E8A02012;border:1px solid #E8A02025;color:#E8A020">Success-fee model. You pay only when sanctioned.</div>
+        <div class="card-footer"><span class="card-target">For: ₹50L – ₹200Cr businesses</span><span class="card-cta" style="color:#E8A020" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Book Assessment →</span></div>
+      </div>
+
+      <div class="service-card" style="border:1px solid #9B6FE825" onmouseenter="this.style.boxShadow='0 20px 60px #9B6FE815'" onmouseleave="this.style.boxShadow='none'">
+        <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#9B6FE880,transparent)"></div>
+        <div class="card-tag-row"><span class="card-icon">📊</span><span class="card-tag" style="color:#9B6FE8">FinSight Analytics</span></div>
+        <div class="card-title">Business Data Intelligence</div>
+        <div class="card-desc">Raw data sits in every business. We turn it into dashboards, models, and insights that drive actual decisions.</div>
+        <div class="card-point"><div class="card-dot" style="background:#9B6FE8"></div><span>MIS dashboards &amp; management reporting</span></div>
+        <div class="card-point"><div class="card-dot" style="background:#9B6FE8"></div><span>Farmer &amp; distributor analytics platforms</span></div>
+        <div class="card-point"><div class="card-dot" style="background:#9B6FE8"></div><span>Credit scoring &amp; portfolio analytics for NBFCs</span></div>
+        <div class="card-point"><div class="card-dot" style="background:#9B6FE8"></div><span>Financial models, projections &amp; valuations</span></div>
+        <div class="card-fee" style="background:#9B6FE812;border:1px solid #9B6FE825;color:#9B6FE8">Project-based. Delivered in days, not months.</div>
+        <div class="card-footer"><span class="card-target">For: ₹10Cr+ companies</span><span class="card-cta" style="color:#9B6FE8" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Discuss Project →</span></div>
+      </div>
+
+      <div class="service-card" style="border:1px solid #00C98B25" onmouseenter="this.style.boxShadow='0 20px 60px #00C98B15'" onmouseleave="this.style.boxShadow='none'">
+        <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#00C98B80,transparent)"></div>
+        <div class="card-tag-row"><span class="card-icon">🌐</span><span class="card-tag" style="color:#00C98B">FinSight Freelance</span></div>
+        <div class="card-title">Global Analytics Delivery</div>
+        <div class="card-desc">Finance professionals worldwide need Excel, Power BI, SQL and Python work done right — by someone who understands the numbers.</div>
+        <div class="card-point"><div class="card-dot" style="background:#00C98B"></div><span>Excel dashboards, models &amp; automation</span></div>
+        <div class="card-point"><div class="card-dot" style="background:#00C98B"></div><span>Power BI &amp; Google Looker Studio reports</span></div>
+        <div class="card-point"><div class="card-dot" style="background:#00C98B"></div><span>Financial analysis &amp; credit appraisal reports</span></div>
+        <div class="card-point"><div class="card-dot" style="background:#00C98B"></div><span>Python data analysis &amp; SQL reporting</span></div>
+        <div class="card-fee" style="background:#00C98B12;border:1px solid #00C98B25;color:#00C98B">Fixed-price packages. Delivered in 24–72 hours.</div>
+        <div class="card-footer"><span class="card-target">For: Global clients</span><span class="card-cta" style="color:#00C98B">View on Upwork →</span></div>
+      </div>
+
+      <div class="service-card" style="border:1px solid #8B7CF625" onmouseenter="this.style.boxShadow='0 20px 60px #8B7CF615'" onmouseleave="this.style.boxShadow='none'">
+        <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#8B7CF680,transparent)"></div>
+        <div class="card-tag-row"><span class="card-icon">💡</span><span class="card-tag" style="color:#8B7CF6">FinSight Digital</span></div>
+        <div class="card-title">Financial Templates &amp; Tools</div>
+        <div class="card-desc">Professional credit frameworks, financial models, loan readiness checklists — built by a banker, usable by anyone.</div>
+        <div class="card-point"><div class="card-dot" style="background:#8B7CF6"></div><span>Credit appraisal template packs</span></div>
+        <div class="card-point"><div class="card-dot" style="background:#8B7CF6"></div><span>MSME financial model bundles</span></div>
+        <div class="card-point"><div class="card-dot" style="background:#8B7CF6"></div><span>Loan readiness assessment tools</span></div>
+        <div class="card-point"><div class="card-dot" style="background:#8B7CF6"></div><span>Agri finance project report formats</span></div>
+        <div class="card-fee" style="background:#8B7CF612;border:1px solid #8B7CF625;color:#8B7CF6">One-time purchase. Instant download.</div>
+        <div class="card-footer"><span class="card-target">For: MSMEs, CAs, Consultants</span><span class="card-cta" style="color:#8B7CF6">Browse Templates →</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDY -->
+<section class="case" id="case">
+  <div class="section-inner">
+    <div class="section-tag" style="color:#00C98B">Case Study</div>
+    <h2>ML Analytics Platform for a ₹3,000Cr Agri Company</h2>
+    <div class="case-box">
+      <div class="case-header">
+        <div class="case-meta"><div class="case-meta-label">Client</div><div class="case-meta-val">Leading Agri-Input Company</div></div>
+        <div class="case-divider"></div>
+        <div class="case-meta"><div class="case-meta-label">Scale</div><div class="case-meta-val">₹3,000Cr+ Annual Turnover</div></div>
+        <div class="case-divider"></div>
+        <div class="case-meta"><div class="case-meta-label">Sector</div><div class="case-meta-val">Agri Inputs &amp; Crop Nutrition</div></div>
+      </div>
+      <div class="case-body">
+        <div class="case-grid">
+          <div>
+            <div class="case-section-label" style="color:#ef4444">The Problem</div>
+            <p class="case-text">Field teams making credit decisions for 1,000+ farmer accounts on gut feel. No repayment risk data. No early warning system. No visibility on cross-sell opportunity.</p>
+          </div>
+          <div>
+            <div class="case-section-label" style="color:#00C98B">Our Solution</div>
+            <p class="case-text">Full Farmer Analytics Platform with ML-based credit scoring. Integrated field sales data, repayment history, and crop patterns into a real-time dashboard for branch managers.</p>
+          </div>
+        </div>
+        <div class="outcomes">
+          <div class="outcome"><div class="outcome-val">1,000+</div><div class="outcome-label">Farmer accounts scored</div></div>
+          <div class="outcome"><div class="outcome-val">ML Model</div><div class="outcome-label">Credit risk prediction</div></div>
+          <div class="outcome"><div class="outcome-val">Real-time</div><div class="outcome-label">Field manager dashboard</div></div>
+          <div class="outcome"><div class="outcome-val">30%</div><div class="outcome-label">Portfolio quality improvement</div></div>
+        </div>
+        <div class="tools-row">
+          <span class="tools-label">Built with:</span>
+          <span class="tool-tag">Python (Pandas, Scikit-learn)</span>
+          <span class="tool-tag">SQLite</span>
+          <span class="tool-tag">Power BI</span>
+          <span class="tool-tag">GradientBoosting ML</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="section-inner">
+    <div class="section-tag">How We Work</div>
+    <h2>Simple. Transparent. Results First.</h2>
+    <div class="process-grid">
+      <div class="process-card">
+        <div class="process-step">01</div>
+        <div class="process-icon">📞</div>
+        <div class="process-title">Free Assessment Call</div>
+        <div class="process-desc">20 minutes. We review your situation honestly. You get a clear picture of what's possible before committing to anything.</div>
+      </div>
+      <div class="process-card">
+        <div class="process-step">02</div>
+        <div class="process-icon">⚙️</div>
+        <div class="process-title">We Build Your Case</div>
+        <div class="process-desc">For loans: a banker-ready credit profile. For analytics: a delivery plan with templates and timeline.</div>
+      </div>
+      <div class="process-card">
+        <div class="process-step">03</div>
+        <div class="process-icon">✅</div>
+        <div class="process-title">You Get Results</div>
+        <div class="process-desc">Loan sanctioned — we collect our fee. Project delivered — you review and pay. No hidden charges. No retainer before results.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="whyus">
+  <div class="whyus-box">
+    <div>
+      <div class="whyus-tag">Why FinSight One</div>
+      <div class="whyus-title">We've been inside the machine. We know what works.</div>
+      <p class="whyus-desc">Most consultants read about banking. We worked inside it for 20 years — evaluating credit files, building risk frameworks, making loan decisions. That inside knowledge now works for your side of the table.</p>
+    </div>
+    <div>
+      <div class="trust-item"><div class="trust-dot"><div class="trust-dot-inner"></div></div><div class="trust-text">Former Regional Credit &amp; Risk Analyst — evaluated hundreds of credit files over 20 years</div></div>
+      <div class="trust-item"><div class="trust-dot"><div class="trust-dot-inner"></div></div><div class="trust-text">Deep agri-finance expertise — KCC, NABARD, Agri-input lending</div></div>
+      <div class="trust-item"><div class="trust-dot"><div class="trust-dot-inner"></div></div><div class="trust-text">Hands-on ML analytics — deployed on real portfolios of 1,000+ accounts</div></div>
+      <div class="trust-item"><div class="trust-dot"><div class="trust-dot-inner"></div></div><div class="trust-text">Based in Pune — serving MSMEs across Maharashtra and India</div></div>
+      <div class="trust-item"><div class="trust-dot"><div class="trust-dot-inner"></div></div><div class="trust-text">Success-fee model on loan advisory — we earn when you succeed</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="section-tag">Get Started</div>
+    <h2>Book Your Free 20-Minute Consultation</h2>
+    <p class="contact-sub">No commitment. Honest assessment. We'll tell you exactly what's possible.</p>
+    <div class="contact-box" id="contactBox">
+      <div class="tab-row">
+        <button class="tab-btn active-loan" id="tabLoan" onclick="setTab('loan')">🏦 Loan Advisory</button>
+        <button class="tab-btn" id="tabAnalytics" onclick="setTab('analytics')">📊 Analytics</button>
+      </div>
+      <div class="form-grid">
+        <div><label class="form-label">Your Name *</label><input class="form-input" id="fname" type="text" placeholder="Full name"/></div>
+        <div><label class="form-label">WhatsApp Number *</label><input class="form-input" id="fphone" type="tel" placeholder="Your WhatsApp number"/></div>
+      </div>
+      <div style="margin-bottom:14px"><label class="form-label" id="bizLabel">Business name &amp; approximate turnover</label><input class="form-input" id="fbiz" type="text" placeholder="e.g. Sharma Traders, ₹2Cr turnover"/></div>
+      <div style="margin-bottom:24px"><label class="form-label" id="msgLabel">Loan requirement &amp; current banking situation</label><textarea class="form-input" id="fmsg" rows="3" placeholder="e.g. Need ₹50L working capital. Applied once and was rejected..."></textarea></div>
+      <button class="submit-btn submit-loan" id="submitBtn" onclick="submitForm()">📲 Send via WhatsApp &amp; Book Call</button>
+      <div class="contact-alt">Or email us: <a href="mailto:shweta@finsightone.co">shweta@finsightone.co</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <div class="footer-logo-icon">F1</div>
+      <div>
+        <div style="font-family:'Fraunces',serif;font-size:14px;color:#F0F4FF">FinSight <span style="color:#9B6FE8">One</span></div>
+        <div style="font-size:9px;color:#6B7FA3">Shweta Sachin Jadhav · Proprietor · Pune, India</div>
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#case">Case Study</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-copy">© 2026 FinSight One. All rights reserved.</div>
+  </div>
+</footer>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/919579453635?text=Hi%20FinSight%20One%2C%20I%27d%20like%20a%20free%20consultation" target="_blank" class="wa-btn">💬</a>
+
+<script>
+// Nav scroll
+window.addEventListener('scroll',function(){
+  document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>40)
+})
+
+// Tab switching
+var currentTab='loan'
+function setTab(tab){
+  currentTab=tab
+  var tl=document.getElementById('tabLoan')
+  var ta=document.getElementById('tabAnalytics')
+  var sb=document.getElementById('submitBtn')
+  var bl=document.getElementById('bizLabel')
+  var ml=document.getElementById('msgLabel')
+  var fb=document.getElementById('fbiz')
+  var fm=document.getElementById('fmsg')
+  if(tab==='loan'){
+    tl.className='tab-btn active-loan'
+    ta.className='tab-btn'
+    sb.className='submit-btn submit-loan'
+    sb.textContent='📲 Send via WhatsApp & Book Call'
+    bl.textContent='Business name & approximate turnover'
+    fb.placeholder='e.g. Sharma Traders, ₹2Cr turnover'
+    ml.textContent='Loan requirement & current banking situation'
+    fm.placeholder='e.g. Need ₹50L working capital. Applied once and was rejected...'
+  } else {
+    ta.className='tab-btn active-analytics'
+    tl.className='tab-btn'
+    sb.className='submit-btn submit-analytics'
+    sb.textContent='📧 Send Project Brief via WhatsApp'
+    bl.textContent='Company & project description'
+    fb.placeholder='e.g. NBFC needing portfolio dashboard'
+    ml.textContent='What would you like built?'
+    fm.placeholder='e.g. Sales dashboard for 3 branches in Power BI...'
+  }
+}
+
+// Form submit
+function submitForm(){
+  var name=document.getElementById('fname').value
+  var phone=document.getElementById('fphone').value
+  if(!name||!phone){alert('Please fill in your name and WhatsApp number.');return}
+  var biz=document.getElementById('fbiz').value
+  var msg=document.getElementById('fmsg').value
+  var service=currentTab==='loan'?'Loan Advisory':'Analytics Project'
+  var text='Hi FinSight One!%0A%0AService: '+service+'%0AName: '+encodeURIComponent(name)+'%0APhone: '+encodeURIComponent(phone)+'%0ABusiness: '+encodeURIComponent(biz)+'%0AMessage: '+encodeURIComponent(msg)
+  window.open('https://wa.me/919579453635?text='+text,'_blank')
+  document.getElementById('contactBox').innerHTML='<div class="success-box"><div class="success-icon">✅</div><div class="success-title">Message Sent!</div><p class="success-text">We\'ll respond within 2 hours. Check your WhatsApp for confirmation.</p></div>'
+}
+</script>
+</body>
 </html>
