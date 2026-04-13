@@ -10,7 +10,7 @@ const C = {
 
 // ─── REPLACE THESE BEFORE DEPLOYING ───
 const WHATSAPP_NUMBER = "919579453635";
-const EMAIL = "shweta@finsightone.com";
+const EMAIL = "shweta@finsightone.co";
 const CALENDLY_LINK = "https://calendly.com/finsightone"; // Update this once Calendly is set up
 
 const SERVICES = [
