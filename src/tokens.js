@@ -1,0 +1,38 @@
+// ─── DESIGN TOKENS — Light Theme ───
+export const C = {
+  bg: "#ffffff",
+  bgGray: "#F9FAFB",
+  bgHero: "#1E3A5F",
+  bgHeroDark: "#0F2140",
+  border: "#E5E7EB",
+  borderLight: "#F3F4F6",
+  amber: "#B45309",
+  amberDark: "#92400E",
+  amberLight: "#FEF3C7",
+  amberBorder: "#FDE68A",
+  gold: "#FCD34D",
+  blue: "#2563EB",
+  blueLight: "#EFF6FF",
+  blueBorder: "#BFDBFE",
+  blueDark: "#1D4ED8",
+  purple: "#7C3AED",
+  purpleLight: "#F5F3FF",
+  purpleBorder: "#DDD6FE",
+  green: "#059669",
+  greenLight: "#ECFDF5",
+  greenBorder: "#A7F3D0",
+  greenAccent: "#34D399",
+  text: "#111827",
+  textMuted: "#6B7280",
+  textLight: "#9CA3AF",
+  textHero: "#93C5FD",
+  textHeroGreen: "#6EE7B7",
+  white: "#ffffff",
+  navBorder: "#E5E7EB",
+  problemBg: "#FEF3C7",
+  problemBorder: "#FDE68A",
+  problemText: "#92400E",
+};
+
+export const FONT_HEAD = "'Fraunces', Georgia, serif";
+export const FONT_BODY = "'DM Sans', 'Segoe UI', Arial, sans-serif";
