@@ -71,8 +71,8 @@ export default function Advisory({ navigate }) {
                 <div style={{ fontSize: 12, color: "#6B7280", lineHeight: 1.5, marginBottom: 12 }}>{a.desc}</div>
                 <div style={{ fontSize: 13, fontWeight: 800, color: "#B45309" }}>{a.price}</div>
                 <div style={{ fontSize: 11, color: "#9CA3AF", marginTop: 3 }}>{a.who}</div>
-                <button onClick={() => navigate("check")} style={{ display: "block", marginTop: 12, padding: 9, borderRadius: 8, fontSize: 12, fontWeight: 700, textAlign: "center", cursor: "pointer", background: "#FFFBEB", color: "#B45309", border: "1px solid #FDE68A", width: "100%" }}>
-                  Book a Call
+                <button onClick={() => window.open("mailto:info@finsightone.co?subject=Advisory%20Consultation%20Request%20-%20" + encodeURIComponent(a.name), "_blank")} style={{ display: "block", marginTop: 12, padding: 9, borderRadius: 8, fontSize: 12, fontWeight: 700, textAlign: "center", cursor: "pointer", background: "#FFFBEB", color: "#B45309", border: "1px solid #FDE68A", width: "100%" }}>
+                  Book a Call →
                 </button>
               </div>
             ))}

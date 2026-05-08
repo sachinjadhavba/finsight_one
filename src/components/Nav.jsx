@@ -13,7 +13,7 @@ export default function Nav({ page, navigate }) {
       borderBottom: "1px solid #E5E7EB", position: "sticky", top: 0, zIndex: 200,
     }}>
       <div onClick={() => navigate("home")} style={{ cursor: "pointer", display: "flex", alignItems: "center" }}>
-        <svg width="130" height="28" viewBox="0 0 260 56" xmlns="http://www.w3.org/2000/svg">
+        <svg width="300" height="64" viewBox="0 0 260 56" xmlns="http://www.w3.org/2000/svg">
           <circle cx="26" cy="28" r="18" fill="none" stroke="#B45309" strokeWidth="1.2" opacity="0.35"/>
           <polygon points="26,11 29,20 26,18 23,20" fill="#B45309"/>
           <polygon points="26,45 29,36 26,38 23,36" fill="#D1D5DB"/>
