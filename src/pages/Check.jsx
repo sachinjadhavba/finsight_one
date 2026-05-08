@@ -92,6 +92,8 @@ export default function Check({ navigate }) {
                   <option>Home Loan</option><option>Personal Loan</option>
                   <option>Loan Against Property</option><option>Vehicle Loan</option>
                   <option>Machinery / Equipment Loan</option>
+                  <option>Lease Rental Discounting (LRD)</option>
+                  <option>Unsecured Business Loan</option>
                 </select>
               </div>
               <div>
@@ -164,6 +166,37 @@ export default function Check({ navigate }) {
           </div>
         )}
       </div>
+      {/* S2 READINESS PRODUCTS */}
+      <div style={{ padding: "64px 48px", background: "#fff" }}>
+        <div style={{ maxWidth: 1000, margin: "0 auto" }}>
+          <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: 2.5, textTransform: "uppercase", color: "#7C3AED", marginBottom: 10, textAlign: "center" }}>Loan Readiness Services</div>
+          <div style={{ fontSize: 28, fontWeight: 800, textAlign: "center", marginBottom: 8 }}>Know Exactly Where You Stand</div>
+          <div style={{ fontSize: 13, color: "#6B7280", textAlign: "center", maxWidth: 560, margin: "0 auto 40px", lineHeight: 1.7 }}>
+            Beyond the free check — our expert team gives you detailed reports, improvement plans, and full banker presentations.
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", gap: 16 }}>
+            {[
+              { icon: "🔍", name: "Free Eligibility Check", price: "₹0 — Free", desc: "Instant online check. Know your chances in 2 minutes. No documents needed.", who: "For: Everyone, first step" },
+              { icon: "📋", name: "Detailed Eligibility Report", price: "₹499 – ₹999", desc: "A full written report on your loan profile — what is strong, what is weak, and what to fix before applying.", who: "For: Serious applicants" },
+              { icon: "🛠️", name: "Loan Readiness Improvement Plan", price: "₹2,499 – ₹4,999", desc: "Step-by-step action plan to improve your profile and maximise your chances of approval in 30–60 days.", who: "For: Applicants needing improvement" },
+              { icon: "🗂️", name: "Full Banker Presentation", price: "₹9,999 – ₹14,999", desc: "A complete, professionally prepared file that presents your case to a banker — the way bankers want to see it.", who: "For: Larger loan applicants" },
+              { icon: "🔄", name: "Rejected Loan Recovery", price: "₹4,999 – ₹7,999", desc: "Was your loan rejected? We identify why, fix the gaps, and help you reapply with a stronger case.", who: "For: Previously rejected applicants" },
+            ].map(p => (
+              <div key={p.name} style={{ border: "1px solid #E5E7EB", borderRadius: 12, padding: 20, background: "#FAFAFA" }}>
+                <div style={{ fontSize: 22, marginBottom: 10 }}>{p.icon}</div>
+                <div style={{ fontSize: 13, fontWeight: 800, marginBottom: 6 }}>{p.name}</div>
+                <div style={{ fontSize: 12, color: "#6B7280", lineHeight: 1.5, marginBottom: 12 }}>{p.desc}</div>
+                <div style={{ fontSize: 13, fontWeight: 800, color: "#7C3AED" }}>{p.price}</div>
+                <div style={{ fontSize: 11, color: "#9CA3AF", marginTop: 3, marginBottom: 12 }}>{p.who}</div>
+                <button onClick={() => window.open("https://wa.me/919999999999?text=Hi%20FinsightOne%2C%20I%27m%20interested%20in%20" + encodeURIComponent(p.name), "_blank")} style={{ display: "block", width: "100%", padding: 9, borderRadius: 8, fontSize: 12, fontWeight: 700, textAlign: "center", cursor: "pointer", background: "#F5F3FF", color: "#7C3AED", border: "1px solid #DDD6FE" }}>
+                  Enquire Now →
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       <Footer navigate={navigate} />
     </div>
   );

@@ -74,6 +74,60 @@ export default function Analytics({ navigate }) {
         </div>
       </div>
 
+      {/* STANDALONE PRODUCTS */}
+      <div style={{ padding: "64px 48px", background: "#fff" }}>
+        <div style={{ maxWidth: 960, margin: "0 auto" }}>
+          <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: 2.5, textTransform: "uppercase", color: "#059669", marginBottom: 10, textAlign: "center" }}>Add-On Services</div>
+          <div style={{ fontSize: 28, fontWeight: 800, textAlign: "center", marginBottom: 8 }}>Need Just One Thing?</div>
+          <div style={{ fontSize: 13, color: "#6B7280", textAlign: "center", maxWidth: 560, margin: "0 auto 40px", lineHeight: 1.7 }}>
+            Not ready for a full plan? Subscribe to individual monitoring services on their own.
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: 20 }}>
+            {[
+              {
+                icon: "📊", name: "Working Capital Monitor",
+                price: "₹1,999 / month",
+                desc: "Monthly alert and summary of your working capital position. Know exactly how much cash your business has available — before your bank does.",
+                features: ["Monthly WC position report", "Low-cash alert via WhatsApp", "Trend analysis (3-month rolling)", "Improvement recommendations"],
+                who: "For: MSME owners managing daily cash flow"
+              },
+              {
+                icon: "🗂️", name: "Loan Portfolio Tracker",
+                price: "₹2,499 / month",
+                desc: "Full visibility of all your existing loans in one place — EMI schedules, renewal dates, interest costs, and upcoming milestones.",
+                features: ["All loan EMI schedule in one view", "Renewal / maturity date alerts (90 days)", "Interest cost summary", "Prepayment opportunity flags"],
+                who: "For: Businesses with 2+ active loans"
+              },
+              {
+                icon: "📅", name: "Yearly Financial Health Audit",
+                price: "₹14,999 / year",
+                desc: "An annual deep-dive into your complete financial health — conducted by our senior advisor and delivered as a detailed report with action items.",
+                features: ["Full P&L and balance sheet review", "Credit profile assessment", "Loan readiness score for next year", "One-on-one advisory session included"],
+                who: "For: Growing businesses, annual planning"
+              },
+            ].map(p => (
+              <div key={p.name} style={{ border: "1px solid #D1FAE5", borderRadius: 16, padding: 24, background: "#F0FDF4" }}>
+                <div style={{ fontSize: 26, marginBottom: 12 }}>{p.icon}</div>
+                <div style={{ fontSize: 14, fontWeight: 800, marginBottom: 6 }}>{p.name}</div>
+                <div style={{ fontSize: 20, fontWeight: 900, color: "#059669", marginBottom: 4 }}>{p.price}</div>
+                <div style={{ fontSize: 11, color: "#6B7280", marginBottom: 12 }}>{p.who}</div>
+                <div style={{ fontSize: 12, color: "#374151", lineHeight: 1.6, marginBottom: 16 }}>{p.desc}</div>
+                <ul style={{ listStyle: "none", padding: 0, margin: "0 0 16px" }}>
+                  {p.features.map(f => (
+                    <li key={f} style={{ fontSize: 12, color: "#374151", padding: "5px 0", borderBottom: "1px solid #D1FAE5", display: "flex", gap: 8, alignItems: "flex-start" }}>
+                      <span style={{ color: "#059669", fontWeight: 800, flexShrink: 0 }}>✓</span>{f}
+                    </li>
+                  ))}
+                </ul>
+                <button onClick={() => window.open("https://wa.me/919999999999?text=Hi%20FinsightOne%2C%20I%27m%20interested%20in%20" + encodeURIComponent(p.name), "_blank")} style={{ width: "100%", padding: 11, borderRadius: 10, fontSize: 13, fontWeight: 700, border: "none", cursor: "pointer", background: "#059669", color: "#fff" }}>
+                  Enquire Now →
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* CTA */}
       <div style={{ background: "linear-gradient(135deg,#064E3B,#059669)", padding: "56px 48px", textAlign: "center", color: "#fff" }}>
         <h2 style={{ fontSize: 28, fontWeight: 800, marginBottom: 10 }}>Stay Loan-Ready Every Month</h2>

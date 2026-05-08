@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Nav from "./components/Nav";
+import WAButton from "./components/WAButton";
 import Home from "./pages/Home";
 import Check from "./pages/Check";
 import Analytics from "./pages/Analytics";
@@ -22,6 +23,7 @@ export default function App() {
       {page === "analytics"&& <Analytics navigate={navigate} />}
       {page === "advisory" && <Advisory navigate={navigate} />}
       {page === "about"    && <About navigate={navigate} />}
+      <WAButton />
     </div>
   );
 }
