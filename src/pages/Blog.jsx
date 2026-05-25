@@ -61,11 +61,11 @@ export default function Blog({ navigate }) {
   return (
     <div>
       {/* HERO */}
-      <div style={{ background: "#0D1428", padding: "clamp(44px,6vw,72px) clamp(20px,4vw,48px)", textAlign: "center" }}>
-        <div style={{ display: "inline-block", background: "rgba(232,160,32,0.15)", border: "1px solid rgba(232,160,32,0.3)", color: "#E8A020", fontSize: 11, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", padding: "5px 16px", borderRadius: 100, marginBottom: 20 }}>
+      <div style={{ background: "#ffffff", padding: "clamp(44px,6vw,72px) clamp(20px,4vw,48px)", textAlign: "center" }}>
+        <div style={{ display: "inline-block", background: "rgba(232,160,32,0.15)", border: "1px solid rgba(232,160,32,0.3)", color: "#EA580C", fontSize: 11, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", padding: "5px 16px", borderRadius: 100, marginBottom: 20 }}>
           Credit Advisory Blog
         </div>
-        <h1 style={{ fontSize: "clamp(26px,3.5vw,42px)", fontWeight: 900, color: "#fff", lineHeight: 1.15, marginBottom: 14 }}>
+        <h1 style={{ fontSize: "clamp(26px,3.5vw,42px)", fontWeight: 900, color: "#111827", lineHeight: 1.15, marginBottom: 14 }}>
           20 Years of Banking Knowledge.<br /><span style={{ color: "#E8A020" }}>Now Free to Read.</span>
         </h1>
         <p style={{ fontSize: 16, color: "#94A3B8", maxWidth: 540, margin: "0 auto", lineHeight: 1.7 }}>
@@ -101,7 +101,7 @@ export default function Blog({ navigate }) {
       </div>
 
       {/* CTA */}
-      <div style={{ background: "#0D1428", padding: "clamp(40px,5vw,64px) clamp(20px,4vw,48px)", textAlign: "center" }}>
+      <div style={{ background: "#ffffff", padding: "clamp(40px,5vw,64px) clamp(20px,4vw,48px)", textAlign: "center" }}>
         <h2 style={{ fontSize: "clamp(22px,3vw,30px)", fontWeight: 800, color: "#fff", marginBottom: 12 }}>
           Ready to Check Your Eligibility?
         </h2>

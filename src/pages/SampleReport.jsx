@@ -8,7 +8,7 @@ export default function SampleReport({ navigate }) {
   return (
     <div>
       {/* HEADER BANNER */}
-      <div style={{ background: "#0D1428", padding: "clamp(32px,4vw,48px) clamp(20px,4vw,48px)", display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 20 }}>
+      <div style={{ background: "#ffffff", padding: "clamp(32px,4vw,48px) clamp(20px,4vw,48px)", display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 20 }}>
         <div>
           <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
             <span style={{ fontSize: 11, fontWeight: 700, background: "#E8A020", color: "#fff", padding: "3px 10px", borderRadius: 20, letterSpacing: 1 }}>SAMPLE REPORT</span>
@@ -20,10 +20,10 @@ export default function SampleReport({ navigate }) {
           <div style={{ fontSize: 13, color: "#64748B" }}>MSME Business Profile · Maharashtra · ₹65 Lakh CC Request</div>
         </div>
         {/* Score */}
-        <div style={{ background: "#162040", borderRadius: 12, padding: "20px 28px", textAlign: "center", minWidth: 140 }}>
+        <div style={{ background: "#ffffff", borderRadius: 12, padding: "20px 28px", textAlign: "center", minWidth: 140 }}>
           <div style={{ fontSize: 48, fontWeight: 900, color: "#E8A020", lineHeight: 1 }}>{score}</div>
           <div style={{ fontSize: 12, color: "#94A3B8", marginTop: 4 }}>/100 AI Score</div>
-          <div style={{ height: 6, background: "#1E3A5F", borderRadius: 3, marginTop: 10, overflow: "hidden" }}>
+          <div style={{ height: 6, background: "#EA580C", borderRadius: 3, marginTop: 10, overflow: "hidden" }}>
             <div style={{ height: "100%", width: `${score}%`, background: barColor, borderRadius: 3 }} />
           </div>
           <div style={{ marginTop: 8, background: "#DCFCE7", color: "#166534", fontSize: 11, fontWeight: 700, padding: "4px 12px", borderRadius: 20, display: "inline-block" }}>
@@ -123,8 +123,8 @@ export default function SampleReport({ navigate }) {
         </div>
 
         {/* SECTION 5 — NEXT STEPS */}
-        <div style={{ background: "#0D1428", borderRadius: 12, padding: "24px", marginBottom: 32 }}>
-          <div style={{ fontSize: 11, fontWeight: 700, color: "#E8A020", letterSpacing: 2, textTransform: "uppercase", marginBottom: 12 }}>Recommended Next Steps</div>
+        <div style={{ background: "#ffffff", borderRadius: 12, padding: "24px", marginBottom: 32 }}>
+          <div style={{ fontSize: 11, fontWeight: 700, color: "#EA580C", letterSpacing: 2, textTransform: "uppercase", marginBottom: 12 }}>Recommended Next Steps</div>
           {[
             { num: "1", step: "Prepare formal CAM note addressing the cheque return with bank statement explanation" },
             { num: "2", step: "Calculate Drawing Power using latest stock + debtors minus creditors — confirm ₹65L is within DP" },
@@ -140,7 +140,7 @@ export default function SampleReport({ navigate }) {
 
         {/* UPGRADE CTA */}
         <div style={{ background: "#F9FAFB", border: "1px solid #E5E7EB", borderRadius: 12, padding: "28px 24px", textAlign: "center" }}>
-          <div style={{ fontSize: 12, fontWeight: 700, color: "#E8A020", letterSpacing: 2, textTransform: "uppercase", marginBottom: 8 }}>This is a Sample Report</div>
+          <div style={{ fontSize: 12, fontWeight: 700, color: "#EA580C", letterSpacing: 2, textTransform: "uppercase", marginBottom: 8 }}>This is a Sample Report</div>
           <h3 style={{ fontSize: 20, fontWeight: 800, color: "#111827", marginBottom: 10 }}>
             Get Your Actual Eligibility Report
           </h3>
@@ -148,7 +148,7 @@ export default function SampleReport({ navigate }) {
             Your free eligibility check gives you the score. The full report gives you the complete breakdown — all 15 parameters, exact weaknesses, lender match, and step-by-step fix plan.
           </p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-            <button onClick={() => navigate("check")} style={{ background: "#0D1428", color: "#fff", fontSize: 14, fontWeight: 700, padding: "12px 28px", borderRadius: 8, border: "none", cursor: "pointer" }}>
+            <button onClick={() => navigate("check")} style={{ background: "#ffffff", color: "#fff", fontSize: 14, fontWeight: 700, padding: "12px 28px", borderRadius: 8, border: "none", cursor: "pointer" }}>
               Check My Eligibility — Free →
             </button>
             <button onClick={() => navigate("advisory")} style={{ background: "transparent", color: "#374151", fontSize: 14, fontWeight: 600, padding: "12px 28px", borderRadius: 8, border: "1px solid #E5E7EB", cursor: "pointer" }}>

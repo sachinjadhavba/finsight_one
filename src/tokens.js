@@ -1,38 +1,52 @@
-// ─── DESIGN TOKENS — Light Theme ───
+// ─── FINSIGHTONE BRAND TOKENS — Option 6 Palette ───
 export const C = {
-  bg: "#ffffff",
-  bgGray: "#F9FAFB",
-  bgHero: "#1E3A5F",
-  bgHeroDark: "#0F2140",
-  border: "#E5E7EB",
-  borderLight: "#F3F4F6",
-  amber: "#B45309",
-  amberDark: "#92400E",
-  amberLight: "#FEF3C7",
-  amberBorder: "#FDE68A",
-  gold: "#FCD34D",
-  blue: "#2563EB",
-  blueLight: "#EFF6FF",
-  blueBorder: "#BFDBFE",
-  blueDark: "#1D4ED8",
-  purple: "#7C3AED",
-  purpleLight: "#F5F3FF",
-  purpleBorder: "#DDD6FE",
-  green: "#059669",
-  greenLight: "#ECFDF5",
-  greenBorder: "#A7F3D0",
-  greenAccent: "#34D399",
-  text: "#111827",
-  textMuted: "#6B7280",
-  textLight: "#9CA3AF",
-  textHero: "#93C5FD",
-  textHeroGreen: "#6EE7B7",
-  white: "#ffffff",
-  navBorder: "#E5E7EB",
-  problemBg: "#FEF3C7",
-  problemBorder: "#FDE68A",
-  problemText: "#92400E",
+  // ── BRAND COLOURS ──────────────────────────────
+  indigo:        "#4F46E5",   // Fin · primary CTA · nav active
+  indigoLight:   "#EEF2FF",   // card backgrounds · light sections
+  indigoBorder:  "#C7D2FE",   // borders on indigo elements
+  indigoDark:    "#3730A3",   // hover states
+  indigoMid:     "#818CF8",   // dark bg logo variant
+
+  orange:        "#EA580C",   // dot · ADVISORY · accent CTA
+  orangeLight:   "#FFF7ED",   // warm section backgrounds
+  orangeBorder:  "#FED7AA",   // orange borders
+  orangeDark:    "#C2410C",   // hover
+
+  // ── NEUTRALS ───────────────────────────────────
+  bg:            "#FFFFFF",   // page background — pure white
+  bgWarm:        "#FFF9F5",   // warm white — alternating sections
+  bgGray:        "#F9FAFB",   // light gray sections
+  bgDark:        "#111827",   // dark hero / footer
+  bgDarker:      "#0D1117",   // footer bottom bar
+
+  border:        "#E5E7EB",
+  borderLight:   "#F3F4F6",
+
+  text:          "#111827",   // primary text
+  textMuted:     "#6B7280",   // secondary text
+  textLight:     "#9CA3AF",   // hints / captions
+  white:         "#FFFFFF",
+
+  // ── SEMANTIC ───────────────────────────────────
+  green:         "#059669",
+  greenLight:    "#ECFDF5",
+  greenBorder:   "#A7F3D0",
+  red:           "#DC2626",
+  redLight:      "#FEF2F2",
+  amber:         "#D97706",
+  amberLight:    "#FEF3C7",
 };
 
-export const FONT_HEAD = "'Fraunces', Georgia, serif";
-export const FONT_BODY = "'DM Sans', 'Segoe UI', Arial, sans-serif";
+export const LOGO = {
+  fin:      "#4F46E5",   // Fin — indigo bold
+  sight:    "#111827",   // sight — charcoal bold
+  one:      "#4F46E5",   // One — indigo light weight
+  dot:      "#EA580C",   // · dot — orange
+  credit:   "#111827",   // CREDIT — charcoal
+  advisory: "#EA580C",   // ADVISORY — orange
+  intel:    "#111827",   // INTELLIGENCE — charcoal
+  sep:      "#FED7AA",   // · separators — soft orange
+};
+
+export const FONT_HEAD = "Arial, 'Helvetica Neue', sans-serif";
+export const FONT_BODY = "Arial, 'Helvetica Neue', sans-serif";

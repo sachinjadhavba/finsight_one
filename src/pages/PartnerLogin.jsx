@@ -52,7 +52,7 @@ export default function PartnerLogin({ navigate }) {
     return (
       <div>
         {/* HEADER */}
-        <div style={{ background: "#0D1428", padding: "24px clamp(20px,4vw,48px)", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
+        <div style={{ background: "#ffffff", padding: "24px clamp(20px,4vw,48px)", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
           <div>
             <div style={{ fontSize: 11, color: "#94A3B8", marginBottom: 4, letterSpacing: 1 }}>PARTNER DASHBOARD</div>
             <div style={{ fontSize: 18, fontWeight: 700, color: "#fff" }}>{DEMO_PARTNER.name}</div>
@@ -93,7 +93,7 @@ export default function PartnerLogin({ navigate }) {
               <div style={{ fontSize: 14, fontWeight: 600, color: "#0D1428" }}>finsightone.co/check?ref={DEMO_PARTNER.code}</div>
             </div>
             <button onClick={() => navigator.clipboard?.writeText(`https://finsightone.co/check?ref=${DEMO_PARTNER.code}`)}
-              style={{ background: "#0D1428", color: "#fff", fontSize: 12, fontWeight: 600, padding: "8px 16px", borderRadius: 6, border: "none", cursor: "pointer" }}>
+              style={{ background: "#ffffff", color: "#fff", fontSize: 12, fontWeight: 600, padding: "8px 16px", borderRadius: 6, border: "none", cursor: "pointer" }}>
               Copy Link
             </button>
           </div>
@@ -182,7 +182,7 @@ export default function PartnerLogin({ navigate }) {
                 style={{ width: "100%", border: "1px solid #D1D5DB", borderRadius: 8, padding: "11px 14px", fontSize: 14, boxSizing: "border-box", fontFamily: "inherit" }}
               />
             </div>
-            <button onClick={handleSendOTP} style={{ width: "100%", background: "#0D1428", color: "#fff", fontSize: 14, fontWeight: 700, padding: 13, borderRadius: 8, border: "none", cursor: "pointer", marginBottom: 16 }}>
+            <button onClick={handleSendOTP} style={{ width: "100%", background: "#ffffff", color: "#fff", fontSize: 14, fontWeight: 700, padding: 13, borderRadius: 8, border: "none", cursor: "pointer", marginBottom: 16 }}>
               Send OTP →
             </button>
             <div style={{ textAlign: "center", fontSize: 13, color: "#6B7280" }}>
@@ -203,7 +203,7 @@ export default function PartnerLogin({ navigate }) {
                 style={{ width: "100%", border: "1px solid #D1D5DB", borderRadius: 8, padding: "11px 14px", fontSize: 18, letterSpacing: 8, textAlign: "center", boxSizing: "border-box", fontFamily: "inherit" }}
               />
             </div>
-            <button onClick={handleVerifyOTP} style={{ width: "100%", background: "#0D1428", color: "#fff", fontSize: 14, fontWeight: 700, padding: 13, borderRadius: 8, border: "none", cursor: "pointer", marginBottom: 12 }}>
+            <button onClick={handleVerifyOTP} style={{ width: "100%", background: "#ffffff", color: "#fff", fontSize: 14, fontWeight: 700, padding: 13, borderRadius: 8, border: "none", cursor: "pointer", marginBottom: 12 }}>
               Verify & Login →
             </button>
             <button onClick={() => setStep("login")} style={{ width: "100%", background: "transparent", border: "1px solid #E5E7EB", color: "#6B7280", fontSize: 13, padding: 10, borderRadius: 8, cursor: "pointer" }}>

@@ -3,9 +3,9 @@ import Footer from "../components/Footer";
 export default function WhyUs({ navigate }) {
   return (
     <div>
-      <div style={{ background: "#0D1428", padding: "clamp(44px,6vw,72px) clamp(20px,4vw,48px)", textAlign: "center" }}>
-        <div style={{ display: "inline-block", background: "rgba(232,160,32,0.15)", border: "1px solid rgba(232,160,32,0.3)", color: "#E8A020", fontSize: 11, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", padding: "5px 16px", borderRadius: 100, marginBottom: 20 }}>The Honest Comparison</div>
-        <h1 style={{ fontSize: "clamp(26px,3.5vw,44px)", fontWeight: 900, color: "#fff", lineHeight: 1.15, marginBottom: 16 }}>
+      <div style={{ background: "#ffffff", padding: "clamp(44px,6vw,72px) clamp(20px,4vw,48px)", textAlign: "center" }}>
+        <div style={{ display: "inline-block", background: "rgba(232,160,32,0.15)", border: "1px solid rgba(232,160,32,0.3)", color: "#EA580C", fontSize: 11, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", padding: "5px 16px", borderRadius: 100, marginBottom: 20 }}>The Honest Comparison</div>
+        <h1 style={{ fontSize: "clamp(26px,3.5vw,44px)", fontWeight: 900, color: "#111827", lineHeight: 1.15, marginBottom: 16 }}>
           Why FinSight One?<br /><span style={{ color: "#E8A020" }}>Not a Bank. Not a DSA. Not Your CA.</span>
         </h1>
         <p style={{ fontSize: 16, color: "#94A3B8", maxWidth: 560, margin: "0 auto", lineHeight: 1.7 }}>
@@ -61,7 +61,7 @@ export default function WhyUs({ navigate }) {
         </div>
       </div>
 
-      <div style={{ background: "#0D1428", padding: "clamp(40px,5vw,64px) clamp(20px,4vw,48px)", textAlign: "center" }}>
+      <div style={{ background: "#ffffff", padding: "clamp(40px,5vw,64px) clamp(20px,4vw,48px)", textAlign: "center" }}>
         <h2 style={{ fontSize: 28, fontWeight: 800, color: "#fff", marginBottom: 12 }}>Ready to Experience the Difference?</h2>
         <p style={{ fontSize: 15, color: "#94A3B8", marginBottom: 28 }}>Free eligibility check — 2 minutes — no documents needed.</p>
         <button onClick={() => navigate("check")} style={{ background: "#E8A020", color: "#fff", fontSize: 15, fontWeight: 700, padding: "14px 36px", borderRadius: 8, border: "none", cursor: "pointer" }}>

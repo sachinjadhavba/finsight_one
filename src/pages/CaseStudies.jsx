@@ -121,7 +121,7 @@ function CaseCard({ cs, navigate }) {
       </div>
       {/* Footer */}
       <div style={{ padding: "14px 28px", borderTop: "1px solid #F3F4F6", display: "flex", gap: 12 }}>
-        <button onClick={() => navigate("check")} style={{ background: "#0D1428", color: "#fff", fontSize: 12, fontWeight: 700, padding: "8px 18px", borderRadius: 6, border: "none", cursor: "pointer" }}>
+        <button onClick={() => navigate("check")} style={{ background: "#ffffff", color: "#fff", fontSize: 12, fontWeight: 700, padding: "8px 18px", borderRadius: 6, border: "none", cursor: "pointer" }}>
           Check My Eligibility →
         </button>
         <button onClick={() => navigate("advisory")} style={{ background: "transparent", color: "#374151", fontSize: 12, fontWeight: 600, padding: "8px 18px", borderRadius: 6, border: "1px solid #E5E7EB", cursor: "pointer" }}>
@@ -136,11 +136,11 @@ export default function CaseStudies({ navigate }) {
   return (
     <div>
       {/* HERO */}
-      <div style={{ background: "#0D1428", padding: "clamp(40px,5vw,64px) clamp(20px,4vw,48px)", textAlign: "center" }}>
-        <div style={{ display: "inline-block", background: "rgba(232,160,32,0.15)", border: "1px solid rgba(232,160,32,0.3)", color: "#E8A020", fontSize: 11, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", padding: "5px 16px", borderRadius: 100, marginBottom: 20 }}>
+      <div style={{ background: "#ffffff", padding: "clamp(40px,5vw,64px) clamp(20px,4vw,48px)", textAlign: "center" }}>
+        <div style={{ display: "inline-block", background: "rgba(232,160,32,0.15)", border: "1px solid rgba(232,160,32,0.3)", color: "#EA580C", fontSize: 11, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", padding: "5px 16px", borderRadius: 100, marginBottom: 20 }}>
           Real Outcomes · All Details Anonymised
         </div>
-        <h1 style={{ fontSize: "clamp(26px,3.5vw,40px)", fontWeight: 900, color: "#fff", lineHeight: 1.15, marginBottom: 14 }}>
+        <h1 style={{ fontSize: "clamp(26px,3.5vw,40px)", fontWeight: 900, color: "#111827", lineHeight: 1.15, marginBottom: 14 }}>
           Case Studies
         </h1>
         <p style={{ fontSize: 16, color: "#94A3B8", maxWidth: 560, margin: "0 auto", lineHeight: 1.7 }}>
@@ -164,7 +164,7 @@ export default function CaseStudies({ navigate }) {
       </div>
 
       {/* CTA */}
-      <div style={{ background: "#0D1428", padding: "clamp(40px,5vw,64px) clamp(20px,4vw,48px)", textAlign: "center" }}>
+      <div style={{ background: "#ffffff", padding: "clamp(40px,5vw,64px) clamp(20px,4vw,48px)", textAlign: "center" }}>
         <h2 style={{ fontSize: 28, fontWeight: 800, color: "#fff", marginBottom: 12 }}>
           Is Your Situation Similar?
         </h2>
