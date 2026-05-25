@@ -55,7 +55,7 @@ export default function Check({ navigate }) {
   return (
     <div>
       {/* HERO */}
-      <div style={{ background: "linear-gradient(135deg,#1E3A5F,#0F2140)", color: "#fff", padding: "56px 48px", textAlign: "center" }}>
+      <div style={{ background: "linear-gradient(135deg,#1E3A5F,#0F2140)", color: "#fff", padding: "clamp(32px,5vw,56px) clamp(20px,4vw,48px)", textAlign: "center" }}>
         <div style={{ display: "inline-block", background: "#FCD34D20", border: "1px solid #FCD34D50", color: "#FCD34D", fontSize: 11, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", padding: "5px 16px", borderRadius: 100, marginBottom: 16 }}>
           Free · Takes 2 Minutes · No Documents Needed
         </div>
@@ -73,7 +73,7 @@ export default function Check({ navigate }) {
           <div style={{ maxWidth: 680, margin: "-32px auto 0", background: "#fff", borderRadius: 16, padding: 32, boxShadow: "0 16px 48px rgba(0,0,0,0.12)", position: "relative", zIndex: 10 }}>
             <div style={{ fontSize: 18, fontWeight: 800, marginBottom: 6 }}>Your Free Eligibility Check</div>
             <div style={{ fontSize: 13, color: "#6B7280", marginBottom: 24 }}>Fill in the details below. We will show your result instantly.</div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 16 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(200px,1fr))", gap: 16, marginBottom: 16 }}>
               <div><label style={labelStyle}>Your Name</label><input style={inputStyle} placeholder="Ramesh Agarwal" value={form.name} onChange={e => set("name", e.target.value)} /></div>
               <div><label style={labelStyle}>Mobile Number</label><input style={inputStyle} placeholder="98xxxxxxxx" value={form.mobile} onChange={e => set("mobile", e.target.value)} /></div>
               <div>
@@ -130,7 +130,7 @@ export default function Check({ navigate }) {
         ) : (
           <div style={{ maxWidth: 680, margin: "24px auto 0" }}>
             <div style={{ background: "#fff", border: "1px solid #E5E7EB", borderRadius: 16, padding: 32 }}>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32, alignItems: "start", marginBottom: 24 }}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(200px,1fr))", gap: 32, alignItems: "start", marginBottom: 24 }}>
                 <div>
                   <div style={{ fontSize: 12, fontWeight: 700, color: "#6B7280", textTransform: "uppercase", letterSpacing: 1, marginBottom: 8 }}>Your Eligibility Score</div>
                   <div style={{ fontSize: 56, fontWeight: 900, lineHeight: 1, marginBottom: 4, color: result.color }}>{result.score}</div>
@@ -147,7 +147,7 @@ export default function Check({ navigate }) {
               </div>
               <div style={{ height: 1, background: "#F3F4F6", margin: "0 0 24px" }} />
               <div style={{ fontSize: 12, fontWeight: 700, color: "#6B7280", textTransform: "uppercase", letterSpacing: 1, marginBottom: 12 }}>Key Factors We Checked</div>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 24 }}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(200px,1fr))", gap: 12, marginBottom: 24 }}>
                 {result.factors.map(f => (
                   <div key={f.name} style={{ background: "#F9FAFB", borderRadius: 10, padding: 14 }}>
                     <div style={{ fontSize: 12, fontWeight: 700, color: "#374151", marginBottom: 4 }}>{f.name}</div>
@@ -157,7 +157,7 @@ export default function Check({ navigate }) {
               </div>
               <div style={{ height: 1, background: "#F3F4F6", margin: "0 0 24px" }} />
               <div style={{ fontSize: 12, fontWeight: 700, color: "#6B7280", textTransform: "uppercase", letterSpacing: 1, marginBottom: 12 }}>Your Next Steps</div>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(200px,1fr))", gap: 12 }}>
                 <button onClick={() => navigate("advisory")} style={{ padding: 12, borderRadius: 10, fontSize: 13, fontWeight: 700, border: "none", cursor: "pointer", background: "#1E3A5F", color: "#fff" }}>Get Your Loan Documents Prepared</button>
                 <button onClick={() => navigate("advisory")} style={{ padding: 12, borderRadius: 10, fontSize: 13, fontWeight: 700, border: "none", cursor: "pointer", background: "#B45309", color: "#fff" }}>Speak to Our Expert Team — Book a Call</button>
               </div>
@@ -167,7 +167,7 @@ export default function Check({ navigate }) {
         )}
       </div>
       {/* S2 READINESS PRODUCTS */}
-      <div style={{ padding: "64px 48px", background: "#fff" }}>
+      <div style={{ padding: "clamp(40px,5vw,64px) clamp(20px,4vw,48px)", background: "#fff" }}>
         <div style={{ maxWidth: 1000, margin: "0 auto" }}>
           <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: 2.5, textTransform: "uppercase", color: "#7C3AED", marginBottom: 10, textAlign: "center" }}>Loan Readiness Services</div>
           <div style={{ fontSize: 28, fontWeight: 800, textAlign: "center", marginBottom: 8 }}>Know Exactly Where You Stand</div>

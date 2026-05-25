@@ -14,7 +14,7 @@ export default function Partners({ navigate }) {
   return (
     <div>
       {/* HERO */}
-      <div style={{ background: "#0D1428", padding: "72px 48px", textAlign: "center" }}>
+      <div style={{ background: "#0D1428", padding: "clamp(44px,6vw,72px) clamp(20px,4vw,48px)", textAlign: "center" }}>
         <div style={{ display: "inline-block", background: "rgba(22,101,52,0.25)", border: "1px solid rgba(22,101,52,0.4)", color: "#86EFAC", fontSize: 11, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", padding: "5px 16px", borderRadius: 100, marginBottom: 20 }}>
           CA & DSA Partnership Programme
         </div>
@@ -45,7 +45,7 @@ export default function Partners({ navigate }) {
       </div>
 
       {/* WHY DIFFERENT FROM BANK DSA */}
-      <div style={{ padding: "64px 48px" }}>
+      <div style={{ padding: "clamp(40px,5vw,64px) clamp(20px,4vw,48px)" }}>
         <div style={{ textAlign: "center", marginBottom: 40 }}>
           <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: 2.5, color: "#E8A020", textTransform: "uppercase", marginBottom: 10 }}>The Honest Comparison</div>
           <h2 style={{ fontSize: 28, fontWeight: 800, color: "#111827", marginBottom: 12 }}>Why CAs Choose FinSight One Over Bank DSA</h2>
@@ -82,7 +82,7 @@ export default function Partners({ navigate }) {
       </div>
 
       {/* THREE MODELS */}
-      <div style={{ background: "#F9FAFB", padding: "64px 48px" }}>
+      <div style={{ background: "#F9FAFB", padding: "clamp(40px,5vw,64px) clamp(20px,4vw,48px)" }}>
         <div style={{ textAlign: "center", marginBottom: 40 }}>
           <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: 2.5, color: "#E8A020", textTransform: "uppercase", marginBottom: 10 }}>Three Ways to Earn</div>
           <h2 style={{ fontSize: 28, fontWeight: 800, color: "#111827" }}>Your Revenue Model as a FinSight One Partner</h2>
@@ -122,7 +122,7 @@ export default function Partners({ navigate }) {
       </div>
 
       {/* EARNINGS TABLE */}
-      <div style={{ padding: "64px 48px" }}>
+      <div style={{ padding: "clamp(40px,5vw,64px) clamp(20px,4vw,48px)" }}>
         <div style={{ textAlign: "center", marginBottom: 40 }}>
           <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: 2.5, color: "#E8A020", textTransform: "uppercase", marginBottom: 10 }}>Earnings Calculator</div>
           <h2 style={{ fontSize: 28, fontWeight: 800, color: "#111827" }}>What You Could Earn This Month</h2>
@@ -157,7 +157,7 @@ export default function Partners({ navigate }) {
       </div>
 
       {/* SIGN UP FORM */}
-      <div style={{ background: "#F9FAFB", padding: "64px 48px" }}>
+      <div style={{ background: "#F9FAFB", padding: "clamp(40px,5vw,64px) clamp(20px,4vw,48px)" }}>
         <div style={{ maxWidth: 600, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 32 }}>
             <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: 2.5, color: "#E8A020", textTransform: "uppercase", marginBottom: 10 }}>Get Started</div>

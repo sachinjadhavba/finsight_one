@@ -3,7 +3,7 @@ import Footer from "../components/Footer";
 export default function WhyUs({ navigate }) {
   return (
     <div>
-      <div style={{ background: "#0D1428", padding: "72px 48px", textAlign: "center" }}>
+      <div style={{ background: "#0D1428", padding: "clamp(44px,6vw,72px) clamp(20px,4vw,48px)", textAlign: "center" }}>
         <div style={{ display: "inline-block", background: "rgba(232,160,32,0.15)", border: "1px solid rgba(232,160,32,0.3)", color: "#E8A020", fontSize: 11, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", padding: "5px 16px", borderRadius: 100, marginBottom: 20 }}>The Honest Comparison</div>
         <h1 style={{ fontSize: "clamp(26px,3.5vw,44px)", fontWeight: 900, color: "#fff", lineHeight: 1.15, marginBottom: 16 }}>
           Why FinSight One?<br /><span style={{ color: "#E8A020" }}>Not a Bank. Not a DSA. Not Your CA.</span>
@@ -13,7 +13,7 @@ export default function WhyUs({ navigate }) {
         </p>
       </div>
 
-      <div style={{ padding: "64px 48px", maxWidth: 1100, margin: "0 auto" }}>
+      <div style={{ padding: "clamp(40px,5vw,64px) clamp(20px,4vw,48px)", maxWidth: 1100, margin: "0 auto" }}>
         <div style={{ overflowX: "auto" }}>
           <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
             <thead>
@@ -61,7 +61,7 @@ export default function WhyUs({ navigate }) {
         </div>
       </div>
 
-      <div style={{ background: "#0D1428", padding: "64px 48px", textAlign: "center" }}>
+      <div style={{ background: "#0D1428", padding: "clamp(40px,5vw,64px) clamp(20px,4vw,48px)", textAlign: "center" }}>
         <h2 style={{ fontSize: 28, fontWeight: 800, color: "#fff", marginBottom: 12 }}>Ready to Experience the Difference?</h2>
         <p style={{ fontSize: 15, color: "#94A3B8", marginBottom: 28 }}>Free eligibility check — 2 minutes — no documents needed.</p>
         <button onClick={() => navigate("check")} style={{ background: "#E8A020", color: "#fff", fontSize: 15, fontWeight: 700, padding: "14px 36px", borderRadius: 8, border: "none", cursor: "pointer" }}>

@@ -3,7 +3,7 @@ import Footer from "../components/Footer";
 export default function MSME({ navigate }) {
   return (
     <div>
-      <div style={{ background: "#0D1428", padding: "72px 48px", textAlign: "center" }}>
+      <div style={{ background: "#0D1428", padding: "clamp(44px,6vw,72px) clamp(20px,4vw,48px)", textAlign: "center" }}>
         <div style={{ display: "inline-block", background: "rgba(232,160,32,0.15)", border: "1px solid rgba(232,160,32,0.3)", color: "#E8A020", fontSize: 11, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", padding: "5px 16px", borderRadius: 100, marginBottom: 20 }}>For MSMEs & SMEs</div>
         <h1 style={{ fontSize: "clamp(26px,3.5vw,44px)", fontWeight: 900, color: "#fff", lineHeight: 1.15, marginBottom: 16 }}>
           Your Bank Knows Your Balance Sheet.<br /><span style={{ color: "#E8A020" }}>We Know How to Get You Approved.</span>
@@ -26,7 +26,7 @@ export default function MSME({ navigate }) {
       </div>
 
       {/* PRODUCTS */}
-      <div style={{ padding: "64px 48px" }}>
+      <div style={{ padding: "clamp(40px,5vw,64px) clamp(20px,4vw,48px)" }}>
         <div style={{ textAlign: "center", marginBottom: 40 }}>
           <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: 2.5, color: "#E8A020", textTransform: "uppercase", marginBottom: 10 }}>Loan Products We Cover</div>
           <h2 style={{ fontSize: 28, fontWeight: 800, color: "#111827" }}>Every MSME Loan Product — One Platform</h2>
@@ -51,7 +51,7 @@ export default function MSME({ navigate }) {
       </div>
 
       {/* REAL COST */}
-      <div style={{ background: "#F9FAFB", padding: "64px 48px" }}>
+      <div style={{ background: "#F9FAFB", padding: "clamp(40px,5vw,64px) clamp(20px,4vw,48px)" }}>
         <div style={{ textAlign: "center", marginBottom: 40 }}>
           <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: 2.5, color: "#E8A020", textTransform: "uppercase", marginBottom: 10 }}>The Real Cost of Not Getting Help</div>
           <h2 style={{ fontSize: 28, fontWeight: 800, color: "#111827" }}>What a Rejection Actually Costs You</h2>
@@ -72,7 +72,7 @@ export default function MSME({ navigate }) {
       </div>
 
       {/* CTA */}
-      <div style={{ background: "#0D1428", padding: "64px 48px", textAlign: "center" }}>
+      <div style={{ background: "#0D1428", padding: "clamp(40px,5vw,64px) clamp(20px,4vw,48px)", textAlign: "center" }}>
         <h2 style={{ fontSize: 28, fontWeight: 800, color: "#fff", marginBottom: 12 }}>Check Your Business Eligibility — Free</h2>
         <p style={{ fontSize: 15, color: "#94A3B8", marginBottom: 28 }}>2 minutes. No documents. Know your chances before approaching any bank.</p>
         <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>

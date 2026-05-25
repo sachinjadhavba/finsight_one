@@ -18,7 +18,7 @@ export default function Analytics({ navigate }) {
   return (
     <div>
       {/* HERO */}
-      <div style={{ background: "linear-gradient(135deg,#064E3B,#022C22)", color: "#fff", padding: "56px 48px", textAlign: "center" }}>
+      <div style={{ background: "linear-gradient(135deg,#064E3B,#022C22)", color: "#fff", padding: "clamp(32px,5vw,56px) clamp(20px,4vw,48px)", textAlign: "center" }}>
         <div style={{ display: "inline-block", background: "#34D39920", border: "1px solid #34D39950", color: "#34D399", fontSize: 11, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", padding: "5px 16px", borderRadius: 100, marginBottom: 16 }}>
           Monthly Plans · Cancel Anytime
         </div>
@@ -31,7 +31,7 @@ export default function Analytics({ navigate }) {
       </div>
 
       {/* PLANS */}
-      <div style={{ padding: "64px 48px" }}>
+      <div style={{ padding: "clamp(40px,5vw,64px) clamp(20px,4vw,48px)" }}>
         <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: 2.5, textTransform: "uppercase", color: "#059669", marginBottom: 10, textAlign: "center" }}>Monthly Plans</div>
         <div style={{ fontSize: 30, fontWeight: 800, textAlign: "center", marginBottom: 10 }}>Pick the Plan That Fits Your Business</div>
         <div style={{ fontSize: 14, color: "#6B7280", textAlign: "center", maxWidth: 560, margin: "0 auto 40px", lineHeight: 1.7 }}>No lock-in. No hidden fees. Cancel any month. All plans include expert preparation and delivery.</div>
@@ -60,7 +60,7 @@ export default function Analytics({ navigate }) {
       </div>
 
       {/* WHAT'S INCLUDED */}
-      <div style={{ padding: "64px 48px", background: "#F9FAFB" }}>
+      <div style={{ padding: "clamp(40px,5vw,64px) clamp(20px,4vw,48px)", background: "#F9FAFB" }}>
         <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: 2.5, textTransform: "uppercase", color: "#059669", marginBottom: 10, textAlign: "center" }}>What You Get Every Month</div>
         <div style={{ fontSize: 30, fontWeight: 800, textAlign: "center", marginBottom: 40 }}>More Than Just a Report</div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", gap: 16, maxWidth: 900, margin: "0 auto" }}>
@@ -75,7 +75,7 @@ export default function Analytics({ navigate }) {
       </div>
 
       {/* STANDALONE PRODUCTS */}
-      <div style={{ padding: "64px 48px", background: "#fff" }}>
+      <div style={{ padding: "clamp(40px,5vw,64px) clamp(20px,4vw,48px)", background: "#fff" }}>
         <div style={{ maxWidth: 960, margin: "0 auto" }}>
           <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: 2.5, textTransform: "uppercase", color: "#059669", marginBottom: 10, textAlign: "center" }}>Add-On Services</div>
           <div style={{ fontSize: 28, fontWeight: 800, textAlign: "center", marginBottom: 8 }}>Need Just One Thing?</div>
@@ -129,7 +129,7 @@ export default function Analytics({ navigate }) {
       </div>
 
       {/* CTA */}
-      <div style={{ background: "linear-gradient(135deg,#064E3B,#059669)", padding: "56px 48px", textAlign: "center", color: "#fff" }}>
+      <div style={{ background: "linear-gradient(135deg,#064E3B,#059669)", padding: "clamp(32px,5vw,56px) clamp(20px,4vw,48px)", textAlign: "center", color: "#fff" }}>
         <h2 style={{ fontSize: 28, fontWeight: 800, marginBottom: 10 }}>Stay Loan-Ready Every Month</h2>
         <p style={{ fontSize: 14, color: "#FEF3C7", marginBottom: 24 }}>Start with the free eligibility check, then pick the plan that suits your needs.</p>
         <button onClick={() => navigate("check")} style={{ background: "#fff", color: "#059669", fontSize: 14, fontWeight: 800, padding: "14px 32px", borderRadius: 10, border: "none", cursor: "pointer" }}>

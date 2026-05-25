@@ -45,7 +45,7 @@ export default function Footer({ navigate }) {
   return (
     <footer style={{ background: NAVY, paddingTop: 56 }}>
       {/* MAIN GRID */}
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 48px", display: "grid", gridTemplateColumns: "1.8fr 1fr 1fr 1.2fr", gap: 40, marginBottom: 48 }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 clamp(20px,4vw,48px)", display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(160px,1fr))", gap: 40, marginBottom: 48 }}>
         {/* Brand column */}
         <div>
           <div style={{ marginBottom: 16 }}>
@@ -93,7 +93,7 @@ export default function Footer({ navigate }) {
       </div>
 
       {/* BOTTOM BAR */}
-      <div style={{ borderTop: "1px solid rgba(255,255,255,0.05)", padding: "20px 48px", maxWidth: 1200, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
+      <div style={{ borderTop: "1px solid rgba(255,255,255,0.05)", padding: "20px clamp(20px,4vw,48px)", maxWidth: 1200, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
         <div style={{ fontSize: 12, color: "#4B5563" }}>
           © 2025 FinSight One · Proprietor: Sachin Jadhav · Pune, Maharashtra
         </div>

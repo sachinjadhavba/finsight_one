@@ -18,7 +18,7 @@ export default function Advisory({ navigate }) {
   return (
     <div>
       {/* HERO */}
-      <div style={{ background: "linear-gradient(135deg,#451A03,#78350F)", color: "#fff", padding: "56px 48px", textAlign: "center" }}>
+      <div style={{ background: "linear-gradient(135deg,#451A03,#78350F)", color: "#fff", padding: "clamp(32px,5vw,56px) clamp(20px,4vw,48px)", textAlign: "center" }}>
         <div style={{ display: "inline-block", background: "#FCD34D20", border: "1px solid #FCD34D50", color: "#FCD34D", fontSize: 11, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", padding: "5px 16px", borderRadius: 100, marginBottom: 16 }}>
           Expert-Prepared · 72-Hour Delivery · 20 Years Experience
         </div>
@@ -31,7 +31,7 @@ export default function Advisory({ navigate }) {
       </div>
 
       {/* CONTENT */}
-      <div style={{ padding: "64px 48px" }}>
+      <div style={{ padding: "clamp(40px,5vw,64px) clamp(20px,4vw,48px)" }}>
         <div style={{ maxWidth: 1000, margin: "0 auto" }}>
 
           {/* DOCUMENTS */}
@@ -81,7 +81,7 @@ export default function Advisory({ navigate }) {
       </div>
 
       {/* CTA */}
-      <div style={{ background: "linear-gradient(135deg,#B45309,#92400E)", padding: "56px 48px", textAlign: "center", color: "#fff" }}>
+      <div style={{ background: "linear-gradient(135deg,#B45309,#92400E)", padding: "clamp(32px,5vw,56px) clamp(20px,4vw,48px)", textAlign: "center", color: "#fff" }}>
         <h2 style={{ fontSize: 28, fontWeight: 800, marginBottom: 10 }}>Not Sure Where to Start?</h2>
         <p style={{ fontSize: 14, color: "#FEF3C7", marginBottom: 24 }}>Start with a free eligibility check — we will tell you exactly which service you need.</p>
         <button onClick={() => navigate("check")} style={{ background: "#fff", color: "#B45309", fontSize: 14, fontWeight: 800, padding: "14px 32px", borderRadius: 10, border: "none", cursor: "pointer" }}>

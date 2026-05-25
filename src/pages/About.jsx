@@ -51,7 +51,7 @@ export default function About({ navigate }) {
       </div>
 
       {/* VALUES */}
-      <div style={{ padding: "64px 48px" }}>
+      <div style={{ padding: "clamp(40px,5vw,64px) clamp(20px,4vw,48px)" }}>
         <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: 2.5, textTransform: "uppercase", color: "#B45309", marginBottom: 10, textAlign: "center" }}>Why We Are Different</div>
         <div style={{ fontSize: 30, fontWeight: 800, textAlign: "center", marginBottom: 40, lineHeight: 1.25 }}>No Agent Commissions. No Hidden Fees.<br />Just Expert Help.</div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(180px,1fr))", gap: 16, maxWidth: 900, margin: "0 auto" }}>
@@ -66,7 +66,7 @@ export default function About({ navigate }) {
       </div>
 
       {/* CREDENTIALS */}
-      <div style={{ padding: "64px 48px", background: "#F9FAFB" }}>
+      <div style={{ padding: "clamp(40px,5vw,64px) clamp(20px,4vw,48px)", background: "#F9FAFB" }}>
         <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: 2.5, textTransform: "uppercase", color: "#B45309", marginBottom: 10, textAlign: "center" }}>Experience</div>
         <div style={{ fontSize: 30, fontWeight: 800, textAlign: "center", marginBottom: 32 }}>20 Years of Banking Expertise</div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", gap: 16, maxWidth: 900, margin: "0 auto" }}>
@@ -81,7 +81,7 @@ export default function About({ navigate }) {
       </div>
 
       {/* CTA */}
-      <div style={{ background: "linear-gradient(135deg,#B45309,#92400E)", padding: "56px 48px", textAlign: "center", color: "#fff" }}>
+      <div style={{ background: "linear-gradient(135deg,#B45309,#92400E)", padding: "clamp(32px,5vw,56px) clamp(20px,4vw,48px)", textAlign: "center", color: "#fff" }}>
         <h2 style={{ fontSize: 28, fontWeight: 800, marginBottom: 10 }}>Ready to Work With Us?</h2>
         <p style={{ fontSize: 14, color: "#FEF3C7", marginBottom: 24 }}>Start with a free eligibility check — no commitment, no documents needed.</p>
         <button onClick={() => navigate("check")} style={{ background: "#fff", color: "#B45309", fontSize: 14, fontWeight: 800, padding: "14px 32px", borderRadius: 10, border: "none", cursor: "pointer" }}>

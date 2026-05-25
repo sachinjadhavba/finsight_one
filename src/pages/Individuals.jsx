@@ -3,7 +3,7 @@ import Footer from "../components/Footer";
 export default function Individuals({ navigate }) {
   return (
     <div>
-      <div style={{ background: "#0D1428", padding: "72px 48px", textAlign: "center" }}>
+      <div style={{ background: "#0D1428", padding: "clamp(44px,6vw,72px) clamp(20px,4vw,48px)", textAlign: "center" }}>
         <div style={{ display: "inline-block", background: "rgba(232,160,32,0.15)", border: "1px solid rgba(232,160,32,0.3)", color: "#E8A020", fontSize: 11, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", padding: "5px 16px", borderRadius: 100, marginBottom: 20 }}>For Salaried & Self-Employed Individuals</div>
         <h1 style={{ fontSize: "clamp(26px,3.5vw,44px)", fontWeight: 900, color: "#fff", lineHeight: 1.15, marginBottom: 16 }}>
           Know <span style={{ color: "#E8A020" }}>Exactly What You Qualify For</span><br />Before Applying Anywhere
@@ -26,7 +26,7 @@ export default function Individuals({ navigate }) {
       </div>
 
       {/* LOAN TYPES */}
-      <div style={{ padding: "64px 48px" }}>
+      <div style={{ padding: "clamp(40px,5vw,64px) clamp(20px,4vw,48px)" }}>
         <div style={{ textAlign: "center", marginBottom: 40 }}>
           <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: 2.5, color: "#E8A020", textTransform: "uppercase", marginBottom: 10 }}>What We Help With</div>
           <h2 style={{ fontSize: 28, fontWeight: 800, color: "#111827" }}>All Individual Loan Products Covered</h2>
@@ -53,7 +53,7 @@ export default function Individuals({ navigate }) {
       </div>
 
       {/* OBJECTION HANDLING */}
-      <div style={{ background: "#F9FAFB", padding: "64px 48px" }}>
+      <div style={{ background: "#F9FAFB", padding: "clamp(40px,5vw,64px) clamp(20px,4vw,48px)" }}>
         <div style={{ textAlign: "center", marginBottom: 40 }}>
           <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: 2.5, color: "#E8A020", textTransform: "uppercase", marginBottom: 10 }}>The Honest Answer</div>
           <h2 style={{ fontSize: 28, fontWeight: 800, color: "#111827" }}>Why Pay When Banks and DSAs Are Free?</h2>
@@ -79,7 +79,7 @@ export default function Individuals({ navigate }) {
       </div>
 
       {/* CTA */}
-      <div style={{ background: "#0D1428", padding: "64px 48px", textAlign: "center" }}>
+      <div style={{ background: "#0D1428", padding: "clamp(40px,5vw,64px) clamp(20px,4vw,48px)", textAlign: "center" }}>
         <h2 style={{ fontSize: 28, fontWeight: 800, color: "#fff", marginBottom: 12 }}>Start with a Free Eligibility Check</h2>
         <p style={{ fontSize: 15, color: "#94A3B8", marginBottom: 28 }}>2 minutes. No documents. Know your chances before approaching any bank.</p>
         <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>

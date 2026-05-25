@@ -136,7 +136,7 @@ export default function CaseStudies({ navigate }) {
   return (
     <div>
       {/* HERO */}
-      <div style={{ background: "#0D1428", padding: "64px 48px", textAlign: "center" }}>
+      <div style={{ background: "#0D1428", padding: "clamp(40px,5vw,64px) clamp(20px,4vw,48px)", textAlign: "center" }}>
         <div style={{ display: "inline-block", background: "rgba(232,160,32,0.15)", border: "1px solid rgba(232,160,32,0.3)", color: "#E8A020", fontSize: 11, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", padding: "5px 16px", borderRadius: 100, marginBottom: 20 }}>
           Real Outcomes · All Details Anonymised
         </div>
@@ -159,12 +159,12 @@ export default function CaseStudies({ navigate }) {
       </div>
 
       {/* CASES */}
-      <div style={{ padding: "48px 48px", maxWidth: 1100, margin: "0 auto" }}>
+      <div style={{ padding: "clamp(32px,4vw,48px) clamp(20px,4vw,48px)", maxWidth: 1100, margin: "0 auto" }}>
         {CASES.map(cs => <CaseCard key={cs.id} cs={cs} navigate={navigate} />)}
       </div>
 
       {/* CTA */}
-      <div style={{ background: "#0D1428", padding: "64px 48px", textAlign: "center" }}>
+      <div style={{ background: "#0D1428", padding: "clamp(40px,5vw,64px) clamp(20px,4vw,48px)", textAlign: "center" }}>
         <h2 style={{ fontSize: 28, fontWeight: 800, color: "#fff", marginBottom: 12 }}>
           Is Your Situation Similar?
         </h2>
