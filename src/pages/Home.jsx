@@ -39,9 +39,7 @@ export default function Home({ navigate }) {
             <div style={{ display: "flex", gap: "clamp(20px,3vw,40px)", flexWrap: "wrap" }}>
               {HERO_STATS.map(s => (
                 <div key={s.label}>
-                  <div style={{ fontSize: "clamp(20px,2vw,26px)", fontWeight: 900, color: DARK }}>
-                    {s.val.replace(/\d+/, m => ``)}<span style={{ color: ORANGE }}>{s.val.match(/\d+/)?.[0]}</span>{s.val.replace(/.*?(\d+)/, '')}
-                  </div>
+                  <div style={{ fontSize: "clamp(20px,2vw,26px)", fontWeight: 900, color: ORANGE }}>{s.val}</div>
                   <div style={{ fontSize: 11, color: "#9CA3AF", marginTop: 2 }}>{s.label}</div>
                 </div>
               ))}

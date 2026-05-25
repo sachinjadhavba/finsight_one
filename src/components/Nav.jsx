@@ -9,11 +9,11 @@ const DROPDOWNS = {
   services: {
     label: "Services",
     items: [
-      { id: "check",     label: "Check Loan Eligibility",   desc: "Free AI-powered eligibility check" },
+      { id: "check",     label: "Check Loan Eligibility",   desc: "Free AI-powered eligibility check — 2 minutes" },
       { id: "check",     label: "Loan Readiness Reports",   desc: "Detailed credit reports from ₹499" },
-      { id: "analytics", label: "Monthly Tracking Plans",   desc: "Business health monitoring" },
-      { id: "advisory",  label: "Expert Advisory",          desc: "One-on-one with 20-year bankers" },
-      { id: "advisory",  label: "Document Preparation",     desc: "CAM, CMA, DPR bank-ready files" },
+      { id: "analytics", label: "Monthly Tracking Plans",   desc: "Business health monitoring from ₹499/mo" },
+      { id: "docs",      label: "Document Preparation",     desc: "CAM, CMA, DPR — banker-ready in 72 hours" },
+      { id: "advisory",  label: "Expert Advisory",          desc: "One-on-one loan structuring & recovery" },
     ],
   },
   who: {
@@ -29,7 +29,7 @@ const DROPDOWNS = {
     items: [
       { id: "casestudies", label: "Case Studies",           desc: "Real loan approvals — anonymised" },
       { id: "blog",        label: "Credit Advisory Blog",   desc: "Tips from 20 years of banking" },
-      { id: "why",         label: "Why FinSight One",       desc: "vs DSA vs Bank vs CA" },
+      { id: "why",         label: "Why FinsightOne",        desc: "vs DSA vs Bank vs CA — honest comparison" },
     ],
   },
 };
@@ -38,17 +38,17 @@ function Logo({ navigate }) {
   return (
     <div onClick={() => navigate("home")} style={{ cursor: "pointer", display: "inline-flex", flexDirection: "column", alignItems: "flex-start", userSelect: "none" }}>
       <div style={{ display: "flex", alignItems: "baseline", lineHeight: 1 }}>
-        <span style={{ fontFamily: "Arial,'Helvetica Neue',sans-serif", fontSize: 20, fontWeight: 900, color: INDIGO, letterSpacing: "-0.03em" }}>Fin</span>
-        <span style={{ fontFamily: "Arial,'Helvetica Neue',sans-serif", fontSize: 20, fontWeight: 900, color: DARK,   letterSpacing: "-0.03em" }}>sight</span>
-        <span style={{ fontFamily: "Arial,'Helvetica Neue',sans-serif", fontSize: 20, fontWeight: 200, color: INDIGO, letterSpacing: "-0.02em" }}>&nbsp;One</span>
-        <span style={{ display: "inline-block", width: 5, height: 5, background: ORANGE, borderRadius: "50%", marginLeft: 3, marginBottom: 7, flexShrink: 0 }} />
+        <span style={{ fontFamily: "Arial,'Helvetica Neue',sans-serif", fontSize: 24, fontWeight: 900, color: INDIGO, letterSpacing: "-0.03em" }}>Fin</span>
+        <span style={{ fontFamily: "Arial,'Helvetica Neue',sans-serif", fontSize: 24, fontWeight: 900, color: DARK,   letterSpacing: "-0.03em" }}>sight</span>
+        <span style={{ fontFamily: "Arial,'Helvetica Neue',sans-serif", fontSize: 24, fontWeight: 200, color: INDIGO, letterSpacing: "-0.02em" }}>&nbsp;One</span>
+        <span style={{ display: "inline-block", width: 6, height: 6, background: ORANGE, borderRadius: "50%", marginLeft: 3, marginBottom: 8, flexShrink: 0 }} />
       </div>
-      <div style={{ display: "flex", alignItems: "center", marginTop: 2 }}>
-        <span style={{ fontSize: 7, fontWeight: 800, color: DARK,   letterSpacing: "0.2em", fontFamily: "Arial,sans-serif" }}>CREDIT</span>
+      <div style={{ display: "flex", alignItems: "center", marginTop: 1 }}>
+        <span style={{ fontSize: 7.5, fontWeight: 800, color: DARK,   letterSpacing: "0.2em", fontFamily: "Arial,sans-serif" }}>CREDIT</span>
         <span style={{ color: "#FED7AA", fontSize: 9, margin: "0 3px", lineHeight: 1 }}>·</span>
-        <span style={{ fontSize: 7, fontWeight: 800, color: ORANGE, letterSpacing: "0.2em", fontFamily: "Arial,sans-serif" }}>ADVISORY</span>
+        <span style={{ fontSize: 7.5, fontWeight: 800, color: ORANGE, letterSpacing: "0.2em", fontFamily: "Arial,sans-serif" }}>ADVISORY</span>
         <span style={{ color: "#FED7AA", fontSize: 9, margin: "0 3px", lineHeight: 1 }}>·</span>
-        <span style={{ fontSize: 7, fontWeight: 800, color: DARK,   letterSpacing: "0.2em", fontFamily: "Arial,sans-serif" }}>INTELLIGENCE</span>
+        <span style={{ fontSize: 7.5, fontWeight: 800, color: DARK,   letterSpacing: "0.2em", fontFamily: "Arial,sans-serif" }}>INTELLIGENCE</span>
       </div>
     </div>
   );
@@ -69,22 +69,23 @@ export default function Nav({ page, navigate }) {
           style={{ position: "fixed", inset: 0, zIndex: 150 }} />
       )}
 
-      <nav style={{ background: WHITE, borderBottom: "1px solid #E5E7EB", position: "sticky", top: 0, zIndex: 200 }}>
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 clamp(16px,3vw,40px)", height: 64, maxWidth: 1400, margin: "0 auto" }}>
+      <nav style={{ background: WHITE, borderBottom: "2px solid #EEF2FF", position: "sticky", top: 0, zIndex: 200, boxShadow: "0 2px 12px rgba(79,70,229,0.06)" }}>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 clamp(16px,3vw,40px)", height: 70, maxWidth: 1400, margin: "0 auto" }}>
 
           <Logo navigate={navigate} />
 
           {/* DESKTOP LINKS */}
-          <div className="nav-desktop" style={{ display: "flex", alignItems: "center", gap: 4 }}>
+          <div className="nav-desktop" style={{ display: "flex", alignItems: "center", gap: 2 }}>
             {Object.entries(DROPDOWNS).map(([key, dd]) => (
               <div key={key} style={{ position: "relative" }}>
                 <button onClick={() => toggle(key)} style={{
                   background: open === key ? "#EEF2FF" : "transparent",
                   border: "none", cursor: "pointer",
-                  padding: "8px 12px", borderRadius: 6,
+                  padding: "8px 14px", borderRadius: 6,
                   display: "flex", alignItems: "center", gap: 4,
                   color: open === key ? INDIGO : "#374151",
-                  fontSize: 13, fontWeight: 500, fontFamily: "inherit",
+                  fontSize: 14, fontWeight: 500, fontFamily: "inherit",
+                  transition: "all 0.15s",
                 }}>
                   {dd.label}
                   <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
@@ -95,15 +96,16 @@ export default function Nav({ page, navigate }) {
                 {open === key && (
                   <div style={{
                     position: "absolute", top: "calc(100% + 8px)", left: 0,
-                    background: WHITE, borderRadius: 10, minWidth: 240,
+                    background: WHITE, borderRadius: 12, minWidth: 260,
                     border: "1px solid #E5E7EB",
-                    boxShadow: "0 8px 32px rgba(79,70,229,0.10)",
+                    boxShadow: "0 8px 32px rgba(79,70,229,0.12)",
                     zIndex: 300, overflow: "hidden",
                   }}>
                     {dd.items.map((item, i) => (
                       <div key={i} onClick={() => go(item.id)} style={{
                         padding: "12px 16px", cursor: "pointer",
                         borderBottom: i < dd.items.length - 1 ? "1px solid #F3F4F6" : "none",
+                        transition: "background 0.15s",
                       }}
                         onMouseEnter={e => e.currentTarget.style.background = "#F9FAFB"}
                         onMouseLeave={e => e.currentTarget.style.background = "transparent"}>
@@ -117,22 +119,23 @@ export default function Nav({ page, navigate }) {
             ))}
             <button onClick={() => go("about")} style={{
               background: "transparent", border: "none", cursor: "pointer",
-              padding: "8px 12px", borderRadius: 6,
-              color: "#374151", fontSize: 13, fontWeight: 500, fontFamily: "inherit",
+              padding: "8px 14px", borderRadius: 6,
+              color: "#374151", fontSize: 14, fontWeight: 500, fontFamily: "inherit",
             }}>About Us</button>
           </div>
 
           {/* DESKTOP RIGHT */}
-          <div className="nav-desktop" style={{ display: "flex", alignItems: "center", gap: 8, flexShrink: 0 }}>
+          <div className="nav-desktop" style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
             <button onClick={() => go("partnerlogin")} style={{
               background: "transparent", border: "1px solid #E5E7EB",
-              color: "#374151", fontSize: 12, fontWeight: 500, padding: "7px 14px",
+              color: "#374151", fontSize: 13, fontWeight: 500, padding: "8px 16px",
               borderRadius: 6, cursor: "pointer", fontFamily: "inherit", whiteSpace: "nowrap",
             }}>Partner Login</button>
             <button onClick={() => go("check")} style={{
-              background: ORANGE, color: WHITE, fontSize: 12, fontWeight: 700,
-              padding: "8px 16px", borderRadius: 6, border: "none",
+              background: ORANGE, color: WHITE, fontSize: 13, fontWeight: 700,
+              padding: "9px 18px", borderRadius: 6, border: "none",
               cursor: "pointer", fontFamily: "inherit", whiteSpace: "nowrap",
+              boxShadow: "0 2px 8px rgba(234,88,12,0.3)",
             }}>Check Eligibility — Free</button>
           </div>
 

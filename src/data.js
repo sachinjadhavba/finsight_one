@@ -29,7 +29,7 @@ export const SERVICES = [
     title: "Loan Readiness Check",
     pitch: "Find out exactly where you stand before walking into a bank. We tell you your chances, what is weak, and exactly how to fix it.",
     items: [
-      { name: "Free Eligibility Check", price: "Free", sample: "samplereport" },
+      { name: "Free Eligibility Check", price: "Free" },
       { name: "Detailed Eligibility Report", price: "₹499–999", sample: "samplereport" },
       { name: "Loan Readiness Plan", price: "₹2,499–4,999", sample: "samplereport" },
       { name: "Full Banker Presentation", price: "₹9,999–14,999", sample: "samplereport" },
