@@ -105,7 +105,7 @@ export default function Check({ navigate }) {
                 </select>
               </div>
               <div>
-                <label style={labelStyle}>Monthly Income / Turnover</label>
+                <label style={labelStyle}>{form.type === "Business Owner" || form.type === "Farmer / Agri Business" ? "Monthly Turnover" : "Monthly Income"}</label>
                 <select style={selectStyle} value={form.income} onChange={e => set("income", e.target.value)}>
                   <option value="">Select...</option>
                   <option>Below ₹50,000/month</option><option>₹50K – ₹2L/month</option>
