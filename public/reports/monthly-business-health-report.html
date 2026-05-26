@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Monthly Business Health Report — FinsightOne Sample</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,'Helvetica Neue',sans-serif;background:#F9FAFB;color:#111827;font-size:13px}
+.wm{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-35deg);font-size:120px;font-weight:900;color:rgba(0,0,0,0.025);pointer-events:none;white-space:nowrap;z-index:0;letter-spacing:16px}
+.hdr{background:#FAFBFF;border-bottom:2px solid #E0E7FF;padding:14px 48px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}
+.logo{display:flex;flex-direction:column}
+.logo-name{display:flex;align-items:baseline;line-height:1}
+.logo-name .fin{font-size:20px;font-weight:900;color:#4F46E5}
+.logo-name .sight{font-size:20px;font-weight:900;color:#111827}
+.logo-name .one{font-size:20px;font-weight:200;color:#4F46E5}
+.logo-name .dot{display:inline-block;width:5px;height:5px;background:#EA580C;border-radius:50%;margin-left:3px;margin-bottom:6px}
+.logo-tag{display:flex;align-items:center;margin-top:2px;gap:3px}
+.logo-tag span{font-size:7px;font-weight:800;letter-spacing:2px}
+.lt-c{color:#111827}.lt-a{color:#EA580C}.lt-i{color:#111827}
+.lt-sep{color:#FED7AA;font-size:9px}
+.hdr-r{text-align:right;font-size:10px;color:#6B7280;line-height:1.6}
+.cover{padding:32px 48px;background:#fff;border-bottom:1px solid #E5E7EB}
+.badge{display:inline-block;background:#EEF2FF;color:#4F46E5;font-size:10px;font-weight:800;letter-spacing:1.5px;padding:3px 12px;border-radius:3px;border:1px solid #C7D2FE;margin-bottom:10px}
+.sample-badge{display:inline-block;background:#FEF3C7;color:#92400E;font-size:10px;font-weight:700;letter-spacing:1.5px;padding:3px 12px;border-radius:3px;border:1px solid #FDE68A;margin-left:8px;margin-bottom:10px}
+.ctitle{font-size:24px;font-weight:900;color:#111827;margin:10px 0 4px;line-height:1.25}
+.csub{font-size:13px;color:#6B7280;margin-bottom:16px}
+.cmeta{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}
+.mc{background:#F9FAFB;border:1px solid #E5E7EB;border-radius:6px;padding:10px 12px}
+.ml{font-size:10px;color:#9CA3AF;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px}
+.mv{font-size:13px;font-weight:800;color:#111827}
+.sec{padding:24px 48px;border-bottom:1px solid #F3F4F6;position:relative;z-index:1;background:#fff}
+.sec:nth-child(even){background:#FAFBFF}
+h2{font-size:11px;font-weight:800;color:#4F46E5;margin-bottom:14px;padding-bottom:6px;border-bottom:2px solid #E0E7FF;text-transform:uppercase;letter-spacing:1px}
+.score-row{display:grid;grid-template-columns:1fr 80px 180px 60px;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid #F3F4F6}
+.bar-wrap{height:7px;background:#F3F4F6;border-radius:4px;overflow:hidden}
+.bar{height:100%;border-radius:4px}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+.kpi{background:#F9FAFB;border:1px solid #E5E7EB;border-radius:8px;padding:14px}
+.kpi-label{font-size:10px;color:#9CA3AF;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px}
+.kpi-val{font-size:22px;font-weight:900;color:#111827;line-height:1}
+.kpi-change{font-size:11px;margin-top:4px}
+.up{color:#059669}.down{color:#DC2626}.flat{color:#6B7280}
+table{width:100%;border-collapse:collapse;font-size:12px;margin:10px 0}
+th{background:#4F46E5;color:#fff;padding:8px 12px;text-align:left;font-weight:600;font-size:11px}
+td{padding:7px 12px;border-bottom:1px solid #F3F4F6;vertical-align:top}
+tr:nth-child(even) td{background:#F9FAFB}
+.alert{padding:10px 14px;border-radius:6px;margin-bottom:8px;font-size:12px;line-height:1.5}
+.alert-green{background:#DCFCE7;border-left:3px solid #059669;color:#166534}
+.alert-amber{background:#FEF3C7;border-left:3px solid #D97706;color:#92400E}
+.alert-red{background:#FEE2E2;border-left:3px solid #DC2626;color:#991B1B}
+.gauge{display:flex;align-items:center;gap:16px;margin:10px 0}
+.gauge-bar{flex:1;height:10px;background:#F3F4F6;border-radius:5px;overflow:hidden}
+.loan-ready-score{font-size:40px;font-weight:900;color:#059669;line-height:1}
+.footer{background:#111827;color:#fff;padding:16px 48px;display:flex;justify-content:space-between;align-items:center;font-size:11px}
+.footer a{color:#818CF8;text-decoration:none}
+.tag{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px}
+.tag-green{background:#DCFCE7;color:#166534}
+.tag-amber{background:#FEF3C7;color:#92400E}
+.tag-red{background:#FEE2E2;color:#991B1B}
+.tag-blue{background:#EEF2FF;color:#4F46E5}
+</style>
+</head>
+<body>
+<div class="wm">SAMPLE</div>
+
+<!-- HEADER -->
+<div class="hdr">
+  <div class="logo">
+    <div class="logo-name">
+      <span class="fin">Fin</span><span class="sight">sight</span><span class="one">&nbsp;One</span><span class="dot"></span>
+    </div>
+    <div class="logo-tag">
+      <span class="lt-c">CREDIT</span><span class="lt-sep">·</span>
+      <span class="lt-a">ADVISORY</span><span class="lt-sep">·</span>
+      <span class="lt-i">INTELLIGENCE</span>
+    </div>
+  </div>
+  <div class="hdr-r">
+    Monthly Business Health Report<br>
+    Business Plan · Confidential · Sample Only<br>
+    Report Period: April 2025
+  </div>
+</div>
+
+<!-- COVER -->
+<div class="cover">
+  <div>
+    <span class="badge">MONTHLY BUSINESS PLAN</span>
+    <span class="sample-badge">SAMPLE REPORT</span>
+  </div>
+  <div class="ctitle">Monthly Business Health Report</div>
+  <div class="csub">Pharma Distribution — Maharashtra · April 2025 · Prepared by FinsightOne Expert Team</div>
+  <div class="cmeta">
+    <div class="mc"><div class="ml">Business Type</div><div class="mv">Pharma Distribution</div></div>
+    <div class="mc"><div class="ml">Existing Loan</div><div class="mv">CC ₹45L @ Axis</div></div>
+    <div class="mc"><div class="ml">Report Month</div><div class="mv">April 2025</div></div>
+    <div class="mc"><div class="ml">Loan Ready Score</div><div class="mv" style="color:#059669">82 / 100 ✓</div></div>
+  </div>
+</div>
+
+<!-- SECTION 1: EXECUTIVE SUMMARY -->
+<div class="sec">
+  <h2>01 · Executive Summary — April 2025</h2>
+  <div class="alert alert-green"><strong>Overall Status: HEALTHY</strong> — Business fundamentals remain strong. CC utilisation at 68% is within healthy range. No immediate action required. One advisory flag on GST filing timing — see Section 5.</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:12px">
+    <div>
+      <div style="font-size:11px;font-weight:700;color:#6B7280;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">This Month vs Last Month</div>
+      <table>
+        <tr><th>Parameter</th><th>Mar 2025</th><th>Apr 2025</th><th>Change</th></tr>
+        <tr><td>Monthly Sales (GST)</td><td>₹28.4L</td><td>₹31.2L</td><td class="up">↑ 9.9%</td></tr>
+        <tr><td>Bank Credits</td><td>₹26.8L</td><td>₹29.6L</td><td class="up">↑ 10.4%</td></tr>
+        <tr><td>CC Utilisation</td><td>74%</td><td>68%</td><td class="up">↓ Improved</td></tr>
+        <tr><td>Debtor Days</td><td>38 days</td><td>35 days</td><td class="up">↓ Improved</td></tr>
+        <tr><td>Creditor Days</td><td>22 days</td><td>24 days</td><td class="flat">→ Stable</td></tr>
+        <tr><td>CIBIL Score</td><td>738</td><td>742</td><td class="up">↑ +4</td></tr>
+      </table>
+    </div>
+    <div>
+      <div style="font-size:11px;font-weight:700;color:#6B7280;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">Loan Readiness Score</div>
+      <div class="loan-ready-score">82</div>
+      <div style="font-size:12px;color:#059669;font-weight:700;margin-bottom:10px">/ 100 — GOOD · Loan Ready</div>
+      <div class="gauge"><span style="font-size:11px;color:#6B7280;width:130px">Credit Bureau</span><div class="gauge-bar"><div class="bar" style="width:84%;background:#4F46E5"></div></div><span style="font-size:11px;font-weight:700;color:#4F46E5">21/25</span></div>
+      <div class="gauge"><span style="font-size:11px;color:#6B7280;width:130px">Banking Behaviour</span><div class="gauge-bar"><div class="bar" style="width:80%;background:#4F46E5"></div></div><span style="font-size:11px;font-weight:700;color:#4F46E5">20/25</span></div>
+      <div class="gauge"><span style="font-size:11px;color:#6B7280;width:130px">GST & Turnover</span><div class="gauge-bar"><div class="bar" style="width:80%;background:#4F46E5"></div></div><span style="font-size:11px;font-weight:700;color:#4F46E5">16/20</span></div>
+      <div class="gauge"><span style="font-size:11px;color:#6B7280;width:130px">Financial Ratios</span><div class="gauge-bar"><div class="bar" style="width:73%;background:#D97706"></div></div><span style="font-size:11px;font-weight:700;color:#D97706">11/15</span></div>
+      <div class="gauge"><span style="font-size:11px;color:#6B7280;width:130px">KYC & Compliance</span><div class="gauge-bar"><div class="bar" style="width:90%;background:#059669"></div></div><span style="font-size:11px;font-weight:700;color:#059669">9/10</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: BANKING BEHAVIOUR -->
+<div class="sec">
+  <h2>02 · Banking Behaviour — April 2025</h2>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="kpi-label">Avg Monthly Credits</div><div class="kpi-val">₹29.6L</div><div class="kpi-change up">↑ vs ₹26.8L last month</div></div>
+    <div class="kpi"><div class="kpi-label">CC Limit Used</div><div class="kpi-val">68%</div><div class="kpi-change up">↓ Improved from 74%</div></div>
+    <div class="kpi"><div class="kpi-label">Min Balance Maintained</div><div class="kpi-val">₹1.2L</div><div class="kpi-change flat">→ Healthy</div></div>
+    <div class="kpi"><div class="kpi-label">Cheque Returns</div><div class="kpi-val">0</div><div class="kpi-change up">✓ Clean month</div></div>
+  </div>
+  <div class="alert alert-green">Banking conduct is strong. Credits match GST turnover within 5%. Utilisation is trending down — this is positive for any limit enhancement request.</div>
+</div>
+
+<!-- SECTION 3: WORKING CAPITAL POSITION -->
+<div class="sec">
+  <h2>03 · Working Capital Position</h2>
+  <table>
+    <tr><th>Component</th><th>Amount</th><th>Days</th><th>Status</th></tr>
+    <tr><td>Debtors (Outstanding)</td><td>₹36.4L</td><td>35 days</td><td><span class="tag tag-green">Healthy</span></td></tr>
+    <tr><td>Stock / Inventory</td><td>₹18.2L</td><td>18 days</td><td><span class="tag tag-green">Healthy</span></td></tr>
+    <tr><td>Creditors (Payable)</td><td>₹14.6L</td><td>24 days</td><td><span class="tag tag-green">Healthy</span></td></tr>
+    <tr><td><strong>Net Working Capital</strong></td><td><strong>₹40.0L</strong></td><td>—</td><td><span class="tag tag-blue">Within CC Limit</span></td></tr>
+    <tr><td>Drawing Power (DP)</td><td>₹43.2L</td><td>—</td><td><span class="tag tag-green">CC ₹45L within DP ✓</span></td></tr>
+  </table>
+  <div class="alert alert-green">Drawing Power is ₹43.2L against CC limit of ₹45L. You are within safe limits. No risk of limit breach this month.</div>
+</div>
+
+<!-- SECTION 4: CREDIT SCORE TRACKING -->
+<div class="sec">
+  <h2>04 · Credit Score Tracking</h2>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="kpi-label">Current CIBIL Score</div><div class="kpi-val" style="color:#059669">742</div><div class="kpi-change up">↑ +4 from last month</div></div>
+    <div class="kpi"><div class="kpi-label">Active Loan Accounts</div><div class="kpi-val">2</div><div class="kpi-change flat">CC + Vehicle Loan</div></div>
+    <div class="kpi"><div class="kpi-label">DPD (Days Past Due)</div><div class="kpi-val">0</div><div class="kpi-change up">✓ Zero DPD — 24 months</div></div>
+    <div class="kpi"><div class="kpi-label">Credit Enquiries</div><div class="kpi-val">1</div><div class="kpi-change flat">Last 6 months — Fine</div></div>
+  </div>
+  <table>
+    <tr><th>Month</th><th>CIBIL Score</th><th>Change</th><th>Note</th></tr>
+    <tr><td>Jan 2025</td><td>731</td><td class="flat">—</td><td>Baseline</td></tr>
+    <tr><td>Feb 2025</td><td>735</td><td class="up">+4</td><td>CC repayment on time</td></tr>
+    <tr><td>Mar 2025</td><td>738</td><td class="up">+3</td><td>Enquiry dropped off</td></tr>
+    <tr><td>Apr 2025</td><td>742</td><td class="up">+4</td><td>Consistent on-time payments</td></tr>
+  </table>
+</div>
+
+<!-- SECTION 5: ALERTS & ADVISORY -->
+<div class="sec">
+  <h2>05 · Alerts & Advisory Actions</h2>
+  <div class="alert alert-amber"><strong>⚠ Advisory — GST Filing:</strong> GSTR-3B for March 2025 was filed on 21st April — 1 day before the due date. We recommend filing by the 15th to show proactive compliance behaviour to banks. Lenders review GST filing dates as part of their assessment.</div>
+  <div class="alert alert-green"><strong>✓ Opportunity — Limit Enhancement:</strong> With CC utilisation falling from 74% to 68% and CIBIL improving to 742, your profile is now strong enough to request a limit enhancement from ₹45L to ₹60L. We recommend initiating this in May. We can prepare the enhancement request file for you.</div>
+  <div class="alert alert-green"><strong>✓ Loan Renewal:</strong> Your CC renewal is due in September 2025 — 5 months away. We will begin preparation in July. No action required right now.</div>
+</div>
+
+<!-- SECTION 6: NEXT MONTH FOCUS -->
+<div class="sec">
+  <h2>06 · Focus for May 2025</h2>
+  <table>
+    <tr><th>#</th><th>Action Item</th><th>Owner</th><th>Priority</th></tr>
+    <tr><td>1</td><td>File GSTR-3B by 15th May (not last day)</td><td>Your CA / Team</td><td><span class="tag tag-amber">Medium</span></td></tr>
+    <tr><td>2</td><td>Keep CC utilisation below 65% by month end</td><td>You</td><td><span class="tag tag-blue">Watch</span></td></tr>
+    <tr><td>3</td><td>Prepare limit enhancement request — target ₹60L</td><td>FinsightOne</td><td><span class="tag tag-green">Opportunity</span></td></tr>
+    <tr><td>4</td><td>Collect and update debtors aging statement</td><td>Your team</td><td><span class="tag tag-blue">Routine</span></td></tr>
+  </table>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div>
+    <div style="font-weight:700;margin-bottom:2px">FinsightOne — Credit · Advisory · Intelligence</div>
+    <div style="color:#6B7280">This is a sample report. Actual reports are personalised to your business. All data shown is illustrative.</div>
+  </div>
+  <div style="text-align:right">
+    <div><a href="https://finsightone.co">finsightone.co</a> · WhatsApp: 9579453635</div>
+    <div style="color:#6B7280;margin-top:2px">© 2025 FinsightOne · Confidential</div>
+  </div>
+</div>
+
+</body>
+</html>

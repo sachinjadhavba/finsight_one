@@ -15,7 +15,7 @@ function Footer({ navigate }) {
 }
 
 export default function Check({ navigate }) {
-  const [form, setForm] = useState({ name: "", mobile: "", type: "", loan: "", amount: "", income: "", rejected: "" });
+  const [form, setForm] = useState({ name: "", mobile: "", type: "", loan: "", amount: "", income: "", firmName: "", annualTurnover: "", rejected: "" });
   const [result, setResult] = useState(null);
 
   const set = (k, v) => setForm(f => ({ ...f, [k]: v }));
@@ -112,6 +112,25 @@ export default function Check({ navigate }) {
                   <option>₹2L – ₹10L/month</option><option>Above ₹10L/month</option>
                 </select>
               </div>
+              {(form.loan === "Working Capital / Overdraft" || form.loan === "Unsecured Business Loan") && (
+                <>
+                  <div>
+                    <label style={labelStyle}>Firm / Business Name</label>
+                    <input style={inputStyle} placeholder="e.g. Sharma Textiles Pvt Ltd" value={form.firmName} onChange={e => set("firmName", e.target.value)} />
+                  </div>
+                  <div>
+                    <label style={labelStyle}>Annual Turnover (last FY)</label>
+                    <select style={selectStyle} value={form.annualTurnover} onChange={e => set("annualTurnover", e.target.value)}>
+                      <option value="">Select...</option>
+                      <option>Below ₹10 Lakh</option>
+                      <option>₹10L – ₹50L</option>
+                      <option>₹50L – ₹2 Crore</option>
+                      <option>₹2 Crore – ₹10 Crore</option>
+                      <option>Above ₹10 Crore</option>
+                    </select>
+                  </div>
+                </>
+              )}
               <div style={{ gridColumn: "1 / -1" }}>
                 <label style={labelStyle}>Have you been rejected by a bank before?</label>
                 <select style={selectStyle} value={form.rejected} onChange={e => set("rejected", e.target.value)}>
@@ -122,7 +141,7 @@ export default function Check({ navigate }) {
                 </select>
               </div>
             </div>
-            <button onClick={showScore} style={{ width: "100%", background: "#1E3A5F", color: "#fff", fontSize: 14, fontWeight: 700, padding: 14, borderRadius: 10, border: "none", cursor: "pointer", marginTop: 8 }}>
+            <button onClick={showScore} style={{ width: "100%", background: "#4F46E5", color: "#fff", fontSize: 14, fontWeight: 700, padding: 14, borderRadius: 10, border: "none", cursor: "pointer", marginTop: 8 }}>
               Show My Eligibility Score →
             </button>
             <div style={{ fontSize: 11, color: "#9CA3AF", textAlign: "center", marginTop: 10 }}>🔒 Your information is 100% private. We never share it without your permission.</div>
