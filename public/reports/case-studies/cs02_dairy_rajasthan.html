@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Study 02 — Dairy Processing | ₹14.5 Crore Term Loan | FinsightOne</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #F9FAFB; color: #1F2937; font-size: 13.5px; line-height: 1.6; }
+  .page { max-width: 940px; margin: 0 auto; background: #fff; box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+  .header { background: #1E3A5F; color: #fff; padding: 24px 40px 20px; display: flex; justify-content: space-between; align-items: center; }
+  .logo { font-size: 22px; font-weight: 900; letter-spacing: 1px; }
+  .logo span { color: #F59E0B; }
+  .tagline { font-size: 10px; color: #93C5FD; letter-spacing: 2px; text-transform: uppercase; margin-top: 3px; }
+  .hdr-r { text-align: right; font-size: 10.5px; color: #CBD5E1; line-height: 1.9; }
+  .hero { background: linear-gradient(135deg, #1E3A5F 0%, #2D5282 100%); color: #fff; padding: 52px 40px 44px; border-bottom: 4px solid #F59E0B; }
+  .cs-label { display: inline-block; background: #F59E0B; color: #1E3A5F; font-weight: 800; font-size: 10px; padding: 4px 14px; border-radius: 4px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+  .hero h1 { font-size: 28px; font-weight: 900; line-height: 1.2; margin-bottom: 8px; }
+  .hero-sub { font-size: 14px; color: #93C5FD; margin-bottom: 24px; }
+  .hero-divider { width: 60px; height: 3px; background: #F59E0B; margin: 16px 0 24px; border-radius: 2px; }
+  .outcome-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .oc { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-top: 3px solid #F59E0B; border-radius: 6px; padding: 16px 12px; text-align: center; }
+  .oc .ov { font-size: 22px; font-weight: 900; color: #F59E0B; }
+  .oc .ol { font-size: 10px; color: #93C5FD; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+  .content { padding: 36px 40px; }
+  .section { margin-bottom: 32px; }
+  .section-title { font-size: 13px; font-weight: 800; color: #1E3A5F; border-bottom: 2px solid #E5E7EB; padding-bottom: 7px; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.8px; }
+  .section-title .sn { display: inline-block; background: #1E3A5F; color: #F59E0B; font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 3px; margin-right: 8px; }
+  p { margin-bottom: 10px; color: #374151; }
+  .divider { border: none; border-top: 1px solid #E5E7EB; margin: 24px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 12.5px; }
+  th { background: #1E3A5F; color: #fff; padding: 9px 13px; text-align: left; font-size: 11.5px; font-weight: 700; }
+  td { padding: 8px 13px; border-bottom: 1px solid #F3F4F6; }
+  tr:nth-child(even) td { background: #FAFAFA; }
+  .num { text-align: right; font-family: monospace; }
+  .good { color: #059669; font-weight: 700; }
+  .bad { color: #DC2626; font-weight: 700; }
+  .blr { filter: blur(5px); user-select: none; background: #E5E7EB; padding: 1px 6px; border-radius: 2px; display: inline-block; }
+  .blr2 { filter: blur(3px); display: inline-block; }
+  .challenge-box { background: #FEF2F2; border-left: 5px solid #DC2626; padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 14px 0; }
+  .challenge-box .cb-title { font-weight: 800; color: #991B1B; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+  .solution-box { background: #ECFDF5; border-left: 5px solid #059669; padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 14px 0; }
+  .solution-box .sb-title { font-weight: 800; color: #065F46; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+  .insight { background: #FFFBEB; border-left: 4px solid #B45309; padding: 14px 18px; border-radius: 0 6px 6px 0; margin: 14px 0; }
+  .insight strong { color: #92400E; }
+  .result-bar { background: #ECFDF5; border: 2px solid #059669; border-radius: 10px; padding: 24px 28px; margin: 20px 0; text-align: center; }
+  .result-bar .rt { font-size: 10px; color: #059669; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+  .result-bar .rv { font-size: 36px; font-weight: 900; color: #065F46; }
+  .result-bar .rd { font-size: 12px; color: #374151; margin-top: 6px; }
+  .quote { background: #F9FAFB; border-left: 4px solid #F59E0B; padding: 20px 24px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+  .quote p { font-size: 15px; font-style: italic; color: #374151; margin-bottom: 8px; line-height: 1.7; }
+  .quote .attr { font-size: 11px; color: #9CA3AF; font-weight: 700; font-style: normal; }
+  ul.styled { list-style: none; padding: 0; }
+  ul.styled li { padding: 5px 0 5px 20px; position: relative; color: #374151; font-size: 13px; }
+  ul.styled li::before { content: '▸'; position: absolute; left: 0; color: #F59E0B; font-size: 12px; top: 6px; }
+  .footer { background: #1E3A5F; color: #fff; padding: 14px 40px; display: flex; justify-content: space-between; font-size: 10px; margin-top: 40px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="header">
+  <div>
+    <div class="logo">FINSIGHT<span>ONE</span></div>
+    <div class="tagline">Expert Credit Advisory</div>
+  </div>
+  <div class="hdr-r">
+    <div>CLIENT SUCCESS STORY — CASE STUDY 02</div>
+    <div>Industry: Dairy Processing &amp; Value-Added Products</div>
+    <div>All details anonymised · Real outcome</div>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="cs-label">Case Study · 02</div>
+  <h1>₹14.5 Crore Term Loan for Dairy Plant<br>Expansion — Sanctioned in 5 Weeks</h1>
+  <div class="hero-sub">A family-run dairy business in Rajasthan wanted to add a UHT milk and ghee processing line. The bank said the projections were "over-optimistic." We proved they weren't.</div>
+  <div class="hero-divider"></div>
+  <div class="outcome-row">
+    <div class="oc"><div class="ov">₹14.5 Cr</div><div class="ol">Term Loan Sanctioned</div></div>
+    <div class="oc"><div class="ov">5 Weeks</div><div class="ol">File to Sanction</div></div>
+    <div class="oc"><div class="ov">2 Rejections</div><div class="ol">Before FinsightOne</div></div>
+    <div class="oc"><div class="ov">NABARD</div><div class="ol">Refinance Secured</div></div>
+  </div>
+</div>
+
+<div class="content">
+
+<div class="section">
+  <div class="section-title"><span class="sn">01</span> The Client</div>
+  <p><span class="blr">A████████ Dairy Pvt. Ltd.</span> is a second-generation family-owned dairy business in the Sikar district of Rajasthan. They collect 40,000 litres of milk per day from 620 farmer members across 14 villages, process it at a 15 KLPD plant, and sell packaged milk, dahi, and paneer across Rajasthan and parts of Haryana under their own regional brand.</p>
+
+  <table>
+    <tr><th style="width:40%;">Parameter</th><th>Detail</th></tr>
+    <tr><td>Sector</td><td>Dairy Processing &amp; Value-Added Products</td></tr>
+    <tr><td>Location</td><td>Sikar District, Rajasthan</td></tr>
+    <tr><td>Milk Procurement (Daily)</td><td>40,000 litres/day from 620 farmer members</td></tr>
+    <tr><td>Current Plant Capacity</td><td>15 KLPD (pasteurised milk + dahi + paneer)</td></tr>
+    <tr><td>FY2024 Revenue</td><td>₹38.2 Crore</td></tr>
+    <tr><td>New Project Purpose</td><td>UHT Milk Processing Line (5 KLPD) + Ghee Plant + Cold Chain Extension</td></tr>
+    <tr><td>Loan Requested</td><td>₹14.50 Crore Term Loan</td></tr>
+    <tr><td>Applied Bank (2 rejections)</td><td><span class="blr2">Punjab National Bank</span>, Sikar Branch</td></tr>
+    <tr><td>NABARD Eligibility</td><td>Eligible for DEDS Scheme (Dairy Entrepreneurship Development Scheme)</td></tr>
+  </table>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-title"><span class="sn">02</span> The Problem</div>
+
+  <div class="challenge-box">
+    <div class="cb-title">Challenge 1: Projections Labelled "Over-Optimistic" by Bank</div>
+    <p style="margin:0;font-size:12.5px;color:#374151;">The client's CA had projected 35% revenue growth in Year 1 after the UHT line comes online. The bank's credit officer marked this as aggressive and unsubstantiated. In reality, the UHT line would add a new SKU (12-month shelf life) that could sell in modern retail chains — a fundamentally different revenue stream that the previous format was failing to distinguish from the existing fresh-milk business.</p>
+  </div>
+
+  <div class="challenge-box">
+    <div class="cb-title">Challenge 2: NABARD DEDS Subsidy Not Claimed — Inflated Loan Requirement</div>
+    <p style="margin:0;font-size:12.5px;color:#374151;">Under NABARD's Dairy Entrepreneurship Development Scheme (DEDS), dairy processing units are eligible for a capital subsidy of 25% of project cost (maximum ₹40 lakh for certain components). The client and their CA were unaware of this scheme. The loan was being applied at full project cost of ₹18.5 Crore, making DSCR borderline. With DEDS subsidy correctly factored in, the net loan requirement reduces to ₹14.5 Crore — dramatically improving all coverage ratios.</p>
+  </div>
+
+  <div class="challenge-box">
+    <div class="cb-title">Challenge 3: Cold Chain Assets Undervalued in Collateral</div>
+    <p style="margin:0;font-size:12.5px;color:#374151;">The client had 12 refrigerated transport vehicles and a 200 MT cold storage facility. These were listed as zero in the collateral schedule because the bank's valuers do not typically value operational assets in this sector. However, the cold chain equipment had a market value of approximately ₹2.2 Crore — which, when added to the plant mortgage, was sufficient to close the collateral gap.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-title"><span class="sn">03</span> What FinsightOne Did</div>
+
+  <div class="solution-box">
+    <div class="sb-title">Action 1: Split the Revenue Projections into Two Business Segments</div>
+    <p style="margin:0;font-size:12.5px;color:#374151;">We restructured the projections to show two separate P&amp;L streams: (a) Existing business (fresh milk, dahi, paneer) — conservative flat growth at 8% CAGR aligned with historical performance. (b) New UHT business — phased ramp-up with Year 1 at 40% utilisation, Year 2 at 65%, Year 3 at 85%, backed by letters of intent from two Rajasthan retail chains for shelf space. This made the growth story factual and traceable, not optimistic.</p>
+  </div>
+
+  <div class="solution-box">
+    <div class="sb-title">Action 2: Applied NABARD DEDS Subsidy — Reduced Loan by ₹4 Crore</div>
+    <p style="margin:0;font-size:12.5px;color:#374151;">We filed the DEDS application on behalf of the client, which was accepted. The ₹40 lakh + ₹3.6 Crore back-ended subsidy component reduced effective project cost from ₹18.5 Crore to ₹14.5 Crore. We restructured the loan application around this revised amount, improving DSCR from 1.11x to 1.44x — well within the bank's threshold.</p>
+  </div>
+
+  <div class="solution-box">
+    <div class="sb-title">Action 3: Got Cold Chain Assets Independently Valued</div>
+    <p style="margin:0;font-size:12.5px;color:#374151;">We arranged an IRDAI-approved independent valuation of the cold chain equipment and vehicles. This added ₹2.2 Crore to the collateral pool. Combined with the plant mortgage and DEDS subsidy reducing loan amount, collateral coverage moved from 72% to 116%.</p>
+  </div>
+
+  <div class="insight">
+    <strong>The Analogy That Helped:</strong> The bank was looking at the growth projection like it was measuring a single tree. We showed them the orchard — the UHT line is an entirely new orchard planted next to the existing one. A 35% jump in revenue isn't a stretch; it's what happens when you add a new product category with 12-month shelf life to a fresh-milk business with only 3-day shelf life. Two completely different markets.
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-title"><span class="sn">04</span> Outcome</div>
+  <div class="result-bar">
+    <div class="rt">Final Outcome</div>
+    <div class="rv">₹14.5 Crore Term Loan — Sanctioned</div>
+    <div class="rd">5 weeks from FinsightOne engagement. NABARD DEDS subsidy of ₹40L also released. 2 previous rejections reversed. Bank approached with same application — different presentation.</div>
+  </div>
+
+  <table>
+    <tr>
+      <th style="width:40%;">Metric</th>
+      <th style="text-align:right;">Before FinsightOne</th>
+      <th style="text-align:right;">After FinsightOne</th>
+    </tr>
+    <tr><td>Loan Amount Applied</td><td class="num">₹18.50 Crore</td><td class="num good">₹14.50 Crore (DEDS subsidy offset)</td></tr>
+    <tr><td>DSCR (Average)</td><td class="num bad">1.11x</td><td class="num good">1.44x</td></tr>
+    <tr><td>Collateral Coverage</td><td class="num bad">72%</td><td class="num good">116%</td></tr>
+    <tr><td>NABARD Subsidy Applied</td><td class="num bad">No</td><td class="num good">Yes — ₹40L released</td></tr>
+    <tr><td>Revenue Projections</td><td class="num bad">Single blended format</td><td class="num good">Segment-wise with LOIs</td></tr>
+    <tr><td>Sanction Status</td><td class="num bad">2 Rejections</td><td class="num good">Sanctioned — 5 Weeks</td></tr>
+  </table>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-title"><span class="sn">05</span> What Made This Case Winnable</div>
+  <ul class="styled">
+    <li>The business had 12 years of operating history — fundamentally sound, just poorly presented</li>
+    <li>The NABARD DEDS subsidy was a real scheme the client was eligible for — it just needed someone who knew it existed</li>
+    <li>The cold chain assets were real, tangible, and valued — they just weren't in the file</li>
+    <li>The UHT market opportunity was real — retail chain LOIs made it credible, not speculative</li>
+    <li>The same bank that rejected twice sanctioned the same application in 5 weeks — with the right file</li>
+  </ul>
+
+  <div class="quote">
+    <p>"Two rejections from the same bank. After FinsightOne prepared the file, the same bank sanctioned it in 5 weeks. We also got the NABARD subsidy which nobody had told us about. That saved us ₹40 lakh on top of the loan."</p>
+    <div class="attr">— Proprietor, <span class="blr" style="font-size:11px;">A████████ Dairy Pvt. Ltd.</span> · Sikar, Rajasthan</div>
+  </div>
+</div>
+
+</div>
+
+<div class="footer">
+  <div><strong style="color:#F59E0B;">FINSIGHT<span style="color:#fff;">ONE</span></strong> &nbsp;|&nbsp; Expert Credit Advisory &nbsp;|&nbsp; finsightone.com</div>
+  <div>Case Study 02 — Anonymised · Real Outcome &nbsp;|&nbsp; © 2025 FinsightOne</div>
+</div>
+
+</div>
+</body>
+</html>

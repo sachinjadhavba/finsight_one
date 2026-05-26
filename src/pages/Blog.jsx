@@ -78,7 +78,7 @@ export default function Blog({ navigate }) {
         <div style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))", gap: 24 }}>
           {POSTS.map(post => (
             <div key={post.id} style={{ background: "#fff", border: "1px solid #E5E7EB", borderRadius: 14, overflow: "hidden", cursor: "pointer" }}
-              onClick={() => navigate("check")}>
+              onClick={() => { const guides = {1:"/reports/guides/guide_01_documents_checklist.html",2:"/reports/guides/guide_02_cibil_improvement.html",3:"/reports/guides/guide_03_cc_vs_od.html",4:"/reports/guides/guide_04_loan_rejection_reasons.html",5:"/reports/guides/guide_05_home_loan_balance_transfer.html",6:"/reports/guides/guide_06_project_finance_rbi_2025.html"}; window.open(guides[post.id],"_blank"); }}>
               {/* Color header */}
               <div style={{ background: post.color, padding: "20px 24px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                 <div style={{ display: "inline-block", background: "rgba(255,255,255,0.15)", color: "#fff", fontSize: 10, fontWeight: 700, letterSpacing: 1.5, textTransform: "uppercase", padding: "3px 10px", borderRadius: 20 }}>
@@ -106,7 +106,7 @@ export default function Blog({ navigate }) {
           Ready to Check Your Eligibility?
         </h2>
         <p style={{ fontSize: 15, color: "#94A3B8", marginBottom: 28 }}>Free — 2 minutes — no documents needed.</p>
-        <button onClick={() => navigate("check")} style={{ background: "#E8A020", color: "#fff", fontSize: 15, fontWeight: 700, padding: "14px 36px", borderRadius: 8, border: "none", cursor: "pointer" }}>
+        <button onClick={() => { const guides = {1:"/reports/guides/guide_01_documents_checklist.html",2:"/reports/guides/guide_02_cibil_improvement.html",3:"/reports/guides/guide_03_cc_vs_od.html",4:"/reports/guides/guide_04_loan_rejection_reasons.html",5:"/reports/guides/guide_05_home_loan_balance_transfer.html",6:"/reports/guides/guide_06_project_finance_rbi_2025.html"}; window.open(guides[post.id],"_blank"); }} style={{ background: "#E8A020", color: "#fff", fontSize: 15, fontWeight: 700, padding: "14px 36px", borderRadius: 8, border: "none", cursor: "pointer" }}>
           Check My Eligibility — Free →
         </button>
       </div>

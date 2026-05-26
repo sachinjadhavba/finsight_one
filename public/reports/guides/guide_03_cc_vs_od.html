@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CC Limit vs OD Limit: Which Is Right for Your Business? | FinsightOne Guide</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #F9FAFB; color: #1F2937; font-size: 13.5px; line-height: 1.6; }
+  .page { max-width: 920px; margin: 0 auto; background: #fff; box-shadow: 0 2px 20px rgba(0,0,0,0.07); }
+  .header { background: #1E3A5F; color: #fff; padding: 22px 40px 18px; display: flex; justify-content: space-between; align-items: center; }
+  .logo { font-size: 22px; font-weight: 900; letter-spacing: 1px; }
+  .logo span { color: #F59E0B; }
+  .tagline { font-size: 10px; color: #93C5FD; letter-spacing: 2px; text-transform: uppercase; margin-top: 3px; }
+  .hdr-r { text-align: right; font-size: 10.5px; color: #CBD5E1; line-height: 1.9; }
+  .hero { background: #1E3A5F; color: #fff; padding: 44px 40px 36px; border-bottom: 4px solid #7C3AED; }
+  .guide-label { display: inline-block; background: #7C3AED; color: #fff; font-weight: 800; font-size: 10px; padding: 4px 14px; border-radius: 4px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 14px; }
+  .hero h1 { font-size: 26px; font-weight: 900; line-height: 1.25; margin-bottom: 8px; }
+  .hero p { font-size: 13.5px; color: #93C5FD; max-width: 640px; line-height: 1.7; }
+  .hero-meta { display: flex; gap: 24px; margin-top: 20px; }
+  .hm { font-size: 11px; color: #64748B; }
+  .hm span { color: #93C5FD; font-weight: 700; }
+  .content { padding: 36px 40px; }
+  .section { margin-bottom: 34px; }
+  .section-title { font-size: 14px; font-weight: 800; color: #1E3A5F; border-bottom: 2px solid #E5E7EB; padding-bottom: 7px; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px; }
+  p { margin-bottom: 10px; color: #374151; }
+  .divider { border: none; border-top: 1px solid #E5E7EB; margin: 28px 0; }
+
+  /* Comparison table */
+  .compare-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
+  .compare-table th { padding: 12px 16px; text-align: center; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+  .compare-table th.feature-col { background: #F9FAFB; color: #6B7280; text-align: left; }
+  .compare-table th.cc-col { background: #7C3AED; color: #fff; }
+  .compare-table th.od-col { background: #1E3A5F; color: #F59E0B; }
+  .compare-table td { padding: 11px 16px; border-bottom: 1px solid #F3F4F6; vertical-align: top; }
+  .compare-table td:first-child { font-weight: 700; color: #374151; background: #F9FAFB; font-size: 12.5px; }
+  .compare-table td.cc-val { text-align: center; background: #F5F3FF; font-size: 12.5px; }
+  .compare-table td.od-val { text-align: center; background: #EFF6FF; font-size: 12.5px; }
+  .compare-table tr:nth-child(odd) td.cc-val { background: #FAF5FF; }
+  .compare-table tr:nth-child(odd) td.od-val { background: #F0F7FF; }
+  .good { color: #059669; font-weight: 700; }
+  .bad { color: #DC2626; font-weight: 700; }
+  .neutral { color: #B45309; font-weight: 700; }
+
+  /* Use case cards */
+  .uc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+  .uc-card { border: 1px solid #E5E7EB; border-radius: 10px; padding: 18px 20px; }
+  .uc-card h4 { font-size: 13px; font-weight: 800; color: #1E3A5F; margin-bottom: 8px; }
+  .uc-card p { font-size: 12.5px; color: #374151; margin: 0; }
+  .uc-card.cc-card { border-top: 3px solid #7C3AED; }
+  .uc-card.od-card { border-top: 3px solid #1D4ED8; }
+
+  .info-box { background: #F5F3FF; border-left: 5px solid #7C3AED; padding: 14px 18px; border-radius: 0 8px 8px 0; margin: 14px 0; font-size: 12.5px; color: #374151; }
+  .warn-box { background: #FFFBEB; border-left: 5px solid #B45309; padding: 14px 18px; border-radius: 0 8px 8px 0; margin: 14px 0; font-size: 12.5px; color: #374151; }
+  .example-box { background: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 8px; padding: 18px 20px; margin: 16px 0; }
+  .example-box h4 { font-size: 13px; font-weight: 800; color: #1E3A5F; margin-bottom: 8px; border-bottom: 1px solid #E5E7EB; padding-bottom: 6px; }
+
+  ul.styled { list-style: none; padding: 0; }
+  ul.styled li { padding: 5px 0 5px 20px; position: relative; color: #374151; font-size: 13px; }
+  ul.styled li::before { content: '▸'; position: absolute; left: 0; color: #7C3AED; font-size: 12px; top: 6px; }
+
+  .cta-box { background: #1E3A5F; color: #fff; padding: 28px 32px; border-radius: 10px; margin: 32px 0; text-align: center; }
+  .cta-box h3 { font-size: 18px; font-weight: 800; margin-bottom: 8px; }
+  .cta-box p { color: #93C5FD; font-size: 13px; margin-bottom: 16px; }
+  .cta-btn { display: inline-block; background: #F59E0B; color: #1E3A5F; font-weight: 800; padding: 12px 28px; border-radius: 8px; font-size: 13px; text-decoration: none; }
+  .footer { background: #1E3A5F; color: #fff; padding: 14px 40px; display: flex; justify-content: space-between; font-size: 10px; margin-top: 40px; }
+  .rbi-note { font-size: 11px; color: #6B7280; background: #F8FAFC; border: 1px solid #E5E7EB; border-radius: 6px; padding: 10px 14px; margin: 10px 0; }
+  .rbi-note strong { color: #475569; }
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="header">
+  <div>
+    <div class="logo">FINSIGHT<span>ONE</span></div>
+    <div class="tagline">Free Loan Guide</div>
+  </div>
+  <div class="hdr-r">
+    <div>LEARN BEFORE YOU APPLY — GUIDE 03/06</div>
+    <div>Written by Ex-Bankers · Updated May 2025</div>
+    <div>Free to Use · No Login Required</div>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="guide-label">💰 Working Capital</div>
+  <h1>CC Limit vs OD Limit:<br>Which Is Right for Your Business?</h1>
+  <p>The difference between a Cash Credit and an Overdraft facility — and when to choose one over the other. Most business owners get this wrong, and it costs them in interest and eligibility.</p>
+  <div class="hero-meta">
+    <div class="hm">📖 <span>6 min read</span></div>
+    <div class="hm">👤 <span>For: Business owners needing working capital</span></div>
+    <div class="hm">💡 <span>Includes: Real examples with numbers</span></div>
+  </div>
+</div>
+
+<div class="content">
+
+<div class="section">
+  <div class="section-title">The Simple Analogy First</div>
+  <p>Think of a <strong>Cash Credit (CC)</strong> like a warehouse receipt loan — you borrow against your stock and debtors. The bank knows what's securing the loan at all times and adjusts how much you can borrow based on inventory levels. It's linked to your business cycle.</p>
+  <p>An <strong>Overdraft (OD)</strong> is like a clean bridge loan — you borrow against property or a fixed asset, and the bank gives you a fixed limit. It's simpler to use but typically secured against property rather than business assets.</p>
+  <div class="info-box">
+    <strong>The key difference in one sentence:</strong> CC limit fluctuates based on your drawing power (stock + debtors); OD limit is fixed based on the value of the security you pledge.
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-title">Side-by-Side Comparison</div>
+
+  <table class="compare-table">
+    <tr>
+      <th class="feature-col">Feature</th>
+      <th class="cc-col">Cash Credit (CC)</th>
+      <th class="od-col">Overdraft (OD)</th>
+    </tr>
+    <tr>
+      <td>Primary Security</td>
+      <td class="cc-val">Hypothecation of stock &amp; debtors</td>
+      <td class="od-val">Mortgage of property / Fixed Deposits / Shares</td>
+    </tr>
+    <tr>
+      <td>Limit Fluctuation</td>
+      <td class="cc-val neutral">Limit changes with Drawing Power (DP)</td>
+      <td class="od-val good">Fixed limit — doesn't change month to month</td>
+    </tr>
+    <tr>
+      <td>Drawing Power (DP)</td>
+      <td class="cc-val">Based on monthly stock + debtors statement you submit</td>
+      <td class="od-val">Not applicable — fixed limit</td>
+    </tr>
+    <tr>
+      <td>Repayment Pattern</td>
+      <td class="cc-val">Revolving — repay when cash comes in</td>
+      <td class="od-val">Revolving — repay when cash comes in</td>
+    </tr>
+    <tr>
+      <td>Interest Charged</td>
+      <td class="cc-val">Only on amount actually drawn (daily balance)</td>
+      <td class="od-val">Only on amount actually drawn (daily balance)</td>
+    </tr>
+    <tr>
+      <td>Best For</td>
+      <td class="cc-val">Trading, manufacturing, export businesses</td>
+      <td class="od-val">Professionals, property owners, FD holders</td>
+    </tr>
+    <tr>
+      <td>Monthly Requirement</td>
+      <td class="cc-val bad">Must submit stock/debtors statement monthly</td>
+      <td class="od-val good">No monthly statement required</td>
+    </tr>
+    <tr>
+      <td>Collateral Required</td>
+      <td class="cc-val">Stock &amp; debtors + sometimes additional property</td>
+      <td class="od-val">Property, FD, or shares — no stock needed</td>
+    </tr>
+    <tr>
+      <td>Typical Limit Range</td>
+      <td class="cc-val">₹10 lakh to ₹100+ Crore</td>
+      <td class="od-val">₹5 lakh to ₹50+ Crore</td>
+    </tr>
+    <tr>
+      <td>Complexity</td>
+      <td class="cc-val bad">Higher — requires CMA Data, DP monitoring</td>
+      <td class="od-val good">Lower — simpler documentation</td>
+    </tr>
+    <tr>
+      <td>Interest Rate</td>
+      <td class="cc-val">MCLR + 1.50% to 3.00%</td>
+      <td class="od-val">MCLR + 1.00% to 2.50% (property OD) or 8–12% (FD OD)</td>
+    </tr>
+  </table>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-title">How Drawing Power Works (CC Only)</div>
+  <p>This is the most misunderstood aspect of Cash Credit. Your drawing power — how much you can actually draw at any time — is not your limit. It changes every month based on what you report.</p>
+
+  <div class="example-box">
+    <h4>📋 Example: A Garment Trader with ₹1 Crore CC Limit</h4>
+    <p><strong>September (before Diwali season):</strong><br>
+    Stock value: ₹80 lakh | Debtors (under 90 days): ₹60 lakh<br>
+    Drawing Power = (80% of stock) + (75% of debtors) = ₹64L + ₹45L = <strong>₹1.09 Crore</strong> → Can draw up to ₹1 Crore (full limit)</p>
+    <br>
+    <p><strong>March (post-season):</strong><br>
+    Stock value: ₹30 lakh | Debtors: ₹40 lakh<br>
+    Drawing Power = (80% of 30L) + (75% of 40L) = ₹24L + ₹30L = <strong>₹54 lakh</strong> → Can only draw ₹54 lakh even though limit is ₹1 Crore</p>
+    <br>
+    <p style="font-size:12px;color:#6B7280;font-style:italic;">If you've drawn ₹80 lakh in March and your DP drops to ₹54 lakh — the bank will ask for the excess ₹26 lakh to be brought back. This is why regular drawing power management matters.</p>
+  </div>
+
+  <div class="warn-box">
+    <strong>⚠️ The Monthly Statement Trap:</strong> Many borrowers forget to submit the monthly stock/debtors statement. Banks then freeze the CC at the last DP or drop it to zero. This creates a cash flow crisis — not because your business is bad, but because you missed filing a form. Set a reminder: submit by the 7th of every month.
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-title">When to Choose CC vs OD</div>
+
+  <div class="uc-grid">
+    <div class="uc-card cc-card">
+      <h4 style="color:#7C3AED;">Choose Cash Credit (CC) if:</h4>
+      <ul class="styled" style="margin:0;">
+        <li>You're in manufacturing, trading, or exports</li>
+        <li>You hold inventory (raw material, finished goods)</li>
+        <li>You sell on credit and have outstanding debtors</li>
+        <li>Your working capital need fluctuates with the season</li>
+        <li>You want a larger limit (CC eligibility is linked to business size)</li>
+      </ul>
+    </div>
+    <div class="uc-card od-card">
+      <h4 style="color:#1D4ED8;">Choose Overdraft (OD) if:</h4>
+      <ul class="styled" style="margin:0;">
+        <li>You own property and want a simple credit line</li>
+        <li>You have Fixed Deposits you can pledge (FD OD is cheapest credit available)</li>
+        <li>You're a professional (doctor, CA, consultant) — no stock to hypothecate</li>
+        <li>You want a fixed, predictable limit with no monthly filing</li>
+        <li>You need bridging finance for a short period</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <strong>The Cheapest Working Capital Available:</strong> If you have a Fixed Deposit of ₹50 lakh, you can get an OD against it at roughly 1% above the FD rate — typically 6.5–7.5% per annum. This is the lowest interest rate available for any working capital facility and most businesses with idle FDs should use this before applying for CC.
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-title">How CC Limit is Calculated — The Tandon Committee Method</div>
+  <p>RBI's credit norms for working capital are based on the Tandon Committee recommendations. Most PSU banks and many private banks use this for CC limit assessment.</p>
+
+  <div class="example-box">
+    <h4>Tandon Method II — Maximum Permissible Bank Finance (MPBF)</h4>
+    <p><strong>Step 1:</strong> Calculate Total Current Assets (TCA) = Inventory + Debtors + Other CA</p>
+    <p><strong>Step 2:</strong> Calculate Total Current Liabilities (TCL) = Creditors + Other CL (excluding bank borrowings)</p>
+    <p><strong>Step 3:</strong> Working Capital Gap = TCA − TCL</p>
+    <p><strong>Step 4:</strong> Minimum Margin = 25% of TCA (your own contribution)</p>
+    <p><strong>Step 5:</strong> MPBF = Working Capital Gap − Minimum Margin</p>
+    <br>
+    <p style="font-size:12px;color:#6B7280;"><em>Example: TCA ₹100L | TCL ₹20L | WC Gap ₹80L | Margin (25% of ₹100L) ₹25L | MPBF = ₹80L − ₹25L = <strong>₹55L CC limit</strong></em></p>
+  </div>
+
+  <div class="rbi-note">
+    <strong>RBI Reference:</strong> The Tandon Committee Report (1974) and subsequent RBI circulars form the basis of working capital assessment for bank credit. RBI's Master Circular on Loans and Advances (updated annually) provides the framework banks use for assessing MPBF for manufacturing and trading units.
+  </div>
+</div>
+
+<div class="cta-box">
+  <h3>Not Sure Which Facility Your Business Needs?</h3>
+  <p>Our ex-banker team will assess your business, calculate your maximum CC/OD eligibility, and help you apply for the right facility at the right bank.</p>
+  <a href="#" class="cta-btn">Get a Free Working Capital Assessment →</a>
+</div>
+
+</div>
+
+<div class="footer">
+  <div><strong style="color:#F59E0B;">FINSIGHT<span style="color:#fff;">ONE</span></strong> &nbsp;|&nbsp; Expert Credit Advisory &nbsp;|&nbsp; finsightone.com</div>
+  <div>Guide 03/06 — Free Loan Guide Series &nbsp;|&nbsp; © 2025 FinsightOne. Not financial advice.</div>
+</div>
+
+</div>
+</body>
+</html>

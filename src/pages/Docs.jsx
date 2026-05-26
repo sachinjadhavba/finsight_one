@@ -35,7 +35,7 @@ export default function Docs({ navigate }) {
             <button onClick={() => navigate("check")} style={{ background: ORANGE, color: WHITE, fontSize: 14, fontWeight: 700, padding: "12px 28px", borderRadius: 8, border: "none", cursor: "pointer", fontFamily: "inherit" }}>
               Check My Eligibility First — Free
             </button>
-            <button onClick={() => navigate("samplereport")} style={{ background: WHITE, color: INDIGO, fontSize: 14, fontWeight: 600, padding: "12px 28px", borderRadius: 8, border: `1px solid ${INDIGO}`, cursor: "pointer", fontFamily: "inherit" }}>
+            <button onClick={() => window.open(["/reports/banker-pack/01_basic_textile_cam_cma.html","/reports/banker-pack/02_standard_food_hdfc.html","/reports/banker-pack/03_premium_infra_rbi2025.html"][i],"_blank")} style={{ background: WHITE, color: INDIGO, fontSize: 14, fontWeight: 600, padding: "12px 28px", borderRadius: 8, border: `1px solid ${INDIGO}`, cursor: "pointer", fontFamily: "inherit" }}>
               View Sample Report →
             </button>
           </div>
@@ -75,7 +75,7 @@ export default function Docs({ navigate }) {
                   <div style={{ background: GRAY, border: "1px solid #E5E7EB", borderRadius: 6, padding: "4px 10px", fontSize: 11, color: MUTED }}>72hr TAT</div>
                 </div>
                 <div style={{ display: "flex", gap: 8, flexDirection: "column" }}>
-                  <button onClick={() => navigate("samplereport")} style={{ padding: "8px 14px", borderRadius: 8, fontSize: 12, fontWeight: 700, cursor: "pointer", background: WHITE, color: [INDIGO,"#059669",ORANGE][i], border: `1px solid ${[INDIGO,"#059669",ORANGE][i]}40`, width: "100%", fontFamily: "inherit" }}>
+                  <button onClick={() => window.open(["/reports/banker-pack/01_basic_textile_cam_cma.html","/reports/banker-pack/02_standard_food_hdfc.html","/reports/banker-pack/03_premium_infra_rbi2025.html"][i],"_blank")} style={{ padding: "8px 14px", borderRadius: 8, fontSize: 12, fontWeight: 700, cursor: "pointer", background: WHITE, color: [INDIGO,"#059669",ORANGE][i], border: `1px solid ${[INDIGO,"#059669",ORANGE][i]}40`, width: "100%", fontFamily: "inherit" }}>
                     View Sample {["CAM","CMA","DPR"][i]} →
                   </button>
                   <button onClick={() => window.open("https://wa.me/919579453635?text=Hi%20FinsightOne%2C%20I%20need%20a%20" + encodeURIComponent(d.name), "_blank")} style={{ padding: "9px 14px", borderRadius: 8, fontSize: 12, fontWeight: 700, cursor: "pointer", background: [INDIGO,"#059669",ORANGE][i], color: WHITE, border: "none", width: "100%", fontFamily: "inherit" }}>

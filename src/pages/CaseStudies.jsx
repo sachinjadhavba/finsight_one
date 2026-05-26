@@ -2,7 +2,7 @@ import Footer from "../components/Footer";
 
 const CASES = [
   {
-    id: "cs01",
+    id: "cs01", url: "/reports/case-studies/cs01_sugar_mill_maharashtra.html",
     tag: "SUGAR & AGRO · MAHARASHTRA",
     color: "#166534",
     bgColor: "#064E3B",
@@ -19,7 +19,7 @@ const CASES = [
     solution: "FinsightOne rebuilt the complete CAM + CMA + DPR from scratch. We restructured projections to integrate seasonal crushing income and PPA revenue, demonstrating ICR of 4.17x by FY30. All 12 risk flags cited by the credit committee were addressed directly in the file narrative. Resubmitted to the lead bank in the same consortium.",
   },
   {
-    id: "cs02",
+    id: "cs02", url: "/reports/case-studies/cs02_dairy_rajasthan.html",
     tag: "DAIRY & AGRI · RAJASTHAN",
     color: "#1D4ED8",
     bgColor: "#1E3A8A",
@@ -36,7 +36,7 @@ const CASES = [
     solution: "We obtained CIBIL dispute resolution, prepared a NOC letter from the original lender, and incorporated it into the banker presentation. Commissioned an independent TEV study. Established and documented NABARD DEDS eligibility (₹2.1 Cr subsidy), which reduced the effective bank exposure and improved the DSCR from 0.98x to 1.42x. Submitted to a PSU bank with a track record in agri-lending.",
   },
   {
-    id: "cs03",
+    id: "cs03", url: "/reports/case-studies/cs03_logistics_delhi.html",
     tag: "LOGISTICS & TRANSPORT · DELHI NCR",
     color: "#7C3AED",
     bgColor: "#4C1D95",

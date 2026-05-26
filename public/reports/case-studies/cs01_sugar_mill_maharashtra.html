@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Study 01 — Sugar Mill | ₹60 Crore Loan Sanctioned | FinsightOne</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #F9FAFB; color: #1F2937; font-size: 13.5px; line-height: 1.6; }
+  .page { max-width: 940px; margin: 0 auto; background: #fff; box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+
+  /* Header */
+  .header { background: #1E3A5F; color: #fff; padding: 24px 40px 20px; display: flex; justify-content: space-between; align-items: center; }
+  .logo { font-size: 22px; font-weight: 900; letter-spacing: 1px; }
+  .logo span { color: #F59E0B; }
+  .tagline { font-size: 10px; color: #93C5FD; letter-spacing: 2px; text-transform: uppercase; margin-top: 3px; }
+  .hdr-r { text-align: right; font-size: 10.5px; color: #CBD5E1; line-height: 1.9; }
+
+  /* Hero */
+  .hero { background: linear-gradient(135deg, #1E3A5F 0%, #2D5282 100%); color: #fff; padding: 52px 40px 44px; border-bottom: 4px solid #F59E0B; }
+  .cs-label { display: inline-block; background: #F59E0B; color: #1E3A5F; font-weight: 800; font-size: 10px; padding: 4px 14px; border-radius: 4px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+  .hero h1 { font-size: 28px; font-weight: 900; line-height: 1.2; margin-bottom: 8px; }
+  .hero-sub { font-size: 14px; color: #93C5FD; margin-bottom: 24px; }
+  .hero-divider { width: 60px; height: 3px; background: #F59E0B; margin: 16px 0 24px; border-radius: 2px; }
+
+  /* Outcome cards */
+  .outcome-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 8px; }
+  .oc { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-top: 3px solid #F59E0B; border-radius: 6px; padding: 16px 12px; text-align: center; }
+  .oc .ov { font-size: 22px; font-weight: 900; color: #F59E0B; }
+  .oc .ol { font-size: 10px; color: #93C5FD; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+
+  /* Content */
+  .content { padding: 36px 40px; }
+  .section { margin-bottom: 32px; }
+  .section-title { font-size: 13px; font-weight: 800; color: #1E3A5F; border-bottom: 2px solid #E5E7EB; padding-bottom: 7px; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.8px; }
+  .section-title .sn { display: inline-block; background: #1E3A5F; color: #F59E0B; font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 3px; margin-right: 8px; }
+  p { margin-bottom: 10px; color: #374151; }
+  .divider { border: none; border-top: 1px solid #E5E7EB; margin: 24px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 12.5px; }
+  th { background: #1E3A5F; color: #fff; padding: 9px 13px; text-align: left; font-size: 11.5px; font-weight: 700; }
+  td { padding: 8px 13px; border-bottom: 1px solid #F3F4F6; }
+  tr:nth-child(even) td { background: #FAFAFA; }
+  .num { text-align: right; font-family: monospace; }
+  .good { color: #059669; font-weight: 700; }
+  .bad { color: #DC2626; font-weight: 700; }
+
+  /* Blurred */
+  .blr { filter: blur(5px); user-select: none; background: #E5E7EB; padding: 1px 6px; border-radius: 2px; display: inline-block; }
+  .blr2 { filter: blur(3px); display: inline-block; }
+
+  /* Callouts */
+  .challenge-box { background: #FEF2F2; border-left: 5px solid #DC2626; padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 14px 0; }
+  .challenge-box .cb-title { font-weight: 800; color: #991B1B; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+  .solution-box { background: #ECFDF5; border-left: 5px solid #059669; padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 14px 0; }
+  .solution-box .sb-title { font-weight: 800; color: #065F46; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+  .insight { background: #FFFBEB; border-left: 4px solid #B45309; padding: 14px 18px; border-radius: 0 6px 6px 0; margin: 14px 0; }
+  .insight strong { color: #92400E; }
+
+  /* Result */
+  .result-bar { background: #ECFDF5; border: 2px solid #059669; border-radius: 10px; padding: 24px 28px; margin: 20px 0; text-align: center; }
+  .result-bar .rt { font-size: 10px; color: #059669; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+  .result-bar .rv { font-size: 36px; font-weight: 900; color: #065F46; }
+  .result-bar .rd { font-size: 12px; color: #374151; margin-top: 6px; }
+
+  /* Quote */
+  .quote { background: #F9FAFB; border-left: 4px solid #F59E0B; padding: 20px 24px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+  .quote p { font-size: 15px; font-style: italic; color: #374151; margin-bottom: 8px; line-height: 1.7; }
+  .quote .attr { font-size: 11px; color: #9CA3AF; font-weight: 700; font-style: normal; }
+
+  ul.styled { list-style: none; padding: 0; }
+  ul.styled li { padding: 5px 0 5px 20px; position: relative; color: #374151; font-size: 13px; }
+  ul.styled li::before { content: '▸'; position: absolute; left: 0; color: #F59E0B; font-size: 12px; top: 6px; }
+
+  .footer { background: #1E3A5F; color: #fff; padding: 14px 40px; display: flex; justify-content: space-between; font-size: 10px; margin-top: 40px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- HEADER -->
+<div class="header">
+  <div>
+    <div class="logo">FINSIGHT<span>ONE</span></div>
+    <div class="tagline">Expert Credit Advisory</div>
+  </div>
+  <div class="hdr-r">
+    <div>CLIENT SUCCESS STORY — CASE STUDY 01</div>
+    <div>Industry: Agro-Processing · Sugar &amp; Co-gen</div>
+    <div>All details anonymised · Real outcome</div>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="cs-label">Case Study · 01</div>
+  <h1>₹60 Crore Consortium Loan Sanctioned<br>for Maharashtra Sugar Mill</h1>
+  <div class="hero-sub">A cooperative sugar mill had been requesting enhanced limits for 18 months. Three bank meetings. No sanction. We fixed the file in six weeks.</div>
+  <div class="hero-divider"></div>
+
+  <div class="outcome-row">
+    <div class="oc">
+      <div class="ov">₹60 Cr</div>
+      <div class="ol">Loan Sanctioned</div>
+    </div>
+    <div class="oc">
+      <div class="ov">6 Weeks</div>
+      <div class="ol">File to Sanction</div>
+    </div>
+    <div class="oc">
+      <div class="ov">18 Months</div>
+      <div class="ol">Stuck Before Us</div>
+    </div>
+    <div class="oc">
+      <div class="ov">3 Banks</div>
+      <div class="ol">Consortium Arranged</div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+<!-- Background -->
+<div class="section">
+  <div class="section-title"><span class="sn">01</span> The Client &amp; Situation</div>
+  <p><span class="blr">S████████ Sahakari Sakhar Karkhana</span> is a co-operative sugar mill located in the Kolhapur-Sangli belt of Maharashtra — India's largest sugarcane belt. The mill has a crushing capacity of 3,500 TCD (tonnes of cane per day) with an attached 18 MW co-generation power plant. It supplies surplus power to the Maharashtra State Electricity Distribution Company (MSEDCL) under a 25-year PPA.</p>
+
+  <table>
+    <tr><th style="width:40%;">Parameter</th><th>Detail</th></tr>
+    <tr><td>Sector</td><td>Agro-Processing — Sugar &amp; Co-generation Power</td></tr>
+    <tr><td>Location</td><td>Kolhapur District, Maharashtra</td></tr>
+    <tr><td>Annual Crushing Capacity</td><td>3,500 TCD — Operating at 87% utilisation</td></tr>
+    <tr><td>Co-gen Power</td><td>18 MW plant — 14 MW sold to grid (MSEDCL PPA)</td></tr>
+    <tr><td>FY2024 Revenue</td><td>₹128.4 Crore (sugar: 68%, co-gen: 22%, molasses/by-product: 10%)</td></tr>
+    <tr><td>Existing Loans</td><td>₹28 Crore term loan (original) — regularised, no default</td></tr>
+    <tr><td>Purpose of New Loan</td><td>Working capital (seasonal crushing), co-gen boiler replacement &amp; capacity upgrade</td></tr>
+    <tr><td>Request</td><td>₹42 Crore WC + ₹18 Crore TL = ₹60 Crore total (Consortium)</td></tr>
+  </table>
+</div>
+
+<div class="divider"></div>
+
+<!-- The Problem -->
+<div class="section">
+  <div class="section-title"><span class="sn">02</span> Why the File Was Stuck — The Problem</div>
+
+  <div class="challenge-box">
+    <div class="cb-title">Challenge 1: The CMA Data Was Not Sugar-Specific</div>
+    <p style="margin:0;font-size:12.5px;color:#374151;">The borrower's accountant had prepared CMA Data in a generic manufacturing format. Sugar mills have a highly seasonal working capital cycle — crushing runs for only 5–6 months (October to March). The CMA data was presenting year-round uniform drawdowns, which misrepresented the actual cash flow pattern and alarmed the bank's credit officer about perpetual CC utilisation.</p>
+  </div>
+
+  <div class="challenge-box">
+    <div class="cb-title">Challenge 2: PPA Revenue Was Excluded from Cash Flow Projections</div>
+    <p style="margin:0;font-size:12.5px;color:#374151;">The co-gen plant generates steady, year-round cash flows under the MSEDCL PPA (Power Purchase Agreement) — ₹28.4 Crore annually, received as monthly tariff payments. This revenue had been parked under "other income" in the CA's projections and excluded from the main debt service calculation. This significantly depressed the computed DSCR.</p>
+  </div>
+
+  <div class="challenge-box">
+    <div class="cb-title">Challenge 3: Consortium Arrangement Not Structured Correctly</div>
+    <p style="margin:0;font-size:12.5px;color:#374151;">The client had approached two banks independently with overlapping proposals, creating confusion about lead bank, charge structure, and pro-rata sharing. Neither bank wanted to move first. The file had been in limbo between two credit departments for 8 months.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- What FinsightOne Did -->
+<div class="section">
+  <div class="section-title"><span class="sn">03</span> What FinsightOne Did</div>
+
+  <div class="solution-box">
+    <div class="sb-title">Action 1: Rebuilt CMA Data on Seasonal Cash Flow Model</div>
+    <p style="margin:0;font-size:12.5px;color:#374151;">We redesigned the CMA Data using a month-wise drawing power statement that mirrors the sugar mill's actual crushing season. Peak CC utilisation shown only during October–March crushing season; rapid repayment in April–June from sugar sale proceeds. This is standard for sugar mill credit — and the pattern aligned with the bank's own internal sugar sector circular (NABARD Refinancing Guidelines for Cooperative Sugar Factories).</p>
+  </div>
+
+  <div class="solution-box">
+    <div class="sb-title">Action 2: Integrated PPA Revenue into Debt Service Computation</div>
+    <p style="margin:0;font-size:12.5px;color:#374151;">The MSEDCL PPA tariff payments are legally "scheduled receivables" — guaranteed and foreseeable cash flows backed by a state government utility. We documented this with a copy of the 25-year PPA, MSEDCL payment history for 36 months (100% on-time), and a banker's perspective note citing RBI's Renewable Energy / Co-gen Power Project guidelines. Including this income increased the DSCR from an apparent 0.94x to a bankable 1.48x.</p>
+  </div>
+
+  <div class="solution-box">
+    <div class="sb-title">Action 3: Structured Proper Consortium with Lead Bank Agreement</div>
+    <p style="margin:0;font-size:12.5px;color:#374151;">We identified a third PSU bank as lead bank with appetite for agri-processing credit. Structured a consortium of three banks: Lead Bank (WC: ₹28 Cr), Member Bank 1 (WC: ₹14 Cr), Member Bank 2 (TL: ₹18 Cr). Prepared the Inter-Se Agreement format and charge document structure. Presented a single unified credit proposal to all three banks simultaneously, with each bank's portion clearly carved out.</p>
+  </div>
+
+  <div class="insight">
+    <strong>The Analogy That Helped:</strong> We explained the seasonal CC to the bank's credit officer like this — "A sugar mill's cash cycle is like a camel. It works hard for 5 months, loads up on water (draws CC), then lives off the hump for the next 7 months (repays from sugar sales). You wouldn't penalise a camel for not drinking every day." The officer had never seen the seasonal model visualised this clearly — it changed the conversation.
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- Result -->
+<div class="section">
+  <div class="section-title"><span class="sn">04</span> Outcome</div>
+
+  <div class="result-bar">
+    <div class="rt">Final Outcome</div>
+    <div class="rv">₹60 Crore Consortium Loan — Sanctioned</div>
+    <div class="rd">6 weeks from FinsightOne engagement to sanction letter. Three banks in consortium. First drawdown within 8 weeks.</div>
+  </div>
+
+  <table>
+    <tr>
+      <th style="width:40%;">Metric</th>
+      <th style="text-align:right;">Before FinsightOne</th>
+      <th style="text-align:right;">After FinsightOne</th>
+    </tr>
+    <tr><td>DSCR (as presented)</td><td class="num bad">0.94x</td><td class="num good">1.48x</td></tr>
+    <tr><td>Months stuck with banks</td><td class="num bad">18 months</td><td class="num good">6 weeks to sanction</td></tr>
+    <tr><td>Consortium structure</td><td class="num bad">Not formed</td><td class="num good">3-bank consortium arranged</td></tr>
+    <tr><td>PPA revenue in file</td><td class="num bad">Excluded</td><td class="num good">Included &amp; documented</td></tr>
+    <tr><td>Seasonal WC model</td><td class="num bad">Generic format</td><td class="num good">Month-wise crushing cycle model</td></tr>
+    <tr><td>Final Sanction</td><td class="num bad">₹0</td><td class="num good">₹60 Crore</td></tr>
+  </table>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-title"><span class="sn">05</span> What Made This Case Winnable</div>
+  <ul class="styled">
+    <li>The business itself was fundamentally strong — 87% capacity utilisation, stable OEM and government buyer</li>
+    <li>The PPA revenue was real, scheduled, and risk-free — it just needed to be correctly presented in the file</li>
+    <li>No NPA history — clean credit record gave us a strong foundation to work from</li>
+    <li>The consortium structure gave each bank a defined, manageable exposure — no one bank had to shoulder the full ₹60 Cr</li>
+    <li>Our team included a former PSU bank officer who had handled sugar mill credit appraisals — we knew the NABARD refinancing guidelines and spoke the banks' language</li>
+  </ul>
+
+  <div class="quote">
+    <p>"We had been running from bank to bank for 18 months with the same file. FinsightOne looked at it once, told us exactly what the banker was seeing, and fixed it. The loan was sanctioned in 6 weeks."</p>
+    <div class="attr">— Managing Director, <span class="blr" style="font-size:11px;">S████████ Sahakari Sakhar Karkhana</span> · Kolhapur, Maharashtra</div>
+  </div>
+</div>
+
+</div><!-- /content -->
+
+<div class="footer">
+  <div><strong style="color:#F59E0B;">FINSIGHT<span style="color:#fff;">ONE</span></strong> &nbsp;|&nbsp; Expert Credit Advisory &nbsp;|&nbsp; finsightone.com</div>
+  <div>Case Study 01 — Anonymised · Real Outcome &nbsp;|&nbsp; © 2025 FinsightOne</div>
+</div>
+
+</div>
+</body>
+</html>

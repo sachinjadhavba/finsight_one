@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Improve Your CIBIL Score Before Applying | FinsightOne Guide</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #F9FAFB; color: #1F2937; font-size: 13.5px; line-height: 1.6; }
+  .page { max-width: 920px; margin: 0 auto; background: #fff; box-shadow: 0 2px 20px rgba(0,0,0,0.07); }
+  .header { background: #1E3A5F; color: #fff; padding: 22px 40px 18px; display: flex; justify-content: space-between; align-items: center; }
+  .logo { font-size: 22px; font-weight: 900; letter-spacing: 1px; }
+  .logo span { color: #F59E0B; }
+  .tagline { font-size: 10px; color: #93C5FD; letter-spacing: 2px; text-transform: uppercase; margin-top: 3px; }
+  .hdr-r { text-align: right; font-size: 10.5px; color: #CBD5E1; line-height: 1.9; }
+  .hero { background: #1E3A5F; color: #fff; padding: 44px 40px 36px; border-bottom: 4px solid #059669; }
+  .guide-label { display: inline-block; background: #059669; color: #fff; font-weight: 800; font-size: 10px; padding: 4px 14px; border-radius: 4px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 14px; }
+  .hero h1 { font-size: 26px; font-weight: 900; line-height: 1.25; margin-bottom: 8px; }
+  .hero p { font-size: 13.5px; color: #93C5FD; max-width: 640px; line-height: 1.7; }
+  .hero-meta { display: flex; gap: 24px; margin-top: 20px; }
+  .hm { font-size: 11px; color: #64748B; }
+  .hm span { color: #93C5FD; font-weight: 700; }
+  .content { padding: 36px 40px; }
+  .section { margin-bottom: 34px; }
+  .section-title { font-size: 14px; font-weight: 800; color: #1E3A5F; border-bottom: 2px solid #E5E7EB; padding-bottom: 7px; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px; }
+  p { margin-bottom: 10px; color: #374151; }
+  .divider { border: none; border-top: 1px solid #E5E7EB; margin: 28px 0; }
+
+  /* Score gauge */
+  .score-guide { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin: 16px 0; }
+  .sg-card { text-align: center; border-radius: 8px; padding: 14px 8px; }
+  .sg-card .sgv { font-size: 17px; font-weight: 900; }
+  .sg-card .sgl { font-size: 10px; font-weight: 700; letter-spacing: 0.5px; margin-top: 3px; }
+  .sg-card.very-poor { background: #FEE2E2; color: #DC2626; }
+  .sg-card.poor { background: #FEF3C7; color: #B45309; }
+  .sg-card.fair { background: #FFFBEB; color: #92400E; }
+  .sg-card.good { background: #D1FAE5; color: #065F46; }
+  .sg-card.excellent { background: #ECFDF5; color: #059669; }
+
+  /* Steps */
+  .step-card { border: 1px solid #E5E7EB; border-radius: 10px; padding: 20px 22px; margin: 16px 0; }
+  .step-header { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+  .step-num { width: 36px; height: 36px; border-radius: 50%; background: #1E3A5F; color: #F59E0B; font-weight: 900; font-size: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .step-title { font-size: 14px; font-weight: 800; color: #1E3A5F; }
+  .step-impact { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 10px; margin-left: 8px; vertical-align: middle; }
+  .impact-high { background: #ECFDF5; color: #059669; border: 1px solid #6EE7B7; }
+  .impact-med { background: #FFFBEB; color: #B45309; border: 1px solid #FCD34D; }
+  .impact-low { background: #EFF6FF; color: #1D4ED8; border: 1px solid #BFDBFE; }
+  .step-body { font-size: 13px; color: #374151; }
+  .step-timeline { font-size: 11px; font-weight: 700; color: #9CA3AF; margin-top: 8px; }
+
+  .myth-box { background: #F8FAFC; border: 1px solid #E5E7EB; border-left: 5px solid #DC2626; border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 14px 0; }
+  .myth-box .myth { font-size: 12px; font-weight: 800; color: #DC2626; margin-bottom: 4px; }
+  .myth-box .fact { font-size: 12px; font-weight: 800; color: #059669; margin-bottom: 4px; }
+  .myth-box p { margin: 0; font-size: 12.5px; color: #374151; }
+
+  .info-box { background: #EFF6FF; border-left: 5px solid #1D4ED8; padding: 14px 18px; border-radius: 0 8px 8px 0; margin: 14px 0; font-size: 12.5px; color: #374151; }
+  .warn-box { background: #FFFBEB; border-left: 5px solid #B45309; padding: 14px 18px; border-radius: 0 8px 8px 0; margin: 14px 0; font-size: 12.5px; color: #374151; }
+
+  ul.styled { list-style: none; padding: 0; }
+  ul.styled li { padding: 5px 0 5px 20px; position: relative; color: #374151; font-size: 13px; }
+  ul.styled li::before { content: '▸'; position: absolute; left: 0; color: #059669; font-size: 12px; top: 6px; }
+
+  .cta-box { background: #1E3A5F; color: #fff; padding: 28px 32px; border-radius: 10px; margin: 32px 0; text-align: center; }
+  .cta-box h3 { font-size: 18px; font-weight: 800; margin-bottom: 8px; }
+  .cta-box p { color: #93C5FD; font-size: 13px; margin-bottom: 16px; }
+  .cta-btn { display: inline-block; background: #F59E0B; color: #1E3A5F; font-weight: 800; padding: 12px 28px; border-radius: 8px; font-size: 13px; text-decoration: none; }
+  .footer { background: #1E3A5F; color: #fff; padding: 14px 40px; display: flex; justify-content: space-between; font-size: 10px; margin-top: 40px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="header">
+  <div>
+    <div class="logo">FINSIGHT<span>ONE</span></div>
+    <div class="tagline">Free Loan Guide</div>
+  </div>
+  <div class="hdr-r">
+    <div>LEARN BEFORE YOU APPLY — GUIDE 02/06</div>
+    <div>Written by Ex-Bankers · Updated May 2025</div>
+    <div>Free to Use · No Login Required</div>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="guide-label">📊 Credit Score</div>
+  <h1>How to Improve Your CIBIL Score<br>Before Applying for a Loan</h1>
+  <p>Six steps that genuinely move the needle — and why closing old credit cards can actually hurt your score. Common myths debunked by our ex-bank credit officers.</p>
+  <div class="hero-meta">
+    <div class="hm">📖 <span>7 min read</span></div>
+    <div class="hm">👤 <span>For: Business owners + Individuals planning a loan</span></div>
+    <div class="hm">⏱️ <span>Results: 3–6 months</span></div>
+  </div>
+</div>
+
+<div class="content">
+
+<div class="section">
+  <div class="section-title">What CIBIL Score Do Banks Want?</div>
+  <p>Banks use your CIBIL score (TransUnion CIBIL Score ranges from 300 to 900) as the first gate. Here's what each range means in practice:</p>
+
+  <div class="score-guide">
+    <div class="sg-card very-poor"><div class="sgv">300–579</div><div class="sgl">Very Poor</div><div style="font-size:10px;margin-top:4px;">Most banks decline automatically</div></div>
+    <div class="sg-card poor"><div class="sgv">580–649</div><div class="sgl">Poor</div><div style="font-size:10px;margin-top:4px;">High-risk category; very limited lenders</div></div>
+    <div class="sg-card fair"><div class="sgv">650–699</div><div class="sgl">Fair</div><div style="font-size:10px;margin-top:4px;">Some banks, higher interest rate</div></div>
+    <div class="sg-card good"><div class="sgv">700–749</div><div class="sgl">Good</div><div style="font-size:10px;margin-top:4px;">Most banks; standard rate</div></div>
+    <div class="sg-card excellent"><div class="sgv">750+</div><div class="sgl">Excellent</div><div style="font-size:10px;margin-top:4px;">Best rates; preferred customer</div></div>
+  </div>
+
+  <div class="info-box">
+    <strong>For MSME / Business Loans:</strong> If the company's CIBIL Commercial Rank (CMR) is poor but the promoter's personal CIBIL is 750+, many banks will process the loan primarily based on the promoter's personal score — especially for loans below ₹5 Crore. The reverse is also true: a company with a good track record can sometimes overcome a promoter's average personal score.
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-title">6 Steps That Actually Improve Your Score</div>
+
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-num">1</div>
+      <div><div class="step-title">Never Miss an EMI — Not Even One <span class="step-impact impact-high">Highest Impact</span></div></div>
+    </div>
+    <div class="step-body">
+      <p>Payment history accounts for approximately 35% of your CIBIL score. A single missed EMI — even by 1 day — can drop your score by 50–80 points and stays on your report for 7 years. The fix: set up ECS auto-debit for every loan EMI and credit card due. Do it today, before you forget.</p>
+      <p>If you've already missed payments, the path is straightforward but slow: pay the outstanding immediately, get a "No Due Certificate" from the lender, and then simply wait. Scores begin recovering within 3–6 months of consistent repayment.</p>
+    </div>
+    <div class="step-timeline">⏱️ Impact seen: Immediately upon on-time payment — gradual improvement over 6–12 months</div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-num">2</div>
+      <div><div class="step-title">Keep Credit Card Utilisation Below 30% <span class="step-impact impact-high">High Impact</span></div></div>
+    </div>
+    <div class="step-body">
+      <p>Credit utilisation — what percentage of your credit limit you're using — is one of the biggest score factors. If your credit card limit is ₹5 lakh and you're regularly using ₹4.5 lakh, you appear "maxed out" to scoring models even if you pay it off every month.</p>
+      <p>The fix: either reduce your spending to below 30% of the limit, or call your bank and request a limit increase (without actually spending more). A higher limit at the same spending = lower utilisation = better score.</p>
+    </div>
+    <div class="step-timeline">⏱️ Impact seen: In the next billing cycle (30–45 days)</div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-num">3</div>
+      <div><div class="step-title">Check Your CIBIL Report for Errors <span class="step-impact impact-high">High Impact</span></div></div>
+    </div>
+    <div class="step-body">
+      <p>This step is consistently underestimated. In our experience reviewing credit files, approximately 1 in 4 reports has at least one factual error — a loan that was already closed but still shows as outstanding, a wrong default entry, or a loan belonging to someone with a similar name attached to your profile.</p>
+      <p>How to check: Go to cibil.com — you get one free report per year. Look for: (1) Loans you don't recognise, (2) "Settled" accounts that should be "Closed", (3) Wrong loan outstanding amounts. File a dispute on the CIBIL website and with the relevant lender simultaneously. Corrections typically take 30–45 days.</p>
+    </div>
+    <div class="step-timeline">⏱️ Impact seen: 30–60 days after error correction</div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-num">4</div>
+      <div><div class="step-title">Avoid Multiple Loan Applications in a Short Period <span class="step-impact impact-med">Medium Impact</span></div></div>
+    </div>
+    <div class="step-body">
+      <p>Every time a bank pulls your CIBIL (a "hard inquiry"), it slightly reduces your score — by about 5–10 points each time. If you apply to 5 banks in 3 months, that's 5 hard inquiries, and it signals desperation for credit. This is why you should approach only 1–2 banks at a time, not "spray and pray."</p>
+      <p>Compare loan terms through an advisor or broker (who does a "soft inquiry") rather than by formally applying everywhere.</p>
+    </div>
+    <div class="step-timeline">⏱️ Each hard inquiry recovers in 6–12 months automatically</div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-num">5</div>
+      <div><div class="step-title">Maintain a Mix of Credit Types <span class="step-impact impact-med">Medium Impact</span></div></div>
+    </div>
+    <div class="step-body">
+      <p>Having only credit cards hurts your score compared to a mix of a home loan (secured, long-term), a personal loan (unsecured, short-term), and a credit card. If you only have one type of credit product, consider adding another — but only if you can genuinely service it.</p>
+    </div>
+    <div class="step-timeline">⏱️ Impact over 12–24 months of good repayment history</div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-num">6</div>
+      <div><div class="step-title">For Business Loans: Build Your Company's CIBIL Commercial Rank (CMR) <span class="step-impact impact-med">Medium Impact for Business</span></div></div>
+    </div>
+    <div class="step-body">
+      <p>The CIBIL Commercial Rank (CMR-1 to CMR-10, with 1 being best) is specific to companies. It's built by: timely repayment of all existing business loans, maintaining a CC/OD account with regular operation (not just drawdowns), filing GST and ITR consistently, and having a credit history of at least 2 years.</p>
+      <p>New companies (under 2 years) may not have a CMR — in this case, promoter's personal CIBIL becomes the primary signal for small business loans.</p>
+    </div>
+    <div class="step-timeline">⏱️ CMR builds over 18–36 months of consistent credit behaviour</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-title">Common Myths — Busted</div>
+
+  <div class="myth-box">
+    <div class="myth">❌ MYTH: Closing old credit cards improves your score</div>
+    <div class="fact">✓ FACT: Closing old cards typically hurts your score</div>
+    <p>Closing an old card reduces your total available credit limit — which automatically increases your utilisation ratio. Older cards also have a longer credit history, which is a positive factor. Unless the card has a very high annual fee that you're losing money on, keep it open and use it occasionally for small purchases.</p>
+  </div>
+
+  <div class="myth-box">
+    <div class="myth">❌ MYTH: "Settled" on your report is same as "Closed"</div>
+    <div class="fact">✓ FACT: "Settled" is one of the worst statuses on a CIBIL report</div>
+    <p>"Settled" means you negotiated with the bank to pay less than the full outstanding amount. Banks treat this as a partial default — almost as bad as NPA. If a lender has marked your account as "Settled," try to pay the remaining amount and get it reclassified as "Closed." It can be done — and it matters enormously.</p>
+  </div>
+
+  <div class="myth-box">
+    <div class="myth">❌ MYTH: Checking your own CIBIL score hurts it</div>
+    <div class="fact">✓ FACT: Checking your own report is a "soft inquiry" — no impact on score</div>
+    <p>Only "hard inquiries" (when a bank or lender pulls your score for a loan application) impact your score. Checking your own report through cibil.com, Experian, or any consumer-facing portal has zero impact. Check it regularly — at least once every 6 months.</p>
+  </div>
+</div>
+
+<div class="cta-box">
+  <h3>Not Sure Why Your CIBIL Score is Low?</h3>
+  <p>Our team will review your CIBIL report, identify the exact factors pulling your score down, and give you a step-by-step improvement plan.</p>
+  <a href="#" class="cta-btn">Get a Free CIBIL Review →</a>
+</div>
+
+</div>
+
+<div class="footer">
+  <div><strong style="color:#F59E0B;">FINSIGHT<span style="color:#fff;">ONE</span></strong> &nbsp;|&nbsp; Expert Credit Advisory &nbsp;|&nbsp; finsightone.com</div>
+  <div>Guide 02/06 — Free Loan Guide Series &nbsp;|&nbsp; © 2025 FinsightOne. Not financial advice.</div>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FSB-2025-05128 | BankReady™ STANDARD | FinsightOne</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #1a1a1a; background: #fff; line-height: 1.5; }
+  a { color: inherit; text-decoration: none; }
+
+  /* HEADER */
+  .header { background: #1E3A5F; color: #fff; padding: 18px 40px; display: flex; justify-content: space-between; align-items: center; }
+  .logo { font-size: 22px; font-weight: 700; letter-spacing: 1px; }
+  .logo span { color: #F59E0B; }
+  .header-meta { text-align: right; font-size: 11px; opacity: 0.85; line-height: 1.8; }
+
+  /* COVER BAND */
+  .cover-band { background: #F8FAFC; border-bottom: 3px solid #1E3A5F; padding: 28px 40px 22px; }
+  .cover-band h1 { font-size: 19px; color: #1E3A5F; font-weight: 700; margin-bottom: 6px; }
+  .cover-band .sub { font-size: 12px; color: #555; margin-bottom: 16px; }
+  .cover-meta { display: flex; gap: 32px; flex-wrap: wrap; }
+  .cover-meta-item label { display: block; font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: #888; margin-bottom: 2px; }
+  .cover-meta-item span { font-size: 13px; font-weight: 600; color: #1E3A5F; }
+
+  /* BADGES */
+  .badge-row { display: flex; gap: 10px; align-items: center; margin-bottom: 16px; flex-wrap: wrap; }
+  .badge { padding: 4px 12px; border-radius: 3px; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; }
+  .badge-std { background: #1E3A5F; color: #fff; }
+  .badge-green { background: #16A34A; color: #fff; }
+  .badge-score { background: #F59E0B; color: #1E3A5F; font-size: 13px; padding: 5px 14px; }
+  .badge-rec { border: 1.5px solid #B45309; color: #B45309; background: #FFFBEB; }
+
+  /* AI SCORE BOX */
+  .score-box { display: inline-flex; align-items: center; gap: 14px; background: #FFFBEB; border: 2px solid #B45309; border-radius: 6px; padding: 12px 20px; margin-bottom: 18px; }
+  .score-num { font-size: 36px; font-weight: 900; color: #1E3A5F; line-height: 1; }
+  .score-label { font-size: 10px; color: #888; text-transform: uppercase; }
+  .score-verdict { font-size: 14px; font-weight: 700; color: #16A34A; }
+
+  /* SECTIONS */
+  .section { padding: 22px 40px; border-bottom: 1px solid #E5E7EB; }
+  .section:last-of-type { border-bottom: none; }
+  .section-title { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.7px; color: #1E3A5F; border-left: 4px solid #B45309; padding-left: 10px; margin-bottom: 14px; }
+  .section-subtitle { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; margin-top: 14px; font-weight: 600; }
+
+  /* TABLES */
+  table { width: 100%; border-collapse: collapse; margin-bottom: 10px; font-size: 12px; }
+  th { background: #1E3A5F; color: #fff; padding: 7px 10px; text-align: left; font-weight: 600; font-size: 11px; }
+  th.right, td.right { text-align: right; }
+  th.center, td.center { text-align: center; }
+  td { padding: 6px 10px; border-bottom: 1px solid #F0F0F0; }
+  tr:nth-child(even) td { background: #FAFAFA; }
+  tr:hover td { background: #F0F4FA; }
+  .projected { color: #1E3A5F; font-style: italic; }
+  .highlight-row td { background: #EFF6FF !important; font-weight: 600; }
+  .total-row td { background: #1E3A5F !important; color: #fff !important; font-weight: 700; }
+
+  /* TWO COL */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+  /* INFO CARDS */
+  .info-card { background: #F8FAFC; border: 1px solid #E5E7EB; border-radius: 4px; padding: 14px 16px; }
+  .info-card h4 { font-size: 11px; color: #888; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px; }
+  .info-card p { font-size: 13px; font-weight: 600; color: #1E3A5F; }
+  .info-card .sub-p { font-size: 11px; color: #555; margin-top: 2px; font-weight: 400; }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box { background: #FFFBEB; border-left: 4px solid #B45309; padding: 12px 16px; margin-bottom: 12px; border-radius: 0 4px 4px 0; }
+  .highlight-box h4 { font-size: 11px; font-weight: 700; color: #B45309; text-transform: uppercase; margin-bottom: 4px; }
+  .highlight-box p { font-size: 12px; color: #333; }
+
+  /* RECOMMENDATION */
+  .rec-box { background: #FFFBEB; border: 2px solid #B45309; border-radius: 6px; padding: 20px 24px; margin: 0 40px 24px; }
+  .rec-box h3 { font-size: 14px; font-weight: 700; color: #1E3A5F; margin-bottom: 10px; border-bottom: 1px solid #FDE68A; padding-bottom: 8px; }
+  .rec-box .verdict { font-size: 16px; font-weight: 900; color: #16A34A; margin-bottom: 10px; }
+  .rec-box p { font-size: 12px; color: #333; margin-bottom: 6px; }
+  .rec-box ul { padding-left: 16px; margin-top: 6px; }
+  .rec-box ul li { font-size: 12px; color: #333; margin-bottom: 4px; }
+
+  /* RISK TABLE */
+  .risk-low { color: #16A34A; font-weight: 600; }
+  .risk-med { color: #D97706; font-weight: 600; }
+  .risk-high { color: #DC2626; font-weight: 600; }
+
+  /* COMPLIANCE NOTE */
+  .compliance-note { background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: 4px; padding: 10px 14px; font-size: 11px; color: #1E40AF; margin-bottom: 14px; }
+
+  /* FOOTER */
+  .footer { background: #1E3A5F; color: #fff; padding: 16px 40px; display: flex; justify-content: space-between; align-items: center; font-size: 10px; opacity: 0.95; }
+  .footer .disclaimer { max-width: 60%; opacity: 0.75; line-height: 1.6; }
+  .footer .report-id { text-align: right; }
+  .footer .report-id strong { display: block; font-size: 12px; color: #F59E0B; }
+
+  /* BLUR */
+  .blur-name { filter: blur(4px); user-select: none; background: #E5E7EB; padding: 1px 6px; border-radius: 2px; display: inline-block; }
+  .blur-bank { filter: blur(3px); display: inline-block; }
+
+  /* WATERMARK */
+  .watermark { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-35deg); font-size: 110px; font-weight: 900; color: rgba(0,0,0,0.03); pointer-events: none; white-space: nowrap; z-index: 0; letter-spacing: 16px; }
+
+  /* PAGE BREAK HINT */
+  .page-section { position: relative; z-index: 1; }
+  p { margin-bottom: 6px; font-size: 12px; color: #333; }
+  ul, ol { padding-left: 18px; }
+  li { font-size: 12px; color: #333; margin-bottom: 3px; }
+  .capex-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 10px; }
+  .capex-item { background: #F8FAFC; border: 1px solid #E5E7EB; border-radius: 4px; padding: 10px 12px; }
+  .capex-item .amt { font-size: 18px; font-weight: 800; color: #1E3A5F; }
+  .capex-item .lbl { font-size: 10px; color: #888; text-transform: uppercase; }
+</style>
+</head>
+<body>
+
+<div class="watermark">SAMPLE</div>
+
+<!-- HEADER -->
+<div class="header page-section">
+  <div class="logo">FINSIGHT<span>ONE</span></div>
+  <div class="header-meta">
+    BankReady™ Banker Pack — Confidential<br>
+    Report ID: FSB-2025-05128 &nbsp;|&nbsp; May 2025<br>
+    Prepared for: <span class="blur-bank">HDFC Bank</span> — Business Banking Division
+  </div>
+</div>
+
+<!-- COVER BAND -->
+<div class="cover-band page-section">
+  <div class="badge-row">
+    <span class="badge badge-std">BankReady™ STANDARD</span>
+    <span class="badge badge-green">● GREEN</span>
+    <span class="badge badge-rec">RECOMMEND FOR SANCTION</span>
+    <span class="badge" style="background:#F3F4F6;color:#374151;">Medium Enterprise</span>
+    <span class="badge" style="background:#F3F4F6;color:#374151;">Food Processing / Agro</span>
+  </div>
+  <h1>Banker's Information Memorandum — Term Loan Appraisal</h1>
+  <div class="sub">Capacity Expansion — New Tomato Paste + IQF Vegetable Processing Line | ₹62 Crore Term Loan</div>
+
+  <div style="display:flex; gap:30px; align-items:flex-start; flex-wrap:wrap;">
+    <div class="score-box">
+      <div>
+        <div class="score-label">FinsightOne AI Score</div>
+        <div class="score-num">81<span style="font-size:18px;color:#888;">/100</span></div>
+        <div class="score-verdict">● RECOMMEND FOR SANCTION</div>
+      </div>
+    </div>
+    <div class="cover-meta">
+      <div class="cover-meta-item"><label>Borrower</label><span><span class="blur-name">M████████ Agro Foods Pvt. Ltd.</span></span></div>
+      <div class="cover-meta-item"><label>Location</label><span>Nashik, Maharashtra</span></div>
+      <div class="cover-meta-item"><label>Industry</label><span>Food Processing / Agro-processing</span></div>
+      <div class="cover-meta-item"><label>Loan Amount</label><span>₹62 Crore</span></div>
+      <div class="cover-meta-item"><label>Loan Type</label><span>Term Loan — Capacity Expansion</span></div>
+      <div class="cover-meta-item"><label>Total Project Cost</label><span>₹72 Crore</span></div>
+      <div class="cover-meta-item"><label>Bank Format</label><span>Private Bank — Business Banking</span></div>
+      <div class="cover-meta-item"><label>Report Date</label><span>May 2025</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 1: EXECUTIVE SUMMARY -->
+<div class="section page-section">
+  <div class="section-title">1. Executive Summary</div>
+  <div class="highlight-box">
+    <h4>Investment Thesis</h4>
+    <p><span class="blur-name">M████████ Agro Foods Pvt. Ltd.</span> is a well-established food processing company based in Nashik, Maharashtra — one of India's premier agro-processing hubs. The company seeks a ₹62 Crore Term Loan for capacity expansion into tomato paste (120 MT/day) and IQF (Individually Quick Frozen) vegetable processing (80 MT/day). The project is technically sound, commercially viable, and backed by strong financials. FinsightOne AI assigns a score of <strong>81/100 (GREEN)</strong> — recommend for sanction.</p>
+  </div>
+  <div class="two-col">
+    <div>
+      <p>The company has demonstrated consistent revenue growth from ₹89.2 Cr (FY22) to ₹132.6 Cr (FY24) — a CAGR of ~22%. EBITDA margins have improved steadily from 15.0% to 15.8% over the same period, with further expansion projected to 19.1% by FY27P as higher-margin processed products drive mix improvement.</p>
+      <p>The project leverages Nashik's agro-belt advantage — the region produces 35% of Maharashtra's tomato output — ensuring raw material security at competitive procurement costs. The new processing line will add significant value-add capability and open export channels (Europe, Middle East).</p>
+    </div>
+    <div>
+      <p>The project is to be set up on the company's existing owned land (4.2 acres) in Nashik, eliminating land acquisition risk. Core machinery is European-origin (Germany/Netherlands) with a 3-year OEM warranty, ensuring technology quality. The IRR of 18.4% and payback period of 4.8 years confirm commercial viability.</p>
+      <p>The average DSCR of 1.56 over the 7-year repayment period provides comfortable debt service coverage. Security includes equitable mortgage of existing plant (DM value ₹88 Cr), new project assets, personal guarantees of promoters, and corporate guarantee of a group entity.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: BORROWER PROFILE -->
+<div class="section page-section">
+  <div class="section-title">2. Borrower Profile</div>
+  <table>
+    <tr><th style="width:30%">Parameter</th><th>Details</th></tr>
+    <tr><td>Legal Name</td><td><span class="blur-name">M████████ Agro Foods Pvt. Ltd.</span></td></tr>
+    <tr><td>Constitution</td><td>Private Limited Company</td></tr>
+    <tr><td>CIN</td><td>U█████MH200█PTC0█████</td></tr>
+    <tr><td>Date of Incorporation</td><td>March 200█</td></tr>
+    <tr><td>Registered Office</td><td>Nashik, Maharashtra — 422 0██</td></tr>
+    <tr><td>Industry / NIC Code</td><td>Food Processing — NIC 10 (Manufacture of Food Products)</td></tr>
+    <tr><td>Enterprise Category</td><td>Medium Enterprise (MSME Classification)</td></tr>
+    <tr><td>Udyam Registration</td><td>UDYAM-MH-██-0██████</td></tr>
+    <tr><td>PAN</td><td>AAA██████A</td></tr>
+    <tr><td>GST Registration</td><td>27AAA██████AZ█ (Maharashtra)</td></tr>
+    <tr><td>Bankers (Existing)</td><td><span class="blur-bank">HDFC Bank</span> (Working Capital) | <span class="blur-bank">Bank of Maharashtra</span> (Existing TL)</td></tr>
+    <tr><td>CIBIL / Credit Score</td><td>CIBIL CMR-2 (Company) | Promoter CIBIL: 7██</td></tr>
+    <tr><td>Auditor</td><td>M/s <span class="blur-name">██████ & Associates</span>, Nashik — Chartered Accountants</td></tr>
+    <tr><td>No. of Employees</td><td>~220 (permanent) + seasonal labour ~180</td></tr>
+    <tr><td>Products</td><td>Tomato Ketchup, Tomato Puree, Fruit Pulp, Dehydrated Onion, Frozen Vegetables</td></tr>
+    <tr><td>Export Markets</td><td>UAE, UK, Singapore (existing); Germany, Netherlands (proposed post-expansion)</td></tr>
+    <tr><td>Certifications</td><td>FSSAI, ISO 22000:2018, BRC (British Retail Consortium), APEDA registered</td></tr>
+  </table>
+</div>
+
+<!-- SECTION 3: MANAGEMENT PROFILE -->
+<div class="section page-section">
+  <div class="section-title">3. Management Profile</div>
+  <table>
+    <tr>
+      <th style="width:22%">Name</th>
+      <th style="width:18%">Designation</th>
+      <th style="width:15%">Qualification</th>
+      <th style="width:12%">Experience</th>
+      <th>Role & Background</th>
+    </tr>
+    <tr>
+      <td><span class="blur-name">R████████ S████</span></td>
+      <td>Managing Director</td>
+      <td>B.Tech (Food Tech), IIT</td>
+      <td>24 years</td>
+      <td>Founded the company in 200█; leads operations, technology, and plant management. Has successfully executed two prior capacity expansion projects. Deep domain expertise in food processing and agro-value chains.</td>
+    </tr>
+    <tr>
+      <td><span class="blur-name">A████████ S████</span></td>
+      <td>Director — Finance & Strategy</td>
+      <td>CA, MBA (Finance)</td>
+      <td>18 years</td>
+      <td>Oversees finance, banking, and exports. Previously worked with a large FMCG conglomerate. Manages relationships with banks and institutional buyers. Strong grasp of financial structuring and export documentation.</td>
+    </tr>
+  </table>
+  <div class="highlight-box" style="margin-top:12px;">
+    <h4>Management Assessment</h4>
+    <p>Promoters have a combined experience of 42 years in the food processing sector. The family has no history of default or NPA on any banking facility. CIBIL records are clean. The MD has technical expertise that directly supports the proposed expansion — no dependence on external consultants for plant operations.</p>
+  </div>
+</div>
+
+<!-- SECTION 4: BUSINESS OVERVIEW -->
+<div class="section page-section">
+  <div class="section-title">4. Business Overview</div>
+  <div class="two-col">
+    <div>
+      <div class="section-subtitle">Company Background</div>
+      <p><span class="blur-name">M████████ Agro Foods</span> operates a fully integrated food processing facility at Nashik, Maharashtra. The company sources raw materials (tomatoes, onions, vegetables) directly from farmers within a 50 km radius under a contract farming arrangement, ensuring year-round supply at stable prices. The existing plant operates at two shifts with a capacity utilisation of ~72%.</p>
+      <p>Revenue has grown at a CAGR of 22% over FY22–FY24, driven by expanding FMCG client base (supplying to private label brands) and growing export demand. The company sells under its own brand in domestic retail and as a B2B supplier to large food companies.</p>
+    </div>
+    <div>
+      <div class="section-subtitle">Nashik Agro Belt Advantage</div>
+      <p>Nashik district is the largest tomato-producing region in Maharashtra, accounting for 35% of the state's output. The region also has significant onion, grapes, and vegetable production. Proximity to raw material sources reduces input cost by ~8–10% vs. competitors located in non-agro zones.</p>
+      <div class="section-subtitle">PLI Scheme for Food Processing</div>
+      <p>The company has applied under the Production Linked Incentive (PLI) Scheme for Food Processing (GoI) — the expansion qualifies under the processed fruit/vegetable segment. PLI benefits (estimated ₹3–5 Cr over 6 years) have not been factored into projections — upside risk.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 5: PROJECT DESCRIPTION -->
+<div class="section page-section">
+  <div class="section-title">5. Project Description &amp; Technical Feasibility</div>
+  <div class="highlight-box">
+    <h4>Project Overview</h4>
+    <p>Installation of a new integrated food processing line comprising: (a) Tomato Paste line — 120 MT/day capacity; (b) IQF (Individually Quick Frozen) Vegetable line — 80 MT/day. The project will be located on the company's existing 4.2-acre owned land in Nashik, with dedicated utility infrastructure (cold storage, effluent treatment, boilers).</p>
+  </div>
+  <div class="two-col">
+    <div>
+      <div class="section-subtitle">Technical Parameters</div>
+      <ul>
+        <li>Tomato Paste: Hot-break technology, ASEPTA filling, 28–30° Brix specification</li>
+        <li>IQF Line: Tunnel freezer, blast freezing at -35°C, capacity 80 MT/day</li>
+        <li>Machinery: European-origin (Germany/Netherlands); OEM: <span class="blur-name">████████ Foodtech GmbH</span></li>
+        <li>3-year OEM warranty on core processing equipment</li>
+        <li>Cold storage: 500 MT in-house capacity (built into project)</li>
+        <li>ETP (Effluent Treatment): ZLD compliant — regulatory risk eliminated</li>
+        <li>Plant capacity utilisation assumed at 55% (Year 1) → 75% (Year 3)</li>
+      </ul>
+    </div>
+    <div>
+      <div class="section-subtitle">Market Demand Assessment</div>
+      <ul>
+        <li>India's processed food market: USD 322 Bn (2024), growing at 9.4% CAGR</li>
+        <li>Tomato paste exports: India is the 4th largest global supplier</li>
+        <li>IQF vegetables: Europe import demand growing 12% YoY (EU food safety compliance required — already obtained by company)</li>
+        <li>Company has LOIs from 3 European buyers (Netherlands, Germany, Poland) for IQF supply post-expansion</li>
+        <li>Domestic demand: Private label FMCG segment — confirmed offtake agreements with 2 large buyers</li>
+      </ul>
+    </div>
+  </div>
+  <div class="section-subtitle">Capital Expenditure Breakdown</div>
+  <div class="capex-grid">
+    <div class="capex-item"><div class="amt">₹48 Cr</div><div class="lbl">Plant &amp; Machinery (European-origin)</div></div>
+    <div class="capex-item"><div class="amt">₹12 Cr</div><div class="lbl">Civil Construction &amp; Site Development</div></div>
+    <div class="capex-item"><div class="amt">₹6 Cr</div><div class="lbl">Pre-operative &amp; Misc. Expenses</div></div>
+    <div class="capex-item"><div class="amt">₹6 Cr</div><div class="lbl">Working Capital Margin (NFB)</div></div>
+    <div class="capex-item"><div class="amt">₹72 Cr</div><div class="lbl">Total Project Cost</div></div>
+    <div class="capex-item" style="border-left:3px solid #B45309;">
+      <div class="amt" style="color:#B45309;">₹62 Cr</div><div class="lbl">Term Loan Proposed (86%)</div>
+    </div>
+  </div>
+  <div class="section-subtitle">Means of Finance</div>
+  <table>
+    <tr><th>Source</th><th class="right">Amount (₹ Cr)</th><th class="right">% Share</th></tr>
+    <tr><td>Term Loan (Proposed)</td><td class="right">62.00</td><td class="right">86.1%</td></tr>
+    <tr><td>Promoter Equity Contribution</td><td class="right">10.00</td><td class="right">13.9%</td></tr>
+    <tr class="total-row"><td>Total Project Cost</td><td class="right">72.00</td><td class="right">100%</td></tr>
+  </table>
+  <div class="section-subtitle">Project Economics</div>
+  <table>
+    <tr><th>Parameter</th><th class="right">Value</th><th>Benchmark / Remark</th></tr>
+    <tr><td>Internal Rate of Return (IRR)</td><td class="right">18.4%</td><td>Healthy — above cost of debt</td></tr>
+    <tr><td>Payback Period</td><td class="right">4.8 years</td><td>Reasonable for food processing capex</td></tr>
+    <tr><td>NPV (@ 12% discount rate)</td><td class="right">₹38.4 Crore</td><td>Strong positive NPV</td></tr>
+    <tr><td>Break-even Capacity Utilisation</td><td class="right">~38%</td><td>Low break-even — comfortable margin of safety</td></tr>
+  </table>
+</div>
+
+<!-- SECTION 6: IMPLEMENTATION SCHEDULE -->
+<div class="section page-section">
+  <div class="section-title">6. Partial DPR Summary — Implementation Schedule</div>
+  <table>
+    <tr>
+      <th style="width:12%">Quarter</th>
+      <th style="width:22%">Period</th>
+      <th>Milestone / Activity</th>
+      <th class="right" style="width:18%">Cumulative Spend</th>
+    </tr>
+    <tr>
+      <td class="center"><strong>Q1</strong></td>
+      <td>Apr–Jun 2025</td>
+      <td>Land preparation, soil testing, civil foundation work commencement; financial closure</td>
+      <td class="right">₹8 Cr (~11%)</td>
+    </tr>
+    <tr>
+      <td class="center"><strong>Q2</strong></td>
+      <td>Jul–Sep 2025</td>
+      <td>Civil construction (main building, utilities); equipment order placement with European OEM; LC opening</td>
+      <td class="right">₹28 Cr (~39%)</td>
+    </tr>
+    <tr>
+      <td class="center"><strong>Q3</strong></td>
+      <td>Oct–Dec 2025</td>
+      <td>Equipment delivery (CIF Nhava Sheva); inland transport to Nashik; installation and civil completion</td>
+      <td class="right">₹58 Cr (~81%)</td>
+    </tr>
+    <tr>
+      <td class="center"><strong>Q4</strong></td>
+      <td>Jan–Mar 2026</td>
+      <td>Equipment installation, utilities commissioning, ETP commissioning, trial runs</td>
+      <td class="right">₹68 Cr (~94%)</td>
+    </tr>
+    <tr class="highlight-row">
+      <td class="center"><strong>Q5</strong></td>
+      <td>Apr–Jun 2026 (FY26 Q1)</td>
+      <td>Commercial production commencement — Tomato Paste + IQF lines operational at 55% capacity</td>
+      <td class="right">₹72 Cr (100%)</td>
+    </tr>
+  </table>
+</div>
+
+<!-- SECTION 7: FINANCIAL ANALYSIS — OPERATING STATEMENT -->
+<div class="section page-section">
+  <div class="section-title">7. Financial Analysis — Operating Statement (₹ Crore)</div>
+  <table>
+    <tr>
+      <th style="width:26%">Parameter</th>
+      <th class="right">FY22 (A)</th>
+      <th class="right">FY23 (A)</th>
+      <th class="right">FY24 (A)</th>
+      <th class="right" style="background:#162C47;">FY25P</th>
+      <th class="right" style="background:#162C47;">FY26P</th>
+      <th class="right" style="background:#162C47;">FY27P</th>
+    </tr>
+    <tr>
+      <td><strong>Net Sales</strong></td>
+      <td class="right">89.2</td><td class="right">108.4</td><td class="right">132.6</td>
+      <td class="right projected">162.0</td><td class="right projected">198.0</td><td class="right projected">228.0</td>
+    </tr>
+    <tr>
+      <td>Raw Material Cost</td>
+      <td class="right">54.2</td><td class="right">65.8</td><td class="right">80.2</td>
+      <td class="right projected">96.4</td><td class="right projected">116.2</td><td class="right projected">132.4</td>
+    </tr>
+    <tr>
+      <td>Employee Cost</td>
+      <td class="right">8.4</td><td class="right">9.8</td><td class="right">11.6</td>
+      <td class="right projected">13.6</td><td class="right projected">16.2</td><td class="right projected">18.4</td>
+    </tr>
+    <tr>
+      <td>Other Operating Expenses</td>
+      <td class="right">13.2</td><td class="right">15.9</td><td class="right">19.8</td>
+      <td class="right projected">23.6</td><td class="right projected">29.0</td><td class="right projected">33.7</td>
+    </tr>
+    <tr class="highlight-row">
+      <td><strong>EBITDA</strong></td>
+      <td class="right">13.4</td><td class="right">16.9</td><td class="right">21.0</td>
+      <td class="right projected">28.4</td><td class="right projected">36.6</td><td class="right projected">43.5</td>
+    </tr>
+    <tr>
+      <td>EBITDA Margin %</td>
+      <td class="right">15.0%</td><td class="right">15.6%</td><td class="right">15.8%</td>
+      <td class="right projected">17.5%</td><td class="right projected">18.5%</td><td class="right projected">19.1%</td>
+    </tr>
+    <tr>
+      <td>Depreciation</td>
+      <td class="right">2.8</td><td class="right">3.2</td><td class="right">3.8</td>
+      <td class="right projected">5.2</td><td class="right projected">7.4</td><td class="right projected">8.2</td>
+    </tr>
+    <tr>
+      <td>EBIT</td>
+      <td class="right">10.6</td><td class="right">13.7</td><td class="right">17.2</td>
+      <td class="right projected">23.2</td><td class="right projected">29.2</td><td class="right projected">35.3</td>
+    </tr>
+    <tr>
+      <td>Finance Cost (Interest)</td>
+      <td class="right">3.8</td><td class="right">4.4</td><td class="right">4.8</td>
+      <td class="right projected">6.2</td><td class="right projected">6.8</td><td class="right projected">6.2</td>
+    </tr>
+    <tr>
+      <td>PBT</td>
+      <td class="right">6.8</td><td class="right">9.3</td><td class="right">12.4</td>
+      <td class="right projected">17.0</td><td class="right projected">22.4</td><td class="right projected">29.1</td>
+    </tr>
+    <tr>
+      <td>Tax (25.17%)</td>
+      <td class="right">1.6</td><td class="right">1.9</td><td class="right">2.2</td>
+      <td class="right projected">1.9</td><td class="right projected">2.0</td><td class="right projected">3.3</td>
+    </tr>
+    <tr class="highlight-row">
+      <td><strong>PAT</strong></td>
+      <td class="right"><strong>5.2</strong></td><td class="right"><strong>7.4</strong></td><td class="right"><strong>10.2</strong></td>
+      <td class="right projected"><strong>15.1</strong></td><td class="right projected"><strong>20.4</strong></td><td class="right projected"><strong>25.8</strong></td>
+    </tr>
+  </table>
+  <p style="font-size:10px;color:#888;margin-top:4px;">(A) = Audited; P = Projected. Projections prepared by FinsightOne based on management-provided assumptions and industry benchmarks.</p>
+</div>
+
+<!-- SECTION 8: BALANCE SHEET SUMMARY -->
+<div class="section page-section">
+  <div class="section-title">8. Balance Sheet Summary (₹ Crore)</div>
+  <table>
+    <tr>
+      <th style="width:30%">Parameter</th>
+      <th class="right">FY22 (A)</th>
+      <th class="right">FY23 (A)</th>
+      <th class="right">FY24 (A)</th>
+      <th class="right" style="background:#162C47;">FY25P</th>
+    </tr>
+    <tr><td><strong>Net Worth</strong></td><td class="right">28.4</td><td class="right">35.2</td><td class="right">44.8</td><td class="right projected">58.6</td></tr>
+    <tr><td>Share Capital</td><td class="right">5.0</td><td class="right">5.0</td><td class="right">5.0</td><td class="right projected">15.0</td></tr>
+    <tr><td>Reserves &amp; Surplus</td><td class="right">23.4</td><td class="right">30.2</td><td class="right">39.8</td><td class="right projected">43.6</td></tr>
+    <tr><td><strong>Total Debt</strong></td><td class="right">42.6</td><td class="right">48.4</td><td class="right">54.2</td><td class="right projected">96.8</td></tr>
+    <tr><td>&nbsp;&nbsp; Term Loan</td><td class="right">28.2</td><td class="right">32.4</td><td class="right">36.8</td><td class="right projected">76.8</td></tr>
+    <tr><td>&nbsp;&nbsp; Working Capital</td><td class="right">14.4</td><td class="right">16.0</td><td class="right">17.4</td><td class="right projected">20.0</td></tr>
+    <tr><td>Fixed Assets (Net)</td><td class="right">52.4</td><td class="right">58.6</td><td class="right">66.8</td><td class="right projected">118.2</td></tr>
+    <tr><td>Current Assets</td><td class="right">28.6</td><td class="right">34.2</td><td class="right">40.4</td><td class="right projected">48.2</td></tr>
+    <tr><td>Current Liabilities</td><td class="right">20.1</td><td class="right">23.1</td><td class="right">26.2</td><td class="right projected">34.9</td></tr>
+    <tr class="highlight-row"><td><strong>Current Ratio</strong></td><td class="right">1.42</td><td class="right">1.48</td><td class="right">1.54</td><td class="right projected">1.38</td></tr>
+    <tr><td><strong>TOL / TNW</strong></td><td class="right">2.62</td><td class="right">2.38</td><td class="right">2.14</td><td class="right projected">2.68</td></tr>
+  </table>
+  <p style="font-size:10px;color:#888;margin-top:4px;">TOL/TNW = Total Outside Liabilities / Tangible Net Worth. FY25P includes ₹62 Cr proposed loan drawdown.</p>
+</div>
+
+<!-- SECTION 9: DSCR ANALYSIS -->
+<div class="section page-section">
+  <div class="section-title">9. DSCR Analysis — Year-wise (Proposed Term Loan — 7-Year Repayment)</div>
+  <table>
+    <tr>
+      <th>Year</th>
+      <th class="right">EBITDA (₹ Cr)</th>
+      <th class="right">Interest (₹ Cr)</th>
+      <th class="right">Principal Repayment (₹ Cr)</th>
+      <th class="right">Debt Service (₹ Cr)</th>
+      <th class="right">DSCR</th>
+      <th class="center">Status</th>
+    </tr>
+    <tr><td>FY26 (Year 1)</td><td class="right">36.6</td><td class="right">7.2</td><td class="right">8.0</td><td class="right">15.2</td><td class="right"><strong>1.42</strong></td><td class="center risk-med">Adequate</td></tr>
+    <tr><td>FY27 (Year 2)</td><td class="right">43.5</td><td class="right">6.6</td><td class="right">8.0</td><td class="right">14.6</td><td class="right"><strong>1.58</strong></td><td class="center risk-low">Good</td></tr>
+    <tr><td>FY28 (Year 3)</td><td class="right">51.2</td><td class="right">6.0</td><td class="right">9.0</td><td class="right">15.0</td><td class="right"><strong>1.68</strong></td><td class="center risk-low">Good</td></tr>
+    <tr><td>FY29 (Year 4)</td><td class="right">58.4</td><td class="right">5.2</td><td class="right">9.0</td><td class="right">14.2</td><td class="right"><strong>1.72</strong></td><td class="center risk-low">Strong</td></tr>
+    <tr><td>FY30 (Year 5)</td><td class="right">64.2</td><td class="right">4.4</td><td class="right">9.0</td><td class="right">13.4</td><td class="right"><strong>1.74</strong></td><td class="center risk-low">Strong</td></tr>
+    <tr><td>FY31 (Year 6)</td><td class="right">70.0</td><td class="right">3.4</td><td class="right">9.5</td><td class="right">12.9</td><td class="right"><strong>1.76</strong></td><td class="center risk-low">Strong</td></tr>
+    <tr><td>FY32 (Year 7)</td><td class="right">76.2</td><td class="right">2.2</td><td class="right">9.5</td><td class="right">11.7</td><td class="right"><strong>1.78</strong></td><td class="center risk-low">Strong</td></tr>
+    <tr class="total-row">
+      <td><strong>Average (7-yr)</strong></td><td class="right" colspan="4">—</td><td class="right"><strong>1.67</strong></td><td class="center">Benchmark: ≥1.25</td>
+    </tr>
+  </table>
+  <div class="highlight-box" style="margin-top:10px;">
+    <h4>DSCR Assessment</h4>
+    <p>Average DSCR of <strong>1.67</strong> is well above the standard banking benchmark of 1.25x. Even in the first year of repayment (post-moratorium), DSCR is 1.42 — providing adequate cushion. The improving trajectory (1.42 → 1.78) reflects operating leverage as capacity utilisation ramps up.</p>
+  </div>
+</div>
+
+<!-- SECTION 10: KEY FINANCIAL RATIOS -->
+<div class="section page-section">
+  <div class="section-title">10. Key Financial Ratios</div>
+  <table>
+    <tr>
+      <th style="width:25%">Ratio</th>
+      <th class="right">FY22</th>
+      <th class="right">FY23</th>
+      <th class="right">FY24</th>
+      <th class="right">FY25P</th>
+      <th class="right">FY26P</th>
+      <th class="right">FY27P</th>
+      <th>Benchmark</th>
+    </tr>
+    <tr>
+      <td>EBITDA Margin %</td>
+      <td class="right">15.0%</td><td class="right">15.6%</td><td class="right">15.8%</td>
+      <td class="right projected">17.5%</td><td class="right projected">18.5%</td><td class="right projected">19.1%</td>
+      <td>&gt;12% (Good for Food Processing)</td>
+    </tr>
+    <tr>
+      <td>PAT Margin %</td>
+      <td class="right">5.8%</td><td class="right">6.8%</td><td class="right">7.7%</td>
+      <td class="right projected">9.3%</td><td class="right projected">10.3%</td><td class="right projected">11.3%</td>
+      <td>&gt;5%</td>
+    </tr>
+    <tr>
+      <td>Current Ratio</td>
+      <td class="right">1.42</td><td class="right">1.48</td><td class="right">1.54</td>
+      <td class="right projected">1.38</td><td class="right projected">1.52</td><td class="right projected">1.64</td>
+      <td>&gt;1.25</td>
+    </tr>
+    <tr>
+      <td>TOL / TNW</td>
+      <td class="right">2.62</td><td class="right">2.38</td><td class="right">2.14</td>
+      <td class="right projected">2.68</td><td class="right projected">1.96</td><td class="right projected">1.64</td>
+      <td>&lt;4.0 (acceptable)</td>
+    </tr>
+    <tr>
+      <td>Debt / EBITDA</td>
+      <td class="right">3.18</td><td class="right">2.86</td><td class="right">2.58</td>
+      <td class="right projected">3.41</td><td class="right projected">2.41</td><td class="right projected">1.80</td>
+      <td>&lt;4.0x</td>
+    </tr>
+    <tr>
+      <td>Return on Equity (ROE)</td>
+      <td class="right">18.3%</td><td class="right">21.0%</td><td class="right">22.8%</td>
+      <td class="right projected">25.8%</td><td class="right projected">26.4%</td><td class="right projected">25.7%</td>
+      <td>&gt;15%</td>
+    </tr>
+    <tr>
+      <td>Interest Coverage (EBIT/Int.)</td>
+      <td class="right">2.79x</td><td class="right">3.11x</td><td class="right">3.58x</td>
+      <td class="right projected">3.74x</td><td class="right projected">4.29x</td><td class="right projected">5.69x</td>
+      <td>&gt;2.0x</td>
+    </tr>
+    <tr class="highlight-row">
+      <td><strong>Average DSCR</strong></td>
+      <td class="right" colspan="3">—</td>
+      <td class="right projected" colspan="3">1.67 (7-yr avg)</td>
+      <td>&gt;1.25x ✓</td>
+    </tr>
+  </table>
+</div>
+
+<!-- SECTION 11: RISK ASSESSMENT -->
+<div class="section page-section">
+  <div class="section-title">11. Risk Assessment</div>
+  <table>
+    <tr>
+      <th style="width:18%">Risk Category</th>
+      <th style="width:12%" class="center">Rating</th>
+      <th style="width:35%">Risk Factor</th>
+      <th>Mitigant / Comfort</th>
+    </tr>
+    <tr>
+      <td>Financial Risk</td>
+      <td class="center"><span class="risk-low">LOW</span></td>
+      <td>Leverage increases post-loan; debt/equity ratio rises to ~2.68 in FY25P</td>
+      <td>Improving trajectory — TOL/TNW projected at 1.64 by FY27P. Clean credit history. Adequate net worth base of ₹58.6 Cr post infusion.</td>
+    </tr>
+    <tr>
+      <td>Industry Risk</td>
+      <td class="center"><span class="risk-low">LOW</span></td>
+      <td>Food processing industry subject to commodity price fluctuations</td>
+      <td>Contract farming arrangements fix input costs at 6-month forward prices. Company has historically maintained >15% EBITDA margins through multiple commodity cycles.</td>
+    </tr>
+    <tr>
+      <td>Market Risk</td>
+      <td class="center"><span class="risk-med">MEDIUM</span></td>
+      <td>Export revenue dependent on European buyer offtake; exchange rate risk</td>
+      <td>LOIs from 3 buyers in hand. Natural hedge through EUR-denominated raw material imports (machinery maintenance spares). Forward cover policy in place.</td>
+    </tr>
+    <tr>
+      <td>Project/Execution Risk</td>
+      <td class="center"><span class="risk-low">LOW</span></td>
+      <td>Project delay risk; equipment delivery from Europe (4–6 months lead time)</td>
+      <td>Turnkey EPC contractor engaged; LC opened with OEM in advance. On-site project management team in place. Implementation schedule has 4-week buffer built in.</td>
+    </tr>
+    <tr>
+      <td>Management Risk</td>
+      <td class="center"><span class="risk-low">LOW</span></td>
+      <td>Key-man dependence on MD for technical operations</td>
+      <td>Second-generation family involvement (Director Finance). Plant Manager with 15 years experience hired. MD has executed 2 prior expansions successfully.</td>
+    </tr>
+    <tr>
+      <td>Security Risk</td>
+      <td class="center"><span class="risk-low">LOW</span></td>
+      <td>Collateral adequacy — existing plant DM value vs. total exposure</td>
+      <td>DM value ₹88 Cr vs. proposed exposure ~₹96.8 Cr (including WC). Security coverage ratio ~0.91x on existing plant alone; post-completion, new assets (₹72 Cr) will significantly enhance cover.</td>
+    </tr>
+    <tr>
+      <td>Regulatory Risk</td>
+      <td class="center"><span class="risk-low">LOW</span></td>
+      <td>Food safety, environmental compliance</td>
+      <td>Company holds FSSAI, ISO 22000, BRC certifications. ZLD-compliant ETP planned in project — eliminates environmental compliance risk.</td>
+    </tr>
+  </table>
+</div>
+
+<!-- SECTION 12: SECURITY STRUCTURE -->
+<div class="section page-section">
+  <div class="section-title">12. Security Structure</div>
+  <table>
+    <tr><th style="width:30%">Security Component</th><th>Details</th><th style="width:20%" class="right">Estimated Value</th></tr>
+    <tr>
+      <td>Primary Security — Existing Plant</td>
+      <td>Equitable mortgage of existing Nashik food processing plant and land (4.2 acres owned, freehold)</td>
+      <td class="right">₹88 Cr (DM value)</td>
+    </tr>
+    <tr>
+      <td>Primary Security — New Project Assets</td>
+      <td>Mortgage of new plant, machinery, and infrastructure to be created from the proposed loan proceeds</td>
+      <td class="right">₹72 Cr (project cost)</td>
+    </tr>
+    <tr>
+      <td>Personal Guarantee (PG-1)</td>
+      <td>Personal guarantee of <span class="blur-name">R████████ S████</span>, Managing Director</td>
+      <td class="right">Unlimited</td>
+    </tr>
+    <tr>
+      <td>Personal Guarantee (PG-2)</td>
+      <td>Personal guarantee of <span class="blur-name">A████████ S████</span>, Director</td>
+      <td class="right">Unlimited</td>
+    </tr>
+    <tr>
+      <td>Corporate Guarantee</td>
+      <td>Corporate guarantee from <span class="blur-name">███████████ Auto Distributors Pvt. Ltd.</span> — group entity (auto parts distribution); Net Worth ~₹22 Cr</td>
+      <td class="right">₹22 Cr (NW)</td>
+    </tr>
+    <tr>
+      <td>Assignment of Insurance</td>
+      <td>Assignment of all asset insurance policies in favour of the bank</td>
+      <td class="right">Full asset value</td>
+    </tr>
+    <tr class="highlight-row">
+      <td><strong>Total Security Coverage</strong></td>
+      <td><strong>Post-completion: ₹160 Cr+ (existing plant + new assets)</strong></td>
+      <td class="right"><strong>~1.65x coverage</strong></td>
+    </tr>
+  </table>
+</div>
+
+<!-- RECOMMENDATION BOX -->
+<div class="rec-box">
+  <h3>13. Recommendation — FinsightOne BankReady™ Assessment</h3>
+  <div class="verdict">● RECOMMEND FOR SANCTION — AI Score 81/100 (GREEN)</div>
+  <p><strong>FinsightOne recommends sanction of ₹62 Crore Term Loan</strong> to <span class="blur-name">M████████ Agro Foods Pvt. Ltd.</span> for the proposed capacity expansion project at Nashik, Maharashtra, subject to the following terms and conditions:</p>
+  <ul>
+    <li><strong>Loan Amount:</strong> ₹62,00,00,000/- (Rupees Sixty-Two Crore only)</li>
+    <li><strong>Tenor:</strong> 7 years (including 12-month moratorium on principal repayment)</li>
+    <li><strong>Rate of Interest:</strong> As per <span class="blur-bank">HDFC Bank</span> MCLR/Repo-linked policy (floating) + applicable spread</li>
+    <li><strong>Repayment:</strong> 72 monthly instalments commencing from Q1 FY27 (post-moratorium)</li>
+    <li><strong>Promoter Contribution:</strong> Minimum ₹10 Crore equity infusion — confirmed upfront before first drawdown</li>
+    <li><strong>Security:</strong> As detailed in Section 12 — equitable mortgage, PG, corporate guarantee</li>
+    <li><strong>Condition 1:</strong> Independent techno-economic feasibility report from empanelled agency before disbursement</li>
+    <li><strong>Condition 2:</strong> Escrow/trust &amp; retention account for term loan repayment from identified revenue streams</li>
+    <li><strong>Condition 3:</strong> Quarterly progress reporting during implementation; utilisation certification for each drawdown</li>
+    <li><strong>Condition 4:</strong> Fire &amp; all-risk insurance of assets with bank as loss-payee; adequate SFAC/ECGC cover for exports</li>
+  </ul>
+  <p style="margin-top:10px;font-size:11px;color:#666;">This recommendation is based on FinsightOne's proprietary AI-assisted financial analysis and does not substitute the bank's independent credit appraisal, due diligence, or internal credit committee assessment. The bank should conduct its own KYC, CIBIL verification, site visit, and valuation.</p>
+</div>
+
+<!-- FOOTER -->
+<div class="footer page-section">
+  <div class="disclaimer">
+    This document is a sample BankReady™ Banker's Information Memorandum prepared by FinsightOne for demonstration purposes. All company names, promoter names, and specific financial details in this sample are illustrative. This report is confidential and intended solely for the addressee bank's credit evaluation. FinsightOne is a registered loan advisory firm. This document does not constitute a guarantee of loan sanction.
+  </div>
+  <div class="report-id">
+    <strong>FSB-2025-05128</strong>
+    BankReady™ STANDARD Package<br>
+    FinsightOne Advisory Pvt. Ltd.<br>
+    May 2025 | © FinsightONE 2025
+  </div>
+</div>
+
+</body>
+</html>

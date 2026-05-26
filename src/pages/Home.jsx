@@ -129,7 +129,7 @@ export default function Home({ navigate }) {
                     <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
                       <span style={{ fontWeight: 700, fontSize: 11, color: svc.priceColor, whiteSpace: "nowrap" }}>{it.price}</span>
                       {it.sample && (
-                        <button onClick={() => navigate(it.sample)} style={{ fontSize: 9, color: svc.btnColor, background: svc.btnBg, border: `1px solid ${svc.btnBorder}`, borderRadius: 3, padding: "1px 5px", cursor: "pointer", whiteSpace: "nowrap", fontFamily: "inherit" }}>Sample</button>
+                        <button onClick={() => window.open(it.sample,'_blank')} style={{ fontSize: 9, color: svc.btnColor, background: svc.btnBg, border: `1px solid ${svc.btnBorder}`, borderRadius: 3, padding: "1px 5px", cursor: "pointer", whiteSpace: "nowrap", fontFamily: "inherit" }}>Sample</button>
                       )}
                     </div>
                   </div>

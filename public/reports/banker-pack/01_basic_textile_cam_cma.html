@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>BankReady™ Basic — CAM+CMA — FinsightOne</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Segoe UI',Arial,sans-serif; background:#fff; color:#111827; font-size:12.5px; line-height:1.65; }
+.wm { position:fixed; top:50%; left:50%; transform:translate(-50%,-50%) rotate(-35deg); font-size:110px; font-weight:900; color:rgba(0,0,0,0.03); pointer-events:none; white-space:nowrap; z-index:0; letter-spacing:16px; }
+.hdr { background:#1E3A5F; color:#fff; padding:16px 48px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:100; }
+.logo { font-size:22px; font-weight:900; letter-spacing:1px; }
+.logo .o { color:#F59E0B; }
+.hdr-r { text-align:right; font-size:10px; opacity:0.75; line-height:1.6; }
+.cover { padding:44px 48px; background:#F9FAFB; border-bottom:4px solid #B45309; }
+.pkg { display:inline-block; background:#1E3A5F; color:#F59E0B; font-size:11px; font-weight:800; letter-spacing:1.5px; padding:4px 14px; border-radius:4px; border:1px solid #F59E0B; }
+.conf { display:inline-block; background:#FEF3C7; color:#92400E; font-size:10px; font-weight:700; letter-spacing:1.5px; padding:3px 10px; border-radius:3px; border:1px solid #F59E0B; }
+.ctitle { font-size:26px; font-weight:900; color:#1E3A5F; margin:16px 0 6px; line-height:1.25; }
+.csub { font-size:13px; color:#6B7280; margin-bottom:20px; }
+.cmeta { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:20px; }
+.mc { background:#fff; border:1px solid #E5E7EB; border-radius:6px; padding:12px; }
+.ml { font-size:10px; color:#9CA3AF; text-transform:uppercase; letter-spacing:1px; margin-bottom:3px; }
+.mv { font-size:14px; font-weight:800; color:#1E3A5F; }
+.aiscore { background:#1E3A5F; color:#fff; padding:18px 20px; border-radius:8px; text-align:center; min-width:110px; }
+.asn { font-size:38px; font-weight:900; color:#F59E0B; line-height:1; }
+.asl { font-size:10px; opacity:0.7; letter-spacing:1px; text-transform:uppercase; margin-top:4px; }
+.sec { padding:28px 48px; border-bottom:1px solid #F3F4F6; position:relative; z-index:1; }
+h2 { font-size:12px; font-weight:800; color:#1E3A5F; margin-bottom:14px; padding-bottom:6px; border-bottom:2px solid #E5E7EB; text-transform:uppercase; letter-spacing:0.8px; }
+table { width:100%; border-collapse:collapse; margin:10px 0; font-size:12px; }
+th { background:#1E3A5F; color:#fff; padding:8px 12px; text-align:left; font-weight:600; font-size:11px; }
+td { padding:7px 12px; border-bottom:1px solid #F3F4F6; vertical-align:top; }
+tr:nth-child(even) td { background:#FAFAFA; }
+.num { text-align:right; font-family:monospace; }
+.blr { filter:blur(4px); user-select:none; background:#E5E7EB; padding:1px 6px; border-radius:2px; display:inline-block; }
+.blr2 { filter:blur(3px); display:inline-block; }
+.hl { background:#FFFBEB; border-left:4px solid #B45309; padding:12px 16px; margin:12px 0; border-radius:0 6px 6px 0; font-size:12.5px; }
+.kpis { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:12px 0; }
+.kpi { background:#F9FAFB; border:1px solid #E5E7EB; border-radius:6px; padding:12px; }
+.kv { font-size:20px; font-weight:900; color:#1E3A5F; }
+.kl { font-size:10px; color:#6B7280; margin-top:2px; }
+.rl { color:#065F46; font-weight:700; }
+.rm { color:#92400E; font-weight:700; }
+.rh { color:#991B1B; font-weight:700; }
+.recbox { background:#FFFBEB; border:2px solid #B45309; border-radius:8px; padding:20px 24px; margin-top:8px; }
+.ftr { background:#1E3A5F; color:#fff; padding:12px 48px; display:flex; justify-content:space-between; font-size:10px; margin-top:40px; }
+</style>
+</head>
+<body>
+<div class="wm">SAMPLE</div>
+
+<div class="hdr">
+  <div>
+    <div class="logo">FINSIGHT<span class="o">ONE</span></div>
+    <div style="font-size:10px;opacity:0.6;letter-spacing:1.5px;text-transform:uppercase;margin-top:2px;">Expert Credit Advisory</div>
+  </div>
+  <div class="hdr-r">
+    <div>CREDIT APPRAISAL MEMORANDUM + CMA DATA — PSU BANK FORMAT</div>
+    <div>Report ID: FSB-2025-04891 &nbsp;|&nbsp; Date: May 2025 &nbsp;|&nbsp; Package: BankReady™ Basic</div>
+    <div>Classification: STRICTLY CONFIDENTIAL — SAMPLE</div>
+  </div>
+</div>
+
+<!-- COVER -->
+<div class="cover">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:24px;">
+    <div style="flex:1;">
+      <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;">
+        <span class="pkg">BankReady™ BASIC</span>
+        <span class="conf">CONFIDENTIAL — SAMPLE</span>
+        <span style="display:inline-block;background:#D1FAE5;color:#065F46;font-size:10px;font-weight:700;padding:3px 10px;border-radius:3px;border:1px solid #6EE7B7;">RECOMMEND FOR SANCTION</span>
+      </div>
+      <div class="ctitle">Credit Appraisal Memorandum<br>Working Capital — Cash Credit Facility</div>
+      <div class="csub">
+        Borrower: <span class="blr">S████████ Garments &amp; Exports Pvt. Ltd.</span> &nbsp;|&nbsp; Surat, Gujarat<br>
+        Industry: Readymade Garments &amp; Textile Exports &nbsp;|&nbsp; MSME — Medium Enterprise (Export-Oriented Unit)
+      </div>
+      <table style="max-width:500px;margin:0;">
+        <tr><td style="padding:4px 0;color:#6B7280;width:170px;border:none;">Credit Facility</td><td style="padding:4px 0;font-weight:700;border:none;">Cash Credit — Hypothecation of Stock &amp; Debtors</td></tr>
+        <tr><td style="padding:4px 0;color:#6B7280;border:none;">Amount Requested</td><td style="padding:4px 0;font-weight:700;border:none;">₹35.00 Crore (Enhancement from ₹22 Cr)</td></tr>
+        <tr><td style="padding:4px 0;color:#6B7280;border:none;">Lending Bank (Format)</td><td style="padding:4px 0;font-weight:700;border:none;"><span class="blr2">State Bank of India</span>, SME Branch, Ring Road, Surat</td></tr>
+        <tr><td style="padding:4px 0;color:#6B7280;border:none;">MPBF (Tandon II)</td><td style="padding:4px 0;font-weight:700;border:none;">₹34.52 Crore → Recommended: ₹35.00 Crore</td></tr>
+        <tr><td style="padding:4px 0;color:#6B7280;border:none;">Prepared by</td><td style="padding:4px 0;font-weight:700;border:none;">FinsightOne Expert Advisory (20+ yrs banking exp.)</td></tr>
+      </table>
+    </div>
+    <div class="aiscore">
+      <div class="asn">74</div>
+      <div style="font-size:12px;color:#F59E0B;font-weight:800;margin:2px 0;">/100</div>
+      <div class="asl">FinsightOne<br>AI Credit Score</div>
+      <div style="margin-top:10px;background:#22C55E;color:#fff;font-size:10px;font-weight:800;padding:4px 10px;border-radius:12px;">✓ RECOMMEND</div>
+    </div>
+  </div>
+  <div class="cmeta">
+    <div class="mc"><div class="ml">Turnover FY24 (Audited)</div><div class="mv">₹141.82 Crore</div></div>
+    <div class="mc"><div class="ml">EBITDA Margin FY24</div><div class="mv">10.04%</div></div>
+    <div class="mc"><div class="ml">PAT FY24</div><div class="mv">₹5.49 Crore</div></div>
+    <div class="mc"><div class="ml">Current Ratio FY24</div><div class="mv">1.33x ✓</div></div>
+    <div class="mc"><div class="ml">TOL / TNW FY24</div><div class="mv">2.18x ✓</div></div>
+    <div class="mc"><div class="ml">DSCR FY24</div><div class="mv">1.45x ✓</div></div>
+  </div>
+</div>
+
+<!-- 1. EXECUTIVE SUMMARY -->
+<div class="sec">
+  <h2>1. Executive Summary</h2>
+  <div class="hl">
+    <strong>Recommendation: RECOMMEND FOR SANCTION</strong> — The borrower presents a sound credit profile with consistent revenue growth (CAGR 14.4% over 3 years), improving financial ratios, and satisfactory banking conduct. The proposed enhancement of CC limit from ₹22 Crore to ₹35 Crore is supported by MPBF assessment of ₹34.52 Crore under Tandon Committee Method II. Collateral coverage at 93.7% of limit is adequate. FinsightOne AI Score: 74/100 (GREEN).
+  </div>
+  <p style="color:#374151;margin-top:10px;"><span class="blr">S████████ Garments &amp; Exports Pvt. Ltd.</span> is an export-oriented textile manufacturing unit incorporated in March 2008, engaged in production and export of readymade garments to the USA, UK, and UAE. The company holds annual supply contracts with 6 international buyers. Manufacturing capacity is 2.8 lakh pieces per month (expandable to 4.2 lakh pieces in double shift). The proposed CC enhancement is required to fund working capital for confirmed export orders of USD 14 Mn for FY26 — a 37% increase over FY25 orders.</p>
+</div>
+
+<!-- 2. BORROWER PROFILE -->
+<div class="sec">
+  <h2>2. Borrower Profile</h2>
+  <table>
+    <tr><td style="width:220px;color:#6B7280;">Name of Borrower</td><td><span class="blr">S████████ Garments &amp; Exports Pvt. Ltd.</span></td></tr>
+    <tr><td style="color:#6B7280;">Constitution</td><td>Private Limited Company</td></tr>
+    <tr><td style="color:#6B7280;">Date of Incorporation</td><td>14th March 2008 (17 years in operation)</td></tr>
+    <tr><td style="color:#6B7280;">Registered &amp; Factory Address</td><td>Plot No. B-12 &amp; B-14, GIDC Estate, Sachin, Surat — 394230, Gujarat</td></tr>
+    <tr><td style="color:#6B7280;">Industry / NIC Code</td><td>Readymade Garments — Export Oriented Unit (EOoU) | NIC Code: 1410</td></tr>
+    <tr><td style="color:#6B7280;">MSME Status</td><td>Medium Enterprise | Udyam No.: <span class="blr">GJ-08-0000-XXXX</span></td></tr>
+    <tr><td style="color:#6B7280;">GST Registration No.</td><td><span class="blr">24AXXXX1234X1ZX</span> (Active — filed quarterly)</td></tr>
+    <tr><td style="color:#6B7280;">PAN (Company)</td><td><span class="blr">AXXXX1234X</span></td></tr>
+    <tr><td style="color:#6B7280;">Existing Banker</td><td><span class="blr2">Bank of Baroda</span>, Ring Road Branch, Surat — A-rated conduct, 3 years</td></tr>
+    <tr><td style="color:#6B7280;">Export IEC Code</td><td>Active — Export earnings USD 10.2 Mn (FY24); USD 7.8 Mn (FY23)</td></tr>
+    <tr><td style="color:#6B7280;">Number of Employees</td><td>418 (permanent workers) | 120+ (seasonal contract)</td></tr>
+    <tr><td style="color:#6B7280;">Key Export Markets</td><td>USA (38%), UK (15%), UAE (12%), Europe &amp; Others (35%)</td></tr>
+    <tr><td style="color:#6B7280;">CIBIL Score (Company)</td><td><strong>746</strong> — GOOD (March 2025)</td></tr>
+  </table>
+</div>
+
+<!-- 3. MANAGEMENT -->
+<div class="sec">
+  <h2>3. Management Profile &amp; Personal Guarantee</h2>
+  <table>
+    <tr><th>Name</th><th>Designation</th><th>Qualification</th><th>Experience</th><th>CIBIL</th><th>PG Offered</th></tr>
+    <tr>
+      <td><span class="blr">R████████ P████</span></td>
+      <td>Managing Director &amp; Promoter</td>
+      <td>B.Com, MBA — Textile Management</td>
+      <td>24 yrs, textile export sector</td>
+      <td>764 — Good</td>
+      <td>Yes — Unlimited</td>
+    </tr>
+    <tr>
+      <td><span class="blr">S████████ P████</span></td>
+      <td>Director (Operations) &amp; Co-Promoter</td>
+      <td>B.Tech — Textile Engineering, NIT</td>
+      <td>18 yrs — production &amp; quality</td>
+      <td>731 — Good</td>
+      <td>Yes — Unlimited</td>
+    </tr>
+  </table>
+  <p style="font-size:11px;color:#6B7280;margin-top:8px;">No adverse credit remarks. No pending litigation. No directorship in NPA accounts as per MCA search (April 2025). A professional CFO was inducted in FY23 strengthening financial controls.</p>
+</div>
+
+<!-- 4. EXISTING BANKING -->
+<div class="sec">
+  <h2>4. Existing Banking Relationship &amp; Account Conduct</h2>
+  <table>
+    <tr><th>Facility</th><th>Bank</th><th>Limit Sanctioned</th><th>Outstanding (Mar-25)</th><th>Conduct</th><th>Since</th></tr>
+    <tr>
+      <td>Cash Credit (WC)</td>
+      <td><span class="blr2">Bank of Baroda</span></td>
+      <td class="num">₹22.00 Cr</td>
+      <td class="num">₹18.64 Cr</td>
+      <td><span class="rl">Satisfactory — A-rated</span></td>
+      <td>Mar 2022</td>
+    </tr>
+    <tr>
+      <td>Term Loan (Plant Expansion)</td>
+      <td><span class="blr2">Bank of Baroda</span></td>
+      <td class="num">₹8.50 Cr</td>
+      <td class="num">₹3.20 Cr</td>
+      <td><span class="rl">Regular — Zero overdues</span></td>
+      <td>Jan 2021</td>
+    </tr>
+    <tr>
+      <td>Letter of Credit (Import)</td>
+      <td><span class="blr2">Bank of Baroda</span></td>
+      <td class="num">₹4.00 Cr</td>
+      <td class="num">₹2.10 Cr</td>
+      <td><span class="rl">No devolvement — clean</span></td>
+      <td>Mar 2022</td>
+    </tr>
+    <tr style="background:#FFFBEB;">
+      <td style="font-weight:700;">TOTAL EXISTING EXPOSURE</td>
+      <td></td>
+      <td class="num" style="font-weight:700;">₹34.50 Cr</td>
+      <td class="num" style="font-weight:700;">₹23.94 Cr</td>
+      <td colspan="2"><strong>Full transfer proposed on sanction</strong></td>
+    </tr>
+  </table>
+  <p style="font-size:11px;color:#6B7280;margin-top:6px;">Stock audit (Dec 2024): Satisfactory. No cheque returns in 36 months. No overutilisation beyond permissible 10% limit.</p>
+</div>
+
+<!-- 5. CMA — OPERATING STATEMENT -->
+<div class="sec">
+  <h2>5. CMA Data — Form I: Operating Statement (₹ in Crore)</h2>
+  <p style="font-size:11px;color:#6B7280;margin-bottom:8px;">As per RBI CMA Data format | Audited: FY22, FY23, FY24 (CA certified) | Projected: FY25</p>
+  <table>
+    <tr>
+      <th style="width:38%;">Particulars</th>
+      <th class="num">FY22<br><span style="font-weight:400;font-size:10px;">Audited</span></th>
+      <th class="num">FY23<br><span style="font-weight:400;font-size:10px;">Audited</span></th>
+      <th class="num">FY24<br><span style="font-weight:400;font-size:10px;">Audited</span></th>
+      <th class="num">FY25<br><span style="font-weight:400;font-size:10px;">Projected</span></th>
+    </tr>
+    <tr><td colspan="5" style="background:#F0F4FF;font-weight:700;color:#1E3A5F;font-size:11px;padding:6px 12px;">A. INCOME</td></tr>
+    <tr><td style="padding-left:18px;">Net Sales / Revenue from Operations</td><td class="num">108.42</td><td class="num">124.64</td><td class="num">141.82</td><td class="num">158.00</td></tr>
+    <tr><td style="padding-left:18px;">Other Income (PLI, forex gain)</td><td class="num">0.84</td><td class="num">1.02</td><td class="num">1.18</td><td class="num">1.20</td></tr>
+    <tr><td style="padding-left:18px;font-weight:700;">Total Income</td><td class="num" style="font-weight:700;">109.26</td><td class="num" style="font-weight:700;">125.66</td><td class="num" style="font-weight:700;">143.00</td><td class="num" style="font-weight:700;">159.20</td></tr>
+    <tr><td colspan="5" style="background:#F0F4FF;font-weight:700;color:#1E3A5F;font-size:11px;padding:6px 12px;">B. COST OF PRODUCTION</td></tr>
+    <tr><td style="padding-left:18px;">Raw Material Consumed (Fabric &amp; Yarn)</td><td class="num">72.32</td><td class="num">82.64</td><td class="num">93.16</td><td class="num">103.50</td></tr>
+    <tr><td style="padding-left:18px;">Manufacturing Expenses (Power, Labour, Freight)</td><td class="num">12.41</td><td class="num">14.18</td><td class="num">16.08</td><td class="num">18.00</td></tr>
+    <tr><td style="padding-left:18px;">Administrative &amp; Selling Expenses</td><td class="num">14.54</td><td class="num">16.72</td><td class="num">19.52</td><td class="num">21.98</td></tr>
+    <tr><td style="padding-left:18px;font-weight:700;">Total Expenditure (excl. Dep &amp; Interest)</td><td class="num" style="font-weight:700;">99.27</td><td class="num" style="font-weight:700;">113.54</td><td class="num" style="font-weight:700;">128.76</td><td class="num" style="font-weight:700;">143.48</td></tr>
+    <tr><td colspan="5" style="background:#F0F4FF;font-weight:700;color:#1E3A5F;font-size:11px;padding:6px 12px;">C. PROFITABILITY</td></tr>
+    <tr><td style="padding-left:18px;font-weight:700;color:#1E3A5F;">EBITDA</td><td class="num" style="font-weight:700;color:#1E3A5F;">9.99</td><td class="num" style="font-weight:700;color:#1E3A5F;">12.12</td><td class="num" style="font-weight:700;color:#1E3A5F;">14.24</td><td class="num" style="font-weight:700;color:#1E3A5F;">15.72</td></tr>
+    <tr><td style="padding-left:18px;">EBITDA Margin %</td><td class="num">9.14%</td><td class="num">9.65%</td><td class="num">9.97%</td><td class="num">9.81%</td></tr>
+    <tr><td style="padding-left:18px;">Less: Depreciation</td><td class="num">1.84</td><td class="num">2.02</td><td class="num">2.20</td><td class="num">2.38</td></tr>
+    <tr><td style="padding-left:18px;">Less: Interest &amp; Finance Charges</td><td class="num">3.62</td><td class="num">4.08</td><td class="num">4.72</td><td class="num">5.12</td></tr>
+    <tr><td style="padding-left:18px;font-weight:700;">Profit Before Tax (PBT)</td><td class="num" style="font-weight:700;">4.53</td><td class="num" style="font-weight:700;">6.02</td><td class="num" style="font-weight:700;">7.32</td><td class="num" style="font-weight:700;">8.22</td></tr>
+    <tr><td style="padding-left:18px;">Tax @ 25%</td><td class="num">1.13</td><td class="num">1.51</td><td class="num">1.83</td><td class="num">2.06</td></tr>
+    <tr><td style="padding-left:18px;font-weight:700;color:#1E3A5F;">Profit After Tax (PAT)</td><td class="num" style="font-weight:700;color:#1E3A5F;">3.40</td><td class="num" style="font-weight:700;color:#1E3A5F;">4.51</td><td class="num" style="font-weight:700;color:#1E3A5F;">5.49</td><td class="num" style="font-weight:700;color:#1E3A5F;">6.16</td></tr>
+    <tr><td style="padding-left:18px;">Dividend Paid</td><td class="num">1.00</td><td class="num">1.20</td><td class="num">1.20</td><td class="num">1.16</td></tr>
+    <tr><td style="padding-left:18px;font-weight:700;">Retained Profits</td><td class="num" style="font-weight:700;">2.40</td><td class="num" style="font-weight:700;">3.31</td><td class="num" style="font-weight:700;">4.29</td><td class="num" style="font-weight:700;">5.00</td></tr>
+    <tr style="background:#FFFBEB;"><td style="padding-left:18px;font-weight:700;">Cumulative Net Worth</td><td class="num" style="font-weight:700;">18.24</td><td class="num" style="font-weight:700;">21.55</td><td class="num" style="font-weight:700;">25.84</td><td class="num" style="font-weight:700;">30.84</td></tr>
+  </table>
+</div>
+
+<!-- 6. MPBF CALCULATION -->
+<div class="sec">
+  <h2>6. CMA Data — Form IV: MPBF Assessment (Tandon Committee Method II)</h2>
+  <p style="font-size:11px;color:#6B7280;margin-bottom:8px;">Method II: Borrower contributes minimum 25% of total current assets from own long-term funds. MPBF = NWC × 75%</p>
+  <table>
+    <tr><th style="width:50%;">Particulars (₹ in Crore)</th><th class="num">FY24 (Actuals)</th><th class="num">FY25P (Basis for WC)</th></tr>
+    <tr><td colspan="3" style="background:#F0F4FF;font-weight:700;color:#1E3A5F;font-size:11px;padding:6px 12px;">A. TOTAL CURRENT ASSETS (at accepted norms)</td></tr>
+    <tr><td style="padding-left:18px;">Raw Material (holding: 60 days)</td><td class="num">18.42</td><td class="num">22.12</td></tr>
+    <tr><td style="padding-left:18px;">Work-in-Progress (holding: 14 days)</td><td class="num">6.84</td><td class="num">8.40</td></tr>
+    <tr><td style="padding-left:18px;">Finished Goods (holding: 30 days)</td><td class="num">12.18</td><td class="num">14.62</td></tr>
+    <tr><td style="padding-left:18px;">Sundry Debtors (domestic: 60 days; export: 90 days)</td><td class="num">17.24</td><td class="num">19.82</td></tr>
+    <tr><td style="padding-left:18px;">Advances to Suppliers &amp; Others</td><td class="num">3.12</td><td class="num">3.44</td></tr>
+    <tr><td style="padding-left:18px;font-weight:700;">(A) Total Current Assets</td><td class="num" style="font-weight:700;">57.80</td><td class="num" style="font-weight:700;">68.40</td></tr>
+    <tr><td colspan="3" style="background:#F0F4FF;font-weight:700;color:#1E3A5F;font-size:11px;padding:6px 12px;">B. OTHER CURRENT LIABILITIES (Non-Bank Sources)</td></tr>
+    <tr><td style="padding-left:18px;">Sundry Creditors (raw material credit: 45 days)</td><td class="num">10.82</td><td class="num">12.40</td></tr>
+    <tr><td style="padding-left:18px;">Statutory Liabilities (GST, PF, TDS payable)</td><td class="num">2.24</td><td class="num">2.82</td></tr>
+    <tr><td style="padding-left:18px;">Advance from Buyers</td><td class="num">0.84</td><td class="num">1.56</td></tr>
+    <tr><td style="padding-left:18px;font-weight:700;">(B) Total Other Current Liabilities</td><td class="num" style="font-weight:700;">13.90</td><td class="num" style="font-weight:700;">16.78</td></tr>
+    <tr style="background:#EFF6FF;"><td style="font-weight:700;padding:8px 12px;">Net Working Capital (A − B)</td><td class="num" style="font-weight:700;">43.90</td><td class="num" style="font-weight:700;">51.62</td></tr>
+    <tr><td style="padding-left:18px;">Less: 25% NW Contribution (own funds margin)</td><td class="num">(14.45)</td><td class="num">(17.10)</td></tr>
+    <tr style="background:#FFFBEB;"><td style="font-weight:700;padding:8px 12px;color:#B45309;">Maximum Permissible Bank Finance (MPBF)</td><td class="num" style="font-weight:700;color:#B45309;">29.45</td><td class="num" style="font-weight:700;color:#B45309;">34.52</td></tr>
+    <tr><td style="font-weight:700;">Recommended CC Limit</td><td class="num"></td><td class="num" style="font-weight:700;">₹35.00 Crore</td></tr>
+    <tr><td style="font-weight:700;">Justification for rounding</td><td class="num"></td><td class="num" style="color:#6B7280;">Export order pipeline + 1.4% buffer</td></tr>
+  </table>
+</div>
+
+<!-- 7. KEY RATIOS -->
+<div class="sec">
+  <h2>7. Key Financial Ratios</h2>
+  <table>
+    <tr><th>Ratio</th><th class="num">FY22</th><th class="num">FY23</th><th class="num">FY24</th><th class="num">FY25P</th><th>Benchmark</th><th>Assessment</th></tr>
+    <tr><td>Current Ratio</td><td class="num">1.28</td><td class="num">1.31</td><td class="num">1.33</td><td class="num">1.35</td><td>≥ 1.20</td><td><span class="rl">✓ Satisfactory — improving</span></td></tr>
+    <tr><td>Total Outside Liabilities / TNW</td><td class="num">2.45</td><td class="num">2.28</td><td class="num">2.18</td><td class="num">2.02</td><td>≤ 3.00</td><td><span class="rl">✓ Declining — leverage reducing</span></td></tr>
+    <tr><td>Debt Service Coverage (DSCR)</td><td class="num">—</td><td class="num">1.38</td><td class="num">1.45</td><td class="num">1.52</td><td>≥ 1.25</td><td><span class="rl">✓ Above benchmark</span></td></tr>
+    <tr><td>Net Profit Margin %</td><td class="num">3.14%</td><td class="num">3.61%</td><td class="num">3.87%</td><td class="num">3.90%</td><td>Industry 3–5%</td><td><span class="rl">✓ In line with industry</span></td></tr>
+    <tr><td>Return on Capital Employed (ROCE)</td><td class="num">14.2%</td><td class="num">16.8%</td><td class="num">18.4%</td><td class="num">19.6%</td><td>≥ 12%</td><td><span class="rl">✓ Above threshold</span></td></tr>
+    <tr><td>Inventory Days</td><td class="num">88 days</td><td class="num">86 days</td><td class="num">82 days</td><td class="num">80 days</td><td>≤ 90 days</td><td><span class="rl">✓ Improving efficiency</span></td></tr>
+    <tr><td>Debtor Days</td><td class="num">92 days</td><td class="num">88 days</td><td class="num">85 days</td><td class="num">82 days</td><td>≤ 90 days</td><td><span class="rm">⚠ Export norms justify 90-day cycle</span></td></tr>
+    <tr><td>Debt / Equity Ratio</td><td class="num">1.82</td><td class="num">1.64</td><td class="num">1.48</td><td class="num">1.32</td><td>≤ 2.00</td><td><span class="rl">✓ Comfortable and declining</span></td></tr>
+    <tr><td>Interest Coverage (EBIT / Interest)</td><td class="num">2.76x</td><td class="num">2.97x</td><td class="num">3.02x</td><td class="num">3.07x</td><td>≥ 2.00x</td><td><span class="rl">✓ Healthy coverage</span></td></tr>
+  </table>
+</div>
+
+<!-- 8. RISK ASSESSMENT -->
+<div class="sec">
+  <h2>8. Credit Risk Assessment</h2>
+  <table>
+    <tr><th>Risk Category</th><th>Rating</th><th>Key Factors</th><th>Mitigants</th></tr>
+    <tr>
+      <td><strong>Financial Risk</strong></td>
+      <td><span class="rl">LOW–MEDIUM</span></td>
+      <td>PAT positive for 8 consecutive years. Net worth growing at ₹4–5 Cr/year. Working capital cycle 80 days.</td>
+      <td>Improving leverage, confirmed export orders USD 14 Mn FY26, PLI receipts ₹1.8 Cr FY24</td>
+    </tr>
+    <tr>
+      <td><strong>Industry Risk</strong></td>
+      <td><span class="rm">MEDIUM</span></td>
+      <td>Demand linked to US/UK consumer spending. INR/USD exchange rate risk. Cotton price volatility.</td>
+      <td>65% long-term buyer contracts with price escalation clauses. Forward contracts for USD hedging.</td>
+    </tr>
+    <tr>
+      <td><strong>Management Risk</strong></td>
+      <td><span class="rl">LOW</span></td>
+      <td>Promoters 22+ years in sector. No litigation. Clean personal CIBIL (764 &amp; 731). Professional CFO appointed.</td>
+      <td>Stable management team. Second-generation family member being inducted. No key-man dependency.</td>
+    </tr>
+    <tr>
+      <td><strong>Security / Collateral Risk</strong></td>
+      <td><span class="rl">LOW</span></td>
+      <td>Hypothecation of entire current assets (₹57.8 Cr book value). Collateral ₹32.8 Cr — factories in industrial estate.</td>
+      <td>Annual stock audit. Export receivables insured. All properties free of encumbrances as per records.</td>
+    </tr>
+    <tr>
+      <td><strong>Conduct Risk</strong></td>
+      <td><span class="rl">LOW</span></td>
+      <td>Existing banker account A-rated for 3 years. No cheque returns. No overutilisation. GST and ROC filings current.</td>
+      <td>Full banking relationship transfer proposed on sanction — strengthens lender relationship and monitoring.</td>
+    </tr>
+  </table>
+  <div class="hl" style="margin-top:12px;"><strong>Overall Internal Rating: B+ (FinsightOne Scale) | AI Score: 74/100 — GREEN</strong><br>Risk profile is LOW–MEDIUM overall. Recommend sanction with standard financial covenants and annual review.</div>
+</div>
+
+<!-- 9. SECURITY -->
+<div class="sec">
+  <h2>9. Security Structure</h2>
+  <table>
+    <tr><th>Type</th><th>Description</th><th>Value (₹ Cr)</th><th>Basis</th><th>Coverage Ratio</th></tr>
+    <tr>
+      <td><strong>Primary Security</strong></td>
+      <td>First charge by way of hypothecation of entire current assets — stock &amp; book debts (present &amp; future)</td>
+      <td class="num">~57.80</td>
+      <td>Book value FY24</td>
+      <td>165.1%</td>
+    </tr>
+    <tr>
+      <td><strong>Collateral 1</strong></td>
+      <td>Equitable mortgage — Factory building &amp; land, GIDC Sachin, Surat (2,840 sq.m. built-up + 1,200 sq.m. open)</td>
+      <td class="num">24.20</td>
+      <td>DM Valuation, April 2025</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><strong>Collateral 2</strong></td>
+      <td>Equitable mortgage — Residential property, Athwa Lines, Surat (380 sq.m.)</td>
+      <td class="num">8.60</td>
+      <td>DM Valuation, April 2025</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><strong>Personal Guarantee</strong></td>
+      <td>Unlimited personal guarantee — both promoter-directors</td>
+      <td class="num">—</td>
+      <td>Covering entire facility</td>
+      <td></td>
+    </tr>
+    <tr style="background:#FFFBEB;">
+      <td style="font-weight:700;">Total Collateral (Excl. Primary)</td>
+      <td></td>
+      <td class="num" style="font-weight:700;">₹32.80 Cr</td>
+      <td></td>
+      <td style="font-weight:700;color:#065F46;">93.7% of CC limit — ADEQUATE</td>
+    </tr>
+  </table>
+</div>
+
+<!-- 10. RECOMMENDATION -->
+<div class="sec">
+  <h2>10. Recommendation &amp; Proposed Terms</h2>
+  <div class="recbox">
+    <div style="font-size:13px;font-weight:800;color:#B45309;margin-bottom:10px;">FinsightOne Recommendation — BankReady™ Basic</div>
+    <p style="margin-bottom:12px;">Based on CMA analysis, financial ratio assessment, risk evaluation, and an AI Credit Score of <strong>74/100 (GREEN)</strong>, FinsightOne recommends sanction of Cash Credit (Hypothecation) of <strong>₹35.00 Crore (Thirty Five Crore Only)</strong> subject to the following proposed terms and conditions:</p>
+    <table style="margin:0;font-size:12px;">
+      <tr><td style="width:24px;vertical-align:top;color:#B45309;font-weight:700;border:none;padding:4px 8px 4px 0;">1.</td><td style="border:none;padding:4px 0;">Rate of Interest: 1-Year MCLR + 1.85% p.a. (floating); subject to credit committee</td></tr>
+      <tr><td style="vertical-align:top;color:#B45309;font-weight:700;border:none;padding:4px 8px 4px 0;">2.</td><td style="border:none;padding:4px 0;">Monthly stock &amp; debtors statement to be submitted by 15th of following month</td></tr>
+      <tr><td style="vertical-align:top;color:#B45309;font-weight:700;border:none;padding:4px 8px 4px 0;">3.</td><td style="border:none;padding:4px 0;">Annual stock audit by bank-empanelled CA firm (at borrower's cost)</td></tr>
+      <tr><td style="vertical-align:top;color:#B45309;font-weight:700;border:none;padding:4px 8px 4px 0;">4.</td><td style="border:none;padding:4px 0;">Financial covenants to be maintained throughout: Current Ratio ≥ 1.20 | TOL/TNW ≤ 3.00 | DSCR ≥ 1.25</td></tr>
+      <tr><td style="vertical-align:top;color:#B45309;font-weight:700;border:none;padding:4px 8px 4px 0;">5.</td><td style="border:none;padding:4px 0;">Full banking relationship transfer from <span class="blr2">existing bank</span> within 30 days of first drawdown (NOC + security release)</td></tr>
+      <tr><td style="vertical-align:top;color:#B45309;font-weight:700;border:none;padding:4px 8px 4px 0;">6.</td><td style="border:none;padding:4px 0;">Audited financials to be submitted within 120 days of financial year-end; projections annually</td></tr>
+    </table>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px;">
+    <div style="border:1px solid #E5E7EB;border-radius:6px;padding:14px;">
+      <div style="font-size:10px;color:#9CA3AF;margin-bottom:4px;">PREPARED BY</div>
+      <div style="font-weight:800;color:#1E3A5F;">FinsightOne Expert Advisory Team</div>
+      <div style="font-size:11px;color:#6B7280;margin-top:4px;">20+ years banking experience | Reviewed by ex-Senior Credit Manager (PSU Bank)</div>
+    </div>
+    <div style="border:1px solid #E5E7EB;border-radius:6px;padding:14px;">
+      <div style="font-size:10px;color:#9CA3AF;margin-bottom:4px;">DOCUMENT DETAILS</div>
+      <div style="font-weight:800;color:#1E3A5F;">FSB-2025-04891 | BankReady™ Basic</div>
+      <div style="font-size:11px;color:#6B7280;margin-top:4px;">Prepared: May 2025 | Validity: 90 days | GST: 18% additional on service fee</div>
+    </div>
+  </div>
+  <p style="font-size:10px;color:#9CA3AF;margin-top:14px;font-style:italic;">DISCLAIMER: This is a sample report prepared by FinsightOne for illustrative purposes. Borrower identity, financial data, and bank details are representational. All personal and company names have been redacted. Actual client reports are prepared with verified data. FinsightOne does not guarantee loan approval — this document supports the borrower's bank submission process.</p>
+</div>
+
+<div class="ftr">
+  <div>© 2025 FinsightOne · Expert Credit Advisory · info@finsightone.co · +91 95794 53635</div>
+  <div>CONFIDENTIAL — SAMPLE REPORT — FOR ILLUSTRATIVE PURPOSES ONLY</div>
+  <div>FSB-2025-04891 | BankReady™ Basic</div>
+</div>
+</body>
+</html>

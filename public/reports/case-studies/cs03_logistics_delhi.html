@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Study 03 — Logistics | ₹22 Crore CC + TL | FinsightOne</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #F9FAFB; color: #1F2937; font-size: 13.5px; line-height: 1.6; }
+  .page { max-width: 940px; margin: 0 auto; background: #fff; box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+  .header { background: #1E3A5F; color: #fff; padding: 24px 40px 20px; display: flex; justify-content: space-between; align-items: center; }
+  .logo { font-size: 22px; font-weight: 900; letter-spacing: 1px; }
+  .logo span { color: #F59E0B; }
+  .tagline { font-size: 10px; color: #93C5FD; letter-spacing: 2px; text-transform: uppercase; margin-top: 3px; }
+  .hdr-r { text-align: right; font-size: 10.5px; color: #CBD5E1; line-height: 1.9; }
+  .hero { background: linear-gradient(135deg, #1E3A5F 0%, #2D5282 100%); color: #fff; padding: 52px 40px 44px; border-bottom: 4px solid #F59E0B; }
+  .cs-label { display: inline-block; background: #F59E0B; color: #1E3A5F; font-weight: 800; font-size: 10px; padding: 4px 14px; border-radius: 4px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+  .hero h1 { font-size: 28px; font-weight: 900; line-height: 1.2; margin-bottom: 8px; }
+  .hero-sub { font-size: 14px; color: #93C5FD; margin-bottom: 24px; }
+  .hero-divider { width: 60px; height: 3px; background: #F59E0B; margin: 16px 0 24px; border-radius: 2px; }
+  .outcome-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .oc { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-top: 3px solid #F59E0B; border-radius: 6px; padding: 16px 12px; text-align: center; }
+  .oc .ov { font-size: 22px; font-weight: 900; color: #F59E0B; }
+  .oc .ol { font-size: 10px; color: #93C5FD; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+  .content { padding: 36px 40px; }
+  .section { margin-bottom: 32px; }
+  .section-title { font-size: 13px; font-weight: 800; color: #1E3A5F; border-bottom: 2px solid #E5E7EB; padding-bottom: 7px; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.8px; }
+  .section-title .sn { display: inline-block; background: #1E3A5F; color: #F59E0B; font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 3px; margin-right: 8px; }
+  p { margin-bottom: 10px; color: #374151; }
+  .divider { border: none; border-top: 1px solid #E5E7EB; margin: 24px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 12.5px; }
+  th { background: #1E3A5F; color: #fff; padding: 9px 13px; text-align: left; font-size: 11.5px; font-weight: 700; }
+  td { padding: 8px 13px; border-bottom: 1px solid #F3F4F6; }
+  tr:nth-child(even) td { background: #FAFAFA; }
+  .num { text-align: right; font-family: monospace; }
+  .good { color: #059669; font-weight: 700; }
+  .bad { color: #DC2626; font-weight: 700; }
+  .blr { filter: blur(5px); user-select: none; background: #E5E7EB; padding: 1px 6px; border-radius: 2px; display: inline-block; }
+  .blr2 { filter: blur(3px); display: inline-block; }
+  .challenge-box { background: #FEF2F2; border-left: 5px solid #DC2626; padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 14px 0; }
+  .challenge-box .cb-title { font-weight: 800; color: #991B1B; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+  .solution-box { background: #ECFDF5; border-left: 5px solid #059669; padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 14px 0; }
+  .solution-box .sb-title { font-weight: 800; color: #065F46; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+  .insight { background: #FFFBEB; border-left: 4px solid #B45309; padding: 14px 18px; border-radius: 0 6px 6px 0; margin: 14px 0; }
+  .insight strong { color: #92400E; }
+  .result-bar { background: #ECFDF5; border: 2px solid #059669; border-radius: 10px; padding: 24px 28px; margin: 20px 0; text-align: center; }
+  .result-bar .rt { font-size: 10px; color: #059669; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+  .result-bar .rv { font-size: 36px; font-weight: 900; color: #065F46; }
+  .result-bar .rd { font-size: 12px; color: #374151; margin-top: 6px; }
+  .quote { background: #F9FAFB; border-left: 4px solid #F59E0B; padding: 20px 24px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+  .quote p { font-size: 15px; font-style: italic; color: #374151; margin-bottom: 8px; line-height: 1.7; }
+  .quote .attr { font-size: 11px; color: #9CA3AF; font-weight: 700; font-style: normal; }
+  ul.styled { list-style: none; padding: 0; }
+  ul.styled li { padding: 5px 0 5px 20px; position: relative; color: #374151; font-size: 13px; }
+  ul.styled li::before { content: '▸'; position: absolute; left: 0; color: #F59E0B; font-size: 12px; top: 6px; }
+  .footer { background: #1E3A5F; color: #fff; padding: 14px 40px; display: flex; justify-content: space-between; font-size: 10px; margin-top: 40px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="header">
+  <div>
+    <div class="logo">FINSIGHT<span>ONE</span></div>
+    <div class="tagline">Expert Credit Advisory</div>
+  </div>
+  <div class="hdr-r">
+    <div>CLIENT SUCCESS STORY — CASE STUDY 03</div>
+    <div>Industry: Third-Party Logistics &amp; Warehousing</div>
+    <div>All details anonymised · Real outcome</div>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="cs-label">Case Study · 03</div>
+  <h1>₹22 Crore Working Capital + Term Loan<br>for a 3PL Logistics Company — Delhi NCR</h1>
+  <div class="hero-sub">An e-commerce logistics company had landed three new warehouse contracts. The bank classified them as a "trading company" and declined. We restructured the case entirely.</div>
+  <div class="hero-divider"></div>
+  <div class="outcome-row">
+    <div class="oc"><div class="ov">₹22 Cr</div><div class="ol">Total Facility</div></div>
+    <div class="oc"><div class="ov">7 Weeks</div><div class="ol">End to End</div></div>
+    <div class="oc"><div class="ov">₹12 Cr CC</div><div class="ol">Working Capital</div></div>
+    <div class="oc"><div class="ov">₹10 Cr TL</div><div class="ol">Fleet Expansion</div></div>
+  </div>
+</div>
+
+<div class="content">
+
+<div class="section">
+  <div class="section-title"><span class="sn">01</span> The Client</div>
+  <p><span class="blr">V████████ Supply Chain Solutions Pvt. Ltd.</span> is a third-party logistics (3PL) company based in Gurugram, Haryana providing last-mile delivery, fulfilment centre management, and cross-dock warehousing services to e-commerce and FMCG clients. It operates 6 warehouses across the Delhi-NCR belt with a fleet of 84 owned vehicles.</p>
+
+  <table>
+    <tr><th style="width:40%;">Parameter</th><th>Detail</th></tr>
+    <tr><td>Sector</td><td>Third-Party Logistics (3PL) — Warehousing &amp; Last-Mile Delivery</td></tr>
+    <tr><td>Location</td><td>Gurugram, Haryana (Operations: Delhi-NCR)</td></tr>
+    <tr><td>Fleet Size</td><td>84 owned vehicles (15 heavy trucks, 69 LCVs/mini-trucks)</td></tr>
+    <tr><td>Warehouse Area Managed</td><td>4.2 lakh sq. ft. across 6 locations (3 owned, 3 leased)</td></tr>
+    <tr><td>FY2024 Revenue</td><td>₹58.4 Crore (WC: ₹12 Cr from 3 new contracts pending)</td></tr>
+    <tr><td>Key Clients</td><td>2 large e-commerce platforms + 4 FMCG brands</td></tr>
+    <tr><td>Loan Request</td><td>₹12 Cr CC (Debtors) + ₹10 Cr TL (Fleet Expansion)</td></tr>
+    <tr><td>Applying Bank</td><td><span class="blr2">HDFC Bank</span>, SME Banking, Gurugram</td></tr>
+  </table>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-title"><span class="sn">02</span> The Problem</div>
+
+  <div class="challenge-box">
+    <div class="cb-title">Challenge 1: Misclassification — Bank Tagged Them as "Trading Company"</div>
+    <p style="margin:0;font-size:12.5px;color:#374151;">The company's NIC code in their GST registration and their bank account description used the word "trading" — a legacy tag from when they started as a goods trader before pivoting to logistics. The private bank's credit officer classified them under the "trading" sector, applied more conservative lending norms (lower CC eligibility ratio, stricter collateral requirements), and declined the CC application citing insufficient stock/debtor security. In reality, this was a pure services business with no trading activity for 4 years.</p>
+  </div>
+
+  <div class="challenge-box">
+    <div class="cb-title">Challenge 2: Debtors Were Not Being Pledged Correctly</div>
+    <p style="margin:0;font-size:12.5px;color:#374151;">The CC was sought against book debts — outstanding invoices from e-commerce and FMCG clients. However, the debtor statements submitted were not in the bank's required format, mixing domestic and credit card receivables. More critically, two of the largest debtors (₹8.4 Crore combined) were large-cap listed companies with 60-day payment terms — which should attract significantly lower credit risk weight but were being treated as high-risk debtors.</p>
+  </div>
+
+  <div class="challenge-box">
+    <div class="cb-title">Challenge 3: Fleet as Primary Security — Bank Had No Valuation Framework</div>
+    <p style="margin:0;font-size:12.5px;color:#374151;">For the ₹10 Crore term loan for 45 additional vehicles, the bank lacked an internal framework for valuing a fleet of mixed commercial vehicles. The empanelled valuer had only valued real estate before. The vehicle portfolio was being collectively valued at depreciated book value (₹3.8 Crore), creating a massive apparent collateral shortfall on the TL.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-title"><span class="sn">03</span> What FinsightOne Did</div>
+
+  <div class="solution-box">
+    <div class="sb-title">Action 1: Reclassified the Business — Fixed the NIC Code Issue</div>
+    <p style="margin:0;font-size:12.5px;color:#374151;">We obtained a formal declaration from the company's CA confirming zero trading activity since FY21 and 100% revenue from logistics services. We assisted in filing a GST amendment to correct the primary NIC code to 4923 (Freight Transport by Road) — the correct classification. We then presented the application under the correct sector norms. RBI's guidelines under Priority Sector Lending classify logistics and transport companies separately from traders — the CC eligibility ratios are completely different and much more favourable.</p>
+  </div>
+
+  <div class="solution-box">
+    <div class="sb-title">Action 2: Rebuilt the Debtor Statement in Bank Format</div>
+    <p style="margin:0;font-size:12.5px;color:#374151;">We prepared the debtor aging statement in the exact format prescribed by the bank's credit manual, separating: (a) Large corporate debtors — listed companies, government bodies (₹14.8 Crore) and (b) SME/individual debtors (₹4.2 Crore). For large corporate debtors, we attached CIBIL TransUnion Corporate reports showing AAA/AA credit ratings, arguing for a lower advance rate (banks typically advance 75–80% against corporate debtors vs 50–60% against SME debtors). This increased the calculated CC eligibility from ₹9.6 Crore to ₹12.4 Crore.</p>
+  </div>
+
+  <div class="solution-box">
+    <div class="sb-title">Action 3: Arranged Commercial Vehicle-Specialist Valuer</div>
+    <p style="margin:0;font-size:12.5px;color:#374151;">We identified an RBI-empanelled valuer specialising in commercial vehicle fleets (they work with fleet finance companies) and arranged a proper fleet valuation. Market value of the 84-vehicle fleet was assessed at ₹18.2 Crore on going-concern basis. This, combined with the 3 owned warehouse properties (₹9.4 Crore), provided total collateral coverage of 127% for the combined ₹22 Crore facility.</p>
+  </div>
+
+  <div class="insight">
+    <strong>The Analogy That Helped:</strong> The bank was treating the debtor statement like a single pile of mixed coins — valuing them all at the lowest common denomination. We separated the gold coins (listed corporates — Reliance, Flipkart Commerce) from the small change. When the credit officer saw that ₹14.8 Crore of the debtors were backed by companies with AAA ratings, the credit risk picture changed completely.
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-title"><span class="sn">04</span> Outcome</div>
+  <div class="result-bar">
+    <div class="rt">Final Outcome</div>
+    <div class="rv">₹22 Crore Facility — Sanctioned</div>
+    <div class="rd">₹12 Crore CC against book debts + ₹10 Crore TL for fleet. 7 weeks from engagement. Same bank — new sector classification — completely different credit assessment.</div>
+  </div>
+
+  <table>
+    <tr>
+      <th style="width:40%;">Metric</th>
+      <th style="text-align:right;">Before FinsightOne</th>
+      <th style="text-align:right;">After FinsightOne</th>
+    </tr>
+    <tr><td>Business Classification</td><td class="num bad">Trading Company</td><td class="num good">Logistics Services (NIC 4923)</td></tr>
+    <tr><td>CC Eligibility Assessed</td><td class="num bad">₹9.6 Crore</td><td class="num good">₹12.4 Crore</td></tr>
+    <tr><td>Fleet Collateral Value</td><td class="num bad">₹3.8 Cr (book depreciation)</td><td class="num good">₹18.2 Cr (market — fleet valuer)</td></tr>
+    <tr><td>Total Collateral Coverage</td><td class="num bad">Below 60%</td><td class="num good">127%</td></tr>
+    <tr><td>CC Sanctioned</td><td class="num bad">Declined</td><td class="num good">₹12 Crore</td></tr>
+    <tr><td>TL Sanctioned</td><td class="num bad">Declined</td><td class="num good">₹10 Crore</td></tr>
+  </table>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-title"><span class="sn">05</span> Key Takeaway</div>
+  <ul class="styled">
+    <li>A wrong sector code can kill a perfectly good loan application — before a single financial ratio is even reviewed</li>
+    <li>Debtor quality matters enormously — large corporate debtors carry far lower credit risk and should be presented separately</li>
+    <li>The right valuer with the right sector expertise changes the collateral conversation completely</li>
+    <li>The business was entirely the same before and after FinsightOne — only the file changed</li>
+    <li>The bank that declined sanctioned the corrected file — no need to switch banks</li>
+  </ul>
+
+  <div class="quote">
+    <p>"The bank called us a trading company even though we haven't traded anything in 4 years. FinsightOne understood immediately what was wrong, fixed it, and got us ₹22 Crore sanctioned from the same bank that had just turned us away."</p>
+    <div class="attr">— Director (Finance), <span class="blr" style="font-size:11px;">V████████ Supply Chain Solutions Pvt. Ltd.</span> · Gurugram, Haryana</div>
+  </div>
+</div>
+
+</div>
+
+<div class="footer">
+  <div><strong style="color:#F59E0B;">FINSIGHT<span style="color:#fff;">ONE</span></strong> &nbsp;|&nbsp; Expert Credit Advisory &nbsp;|&nbsp; finsightone.com</div>
+  <div>Case Study 03 — Anonymised · Real Outcome &nbsp;|&nbsp; © 2025 FinsightOne</div>
+</div>
+
+</div>
+</body>
+</html>

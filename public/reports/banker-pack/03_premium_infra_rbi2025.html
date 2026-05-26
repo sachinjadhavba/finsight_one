@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FSB-2025-05247 | BankReady™ PREMIUM | FinsightOne</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #1a1a1a; background: #fff; line-height: 1.5; }
+
+  /* HEADER */
+  .header { background: #1E3A5F; color: #fff; padding: 18px 40px; display: flex; justify-content: space-between; align-items: center; }
+  .logo { font-size: 22px; font-weight: 700; letter-spacing: 1px; }
+  .logo span { color: #F59E0B; }
+  .header-meta { text-align: right; font-size: 11px; opacity: 0.85; line-height: 1.8; }
+
+  /* COMPLIANCE STRIP */
+  .compliance-strip { background: #162C47; color: #F59E0B; padding: 7px 40px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.5px; display: flex; justify-content: space-between; align-items: center; }
+  .compliance-strip span { opacity: 0.8; font-weight: 400; color: #fff; }
+
+  /* COVER BAND */
+  .cover-band { background: #F8FAFC; border-bottom: 3px solid #1E3A5F; padding: 28px 40px 22px; }
+  .cover-band h1 { font-size: 18px; color: #1E3A5F; font-weight: 700; margin-bottom: 6px; }
+  .cover-band .sub { font-size: 12px; color: #555; margin-bottom: 16px; }
+
+  /* BADGES */
+  .badge-row { display: flex; gap: 10px; align-items: center; margin-bottom: 16px; flex-wrap: wrap; }
+  .badge { padding: 4px 12px; border-radius: 3px; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; }
+  .badge-prem { background: #B45309; color: #fff; }
+  .badge-green { background: #16A34A; color: #fff; }
+  .badge-cond { border: 1.5px solid #B45309; color: #B45309; background: #FFFBEB; }
+  .badge-rbi { background: #1E3A5F; color: #F59E0B; }
+  .badge-nhai { background: #0F4C81; color: #fff; }
+
+  /* AI SCORE BOX */
+  .score-box { display: inline-flex; align-items: center; gap: 14px; background: #FFFBEB; border: 2px solid #B45309; border-radius: 6px; padding: 12px 20px; margin-bottom: 18px; }
+  .score-num { font-size: 36px; font-weight: 900; color: #1E3A5F; line-height: 1; }
+  .score-label { font-size: 10px; color: #888; text-transform: uppercase; }
+  .score-verdict { font-size: 13px; font-weight: 700; color: #D97706; }
+
+  /* COVER META */
+  .cover-meta { display: flex; gap: 28px; flex-wrap: wrap; }
+  .cover-meta-item label { display: block; font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: #888; margin-bottom: 2px; }
+  .cover-meta-item span { font-size: 13px; font-weight: 600; color: #1E3A5F; }
+
+  /* SECTIONS */
+  .section { padding: 22px 40px; border-bottom: 1px solid #E5E7EB; }
+  .section-title { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.7px; color: #1E3A5F; border-left: 4px solid #B45309; padding-left: 10px; margin-bottom: 14px; }
+  .section-subtitle { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; margin-top: 14px; font-weight: 600; }
+
+  /* TABLES */
+  table { width: 100%; border-collapse: collapse; margin-bottom: 10px; font-size: 12px; }
+  th { background: #1E3A5F; color: #fff; padding: 7px 10px; text-align: left; font-weight: 600; font-size: 11px; }
+  th.right, td.right { text-align: right; }
+  th.center, td.center { text-align: center; }
+  td { padding: 6px 10px; border-bottom: 1px solid #F0F0F0; }
+  tr:nth-child(even) td { background: #FAFAFA; }
+  tr:hover td { background: #F0F4FA; }
+  .highlight-row td { background: #EFF6FF !important; font-weight: 600; }
+  .total-row td { background: #1E3A5F !important; color: #fff !important; font-weight: 700; }
+  .amber-row td { background: #FFFBEB !important; font-weight: 600; }
+
+  /* TWO COL */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+  /* INFO CARDS */
+  .info-card { background: #F8FAFC; border: 1px solid #E5E7EB; border-radius: 4px; padding: 14px 16px; }
+  .info-card h4 { font-size: 11px; color: #888; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px; }
+  .info-card p { font-size: 13px; font-weight: 600; color: #1E3A5F; }
+  .info-card .sub-p { font-size: 11px; color: #555; margin-top: 2px; font-weight: 400; }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box { background: #FFFBEB; border-left: 4px solid #B45309; padding: 12px 16px; margin-bottom: 12px; border-radius: 0 4px 4px 0; }
+  .highlight-box h4 { font-size: 11px; font-weight: 700; color: #B45309; text-transform: uppercase; margin-bottom: 4px; }
+  .highlight-box p { font-size: 12px; color: #333; }
+
+  /* RBI COMPLIANCE BOX */
+  .rbi-box { background: #EFF6FF; border: 2px solid #1E3A5F; border-radius: 6px; padding: 14px 18px; margin-bottom: 14px; }
+  .rbi-box h4 { font-size: 12px; font-weight: 700; color: #1E3A5F; margin-bottom: 6px; }
+  .rbi-box p { font-size: 11px; color: #374151; margin-bottom: 4px; }
+  .rbi-box ul { padding-left: 16px; }
+  .rbi-box ul li { font-size: 11px; color: #374151; margin-bottom: 3px; }
+
+  /* ESCROW WATERFALL */
+  .waterfall { display: flex; align-items: center; flex-wrap: wrap; gap: 0; margin: 12px 0; }
+  .wf-step { background: #1E3A5F; color: #fff; padding: 8px 14px; font-size: 11px; font-weight: 600; border-radius: 3px; white-space: nowrap; }
+  .wf-arrow { color: #B45309; font-size: 18px; font-weight: 900; padding: 0 6px; }
+
+  /* RISK MATRIX */
+  .risk-low { color: #16A34A; font-weight: 700; }
+  .risk-med { color: #D97706; font-weight: 700; }
+  .risk-high { color: #DC2626; font-weight: 700; }
+
+  /* SCENARIO BOXES */
+  .scenario-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 14px; }
+  .scenario-card { border-radius: 4px; padding: 14px; border: 1px solid #E5E7EB; }
+  .scenario-card.base { border-top: 3px solid #16A34A; background: #F0FDF4; }
+  .scenario-card.stress1 { border-top: 3px solid #D97706; background: #FFFBEB; }
+  .scenario-card.stress2 { border-top: 3px solid #DC2626; background: #FFF1F2; }
+  .scenario-card.stress3 { border-top: 3px solid #6366F1; background: #EEF2FF; }
+  .scenario-card h4 { font-size: 11px; font-weight: 700; margin-bottom: 6px; }
+  .scenario-card .dscr-big { font-size: 22px; font-weight: 900; color: #1E3A5F; }
+  .scenario-card .verdict { font-size: 11px; font-weight: 600; margin-top: 4px; }
+
+  /* RECOMMENDATION */
+  .rec-box { background: #FFFBEB; border: 2px solid #B45309; border-radius: 6px; padding: 20px 24px; margin: 0 40px 24px; }
+  .rec-box h3 { font-size: 14px; font-weight: 700; color: #1E3A5F; margin-bottom: 10px; border-bottom: 1px solid #FDE68A; padding-bottom: 8px; }
+  .rec-box .verdict { font-size: 15px; font-weight: 900; color: #D97706; margin-bottom: 10px; }
+  .rec-box p { font-size: 12px; color: #333; margin-bottom: 6px; }
+  .rec-box ul { padding-left: 16px; margin-top: 6px; }
+  .rec-box ul li { font-size: 12px; color: #333; margin-bottom: 4px; }
+
+  /* CP BOX */
+  .cp-list { counter-reset: cp-counter; }
+  .cp-item { counter-increment: cp-counter; padding: 8px 12px; border-bottom: 1px solid #F0F0F0; font-size: 12px; display: flex; gap: 12px; }
+  .cp-item:nth-child(even) { background: #FAFAFA; }
+  .cp-item::before { content: "CP-" counter(cp-counter); font-weight: 700; color: #1E3A5F; min-width: 36px; font-size: 11px; }
+  .cp-item .cp-label { font-weight: 600; min-width: 180px; color: #333; }
+  .cp-item .cp-desc { color: #555; }
+
+  /* FOOTER */
+  .footer { background: #1E3A5F; color: #fff; padding: 16px 40px; display: flex; justify-content: space-between; align-items: center; font-size: 10px; opacity: 0.95; }
+  .footer .disclaimer { max-width: 60%; opacity: 0.75; line-height: 1.6; }
+  .footer .report-id { text-align: right; }
+  .footer .report-id strong { display: block; font-size: 12px; color: #F59E0B; }
+
+  /* BLUR */
+  .blur-name { filter: blur(4px); user-select: none; background: #E5E7EB; padding: 1px 6px; border-radius: 2px; display: inline-block; }
+  .blur-bank { filter: blur(3px); display: inline-block; }
+
+  /* WATERMARK */
+  .watermark { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-35deg); font-size: 110px; font-weight: 900; color: rgba(0,0,0,0.03); pointer-events: none; white-space: nowrap; z-index: 0; letter-spacing: 16px; }
+
+  .page-section { position: relative; z-index: 1; }
+  p { margin-bottom: 6px; font-size: 12px; color: #333; }
+  ul, ol { padding-left: 18px; }
+  li { font-size: 12px; color: #333; margin-bottom: 3px; }
+
+  .metric-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 14px; }
+  .metric-card { background: #F8FAFC; border: 1px solid #E5E7EB; border-radius: 4px; padding: 12px; text-align: center; }
+  .metric-card .val { font-size: 20px; font-weight: 800; color: #1E3A5F; }
+  .metric-card .lbl { font-size: 10px; color: #888; text-transform: uppercase; margin-top: 2px; }
+  .metric-card.amber { border-top: 3px solid #B45309; }
+
+  .divider { border: none; border-top: 1px solid #E5E7EB; margin: 14px 0; }
+</style>
+</head>
+<body>
+
+<div class="watermark">SAMPLE</div>
+
+<!-- HEADER -->
+<div class="header page-section">
+  <div class="logo">FINSIGHT<span>ONE</span></div>
+  <div class="header-meta">
+    BankReady™ PREMIUM — Project Finance | Confidential<br>
+    Report ID: FSB-2025-05247 &nbsp;|&nbsp; May 2025<br>
+    Prepared for: <span class="blur-bank">Axis Bank</span> — Project Finance Division
+  </div>
+</div>
+
+<!-- COMPLIANCE STRIP -->
+<div class="compliance-strip page-section">
+  <span style="color:#F59E0B;font-weight:700;">⬛ Prepared as per RBI Master Direction on Project Finance, January 2025 — All Mandatory Disclosures Complied</span>
+  <span>NHAI BOT Toll | 35-Year Concession | Maharashtra Highway</span>
+</div>
+
+<!-- COVER BAND -->
+<div class="cover-band page-section">
+  <div class="badge-row">
+    <span class="badge badge-prem">BankReady™ PREMIUM</span>
+    <span class="badge badge-green">● GREEN</span>
+    <span class="badge badge-cond">RECOMMEND WITH CONDITIONS</span>
+    <span class="badge badge-rbi">RBI PF 2025 COMPLIANT</span>
+    <span class="badge badge-nhai">NHAI BOT TOLL</span>
+    <span class="badge" style="background:#F3F4F6;color:#374151;">Infrastructure / EPC</span>
+  </div>
+  <h1>Project Finance Information Memorandum — BOT Toll Highway</h1>
+  <div class="sub">4-Lane Highway Development (28 km) | NHAI BOT Toll Concession | ₹87 Crore Project Finance</div>
+
+  <div style="display:flex; gap:30px; align-items:flex-start; flex-wrap:wrap;">
+    <div class="score-box">
+      <div>
+        <div class="score-label">FinsightOne AI Score</div>
+        <div class="score-num">78<span style="font-size:18px;color:#888;">/100</span></div>
+        <div class="score-verdict">● RECOMMEND WITH CONDITIONS</div>
+      </div>
+    </div>
+    <div class="cover-meta">
+      <div class="cover-meta-item"><label>Borrower / SPV</label><span><span class="blur-name">P████████ Infrastructure &amp; EPC Ltd.</span></span></div>
+      <div class="cover-meta-item"><label>Location</label><span>Navi Mumbai, Maharashtra</span></div>
+      <div class="cover-meta-item"><label>Project</label><span>4-Lane Highway, 28 km — [████████] District, Maharashtra</span></div>
+      <div class="cover-meta-item"><label>Concession Authority</label><span>NHAI (National Highways Authority of India)</span></div>
+      <div class="cover-meta-item"><label>Loan Amount</label><span>₹87 Crore</span></div>
+      <div class="cover-meta-item"><label>Total Project Cost</label><span>₹124 Crore</span></div>
+      <div class="cover-meta-item"><label>Concession Period</label><span>35 Years (BOT Toll)</span></div>
+      <div class="cover-meta-item"><label>Bank</label><span><span class="blur-bank">Axis Bank</span> — Project Finance Division</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 1: MANDATORY DISCLOSURES (RBI 2025) -->
+<div class="section page-section">
+  <div class="section-title">1. Mandatory Disclosures — RBI Master Direction on Project Finance, January 2025</div>
+  <div class="rbi-box">
+    <h4>RBI Master Direction Compliance Statement</h4>
+    <p>This Information Memorandum has been prepared in full compliance with the RBI Master Direction on Financing of Infrastructure and Project Finance (January 2025). The following mandatory disclosures are included in this report:</p>
+    <ul>
+      <li><strong>Section 9 (Sensitivity Analysis):</strong> Three mandatory stress scenarios presented — Section 11 of this report</li>
+      <li><strong>Section 11 (Risk Matrix):</strong> All six mandatory risk categories assessed with ratings and mitigants — Section 12</li>
+      <li><strong>Section 14 (Security):</strong> First charge on project assets, assignment of concession, DSRA, escrow waterfall — Section 13</li>
+      <li><strong>Section 15 (DSCR/LLCR/PLCR):</strong> All three coverage ratios computed and presented — Section 10</li>
+      <li><strong>Section 18 (Escrow Mechanism):</strong> Escrow waterfall structure disclosed — Section 13</li>
+      <li><strong>Section 22 (Construction Period Risk):</strong> Construction risk assessment and contingency reserve disclosed — Section 12</li>
+      <li>Base Case DSCR &gt;1.20x throughout repayment period — compliant with RBI minimum covenant requirement</li>
+    </ul>
+  </div>
+  <div class="highlight-box">
+    <h4>Document Classification</h4>
+    <p>This document is classified as a <strong>Project Finance Information Memorandum (PFIM)</strong> under RBI Master Direction on Project Finance, January 2025. It is prepared by FinsightOne Advisory Pvt. Ltd. — a registered loan advisory firm — for submission to the Lender's credit appraisal team. The document should be treated as confidential and is intended solely for credit evaluation by the addressee institution.</p>
+  </div>
+</div>
+
+<!-- SECTION 2: EXECUTIVE SUMMARY -->
+<div class="section page-section">
+  <div class="section-title">2. Executive Summary &amp; Project Overview</div>
+  <div class="two-col">
+    <div>
+      <div class="highlight-box">
+        <h4>Investment Thesis</h4>
+        <p><span class="blur-name">P████████ Infrastructure &amp; EPC Ltd.</span>, through its Special Purpose Vehicle (SPV), seeks ₹87 Crore in project finance for the development of a 28 km, 4-lane highway stretch in [████████] District, Maharashtra, under an NHAI-awarded BOT Toll concession with a 35-year concession period. FinsightOne assigns an AI Score of <strong>78/100 (GREEN)</strong> — recommend for sanction with conditions.</p>
+      </div>
+      <p>The project has sovereign backing (NHAI concession agreement), inflation-linked toll escalation (5% per annum built into concession), and a well-structured escrow mechanism that prioritises debt service. The project is technically ready for implementation — EPC contractor selected, detailed project report finalised, and NHAI concession signed.</p>
+    </div>
+    <div>
+      <p>The average DSCR of 2.18 (base case) over the concession's operating period significantly exceeds the RBI Master Direction covenant of 1.20x. Even under a severe stress scenario (traffic -30%, cost +15%), the DSCR average of 1.08 represents only marginal covenant breach risk — mitigated by the escrow account structure and DSRA.</p>
+      <p>The LLCR of 1.52 and PLCR of 1.84 confirm adequate loan life and project life coverage. The promoter group brings a track record of 3 successfully completed highway/infrastructure projects, adding execution credibility.</p>
+    </div>
+  </div>
+  <div class="metric-grid" style="margin-top:14px;">
+    <div class="metric-card amber"><div class="val">₹124 Cr</div><div class="lbl">Total Project Cost</div></div>
+    <div class="metric-card amber"><div class="val">₹87 Cr</div><div class="lbl">Debt (70% D/E)</div></div>
+    <div class="metric-card"><div class="val">2.18x</div><div class="lbl">Avg DSCR (Base)</div></div>
+    <div class="metric-card"><div class="val">35 Yrs</div><div class="lbl">NHAI Concession</div></div>
+    <div class="metric-card"><div class="val">1.52x</div><div class="lbl">LLCR</div></div>
+    <div class="metric-card"><div class="val">1.84x</div><div class="lbl">PLCR</div></div>
+    <div class="metric-card"><div class="val">28 km</div><div class="lbl">Highway Stretch</div></div>
+    <div class="metric-card"><div class="val">30 Mths</div><div class="lbl">Construction Period</div></div>
+  </div>
+</div>
+
+<!-- SECTION 3: BORROWER / SPV PROFILE -->
+<div class="section page-section">
+  <div class="section-title">3. Borrower / SPV Profile</div>
+  <div class="two-col">
+    <div>
+      <div class="section-subtitle">SPV Details</div>
+      <table>
+        <tr><th style="width:40%">Parameter</th><th>Details</th></tr>
+        <tr><td>SPV Name</td><td><span class="blur-name">P████████ Highways Pvt. Ltd.</span></td></tr>
+        <tr><td>Constitution</td><td>Private Limited Company — SPV</td></tr>
+        <tr><td>CIN</td><td>U████ MH 2024 PTC 0█████</td></tr>
+        <tr><td>Incorporated</td><td>August 2024 (project-specific SPV)</td></tr>
+        <tr><td>Registered Office</td><td>Navi Mumbai, Maharashtra</td></tr>
+        <tr><td>Purpose</td><td>Development, Operation &amp; Maintenance of 4-lane highway BOT Toll project</td></tr>
+        <tr><td>Concession Agreement</td><td>Signed with NHAI — dated ██/██/2024; 35-year concession</td></tr>
+        <tr><td>Shareholding</td><td>Promoter Group: 74% | PE Co-investor: 26%</td></tr>
+        <tr><td>PE Co-investor</td><td><span class="blur-name">████████ Infrastructure Fund II</span> (SEBI-registered AIF Cat-II)</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="section-subtitle">Promoter Group — Parent Company</div>
+      <table>
+        <tr><th style="width:40%">Parameter</th><th>Details</th></tr>
+        <tr><td>Parent Entity</td><td><span class="blur-name">P████████ Infrastructure &amp; EPC Ltd.</span></td></tr>
+        <tr><td>Incorporation</td><td>200█ | Net Worth ~₹142 Cr (FY24)</td></tr>
+        <tr><td>Track Record</td><td>3 highway projects completed (NHAI/MoRTH) — NH ██, NH ██, SH ██</td></tr>
+        <tr><td>Active Projects</td><td>4 projects under construction (₹880 Cr combined)</td></tr>
+        <tr><td>Credit Rating</td><td>CRISIL BBB+ (Stable) | ICRA BBB+</td></tr>
+        <tr><td>Bankers</td><td><span class="blur-bank">Axis Bank</span>, <span class="blur-bank">SBI</span>, <span class="blur-bank">HDFC Bank</span></td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: PROMOTER GROUP BACKGROUND -->
+<div class="section page-section">
+  <div class="section-title">4. Promoter Group Background</div>
+  <table>
+    <tr>
+      <th style="width:22%">Name</th>
+      <th style="width:18%">Designation</th>
+      <th style="width:14%">Qualification</th>
+      <th style="width:12%">Experience</th>
+      <th>Role &amp; Track Record</th>
+    </tr>
+    <tr>
+      <td><span class="blur-name">V████████ P████</span></td>
+      <td>Chairman &amp; MD</td>
+      <td>B.E. (Civil), IIT; MBA</td>
+      <td>28 years</td>
+      <td>Founded the group in 199█. Has executed NHAI highway projects across Maharashtra, Rajasthan, and Gujarat. Led completion of a 42 km 6-lane expressway (NH ██) under a ₹380 Cr project — delivered on time and within budget.</td>
+    </tr>
+    <tr>
+      <td><span class="blur-name">S████████ P████</span></td>
+      <td>Director — Operations &amp; EPC</td>
+      <td>B.E. (Civil), MBA (Infra)</td>
+      <td>21 years</td>
+      <td>Oversees construction execution and EPC management. Previously with <span class="blur-name">███████ Construction Ltd.</span> (listed EPC company) as VP Projects. Directly manages contractor relationships and NHAI interface.</td>
+    </tr>
+    <tr>
+      <td><span class="blur-name">R████████ K████</span></td>
+      <td>Director — Finance &amp; Structured Finance</td>
+      <td>CA, CFA</td>
+      <td>18 years</td>
+      <td>Structured all prior project financings for the group. Deep expertise in infrastructure project finance, escrow structuring, and lender negotiations. Previously at a large infrastructure-focused NBFC.</td>
+    </tr>
+  </table>
+  <div class="highlight-box" style="margin-top:12px;">
+    <h4>Promoter Assessment</h4>
+    <p>The promoter group has an unblemished track record of NHAI project execution. No defaults or NPAs on any banking facility across the group. Combined group net worth ~₹142 Cr (audited FY24). The PE co-investor brings additional governance oversight and institutional credibility.</p>
+  </div>
+</div>
+
+<!-- SECTION 5: PROJECT DESCRIPTION -->
+<div class="section page-section">
+  <div class="section-title">5. Project Description — Highway Development (NHAI BOT Toll)</div>
+  <div class="two-col">
+    <div>
+      <div class="section-subtitle">Project Scope</div>
+      <ul>
+        <li>Development of 28 km 4-lane highway stretch in [████████] District, Maharashtra</li>
+        <li>BOT (Build-Operate-Transfer) Toll model — NHAI concession</li>
+        <li>Concession period: 35 years from COD (Commercial Operations Date)</li>
+        <li>Concession authority: National Highways Authority of India (NHAI)</li>
+        <li>Project scope: Road widening, 2 flyovers, 4 underpasses, wayside amenities, toll plazas</li>
+        <li>FASTag-enabled electronic toll collection from Day 1</li>
+        <li>Toll escalation: 5% per annum (built into concession agreement)</li>
+      </ul>
+      <div class="section-subtitle">Strategic Importance</div>
+      <ul>
+        <li>Corridor connects [████████] industrial zone to [████████] port — significant freight traffic</li>
+        <li>National Highway designation ensures no bypass/diversion risk</li>
+        <li>NHAI AADT (Annual Average Daily Traffic) study: base 28,000 PCUs (FY26); growing at ~8% CAGR</li>
+      </ul>
+    </div>
+    <div>
+      <div class="section-subtitle">Means of Finance</div>
+      <table>
+        <tr><th>Source</th><th class="right">Amount (₹ Cr)</th><th class="right">%</th></tr>
+        <tr><td>Term Loan (Proposed)</td><td class="right">87.0</td><td class="right">70.2%</td></tr>
+        <tr><td>Promoter Equity</td><td class="right">27.0</td><td class="right">21.8%</td></tr>
+        <tr><td>PE Co-investor Equity</td><td class="right">10.0</td><td class="right">8.0%</td></tr>
+        <tr class="total-row"><td>Total Project Cost</td><td class="right">124.0</td><td class="right">100%</td></tr>
+      </table>
+      <div class="section-subtitle">Capital Expenditure Breakdown</div>
+      <table>
+        <tr><th>Component</th><th class="right">₹ Crore</th><th class="right">%</th></tr>
+        <tr><td>Civil Works (road, structures)</td><td class="right">88.0</td><td class="right">71.0%</td></tr>
+        <tr><td>Toll Plaza &amp; Equipment</td><td class="right">8.4</td><td class="right">6.8%</td></tr>
+        <tr><td>Land Acquisition (via NHAI)</td><td class="right">0.0</td><td class="right">0.0%</td></tr>
+        <tr><td>Pre-operative expenses</td><td class="right">6.2</td><td class="right">5.0%</td></tr>
+        <tr><td>Contingency Reserve</td><td class="right">6.2</td><td class="right">5.0%</td></tr>
+        <tr><td>DSRA (1 quarter debt service)</td><td class="right">3.4</td><td class="right">2.7%</td></tr>
+        <tr><td>IDC (Interest During Construction)</td><td class="right">11.8</td><td class="right">9.5%</td></tr>
+        <tr class="total-row"><td>Total</td><td class="right">124.0</td><td class="right">100%</td></tr>
+      </table>
+      <p style="font-size:10px;color:#888;margin-top:4px;">Land acquisition by NHAI — no cost to SPV (key project finance advantage).</p>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 6: TECHNICAL FEASIBILITY -->
+<div class="section page-section">
+  <div class="section-title">6. Technical Feasibility — EPC &amp; Construction Plan</div>
+  <div class="two-col">
+    <div>
+      <div class="section-subtitle">EPC Contractor</div>
+      <p>EPC contract awarded to <span class="blur-name">████████ Construction &amp; Infrastructure Ltd.</span> — a NHAI-empanelled contractor with a track record of 12 highway projects. Fixed-price EPC contract at ₹92.4 Cr (inclusive of contingency). Performance Bank Guarantee of ₹9.2 Cr (10% of contract value) obtained.</p>
+      <div class="section-subtitle">Construction Period</div>
+      <p>Construction period: 30 months from appointed date. Appointed date: [████████] 2025. Commercial Operations Date (COD): [████████] 2027 (estimated).</p>
+      <div class="section-subtitle">Technical Report</div>
+      <p>Independent Technical Consultant (ITC): <span class="blur-name">████████ Engineering Consultants</span> — NHAI empanelled. ITC report confirmed: design standards compliant with IRC:6-2017, NHAI DPR specifications, and environmental clearances in place.</p>
+    </div>
+    <div>
+      <div class="section-subtitle">Key Technical Parameters</div>
+      <table>
+        <tr><th>Parameter</th><th>Specification</th></tr>
+        <tr><td>Highway Classification</td><td>4-lane divided carriageway, IRC standards</td></tr>
+        <tr><td>Design Speed</td><td>100 km/h (design), 80 km/h (operating)</td></tr>
+        <tr><td>Pavement Design</td><td>Flexible (bituminous) — 20-year design life</td></tr>
+        <tr><td>Flyovers</td><td>2 Nos. (Grade Separators) — 240m + 180m</td></tr>
+        <tr><td>Underpasses</td><td>4 Nos. (cattle/pedestrian + ROB)</td></tr>
+        <tr><td>Toll Plazas</td><td>2 Nos. (entry/exit) — FASTag enabled</td></tr>
+        <tr><td>Environmental Clearance</td><td>Obtained — MoEF&CC notification</td></tr>
+        <tr><td>Forest Clearance</td><td>Not required — alignment avoids forest land</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 7: TRAFFIC STUDY & REVENUE PROJECTIONS -->
+<div class="section page-section">
+  <div class="section-title">7. Traffic Study &amp; Revenue Projections</div>
+  <div class="two-col">
+    <div>
+      <div class="section-subtitle">Traffic Study Summary</div>
+      <p>Traffic study conducted by NHAI's empanelled traffic consultant — <span class="blur-name">████████ Traffic Consultants</span>. Count surveys conducted over 7 days at 4 locations. AADT (Annual Average Daily Traffic) baseline: 28,000 PCUs (Passenger Car Units).</p>
+      <ul>
+        <li>Traffic growth CAGR: 7.8% (base case) — consistent with NHAI national average for comparable corridors</li>
+        <li>Freight component: 42% of AADT — higher per-PCU toll revenue</li>
+        <li>Seasonal variation: ±15% (moderate — mitigated by annual average)</li>
+        <li>Competing route: existing 2-lane SH — significant travel time saving (35 min) on proposed 4-lane route drives modal shift</li>
+      </ul>
+    </div>
+    <div>
+      <div class="section-subtitle">Toll Rate Assumptions</div>
+      <table>
+        <tr><th>Vehicle Category</th><th class="right">Base Toll (₹/km)</th><th class="right">NHAI Escalation</th></tr>
+        <tr><td>Car / Jeep / Van</td><td class="right">₹1.82</td><td class="right">5%/yr</td></tr>
+        <tr><td>LCV</td><td class="right">₹2.94</td><td class="right">5%/yr</td></tr>
+        <tr><td>Bus / Truck (2-axle)</td><td class="right">₹5.88</td><td class="right">5%/yr</td></tr>
+        <tr><td>Multi-axle Vehicle</td><td class="right">₹10.26</td><td class="right">5%/yr</td></tr>
+        <tr><td>Oversized Vehicle</td><td class="right">₹14.70</td><td class="right">5%/yr</td></tr>
+      </table>
+      <p style="font-size:10px;color:#888;margin-top:4px;">Toll rates as per NHAI notification. Escalation of 5%/year from base year built into concession agreement — reducing revenue risk significantly.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 8: FINANCIAL MODEL — PROJECTED CASH FLOWS -->
+<div class="section page-section">
+  <div class="section-title">8. Financial Model — Projected Cash Flows (₹ Crore) — 10-Year Summary</div>
+  <table>
+    <tr>
+      <th style="width:26%">Parameter</th>
+      <th class="right">Yr 1 Ops</th>
+      <th class="right">Yr 2</th>
+      <th class="right">Yr 3</th>
+      <th class="right">Yr 4</th>
+      <th class="right">Yr 5</th>
+      <th class="right">Yr 10</th>
+      <th class="right">Yr 15</th>
+    </tr>
+    <tr>
+      <td><strong>Toll Revenue</strong></td>
+      <td class="right">18.4</td><td class="right">21.2</td><td class="right">24.4</td>
+      <td class="right">28.2</td><td class="right">32.4</td><td class="right">52.6</td><td class="right">84.2</td>
+    </tr>
+    <tr>
+      <td>O&amp;M Cost</td>
+      <td class="right">3.2</td><td class="right">3.5</td><td class="right">3.8</td>
+      <td class="right">4.1</td><td class="right">4.4</td><td class="right">6.2</td><td class="right">8.8</td>
+    </tr>
+    <tr class="highlight-row">
+      <td><strong>EBITDA</strong></td>
+      <td class="right">15.2</td><td class="right">17.7</td><td class="right">20.6</td>
+      <td class="right">24.1</td><td class="right">28.0</td><td class="right">46.4</td><td class="right">75.4</td>
+    </tr>
+    <tr>
+      <td>EBITDA Margin %</td>
+      <td class="right">82.6%</td><td class="right">83.5%</td><td class="right">84.4%</td>
+      <td class="right">85.5%</td><td class="right">86.4%</td><td class="right">88.2%</td><td class="right">89.5%</td>
+    </tr>
+    <tr>
+      <td>Depreciation</td>
+      <td class="right">3.6</td><td class="right">3.6</td><td class="right">3.6</td>
+      <td class="right">3.6</td><td class="right">3.6</td><td class="right">3.6</td><td class="right">3.6</td>
+    </tr>
+    <tr>
+      <td>Interest on Debt</td>
+      <td class="right">8.4</td><td class="right">7.8</td><td class="right">7.2</td>
+      <td class="right">6.4</td><td class="right">5.6</td><td class="right">1.8</td><td class="right">—</td>
+    </tr>
+    <tr>
+      <td><strong>Debt Service (P+I)</strong></td>
+      <td class="right">12.4</td><td class="right">12.4</td><td class="right">12.4</td>
+      <td class="right">12.4</td><td class="right">12.4</td><td class="right">12.4</td><td class="right">—</td>
+    </tr>
+    <tr class="amber-row">
+      <td><strong>DSCR</strong></td>
+      <td class="right"><strong>1.23</strong></td><td class="right"><strong>1.43</strong></td><td class="right"><strong>1.66</strong></td>
+      <td class="right"><strong>1.94</strong></td><td class="right"><strong>2.26</strong></td><td class="right"><strong>3.74</strong></td><td class="right">—</td>
+    </tr>
+    <tr>
+      <td>Cash Available After Debt Service</td>
+      <td class="right">2.8</td><td class="right">5.3</td><td class="right">8.2</td>
+      <td class="right">11.7</td><td class="right">15.6</td><td class="right">34.0</td><td class="right">75.4</td>
+    </tr>
+  </table>
+  <p style="font-size:10px;color:#888;margin-top:4px;">Year 1 Ops = First year of commercial operations (COD + 1). Debt service of ₹12.4 Cr/year = ₹4.0 Cr principal + ₹8.4 Cr interest (Year 1, declining). Year 15: Debt fully repaid (loan tenor ~12 years).</p>
+</div>
+
+<!-- SECTION 9: DSCR / LLCR / PLCR -->
+<div class="section page-section">
+  <div class="section-title">9. DSCR / LLCR / PLCR Analysis — Coverage Ratios (RBI 2025 Mandatory)</div>
+  <table>
+    <tr>
+      <th style="width:25%">Coverage Ratio</th>
+      <th class="right">Value</th>
+      <th class="right">RBI Covenant (Min)</th>
+      <th class="center">Status</th>
+      <th>Definition &amp; Significance</th>
+    </tr>
+    <tr class="amber-row">
+      <td><strong>DSCR — Year 1 (Minimum)</strong></td>
+      <td class="right"><strong>1.23x</strong></td>
+      <td class="right">1.20x</td>
+      <td class="center"><span class="risk-med">MARGINAL ✓</span></td>
+      <td>Year 1 DSCR is above covenant. Tight but acceptable given traffic ramp-up profile.</td>
+    </tr>
+    <tr>
+      <td>DSCR — Average (Base)</td>
+      <td class="right"><strong>2.18x</strong></td>
+      <td class="right">1.20x</td>
+      <td class="center"><span class="risk-low">STRONG ✓</span></td>
+      <td>Average DSCR across 12-year repayment — well above covenant</td>
+    </tr>
+    <tr>
+      <td>LLCR (Loan Life Coverage)</td>
+      <td class="right"><strong>1.52x</strong></td>
+      <td class="right">1.20x</td>
+      <td class="center"><span class="risk-low">ADEQUATE ✓</span></td>
+      <td>NPV of future cash flows during loan life / outstanding debt. Confirms loan repayability from project cash flows.</td>
+    </tr>
+    <tr>
+      <td>PLCR (Project Life Coverage)</td>
+      <td class="right"><strong>1.84x</strong></td>
+      <td class="right">1.25x</td>
+      <td class="center"><span class="risk-low">STRONG ✓</span></td>
+      <td>NPV of all project cash flows (35-yr concession) / outstanding debt. Confirms residual value exceeds debt.</td>
+    </tr>
+    <tr class="highlight-row">
+      <td><strong>IRR (Project Equity)</strong></td>
+      <td class="right"><strong>16.2%</strong></td>
+      <td class="right">&gt;14%</td>
+      <td class="center"><span class="risk-low">VIABLE ✓</span></td>
+      <td>Equity IRR exceeds infrastructure cost of equity — commercially viable for promoter and PE investor.</td>
+    </tr>
+  </table>
+  <div class="highlight-box" style="margin-top:10px;">
+    <h4>Coverage Ratio Commentary</h4>
+    <p>The Year 1 DSCR of 1.23x is tight but acceptable for an infrastructure project with a ramp-up phase. By Year 3, DSCR reaches 1.66x, and by Year 5, it crosses 2.0x. The DSRA (1 quarter = ₹3.4 Cr) provides a buffer for Year 1 debt service if traffic underperforms in the initial period. The LLCR of 1.52x and PLCR of 1.84x confirm the project's long-term financial soundness.</p>
+  </div>
+</div>
+
+<!-- SECTION 10: SENSITIVITY ANALYSIS -->
+<div class="section page-section">
+  <div class="section-title">10. Sensitivity Analysis — Three Mandatory Scenarios (RBI Master Direction, January 2025)</div>
+  <div class="rbi-box" style="margin-bottom:14px;">
+    <h4>RBI 2025 Requirement</h4>
+    <p>Per RBI Master Direction on Project Finance (January 2025), Section 9: Lenders are required to conduct sensitivity analysis under at least 3 stress scenarios and present DSCR under each. All three scenarios are presented below. The minimum covenant DSCR is 1.20x (RBI threshold).</p>
+  </div>
+  <div class="scenario-grid">
+    <div class="scenario-card base">
+      <h4 style="color:#16A34A;">SCENARIO 1: Base Case</h4>
+      <div class="dscr-big">2.18x</div>
+      <div class="lbl" style="font-size:10px;color:#888;">Average DSCR (12 yrs)</div>
+      <div class="verdict" style="color:#16A34A;">● VIABLE</div>
+      <hr class="divider">
+      <p style="font-size:11px;"><strong>Assumptions:</strong> Traffic as per NHAI study (CAGR 7.8%), toll escalation 5%/yr, O&amp;M as projected. No delays.</p>
+    </div>
+    <div class="scenario-card stress1">
+      <h4 style="color:#D97706;">SCENARIO 2: Traffic Stress (-20%)</h4>
+      <div class="dscr-big">1.44x</div>
+      <div class="lbl" style="font-size:10px;color:#888;">Average DSCR (12 yrs)</div>
+      <div class="verdict" style="color:#D97706;">● VIABLE (above 1.20 covenant)</div>
+      <hr class="divider">
+      <p style="font-size:11px;"><strong>Assumptions:</strong> Traffic 20% below NHAI forecast throughout tenor. O&amp;M as projected. No cost overrun.</p>
+    </div>
+    <div class="scenario-card stress2">
+      <h4 style="color:#DC2626;">SCENARIO 3: Severe Stress (-30% traffic, +15% cost)</h4>
+      <div class="dscr-big">1.08x</div>
+      <div class="lbl" style="font-size:10px;color:#888;">Average DSCR (12 yrs)</div>
+      <div class="verdict" style="color:#DC2626;">● MARGINAL — Covenant Breach Risk</div>
+      <hr class="divider">
+      <p style="font-size:11px;"><strong>Assumptions:</strong> Traffic 30% below forecast + O&amp;M costs 15% above projected. Mitigant: Escrow + DSRA structure activates.</p>
+    </div>
+  </div>
+  <div class="scenario-card stress3" style="grid-column:span 3; margin-bottom:14px; padding:14px 18px;">
+    <h4 style="color:#6366F1;">SCENARIO 4: Construction Delay (6 months)</h4>
+    <div style="display:flex; gap:20px; align-items:center; margin-top:8px;">
+      <div><div class="dscr-big" style="color:#6366F1;">+₹4.2 Cr</div><div class="lbl" style="font-size:10px;color:#888;">Cost Overrun Impact</div></div>
+      <div style="font-size:12px;color:#333;flex:1;">
+        <strong>Assumptions:</strong> 6-month construction delay (force majeure or contractor delay). Revenue foregone during delayed period: ₹9.2 Cr (6 months toll). Additional IDC: ₹4.2 Cr.<br>
+        <strong>Mitigation:</strong> Contingency Reserve of ₹6.2 Cr (built into project cost) covers the full overrun. Delay does not breach financial covenants as it is a pre-COD event. EPC contractor bears cost of delay under fixed-price contract + PBG enforcement.
+      </div>
+    </div>
+  </div>
+  <div class="highlight-box">
+    <h4>Sensitivity Summary &amp; Risk Assessment</h4>
+    <p>The project remains viable (DSCR &gt;1.20x) under Scenarios 1 and 2. Scenario 3 (severe stress — simultaneous traffic shortfall of 30% AND cost overrun of 15%) results in DSCR below covenant — this combination is historically rare for NHAI-awarded projects. The escrow account ensures priority debt service. The lender should require a covenant reset mechanism (DSCR ratchet) if Scenario 3 conditions persist.</p>
+  </div>
+</div>
+
+<!-- SECTION 11: RISK MATRIX (RBI 2025) -->
+<div class="section page-section">
+  <div class="section-title">11. Risk Matrix — RBI Master Direction Categories (January 2025)</div>
+  <table>
+    <tr>
+      <th style="width:18%">Risk Category</th>
+      <th style="width:10%" class="center">Rating</th>
+      <th style="width:30%">Risk Factor &amp; Assessment</th>
+      <th>Mitigant / Structural Protection</th>
+    </tr>
+    <tr>
+      <td><strong>Construction Risk</strong></td>
+      <td class="center"><span class="risk-med">MEDIUM</span></td>
+      <td>30-month construction timeline; 2 flyovers add complexity; supply chain disruptions for steel/cement possible</td>
+      <td>Fixed-price EPC contract (₹92.4 Cr) — cost overrun with EPC contractor. PBG of ₹9.2 Cr. Contingency Reserve ₹6.2 Cr. NHAI time extension provisions in concession agreement.</td>
+    </tr>
+    <tr>
+      <td><strong>Traffic / Revenue Risk</strong></td>
+      <td class="center"><span class="risk-med">MEDIUM</span></td>
+      <td>Traffic below NHAI forecast risk (ramp-up period); competition from parallel route</td>
+      <td>NHAI traffic guarantee provision (50% of projected toll — year 1–3 guarantee); 5%/yr toll escalation built into concession; escrow mechanism prioritises O&amp;M + debt service; DSRA covers 1 quarter.</td>
+    </tr>
+    <tr>
+      <td><strong>Force Majeure Risk</strong></td>
+      <td class="center"><span class="risk-low">LOW</span></td>
+      <td>Natural disaster, pandemic, war — operational disruption; revenue loss</td>
+      <td>NHAI concession: Force Majeure events trigger concession extension or government compensation. Adequate CAR and operational insurance in place. NHAI substitution provision protects lender.</td>
+    </tr>
+    <tr>
+      <td><strong>Regulatory / Political Risk</strong></td>
+      <td class="center"><span class="risk-low">LOW</span></td>
+      <td>Policy change — toll rate reduction; political interference; concession termination</td>
+      <td>NHAI concession is a contractual right with GoI sovereign backing. Termination compensation provisions clearly defined in concession — NPV of future revenues payable to lender. 35-year agreement provides strong regulatory certainty.</td>
+    </tr>
+    <tr>
+      <td><strong>Refinancing Risk</strong></td>
+      <td class="center"><span class="risk-low">LOW</span></td>
+      <td>Risk of inability to refinance at loan maturity (12 years)</td>
+      <td>Amortising loan structure — debt fully repaid by Year 12. No bullet repayment. Escrow mechanism ensures regular principal reduction. Asset quality improves over time (completed highway).</td>
+    </tr>
+    <tr>
+      <td><strong>Completion / Sponsor Risk</strong></td>
+      <td class="center"><span class="risk-med">MEDIUM</span></td>
+      <td>Sponsor financial distress; inability to fund equity shortfall; EPC contractor default</td>
+      <td>Promoter net worth ~₹142 Cr (parent); PE co-investor committed equity (AIF — SEBI registered). EPC contractor PBG + fixed-price contract. Lender step-in rights under NHAI BOT contract protects debt.</td>
+    </tr>
+  </table>
+</div>
+
+<!-- SECTION 12: SECURITY STRUCTURE & ESCROW -->
+<div class="section page-section">
+  <div class="section-title">12. Security Structure — Per RBI Master Direction, January 2025</div>
+  <div class="two-col">
+    <div>
+      <div class="section-subtitle">Security Package</div>
+      <table>
+        <tr><th>Security Component</th><th>Details</th></tr>
+        <tr><td>First Charge — Project Assets</td><td>All project assets including land (leasehold from NHAI), civil infrastructure, plant &amp; equipment, toll plazas</td></tr>
+        <tr><td>Assignment of Concession</td><td>Assignment of NHAI concession agreement to lender — NHAI consent letter obtained. Lender has right to step-in on default.</td></tr>
+        <tr><td>Escrow Account</td><td>All toll revenues routed through escrow account (trust mechanism). Lender is trustee-beneficiary for debt service priority.</td></tr>
+        <tr><td>DSRA</td><td>Debt Service Reserve Account — ₹3.4 Cr (1 quarter debt service); fully funded at COD before first drawdown</td></tr>
+        <tr><td>Promoter Guarantee</td><td>Personal guarantee of <span class="blur-name">V████████ P████</span> (Chairman). Corporate guarantee of parent company.</td></tr>
+        <tr><td>Insurance Assignment</td><td>CAR (Construction All Risk), EAR, Operational All Risk — assigned to lender as loss-payee</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="section-subtitle">Escrow Waterfall Mechanism (RBI 2025 Mandatory Disclosure)</div>
+      <div class="waterfall">
+        <div class="wf-step">Toll Collections</div>
+        <div class="wf-arrow">→</div>
+        <div class="wf-step">Escrow Account</div>
+        <div class="wf-arrow">→</div>
+        <div class="wf-step">O&amp;M Expenses</div>
+        <div class="wf-arrow">→</div>
+        <div class="wf-step">Debt Service (P+I)</div>
+        <div class="wf-arrow">→</div>
+        <div class="wf-step">DSRA Top-up</div>
+        <div class="wf-arrow">→</div>
+        <div class="wf-step">Equity Returns</div>
+      </div>
+      <div class="highlight-box" style="margin-top:12px;">
+        <h4>Escrow Mechanism — Key Features</h4>
+        <p>All toll revenues are mandatorily routed through the escrow account. No equity distribution is permitted until O&amp;M expenses are fully paid and debt service is fully covered. DSRA must be topped up to 1 quarter before any equity release. The lender has veto rights on any withdrawal from the escrow account outside the defined waterfall.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 13: CONDITIONS PRECEDENT -->
+<div class="section page-section">
+  <div class="section-title">13. Lender Conditions Precedent (CPs) — Project Finance</div>
+  <div class="cp-list">
+    <div class="cp-item"><div class="cp-label">Financial Closure</div><div class="cp-desc">Full equity commitment from promoter + PE investor evidenced; total equity of ₹37 Cr to be subscribed upfront before first loan drawdown</div></div>
+    <div class="cp-item"><div class="cp-label">DSRA Funding</div><div class="cp-desc">Debt Service Reserve Account of ₹3.4 Cr to be fully funded at COD; 50% to be maintained throughout loan tenor</div></div>
+    <div class="cp-item"><div class="cp-label">Escrow Trust Deed</div><div class="cp-desc">Tri-partite escrow agreement (SPV + Lender + Escrow Agent) to be executed; account to be operational before first drawdown</div></div>
+    <div class="cp-item"><div class="cp-label">NHAI Consent / NOC</div><div class="cp-desc">NHAI consent letter for assignment of concession to lender + step-in rights confirmation — to be submitted at appraisal stage</div></div>
+    <div class="cp-item"><div class="cp-label">EPC Contract Submission</div><div class="cp-desc">Fixed-price EPC contract + PBG (₹9.2 Cr) + contractor's financials — to be reviewed and approved by lender's ITC</div></div>
+    <div class="cp-item"><div class="cp-label">ITC Appointment</div><div class="cp-desc">Lender's Independent Technical Consultant (ITC) to be appointed at borrower's cost; ITC to review DPR, design, and implementation schedule</div></div>
+    <div class="cp-item"><div class="cp-label">Insurance</div><div class="cp-desc">CAR + EAR policy (construction phase) to be placed before appointed date; all policies assigned to lender as loss payee</div></div>
+    <div class="cp-item"><div class="cp-label">Environmental Compliance</div><div class="cp-desc">MoEF&CC environmental clearance + consent to establish from MPCB to be submitted; ZLD compliance certification</div></div>
+    <div class="cp-item"><div class="cp-label">Legal Due Diligence</div><div class="cp-desc">Lender's legal counsel to complete DD on concession agreement, SPV documents, land access, and title — clearance required before first drawdown</div></div>
+    <div class="cp-item"><div class="cp-label">Drawdown Milestones</div><div class="cp-desc">Loan disbursements linked to construction milestones — ITC certification required for each tranche; no bullet disbursements</div></div>
+    <div class="cp-item"><div class="cp-label">Promoter Guarantee</div><div class="cp-desc">Personal guarantee of <span class="blur-name">V████████ P████</span> + corporate guarantee of parent entity — to be executed on stamp paper before sanction</div></div>
+    <div class="cp-item"><div class="cp-label">Quarterly Reporting</div><div class="cp-desc">During construction: monthly ITC progress reports. Post-COD: quarterly financial statements + toll revenue reports to lender</div></div>
+  </div>
+</div>
+
+<!-- RECOMMENDATION BOX -->
+<div class="rec-box">
+  <h3>14. Recommendation — FinsightOne BankReady™ PREMIUM Assessment</h3>
+  <div class="verdict">● RECOMMEND WITH CONDITIONS — AI Score 78/100 (GREEN)</div>
+  <p><strong>FinsightOne recommends sanction of ₹87 Crore Project Finance</strong> to <span class="blur-name">P████████ Highways Pvt. Ltd.</span> (SPV) for the 28 km 4-lane BOT Toll highway project in [████████] District, Maharashtra — awarded by NHAI — subject to the following terms, conditions, and CPs:</p>
+  <ul>
+    <li><strong>Facility Type:</strong> Project Finance Term Loan — ₹87,00,00,000/- (Rupees Eighty-Seven Crore only)</li>
+    <li><strong>Tenor:</strong> 12 years from first drawdown (30 months construction + 9.5-year repayment)</li>
+    <li><strong>Moratorium:</strong> Full moratorium on principal + interest during construction (IDC to be capitalised or accumulated in DSRA)</li>
+    <li><strong>Interest Rate:</strong> <span class="blur-bank">Axis Bank</span> MCLR/Repo + spread (infrastructure project finance pricing)</li>
+    <li><strong>DSCR Covenant:</strong> Minimum DSCR 1.20x — any breach triggers DSRA utilisation and lender step-in rights</li>
+    <li><strong>Drawdown:</strong> Tranche-based disbursements linked to ITC-certified construction milestones</li>
+    <li><strong>Escrow:</strong> Mandatory tri-partite escrow — all toll revenues to be routed through escrow; waterfall as specified</li>
+    <li><strong>DSRA:</strong> ₹3.4 Cr DSRA — funded at COD; maintained at minimum 50% throughout tenor</li>
+    <li><strong>Condition 1 (Traffic Performance):</strong> If actual traffic falls below 80% of projected for 2 consecutive quarters — lender review triggered; DSCR reset discussion</li>
+    <li><strong>Condition 2 (Construction Monitoring):</strong> Monthly ITC reports; cost overrun beyond ₹6.2 Cr contingency to be funded by promoter equity — no additional debt</li>
+    <li><strong>Condition 3 (Refinancing):</strong> No prepayment penalty after Year 5 — allows promoter to refinance at lower rates as asset quality improves</li>
+    <li><strong>Condition 4 (RBI 2025 Compliance):</strong> All RBI Master Direction covenants, disclosures, and reporting requirements as per January 2025 Direction to be maintained throughout the loan tenor</li>
+  </ul>
+  <p style="margin-top:10px;font-size:11px;color:#666;">This recommendation is based on FinsightOne's proprietary AI-assisted financial analysis and project finance modeling under the RBI Master Direction on Project Finance (January 2025) framework. It does not substitute the lender's independent credit appraisal, legal due diligence, or internal credit committee assessment. The bank should conduct its own KYC, site inspection, ITC appointment, and legal review before sanction.</p>
+</div>
+
+<!-- FOOTER -->
+<div class="footer page-section">
+  <div class="disclaimer">
+    This document is a sample BankReady™ PREMIUM Project Finance Information Memorandum prepared by FinsightOne for demonstration purposes. Prepared as per RBI Master Direction on Project Finance, January 2025. All company names, promoter names, and specific financial data in this sample are illustrative. Confidential — intended solely for the addressee bank's credit evaluation. FinsightOne Advisory Pvt. Ltd. is a registered loan advisory firm. This report does not constitute a guarantee of loan sanction.
+  </div>
+  <div class="report-id">
+    <strong>FSB-2025-05247</strong>
+    BankReady™ PREMIUM Package<br>
+    RBI PF Direction 2025 Compliant<br>
+    FinsightOne Advisory Pvt. Ltd.<br>
+    May 2025 | © FinsightONE 2025
+  </div>
+</div>
+
+</body>
+</html>

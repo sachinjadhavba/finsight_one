@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FRR-2025-06118 | Rejected Loan Recovery & Resubmission Plan | FinsightOne</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #F9FAFB; color: #1F2937; font-size: 13.5px; line-height: 1.6; }
+  .page { max-width: 960px; margin: 0 auto; background: #fff; box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+  /* Watermark */
+  .wm { position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%) rotate(-35deg); font-size: 100px; font-weight: 900; color: rgba(0,0,0,0.025); pointer-events: none; white-space: nowrap; z-index: 0; letter-spacing: 16px; }
+
+  /* Header */
+  .header { background: #1E3A5F; color: #fff; padding: 26px 40px 22px; display: flex; justify-content: space-between; align-items: center; }
+  .logo { font-size: 24px; font-weight: 900; letter-spacing: 1px; }
+  .logo span { color: #F59E0B; }
+  .tagline { font-size: 10px; color: #93C5FD; letter-spacing: 2px; text-transform: uppercase; margin-top: 3px; }
+  .header-right { text-align: right; font-size: 11px; color: #CBD5E1; line-height: 1.9; }
+
+  /* Cover */
+  .cover { background: #1E3A5F; color: #fff; padding: 48px 40px 40px; border-bottom: 5px solid #DC2626; }
+  .cover-label { display: inline-block; background: #DC2626; color: #fff; font-weight: 800; font-size: 11px; padding: 5px 16px; border-radius: 4px; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 16px; }
+  .cover h1 { font-size: 26px; font-weight: 900; margin-bottom: 6px; line-height: 1.25; }
+  .cover h2 { font-size: 14px; font-weight: 400; color: #93C5FD; margin-bottom: 20px; }
+  .cover-divider { width: 60px; height: 3px; background: #F59E0B; margin: 14px 0 20px; border-radius: 2px; }
+
+  /* Status cards */
+  .status-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-top: 20px; }
+  .status-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 16px; }
+  .sc-label { font-size: 9px; color: #93C5FD; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 4px; }
+  .sc-val { font-size: 15px; font-weight: 800; color: #fff; }
+  .sc-sub { font-size: 10.5px; color: #94A3B8; margin-top: 3px; }
+  .rejected-pill { display: inline-block; background: rgba(220,38,38,0.2); border: 1.5px solid #DC2626; color: #FCA5A5; font-size: 12px; font-weight: 800; padding: 6px 16px; border-radius: 20px; margin-bottom: 20px; }
+  .approved-pill { display: inline-block; background: rgba(5,150,105,0.2); border: 1.5px solid #059669; color: #6EE7B7; font-size: 12px; font-weight: 800; padding: 6px 16px; border-radius: 20px; margin-bottom: 20px; }
+
+  /* Main content */
+  .content { padding: 36px 40px; position: relative; z-index: 1; }
+  .section { margin-bottom: 36px; }
+  .section-title { font-size: 13px; font-weight: 800; color: #1E3A5F; border-bottom: 2px solid #E5E7EB; padding-bottom: 7px; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.8px; }
+  .section-title span { display: inline-block; background: #DC2626; color: #fff; font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 3px; margin-right: 8px; }
+  .section-title.green span { background: #059669; }
+  .section-title.amber span { background: #B45309; }
+
+  p { margin-bottom: 10px; color: #374151; }
+
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 12.5px; }
+  th { background: #1E3A5F; color: #fff; padding: 9px 13px; text-align: left; font-size: 11.5px; font-weight: 700; }
+  th.red-hd { background: #991B1B; }
+  th.green-hd { background: #065F46; }
+  td { padding: 8px 13px; border-bottom: 1px solid #F3F4F6; vertical-align: top; }
+  tr:nth-child(even) td { background: #FAFAFA; }
+  .num { text-align: right; font-family: monospace; }
+  .bad { color: #DC2626; font-weight: 700; }
+  .good { color: #059669; font-weight: 700; }
+  .warn { color: #B45309; font-weight: 700; }
+
+  /* Blur */
+  .blr { filter: blur(5px); user-select: none; background: #E5E7EB; padding: 1px 6px; border-radius: 2px; display: inline-block; }
+  .blr2 { filter: blur(3px); display: inline-block; }
+
+  /* Callout boxes */
+  .rejection-box { background: #FEF2F2; border: 2px solid #FECACA; border-left: 5px solid #DC2626; border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 14px 0; }
+  .rejection-box .rb-title { font-size: 12px; font-weight: 800; color: #991B1B; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .action-box { background: #ECFDF5; border: 2px solid #A7F3D0; border-left: 5px solid #059669; border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 14px 0; }
+  .action-box .ab-title { font-size: 12px; font-weight: 800; color: #065F46; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .highlight { background: #FFFBEB; border-left: 4px solid #B45309; padding: 14px 18px; border-radius: 0 6px 6px 0; margin: 14px 0; }
+  .highlight strong { color: #92400E; }
+
+  /* Timeline */
+  .timeline { margin: 16px 0; }
+  .tl-item { display: flex; gap: 16px; margin-bottom: 16px; align-items: flex-start; }
+  .tl-dot { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; flex-shrink: 0; margin-top: 2px; }
+  .tl-dot.red { background: #FEE2E2; color: #DC2626; border: 2px solid #FCA5A5; }
+  .tl-dot.amber { background: #FFFBEB; color: #B45309; border: 2px solid #FCD34D; }
+  .tl-dot.green { background: #ECFDF5; color: #059669; border: 2px solid #6EE7B7; }
+  .tl-body { flex: 1; }
+  .tl-title { font-size: 13px; font-weight: 800; color: #111827; margin-bottom: 2px; }
+  .tl-desc { font-size: 12px; color: #6B7280; line-height: 1.6; }
+  .tl-date { font-size: 10px; color: #9CA3AF; font-weight: 700; letter-spacing: 0.5px; margin-top: 2px; }
+
+  /* Metric row */
+  .metric-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin: 14px 0; }
+  .metric-card { border: 1px solid #E5E7EB; border-radius: 8px; padding: 14px; }
+  .metric-card .mv-before { font-size: 18px; font-weight: 900; color: #DC2626; }
+  .metric-card .mv-after { font-size: 18px; font-weight: 900; color: #059669; }
+  .metric-card .ml { font-size: 10px; color: #6B7280; margin-top: 2px; text-transform: uppercase; letter-spacing: 0.8px; }
+  .arrow { font-size: 14px; color: #B45309; margin: 0 4px; }
+
+  /* Result banner */
+  .result-banner { background: #ECFDF5; border: 2px solid #059669; border-radius: 10px; padding: 24px 28px; margin: 20px 0; text-align: center; }
+  .result-banner .rb-top { font-size: 11px; color: #059669; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+  .result-banner .rb-amount { font-size: 36px; font-weight: 900; color: #065F46; }
+  .result-banner .rb-detail { font-size: 12px; color: #374151; margin-top: 6px; }
+
+  /* Footer */
+  .footer { background: #1E3A5F; color: #fff; padding: 16px 40px; display: flex; justify-content: space-between; font-size: 10px; opacity: 0.9; margin-top: 40px; }
+  .footer a { color: #F59E0B; }
+
+  ul.styled { list-style: none; padding: 0; }
+  ul.styled li { padding: 5px 0 5px 20px; position: relative; color: #374151; font-size: 13px; }
+  ul.styled li::before { content: '▸'; position: absolute; left: 0; color: #F59E0B; font-size: 12px; top: 6px; }
+
+  ul.red-bullets { list-style: none; padding: 0; }
+  ul.red-bullets li { padding: 5px 0 5px 20px; position: relative; color: #374151; font-size: 13px; }
+  ul.red-bullets li::before { content: '✕'; position: absolute; left: 0; color: #DC2626; font-size: 11px; top: 6px; }
+
+  ul.green-bullets { list-style: none; padding: 0; }
+  ul.green-bullets li { padding: 5px 0 5px 20px; position: relative; color: #374151; font-size: 13px; }
+  ul.green-bullets li::before { content: '✓'; position: absolute; left: 0; color: #059669; font-size: 12px; top: 6px; }
+
+  .divider { border: none; border-top: 1px solid #E5E7EB; margin: 28px 0; }
+  .page-note { font-size: 10.5px; color: #9CA3AF; font-style: italic; text-align: center; margin: 8px 0; }
+
+  /* RBI ref box */
+  .rbi-ref { background: #F8FAFC; border: 1px solid #CBD5E1; border-left: 4px solid #1E3A5F; border-radius: 0 6px 6px 0; padding: 12px 16px; margin: 12px 0; font-size: 11.5px; color: #475569; }
+  .rbi-ref strong { color: #1E3A5F; }
+</style>
+</head>
+<body>
+<div class="wm">SAMPLE</div>
+
+<div class="page">
+
+<!-- HEADER -->
+<div class="header">
+  <div>
+    <div class="logo">FINSIGHT<span>ONE</span></div>
+    <div class="tagline">Expert Credit Advisory · ex-Banker Team</div>
+  </div>
+  <div class="header-right">
+    <div>REJECTED LOAN RECOVERY &amp; RESUBMISSION PLAN</div>
+    <div>Report ID: FRR-2025-06118 &nbsp;|&nbsp; Prepared: May 2025</div>
+    <div>Classification: STRICTLY CONFIDENTIAL — SAMPLE REPORT</div>
+  </div>
+</div>
+
+<!-- COVER -->
+<div class="cover">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:24px;">
+    <div style="flex:1;">
+      <div class="cover-label">Rejected Loan Recovery</div>
+      <h1>Loan Rejection Analysis &amp;<br>Resubmission Strategy</h1>
+      <h2>Auto Ancillary &amp; Precision Components Sector · Term Loan for Capacity Expansion</h2>
+      <div class="cover-divider"></div>
+
+      <table style="max-width:560px;margin:0;font-size:12px;">
+        <tr><td style="padding:5px 0;color:#93C5FD;width:180px;border:none;">Borrower</td><td style="padding:5px 0;font-weight:700;border:none;color:#fff;"><span class="blr">P████████ Auto Components Pvt. Ltd.</span></td></tr>
+        <tr><td style="padding:5px 0;color:#93C5FD;border:none;">Location</td><td style="padding:5px 0;font-weight:700;border:none;color:#fff;">Pune, Maharashtra (Chakan MIDC)</td></tr>
+        <tr><td style="padding:5px 0;color:#93C5FD;border:none;">Industry</td><td style="padding:5px 0;font-weight:700;border:none;color:#fff;">Automobile Ancillary — Precision Sheet Metal Components</td></tr>
+        <tr><td style="padding:5px 0;color:#93C5FD;border:none;">Original Applying Bank</td><td style="padding:5px 0;font-weight:700;border:none;color:#fff;"><span class="blr2">Bank of Baroda</span>, MSME Branch, Pimpri-Chinchwad</td></tr>
+        <tr><td style="padding:5px 0;color:#93C5FD;border:none;">Facility Type</td><td style="padding:5px 0;font-weight:700;border:none;color:#fff;">Term Loan — Plant &amp; Machinery (Capacity Expansion)</td></tr>
+        <tr><td style="padding:5px 0;color:#93C5FD;border:none;">Loan Amount</td><td style="padding:5px 0;font-weight:700;border:none;color:#fff;">₹8.50 Crore</td></tr>
+        <tr><td style="padding:5px 0;color:#93C5FD;border:none;">Rejection Date</td><td style="padding:5px 0;font-weight:700;border:none;color:#fff;">February 2025</td></tr>
+      </table>
+    </div>
+    <div>
+      <div style="text-align:center;background:rgba(220,38,38,0.15);border:2px solid #DC2626;border-radius:10px;padding:24px 20px;min-width:150px;">
+        <div style="font-size:10px;color:#FCA5A5;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;">Application Status</div>
+        <div style="font-size:32px;font-weight:900;color:#FCA5A5;">DECLINED</div>
+        <div style="font-size:10px;color:#94A3B8;margin-top:6px;">Feb 14, 2025</div>
+      </div>
+      <div style="text-align:center;background:rgba(5,150,105,0.15);border:2px solid #059669;border-radius:10px;padding:16px 20px;margin-top:14px;min-width:150px;">
+        <div style="font-size:10px;color:#6EE7B7;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px;">FinsightOne Target</div>
+        <div style="font-size:22px;font-weight:900;color:#34D399;">Resubmit</div>
+        <div style="font-size:10px;color:#94A3B8;margin-top:4px;">Within 60 Days</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="status-row">
+    <div class="status-card">
+      <div class="sc-label">Viable Business?</div>
+      <div class="sc-val" style="color:#34D399;">YES ✓</div>
+      <div class="sc-sub">₹24.8 Cr revenue · OEM supplier</div>
+    </div>
+    <div class="status-card">
+      <div class="sc-label">Rejection Reason</div>
+      <div class="sc-val" style="color:#FCA5A5;">Weak DSCR</div>
+      <div class="sc-sub">+ Collateral shortfall</div>
+    </div>
+    <div class="status-card">
+      <div class="sc-label">Recoverable?</div>
+      <div class="sc-val" style="color:#FCD34D;">YES — Fixable</div>
+      <div class="sc-sub">3 corrective levers identified</div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+<!-- SECTION 1: BACKGROUND -->
+<div class="section">
+  <div class="section-title"><span>01</span> Business Background</div>
+  <p><span class="blr">P████████ Auto Components Pvt. Ltd.</span> is an MSME registered under the MSME Development Act, 2006, engaged in the manufacture of precision sheet metal components for the automobile sector. The company supplies to Tier-1 OEM vendors for two-wheeler and passenger car manufacturers located in the Pune-Chakan industrial corridor. It has been in operations for 11 years with a stable client base.</p>
+
+  <table>
+    <tr>
+      <th style="width:45%;">Parameter</th>
+      <th>Details</th>
+    </tr>
+    <tr><td>Business Vintage</td><td>11 years (incorporated April 2014)</td></tr>
+    <tr><td>Constitution</td><td>Private Limited Company</td></tr>
+    <tr><td>MSME Registration</td><td>Udyam Registration — Manufacturing (Medium)</td></tr>
+    <tr><td>Primary Customers</td><td>3 Tier-1 OEM vendors (auto sector, Pune region)</td></tr>
+    <tr><td>FY2024–25 Revenue (Provisional)</td><td>₹24.82 Crore</td></tr>
+    <tr><td>Number of Employees</td><td>148 (permanent) + 40 contractual</td></tr>
+    <tr><td>Existing Banking</td><td>CC Limit: ₹4.50 Crore with <span class="blr2">Bank of Baroda</span> · Account NPA-Free since inception</td></tr>
+    <tr><td>Promoter Experience</td><td>22 years in auto component manufacturing</td></tr>
+    <tr><td>Purpose of Loan</td><td>Two CNC Laser Cutting Machines + Die-Casting Press + Factory Shed Expansion</td></tr>
+  </table>
+
+  <div class="rbi-ref">
+    <strong>RBI / MSME Framework Reference:</strong> Loans to Medium Enterprises classified under Priority Sector Lending as per RBI Master Directions — Priority Sector Lending (PSL) — Targets and Classification, Updated April 2024. Working capital exposure ₹4.50 Cr qualifies under MSME segment.
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SECTION 2: REJECTION ANALYSIS -->
+<div class="section">
+  <div class="section-title"><span>02</span> Bank's Rejection Grounds — Root Cause Analysis</div>
+  <p>The bank's rejection communication (received February 14, 2025) cited three primary grounds. Our team has reviewed the original submission in detail and identified the root cause behind each rejection ground.</p>
+
+  <div class="rejection-box">
+    <div class="rb-title">Rejection Ground 1: Debt Service Coverage Ratio (DSCR) Below Minimum</div>
+    <p style="margin:6px 0 4px;font-size:12.5px;color:#7F1D1D;"><strong>Bank's Position:</strong> Average DSCR of 1.08x over the loan tenure is below the bank's internal benchmark of 1.25x minimum.</p>
+    <p style="margin:0;font-size:12.5px;color:#374151;"><strong>FinsightOne Finding:</strong> The borrower's CA had computed depreciation on Written Down Value (WDV) method in projections, but the bank's credit officer recalculated using Straight Line Method (SLM) — creating a ₹18.4 lakh discrepancy in annual cash flow. Correcting for this alone restores DSCR to 1.22x. Additionally, a ₹12 lakh annual maintenance contract (AMC) from a new customer (contract signed December 2024) was not factored into projections.</p>
+  </div>
+
+  <div class="rejection-box">
+    <div class="rb-title">Rejection Ground 2: Collateral Shortfall — Security Coverage Below 100% of Loan</div>
+    <p style="margin:6px 0 4px;font-size:12.5px;color:#7F1D1D;"><strong>Bank's Position:</strong> Primary security (hypothecation of plant &amp; machinery) + mortgage of industrial plot valued at ₹6.20 Crore covers only 73% of ₹8.50 Crore requested.</p>
+    <p style="margin:0;font-size:12.5px;color:#374151;"><strong>FinsightOne Finding:</strong> The bank's empanelled valuer used a conservative Forced Sale Value (FSV) adjustment of 40% on the industrial plot. Chakan MIDC plots are classified as "Developed Industrial Area" under Maharashtra MIDC Act — RBI's Master Circular on Loans &amp; Advances permits FSV adjustment of max 25% for developed industrial zones (Ref: RBI/2015-16/100, Para 4.2.3). Correct FSV brings collateral coverage to 94%. The remaining gap of ₹54 lakh can be bridged via a personal guarantee by the promoter (immovable property, Pune).</p>
+  </div>
+
+  <div class="rejection-box">
+    <div class="rb-title">Rejection Ground 3: Stressed Net Worth — Declining Trend Over 3 Years</div>
+    <p style="margin:6px 0 4px;font-size:12.5px;color:#7F1D1D;"><strong>Bank's Position:</strong> Net worth declined from ₹3.42 Crore (FY22) to ₹2.91 Crore (FY24) indicating stress on equity base.</p>
+    <p style="margin:0;font-size:12.5px;color:#374151;"><strong>FinsightOne Finding:</strong> The decline is entirely attributable to large one-time losses in FY23 (post-Covid supply chain disruption — ₹47 lakh write-off on raw material) and FY24 forex losses (₹28 lakh on steel import contracts). These are non-recurring. FY25 provisional net worth stands at ₹3.18 Crore. Promoter has confirmed infusion of ₹50 lakh fresh equity in Q1 FY26 (post-loan sanction), bringing net worth above FY22 levels. A notarised undertaking to this effect is available.</p>
+  </div>
+
+  <div class="rbi-ref">
+    <strong>RBI Guideline Reference:</strong> RBI Master Circular on Loans &amp; Advances — Collateral Security — RBI/2015-16/100, DBOD.No.Dir.BC.10/13.03.00/2015-16 — Para 4.2.3: "FSV of land and building located in developed urban/industrial areas shall not be discounted by more than 25%." Banks must provide written communication of rejection with specific reasons — RBI Fair Practices Code for Lenders.
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SECTION 3: FINANCIAL COMPARISON TABLE -->
+<div class="section">
+  <div class="section-title amber"><span>03</span> Financial Metrics — Original vs. Corrected Submission</div>
+  <p>The table below contrasts the figures as originally submitted by the borrower versus the corrected figures prepared by FinsightOne after detailed re-analysis:</p>
+
+  <table>
+    <tr>
+      <th style="width:35%;">Metric</th>
+      <th class="red-hd" style="width:22%;text-align:right;">Original Submission</th>
+      <th class="green-hd" style="width:22%;text-align:right;">FinsightOne Corrected</th>
+      <th style="width:21%;">Variance Reason</th>
+    </tr>
+    <tr>
+      <td>Average DSCR (5-year projection)</td>
+      <td class="num bad">1.08x</td>
+      <td class="num good">1.31x</td>
+      <td style="font-size:11.5px;">Depreciation method + AMC contract added</td>
+    </tr>
+    <tr>
+      <td>Minimum DSCR (Year 2)</td>
+      <td class="num bad">0.97x</td>
+      <td class="num good">1.22x</td>
+      <td style="font-size:11.5px;">Year 2 revenue revised with confirmed order</td>
+    </tr>
+    <tr>
+      <td>Collateral Coverage (FSV basis)</td>
+      <td class="num bad">73%</td>
+      <td class="num good">107%</td>
+      <td style="font-size:11.5px;">FSV corrected per RBI/2015-16/100 + PG</td>
+    </tr>
+    <tr>
+      <td>Net Worth (FY25 Provisional)</td>
+      <td class="num warn">₹2.91 Cr (FY24)</td>
+      <td class="num good">₹3.18 Cr (FY25P)</td>
+      <td style="font-size:11.5px;">FY25 provisional accounts + ₹50L equity infusion</td>
+    </tr>
+    <tr>
+      <td>TOL/TNW Ratio</td>
+      <td class="num warn">3.41x</td>
+      <td class="num good">2.78x</td>
+      <td style="font-size:11.5px;">Post equity infusion; within RBI comfort zone</td>
+    </tr>
+    <tr>
+      <td>Current Ratio</td>
+      <td class="num">1.18x</td>
+      <td class="num good">1.32x</td>
+      <td style="font-size:11.5px;">Trade credit renegotiated with 2 vendors</td>
+    </tr>
+    <tr>
+      <td>Interest Coverage Ratio (ICR)</td>
+      <td class="num warn">1.64x</td>
+      <td class="num good">2.08x</td>
+      <td style="font-size:11.5px;">Corrected EBITDA + reduced CC interest via limit optimisation</td>
+    </tr>
+    <tr>
+      <td>Gross NPA / Default History</td>
+      <td class="num good">NIL</td>
+      <td class="num good">NIL</td>
+      <td style="font-size:11.5px;">No change — clean credit history</td>
+    </tr>
+  </table>
+</div>
+
+<div class="divider"></div>
+
+<!-- SECTION 4: CORRECTIVE ACTION PLAN -->
+<div class="section">
+  <div class="section-title green"><span>04</span> FinsightOne Corrective Action Plan — 60-Day Resubmission Roadmap</div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot amber">W1</div>
+      <div class="tl-body">
+        <div class="tl-title">Week 1–2: Document Audit &amp; Financial Restatement</div>
+        <div class="tl-desc">Full audit of CA-certified financials (FY22–FY25P). Prepare corrected CMA Data with SLM depreciation aligned to bank's computation. Obtain FY25 provisional Balance Sheet signed by CA with note on non-recurring losses.</div>
+        <div class="tl-date">DELIVERABLE: Corrected CMA Data Statement (Form III) + CA Certificate on Depreciation Method</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot amber">W2</div>
+      <div class="tl-body">
+        <div class="tl-title">Week 2–3: Revenue Projection Revision</div>
+        <div class="tl-desc">Update 5-year revenue projections to include: (a) AMC contract signed December 2024 — ₹12 lakh p.a., (b) Letter of Intent received from a new Tier-1 customer for ₹3.8 Crore annual supply (pending final PO). Present sensitivity analysis: base case, downside (−20% revenue), stress (−35%).</div>
+        <div class="tl-date">DELIVERABLE: Revised Financial Projections with Sensitivity Analysis</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot amber">W3</div>
+      <div class="tl-body">
+        <div class="tl-title">Week 3–4: Collateral Re-Valuation &amp; Legal Opinion</div>
+        <div class="tl-desc">Engage an RBI-approved independent valuer to obtain fresh valuation of industrial plot at Chakan MIDC. Explicitly cite RBI/2015-16/100 (Para 4.2.3) in valuation report for FSV methodology. Obtain legal opinion confirming clear title and no encumbrances. Arrange promoter's personal guarantee documentation (PG) with independent valuation of the Pune property.</div>
+        <div class="tl-date">DELIVERABLE: Independent Valuation Report + PG Documentation</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot amber">W4</div>
+      <div class="tl-body">
+        <div class="tl-title">Week 4–5: Equity Infusion Arrangement</div>
+        <div class="tl-desc">Document promoter's commitment to infuse ₹50 lakh fresh equity in Q1 FY26. Obtain CA-certified source of funds certificate. Prepare a Board Resolution for equity increase. This action alone brings TOL/TNW to 2.78x (well within typical bank benchmark of ≤3.5x).</div>
+        <div class="tl-date">DELIVERABLE: Board Resolution + CA Certificate + Notarised Undertaking</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot amber">W5</div>
+      <div class="tl-body">
+        <div class="tl-title">Week 5–6: Revised Credit Appraisal Memorandum (CAM)</div>
+        <div class="tl-desc">FinsightOne prepares a banker-grade Credit Appraisal Memorandum incorporating all corrections. CAM to include: project justification, break-even analysis, industry outlook (SIAM data on 2-wheeler/PV sector recovery), SWOT, risk matrix with mitigants, and a structured repayment schedule with moratorium recommendation (6 months).</div>
+        <div class="tl-date">DELIVERABLE: Full CAM + CMA Data + Project Report (PR) in Bank Format</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot green">W7</div>
+      <div class="tl-body">
+        <div class="tl-title">Week 7–8: Banker Meeting &amp; Resubmission</div>
+        <div class="tl-desc">FinsightOne team accompanies client to meet Branch Credit Manager. Present revised file with point-by-point response to each rejection ground. If needed, request fresh review from Zonal Credit Committee citing MSME sector eligibility and RBI's directive to banks to not withhold credit from viable MSME borrowers (RBI Circular RBI/2023-24/61).</div>
+        <div class="tl-date">DELIVERABLE: Formal Resubmission + Banker Presentation Deck</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot green">✓</div>
+      <div class="tl-body">
+        <div class="tl-title">Parallel Track: Alternative Lender Identification</div>
+        <div class="tl-desc">While resubmission is underway, FinsightOne simultaneously maps 3 alternative lenders — 1 PSU bank, 1 private bank, 1 NBFC — who have demonstrated appetite for auto ancillary MSME term loans in FY25. This ensures the client is not dependent on a single lender decision and timeline pressure can be reduced.</div>
+        <div class="tl-date">DELIVERABLE: Lender Mapping Matrix with Term Sheet Comparison</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SECTION 5: KEY FINANCIAL PROJECTIONS -->
+<div class="section">
+  <div class="section-title green"><span>05</span> Revised 5-Year DSCR &amp; Debt Repayment Schedule (Corrected)</div>
+  <p style="margin-bottom:12px;">Term Loan: ₹8.50 Crore | Repayment: 60 months | Moratorium: 6 months | Rate: 9.85% p.a. (MCLR + 2.10%)</p>
+
+  <table>
+    <tr>
+      <th style="width:12%;">Year</th>
+      <th style="text-align:right;">Revenue (₹ Cr)</th>
+      <th style="text-align:right;">EBITDA (₹ Cr)</th>
+      <th style="text-align:right;">PAT (₹ Cr)</th>
+      <th style="text-align:right;">Loan EMI (₹ Cr)</th>
+      <th style="text-align:right;">DSCR</th>
+      <th style="text-align:center;">Status</th>
+    </tr>
+    <tr>
+      <td>FY26 (P)</td>
+      <td class="num">26.80</td>
+      <td class="num">3.92</td>
+      <td class="num">1.48</td>
+      <td class="num">0.98</td>
+      <td class="num good">1.51x</td>
+      <td style="text-align:center;font-size:11px;" class="good">✓ Strong</td>
+    </tr>
+    <tr>
+      <td>FY27 (P)</td>
+      <td class="num">29.50</td>
+      <td class="num">4.28</td>
+      <td class="num">1.72</td>
+      <td class="num">1.42</td>
+      <td class="num good">1.22x</td>
+      <td style="text-align:center;font-size:11px;" class="good">✓ Adequate</td>
+    </tr>
+    <tr>
+      <td>FY28 (P)</td>
+      <td class="num">33.10</td>
+      <td class="num">4.85</td>
+      <td class="num">2.04</td>
+      <td class="num">1.42</td>
+      <td class="num good">1.44x</td>
+      <td style="text-align:center;font-size:11px;" class="good">✓ Good</td>
+    </tr>
+    <tr>
+      <td>FY29 (P)</td>
+      <td class="num">36.40</td>
+      <td class="num">5.44</td>
+      <td class="num">2.38</td>
+      <td class="num">1.42</td>
+      <td class="num good">1.67x</td>
+      <td style="text-align:center;font-size:11px;" class="good">✓ Strong</td>
+    </tr>
+    <tr>
+      <td>FY30 (P)</td>
+      <td class="num">39.20</td>
+      <td class="num">5.88</td>
+      <td class="num">2.68</td>
+      <td class="num">0.71</td>
+      <td class="num good">3.78x</td>
+      <td style="text-align:center;font-size:11px;" class="good">✓ Excellent</td>
+    </tr>
+    <tr style="background:#F0FDF4;">
+      <td colspan="5" style="font-weight:800;color:#065F46;text-align:right;border-top:2px solid #059669;">Average DSCR (5-Year)</td>
+      <td class="num good" style="font-weight:900;font-size:15px;border-top:2px solid #059669;">1.72x</td>
+      <td style="text-align:center;border-top:2px solid #059669;font-weight:800;" class="good">✓ Exceeds Norm</td>
+    </tr>
+  </table>
+
+  <div class="highlight">
+    <strong>Key Note:</strong> The above projections use a conservative revenue growth rate of 8–12% CAGR against the industry average of 14% for Tier-1 auto ancillary suppliers in the Pune-Nashik corridor (Source: SIAM Auto Ancillary Sector Review, Q3 FY25). DSCR comfortably exceeds RBI/bank guideline minimum of 1.25x across all years except a worst-case scenario at Year 2 (still 1.22x — effectively acceptable under RBI's Prudential Framework for NPA resolution for viable MSMEs).
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SECTION 6: RISK MATRIX -->
+<div class="section">
+  <div class="section-title"><span>06</span> Risk Assessment Matrix (Post-Mitigation)</div>
+  <table>
+    <tr>
+      <th style="width:28%;">Risk Factor</th>
+      <th>Nature</th>
+      <th style="width:15%;text-align:center;">Likelihood</th>
+      <th style="width:15%;text-align:center;">Impact</th>
+      <th style="width:28%;">Mitigation</th>
+    </tr>
+    <tr>
+      <td>Customer concentration (top 3 = 74% revenue)</td>
+      <td>Credit Risk</td>
+      <td style="text-align:center;" class="warn">Medium</td>
+      <td style="text-align:center;" class="warn">Medium</td>
+      <td style="font-size:11.5px;">New customer diversification underway (LOI from 4th Tier-1 client)</td>
+    </tr>
+    <tr>
+      <td>Auto sector cyclicality</td>
+      <td>Industry Risk</td>
+      <td style="text-align:center;" class="warn">Medium</td>
+      <td style="text-align:center;" class="warn">Medium</td>
+      <td style="font-size:11.5px;">EV transition-ready components (neutral to ICE/EV); OEM demand stable per SIAM FY26 outlook</td>
+    </tr>
+    <tr>
+      <td>Steel price volatility</td>
+      <td>Input Cost Risk</td>
+      <td style="text-align:center;" class="warn">Medium</td>
+      <td style="text-align:center;">Low</td>
+      <td style="font-size:11.5px;">6-month forward contracts with steel suppliers; price pass-through clause in OEM contracts</td>
+    </tr>
+    <tr>
+      <td>Promoter key-man risk</td>
+      <td>Management Risk</td>
+      <td style="text-align:center;">Low</td>
+      <td style="text-align:center;" class="warn">Medium</td>
+      <td style="font-size:11.5px;">Second-tier management in place; promoter's son (IIT-trained engineer) being groomed as successor</td>
+    </tr>
+    <tr>
+      <td>Machinery commissioning delay</td>
+      <td>Project Risk</td>
+      <td style="text-align:center;">Low</td>
+      <td style="text-align:center;">Low</td>
+      <td style="font-size:11.5px;">Moratorium of 6 months covers commissioning; OEM has given 3-month delivery window</td>
+    </tr>
+    <tr>
+      <td>GST/regulatory compliance</td>
+      <td>Compliance Risk</td>
+      <td style="text-align:center;" class="good">Low</td>
+      <td style="text-align:center;" class="good">Low</td>
+      <td style="font-size:11.5px;">GST returns filed monthly; MSME Udyam registration current; no litigation pending</td>
+    </tr>
+  </table>
+</div>
+
+<div class="divider"></div>
+
+<!-- SECTION 7: RESULT -->
+<div class="section">
+  <div class="section-title green"><span>07</span> FinsightOne Assessment &amp; Recommendation</div>
+
+  <div class="result-banner">
+    <div class="rb-top">FinsightOne Recommendation</div>
+    <div class="rb-amount">VIABLE — RESUBMIT WITH CORRECTIONS</div>
+    <div class="rb-detail" style="margin-top:10px;">Loan of ₹8.50 Crore is fully supportable. All three rejection grounds are addressable through documentation corrections, correct valuation methodology, and promoter equity infusion. The business is fundamentally sound with a clean credit history of 11 years.</div>
+  </div>
+
+  <table style="margin-top:16px;">
+    <tr>
+      <th style="width:50%;">Rejection Ground</th>
+      <th>FinsightOne Resolution</th>
+      <th style="width:15%;text-align:center;">Status</th>
+    </tr>
+    <tr>
+      <td>DSCR below 1.25x</td>
+      <td style="font-size:12px;">Corrected depreciation + new AMC contract → DSCR now 1.31x average, 1.22x minimum</td>
+      <td style="text-align:center;" class="good">✓ Resolved</td>
+    </tr>
+    <tr>
+      <td>Collateral coverage shortfall</td>
+      <td style="font-size:12px;">Correct RBI FSV methodology + promoter PG → coverage 107%</td>
+      <td style="text-align:center;" class="good">✓ Resolved</td>
+    </tr>
+    <tr>
+      <td>Declining net worth trend</td>
+      <td style="font-size:12px;">Non-recurring losses explained + FY25 provisional + ₹50L equity infusion undertaking</td>
+      <td style="text-align:center;" class="good">✓ Resolved</td>
+    </tr>
+  </table>
+
+  <div class="action-box" style="margin-top:20px;">
+    <div class="ab-title">Next Steps — Client Action Items</div>
+    <ul class="green-bullets">
+      <li>Provide FY25 provisional Balance Sheet certified by CA within 7 days</li>
+      <li>Execute Board Resolution for ₹50 lakh equity infusion (FinsightOne provides draft)</li>
+      <li>Sign personal guarantee documentation for PG property (Pune)</li>
+      <li>Share copy of AMC contract and LOI from new customer</li>
+      <li>Provide 6 months CC account statements for working capital analysis</li>
+    </ul>
+  </div>
+
+  <div class="page-note">All financial figures are illustrative for this sample report. Borrower identity and bank name have been obscured for confidentiality.</div>
+</div>
+
+</div><!-- /content -->
+
+<!-- FOOTER -->
+<div class="footer">
+  <div>
+    <strong style="color:#F59E0B;">FINSIGHT<span style="color:#fff;">ONE</span></strong> &nbsp;|&nbsp;
+    Expert Credit Advisory &nbsp;|&nbsp; ex-Banker Team &nbsp;|&nbsp; finsightone.com
+  </div>
+  <div style="text-align:right;">
+    Report: FRR-2025-06118 &nbsp;|&nbsp; Page 1 of 1 &nbsp;|&nbsp; Strictly Confidential — Sample &nbsp;|&nbsp; © 2025 FinsightOne
+  </div>
+</div>
+
+</div><!-- /page -->
+</body>
+</html>

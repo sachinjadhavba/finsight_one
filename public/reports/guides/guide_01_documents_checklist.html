@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Documents Do Banks Actually Ask For in 2025? | FinsightOne Guide</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #F9FAFB; color: #1F2937; font-size: 13.5px; line-height: 1.6; }
+  .page { max-width: 920px; margin: 0 auto; background: #fff; box-shadow: 0 2px 20px rgba(0,0,0,0.07); }
+  .header { background: #1E3A5F; color: #fff; padding: 22px 40px 18px; display: flex; justify-content: space-between; align-items: center; }
+  .logo { font-size: 22px; font-weight: 900; letter-spacing: 1px; }
+  .logo span { color: #F59E0B; }
+  .tagline { font-size: 10px; color: #93C5FD; letter-spacing: 2px; text-transform: uppercase; margin-top: 3px; }
+  .hdr-r { text-align: right; font-size: 10.5px; color: #CBD5E1; line-height: 1.9; }
+
+  .hero { background: #1E3A5F; color: #fff; padding: 44px 40px 36px; border-bottom: 4px solid #1D4ED8; }
+  .guide-label { display: inline-block; background: #1D4ED8; color: #fff; font-weight: 800; font-size: 10px; padding: 4px 14px; border-radius: 4px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 14px; }
+  .hero h1 { font-size: 26px; font-weight: 900; line-height: 1.25; margin-bottom: 8px; }
+  .hero p { font-size: 13.5px; color: #93C5FD; margin-bottom: 0; max-width: 640px; line-height: 1.7; }
+  .hero-meta { display: flex; gap: 24px; margin-top: 20px; }
+  .hm { font-size: 11px; color: #64748B; }
+  .hm span { color: #93C5FD; font-weight: 700; }
+
+  .content { padding: 36px 40px; }
+  .section { margin-bottom: 34px; }
+  .section-title { font-size: 14px; font-weight: 800; color: #1E3A5F; border-bottom: 2px solid #E5E7EB; padding-bottom: 7px; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .section-title .icon { margin-right: 8px; }
+  p { margin-bottom: 10px; color: #374151; }
+  .divider { border: none; border-top: 1px solid #E5E7EB; margin: 28px 0; }
+
+  /* Doc checklist */
+  .doc-category { margin: 18px 0; }
+  .dc-header { background: #1E3A5F; color: #fff; padding: 10px 16px; border-radius: 6px 6px 0 0; font-size: 12px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; }
+  .dc-body { border: 1px solid #E5E7EB; border-top: none; border-radius: 0 0 6px 6px; overflow: hidden; }
+  .doc-row { display: flex; align-items: flex-start; gap: 12px; padding: 10px 16px; border-bottom: 1px solid #F3F4F6; }
+  .doc-row:last-child { border-bottom: none; }
+  .doc-row:nth-child(even) { background: #FAFAFA; }
+  .doc-checkbox { width: 18px; height: 18px; border: 2px solid #CBD5E1; border-radius: 4px; flex-shrink: 0; margin-top: 1px; }
+  .doc-name { font-size: 13px; font-weight: 700; color: #1F2937; }
+  .doc-note { font-size: 11.5px; color: #6B7280; margin-top: 2px; }
+  .doc-tag { display: inline-block; font-size: 9px; font-weight: 800; padding: 2px 7px; border-radius: 10px; letter-spacing: 1px; text-transform: uppercase; margin-left: 8px; vertical-align: middle; }
+  .tag-critical { background: #FEE2E2; color: #DC2626; }
+  .tag-often { background: #FFFBEB; color: #B45309; }
+  .tag-sometimes { background: #EFF6FF; color: #1D4ED8; }
+
+  /* Info boxes */
+  .info-box { background: #EFF6FF; border-left: 5px solid #1D4ED8; padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 14px 0; }
+  .info-box .ib-title { font-size: 12px; font-weight: 800; color: #1E40AF; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .warn-box { background: #FFFBEB; border-left: 5px solid #B45309; padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 14px 0; }
+  .warn-box .wb-title { font-size: 12px; font-weight: 800; color: #92400E; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  ul.styled { list-style: none; padding: 0; }
+  ul.styled li { padding: 5px 0 5px 20px; position: relative; color: #374151; font-size: 13px; }
+  ul.styled li::before { content: '▸'; position: absolute; left: 0; color: #1D4ED8; font-size: 12px; top: 6px; }
+
+  /* CTA */
+  .cta-box { background: #1E3A5F; color: #fff; padding: 28px 32px; border-radius: 10px; margin: 32px 0; text-align: center; }
+  .cta-box h3 { font-size: 18px; font-weight: 800; margin-bottom: 8px; }
+  .cta-box p { color: #93C5FD; font-size: 13px; margin-bottom: 16px; }
+  .cta-btn { display: inline-block; background: #F59E0B; color: #1E3A5F; font-weight: 800; padding: 12px 28px; border-radius: 8px; font-size: 13px; text-decoration: none; }
+
+  .footer { background: #1E3A5F; color: #fff; padding: 14px 40px; display: flex; justify-content: space-between; font-size: 10px; margin-top: 40px; }
+
+  .rbi-note { font-size: 11px; color: #9CA3AF; background: #F8FAFC; border: 1px solid #E5E7EB; border-radius: 6px; padding: 10px 14px; margin: 10px 0; }
+  .rbi-note strong { color: #475569; }
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="header">
+  <div>
+    <div class="logo">FINSIGHT<span>ONE</span></div>
+    <div class="tagline">Free Loan Guide</div>
+  </div>
+  <div class="hdr-r">
+    <div>LEARN BEFORE YOU APPLY — GUIDE 01/06</div>
+    <div>Written by Ex-Bankers · Updated May 2025</div>
+    <div>Free to Use · No Login Required</div>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="guide-label">📄 MSME Loans · Documents</div>
+  <h1>What Documents Do Banks<br>Actually Ask For in 2025?</h1>
+  <p>The exact checklist banks use — and why most loan files get rejected on day one due to missing or incorrect documents. Written by our team of ex-bank credit officers who reviewed thousands of files.</p>
+  <div class="hero-meta">
+    <div class="hm">📖 <span>8 min read</span></div>
+    <div class="hm">👤 <span>For: Business owners applying for any bank loan</span></div>
+    <div class="hm">✅ <span>Updated for RBI 2025 guidelines</span></div>
+  </div>
+</div>
+
+<div class="content">
+
+<div class="section">
+  <div class="section-title"><span class="icon">🔑</span> The Most Important Thing Nobody Tells You</div>
+  <p>Banks don't reject your loan because your business isn't good enough. Most rejections happen because the documents are wrong, missing, or inconsistent — before a credit officer even evaluates your financials.</p>
+  <div class="warn-box">
+    <div class="wb-title">The Day-One Rejection Problem</div>
+    <p style="margin:0;font-size:12.5px;color:#374151;">Our team has reviewed hundreds of loan applications. In over 60% of cases where a loan was declined, the core problem was not the business or the financials — it was the document file itself. A mismatch between your GST address and your bank statement address. A financial year gap. A photocopy instead of a certified copy. These are fixable — but only if you know about them before you apply.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">🏢</span> KYC &amp; Entity Documents — Every Loan, Every Bank</div>
+
+  <div class="doc-category">
+    <div class="dc-header">Business / Entity Documents</div>
+    <div class="dc-body">
+      <div class="doc-row">
+        <div class="doc-checkbox"></div>
+        <div>
+          <div class="doc-name">Certificate of Incorporation (COI) <span class="doc-tag tag-critical">Critical</span></div>
+          <div class="doc-note">MCA-issued for Pvt. Ltd. / Ltd. companies. Must be original or certified copy. Some banks now accept MCA portal printout with digital signature.</div>
+        </div>
+      </div>
+      <div class="doc-row">
+        <div class="doc-checkbox"></div>
+        <div>
+          <div class="doc-name">PAN Card — Company &amp; All Directors/Partners <span class="doc-tag tag-critical">Critical</span></div>
+          <div class="doc-note">PAN must match CIBIL records exactly. Even a name mismatch (Pvt. Ltd. vs Private Limited) can flag the CIBIL pull.</div>
+        </div>
+      </div>
+      <div class="doc-row">
+        <div class="doc-checkbox"></div>
+        <div>
+          <div class="doc-name">GST Registration Certificate <span class="doc-tag tag-critical">Critical</span></div>
+          <div class="doc-note">Address must match the business address on all other documents. If you have multiple GST registrations (different states), attach all of them.</div>
+        </div>
+      </div>
+      <div class="doc-row">
+        <div class="doc-checkbox"></div>
+        <div>
+          <div class="doc-name">Memorandum &amp; Articles of Association (MOA &amp; AOA) <span class="doc-tag tag-critical">Critical</span></div>
+          <div class="doc-note">For Pvt. Ltd. companies. Certified copy stamped by ROC. Some banks require this to be less than 6 months old (request fresh certified copy from MCA).</div>
+        </div>
+      </div>
+      <div class="doc-row">
+        <div class="doc-checkbox"></div>
+        <div>
+          <div class="doc-name">Udyam Registration Certificate (MSME) <span class="doc-tag tag-often">Recommended</span></div>
+          <div class="doc-note">Mandatory for accessing MSME-specific loan schemes, lower interest rates under PSL, and CGTMSE guarantee cover. Register free at udyamregistration.gov.in</div>
+        </div>
+      </div>
+      <div class="doc-row">
+        <div class="doc-checkbox"></div>
+        <div>
+          <div class="doc-name">Board Resolution for Borrowing <span class="doc-tag tag-critical">Critical</span></div>
+          <div class="doc-note">For Pvt. Ltd.: Board resolution authorising specific directors to borrow and sign loan documents. Bank provides format — use their format exactly.</div>
+        </div>
+      </div>
+      <div class="doc-row">
+        <div class="doc-checkbox"></div>
+        <div>
+          <div class="doc-name">Import Export Code (IEC) <span class="doc-tag tag-sometimes">If Exporter</span></div>
+          <div class="doc-note">Required only if export financing (packing credit, PCFC, LC) is being sought.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rbi-note">
+    <strong>RBI Note:</strong> Under RBI's KYC Master Directions (updated January 2024), banks must accept Aadhaar, passport, driving licence, voter ID, or utility bill as OVD (Officially Valid Document) for address proof. They cannot insist on any one specific document.
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">📊</span> Financial Documents — The Most Common Gap</div>
+
+  <div class="doc-category">
+    <div class="dc-header">Audited Financial Statements</div>
+    <div class="dc-body">
+      <div class="doc-row">
+        <div class="doc-checkbox"></div>
+        <div>
+          <div class="doc-name">CA-Audited Balance Sheet + P&amp;L (Last 3 Years) <span class="doc-tag tag-critical">Critical</span></div>
+          <div class="doc-note">Must be signed and stamped by a registered Chartered Accountant. All 3 years mandatory — missing even one year is a common rejection trigger. If the business is newer, submit whatever years are available plus a CA certificate.</div>
+        </div>
+      </div>
+      <div class="doc-row">
+        <div class="doc-checkbox"></div>
+        <div>
+          <div class="doc-name">Provisional Balance Sheet for Current Year <span class="doc-tag tag-critical">Critical</span></div>
+          <div class="doc-note">If you're applying mid-year (e.g., September 2025), banks want up-to-date financials. Have your CA prepare provisional accounts for April–August 2025 with a certificate. Without this, banks assume you're hiding current-year stress.</div>
+        </div>
+      </div>
+      <div class="doc-row">
+        <div class="doc-checkbox"></div>
+        <div>
+          <div class="doc-name">ITR — Company + All Directors/Partners (Last 3 Years) <span class="doc-tag tag-critical">Critical</span></div>
+          <div class="doc-note">Must match declared income in Balance Sheet. Common problem: ITR shows turnover of ₹4 Cr but GST returns show ₹8 Cr. Banks use all three (ITR, BS, GST) to cross-check — mismatches trigger red flags.</div>
+        </div>
+      </div>
+      <div class="doc-row">
+        <div class="doc-checkbox"></div>
+        <div>
+          <div class="doc-name">GST Returns — 12 Months (GSTR-1 &amp; GSTR-3B) <span class="doc-tag tag-critical">Critical</span></div>
+          <div class="doc-note">Banks now routinely cross-check GST returns against declared turnover. Late filing or any month with "NIL" filing during active business operations raises questions.</div>
+        </div>
+      </div>
+      <div class="doc-row">
+        <div class="doc-checkbox"></div>
+        <div>
+          <div class="doc-name">CMA Data (Credit Monitoring Arrangement) <span class="doc-tag tag-critical">Critical for WC Loans</span></div>
+          <div class="doc-note">Bank's standard form showing 3 years actual + 2 years projected financials. Must be prepared by your CA in the specific bank-provided format. This is the most commonly missed document for working capital loans. Ask the bank for their CMA format before your CA starts.</div>
+        </div>
+      </div>
+      <div class="doc-row">
+        <div class="doc-checkbox"></div>
+        <div>
+          <div class="doc-name">Debtors + Creditors Statement (Aging) <span class="doc-tag tag-critical">Critical for CC Loans</span></div>
+          <div class="doc-note">For Cash Credit: month-wise aging of outstanding debtors (how long each invoice has been unpaid). Bank uses this to calculate Drawing Power. Old overdue debtors (90+ days) reduce your CC eligibility significantly.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">🏦</span> Bank Account Documents</div>
+
+  <div class="doc-category">
+    <div class="dc-header">Banking Statements</div>
+    <div class="dc-body">
+      <div class="doc-row">
+        <div class="doc-checkbox"></div>
+        <div>
+          <div class="doc-name">Bank Statements — Last 12 Months (All Accounts) <span class="doc-tag tag-critical">Critical</span></div>
+          <div class="doc-note">Every current account, savings account, CC account, OD account — all of them. Do not submit statements only from the "good" accounts. Banks run a CIBIL check and will see all accounts anyway. Incomplete submission looks like concealment.</div>
+        </div>
+      </div>
+      <div class="doc-row">
+        <div class="doc-checkbox"></div>
+        <div>
+          <div class="doc-name">Loan Repayment Track Record (Statement of Existing Loans) <span class="doc-tag tag-critical">Critical</span></div>
+          <div class="doc-note">For all existing loans: outstanding balance, EMI amount, due date, payment history. Even one missed EMI in the last 12 months significantly reduces approval probability. If you have missed EMIs, be upfront about the reason.</div>
+        </div>
+      </div>
+      <div class="doc-row">
+        <div class="doc-checkbox"></div>
+        <div>
+          <div class="doc-name">CIBIL / Credit Report — Company &amp; Promoters <span class="doc-tag tag-critical">Critical</span></div>
+          <div class="doc-note">Banks pull this themselves, but it's best to pull your own report first (free once a year at cibil.com) and check for errors. Wrong entries are more common than you think and can take 30–45 days to correct.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="warn-box">
+    <div class="wb-title">⚠️ The Cash Transaction Problem</div>
+    <p style="margin:0;font-size:12.5px;color:#374151;">If your bank statements show large cash withdrawals followed by corresponding cash deposits (even legitimate salary payments), it raises money laundering flags under RBI's AML guidelines. Banks are required to flag and investigate this. If your business legitimately pays wages in cash, have your CA prepare an explanation note in advance — before the bank asks.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">🏗️</span> For Term Loans (Plant / Project Finance)</div>
+
+  <div class="doc-category">
+    <div class="dc-header">Project-Specific Documents</div>
+    <div class="dc-body">
+      <div class="doc-row">
+        <div class="doc-checkbox"></div>
+        <div>
+          <div class="doc-name">Detailed Project Report (DPR) <span class="doc-tag tag-critical">Critical</span></div>
+          <div class="doc-note">For term loans above ₹1 Crore — banks require a DPR covering: project background, cost of project, means of finance, revenue projections with assumptions, break-even analysis, DSCR calculation. As of RBI's April 2025 Project Finance Directions, DPR requirements have been tightened for loans above ₹25 Crore.</div>
+        </div>
+      </div>
+      <div class="doc-row">
+        <div class="doc-checkbox"></div>
+        <div>
+          <div class="doc-name">Quotations from Machinery Suppliers <span class="doc-tag tag-critical">Critical</span></div>
+          <div class="doc-note">Banks need to verify the cost of project. Get at least 2 quotations. Proforma invoices (not verbal quotes) are required. For imported machinery, include CIF cost, customs duty, and installation in the quotation breakdown.</div>
+        </div>
+      </div>
+      <div class="doc-row">
+        <div class="doc-checkbox"></div>
+        <div>
+          <div class="doc-name">Property Documents (for Mortgage) <span class="doc-tag tag-critical">Critical</span></div>
+          <div class="doc-note">Title deed, encumbrance certificate (last 30 years), property tax receipts, municipal approved plan, layout plan. Must be free of any prior mortgage. Banks mandate a legal opinion from their empanelled lawyer before disbursement.</div>
+        </div>
+      </div>
+      <div class="doc-row">
+        <div class="doc-checkbox"></div>
+        <div>
+          <div class="doc-name">Environmental Clearance / Pollution NOC <span class="doc-tag tag-sometimes">If Applicable</span></div>
+          <div class="doc-note">Mandatory for manufacturing industries that require a Consent to Establish / Consent to Operate from the State Pollution Control Board. Banks will not disburse without this for applicable industries.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">✅</span> The 5 Documents That Most Often Derail Applications</div>
+  <ul class="styled">
+    <li><strong>Provisional accounts for the current year</strong> — 70% of applicants don't have this and it makes the file look outdated</li>
+    <li><strong>CMA Data in bank's own format</strong> — clients often get CMA Data prepared generically; each bank has its own format</li>
+    <li><strong>Promoter's personal ITR matching company income</strong> — if the promoter draws no declared salary, it's a red flag</li>
+    <li><strong>Clean debtors aging — no 90+ day outstanding</strong> — old uncollected invoices directly reduce CC eligibility</li>
+    <li><strong>Consistent address across all documents</strong> — GST, bank, ITR, property documents must all show the same address</li>
+  </ul>
+
+  <div class="info-box">
+    <div class="ib-title">💡 Pro Tip from Ex-Bankers</div>
+    <p style="margin:0;font-size:12.5px;color:#374151;">Before submitting any application, do a self-audit: read your own file as if you're a suspicious credit officer. If you find a mismatch between any two documents — fix it before submitting. The bank will find it. Better it comes from you with an explanation than from them with a doubt.</p>
+  </div>
+</div>
+
+<div class="cta-box">
+  <h3>Need Someone to Review Your Documents Before You Apply?</h3>
+  <p>Our team of ex-bankers checks every document for errors, mismatches, and missing items — before you submit to the bank.</p>
+  <a href="#" class="cta-btn">Get a Free Document Audit →</a>
+</div>
+
+</div>
+
+<div class="footer">
+  <div><strong style="color:#F59E0B;">FINSIGHT<span style="color:#fff;">ONE</span></strong> &nbsp;|&nbsp; Expert Credit Advisory &nbsp;|&nbsp; finsightone.com</div>
+  <div>Guide 01/06 — Free Loan Guide Series &nbsp;|&nbsp; © 2025 FinsightOne. Not legal or financial advice.</div>
+</div>
+
+</div>
+</body>
+</html>

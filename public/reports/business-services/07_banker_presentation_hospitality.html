@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FBP-2025-04012 | Banker Presentation | FinsightOne</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #F9FAFB; color: #1F2937; font-size: 13.5px; line-height: 1.6; }
+  .page { max-width: 960px; margin: 0 auto; background: #fff; box-shadow: 0 2px 16px rgba(0,0,0,0.07); }
+  .header { background: #1E3A5F; color: #fff; padding: 28px 40px 22px; display: flex; justify-content: space-between; align-items: center; }
+  .logo { font-size: 26px; font-weight: 900; letter-spacing: 1px; }
+  .logo span { color: #F59E0B; }
+  .tagline { font-size: 11px; color: #93C5FD; letter-spacing: 2px; text-transform: uppercase; margin-top: 2px; }
+  .header-right { text-align: right; font-size: 11.5px; color: #CBD5E1; line-height: 1.8; }
+  /* Cover — hospitality theme */
+  .cover { background: linear-gradient(135deg, #1E3A5F 0%, #1a3350 50%, #2D5282 100%); color: #fff; padding: 50px 40px 44px; position: relative; overflow: hidden; }
+  .cover::before { content: ''; position: absolute; top: 0; right: 0; width: 320px; height: 100%; background: linear-gradient(to left, rgba(245,158,11,0.08), transparent); pointer-events: none; }
+  .cover-type { display: inline-block; background: transparent; color: #F59E0B; font-weight: 700; font-size: 11px; padding: 4px 14px; border: 1.5px solid #F59E0B; border-radius: 20px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 18px; }
+  .cover h1 { font-size: 28px; font-weight: 900; margin-bottom: 4px; line-height: 1.2; }
+  .cover h2 { font-size: 15px; font-weight: 400; color: #93C5FD; margin-bottom: 6px; }
+  .cover-divider { width: 60px; height: 3px; background: #F59E0B; margin: 16px 0; border-radius: 2px; }
+  .cover-meta { font-size: 12px; color: #CBD5E1; margin-bottom: 24px; line-height: 2; }
+  .score-pill { display: inline-flex; align-items: center; gap: 14px; background: rgba(16,185,129,0.15); border: 1.5px solid #10B981; border-radius: 8px; padding: 10px 20px; margin-bottom: 24px; }
+  .score-pill .sp-num { font-size: 38px; font-weight: 900; color: #34D399; line-height: 1; }
+  .score-pill .sp-label { font-size: 10px; color: #6EE7B7; text-transform: uppercase; letter-spacing: 1px; }
+  .score-pill .sp-status { font-size: 14px; font-weight: 700; color: #34D399; }
+  .kpi-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 16px; }
+  .kpi-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-top: 3px solid #F59E0B; border-radius: 6px; padding: 16px 14px; text-align: center; }
+  .kpi-card .kv { font-size: 24px; font-weight: 900; color: #F59E0B; }
+  .kpi-card .kl { font-size: 10px; color: #93C5FD; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+  .kpi-card .ks { font-size: 10.5px; color: #CBD5E1; margin-top: 2px; }
+  /* Content */
+  .content { padding: 36px 40px; }
+  .section { margin-bottom: 38px; }
+  .section-title { font-size: 15px; font-weight: 800; color: #1E3A5F; border-bottom: 2px solid #F59E0B; padding-bottom: 6px; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .section-num { display: inline-block; background: #1E3A5F; color: #F59E0B; font-size: 10px; font-weight: 800; padding: 2px 7px; border-radius: 3px; margin-right: 8px; }
+  p { margin-bottom: 10px; color: #374151; }
+  table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 12.5px; }
+  th { background: #1E3A5F; color: #fff; padding: 9px 12px; text-align: left; font-size: 11.5px; font-weight: 700; }
+  td { padding: 8px 12px; border-bottom: 1px solid #E5E7EB; }
+  tr:nth-child(even) td { background: #FAFAFA; }
+  tr:nth-child(odd) td { background: #fff; }
+  .highlight { background: #FFFBEB; border-left: 4px solid #B45309; padding: 14px 18px; border-radius: 0 6px 6px 0; margin: 14px 0; }
+  .highlight strong { color: #92400E; }
+  .rec-box { border: 2px solid #B45309; background: #FFFBEB; border-radius: 8px; padding: 20px 24px; margin: 16px 0; }
+  .rec-box h3 { color: #92400E; font-size: 14px; margin-bottom: 10px; }
+  .divider { border: none; border-top: 1px solid #E5E7EB; margin: 28px 0; }
+  ul.styled { list-style: none; padding: 0; }
+  ul.styled li { padding: 5px 0 5px 20px; position: relative; color: #374151; }
+  ul.styled li::before { content: '▸'; position: absolute; left: 0; color: #F59E0B; font-size: 12px; }
+  .blurred-name { filter: blur(4px); user-select: none; background: #E5E7EB; padding: 1px 6px; border-radius: 2px; display: inline-block; }
+  .blurred-bank { filter: blur(3px); display: inline-block; }
+  .status-green { color: #059669; font-weight: 700; }
+  .status-amber { color: #D97706; font-weight: 700; }
+  .status-red { color: #DC2626; font-weight: 700; }
+  /* Revenue stream table — pie-style visual */
+  .rev-stream-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin: 14px 0; }
+  .rev-stream-card { border: 1.5px solid #E5E7EB; border-radius: 8px; padding: 16px; text-align: center; border-top: 4px solid #1E3A5F; }
+  .rev-stream-card.accent { border-top-color: #F59E0B; }
+  .rev-stream-card .rv-pct { font-size: 32px; font-weight: 900; color: #1E3A5F; }
+  .rev-stream-card.accent .rv-pct { color: #D97706; }
+  .rev-stream-card .rv-name { font-size: 12px; font-weight: 700; color: #374151; margin: 4px 0 2px; }
+  .rev-stream-card .rv-amt { font-size: 11px; color: #6B7280; }
+  /* DSCR visual */
+  .dscr-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 14px 0; }
+  .dscr-card { border-radius: 8px; padding: 18px; text-align: center; border: 1.5px solid #E5E7EB; }
+  .dscr-card .dy { font-size: 11px; color: #6B7280; text-transform: uppercase; letter-spacing: 1px; }
+  .dscr-card .dv { font-size: 32px; font-weight: 900; color: #059669; margin: 4px 0; }
+  .dscr-card .ds { font-size: 11px; }
+  /* Security coverage visual */
+  .security-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0; }
+  .security-card { border: 1.5px solid #E5E7EB; border-radius: 8px; padding: 14px 16px; }
+  .security-card h4 { font-size: 12px; font-weight: 700; color: #1E3A5F; margin-bottom: 6px; }
+  /* Strong credit bullets */
+  .credit-strength { display: flex; align-items: flex-start; gap: 12px; padding: 12px 16px; margin: 8px 0; background: #FAFAFA; border-radius: 6px; border-left: 3px solid #F59E0B; }
+  .cs-num { background: #1E3A5F; color: #F59E0B; font-weight: 900; font-size: 12px; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+  .cs-text { font-size: 13px; color: #374151; }
+  .cs-text strong { color: #1E3A5F; }
+  /* Terms box */
+  .terms-box { background: #1E3A5F; color: #fff; border-radius: 8px; padding: 24px 28px; margin: 14px 0; }
+  .terms-box h3 { color: #F59E0B; font-size: 14px; margin-bottom: 14px; }
+  .terms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .terms-item .tl { font-size: 10px; color: #93C5FD; text-transform: uppercase; letter-spacing: 1px; }
+  .terms-item .tv { font-size: 14px; font-weight: 700; color: #fff; }
+  /* Market data */
+  .market-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 14px 0; }
+  .mstat { text-align: center; padding: 14px 10px; background: #F9FAFB; border-radius: 8px; border: 1px solid #E5E7EB; }
+  .mstat .mv { font-size: 22px; font-weight: 900; color: #1E3A5F; }
+  .mstat .ml { font-size: 10px; color: #6B7280; text-transform: uppercase; letter-spacing: 0.8px; margin-top: 2px; }
+  /* Footer */
+  .footer { background: #1E3A5F; color: #CBD5E1; padding: 24px 40px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; font-size: 11px; }
+  .footer .ft-logo { font-size: 16px; font-weight: 900; color: #fff; margin-bottom: 4px; }
+  .footer .ft-logo span { color: #F59E0B; }
+  .footer-mid { text-align: center; }
+  .footer-right { text-align: right; }
+  .footer h4 { color: #F59E0B; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+  .proj-row td { font-style: italic; color: #4B5563; }
+</style>
+</head>
+<body>
+<div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-35deg);font-size:110px;font-weight:900;color:rgba(0,0,0,0.03);pointer-events:none;white-space:nowrap;z-index:0;letter-spacing:16px;">SAMPLE</div>
+
+<div class="page">
+
+<div class="header">
+  <div>
+    <div class="logo">FINSIGHT<span>ONE</span></div>
+    <div class="tagline">Expert Credit Advisory</div>
+  </div>
+  <div class="header-right">
+    <div>Full Banker Presentation</div>
+    <div>Report ID: <strong style="color:#F59E0B;">FBP-2025-04012</strong></div>
+    <div>Date: May 2025</div>
+    <div>Classification: STRICTLY CONFIDENTIAL</div>
+  </div>
+</div>
+
+<!-- COVER -->
+<div class="cover">
+  <span class="cover-type">Banker Presentation</span>
+  <h1><span class="blurred-name">G████████ Hospitality Pvt. Ltd.</span></h1>
+  <h2>Term Loan ₹20 Crore + LAP ₹8 Crore — Boutique Hotel Renovation &amp; Expansion</h2>
+  <div class="cover-divider"></div>
+  <div class="cover-meta">
+    Goa, India &nbsp;|&nbsp; Hotels &amp; Hospitality &nbsp;|&nbsp; Established 2012 &nbsp;|&nbsp; 2 Boutique Hotels &nbsp;|&nbsp; 68 Rooms
+  </div>
+
+  <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-bottom:20px;">
+    <div class="score-pill">
+      <div class="sp-num">76</div>
+      <div>
+        <div class="sp-label">AI Creditworthiness Score</div>
+        <div class="sp-status">GREEN — STRONG CREDIT</div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:12px;color:#CBD5E1;">Total Facility Requested</div>
+      <div style="font-size:28px;font-weight:900;color:#F59E0B;">₹28 Crore</div>
+      <div style="font-size:11px;color:#93C5FD;">₹20 Cr Term Loan + ₹8 Cr LAP</div>
+    </div>
+  </div>
+
+  <div class="kpi-cards">
+    <div class="kpi-card">
+      <div class="kv">₹9.8 Cr</div>
+      <div class="kl">FY24 Revenue</div>
+      <div class="ks">+32.4% YoY growth</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kv">38.8%</div>
+      <div class="kl">EBITDA Margin</div>
+      <div class="ks">Expanding annually</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kv">68 Rooms</div>
+      <div class="kl">Current Capacity</div>
+      <div class="ks">Expanding to 75 rooms</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kv">74%</div>
+      <div class="kl">Avg Occupancy FY24</div>
+      <div class="ks">92% in peak season</div>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- Section 1: Executive Snapshot -->
+  <div class="section">
+    <div class="section-title"><span class="section-num">01</span>Executive Snapshot</div>
+    <p><span class="blurred-name">G████████ Hospitality Pvt. Ltd.</span> is a premium boutique hospitality company operating two heritage-themed hotels in North Goa. Established in 2012 by a management team with over two decades of combined hospitality experience, the company has built a strong reputation in the luxury boutique segment, commanding an Average Daily Rate (ADR) of ₹8,200 — significantly above the Goa market average of ₹6,400.</p>
+    <p>The company seeks ₹28 Crore in structured bank financing to renovate and expand Hotel 2 (adding 7 rooms, a rooftop restaurant, and a swimming pool) and to maintain operational working capital through the construction period. FinsightOne has evaluated this as a <strong>strong credit case</strong> with DSCR well above 1.4x across all projection years.</p>
+
+    <table>
+      <thead><tr><th colspan="2">Credit Snapshot at a Glance</th></tr></thead>
+      <tbody>
+        <tr><td>Borrower</td><td><span class="blurred-name">G████████ Hospitality Pvt. Ltd.</span>, Goa</td></tr>
+        <tr><td>Industry</td><td>Hotels &amp; Hospitality — Boutique Luxury Segment</td></tr>
+        <tr><td>Facility Requested</td><td>₹20 Crore Term Loan + ₹8 Crore Loan Against Property (LAP)</td></tr>
+        <tr><td>Total Exposure</td><td>₹28 Crore</td></tr>
+        <tr><td>Repayment Tenure (TL)</td><td>84 months (7 years) with 6-month moratorium</td></tr>
+        <tr><td>Primary Security</td><td>Mortgage of Hotel Property 2 (DM value ₹38 Crore)</td></tr>
+        <tr><td>Collateral Security</td><td>Mortgage of Promoter Residential Property (DM value ₹6.4 Crore) + Personal Guarantee</td></tr>
+        <tr><td>FinsightOne AI Score</td><td>76 / 100 — GREEN — STRONG CREDIT</td></tr>
+        <tr><td>Approval Probability (FinsightOne Est.)</td><td>HIGH — 80%+ with recommended lenders</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Section 2: Company Overview -->
+  <div class="section">
+    <div class="section-title"><span class="section-num">02</span>Company Overview</div>
+
+    <p>Founded in 2012 by <span class="blurred-name">Managing Director &amp; Founder</span>, the company began with a single boutique property in Anjuna, North Goa. The second hotel was acquired in 2018 through a combination of internal accruals and a bridge loan (since fully repaid). The company is known for its heritage-themed rooms, curated guest experiences, and strong repeat client base — repeat guests contribute approximately 38% of annual bookings.</p>
+
+    <table>
+      <thead><tr><th>Parameter</th><th>Hotel 1</th><th>Hotel 2 (Expansion Target)</th></tr></thead>
+      <tbody>
+        <tr><td>Location</td><td>Anjuna, North Goa</td><td>Candolim, North Goa</td></tr>
+        <tr><td>Current Rooms</td><td>30 rooms</td><td>38 rooms</td></tr>
+        <tr><td>Post-Renovation Rooms</td><td>30 (unchanged)</td><td>45 rooms (+7)</td></tr>
+        <tr><td>Category</td><td>Heritage Boutique</td><td>Heritage Boutique + Pool Villa</td></tr>
+        <tr><td>Average ADR FY24</td><td>₹7,800/night</td><td>₹8,600/night</td></tr>
+        <tr><td>OTA Mix</td><td>60% direct / 40% OTA</td><td>55% direct / 45% OTA</td></tr>
+        <tr><td>F&amp;B Offering</td><td>In-house restaurant (60 covers)</td><td>Restaurant (post-renovation: rooftop 80 covers)</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="color:#1E3A5F;margin:16px 0 10px;font-size:13px;">Management Team</h3>
+    <table>
+      <thead><tr><th>Role</th><th>Name</th><th>Experience</th><th>Background</th></tr></thead>
+      <tbody>
+        <tr><td>Managing Director &amp; Founder</td><td><span class="blurred-name">MD Name</span></td><td>22 years</td><td>Former General Manager — Oberoi Hotels (10 years); IHM Mumbai graduate</td></tr>
+        <tr><td>Director — Finance &amp; Operations</td><td><span class="blurred-name">Director Name</span></td><td>14 years</td><td>Hospitality CFO background; CA qualified; managed 3-property portfolio previously</td></tr>
+        <tr><td>Head — Revenue Management</td><td><span class="blurred-name">Manager Name</span></td><td>9 years</td><td>OTA optimisation specialist; grew direct bookings from 28% to 60% in 4 years</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Section 3: Business Model & Revenue Streams -->
+  <div class="section">
+    <div class="section-title"><span class="section-num">03</span>Business Model &amp; Revenue Streams</div>
+
+    <div class="rev-stream-grid">
+      <div class="rev-stream-card">
+        <div class="rv-pct">63%</div>
+        <div class="rv-name">Room Revenue</div>
+        <div class="rv-amt">₹6.17 Crore (FY24)</div>
+        <div style="font-size:10.5px;color:#6B7280;margin-top:4px;">68 rooms × 74% occupancy × ₹8,200 ADR</div>
+      </div>
+      <div class="rev-stream-card accent">
+        <div class="rv-pct">24%</div>
+        <div class="rv-name">F&amp;B Revenue</div>
+        <div class="rv-amt">₹2.35 Crore (FY24)</div>
+        <div style="font-size:10.5px;color:#6B7280;margin-top:4px;">2 restaurants (120 covers); bar revenue included</div>
+      </div>
+      <div class="rev-stream-card">
+        <div class="rv-pct">13%</div>
+        <div class="rv-name">Events &amp; Ancillary</div>
+        <div class="rv-amt">₹1.27 Crore (FY24)</div>
+        <div style="font-size:10.5px;color:#6B7280;margin-top:4px;">Weddings, corporate retreats, spa, experiences</div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <strong>Revenue Diversification:</strong> The company's revenue mix across room, F&amp;B, and events provides resilience against seasonality. Peak season (Oct–March) contributes approximately 68% of annual revenue. The off-season (April–September) generates 32% — well above the Goa boutique hotel median of 24% for similar properties, reflecting strong corporate and domestic leisure positioning.
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Section 4: Market Analysis -->
+  <div class="section">
+    <div class="section-title"><span class="section-num">04</span>Goa Tourism Market Analysis</div>
+
+    <div class="market-stats">
+      <div class="mstat"><div class="mv">8.2 Mn</div><div class="ml">Tourists FY24 (Record)</div></div>
+      <div class="mstat"><div class="mv">+18%</div><div class="ml">Boutique Hotel ADR Growth YoY</div></div>
+      <div class="mstat"><div class="mv">₹6,400</div><div class="ml">Goa Avg ADR (Company: ₹8,200)</div></div>
+      <div class="mstat"><div class="mv">28%</div><div class="ml">Int'l Tourist Share FY24</div></div>
+    </div>
+
+    <ul class="styled">
+      <li><strong>Goa Tourism Momentum:</strong> FY24 saw a record 8.2 million tourist arrivals — a 12% increase over FY23. Domestic tourists (72%) are the primary growth driver, with a visible shift toward boutique and experiential stays over chain hotels.</li>
+      <li><strong>Boutique Hotel ADR Growth:</strong> The boutique segment in North Goa has seen ADR growth of 18% per year over FY22–FY24 (CBRE India Hospitality Report 2024). This trend is expected to continue at 12–15% through FY27, supported by limited new supply in heritage micro-markets.</li>
+      <li><strong>Premium Positioning Advantage:</strong> The company's ADR of ₹8,200 exceeds the Goa average by ₹1,800 (28% premium), reflecting heritage positioning, curated experiences, and high direct-booking ratio. ADR premium is defensible and widening.</li>
+      <li><strong>Supply Constraint:</strong> Heritage properties in Anjuna and Candolim face strict planning regulations limiting new construction. This supply constraint supports sustained occupancy and ADR growth for existing quality properties.</li>
+      <li><strong>Corporate &amp; MICE Growth:</strong> North Goa is increasingly attracting corporate retreats, off-sites, and destination weddings — a segment that improves off-season occupancy and carries a higher per-head spend than leisure travellers.</li>
+    </ul>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Section 5: Financial Performance -->
+  <div class="section">
+    <div class="section-title"><span class="section-num">05</span>Financial Performance — 3-Year Actuals + 2-Year Projections</div>
+
+    <table>
+      <thead>
+        <tr><th>Metric (₹ Crore)</th><th>FY22 (Actual)</th><th>FY23 (Actual)</th><th>FY24 (Actual)</th><th>FY25P (Projected)</th><th>FY26P (Projected)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Revenue</td><td>5.8</td><td>7.4</td><td>9.8</td><td class="proj-row">12.8</td><td class="proj-row">16.4</td></tr>
+        <tr><td>EBITDA</td><td>1.8</td><td>2.6</td><td>3.8</td><td class="proj-row">5.2</td><td class="proj-row">7.4</td></tr>
+        <tr><td>EBITDA Margin</td><td>31.0%</td><td>35.1%</td><td>38.8%</td><td class="proj-row">40.6%</td><td class="proj-row">45.1%</td></tr>
+        <tr><td>Finance Costs</td><td>0.4</td><td>0.3</td><td>0.2</td><td class="proj-row">2.8</td><td class="proj-row">2.6</td></tr>
+        <tr><td>Depreciation</td><td>0.6</td><td>0.6</td><td>0.8</td><td class="proj-row">1.6</td><td class="proj-row">1.8</td></tr>
+        <tr><td>PAT</td><td>0.4</td><td>0.8</td><td>1.6</td><td class="proj-row">2.4</td><td class="proj-row">4.2</td></tr>
+        <tr><td>Net Worth</td><td>4.2</td><td>5.0</td><td>6.6</td><td class="proj-row">9.0</td><td class="proj-row">13.2</td></tr>
+        <tr><td>Occupancy Rate</td><td>58%</td><td>68%</td><td>74%</td><td class="proj-row">72%*</td><td class="proj-row">79%**</td></tr>
+        <tr><td>ADR (₹/night)</td><td>6,400</td><td>7,200</td><td>8,200</td><td class="proj-row">8,800</td><td class="proj-row">9,800</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:11px;color:#6B7280;">* FY25 occupancy dip reflects 6-month Hotel 2 renovation period. ** FY26 includes full-year contribution of expanded Hotel 2 (45 rooms + rooftop restaurant).</p>
+
+    <div class="highlight">
+      <strong>Trend Commentary:</strong> Revenue has grown at a CAGR of 30% from FY22 to FY24 on the back of post-COVID hospitality recovery, occupancy improvement (+16pp), and ADR growth (+28%). Importantly, EBITDA margins have expanded from 31% to 38.8% — indicating operating leverage and disciplined cost management. The company is debt-free as of FY24 (bridge loan from 2018 fully repaid).
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Section 6: Loan Purpose & Capex -->
+  <div class="section">
+    <div class="section-title"><span class="section-num">06</span>Loan Purpose &amp; Capex Utilisation</div>
+
+    <table>
+      <thead><tr><th>Capex Head</th><th>Amount (₹ Crore)</th><th>Funded By</th><th>Rationale</th></tr></thead>
+      <tbody>
+        <tr><td>Hotel 2 — Room renovation (38 existing rooms)</td><td>8.0</td><td>Term Loan</td><td>Heritage upgrade — premium fixtures, en-suite bathrooms, air conditioning; required to justify higher ADR post-expansion</td></tr>
+        <tr><td>7 new room additions (rooftop suites)</td><td>5.5</td><td>Term Loan</td><td>New inventory at premium price point (₹12,000+ ADR target for new suites)</td></tr>
+        <tr><td>Rooftop Restaurant (80 covers)</td><td>3.8</td><td>Term Loan</td><td>Sea-view rooftop is a high-margin F&amp;B concept; demand validated by competitor performance</td></tr>
+        <tr><td>Swimming Pool + Landscaping</td><td>2.4</td><td>Term Loan</td><td>Currently at competitive disadvantage vs pool-equipped boutique hotels; pool increases ADR ₹1,200+/night</td></tr>
+        <tr><td>MEP, Electrical, Civil Upgrades</td><td>1.8</td><td>Term Loan</td><td>Mandatory infrastructure upgrade alongside room renovation</td></tr>
+        <tr><td>Contingency (8% of hard cost)</td><td>0.5</td><td>Term Loan</td><td>Goa construction contingency — monsoon delays and cost escalation buffer</td></tr>
+        <tr><td>Working Capital Buffer (ops during reno)</td><td>6.0</td><td>LAP</td><td>Hotel 2 closed for 6 months — revenue shortfall to be bridged; staff retention, marketing, advance bookings</td></tr>
+        <tr style="background:#FFFBEB;"><td><strong>TOTAL</strong></td><td><strong>28.0</strong></td><td><strong>TL ₹20 Cr + LAP ₹8 Cr</strong></td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Section 7: Revenue Impact of Renovation -->
+  <div class="section">
+    <div class="section-title"><span class="section-num">07</span>Revenue Impact of Renovation — Before vs After</div>
+
+    <table>
+      <thead><tr><th>Revenue Driver</th><th>Pre-Renovation (FY24)</th><th>Post-Renovation (FY26 Full Year)</th><th>Incremental Impact</th></tr></thead>
+      <tbody>
+        <tr><td>Total Rooms</td><td>68 rooms</td><td>75 rooms (30 + 45)</td><td>+7 rooms (+10.3%)</td></tr>
+        <tr><td>Avg ADR — Hotel 2</td><td>₹8,600/night</td><td>₹11,200/night (post-premium reno)</td><td>+30.2% ADR improvement</td></tr>
+        <tr><td>Avg Occupancy (Full Year)</td><td>74%</td><td>79%</td><td>+5pp (post-demand unlock)</td></tr>
+        <tr><td>Room Revenue (Annual)</td><td>₹6.17 Crore</td><td>₹9.68 Crore</td><td><strong>+₹3.51 Crore</strong></td></tr>
+        <tr><td>Rooftop Restaurant Revenue (new)</td><td>₹0</td><td>₹1.92 Crore (80 covers × 200 days × ₹1,200 avg spend)</td><td><strong>+₹1.92 Crore (new stream)</strong></td></tr>
+        <tr><td>Events &amp; Ancillary</td><td>₹1.27 Crore</td><td>₹2.24 Crore (pool + rooftop unlock events)</td><td><strong>+₹0.97 Crore</strong></td></tr>
+        <tr style="background:#FFFBEB;"><td><strong>Total Revenue Impact</strong></td><td><strong>₹9.8 Crore</strong></td><td><strong>₹16.4 Crore</strong></td><td><strong>+₹6.6 Crore (+67%)</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Section 8: DSCR & Repayment -->
+  <div class="section">
+    <div class="section-title"><span class="section-num">08</span>Repayment Plan &amp; DSCR Analysis</div>
+
+    <p>The Term Loan of ₹20 Crore is proposed to be repaid over 84 months (7 years) including a 6-month moratorium during Hotel 2 renovation. EMI post-moratorium: approximately ₹32 lakhs/month. The LAP of ₹8 Crore is proposed with a 10-year repayment (lower EMI, longer tenor). Total annual debt service from Year 2: approximately ₹4.2 Crore.</p>
+
+    <div class="dscr-grid">
+      <div class="dscr-card">
+        <div class="dy">FY26 (Year 1 Full)</div>
+        <div class="dv">1.42x</div>
+        <div class="ds">EBITDA ₹7.4 Cr / Debt Service ₹5.2 Cr<br><span class="status-green">ABOVE 1.25x THRESHOLD</span></div>
+      </div>
+      <div class="dscr-card">
+        <div class="dy">FY27 (Year 2)</div>
+        <div class="dv">1.68x</div>
+        <div class="ds">Revenue ramp-up post-full stabilisation<br><span class="status-green">STRONG COVERAGE</span></div>
+      </div>
+      <div class="dscr-card">
+        <div class="dy">FY28 (Year 3)</div>
+        <div class="dv">1.94x</div>
+        <div class="ds">Premium suite contribution fully reflected<br><span class="status-green">EXCELLENT COVERAGE</span></div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <strong>Average DSCR: 1.68x</strong> across the 3-year projection window. This comfortably exceeds the standard bank threshold of 1.25x for hospitality term loans and provides a 34.4% buffer even in a stress scenario where revenue is 15% below projections (stressed DSCR: 1.43x — still above threshold).
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Section 9: Security & Cover -->
+  <div class="section">
+    <div class="section-title"><span class="section-num">09</span>Security &amp; Collateral Coverage</div>
+
+    <div class="security-grid">
+      <div class="security-card">
+        <h4>Primary Security — Hotel Property 2</h4>
+        <table style="margin:6px 0;">
+          <tbody>
+            <tr><td>DM Valuation</td><td><strong>₹38.0 Crore</strong></td></tr>
+            <tr><td>Realizable Value (80%)</td><td>₹30.4 Crore</td></tr>
+            <tr><td>Property Type</td><td>Commercial Hotel — Candolim, Goa</td></tr>
+            <tr><td>Lien Type</td><td>Equitable Mortgage (1st charge)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="security-card">
+        <h4>Collateral Security — Promoter Residential</h4>
+        <table style="margin:6px 0;">
+          <tbody>
+            <tr><td>DM Valuation</td><td><strong>₹6.4 Crore</strong></td></tr>
+            <tr><td>Realizable Value (80%)</td><td>₹5.1 Crore</td></tr>
+            <tr><td>Property Type</td><td>Residential villa — Panaji, Goa</td></tr>
+            <tr><td>Lien Type</td><td>Equitable Mortgage (2nd charge)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <table>
+      <thead><tr><th>Coverage Analysis</th><th>Amount</th><th>Ratio</th></tr></thead>
+      <tbody>
+        <tr><td>Total Security Value (DM)</td><td>₹44.4 Crore</td><td>158% of ₹28 Crore loan</td></tr>
+        <tr><td>Total Realizable Value (80%)</td><td>₹35.5 Crore</td><td>127% coverage</td></tr>
+        <tr><td>Loan Amount</td><td>₹28.0 Crore</td><td>—</td></tr>
+        <tr style="background:#FFFBEB;"><td><strong>Coverage Ratio (DM Basis)</strong></td><td><strong>₹44.4 Crore</strong></td><td><strong>1.58x — ADEQUATE</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Section 10: Why This is a Strong Credit -->
+  <div class="section">
+    <div class="section-title"><span class="section-num">10</span>Why This is a Strong Credit — FinsightOne Analysis</div>
+
+    <div class="credit-strength">
+      <div class="cs-num">1</div>
+      <div class="cs-text"><strong>Debt-free company with proven P&amp;L trajectory:</strong> The borrower is entering its first bank credit relationship entirely debt-free. FY22–FY24 shows a consistent and accelerating revenue and margin story — Revenue CAGR 30%, EBITDA margin expanded from 31% to 38.8%. No prior defaults, no bureau concerns. This is a textbook first-time credit candidate.</div>
+    </div>
+    <div class="credit-strength">
+      <div class="cs-num">2</div>
+      <div class="cs-text"><strong>Goa's boutique hospitality sector is structurally under-supplied:</strong> Planning regulations in heritage micro-markets (Anjuna, Candolim) limit new supply, creating a structural tailwind for existing quality operators. The company's ADR premium of 28% over the market validates product-market fit and pricing power that will compound as tourism volumes grow.</div>
+    </div>
+    <div class="credit-strength">
+      <div class="cs-num">3</div>
+      <div class="cs-text"><strong>Conservative capex with validated demand:</strong> The ₹22 Crore hard capex is grounded in independently verifiable market benchmarks (room renovation cost ₹8–10L/room; rooftop restaurant fit-out ₹4–5 Cr). The revenue uplift model is conservative — post-renovation ADR of ₹11,200 for new suites is below comparable properties already operating in Candolim.</div>
+    </div>
+    <div class="credit-strength">
+      <div class="cs-num">4</div>
+      <div class="cs-text"><strong>DSCR comfort with stress buffer:</strong> Average DSCR of 1.68x across FY26–FY28, with stressed DSCR of 1.43x (at 15% revenue haircut) remaining above the 1.25x bank threshold. This gives the lending bank meaningful cushion against occupancy or ADR underperformance during the ramp-up period.</div>
+    </div>
+    <div class="credit-strength">
+      <div class="cs-num">5</div>
+      <div class="cs-text"><strong>Experienced management with proven asset management:</strong> The promoter team's background — former Oberoi senior leadership, CA-qualified finance director — is the strongest risk mitigant in this sector. The company has grown occupancy from 58% to 74% over 2 years through direct booking development and revenue management, demonstrating active management alpha well above sector norms.</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Section 11: Terms Requested + Recommendation -->
+  <div class="section">
+    <div class="section-title"><span class="section-num">11</span>Terms Requested &amp; FinsightOne Recommendation</div>
+
+    <div class="terms-box">
+      <h3>Loan Terms Requested</h3>
+      <div class="terms-grid">
+        <div class="terms-item"><div class="tl">Facility 1 — Term Loan</div><div class="tv">₹20 Crore</div></div>
+        <div class="terms-item"><div class="tl">Facility 2 — LAP</div><div class="tv">₹8 Crore</div></div>
+        <div class="terms-item"><div class="tl">TL Tenure</div><div class="tv">84 months (incl. 6-month moratorium)</div></div>
+        <div class="terms-item"><div class="tl">LAP Tenure</div><div class="tv">120 months</div></div>
+        <div class="terms-item"><div class="tl">Interest Rate Request</div><div class="tv">1Y MCLR + 1.5% (TL) | MCLR + 1.75% (LAP)</div></div>
+        <div class="terms-item"><div class="tl">Primary Security</div><div class="tv">Hotel Property 2 — ₹38 Crore (1st charge)</div></div>
+        <div class="terms-item"><div class="tl">Collateral</div><div class="tv">Residential property ₹6.4 Cr + Personal Guarantee</div></div>
+        <div class="terms-item"><div class="tl">Disbursement</div><div class="tv">Tranche-based against construction milestones</div></div>
+      </div>
+    </div>
+
+    <div class="rec-box" style="margin-top:16px;">
+      <h3>FinsightOne Recommendation: SANCTION RECOMMENDED</h3>
+      <p>Based on our comprehensive assessment of the borrower's financial profile, asset quality, market positioning, and repayment capacity, FinsightOne recommends this credit for sanction. The combination of a debt-free company, strong and growing P&amp;L, favourable sector tailwinds, adequate security coverage (1.58x), and experienced management makes this a compelling credit risk with above-average repayment reliability.</p>
+      <p style="margin-top:8px;"><strong>Recommended Primary Lender:</strong> <span class="blurred-bank">HDFC Bank</span> Hospitality Business Banking or <span class="blurred-bank">Axis Bank</span> Commercial Real Estate — both have active hospitality lending programs in Goa and have sanctioned comparable deals in FY24.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div>
+    <div class="ft-logo">FINSIGHT<span>ONE</span></div>
+    <div class="ft-tagline">EXPERT CREDIT ADVISORY</div>
+    <div style="margin-top:8px;font-size:10px;color:#93C5FD;">Full Banker Presentation</div>
+    <div style="font-size:10px;color:#93C5FD;">www.finsightone.in</div>
+  </div>
+  <div class="footer-mid">
+    <h4>Confidential Notice</h4>
+    <div style="line-height:1.8;">This banker presentation is prepared by FinsightOne Advisory for the purpose of credit appraisal by the named lending institution. Financial projections are based on management estimates and independently validated assumptions. Lending decisions rest entirely with the respective bank. Distribution to any party other than the named lender and borrower is strictly prohibited.</div>
+  </div>
+  <div class="footer-right">
+    <h4>Report Details</h4>
+    <div>Report ID: <strong style="color:#F59E0B;">FBP-2025-04012</strong></div>
+    <div>Type: Full Banker Presentation</div>
+    <div>Date: May 2025</div>
+    <div>Analyst: FinsightOne Credit Team</div>
+    <div style="margin-top:8px;font-size:10px;color:#6B7280;">© 2025 FinsightOne Advisory Pvt. Ltd.</div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

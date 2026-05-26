@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FSB-2025-05389 | Enterprise Debt Restructuring | FinsightOne</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #F9FAFB; color: #1F2937; font-size: 13.5px; line-height: 1.6; }
+  a { color: inherit; text-decoration: none; }
+  .page { max-width: 960px; margin: 0 auto; background: #fff; box-shadow: 0 2px 16px rgba(0,0,0,0.07); }
+  /* Header */
+  .header { background: #1E3A5F; color: #fff; padding: 28px 40px 22px; display: flex; justify-content: space-between; align-items: center; }
+  .logo { font-size: 26px; font-weight: 900; letter-spacing: 1px; }
+  .logo span { color: #F59E0B; }
+  .tagline { font-size: 11px; color: #93C5FD; letter-spacing: 2px; text-transform: uppercase; margin-top: 2px; }
+  .header-right { text-align: right; font-size: 11.5px; color: #CBD5E1; line-height: 1.8; }
+  /* Cover */
+  .cover { background: linear-gradient(135deg, #1E3A5F 0%, #2D5282 100%); color: #fff; padding: 50px 40px 40px; }
+  .cover-badge { display: inline-block; background: #F59E0B; color: #1E3A5F; font-weight: 800; font-size: 11px; padding: 4px 14px; border-radius: 20px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 18px; }
+  .cover h1 { font-size: 26px; font-weight: 800; margin-bottom: 6px; line-height: 1.3; }
+  .cover-sub { font-size: 13px; color: #93C5FD; margin-bottom: 28px; }
+  .cover-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; margin-top: 28px; }
+  .cover-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 16px 18px; }
+  .cover-card .label { font-size: 10px; color: #93C5FD; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 6px; }
+  .cover-card .value { font-size: 20px; font-weight: 800; color: #F59E0B; }
+  .cover-card .sub { font-size: 11px; color: #CBD5E1; margin-top: 2px; }
+  .score-badge { display: inline-flex; align-items: center; gap: 10px; background: rgba(245,158,11,0.15); border: 2px solid #F59E0B; border-radius: 8px; padding: 10px 20px; margin-top: 20px; }
+  .score-num { font-size: 36px; font-weight: 900; color: #F59E0B; }
+  .score-info .score-label { font-size: 11px; color: #93C5FD; text-transform: uppercase; letter-spacing: 1px; }
+  .score-info .score-status { font-size: 14px; font-weight: 700; color: #FCD34D; }
+  .npa-badge { display: inline-block; background: #DC2626; color: #fff; font-weight: 800; font-size: 11px; padding: 4px 14px; border-radius: 20px; letter-spacing: 1px; margin-left: 10px; }
+  /* Content */
+  .content { padding: 36px 40px; }
+  .section { margin-bottom: 36px; }
+  .section-title { font-size: 15px; font-weight: 800; color: #1E3A5F; border-bottom: 2px solid #F59E0B; padding-bottom: 6px; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .section-num { display: inline-block; background: #1E3A5F; color: #F59E0B; font-size: 10px; font-weight: 800; padding: 2px 7px; border-radius: 3px; margin-right: 8px; }
+  p { margin-bottom: 10px; color: #374151; }
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 12.5px; }
+  th { background: #1E3A5F; color: #fff; padding: 9px 12px; text-align: left; font-size: 11.5px; font-weight: 700; letter-spacing: 0.3px; }
+  td { padding: 8px 12px; border-bottom: 1px solid #E5E7EB; }
+  tr:nth-child(even) td { background: #FAFAFA; }
+  tr:nth-child(odd) td { background: #fff; }
+  /* Highlight boxes */
+  .highlight { background: #FFFBEB; border-left: 4px solid #B45309; padding: 14px 18px; border-radius: 0 6px 6px 0; margin: 14px 0; }
+  .highlight strong { color: #92400E; }
+  /* Recommendation box */
+  .rec-box { border: 2px solid #B45309; background: #FFFBEB; border-radius: 8px; padding: 20px 24px; margin: 16px 0; }
+  .rec-box h3 { color: #92400E; font-size: 14px; margin-bottom: 10px; }
+  /* Risk grid */
+  .risk-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin: 14px 0; }
+  .risk-card { border-radius: 8px; padding: 14px 16px; border: 1px solid #E5E7EB; }
+  .risk-card .risk-label { font-size: 11px; color: #6B7280; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .risk-card .risk-level { font-size: 16px; font-weight: 800; }
+  .risk-med { border-left: 4px solid #F59E0B; }
+  .risk-low { border-left: 4px solid #10B981; }
+  .risk-high { border-left: 4px solid #DC2626; }
+  .risk-med .risk-level { color: #D97706; }
+  .risk-low .risk-level { color: #059669; }
+  .risk-high .risk-level { color: #DC2626; }
+  /* Timeline */
+  .timeline { display: flex; gap: 0; margin: 16px 0; }
+  .tl-step { flex: 1; text-align: center; position: relative; }
+  .tl-step::after { content: '→'; position: absolute; right: -10px; top: 16px; color: #F59E0B; font-size: 18px; font-weight: 900; }
+  .tl-step:last-child::after { display: none; }
+  .tl-circle { width: 36px; height: 36px; background: #1E3A5F; color: #F59E0B; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 13px; margin: 0 auto 6px; }
+  .tl-label { font-size: 11px; color: #374151; font-weight: 600; }
+  .tl-sub { font-size: 10px; color: #6B7280; }
+  /* OTS Summary strip */
+  .ots-strip { background: #1E3A5F; color: #fff; padding: 18px 24px; border-radius: 8px; margin: 16px 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .ots-item .ots-label { font-size: 10px; color: #93C5FD; text-transform: uppercase; letter-spacing: 1px; }
+  .ots-item .ots-val { font-size: 18px; font-weight: 800; color: #F59E0B; margin-top: 2px; }
+  .ots-item .ots-sub { font-size: 10px; color: #CBD5E1; }
+  /* Footer */
+  .footer { background: #1E3A5F; color: #CBD5E1; padding: 24px 40px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; font-size: 11px; }
+  .footer .ft-logo { font-size: 16px; font-weight: 900; color: #fff; margin-bottom: 4px; }
+  .footer .ft-logo span { color: #F59E0B; }
+  .footer .ft-tagline { color: #93C5FD; font-size: 10px; letter-spacing: 1px; }
+  .footer-mid { text-align: center; }
+  .footer-right { text-align: right; }
+  .footer h4 { color: #F59E0B; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+  .blurred-name { filter: blur(4px); user-select: none; background: #E5E7EB; padding: 1px 6px; border-radius: 2px; display: inline-block; }
+  .blurred-bank { filter: blur(3px); display: inline-block; }
+  .status-green { color: #059669; font-weight: 700; }
+  .status-amber { color: #D97706; font-weight: 700; }
+  .status-red { color: #DC2626; font-weight: 700; }
+  .divider { border: none; border-top: 1px solid #E5E7EB; margin: 28px 0; }
+  ul.styled { list-style: none; padding: 0; }
+  ul.styled li { padding: 4px 0 4px 18px; position: relative; color: #374151; }
+  ul.styled li::before { content: '▸'; position: absolute; left: 0; color: #F59E0B; font-size: 12px; }
+  .tag { display: inline-block; background: #EFF6FF; color: #1E40AF; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 10px; margin-right: 4px; }
+  .tag-amber { background: #FFFBEB; color: #92400E; }
+  .tag-green { background: #ECFDF5; color: #065F46; }
+  .tag-red { background: #FEF2F2; color: #991B1B; }
+</style>
+</head>
+<body>
+<!-- SAMPLE Watermark -->
+<div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-35deg);font-size:110px;font-weight:900;color:rgba(0,0,0,0.03);pointer-events:none;white-space:nowrap;z-index:0;letter-spacing:16px;">SAMPLE</div>
+
+<div class="page">
+
+<!-- HEADER -->
+<div class="header">
+  <div>
+    <div class="logo">FINSIGHT<span>ONE</span></div>
+    <div class="tagline">Expert Credit Advisory</div>
+  </div>
+  <div class="header-right">
+    <div>BankReady™ ENTERPRISE Package</div>
+    <div>Report ID: <strong style="color:#F59E0B;">FSB-2025-05389</strong></div>
+    <div>Date: May 2025</div>
+    <div>Classification: STRICTLY CONFIDENTIAL</div>
+  </div>
+</div>
+
+<!-- COVER -->
+<div class="cover">
+  <div>
+    <span class="cover-badge">BankReady™ Enterprise</span>
+    <span class="npa-badge">NPA — CONSORTIUM</span>
+  </div>
+  <h1>Debt Restructuring & One-Time Settlement<br>Proposal to Consortium Lenders</h1>
+  <div class="cover-sub">
+    Borrower: <span class="blurred-name">R████████ Developers &amp; Infra Pvt. Ltd.</span> &nbsp;|&nbsp; Gurugram, Haryana &nbsp;|&nbsp; Real Estate Development
+  </div>
+
+  <div style="display:flex; align-items:center; gap:24px; flex-wrap:wrap;">
+    <div class="score-badge">
+      <div class="score-num">52</div>
+      <div class="score-info">
+        <div class="score-label">AI Creditworthiness Score</div>
+        <div class="score-status">AMBER — COMPLEX CASE</div>
+        <div style="font-size:10px;color:#CBD5E1;">Structured Resolution Recommended</div>
+      </div>
+    </div>
+    <div>
+      <div class="tag tag-amber" style="font-size:11px;padding:4px 12px;">NPA since March 2022</div><br><br>
+      <div class="tag tag-amber" style="font-size:11px;padding:4px 12px;">OTS Filed — May 2025</div>
+    </div>
+  </div>
+
+  <div class="cover-grid">
+    <div class="cover-card">
+      <div class="label">Total NPA Outstanding</div>
+      <div class="value">₹185 Cr</div>
+      <div class="sub">Principal + Accrued Interest</div>
+    </div>
+    <div class="cover-card">
+      <div class="label">OTS Settlement Offer</div>
+      <div class="value">₹98 Cr</div>
+      <div class="sub">52.97% of total outstanding</div>
+    </div>
+    <div class="cover-card">
+      <div class="label">Collateral Value (DM)</div>
+      <div class="value">₹142 Cr</div>
+      <div class="sub">3 mortgaged properties</div>
+    </div>
+    <div class="cover-card">
+      <div class="label">Lead Bank</div>
+      <div class="value">42%</div>
+      <div class="sub"><span class="blurred-bank">State Bank of India</span></div>
+    </div>
+    <div class="cover-card">
+      <div class="label">Payment Timeline</div>
+      <div class="value">90 Days</div>
+      <div class="sub">From consortium approval</div>
+    </div>
+    <div class="cover-card">
+      <div class="label">FinsightOne Recommendation</div>
+      <div class="value" style="font-size:14px;">ACCEPT OTS</div>
+      <div class="sub">Superior to liquidation scenario</div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <!-- SECTION 1: Background & Consortium Structure -->
+  <div class="section">
+    <div class="section-title"><span class="section-num">01</span>Background &amp; Consortium Structure</div>
+
+    <p><span class="blurred-name">R████████ Developers &amp; Infra Pvt. Ltd.</span> is a real estate development company headquartered in Gurugram, Haryana, incorporated in 2008. The company undertook a residential township project — Phase 1 consisting of 480 units across 12 towers — in the Sohna Road micro-market of Gurugram. The project commenced construction in FY2018 and had delivered 240 units prior to COVID-19.</p>
+
+    <p>The remaining 240 units stalled in March 2020 due to construction halt, labour migration, and a sharp decline in pre-sales collections. The consortium declared the account as NPA in <strong>March 2022</strong> after sustained SMA-2 classification through FY21–22. FinsightOne was engaged in April 2025 to structure and represent the OTS proposal.</p>
+
+    <div class="highlight">
+      <strong>NPA Declaration:</strong> March 2022 &nbsp;|&nbsp; <strong>Consortium Format:</strong> 3 banks &nbsp;|&nbsp; <strong>Lead Bank:</strong> <span class="blurred-bank">State Bank of India</span> (42% share) &nbsp;|&nbsp; FinsightOne has obtained NOC from borrower to engage consortium banks directly.
+    </div>
+
+    <h3 style="color:#1E3A5F;margin:16px 0 10px;font-size:13px;">Outstanding as of April 2025 — Consortium Bank-wise Share</h3>
+    <table>
+      <thead>
+        <tr><th>Bank</th><th>Share %</th><th>Outstanding Principal (₹ Cr)</th><th>Accrued Interest (₹ Cr)</th><th>Total Exposure (₹ Cr)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="blurred-bank">State Bank of India</span> (Lead)</td><td>42%</td><td>64.0</td><td>13.7</td><td><strong>77.7</strong></td></tr>
+        <tr><td><span class="blurred-bank">Punjab National Bank</span></td><td>32%</td><td>48.8</td><td>10.4</td><td><strong>59.2</strong></td></tr>
+        <tr><td><span class="blurred-bank">Bank of Baroda</span></td><td>26%</td><td>39.6</td><td>8.5</td><td><strong>48.1</strong></td></tr>
+        <tr style="background:#FFFBEB;"><td><strong>TOTAL CONSORTIUM</strong></td><td><strong>100%</strong></td><td><strong>152.4</strong></td><td><strong>32.6</strong></td><td><strong>185.0</strong></td></tr>
+      </tbody>
+    </table>
+
+    <table>
+      <thead><tr><th colspan="2">Loan Facility Details</th></tr></thead>
+      <tbody>
+        <tr><td>Original Sanction (2017)</td><td>₹165 Crore — Term Loan + Working Capital</td></tr>
+        <tr><td>Purpose</td><td>Residential Township Construction — 480 units, Gurugram</td></tr>
+        <tr><td>Original Tenure</td><td>7 years (2017–2024)</td></tr>
+        <tr><td>NPA Classification Date</td><td>March 31, 2022</td></tr>
+        <tr><td>Provisioning Status</td><td>Fully provisioned (Doubtful-2) as per bank disclosures</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="divider">
+
+  <!-- SECTION 2: Reasons for NPA -->
+  <div class="section">
+    <div class="section-title"><span class="section-num">02</span>Reasons for NPA — Circumstances &amp; Root Cause</div>
+
+    <p>FinsightOne has independently assessed the circumstances leading to NPA classification. The analysis identifies the following as primary and secondary causes:</p>
+
+    <table>
+      <thead><tr><th>Cause</th><th>Category</th><th>Impact</th><th>FinsightOne Assessment</th></tr></thead>
+      <tbody>
+        <tr><td>COVID-19 construction halt (March 2020 – June 2021)</td><td>Force Majeure</td><td>High</td><td>Verifiable — RERA records confirm halt</td></tr>
+        <tr><td>Reverse labour migration — 1,200 workers left site</td><td>Operational</td><td>High</td><td>Construction cost escalated 22% post-COVID</td></tr>
+        <tr><td>Buyer collection collapse — pre-sales EMI default rate 38%</td><td>Cash Flow</td><td>High</td><td>180 buyers filed cancellation requests FY21</td></tr>
+        <tr><td>RERA regulatory delays — completion certificate deferred</td><td>Regulatory</td><td>Medium</td><td>RERA extension granted till Dec 2024</td></tr>
+        <tr><td>Rising input costs — Steel +34%, Cement +18% (FY22)</td><td>External</td><td>Medium</td><td>Increased project completion cost by ₹14 Cr</td></tr>
+        <tr><td>Unsold inventory — 240 units (50% of project)</td><td>Market</td><td>High</td><td>Market softness in Sohna Road segment FY20–22</td></tr>
+      </tbody>
+    </table>
+
+    <div class="highlight">
+      <strong>FinsightOne Assessment:</strong> The NPA was driven by a convergence of external shocks (COVID, input cost inflation, regulatory delays) rather than promoter malfeasance or fund diversion. No adverse court orders, no ED/CBI proceedings, no SFIO investigation on record. Promoter has maintained engagement with consortium throughout.
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- SECTION 3: Asset Quality Assessment -->
+  <div class="section">
+    <div class="section-title"><span class="section-num">03</span>Asset Quality Assessment — Collateral Valuation</div>
+
+    <p>FinsightOne obtained a fresh District Magistrate (DM) approved valuation of all three mortgaged properties in April 2025. The following table summarises the collateral position:</p>
+
+    <table>
+      <thead><tr><th>Property</th><th>Location</th><th>Type</th><th>DM Value (₹ Cr)</th><th>Realizable Value (80%) (₹ Cr)</th><th>Forced Sale Value (60%) (₹ Cr)</th></tr></thead>
+      <tbody>
+        <tr><td>Property A — Project Land (12 acres)</td><td>Sohna Road, Gurugram</td><td>Development Land</td><td>68.0</td><td>54.4</td><td>40.8</td></tr>
+        <tr><td>Property B — Completed Units (240 nos)</td><td>Sohna Road, Gurugram</td><td>Residential Inventory</td><td>52.0</td><td>41.6</td><td>31.2</td></tr>
+        <tr><td>Property C — Promoter Commercial</td><td>Cyber City, Gurugram</td><td>Commercial Office</td><td>22.0</td><td>17.6</td><td>13.2</td></tr>
+        <tr style="background:#FFFBEB;"><td><strong>TOTAL</strong></td><td></td><td></td><td><strong>142.0</strong></td><td><strong>113.6</strong></td><td><strong>85.2</strong></td></tr>
+      </tbody>
+    </table>
+
+    <div class="highlight">
+      <strong>Key Finding:</strong> The OTS offer of ₹98 Crore exceeds the Forced Sale Value (₹85.2 Cr) by <strong>₹12.8 Crore</strong>. Banks accepting OTS recover more than they would in SARFAESI enforcement proceedings, which typically realise 55–65% of DM value in the current Gurugram market.
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- SECTION 4: OTS Terms & Settlement Structure -->
+  <div class="section">
+    <div class="section-title"><span class="section-num">04</span>OTS Terms &amp; Settlement Structure</div>
+
+    <div class="ots-strip">
+      <div class="ots-item"><div class="ots-label">Settlement Amount</div><div class="ots-val">₹98 Cr</div><div class="ots-sub">52.97% of ₹185 Cr outstanding</div></div>
+      <div class="ots-item"><div class="ots-label">Haircut to Banks</div><div class="ots-val">47%</div><div class="ots-sub">Within RBI circular thresholds</div></div>
+      <div class="ots-item"><div class="ots-label">Payment Timeline</div><div class="ots-val">90 Days</div><div class="ots-sub">From consortium approval</div></div>
+      <div class="ots-item"><div class="ots-label">NOC + CIBIL Update</div><div class="ots-val">30 Days</div><div class="ots-sub">Post settlement receipt</div></div>
+    </div>
+
+    <h3 style="color:#1E3A5F;margin:16px 0 10px;font-size:13px;">Source of OTS Funds</h3>
+    <table>
+      <thead><tr><th>Source</th><th>Amount (₹ Cr)</th><th>% of Settlement</th><th>Evidence / Status</th></tr></thead>
+      <tbody>
+        <tr><td>Promoter Personal Funds (FDs + liquid assets)</td><td>42.0</td><td>42.9%</td><td>Bank statements submitted; FDs lien-able</td></tr>
+        <tr><td>PE Investor Contribution</td><td>56.0</td><td>57.1%</td><td>LOI attached from <span class="blurred-name">PE Fund Partner</span>; term sheet signed</td></tr>
+        <tr style="background:#FFFBEB;"><td><strong>TOTAL</strong></td><td><strong>98.0</strong></td><td><strong>100%</strong></td><td><strong>Funds committed — drawdown within 60 days of approval</strong></td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="color:#1E3A5F;margin:16px 0 10px;font-size:13px;">Bank-wise Settlement Allocation</h3>
+    <table>
+      <thead><tr><th>Bank</th><th>Total Exposure (₹ Cr)</th><th>Settlement (₹ Cr)</th><th>Haircut (₹ Cr)</th><th>Recovery %</th></tr></thead>
+      <tbody>
+        <tr><td><span class="blurred-bank">State Bank of India</span> (Lead)</td><td>77.7</td><td>41.2</td><td>36.5</td><td>53.0%</td></tr>
+        <tr><td><span class="blurred-bank">Punjab National Bank</span></td><td>59.2</td><td>31.4</td><td>27.8</td><td>53.0%</td></tr>
+        <tr><td><span class="blurred-bank">Bank of Baroda</span></td><td>48.1</td><td>25.4</td><td>22.7</td><td>52.8%</td></tr>
+        <tr style="background:#FFFBEB;"><td><strong>TOTAL</strong></td><td><strong>185.0</strong></td><td><strong>98.0</strong></td><td><strong>87.0</strong></td><td><strong>53.0%</strong></td></tr>
+      </tbody>
+    </table>
+
+    <div class="highlight">
+      <strong>Note on PE Investor:</strong> The PE investor is a registered Category II AIF with SEBI registration. Investment is structured as a joint development agreement for the remaining 240 units. Full LOI and term sheet are available in the annexure (restricted circulation — available to consortium lead upon NDA execution).
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- SECTION 5: RBI Regulatory Framework -->
+  <div class="section">
+    <div class="section-title"><span class="section-num">05</span>RBI Regulatory Framework for OTS</div>
+
+    <p>This OTS proposal has been structured in compliance with the applicable RBI regulatory framework for resolution of stressed assets:</p>
+
+    <ul class="styled">
+      <li><strong>RBI Circular — Prudential Framework for Resolution of Stressed Assets (June 7, 2019):</strong> Provides the principal framework for resolution plans by lenders, including OTS. Banks are required to implement a resolution plan (RP) within specified timelines.</li>
+      <li><strong>RBI Master Direction on Compromise Settlement and Technical Write-off (August 2023):</strong> Explicitly permits OTS for NPA accounts including real estate sector. Haircut below 50% recovery is permissible with Board/SLBC approval.</li>
+      <li><strong>SARFAESI Act 2002:</strong> Banks retain enforcement rights as fallback. The OTS offer exceeds expected SARFAESI realisation, making OTS the superior option.</li>
+      <li><strong>IBC 2016 (Insolvency Reference):</strong> If OTS is declined and IBC is initiated, CIRP process for real estate typically takes 18–24 months with average recovery of 42–48% (IBBI data FY24) — inferior to proposed OTS recovery of 53%.</li>
+      <li><strong>RERA Act 2016:</strong> Homebuyers in stalled projects have priority claims in insolvency (SC judgment in Pioneer Urban Land, 2019). This further reduces bank recovery in liquidation.</li>
+    </ul>
+
+    <div class="highlight">
+      <strong>Regulatory Conclusion:</strong> The proposed OTS is within all applicable RBI parameters. The haircut of 47% is permissible under the August 2023 Master Direction. Board approval at lead bank level is required before formal consortium OTS sanction can be issued.
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- SECTION 6: Financial Position of Borrower -->
+  <div class="section">
+    <div class="section-title"><span class="section-num">06</span>Financial Position of Borrower</div>
+
+    <h3 style="color:#1E3A5F;margin:0 0 10px;font-size:13px;">Consolidated P&amp;L Summary (Last Available Audited — FY23)</h3>
+    <table>
+      <thead><tr><th>Item</th><th>FY21 (₹ Cr)</th><th>FY22 (₹ Cr)</th><th>FY23 (₹ Cr)</th><th>Remarks</th></tr></thead>
+      <tbody>
+        <tr><td>Revenue from Operations</td><td>12.4</td><td>8.6</td><td>14.2</td><td>Includes auto ancillary subsidiary</td></tr>
+        <tr><td>EBITDA</td><td>2.1</td><td>-1.4</td><td>3.8</td><td>FY22 loss due to construction cost spike</td></tr>
+        <tr><td>Finance Costs (interest on NPA)</td><td>18.4</td><td>19.2</td><td>20.1</td><td>Accruing but not serviced</td></tr>
+        <tr><td>PAT</td><td>-14.8</td><td>-22.6</td><td>-16.8</td><td>Driven by NPA interest accrual</td></tr>
+        <tr><td>Net Worth (post-loss)</td><td>18.2</td><td>-4.4</td><td>-20.2</td><td>Negative due to accumulated NPA losses</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="color:#1E3A5F;margin:16px 0 10px;font-size:13px;">Promoter Networth Assessment (April 2025)</h3>
+    <table>
+      <thead><tr><th>Asset</th><th>Estimated Value (₹ Cr)</th><th>Remarks</th></tr></thead>
+      <tbody>
+        <tr><td>Fixed Deposits (personal)</td><td>28.0</td><td>Bank-certified statements provided</td></tr>
+        <tr><td>Commercial property (Cyber City — Property C above)</td><td>22.0</td><td>DM valuation April 2025</td></tr>
+        <tr><td>Equity in auto ancillary business (profitable)</td><td>18.4</td><td>Valued at 5x PAT FY24</td></tr>
+        <tr><td>Residential property (personal)</td><td>6.8</td><td>Not mortgaged to consortium</td></tr>
+        <tr><td>Personal liabilities</td><td>-4.2</td><td>Personal loan — being repaid</td></tr>
+        <tr style="background:#FFFBEB;"><td><strong>Net Promoter Worth</strong></td><td><strong>71.0</strong></td><td><strong>Positive — supports OTS commitment</strong></td></tr>
+      </tbody>
+    </table>
+
+    <div class="highlight">
+      <strong>Auto Ancillary Business:</strong> The promoter's other business — <span class="blurred-name">Auto Components Pvt. Ltd.</span> — manufactures precision components for automotive OEMs. FY24 revenue: ₹22.4 Crore; PAT: ₹3.7 Crore. This business is profitable, has no NPA, and provides the promoter ongoing income for debt servicing comfort.
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- SECTION 7: Revival Plan Summary -->
+  <div class="section">
+    <div class="section-title"><span class="section-num">07</span>Revival Plan — Post-OTS Project Completion</div>
+
+    <p>Post OTS settlement and NOC from consortium, the remaining 240 stalled units will be revived under a joint development model with the PE investor:</p>
+
+    <table>
+      <thead><tr><th>Parameter</th><th>Details</th></tr></thead>
+      <tbody>
+        <tr><td>Units to be completed</td><td>240 units (2BHK and 3BHK mix)</td></tr>
+        <tr><td>Completion funding source</td><td>PE investor (Category II AIF) — ₹48 Crore construction budget</td></tr>
+        <tr><td>Completion timeline</td><td>18 months from OTS NOC date</td></tr>
+        <tr><td>Projected ASP (Average Selling Price)</td><td>₹7,200–₹8,400 per sq ft (Sohna Road FY27 projection)</td></tr>
+        <tr><td>Saleable area (240 units)</td><td>~2.88 lakh sq ft</td></tr>
+        <tr><td>Projected gross sales realisation</td><td>₹210 Crore (over 24 months post-completion)</td></tr>
+        <tr><td>PE investor share (60%)</td><td>₹126 Crore</td></tr>
+        <tr><td>Promoter share (40%)</td><td>₹84 Crore</td></tr>
+        <tr><td>RERA re-registration</td><td>Will be filed within 30 days of OTS NOC</td></tr>
+      </tbody>
+    </table>
+
+    <div class="highlight">
+      <strong>Market Context:</strong> Gurugram residential market registered 18% price appreciation in FY24 (JLL India report). The Sohna Road micro-market has specifically seen renewed buyer interest driven by infrastructure upgrades (KMP Expressway, rapid metro extension). Demand letters from 3 pre-sales agents are on record.
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- SECTION 8: Consortium Recommendation -->
+  <div class="section">
+    <div class="section-title"><span class="section-num">08</span>FinsightOne Consortium Recommendation</div>
+
+    <div class="rec-box">
+      <h3>FinsightOne Recommends: ACCEPT OTS — ₹98 Crore Settlement</h3>
+      <p>Based on our comprehensive analysis, FinsightOne strongly recommends that the consortium accept the OTS proposal. The following comparison validates this recommendation:</p>
+    </div>
+
+    <table>
+      <thead><tr><th>Scenario</th><th>Expected Recovery (₹ Cr)</th><th>Timeline</th><th>Risk</th><th>Assessment</th></tr></thead>
+      <tbody>
+        <tr><td>OTS Acceptance (proposed)</td><td><strong>98.0</strong></td><td>90 days</td><td>LOW</td><td class="status-green">RECOMMENDED</td></tr>
+        <tr><td>SARFAESI Enforcement</td><td>75–90</td><td>18–30 months</td><td>MEDIUM</td><td class="status-amber">INFERIOR</td></tr>
+        <tr><td>IBC/CIRP Insolvency</td><td>70–88</td><td>24–36 months</td><td>HIGH</td><td class="status-red">INFERIOR</td></tr>
+        <tr><td>Liquidation (worst case)</td><td>55–70</td><td>36–48 months</td><td>VERY HIGH</td><td class="status-red">WORST OUTCOME</td></tr>
+      </tbody>
+    </table>
+
+    <ul class="styled">
+      <li>OTS provides certain, immediate recovery — ₹98 Cr vs ₹55–90 Cr in enforcement scenarios</li>
+      <li>Promoter has demonstrated intent and financial capacity (₹71 Cr net worth; ₹42 Cr FDs)</li>
+      <li>PE investor LOI provides credibility — funds are committed and legally binding</li>
+      <li>Homebuyer priority claims (Pioneer Urban Land SC judgment) would reduce bank recovery in IBC</li>
+      <li>OTS recovery of 53% exceeds IBC average of 42–48% for real estate accounts (IBBI FY24)</li>
+      <li>Consortium provisioning already fully absorbed — any recovery above FSV improves bank P&amp;L</li>
+    </ul>
+  </div>
+
+  <hr class="divider">
+
+  <!-- SECTION 9: Settlement Timeline -->
+  <div class="section">
+    <div class="section-title"><span class="section-num">09</span>Proposed Settlement Timeline</div>
+
+    <div class="timeline">
+      <div class="tl-step">
+        <div class="tl-circle">D1</div>
+        <div class="tl-label">OTS File Submitted</div>
+        <div class="tl-sub">FinsightOne submits to Lead Bank</div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-circle">30</div>
+        <div class="tl-label">Consortium Decision</div>
+        <div class="tl-sub">Bank board / SLBC approval</div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-circle">45</div>
+        <div class="tl-label">OTS Letter Issued</div>
+        <div class="tl-sub">Formal OTS sanction letter</div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-circle">90</div>
+        <div class="tl-label">Full Payment</div>
+        <div class="tl-sub">₹98 Cr remitted to consortium</div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-circle">120</div>
+        <div class="tl-label">NOC + CIBIL Update</div>
+        <div class="tl-sub">Clean certificate issued</div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <strong>Escrow Mechanism:</strong> FinsightOne proposes that ₹98 Crore be placed in an escrow account designated by the lead bank within 45 days of OTS letter, with release triggered by NOC issuance. This protects all parties and ensures irrevocable payment commitment.
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- SECTION 10: Risk Assessment -->
+  <div class="section">
+    <div class="section-title"><span class="section-num">10</span>Risk Assessment Matrix</div>
+
+    <div class="risk-grid">
+      <div class="risk-card risk-med">
+        <div class="risk-label">Execution Risk</div>
+        <div class="risk-level">MEDIUM</div>
+        <p style="font-size:11px;color:#6B7280;margin-top:6px;">PE investor commitment is LOI stage; funding drawdown risk exists. Mitigant: Escrow of promoter FDs (₹42 Cr) reduces risk to ₹56 Cr PE component.</p>
+      </div>
+      <div class="risk-card risk-low">
+        <div class="risk-label">Promoter Integrity Risk</div>
+        <div class="risk-level">LOW</div>
+        <p style="font-size:11px;color:#6B7280;margin-top:6px;">No adverse SFIO/ED/CBI record. CIBIL confirms no wilful default tagging. Promoter has been cooperative throughout NPA period.</p>
+      </div>
+      <div class="risk-card risk-med">
+        <div class="risk-label">Market Recovery Risk</div>
+        <div class="risk-level">MEDIUM</div>
+        <p style="font-size:11px;color:#6B7280;margin-top:6px;">Post-OTS revival plan depends on Gurugram residential market. 18% price appreciation trend is supportive, but demand recovery must sustain.</p>
+      </div>
+    </div>
+
+    <table>
+      <thead><tr><th>Risk Factor</th><th>Rating</th><th>Mitigant</th></tr></thead>
+      <tbody>
+        <tr><td>PE Investor backing out</td><td class="status-amber">MEDIUM</td><td>Promoter FDs of ₹42 Cr are already in escrow proposal; short-fall bridgeable</td></tr>
+        <tr><td>Collateral value declining</td><td class="status-green">LOW</td><td>OTS amount (₹98 Cr) already secured — collateral only relevant in rejection scenario</td></tr>
+        <tr><td>Regulatory / RERA block</td><td class="status-amber">MEDIUM</td><td>RERA extension already granted till Dec 2024; fresh filing post-OTS is standard process</td></tr>
+        <tr><td>Homebuyer litigation</td><td class="status-amber">MEDIUM</td><td>240 delivered units already — remaining buyers are covered by revised RERA timeline</td></tr>
+        <tr><td>Consortium bank disagreement</td><td class="status-green">LOW</td><td>Lead bank (42%) supportive; unanimous vote required but RBI ICA mechanism available</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div>
+    <div class="ft-logo">FINSIGHT<span>ONE</span></div>
+    <div class="ft-tagline">EXPERT CREDIT ADVISORY</div>
+    <div style="margin-top:8px;font-size:10px;color:#93C5FD;">BankReady™ ENTERPRISE Package</div>
+    <div style="font-size:10px;color:#93C5FD;">www.finsightone.in</div>
+  </div>
+  <div class="footer-mid">
+    <h4>Confidential Notice</h4>
+    <div style="line-height:1.8;">This report is prepared exclusively for the named borrower and the consortium lending banks. It contains commercially sensitive financial information. Reproduction, distribution, or use by any third party without written consent of FinsightOne is strictly prohibited. This report does not constitute a guarantee of loan approval or settlement acceptance.</div>
+  </div>
+  <div class="footer-right">
+    <h4>Report Details</h4>
+    <div>Report ID: <strong style="color:#F59E0B;">FSB-2025-05389</strong></div>
+    <div>Package: BankReady™ ENTERPRISE</div>
+    <div>Date: May 2025</div>
+    <div>Analyst: FinsightOne Credit Team</div>
+    <div style="margin-top:8px;font-size:10px;color:#6B7280;">© 2025 FinsightOne Advisory Pvt. Ltd.</div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FEL-2025-03192 | Eligibility & Lender Match Report | FinsightOne</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #F9FAFB; color: #1F2937; font-size: 13.5px; line-height: 1.6; }
+  .page { max-width: 960px; margin: 0 auto; background: #fff; box-shadow: 0 2px 16px rgba(0,0,0,0.07); }
+  .header { background: #1E3A5F; color: #fff; padding: 28px 40px 22px; display: flex; justify-content: space-between; align-items: center; }
+  .logo { font-size: 26px; font-weight: 900; letter-spacing: 1px; }
+  .logo span { color: #F59E0B; }
+  .tagline { font-size: 11px; color: #93C5FD; letter-spacing: 2px; text-transform: uppercase; margin-top: 2px; }
+  .header-right { text-align: right; font-size: 11.5px; color: #CBD5E1; line-height: 1.8; }
+  .cover { background: linear-gradient(135deg, #1E3A5F 0%, #2D5282 100%); color: #fff; padding: 50px 40px 40px; }
+  .cover-badge { display: inline-block; background: #10B981; color: #fff; font-weight: 800; font-size: 11px; padding: 4px 14px; border-radius: 20px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 18px; }
+  .cover h1 { font-size: 24px; font-weight: 800; margin-bottom: 6px; line-height: 1.3; }
+  .cover-sub { font-size: 13px; color: #93C5FD; margin-bottom: 24px; }
+  .score-dashboard { display: grid; grid-template-columns: auto 1fr; gap: 32px; align-items: center; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 24px 28px; margin-top: 20px; }
+  .big-score { text-align: center; }
+  .big-score .num { font-size: 72px; font-weight: 900; color: #10B981; line-height: 1; }
+  .big-score .out { font-size: 20px; color: #93C5FD; }
+  .big-score .status { font-size: 14px; font-weight: 700; color: #6EE7B7; margin-top: 4px; }
+  .score-details { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .score-detail-item .sd-label { font-size: 10px; color: #93C5FD; text-transform: uppercase; letter-spacing: 1px; }
+  .score-detail-item .sd-val { font-size: 15px; font-weight: 700; color: #fff; }
+  .kpi-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 20px; }
+  .kpi-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 14px 16px; text-align: center; }
+  .kpi-card .kv { font-size: 22px; font-weight: 900; color: #F59E0B; }
+  .kpi-card .kl { font-size: 10px; color: #93C5FD; text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+  .content { padding: 36px 40px; }
+  .section { margin-bottom: 36px; }
+  .section-title { font-size: 15px; font-weight: 800; color: #1E3A5F; border-bottom: 2px solid #F59E0B; padding-bottom: 6px; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .section-num { display: inline-block; background: #1E3A5F; color: #F59E0B; font-size: 10px; font-weight: 800; padding: 2px 7px; border-radius: 3px; margin-right: 8px; }
+  p { margin-bottom: 10px; color: #374151; }
+  table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 12.5px; }
+  th { background: #1E3A5F; color: #fff; padding: 9px 12px; text-align: left; font-size: 11.5px; font-weight: 700; }
+  td { padding: 8px 12px; border-bottom: 1px solid #E5E7EB; }
+  tr:nth-child(even) td { background: #FAFAFA; }
+  tr:nth-child(odd) td { background: #fff; }
+  .highlight { background: #FFFBEB; border-left: 4px solid #B45309; padding: 14px 18px; border-radius: 0 6px 6px 0; margin: 14px 0; }
+  .highlight strong { color: #92400E; }
+  .rec-box { border: 2px solid #B45309; background: #FFFBEB; border-radius: 8px; padding: 20px 24px; margin: 16px 0; }
+  .rec-box h3 { color: #92400E; font-size: 14px; margin-bottom: 10px; }
+  .divider { border: none; border-top: 1px solid #E5E7EB; margin: 28px 0; }
+  ul.styled { list-style: none; padding: 0; }
+  ul.styled li { padding: 4px 0 4px 18px; position: relative; color: #374151; }
+  ul.styled li::before { content: '▸'; position: absolute; left: 0; color: #F59E0B; font-size: 12px; }
+  .blurred-name { filter: blur(4px); user-select: none; background: #E5E7EB; padding: 1px 6px; border-radius: 2px; display: inline-block; }
+  .blurred-bank { filter: blur(3px); display: inline-block; }
+  .status-green { color: #059669; font-weight: 700; }
+  .status-amber { color: #D97706; font-weight: 700; }
+  .status-red { color: #DC2626; font-weight: 700; }
+  .tag-green { display: inline-block; background: #ECFDF5; color: #065F46; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 10px; }
+  .tag-amber { display: inline-block; background: #FFFBEB; color: #92400E; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 10px; }
+  .tag-red { display: inline-block; background: #FEF2F2; color: #991B1B; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 10px; }
+  .recommended-row td { background: #FFFBEB !important; font-weight: 600; }
+  .recommended-row td:first-child::before { content: '★ '; color: #F59E0B; }
+  /* CIBIL cards */
+  .cibil-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin: 14px 0; }
+  .cibil-card { border-radius: 8px; padding: 16px; border: 1.5px solid #E5E7EB; text-align: center; }
+  .cibil-card .cc-label { font-size: 10px; color: #6B7280; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+  .cibil-card .cc-score { font-size: 40px; font-weight: 900; line-height: 1; }
+  .cibil-card .cc-status { font-size: 11px; font-weight: 700; margin-top: 4px; }
+  .cibil-excellent { border-color: #6EE7B7; background: #ECFDF5; }
+  .cibil-excellent .cc-score { color: #059669; }
+  .cibil-excellent .cc-status { color: #065F46; }
+  .cibil-good { border-color: #93C5FD; background: #EFF6FF; }
+  .cibil-good .cc-score { color: #1D4ED8; }
+  .cibil-good .cc-status { color: #1E40AF; }
+  .cibil-thin { border-color: #FCD34D; background: #FFFBEB; }
+  .cibil-thin .cc-score { color: #D97706; }
+  .cibil-thin .cc-status { color: #92400E; }
+  /* Products grid */
+  .products-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0; }
+  .product-card { border: 1.5px solid #E5E7EB; border-radius: 8px; padding: 14px 16px; border-left: 4px solid #1E3A5F; }
+  .product-card .pc-name { font-size: 12px; font-weight: 800; color: #1E3A5F; margin-bottom: 4px; }
+  .product-card .pc-amount { font-size: 20px; font-weight: 900; color: #F59E0B; }
+  .product-card .pc-note { font-size: 11px; color: #6B7280; margin-top: 4px; }
+  /* Check marks */
+  .check-yes { color: #059669; font-weight: 700; }
+  .check-no { color: #DC2626; font-weight: 700; }
+  /* Footer */
+  .footer { background: #1E3A5F; color: #CBD5E1; padding: 24px 40px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; font-size: 11px; }
+  .footer .ft-logo { font-size: 16px; font-weight: 900; color: #fff; margin-bottom: 4px; }
+  .footer .ft-logo span { color: #F59E0B; }
+  .footer-mid { text-align: center; }
+  .footer-right { text-align: right; }
+  .footer h4 { color: #F59E0B; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+  .prob-bar { display: inline-flex; align-items: center; gap: 8px; }
+  .prob-fill { height: 8px; border-radius: 4px; background: #10B981; display: inline-block; }
+</style>
+</head>
+<body>
+<div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-35deg);font-size:110px;font-weight:900;color:rgba(0,0,0,0.03);pointer-events:none;white-space:nowrap;z-index:0;letter-spacing:16px;">SAMPLE</div>
+
+<div class="page">
+
+<div class="header">
+  <div>
+    <div class="logo">FINSIGHT<span>ONE</span></div>
+    <div class="tagline">Expert Credit Advisory</div>
+  </div>
+  <div class="header-right">
+    <div>Detailed Eligibility &amp; Lender Match Report</div>
+    <div>Report ID: <strong style="color:#F59E0B;">FEL-2025-03192</strong></div>
+    <div>Date: May 2025</div>
+    <div>Classification: CONFIDENTIAL</div>
+  </div>
+</div>
+
+<div class="cover">
+  <span class="cover-badge">Eligibility Report — GREEN</span>
+  <h1>Detailed Eligibility &amp; Lender Match Report<br>Working Capital CC/OD — ₹8 Crore</h1>
+  <div class="cover-sub">
+    Borrower: <span class="blurred-name">T████████ IT Solutions Pvt. Ltd.</span> &nbsp;|&nbsp; Hyderabad, Telangana &nbsp;|&nbsp; IT Services &amp; Software
+  </div>
+
+  <div class="score-dashboard">
+    <div class="big-score">
+      <div class="num">82</div>
+      <div class="out">/100</div>
+      <div class="status">GREEN — HIGH ELIGIBILITY</div>
+    </div>
+    <div class="score-details">
+      <div class="score-detail-item">
+        <div class="sd-label">Loan Product</div>
+        <div class="sd-val">Cash Credit / OD</div>
+      </div>
+      <div class="score-detail-item">
+        <div class="sd-label">Loan Amount</div>
+        <div class="sd-val">₹8 Crore</div>
+      </div>
+      <div class="score-detail-item">
+        <div class="sd-label">Application Type</div>
+        <div class="sd-val">First-time bank facility</div>
+      </div>
+      <div class="score-detail-item">
+        <div class="sd-label">Recommended Primary Lender</div>
+        <div class="sd-val">HDFC Bank Business Banking</div>
+      </div>
+      <div class="score-detail-item">
+        <div class="sd-label">Approval Probability</div>
+        <div class="sd-val">85% (HDFC Bank)</div>
+      </div>
+      <div class="score-detail-item">
+        <div class="sd-label">Expected Sanction</div>
+        <div class="sd-val">10–12 working days</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="kpi-strip">
+    <div class="kpi-card"><div class="kv">₹24.8 Cr</div><div class="kl">FY24 Revenue</div></div>
+    <div class="kpi-card"><div class="kv">19.4%</div><div class="kl">EBITDA Margin</div></div>
+    <div class="kpi-card"><div class="kv">42%</div><div class="kl">Revenue CAGR</div></div>
+    <div class="kpi-card"><div class="kv">782</div><div class="kl">Director 1 CIBIL</div></div>
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- Section 1: Business Profile -->
+  <div class="section">
+    <div class="section-title"><span class="section-num">01</span>Business Profile</div>
+
+    <table>
+      <thead><tr><th colspan="2">Company Overview — <span class="blurred-name">T████████ IT Solutions Pvt. Ltd.</span></th></tr></thead>
+      <tbody>
+        <tr><td>Registered Office</td><td>Hyderabad, Telangana</td></tr>
+        <tr><td>Industry</td><td>IT Services, Software Development &amp; Enterprise Solutions</td></tr>
+        <tr><td>Year of Incorporation</td><td>2016</td></tr>
+        <tr><td>Number of Directors</td><td>2 (both active)</td></tr>
+        <tr><td>Employees</td><td>~210 (FY24)</td></tr>
+        <tr><td>Client Base</td><td>12 active clients — 6 MNC, 3 Government contracts, 3 Domestic enterprise</td></tr>
+        <tr><td>Export Revenue</td><td>42% of total revenue (USD billed — US, UK, Singapore)</td></tr>
+        <tr><td>MSME Registration</td><td>Udyam registered (Small Enterprise)</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="color:#1E3A5F;margin:16px 0 10px;font-size:13px;">Financial Performance Summary</h3>
+    <table>
+      <thead><tr><th>Financial Metric</th><th>FY22</th><th>FY23</th><th>FY24</th><th>CAGR</th></tr></thead>
+      <tbody>
+        <tr><td>Revenue (₹ Crore)</td><td>12.2</td><td>18.4</td><td>24.8</td><td class="status-green">42%</td></tr>
+        <tr><td>EBITDA (₹ Crore)</td><td>2.2</td><td>3.4</td><td>4.8</td><td class="status-green">48%</td></tr>
+        <tr><td>EBITDA Margin</td><td>18.0%</td><td>18.5%</td><td>19.4%</td><td>Expanding</td></tr>
+        <tr><td>PAT (₹ Crore)</td><td>1.4</td><td>2.2</td><td>3.1</td><td class="status-green">49%</td></tr>
+        <tr><td>Net Worth (₹ Crore)</td><td>3.2</td><td>5.4</td><td>8.4</td><td class="status-green">62%</td></tr>
+        <tr><td>Current Ratio</td><td>1.82</td><td>1.94</td><td>2.12</td><td>Improving</td></tr>
+        <tr><td>Debt/Equity (D/E)</td><td>0.0</td><td>0.0</td><td>0.0</td><td class="status-green">Debt-free</td></tr>
+      </tbody>
+    </table>
+
+    <div class="highlight">
+      <strong>FinsightOne Observation:</strong> The company is a first-time borrower — entirely debt-free, with strong and growing financials. Revenue CAGR of 42% over 2 years in IT services is exceptional. EBITDA margins of 19.4% exceed the sector median of 14–16% for IT services companies of this size. This is a strong credit profile for working capital.
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Section 2: CIBIL Analysis -->
+  <div class="section">
+    <div class="section-title"><span class="section-num">02</span>CIBIL &amp; Credit Bureau Analysis</div>
+
+    <div class="cibil-grid">
+      <div class="cibil-card cibil-thin">
+        <div class="cc-label">Company CIBIL (CIBIL Rank)</div>
+        <div class="cc-score">728</div>
+        <div class="cc-status">ACCEPTABLE — Thin File</div>
+        <div style="font-size:10.5px;color:#6B7280;margin-top:6px;">First year of credit history — no previous bank credit. Thin file but no negative marks. Acceptable for first-time CC facility.</div>
+      </div>
+      <div class="cibil-card cibil-excellent">
+        <div class="cc-label">Director 1 CIBIL Score</div>
+        <div class="cc-score">782</div>
+        <div class="cc-status">EXCELLENT</div>
+        <div style="font-size:10.5px;color:#6B7280;margin-top:6px;">No defaults, no adverse remarks. 7 years of clean credit history. Strong personal guarantee backing.</div>
+      </div>
+      <div class="cibil-card cibil-good">
+        <div class="cc-label">Director 2 CIBIL Score</div>
+        <div class="cc-score">756</div>
+        <div class="cc-status">GOOD</div>
+        <div style="font-size:10.5px;color:#6B7280;margin-top:6px;">No defaults. Home loan serviced perfectly for 4 years. Clean bureau record.</div>
+      </div>
+    </div>
+
+    <table>
+      <thead><tr><th>Bureau Parameter</th><th>Status</th><th>Remarks</th></tr></thead>
+      <tbody>
+        <tr><td>Company defaults / NPAs</td><td class="status-green">NIL</td><td>No adverse history</td></tr>
+        <tr><td>Director adverse remarks</td><td class="status-green">NIL</td><td>Both directors clean</td></tr>
+        <tr><td>Third-party guarantees given</td><td class="status-green">NIL</td><td>No contingent liabilities</td></tr>
+        <tr><td>Settled / written-off accounts</td><td class="status-green">NIL</td><td>None on record</td></tr>
+        <tr><td>Recent hard enquiries (12 months)</td><td class="status-green">0</td><td>First-time applicant — no previous enquiries</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Section 3: Banking Behaviour -->
+  <div class="section">
+    <div class="section-title"><span class="section-num">03</span>Banking Behaviour Analysis</div>
+
+    <table>
+      <thead><tr><th>Banking Parameter</th><th>Value</th><th>Assessment</th></tr></thead>
+      <tbody>
+        <tr><td>Average Monthly Balance (last 12 months)</td><td>₹1.84 Crore</td><td class="status-green">STRONG — supports ₹8 Cr CC limit</td></tr>
+        <tr><td>Minimum Balance Observed</td><td>₹0.42 Crore (March — pre-salary)</td><td class="status-green">ACCEPTABLE — temporary seasonal low</td></tr>
+        <tr><td>Inward Credits per Month</td><td>6–8 credits/month (12 clients)</td><td class="status-green">REGULAR AND DIVERSIFIED</td></tr>
+        <tr><td>Salary outflow per month</td><td>₹68 Lakh</td><td>Consistent — payroll discipline</td></tr>
+        <tr><td>Vendor payments per month</td><td>₹12 Lakh</td><td>Lean cost structure</td></tr>
+        <tr><td>Cheque returns in 12 months</td><td>0</td><td class="status-green">ZERO — excellent</td></tr>
+        <tr><td>ECS / NACH failures</td><td>0</td><td class="status-green">ZERO — excellent</td></tr>
+        <tr><td>Largest single credit (FY24)</td><td>₹3.8 Crore (US MNC client)</td><td>Validates large contract capability</td></tr>
+        <tr><td>USD inward remittances</td><td>Regular — 2–3 per month via FIRA</td><td class="status-green">Export creditworthiness confirmed</td></tr>
+      </tbody>
+    </table>
+
+    <div class="highlight">
+      <strong>MPBF Assessment:</strong> Based on 12-month bank statement analysis, the Modified Permissible Bank Finance (MPBF) for this borrower is calculated at ₹6.8–8.4 Crore. The requested CC limit of ₹8 Crore is within the MPBF range and is fully supportable based on working capital cycle analysis.
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Section 4: Eligible Products -->
+  <div class="section">
+    <div class="section-title"><span class="section-num">04</span>Eligible Loan Products &amp; Amounts</div>
+
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="pc-name">Cash Credit (CC) Limit — Primary</div>
+        <div class="pc-amount">₹6–8 Crore</div>
+        <div class="pc-note">Recommended: ₹8 Crore. Revolving working capital for operations, receivables financing, salary disbursement. Interest only on utilised amount.</div>
+      </div>
+      <div class="product-card">
+        <div class="pc-name">Bank Guarantee Facility</div>
+        <div class="pc-amount">₹2–3 Crore</div>
+        <div class="pc-note">Performance/bid guarantees for government contracts. Low cost — 1.5–2% p.a. commission. 3 existing govt contracts support this eligibility.</div>
+      </div>
+      <div class="product-card">
+        <div class="pc-name">Working Capital Demand Loan (WCDL)</div>
+        <div class="pc-amount">₹3–5 Crore</div>
+        <div class="pc-note">As sub-limit under CC. Fixed tenure (30–90 days). Useful for large project advances where fixed drawdown is predictable.</div>
+      </div>
+      <div class="product-card">
+        <div class="pc-name">Export Packing Credit (EPC)</div>
+        <div class="pc-amount">₹2 Crore</div>
+        <div class="pc-note">Against USD export invoices. Lower interest rate (LIBOR-linked / 6.5–7.5%). Eligible as 42% of revenue is USD billed. FIRA records support eligibility.</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Section 5: Lender Match Table -->
+  <div class="section">
+    <div class="section-title"><span class="section-num">05</span>Lender Match Table — Top 5 Recommendations</div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Lender</th>
+          <th>Product &amp; Limit</th>
+          <th>Rate</th>
+          <th>Approval Probability</th>
+          <th>Processing Time</th>
+          <th>Remarks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="recommended-row">
+          <td><span class="blurred-bank">HDFC Bank</span> Business Banking</td>
+          <td>CC ₹8 Crore</td>
+          <td>1Y MCLR + 1.5%</td>
+          <td><span style="color:#059669;font-weight:800;">HIGH — 85%</span></td>
+          <td>8–10 working days</td>
+          <td><span class="tag-green">RECOMMENDED</span> IT sector appetite; strong relationship banking; fast credit decisions</td>
+        </tr>
+        <tr>
+          <td><span class="blurred-bank">ICICI Bank</span> Smart Business</td>
+          <td>CC ₹7 Crore</td>
+          <td>1Y MCLR + 1.75%</td>
+          <td><span style="color:#059669;font-weight:700;">HIGH — 80%</span></td>
+          <td>10–12 working days</td>
+          <td>Strong IT sector focus; digital-first credit process; good for export companies</td>
+        </tr>
+        <tr>
+          <td><span class="blurred-bank">Axis Bank</span> Business Banking</td>
+          <td>CC ₹8 Crore</td>
+          <td>1Y MCLR + 2.0%</td>
+          <td><span style="color:#059669;font-weight:700;">HIGH — 78%</span></td>
+          <td>12–15 working days</td>
+          <td>Competitive for Hyderabad IT cluster; good BG facility alongside CC</td>
+        </tr>
+        <tr>
+          <td><span class="blurred-bank">Kotak Mahindra Bank</span></td>
+          <td>CC ₹6 Crore</td>
+          <td>1Y MCLR + 2.25%</td>
+          <td><span style="color:#D97706;font-weight:700;">MEDIUM — 65%</span></td>
+          <td>15–18 working days</td>
+          <td>Conservative on thin-file companies; may require additional collateral</td>
+        </tr>
+        <tr>
+          <td><span class="blurred-bank">SBI</span> SME Segment</td>
+          <td>CC ₹8 Crore</td>
+          <td>1Y MCLR + 1.25% (lowest)</td>
+          <td><span style="color:#D97706;font-weight:700;">MEDIUM — 60%</span></td>
+          <td>20–25 working days</td>
+          <td>Lowest rate but longer processing; recommend as secondary — first-time IT borrowers face longer scrutiny</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="highlight">
+      <strong>FinsightOne Strategy:</strong> Apply to <span class="blurred-bank">HDFC Bank</span> (primary) + <span class="blurred-bank">ICICI Bank</span> (simultaneous) in the same week. Dual simultaneous applications improve probability while giving options. Do not apply to more than 2–3 lenders simultaneously to avoid multiple enquiry flag in bureau.
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Section 6: Document Readiness -->
+  <div class="section">
+    <div class="section-title"><span class="section-num">06</span>Document Readiness Assessment</div>
+
+    <table>
+      <thead><tr><th>Document</th><th>Status</th><th>Action Required</th></tr></thead>
+      <tbody>
+        <tr><td>Audited Financials FY22 / FY23 / FY24</td><td class="check-yes">✓ AVAILABLE</td><td>None — submit as-is in banker format</td></tr>
+        <tr><td>ITR-6 (3 years)</td><td class="check-yes">✓ AVAILABLE</td><td>Verify ITR matches bank statement — no gap found</td></tr>
+        <tr><td>GST Returns (last 12 months)</td><td class="check-yes">✓ FILED</td><td>None — all returns up to date</td></tr>
+        <tr><td>Bank Statement (12 months)</td><td class="check-yes">✓ AVAILABLE</td><td>Download bank-certified copy — not self-generated PDF</td></tr>
+        <tr><td>Certificate of Incorporation</td><td class="check-yes">✓ AVAILABLE</td><td>None</td></tr>
+        <tr><td>MOA / AOA</td><td class="check-yes">✓ AVAILABLE</td><td>None</td></tr>
+        <tr><td>Directors' PAN / Aadhaar (both)</td><td class="check-yes">✓ AVAILABLE</td><td>None</td></tr>
+        <tr><td>Udyam (MSME) Registration</td><td class="check-no">✗ MISSING</td><td><strong>Register immediately on Udyam portal</strong> — free, ~30 minutes. Required for MSME CC at most banks.</td></tr>
+        <tr><td>CMA Data (Credit Monitoring Arrangement)</td><td class="check-no">✗ MISSING</td><td><strong>FinsightOne to prepare</strong> — mandatory for CC above ₹5 Cr. Includes 3-year actual + 2-year projected financials in RBI format.</td></tr>
+        <tr><td>Projected P&amp;L &amp; Balance Sheet (2 years)</td><td class="check-no">✗ MISSING</td><td><strong>FinsightOne to prepare</strong> — required alongside CMA data for bank appraisal</td></tr>
+        <tr><td>Client Contracts / Order Letters (3 nos.)</td><td class="check-yes">✓ AVAILABLE</td><td>Collect from 3 largest clients — validates revenue in bank CAM</td></tr>
+      </tbody>
+    </table>
+
+    <div class="highlight">
+      <strong>Document Gap Summary:</strong> Only 3 items are missing — Udyam registration (borrower action, 1 day), CMA Data (FinsightOne prepares, 3–4 days), and Projected Financials (FinsightOne prepares alongside CMA). The file can be fully ready within 5 working days of Udyam registration.
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Section 7: Next Steps -->
+  <div class="section">
+    <div class="section-title"><span class="section-num">07</span>Recommended Next Steps</div>
+
+    <div class="rec-box">
+      <h3>FinsightOne 4-Step Action Plan — Sanction Expected in 12–15 Working Days</h3>
+      <ul class="styled">
+        <li><strong>Day 1 (Immediate):</strong> Register on Udyam portal (udyamregistration.gov.in) — free, self-service, ~30 minutes. Share certificate with FinsightOne.</li>
+        <li><strong>Days 1–4:</strong> FinsightOne Advisory Team to prepare CMA Data + Projected P&amp;L and Balance Sheet in bank-standard format — Hyderabad team to coordinate with your CA for FY24 trial balance.</li>
+        <li><strong>Day 5:</strong> Apply to <span class="blurred-bank">HDFC Bank</span> Business Banking (Hyderabad, HITEC City branch — preferred) + <span class="blurred-bank">ICICI Bank</span> Smart Business simultaneously. FinsightOne to manage banker engagement and documentation queries.</li>
+        <li><strong>Days 10–12:</strong> Expected field visit by bank credit officer — FinsightOne representative accompanies for credit presentation. Sanction expected within 10–12 working days of complete application submission.</li>
+      </ul>
+    </div>
+
+    <p style="color:#6B7280;font-size:11.5px;margin-top:12px;">Approval probability estimates are based on FinsightOne's proprietary lender assessment model combining historical approval data, current credit appetite, and borrower financial profile. Final lending decisions rest entirely with the respective banks.</p>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div>
+    <div class="ft-logo">FINSIGHT<span>ONE</span></div>
+    <div class="ft-tagline">EXPERT CREDIT ADVISORY</div>
+    <div style="margin-top:8px;font-size:10px;color:#93C5FD;">Eligibility &amp; Lender Match Report</div>
+    <div style="font-size:10px;color:#93C5FD;">www.finsightone.in</div>
+  </div>
+  <div class="footer-mid">
+    <h4>Confidential Notice</h4>
+    <div style="line-height:1.8;">This report is prepared exclusively for the named borrower and is based on information provided to FinsightOne and publicly available bureau data. Lender match scores and approval probabilities are indicative only. FinsightOne does not guarantee loan approval. Distribution to third parties without written consent is strictly prohibited.</div>
+  </div>
+  <div class="footer-right">
+    <h4>Report Details</h4>
+    <div>Report ID: <strong style="color:#F59E0B;">FEL-2025-03192</strong></div>
+    <div>Type: Eligibility &amp; Lender Match</div>
+    <div>Date: May 2025</div>
+    <div>Analyst: FinsightOne Credit Team</div>
+    <div style="margin-top:8px;font-size:10px;color:#6B7280;">© 2025 FinsightOne Advisory Pvt. Ltd.</div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

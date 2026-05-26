@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Credit Score Reports — Business & Retail</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,700;0,900;1,300&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0c0c10;
+  --cream: #f8f5ef;
+  --gold: #c8922a;
+  --gold-light: #e8b84a;
+  --gold-pale: #fdf3e0;
+  --slate: #1a1f35;
+  --slate-mid: #2c3354;
+  --muted: #7a8099;
+  --green: #1e6b3e;
+  --green-light: #e6f5ed;
+  --green-mid: #2d9654;
+  --amber: #b06010;
+  --amber-light: #fef3e2;
+  --red: #b02020;
+  --red-light: #fceaea;
+  --blue: #1a3f7a;
+  --blue-light: #e8eef8;
+  --border: rgba(0,0,0,0.08);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #e8e4dc;
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+/* TAB SWITCHER */
+.page-header {
+  text-align: center;
+  margin-bottom: 36px;
+}
+.page-header h1 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 900;
+  color: var(--slate);
+  margin-bottom: 6px;
+}
+.page-header p {
+  font-size: 13px;
+  color: #666;
+  font-weight: 300;
+}
+
+.tab-bar {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+.tab-btn {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 10px 28px;
+  border: 2px solid var(--slate);
+  border-radius: 2px;
+  cursor: pointer;
+  background: transparent;
+  color: var(--slate);
+  transition: all 0.2s;
+}
+.tab-btn.active {
+  background: var(--slate);
+  color: #fff;
+}
+
+.report-panel { display: none; }
+.report-panel.active { display: block; }
+
+/* REPORT WRAPPER */
+.report {
+  max-width: 860px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+}
+
+/* REPORT HEADER */
+.report-header {
+  background: var(--slate);
+  padding: 32px 40px 28px;
+  position: relative;
+  overflow: hidden;
+}
+.report-header::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200,146,42,0.2) 0%, transparent 70%);
+}
+.report-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light), transparent);
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+.brand {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -0.5px;
+}
+.brand span { color: var(--gold-light); }
+.report-meta {
+  text-align: right;
+}
+.report-meta-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+.report-meta-val {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: rgba(255,255,255,0.7);
+}
+
+.header-body {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: center;
+}
+.borrower-name {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(20px, 2.5vw, 28px);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+}
+.borrower-sub {
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  font-weight: 300;
+}
+.borrower-sub span {
+  color: rgba(255,255,255,0.7);
+  font-weight: 500;
+}
+
+/* SCORE CIRCLE */
+.score-circle-wrap {
+  text-align: center;
+}
+.score-circle {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 0 auto 8px;
+}
+.score-circle.green {
+  background: conic-gradient(var(--green-mid) 0deg, var(--green-mid) 277deg, rgba(255,255,255,0.1) 277deg);
+  box-shadow: 0 0 0 6px rgba(45,150,84,0.2), inset 0 0 0 10px var(--slate);
+}
+.score-circle.amber {
+  background: conic-gradient(#e08020 0deg, #e08020 230deg, rgba(255,255,255,0.1) 230deg);
+  box-shadow: 0 0 0 6px rgba(224,128,32,0.2), inset 0 0 0 10px var(--slate);
+}
+.score-circle-inner {
+  position: absolute;
+  width: 86px;
+  height: 86px;
+  border-radius: 50%;
+  background: var(--slate);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.score-number {
+  font-family: 'Fraunces', serif;
+  font-size: 28px;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1;
+}
+.score-denom {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  color: rgba(255,255,255,0.4);
+}
+.score-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 2px;
+}
+.score-label.green { background: rgba(45,150,84,0.2); color: #7ed4a0; }
+.score-label.amber { background: rgba(224,128,32,0.2); color: #f0b060; }
+
+/* RAG BANNER */
+.rag-banner {
+  padding: 14px 40px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.rag-banner.green { background: var(--green-light); color: var(--green); border-left: 4px solid var(--green-mid); }
+.rag-banner.amber { background: var(--amber-light); color: var(--amber); border-left: 4px solid #e08020; }
+.rag-banner-icon { font-size: 18px; }
+.rag-banner-title { font-family: 'Fraunces', serif; font-size: 15px; font-weight: 700; }
+
+/* BODY */
+.report-body { padding: 32px 40px; }
+
+/* SECTION */
+.section-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(200,146,42,0.2);
+}
+
+/* INFO GRID */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-bottom: 28px;
+}
+.info-cell {
+  background: var(--cream);
+  border-radius: 6px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+}
+.info-cell-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+.info-cell-val {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--slate);
+}
+.info-cell-val.positive { color: var(--green); }
+.info-cell-val.negative { color: var(--red); }
+.info-cell-val.neutral { color: var(--amber); }
+
+/* PARAMETER SCORES */
+.param-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+.param-card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.param-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+.param-card.p-green::before { background: var(--green-mid); }
+.param-card.p-amber::before { background: #e08020; }
+.param-card.p-red::before { background: var(--red); }
+
+.param-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.param-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--slate);
+}
+.param-weight {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  color: var(--muted);
+}
+.param-score-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.param-bar-bg {
+  flex: 1;
+  height: 6px;
+  background: #eee;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.param-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.8s ease;
+}
+.param-bar-fill.green { background: var(--green-mid); }
+.param-bar-fill.amber { background: #e08020; }
+.param-bar-fill.red { background: var(--red); }
+
+.param-score-val {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  min-width: 32px;
+  text-align: right;
+}
+.param-score-val.green { color: var(--green); }
+.param-score-val.amber { color: var(--amber); }
+.param-score-val.red { color: var(--red); }
+
+.param-detail {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 5px;
+  line-height: 1.4;
+}
+
+/* FLAGS */
+.flags-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+.flag-box {
+  border-radius: 8px;
+  padding: 14px 16px;
+  border: 1px solid;
+}
+.flag-box.strength {
+  background: var(--green-light);
+  border-color: rgba(30,107,62,0.2);
+}
+.flag-box.risk {
+  background: var(--red-light);
+  border-color: rgba(176,32,32,0.2);
+}
+.flag-box.watch {
+  background: var(--amber-light);
+  border-color: rgba(176,96,16,0.2);
+}
+.flag-box-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.flag-box.strength .flag-box-title { color: var(--green); }
+.flag-box.risk .flag-box-title { color: var(--red); }
+.flag-box.watch .flag-box-title { color: var(--amber); }
+
+.flag-list { list-style: none; }
+.flag-list li {
+  font-size: 12px;
+  padding: 3px 0;
+  padding-left: 14px;
+  position: relative;
+  line-height: 1.4;
+}
+.flag-box.strength .flag-list li { color: #1a5c35; }
+.flag-box.risk .flag-list li { color: #8a1a1a; }
+.flag-box.watch .flag-list li { color: #8a4a10; }
+.flag-box.strength .flag-list li::before { content: '✓'; position: absolute; left: 0; color: var(--green-mid); font-size: 10px; }
+.flag-box.risk .flag-list li::before { content: '✕'; position: absolute; left: 0; color: var(--red); font-size: 10px; }
+.flag-box.watch .flag-list li::before { content: '!'; position: absolute; left: 0; color: #e08020; font-size: 10px; font-weight: 700; }
+
+/* LENDER MATCH */
+.lender-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px;
+  margin-bottom: 28px;
+}
+.lender-card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px;
+  text-align: center;
+  background: var(--cream);
+  position: relative;
+}
+.lender-card.top-match {
+  border-color: var(--gold);
+  background: var(--gold-pale);
+}
+.lender-card.top-match::after {
+  content: 'BEST MATCH';
+  position: absolute;
+  top: -1px;
+  right: 10px;
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  background: var(--gold);
+  color: #fff;
+  padding: 2px 7px;
+  border-radius: 0 0 3px 3px;
+}
+.lender-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--slate);
+  margin-bottom: 3px;
+}
+.lender-product {
+  font-size: 10.5px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.lender-rate {
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--green);
+}
+.lender-proc {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--muted);
+}
+
+/* RECOMMENDATION */
+.recommendation {
+  background: var(--slate);
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin-bottom: 28px;
+}
+.rec-title {
+  font-family: 'Fraunces', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--gold-light);
+  margin-bottom: 10px;
+}
+.rec-items { list-style: none; }
+.rec-items li {
+  font-size: 12.5px;
+  color: rgba(255,255,255,0.7);
+  padding: 5px 0;
+  padding-left: 16px;
+  position: relative;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  line-height: 1.5;
+}
+.rec-items li:last-child { border-bottom: none; }
+.rec-items li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-size: 10px;
+}
+
+/* ELIGIBILITY SUMMARY */
+.elig-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 28px;
+}
+.elig-card {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+}
+.elig-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.elig-val {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--slate);
+  line-height: 1.1;
+  margin-bottom: 2px;
+}
+.elig-sub {
+  font-size: 10.5px;
+  color: var(--muted);
+}
+
+/* FOOTER */
+.report-footer {
+  background: #f5f2ec;
+  padding: 16px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.footer-disclaimer {
+  font-size: 10px;
+  color: #aaa;
+  max-width: 500px;
+  line-height: 1.5;
+}
+.footer-brand {
+  font-family: 'Fraunces', serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--slate);
+}
+.footer-brand span { color: var(--gold); }
+
+/* DIVIDER */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  margin: 24px 0;
+}
+
+@media (max-width: 600px) {
+  .report-body { padding: 24px 20px; }
+  .report-header { padding: 24px 20px; }
+  .param-grid { grid-template-columns: 1fr; }
+  .flags-grid { grid-template-columns: 1fr; }
+  .elig-row { grid-template-columns: 1fr 1fr; }
+  .header-body { grid-template-columns: 1fr; }
+  .score-circle-wrap { order: -1; }
+  .report-footer { padding: 16px 20px; }
+  .rag-banner { padding: 14px 20px; }
+}
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Credit Score Report Samples</h1>
+  <p>AI-generated using 20-year credit rule engine · Powered by Claude</p>
+</div>
+
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="switchTab('business')">Business Credit Report</button>
+  <button class="tab-btn" onclick="switchTab('retail')">Retail Credit Report</button>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- BUSINESS REPORT                        -->
+<!-- ═══════════════════════════════════════ -->
+<div class="report-panel active" id="panel-business">
+<div class="report">
+
+  <!-- HEADER -->
+  <div class="report-header">
+    <div class="header-top">
+      <div>
+        <div class="brand">Fin<span>Sight</span></div>
+        <div style="font-family:'DM Mono',monospace;font-size:9px;color:rgba(255,255,255,0.3);letter-spacing:2px;margin-top:2px;">BUSINESS CREDIT REPORT</div>
+      </div>
+      <div class="report-meta">
+        <div class="report-meta-label">Report ID</div>
+        <div class="report-meta-val">FSB-2025-04782</div>
+        <div class="report-meta-label" style="margin-top:6px">Generated</div>
+        <div class="report-meta-val">24 Apr 2025 · 11:42 AM</div>
+      </div>
+    </div>
+    <div class="header-body">
+      <div>
+        <div class="borrower-name">Rajesh Engineering Works Pvt. Ltd.</div>
+        <div class="borrower-sub">
+          GST: <span>27AABCR1234M1Z5</span> &nbsp;·&nbsp;
+          Sector: <span>Auto Components Manufacturing</span> &nbsp;·&nbsp;
+          City: <span>Pune, Maharashtra</span>
+        </div>
+        <div class="borrower-sub" style="margin-top:6px">
+          Promoter: <span>Mr. Rajesh Sharma</span> &nbsp;·&nbsp;
+          Business Vintage: <span>8 Years</span> &nbsp;·&nbsp;
+          Product Applied: <span>Working Capital — CC</span>
+        </div>
+      </div>
+      <div class="score-circle-wrap">
+        <div class="score-circle green">
+          <div class="score-circle-inner">
+            <div class="score-number">77</div>
+            <div class="score-denom">/100</div>
+          </div>
+        </div>
+        <div class="score-label green">● GREEN</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RAG BANNER -->
+  <div class="rag-banner green">
+    <div class="rag-banner-icon">✅</div>
+    <div>
+      <div class="rag-banner-title">Eligible — Proceed to File Submission</div>
+      <div style="font-size:12px;font-weight:400">Strong credit profile with good banking behavior. Minor condition on debtor aging to be monitored.</div>
+    </div>
+  </div>
+
+  <div class="report-body">
+
+    <!-- ELIGIBILITY -->
+    <div class="section-title">Eligibility Summary</div>
+    <div class="elig-row">
+      <div class="elig-card">
+        <div class="elig-label">Recommended Limit</div>
+        <div class="elig-val">₹65L</div>
+        <div class="elig-sub">Working Capital CC</div>
+      </div>
+      <div class="elig-card">
+        <div class="elig-label">Drawing Power Basis</div>
+        <div class="elig-val">₹72L</div>
+        <div class="elig-sub">Stock + Debtors − Creditors</div>
+      </div>
+      <div class="elig-card">
+        <div class="elig-label">Suggested Tenure</div>
+        <div class="elig-val">12 Mo</div>
+        <div class="elig-sub">Annual renewal</div>
+      </div>
+    </div>
+
+    <!-- BORROWER INFO -->
+    <div class="section-title">Borrower Profile</div>
+    <div class="info-grid">
+      <div class="info-cell">
+        <div class="info-cell-label">Annual Turnover (GST)</div>
+        <div class="info-cell-val">₹3.2 Crore</div>
+      </div>
+      <div class="info-cell">
+        <div class="info-cell-label">GST Filing Status</div>
+        <div class="info-cell-val positive">Regular — 24/24 months</div>
+      </div>
+      <div class="info-cell">
+        <div class="info-cell-label">Promoter CIBIL</div>
+        <div class="info-cell-val positive">748</div>
+      </div>
+      <div class="info-cell">
+        <div class="info-cell-label">Active DPD</div>
+        <div class="info-cell-val positive">NIL — Last 24 months</div>
+      </div>
+      <div class="info-cell">
+        <div class="info-cell-label">Avg Monthly Bank Credits</div>
+        <div class="info-cell-val">₹26.4L</div>
+      </div>
+      <div class="info-cell">
+        <div class="info-cell-label">GST vs Bank Variance</div>
+        <div class="info-cell-val positive">+8.2% — Within Norm</div>
+      </div>
+      <div class="info-cell">
+        <div class="info-cell-label">Cheque Return Ratio</div>
+        <div class="info-cell-val positive">1.8% — Acceptable</div>
+      </div>
+      <div class="info-cell">
+        <div class="info-cell-label">Existing Loans</div>
+        <div class="info-cell-val">1 TL — ₹18L outstanding</div>
+      </div>
+    </div>
+
+    <!-- SECTION SCORES -->
+    <div class="section-title">Section-wise Score Breakdown</div>
+    <div class="param-grid">
+
+      <div class="param-card p-green">
+        <div class="param-header">
+          <div class="param-name">A — Identity & KYC</div>
+          <div class="param-weight">Weight 10%</div>
+        </div>
+        <div class="param-score-row">
+          <div class="param-bar-bg"><div class="param-bar-fill green" style="width:90%"></div></div>
+          <div class="param-score-val green">9/10</div>
+        </div>
+        <div class="param-detail">8-year vintage ✓ · GST active ✓ · No legal proceedings ✓ · PAN-Aadhaar linked ✓</div>
+      </div>
+
+      <div class="param-card p-green">
+        <div class="param-header">
+          <div class="param-name">B — Credit Bureau</div>
+          <div class="param-weight">Weight 25%</div>
+        </div>
+        <div class="param-score-row">
+          <div class="param-bar-bg"><div class="param-bar-fill green" style="width:80%"></div></div>
+          <div class="param-score-val green">20/25</div>
+        </div>
+        <div class="param-detail">CIBIL 748 ✓ · Zero DPD 24 months ✓ · 1 active TL clean ✓ · 2 enquiries last 6 months — acceptable</div>
+      </div>
+
+      <div class="param-card p-green">
+        <div class="param-header">
+          <div class="param-name">C — GST & Turnover</div>
+          <div class="param-weight">Weight 20%</div>
+        </div>
+        <div class="param-score-row">
+          <div class="param-bar-bg"><div class="param-bar-fill green" style="width:75%"></div></div>
+          <div class="param-score-val green">15/20</div>
+        </div>
+        <div class="param-detail">₹3.2Cr turnover ✓ · 24/24 GST filings ✓ · 18% YoY growth ✓ · Bank-GST variance 8.2% ✓</div>
+      </div>
+
+      <div class="param-card p-green">
+        <div class="param-header">
+          <div class="param-name">D — Banking Behavior</div>
+          <div class="param-weight">Weight 25%</div>
+        </div>
+        <div class="param-score-row">
+          <div class="param-bar-bg"><div class="param-bar-fill green" style="width:76%"></div></div>
+          <div class="param-score-val green">19/25</div>
+        </div>
+        <div class="param-detail">AMB ₹3.8L ✓ · Cheque returns 1.8% ✓ · Regular credits ✓ · Cash deposit ratio 22% ✓</div>
+      </div>
+
+      <div class="param-card p-amber">
+        <div class="param-header">
+          <div class="param-name">E — Financial Ratios</div>
+          <div class="param-weight">Weight 15%</div>
+        </div>
+        <div class="param-score-row">
+          <div class="param-bar-bg"><div class="param-bar-fill amber" style="width:67%"></div></div>
+          <div class="param-score-val amber">10/15</div>
+        </div>
+        <div class="param-detail">Current ratio 1.32 ✓ · DSCR 1.48 ✓ · Debtor days 72 — slightly elevated ⚠ · Net margin 11% ✓</div>
+      </div>
+
+      <div class="param-card p-green">
+        <div class="param-header">
+          <div class="param-name">F — Collateral</div>
+          <div class="param-weight">Weight 5%</div>
+        </div>
+        <div class="param-score-row">
+          <div class="param-bar-bg"><div class="param-bar-fill green" style="width:80%"></div></div>
+          <div class="param-score-val green">4/5</div>
+        </div>
+        <div class="param-detail">Stock hypothecation available ✓ · Debtors assignable ✓ · Title clear ✓</div>
+      </div>
+
+    </div>
+
+    <!-- FLAGS -->
+    <div class="section-title">Strengths & Risk Flags</div>
+    <div class="flags-grid">
+      <div class="flag-box strength">
+        <div class="flag-box-title">✓ Strengths</div>
+        <ul class="flag-list">
+          <li>8-year business vintage — strong stability signal</li>
+          <li>Consistent GST filing — 24 of 24 months</li>
+          <li>Zero DPD in last 24 months</li>
+          <li>18% YoY turnover growth — positive trajectory</li>
+          <li>CIBIL 748 — above threshold comfortably</li>
+          <li>DSCR 1.48 — adequate debt servicing capacity</li>
+        </ul>
+      </div>
+      <div class="flag-box watch">
+        <div class="flag-box-title">! Conditions / Watch Points</div>
+        <ul class="flag-list">
+          <li>Debtor days at 72 — industry norm is 45–60. Monitor debtor aging</li>
+          <li>Drawing power to be recalculated at sanction on latest stock statement</li>
+          <li>2 enquiries in last 6 months — confirm no undisclosed loans</li>
+          <li>Cash deposit ratio 22% — acceptable but flag if increases</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- LENDER MATCH -->
+    <div class="section-title">Recommended Lender Match</div>
+    <div class="lender-grid">
+      <div class="lender-card top-match">
+        <div class="lender-name">Axis Bank</div>
+        <div class="lender-product">CC — Working Capital</div>
+        <div class="lender-rate">10.50% p.a.</div>
+        <div class="lender-proc">Processing: 0.50%</div>
+      </div>
+      <div class="lender-card">
+        <div class="lender-name">HDFC Bank</div>
+        <div class="lender-product">CC — Working Capital</div>
+        <div class="lender-rate">11.00% p.a.</div>
+        <div class="lender-proc">Processing: 0.75%</div>
+      </div>
+      <div class="lender-card">
+        <div class="lender-name">Lendingkart</div>
+        <div class="lender-product">WC Term Loan</div>
+        <div class="lender-rate">18.00% p.a.</div>
+        <div class="lender-proc">Fast — 72hr disbursal</div>
+      </div>
+      <div class="lender-card">
+        <div class="lender-name">Bajaj Finserv</div>
+        <div class="lender-product">Business Loan</div>
+        <div class="lender-rate">16.50% p.a.</div>
+        <div class="lender-proc">Unsecured option</div>
+      </div>
+    </div>
+
+    <!-- RECOMMENDATION -->
+    <div class="recommendation">
+      <div class="rec-title">Consultant's Recommendation & Next Steps</div>
+      <ul class="rec-items">
+        <li>Submit primary file to Axis Bank — best rate match for profile. Estimated sanction: 7–10 working days</li>
+        <li>Prepare latest stock statement and debtor aging schedule before submission — this will be first query</li>
+        <li>Clarify 2 enquiries in last 6 months — get NOC or confirmation of closure from those lenders</li>
+        <li>Recommend ₹65L limit vs eligible ₹72L — conservative first sanction builds relationship with bank</li>
+        <li>Set quarterly stock audit condition — will help in limit enhancement after 6 months</li>
+        <li>Parallel application to Lendingkart as backup — faster but higher rate — use only if Axis delays</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="report-footer">
+    <div class="footer-disclaimer">This report is generated by AI using publicly available and borrower-provided data. It is advisory in nature and does not constitute a credit sanction or guarantee of approval. Lender decisions are independent.</div>
+    <div class="footer-brand">Fin<span>Sight</span> · Confidential</div>
+  </div>
+
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- RETAIL REPORT                          -->
+<!-- ═══════════════════════════════════════ -->
+<div class="report-panel" id="panel-retail">
+<div class="report">
+
+  <!-- HEADER -->
+  <div class="report-header">
+    <div class="header-top">
+      <div>
+        <div class="brand">Fin<span>Sight</span></div>
+        <div style="font-family:'DM Mono',monospace;font-size:9px;color:rgba(255,255,255,0.3);letter-spacing:2px;margin-top:2px;">RETAIL CREDIT REPORT</div>
+      </div>
+      <div class="report-meta">
+        <div class="report-meta-label">Report ID</div>
+        <div class="report-meta-val">FSR-2025-03291</div>
+        <div class="report-meta-label" style="margin-top:6px">Generated</div>
+        <div class="report-meta-val">24 Apr 2025 · 02:15 PM</div>
+      </div>
+    </div>
+    <div class="header-body">
+      <div>
+        <div class="borrower-name">Mr. Prashant Vinayak Kulkarni</div>
+        <div class="borrower-sub">
+          PAN: <span>ABCPK5678D</span> &nbsp;·&nbsp;
+          Employment: <span>Salaried — Infosys Ltd.</span> &nbsp;·&nbsp;
+          City: <span>Pune, Maharashtra</span>
+        </div>
+        <div class="borrower-sub" style="margin-top:6px">
+          Age: <span>36 Years</span> &nbsp;·&nbsp;
+          Net Monthly Income: <span>₹1,12,000</span> &nbsp;·&nbsp;
+          Product Applied: <span>Home Loan</span>
+        </div>
+      </div>
+      <div class="score-circle-wrap">
+        <div class="score-circle amber">
+          <div class="score-circle-inner">
+            <div class="score-number">64</div>
+            <div class="score-denom">/100</div>
+          </div>
+        </div>
+        <div class="score-label amber">● AMBER</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RAG BANNER -->
+  <div class="rag-banner amber">
+    <div class="rag-banner-icon">⚠️</div>
+    <div>
+      <div class="rag-banner-title">Conditionally Eligible — Address 2 Issues Before Submission</div>
+      <div style="font-size:12px;font-weight:400">Good income and employment stability. FOIR elevated due to existing personal loan. Resolve before approaching lender.</div>
+    </div>
+  </div>
+
+  <div class="report-body">
+
+    <!-- ELIGIBILITY -->
+    <div class="section-title">Eligibility Summary</div>
+    <div class="elig-row">
+      <div class="elig-card">
+        <div class="elig-label">Max Eligible Loan</div>
+        <div class="elig-val">₹52L</div>
+        <div class="elig-sub">Based on current FOIR</div>
+      </div>
+      <div class="elig-card">
+        <div class="elig-label">Loan Amount Applied</div>
+        <div class="elig-val">₹65L</div>
+        <div class="elig-sub">Gap — ₹13L to bridge</div>
+      </div>
+      <div class="elig-card">
+        <div class="elig-label">Suggested Tenure</div>
+        <div class="elig-val">20 Yr</div>
+        <div class="elig-sub">Optimises EMI vs eligibility</div>
+      </div>
+    </div>
+
+    <!-- BORROWER INFO -->
+    <div class="section-title">Borrower Profile</div>
+    <div class="info-grid">
+      <div class="info-cell">
+        <div class="info-cell-label">Net Monthly Income</div>
+        <div class="info-cell-val">₹1,12,000</div>
+      </div>
+      <div class="info-cell">
+        <div class="info-cell-label">Employer Category</div>
+        <div class="info-cell-val positive">Listed MNC — Category A</div>
+      </div>
+      <div class="info-cell">
+        <div class="info-cell-label">CIBIL Score</div>
+        <div class="info-cell-val positive">762</div>
+      </div>
+      <div class="info-cell">
+        <div class="info-cell-label">Active DPD</div>
+        <div class="info-cell-val positive">NIL</div>
+      </div>
+      <div class="info-cell">
+        <div class="info-cell-label">Current EMI Obligations</div>
+        <div class="info-cell-val neutral">₹38,500/month</div>
+      </div>
+      <div class="info-cell">
+        <div class="info-cell-label">FOIR (existing)</div>
+        <div class="info-cell-val neutral">34.4% — before HL EMI</div>
+      </div>
+      <div class="info-cell">
+        <div class="info-cell-label">FOIR (post HL @ ₹65L)</div>
+        <div class="info-cell-val negative">62.3% — exceeds 50% limit</div>
+      </div>
+      <div class="info-cell">
+        <div class="info-cell-label">Employment Tenure</div>
+        <div class="info-cell-val positive">4.5 Years — Current Employer</div>
+      </div>
+    </div>
+
+    <!-- SECTION SCORES -->
+    <div class="section-title">Section-wise Score Breakdown</div>
+    <div class="param-grid">
+
+      <div class="param-card p-green">
+        <div class="param-header">
+          <div class="param-name">A — Identity & KYC</div>
+          <div class="param-weight">Weight 10%</div>
+        </div>
+        <div class="param-score-row">
+          <div class="param-bar-bg"><div class="param-bar-fill green" style="width:90%"></div></div>
+          <div class="param-score-val green">9/10</div>
+        </div>
+        <div class="param-detail">Age 36 ✓ · Address stable 5 years ✓ · PAN-Aadhaar linked ✓ · KYC complete ✓</div>
+      </div>
+
+      <div class="param-card p-green">
+        <div class="param-header">
+          <div class="param-name">B — Credit Bureau</div>
+          <div class="param-weight">Weight 30%</div>
+        </div>
+        <div class="param-score-row">
+          <div class="param-bar-bg"><div class="param-bar-fill green" style="width:80%"></div></div>
+          <div class="param-score-val green">24/30</div>
+        </div>
+        <div class="param-detail">CIBIL 762 ✓ · Zero DPD ✓ · No settled accounts ✓ · 3 enquiries last 6 months — slightly elevated</div>
+      </div>
+
+      <div class="param-card p-amber">
+        <div class="param-header">
+          <div class="param-name">C — Income Assessment</div>
+          <div class="param-weight">Weight 30%</div>
+        </div>
+        <div class="param-score-row">
+          <div class="param-bar-bg"><div class="param-bar-fill amber" style="width:53%"></div></div>
+          <div class="param-score-val amber">16/30</div>
+        </div>
+        <div class="param-detail">Income ₹1.12L ✓ · FOIR post-HL = 62.3% ✕ exceeds 50% cap · Co-applicant income not yet added · PL closure would fix eligibility</div>
+      </div>
+
+      <div class="param-card p-green">
+        <div class="param-header">
+          <div class="param-name">D — Banking Behavior</div>
+          <div class="param-weight">Weight 20%</div>
+        </div>
+        <div class="param-score-row">
+          <div class="param-bar-bg"><div class="param-bar-fill green" style="width:75%"></div></div>
+          <div class="param-score-val green">15/20</div>
+        </div>
+        <div class="param-detail">Regular salary credits ✓ · Zero bounce ✓ · Savings pattern consistent ✓ · AMB ₹45,000 ✓</div>
+      </div>
+
+      <div class="param-card p-green">
+        <div class="param-header">
+          <div class="param-name">E — Collateral / Property</div>
+          <div class="param-weight">Weight 10%</div>
+        </div>
+        <div class="param-score-row">
+          <div class="param-bar-bg"><div class="param-bar-fill green" style="width:0%"></div></div>
+          <div class="param-score-val" style="color:#aaa">N/A</div>
+        </div>
+        <div class="param-detail">Property details not yet submitted. Required before final lender submission. RERA registration to be confirmed.</div>
+      </div>
+
+    </div>
+
+    <!-- FLAGS -->
+    <div class="section-title">Strengths & Risk Flags</div>
+    <div class="flags-grid">
+      <div class="flag-box strength">
+        <div class="flag-box-title">✓ Strengths</div>
+        <ul class="flag-list">
+          <li>CIBIL 762 — strong credit history</li>
+          <li>Listed MNC employer — Category A lender preference</li>
+          <li>4.5 years employment stability — excellent signal</li>
+          <li>Zero bounce in banking — clean salary account</li>
+          <li>Zero DPD on all existing obligations</li>
+        </ul>
+      </div>
+      <div class="flag-box risk">
+        <div class="flag-box-title">✕ Issues to Fix Before Submission</div>
+        <ul class="flag-list">
+          <li>FOIR at 62.3% exceeds 50% — primary rejection trigger</li>
+          <li>Active personal loan ₹12L outstanding — close before applying OR add co-applicant</li>
+          <li>Loan amount ₹65L exceeds current eligibility of ₹52L — reduce ask or add income</li>
+          <li>Property details pending — RERA check required</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- LENDER MATCH -->
+    <div class="section-title">Recommended Lender Match — Post Gap Closure</div>
+    <div class="lender-grid">
+      <div class="lender-card top-match">
+        <div class="lender-name">SBI Home Loan</div>
+        <div class="lender-product">Home Loan — Salaried</div>
+        <div class="lender-rate">8.50% p.a.</div>
+        <div class="lender-proc">Processing: ₹10,000 flat</div>
+      </div>
+      <div class="lender-card">
+        <div class="lender-name">HDFC Ltd.</div>
+        <div class="lender-product">Home Loan — Salaried</div>
+        <div class="lender-rate">8.75% p.a.</div>
+        <div class="lender-proc">Processing: 0.50%</div>
+      </div>
+      <div class="lender-card">
+        <div class="lender-name">Bajaj Housing</div>
+        <div class="lender-product">Home Loan</div>
+        <div class="lender-rate">8.85% p.a.</div>
+        <div class="lender-proc">Fast — 5 day disbursal</div>
+      </div>
+      <div class="lender-card">
+        <div class="lender-name">ICICI Bank</div>
+        <div class="lender-product">Home Loan — MNC</div>
+        <div class="lender-rate">8.90% p.a.</div>
+        <div class="lender-proc">Pre-approved possible</div>
+      </div>
+    </div>
+
+    <!-- RECOMMENDATION -->
+    <div class="recommendation">
+      <div class="rec-title">Consultant's Action Plan — Fix → Submit → Disburse</div>
+      <ul class="rec-items">
+        <li><strong style="color:#e8b84a">Action 1 (Week 1):</strong> Close existing personal loan of ₹12L — this brings FOIR to 23.7% and immediately unlocks ₹65L eligibility</li>
+        <li><strong style="color:#e8b84a">Action 2 (Week 1):</strong> Add spouse as co-applicant if she is earning — even ₹40,000/month additional income removes all eligibility concerns</li>
+        <li><strong style="color:#e8b84a">Action 3 (Week 2):</strong> Share property documents — sale agreement, RERA registration, builder NOC for our review before submission</li>
+        <li>Post above actions — submit primary to SBI for best rate. ICICI as backup for speed if SBI delays</li>
+        <li>Expected sanction timeline post gap closure: 7–12 working days for SBI, 4–6 days for ICICI/Bajaj</li>
+        <li>Do not approach multiple lenders simultaneously — each enquiry reduces CIBIL by 5–8 points</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="report-footer">
+    <div class="footer-disclaimer">This report is generated by AI using publicly available and borrower-provided data. It is advisory in nature and does not constitute a credit sanction or guarantee of approval. Lender decisions are independent.</div>
+    <div class="footer-brand">Fin<span>Sight</span> · Confidential</div>
+  </div>
+
+</div>
+</div>
+
+<script>
+function switchTab(type) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.report-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('panel-' + type).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+</body>
+</html>
