@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { scoreEligibility } from "../lib/claude";
+import { ELIGIBILITY_SCORE_PROMPT } from "../lib/prompts";
 
 function Footer({ navigate }) {
   return (
@@ -20,9 +22,49 @@ export default function Check({ navigate }) {
 
   const set = (k, v) => setForm(f => ({ ...f, [k]: v }));
 
-  const showScore = () => {
+  const [loading, setLoading] = useState(false);
+
+  const showScore = async () => {
     const { type, loan, amount, income, rejected } = form;
     if (!type || !loan || !amount || !income || !rejected) { alert("Please fill in all fields to see your eligibility score."); return; }
+    setLoading(true);
+
+    // Try Claude API first
+    try {
+      const claudeResult = await scoreEligibility(form, ELIGIBILITY_SCORE_PROMPT);
+      if (claudeResult && claudeResult.total_score) {
+        const s = claudeResult;
+        const gradeColor = s.grade === "GREEN" ? "#059669" : s.grade === "AMBER" ? "#D97706" : "#DC2626";
+        const gradeBar   = s.grade === "GREEN"
+          ? "linear-gradient(90deg,#059669,#34D399)"
+          : s.grade === "AMBER"
+          ? "linear-gradient(90deg,#D97706,#F59E0B)"
+          : "linear-gradient(90deg,#DC2626,#EF4444)";
+        setResult({
+          score: s.total_score,
+          color: gradeColor,
+          barColor: gradeBar,
+          status: `${s.grade === "GREEN" ? "✓" : s.grade === "AMBER" ? "⚠" : "✗"} ${s.recommendation}`,
+          message: s.next_step,
+          factors: Object.entries(s.parameters).map(([k, v]) => ({
+            name: k.replace(/_/g, " ").replace(/\b\w/g, l => l.toUpperCase()),
+            val: `${v.score}/${v.max}`,
+            ok: v.score >= v.max * 0.6,
+            comment: v.comment,
+          })),
+          strengths: s.top_strengths,
+          risks: s.top_risks,
+          lenders: s.lender_recommendations,
+          claudePowered: true,
+        });
+        setLoading(false);
+        return;
+      }
+    } catch(e) {
+      console.warn("Claude scoring failed, using fallback:", e);
+    }
+
+    // Fallback JS scoring
     let score = 70;
     if (income === "Below ₹50,000/month") score -= 15;
     else if (income === "₹2L – ₹10L/month") score += 10;
@@ -45,7 +87,7 @@ export default function Check({ navigate }) {
       { name: "Loan Amount vs Income", val: amount, ok: score > 55 },
       { name: "Loan Type", val: loan, ok: true },
     ];
-    setResult({ score, color, status, barColor, message, factors });
+    setResult({ score, color, status, barColor, message, factors, claudePowered: false }); setLoading(false);
   };
 
   const inputStyle = { width: "100%", padding: "11px 14px", border: "1px solid #D1D5DB", borderRadius: 8, fontSize: 13, color: "#111827", boxSizing: "border-box", outline: "none" };
@@ -141,8 +183,8 @@ export default function Check({ navigate }) {
                 </select>
               </div>
             </div>
-            <button onClick={showScore} style={{ width: "100%", background: "#4F46E5", color: "#fff", fontSize: 14, fontWeight: 700, padding: 14, borderRadius: 10, border: "none", cursor: "pointer", marginTop: 8 }}>
-              Show My Eligibility Score →
+            <button onClick={showScore} disabled={loading} style={{ width: "100%", background: loading ? "#818CF8" : "#4F46E5", color: "#fff", fontSize: 14, fontWeight: 700, padding: 14, borderRadius: 10, border: "none", cursor: "pointer", marginTop: 8 }}>
+              {loading ? 'Analysing your profile...' : 'Show My Eligibility Score →'}
             </button>
             <div style={{ fontSize: 11, color: "#9CA3AF", textAlign: "center", marginTop: 10 }}>🔒 Your information is 100% private. We never share it without your permission.</div>
           </div>
