@@ -44,8 +44,8 @@ const STEPS = {
   // BUSINESS LOAN
   business_type: {
     q: "What do you need the business loan for?",
-    why: "Purpose determines product type — working capital vs term loan vs machinery are assessed differently.",
-    type: "single",
+    why: "Select all that apply — multiple needs can be structured into a single or split facility.",
+    type: "multi",
     options: ["Working Capital / Overdraft", "Business Expansion", "Equipment / Machinery", "Project Finance"],
   },
   business_vintage: {
@@ -70,8 +70,8 @@ const STEPS = {
   // LAP
   lap_purpose: {
     q: "What will you use the LAP funds for?",
-    why: "Business use is assessed differently from personal requirement.",
-    type: "single",
+    why: "Select all that apply — multiple purposes change the product structure.",
+    type: "multi",
     options: ["Business working capital", "Debt consolidation", "Personal requirement", "Business expansion", "Other"],
   },
   lap_property: {
@@ -168,8 +168,8 @@ const STEPS = {
   },
   rejected_reason: {
     q: "What reason did the lender give?",
-    why: "Stated reason is often not the real reason — but gives me a starting point for diagnosis.",
-    type: "single",
+    why: "Select all that apply — multiple rejection reasons need different fixes.",
+    type: "multi",
     options: ["Low CIBIL score", "Insufficient income / FOIR too high", "Business too new", "Property issue", "Documents incomplete", "No reason given"],
   },
   rejected_count: {
