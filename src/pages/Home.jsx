@@ -219,7 +219,7 @@ function HeroCard({ navigate }) {
     wrap.style.cssText = `display:flex;justify-content:${side==='s'?'flex-end':'flex-start'};margin-bottom:5px;animation:waIn .3s ease forwards;opacity:0`;
     const bubble = document.createElement('div');
     const lines = text.split('\n');
-    bubble.style.cssText = `background:${side==='s'?'#DCF8C6':'#fff'};color:#111;padding:5px 8px 4px;border-radius:${side==='s'?'7px 7px 2px 7px':'7px 7px 7px 2px'};font-size:10px;max-width:90%;line-height:1.55;font-family:Arial`;
+    bubble.style.cssText = `background:${side==='s'?'#DCF8C6':'#fff'};color:#111;padding:5px 8px 4px;border-radius:${side==='s'?'7px 7px 2px 7px':'7px 7px 7px 2px'};font-size:10px;max-width:75%;line-height:1.55;font-family:Arial`;
     lines.forEach((ln, i) => {
       if (i > 0) bubble.appendChild(document.createElement('br'));
       const span = document.createElement('span');
@@ -276,7 +276,7 @@ function HeroCard({ navigate }) {
       </div>
 
       {/* Right — WhatsApp demo */}
-      <div style={{ background: '#ECE5DD', display: 'flex', flexDirection: 'column' }}>
+      <div style={{ background: '#ECE5DD', display: 'flex', flexDirection: 'column', height: '100%' }}>
         {/* WA header */}
         <div style={{ background: '#075E54', padding: '8px 10px', display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
           <div style={{ width: 28, height: 28, borderRadius: '50%', background: '#128C7E', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 9, fontWeight: 700, color: WHITE, flexShrink: 0 }}>F1</div>
@@ -291,7 +291,7 @@ function HeroCard({ navigate }) {
           {WA_CONVOS[0].label}
         </div>
         {/* Messages */}
-        <div id="wa-msgs-h" style={{ height: 280, maxHeight: 280, padding: '8px 7px', overflowY: 'hidden', display: 'flex', flexDirection: 'column', flexShrink: 0 }} />
+        <div id="wa-msgs-h" style={{ flex: 1, padding: '10px 12px', overflowY: 'hidden', display: 'flex', flexDirection: 'column' }} />
         {/* CTA */}
         <div style={{ padding: '6px 8px 8px', background: '#ECE5DD', flexShrink: 0 }}>
           <button onClick={() => window.open('https://wa.me/919579453635?text=Hi%20FinsightOne', '_blank')}
