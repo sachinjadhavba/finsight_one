@@ -248,34 +248,9 @@ function HeroCard({ navigate }) {
   }
 
   return (
-    <div id="hero-card-wrap" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', border: `1px solid #E5E7EB`, borderRadius: 14, overflow: 'hidden', height: 440, minHeight: 440, maxHeight: 440 }}>
-      {/* Left — Service cycle */}
-      <div style={{ background: '#0F172A', display: 'flex', flexDirection: 'column' }}>
-        <div style={{ padding: '14px 16px 10px' }}>
-          <div style={{ fontSize: 8, fontWeight: 700, letterSpacing: 1.5, color: 'rgba(255,255,255,0.3)', textTransform: 'uppercase', marginBottom: 10 }}>Our Services</div>
-          <div id="svc-step-h" style={{ fontSize: 8, fontWeight: 700, letterSpacing: 1, color: 'rgba(255,255,255,0.3)', textTransform: 'uppercase', marginBottom: 3 }}>{SVCS[0].step}</div>
-          <div id="svc-title-h" style={{ fontSize: 13, fontWeight: 600, color: WHITE, marginBottom: 5, transition: 'opacity 0.3s' }}>{SVCS[0].title}</div>
-          <div id="svc-desc-h" style={{ fontSize: 10, color: 'rgba(255,255,255,0.4)', lineHeight: 1.6 }}>{SVCS[0].desc}</div>
-        </div>
-        {/* Illustration fills remaining space */}
-        <div id="svc-img-h" style={{ flex: 1, display: 'flex', alignItems: 'flex-end', justifyContent: 'center', padding: '0 12px 8px', background: '#1E293B', marginTop: 8 }}>
-          {ILLUSTRATIONS[0]}
-        </div>
-        <div style={{ padding: '8px 16px 12px', background: '#0F172A' }}>
-          <div style={{ display: 'flex', gap: 4, alignItems: 'center', marginBottom: 10 }}>
-            {[0,1,2,3].map(i => (
-              <div key={i} id={`sdot-${i}`} onClick={() => { svcIdx.current = i; updateSvc(i); }}
-                style={{ height: 2, borderRadius: 2, cursor: 'pointer', transition: 'all 0.35s',
-                  width: i === 0 ? 16 : 6, background: i === 0 ? ORANGE : 'rgba(255,255,255,0.18)' }} />
-            ))}
-          </div>
-          <button onClick={() => navigate('check')} style={{ width: '100%', background: INDIGO, color: WHITE, border: 'none', borderRadius: 6, padding: '9px 8px', fontSize: 11, fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit' }}>
-            Check Eligibility →
-          </button>
-        </div>
-      </div>
+    <div id="hero-card-wrap" style={{ border: `1px solid #E5E7EB`, borderRadius: 14, overflow: 'hidden', height: 440, minHeight: 440, maxHeight: 440 }}>
 
-      {/* Right — WhatsApp demo */}
+      {/* WhatsApp demo — full width */}
       <div style={{ background: '#ECE5DD', display: 'flex', flexDirection: 'column', height: '100%' }}>
         {/* WA header */}
         <div style={{ background: '#075E54', padding: '8px 10px', display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
