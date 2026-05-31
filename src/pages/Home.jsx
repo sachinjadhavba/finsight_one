@@ -147,7 +147,7 @@ function HeroCard({ navigate }) {
     const svcInterval = setInterval(() => {
       svcIdx.current = (svcIdx.current + 1) % 4;
       updateSvc(svcIdx.current);
-    }, 3500);
+    }, 6000);
 
     // Start first conversation
     setTimeout(() => runConv(0), 500);
@@ -184,7 +184,7 @@ function HeroCard({ navigate }) {
     container.innerHTML = '';
     if (label) label.textContent = WA_CONVOS[cIdx].label;
     const msgs = WA_CONVOS[cIdx].msgs;
-    let delay = 300;
+    let delay = 800;
     msgs.forEach((m, i) => {
       const isLast = i === msgs.length - 1;
       if (isLast) {
@@ -193,7 +193,7 @@ function HeroCard({ navigate }) {
           container.appendChild(typ);
           container.scrollTop = container.scrollHeight;
         }, delay));
-        delay += 1200;
+        delay += 2000;
         timers.current.push(setTimeout(() => {
           const typ = container.querySelector('.wa-typ');
           if (typ) typ.remove();
@@ -208,9 +208,9 @@ function HeroCard({ navigate }) {
           container.scrollTop = container.scrollHeight;
         }, delay));
       }
-      delay += 600 + m.t.length * 15;
+      delay += 1200 + m.t.length * 28;
     });
-    delay += 2500;
+    delay += 4000;
     timers.current.push(setTimeout(() => runConv((cIdx + 1) % 4), delay));
   }
 
@@ -248,7 +248,7 @@ function HeroCard({ navigate }) {
   }
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', border: `1px solid #E5E7EB`, borderRadius: 14, overflow: 'hidden', height: '100%', minHeight: 400 }}>
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', border: `1px solid #E5E7EB`, borderRadius: 14, overflow: 'hidden', height: 440, minHeight: 440, maxHeight: 440 }}>
       {/* Left — Service cycle */}
       <div style={{ background: '#0F172A', display: 'flex', flexDirection: 'column' }}>
         <div style={{ padding: '14px 16px 10px' }}>
@@ -291,7 +291,7 @@ function HeroCard({ navigate }) {
           {WA_CONVOS[0].label}
         </div>
         {/* Messages */}
-        <div id="wa-msgs-h" style={{ flex: 1, padding: '8px 7px', overflowY: 'auto', display: 'flex', flexDirection: 'column' }} />
+        <div id="wa-msgs-h" style={{ height: 280, maxHeight: 280, padding: '8px 7px', overflowY: 'hidden', display: 'flex', flexDirection: 'column', flexShrink: 0 }} />
         {/* CTA */}
         <div style={{ padding: '6px 8px 8px', background: '#ECE5DD', flexShrink: 0 }}>
           <button onClick={() => window.open('https://wa.me/919579453635?text=Hi%20FinsightOne', '_blank')}
