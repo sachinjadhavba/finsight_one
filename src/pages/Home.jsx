@@ -248,7 +248,7 @@ function HeroCard({ navigate }) {
   }
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', border: `1px solid #E5E7EB`, borderRadius: 14, overflow: 'hidden', height: 440, minHeight: 440, maxHeight: 440 }}>
+    <div id="hero-card-wrap" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', border: `1px solid #E5E7EB`, borderRadius: 14, overflow: 'hidden', height: 440, minHeight: 440, maxHeight: 440 }}>
       {/* Left — Service cycle */}
       <div style={{ background: '#0F172A', display: 'flex', flexDirection: 'column' }}>
         <div style={{ padding: '14px 16px 10px' }}>
@@ -304,6 +304,10 @@ function HeroCard({ navigate }) {
       <style>{`
         @keyframes waIn { from{opacity:0;transform:translateY(3px)} to{opacity:1;transform:translateY(0)} }
         @keyframes waTyp { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-4px)} }
+        @media(max-width:768px){
+          #hero-grid { grid-template-columns: 1fr !important; }
+          #hero-card-wrap { display: none !important; }
+        }
       `}</style>
     </div>
   );
@@ -314,8 +318,8 @@ export default function Home({ navigate }) {
     <div style={{ fontFamily: "Arial,'Helvetica Neue',sans-serif" }}>
 
       {/* ── HERO ── */}
-      <div style={{ background: WHITE, padding: "clamp(36px,5vw,56px) clamp(20px,4vw,48px)" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 420px", gap: "clamp(28px,4vw,48px)", alignItems: "stretch" }}>
+      <div style={{ background: WHITE, padding: "clamp(24px,4vw,56px) clamp(16px,4vw,48px)", overflow: "hidden" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 420px", gap: "clamp(28px,4vw,48px)", alignItems: "stretch", gridTemplateColumnsSmall: "1fr" }}>
 
           {/* Left — copy */}
           <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
@@ -384,7 +388,7 @@ export default function Home({ navigate }) {
         <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: 2.5, textTransform: "uppercase", color: ORANGE, marginBottom: 10, textAlign: "center" }}>Our Services</div>
         <h2 style={{ fontSize: "clamp(22px,3vw,30px)", fontWeight: 900, textAlign: "center", marginBottom: 10, color: DARK }}>One Platform for Every Loan Need</h2>
         <p style={{ fontSize: 14, color: MUTED, textAlign: "center", maxWidth: 560, margin: "0 auto 36px", lineHeight: 1.7 }}>Whether you are a business owner or an individual — we have a service that fits your stage and budget.</p>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 16, maxWidth: 1200, margin: "0 auto" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", gap: 16, maxWidth: 1200, margin: "0 auto" }}>
           {SERVICES.map(svc => (
             <div key={svc.id} style={{ borderRadius: 14, border: "1px solid #E5E7EB", background: WHITE, overflow: "hidden", display: "flex", flexDirection: "column" }}>
               <div style={{ padding: "18px 16px 14px", background: svc.headBg }}>
@@ -418,7 +422,7 @@ export default function Home({ navigate }) {
       <div style={{ background: GRAY, padding: "clamp(40px,5vw,64px) clamp(20px,4vw,48px)" }}>
         <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: 2.5, textTransform: "uppercase", color: ORANGE, marginBottom: 10, textAlign: "center" }}>Who We Help</div>
         <h2 style={{ fontSize: "clamp(22px,3vw,30px)", fontWeight: 900, textAlign: "center", marginBottom: 36, color: DARK }}>Built for Every Borrower</h2>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 20, maxWidth: 1000, margin: "0 auto" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: 20, maxWidth: 1000, margin: "0 auto" }}>
           {[
             { id:"msme",        icon:"🏭", title:"MSMEs & SMEs",     color:INDIGO,    desc:"Working capital, term loans, machinery, LAP. We structure your case, match the right lender, and submit professionally.", items:["Working Capital CC / OD","Machinery Loans","Loan Against Property","Unsecured Business Loans"] },
             { id:"individuals", icon:"🏠", title:"Individuals",       color:ORANGE,    desc:"Home loan, personal loan, LAP. We tell you what you qualify for and get you to the right bank first time.", items:["Home Loan","Personal Loan","Loan Against Property","Professional Loans"] },
@@ -447,7 +451,7 @@ export default function Home({ navigate }) {
       <div style={{ padding: "clamp(40px,5vw,64px) clamp(20px,4vw,48px)", background: WHITE }}>
         <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: 2.5, textTransform: "uppercase", color: ORANGE, marginBottom: 10, textAlign: "center" }}>How It Works</div>
         <h2 style={{ fontSize: "clamp(22px,3vw,30px)", fontWeight: 900, textAlign: "center", marginBottom: 36, color: DARK }}>Simple. Clear. 4 Steps.</h2>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 24, maxWidth: 900, margin: "0 auto" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(160px,1fr))", gap: 24, maxWidth: 900, margin: "0 auto" }}>
           {STEPS.map(st => (
             <div key={st.num} style={{ textAlign: "center" }}>
               <div style={{ width: 46, height: 46, borderRadius: "50%", background: INDIGO, color: WHITE, fontSize: 17, fontWeight: 800, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 12px" }}>{st.num}</div>
@@ -462,7 +466,7 @@ export default function Home({ navigate }) {
       <div style={{ padding: "clamp(40px,5vw,64px) clamp(20px,4vw,48px)", background: GRAY }}>
         <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: 2.5, textTransform: "uppercase", color: ORANGE, marginBottom: 10, textAlign: "center" }}>Client Stories</div>
         <h2 style={{ fontSize: "clamp(22px,3vw,30px)", fontWeight: 900, textAlign: "center", marginBottom: 32, color: DARK }}>Real People. Real Approvals.</h2>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 20, maxWidth: 1000, margin: "0 auto" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: 20, maxWidth: 1000, margin: "0 auto" }}>
           {TESTIMONIALS.map(t => (
             <div key={t.author} style={{ background: WHITE, border: "1px solid #E5E7EB", borderRadius: 14, padding: 22 }}>
               <div style={{ color: ORANGE, fontSize: 13, marginBottom: 10 }}>★★★★★</div>
