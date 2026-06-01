@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CMA Interpretation Report — FinsightOne</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Source+Sans+3:wght@300;400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0A1929;--navy-light:#1A3357;--orange:#F97316;--orange-light:#FFF7ED;--orange-mid:#FED7AA;--border:#C8D6E0;--bg:#F2F6FA;--white:#FFFFFF;--green:#1A6B3A;--green-light:#EEF8F2;--amber:#8A5200;--amber-light:#FFF8EC;--red:#8B1A1A;--red-light:#FDF3F3;--muted:#7A8FA6;--text-primary:#0A1929;--text-body:#2E3F52;--text-sub:#5A6E82;--rule:#B8C8D4;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"Source Sans 3",sans-serif;background:#D8E2EC;color:var(--text-primary);font-size:13px;line-height:1.6;}
+body::before{content:"SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE";position:fixed;top:-50%;left:-50%;width:200%;height:200%;font-size:17px;font-weight:700;color:rgba(10,25,41,0.038);letter-spacing:4px;transform:rotate(-35deg);word-spacing:38px;line-height:5;z-index:1000;pointer-events:none;white-space:pre-wrap;text-align:center;}
+.page{max-width:920px;margin:0 auto;background:var(--white);box-shadow:0 4px 32px rgba(0,0,0,0.1);}
+.lh-top{background:var(--navy);padding:20px 48px 16px;display:flex;align-items:flex-start;justify-content:space-between;}
+.brand-name{font-family:"Merriweather",serif;font-size:22px;color:var(--white);margin-bottom:3px;}
+.brand-name span{color:var(--orange);}
+.brand-tagline{font-size:10px;color:rgba(255,255,255,0.45);letter-spacing:2.5px;text-transform:uppercase;font-weight:600;}
+.lh-right{display:flex;flex-direction:column;align-items:flex-end;gap:5px;}
+.badge{font-size:9.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:2px;}
+.badge-price{background:var(--orange);color:var(--white);}
+.badge-sample{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.45);border:1px solid rgba(255,255,255,0.12);}
+.lh-band{background:var(--orange);padding:7px 48px;display:flex;align-items:center;justify-content:space-between;}
+.lhb-l{font-family:"Merriweather",serif;font-size:13px;color:var(--white);font-weight:700;}
+.lhb-r{font-size:11px;color:rgba(255,255,255,0.85);font-weight:600;}
+.ref-wrap{padding:16px 48px 0;}
+.ref-table{width:100%;border-collapse:collapse;margin-bottom:16px;}
+.ref-table td{padding:5px 12px 5px 0;font-size:12px;vertical-align:top;}
+.ref-table td:nth-child(odd){color:var(--text-sub);font-weight:600;width:160px;}
+.ref-table td:nth-child(even){color:var(--text-primary);border-bottom:1px solid var(--border);padding-right:32px;}
+.blurred{filter:blur(4.5px);user-select:none;pointer-events:none;}
+.divider{height:1px;background:var(--rule);margin:0 48px 16px;}
+.body{padding:0 48px 40px;}
+.sec{margin-bottom:24px;}
+.sec-head{font-family:"Merriweather",serif;font-size:12px;font-weight:700;color:var(--white);background:var(--navy);padding:7px 14px;display:flex;align-items:center;gap:10px;}
+.sec-num{font-family:"Source Code Pro",monospace;font-size:10px;color:rgba(255,255,255,0.45);font-weight:400;}
+.sec-body{border:1px solid var(--border);border-top:none;padding:14px 16px;}
+.health-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--border);}
+.hg-item{padding:12px 10px;border-right:1px solid var(--border);text-align:center;}
+.hg-item:last-child{border-right:none;}
+.hg-label{font-size:9.5px;color:var(--text-sub);letter-spacing:0.5px;text-transform:uppercase;font-weight:600;margin-bottom:6px;}
+.hg-val{font-family:"Source Code Pro",monospace;font-size:16px;font-weight:700;margin-bottom:4px;}
+.hg-tag{font-size:9px;font-weight:700;padding:2px 7px;border-radius:10px;letter-spacing:0.5px;}
+.rag-g{background:var(--green-light);color:var(--green);}
+.rag-a{background:var(--amber-light);color:var(--amber);}
+.rag-r{background:var(--red-light);color:var(--red);}
+.rag-g-val{color:var(--green);}
+.rag-a-val{color:var(--amber);}
+.rag-r-val{color:var(--red);}
+.ft{width:100%;border-collapse:collapse;}
+.ft th{background:var(--navy-light);color:var(--white);font-size:10.5px;font-weight:700;padding:7px 10px;text-align:right;letter-spacing:0.5px;}
+.ft th:first-child{text-align:left;}
+.ft td{padding:6px 10px;font-size:11.5px;color:var(--text-body);border-bottom:1px solid #EEF2F6;text-align:right;font-family:"Source Code Pro",monospace;}
+.ft td:first-child{font-family:"Source Sans 3",sans-serif;font-weight:600;color:var(--text-primary);text-align:left;font-size:12px;}
+.ft tr:nth-child(even) td{background:#FAFBFC;}
+.ft .sub td{background:#EEF2F6;font-weight:700;color:var(--navy);}
+.ft .tot td{background:var(--navy);color:var(--white);font-weight:700;}
+.ft .tot td:first-child{color:var(--white);}
+.up{color:var(--green);font-weight:700;}
+.dn{color:var(--red);font-weight:700;}
+.na{color:var(--muted);}
+.gap-card{border:1px solid var(--border);margin-bottom:16px;border-radius:2px;}
+.gap-header{background:var(--navy);padding:10px 14px;display:flex;align-items:center;justify-content:space-between;}
+.gap-title{font-size:13px;font-weight:700;color:var(--white);}
+.gap-sev{font-size:9.5px;font-weight:700;padding:2px 8px;border-radius:2px;letter-spacing:1px;text-transform:uppercase;}
+.sev-h{background:#7F1D1D;color:#FCA5A5;}
+.sev-m{background:#78350F;color:#FCD34D;}
+.sev-l{background:#14532D;color:#86EFAC;}
+.gap-body{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+.gap-section{padding:12px 14px;border-bottom:1px solid var(--border);}
+.gap-section:nth-child(odd){border-right:1px solid var(--border);}
+.gap-section-label{font-size:9.5px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+.obs-label{color:var(--red);}
+.ctx-label{color:var(--amber);}
+.mit-label{color:var(--green);}
+.fo-label{color:var(--orange);}
+.gap-section p{font-size:12px;color:var(--text-body);line-height:1.65;}
+.gap-section p strong{color:var(--text-primary);}
+.ica-t{width:100%;border-collapse:collapse;}
+.ica-t th{background:var(--navy-light);color:var(--white);font-size:10.5px;font-weight:700;padding:7px 10px;text-align:right;letter-spacing:0.5px;}
+.ica-t th:first-child{text-align:left;}
+.ica-t td{padding:7px 10px;font-size:12px;border-bottom:1px solid #EEF2F6;text-align:right;font-family:"Source Code Pro",monospace;}
+.ica-t td:first-child{font-family:"Source Sans 3",sans-serif;font-weight:600;color:var(--text-primary);text-align:left;}
+.ica-t tr:nth-child(even) td{background:#FAFBFC;}
+.gap-flag{color:var(--red);font-weight:700;}
+.ok-flag{color:var(--green);font-weight:700;}
+.warn-flag{color:var(--amber);font-weight:700;}
+.stress-t{width:100%;border-collapse:collapse;}
+.stress-t th{background:var(--navy-light);color:var(--white);font-size:10.5px;font-weight:700;padding:7px 10px;text-align:center;letter-spacing:0.5px;}
+.stress-t th:first-child{text-align:left;}
+.stress-t td{padding:7px 10px;font-size:12px;border-bottom:1px solid #EEF2F6;text-align:center;font-family:"Source Code Pro",monospace;}
+.stress-t td:first-child{font-family:"Source Sans 3",sans-serif;font-weight:600;color:var(--text-primary);text-align:left;}
+.stress-t tr:nth-child(even) td{background:#FAFBFC;}
+.stress-pass{color:var(--green);font-weight:700;}
+.stress-warn{color:var(--amber);font-weight:700;}
+.stress-fail{color:var(--red);font-weight:700;}
+.ov-box{background:var(--navy);padding:16px 18px;}
+.ov-tag{font-size:9.5px;color:var(--orange);letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:5px;}
+.ov-title{font-family:"Merriweather",serif;font-size:15px;color:var(--white);margin-bottom:10px;}
+.ov-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid rgba(255,255,255,0.1);margin-bottom:12px;}
+.ovi{padding:10px 14px;border-right:1px solid rgba(255,255,255,0.1);}
+.ovi:last-child{border-right:none;}
+.ovi-label{font-size:9.5px;color:rgba(255,255,255,0.4);letter-spacing:1px;text-transform:uppercase;font-weight:600;margin-bottom:4px;}
+.ovi-val{font-family:"Source Code Pro",monospace;font-size:13px;font-weight:700;}
+.ovi-val.g{color:#4ADE80;}
+.ovi-val.a{color:#FCD34D;}
+.ovi-val.r{color:#FCA5A5;}
+.ov-note{font-size:11.5px;color:rgba(255,255,255,0.55);line-height:1.6;}
+.note-strip{background:var(--orange-light);border:1px solid var(--orange-mid);border-radius:3px;padding:8px 12px;font-size:11px;color:var(--text-body);margin-top:10px;}
+.note-strip strong{color:var(--orange);}
+.info-strip{background:#EEF6FF;border:1px solid #BFDBFE;border-radius:3px;padding:8px 12px;font-size:11px;color:#1E3A5F;margin-top:10px;}
+.info-strip strong{color:#1E40AF;}
+.pb{border:none;border-top:1px dashed var(--rule);margin:24px 0;}
+.pb-label{text-align:center;font-size:9.5px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin:-6px 0 20px;font-weight:700;}
+.para{font-size:12.5px;color:var(--text-body);line-height:1.7;margin-bottom:10px;}
+.para:last-child{margin-bottom:0;}
+.para strong{color:var(--text-primary);}
+.sub-label{font-size:11px;font-weight:700;color:var(--navy);margin:12px 0 8px;text-transform:uppercase;letter-spacing:0.5px;}
+.footer{background:var(--navy);padding:12px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;border-top:3px solid var(--orange);}
+.footer-brand{font-family:"Merriweather",serif;font-size:12px;color:var(--white);}
+.footer-brand span{color:var(--orange);}
+.footer-text{font-size:10px;color:rgba(255,255,255,0.4);text-align:center;}
+.footer-right{font-size:10px;color:rgba(255,255,255,0.4);text-align:right;}
+.disclaimer{font-size:10.5px;color:var(--muted);line-height:1.6;padding:12px 0;border-top:1px solid var(--border);margin-top:16px;}
+.disclaimer strong{color:var(--text-sub);}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div style="border-bottom:3px solid var(--navy);">
+  <div class="lh-top">
+    <div>
+      <div class="brand-name">Finsight<span>One</span></div>
+      <div class="brand-tagline">Credit · Advisory · Intelligence</div>
+    </div>
+    <div class="lh-right">
+      <div class="badge badge-price">Rs. 8,999 + GST — CMA 2–5 Cr</div>
+      <div class="badge badge-sample">Sample Document</div>
+    </div>
+  </div>
+  <div class="lh-band">
+    <div class="lhb-l">CMA INTERPRETATION REPORT — FINANCIAL ANALYSIS WITH ADVISORY LAYER</div>
+    <div class="lhb-r">Stream 2 — CMA · 2–5 Cr Tier · Delivered with RBI CMA Excel</div>
+  </div>
+</div>
+
+<div class="ref-wrap">
+  <table class="ref-table">
+    <tr>
+      <td>Report Reference</td><td>FO-CMA-2026-0248</td>
+      <td>Date</td><td>June 2026</td>
+    </tr>
+    <tr>
+      <td>Borrower</td><td class="blurred">Precision Auto Components Pvt. Ltd.</td>
+      <td>Constitution</td><td>Private Limited Company</td>
+    </tr>
+    <tr>
+      <td>Activity</td><td>Auto components manufacturing — pressed metal parts and stampings for Tier-1 automotive OEM suppliers. Pune, Maharashtra.</td>
+      <td>Facility</td><td>WC CC + TL Combined: Rs. 3.80 Crore</td>
+    </tr>
+    <tr>
+      <td>CMA Period</td><td>FY23 (Aud.) · FY24 (Aud.) · FY25 (Prov.) · FY26–27 (Projected)</td>
+      <td>Challenges Identified</td><td>FY25 Loss Year Due to Capex · Elevated TOL/TNW · Stock Concentration Risk</td>
+    </tr>
+  </table>
+</div>
+<div class="divider"></div>
+
+<div class="body">
+
+<div class="sec">
+  <div class="sec-head"><span class="sec-num">01</span> FINANCIAL HEALTH SNAPSHOT — RAG DASHBOARD</div>
+  <div class="sec-body">
+    <div class="health-grid">
+      <div class="hg-item">
+        <div class="hg-label">Current Ratio</div>
+        <div class="hg-val rag-a-val">1.24x</div>
+        <div class="hg-tag rag-a">WATCH</div>
+      </div>
+      <div class="hg-item">
+        <div class="hg-label">DSCR (Post TL)</div>
+        <div class="hg-val rag-g-val">2.18x</div>
+        <div class="hg-tag rag-g">ADEQUATE</div>
+      </div>
+      <div class="hg-item">
+        <div class="hg-label">TOL / TNW</div>
+        <div class="hg-val rag-a-val">2.84x</div>
+        <div class="hg-tag rag-a">ELEVATED</div>
+      </div>
+      <div class="hg-item">
+        <div class="hg-label">FY25 PAT</div>
+        <div class="hg-val rag-r-val">(Rs.18L) Loss</div>
+        <div class="hg-tag rag-r">LOSS YEAR — SEE NOTE</div>
+      </div>
+      <div class="hg-item">
+        <div class="hg-label">OEM Client Conc.</div>
+        <div class="hg-val rag-a-val">68% Top-2</div>
+        <div class="hg-tag rag-a">CONCENTRATION</div>
+      </div>
+    </div>
+    <div class="info-strip" style="margin-top:10px;"><strong>FinsightOne Dashboard Note — FY25 Loss:</strong> The FY25 loss is the most scrutinised item in this file. The explanation is straightforward and documented: the company made a strategic capex investment in FY25 (new press line), front-loaded depreciation and finance costs in that year, and the revenue from the new line did not fully ramp until H2 FY25. This is an investment-driven loss, not an operational deterioration. The full explanation with financial evidence is in Gap 1 below.</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="sec-head"><span class="sec-num">02</span> INCOME CONSISTENCY AUDIT</div>
+  <div class="sec-body">
+    <table class="ica-t">
+      <thead>
+        <tr><th>Metric</th><th>FY 2022–23</th><th>FY 2023–24</th><th>FY 2024–25</th><th>Variance</th><th>Assessment</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>ITR — Gross Sales (Rs. Lakhs)</td><td>1,480.00</td><td>1,724.00</td><td>1,620.00</td><td class="warn-flag">FY25: Revenue dipped</td><td class="warn-flag">⚠ See Note</td></tr>
+        <tr><td>GST GSTR-1 Taxable Turnover</td><td>1,478.40</td><td>1,722.80</td><td>1,618.60</td><td class="ok-flag">Near-perfect alignment</td><td class="ok-flag">✓ Clean</td></tr>
+        <tr><td>Banking Turnover (CC Credits)</td><td>1,512.00</td><td>1,756.00</td><td>1,652.00</td><td class="ok-flag">Slightly above ITR</td><td class="ok-flag">✓ Strong</td></tr>
+        <tr><td>Banking / ITR Ratio</td><td>1.022x</td><td>1.019x</td><td>1.020x</td><td class="ok-flag">Consistently above 1.0</td><td class="ok-flag">✓ Excellent — advance receipts from OEM</td></tr>
+        <tr><td>GST / ITR Ratio</td><td>0.999x</td><td>0.999x</td><td>0.999x</td><td class="ok-flag">Perfect alignment</td><td class="ok-flag">✓ No gap</td></tr>
+      </tbody>
+    </table>
+    <div class="note-strip" style="margin-top:10px;"><strong>Income Consistency: Clean File.</strong> Banking turnover consistently 2% above ITR — this is because OEM customers make advance payments in the month before delivery, which appear in banking in the prior period. GST/ITR alignment is near-perfect. This is a fully transparent income profile with zero documentation gaps. FinsightOne View: <strong>No concerns on income consistency.</strong></div>
+  </div>
+</div>
+
+<hr class="pb">
+<div class="pb-label">— Page 2 of 4 —</div>
+
+<div class="sec">
+  <div class="sec-head"><span class="sec-num">03</span> P&L ANALYSIS — WITH FY25 LOSS EXPLANATION</div>
+  <div class="sec-body">
+    <table class="ft" style="margin-bottom:14px;">
+      <thead>
+        <tr><th>P&L (Rs. Lakhs)</th><th>FY 2022–23</th><th>FY 2023–24</th><th>FY 2024–25</th><th>FY 2025–26 (Proj.)</th><th>Comment</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Net Sales</td><td>1,480.00</td><td>1,724.00</td><td>1,620.00</td><td>1,980.00</td><td class="na">FY25 dip: new press line ramp</td></tr>
+        <tr><td>Raw Material Cost</td><td>1,036.00</td><td>1,206.80</td><td>1,134.00</td><td>1,386.00</td><td class="na">—</td></tr>
+        <tr><td>Gross Margin</td><td>444.00</td><td>517.20</td><td>486.00</td><td>594.00</td><td class="up">30% — consistent</td></tr>
+        <tr><td>Operating Expenses</td><td>184.00</td><td>214.00</td><td>228.00</td><td>248.00</td><td class="na">FY25: new headcount for press line</td></tr>
+        <tr><td>EBITDA</td><td>260.00</td><td>303.20</td><td>258.00</td><td>346.00</td><td class="na">FY25: dip, recovers strongly FY26</td></tr>
+        <tr><td>Depreciation</td><td>48.00</td><td>52.00</td><td>148.00</td><td>160.00</td><td class="dn">FY25: Rs.96L higher — new press line asset</td></tr>
+        <tr><td>Interest (TL + CC)</td><td>84.00</td><td>82.40</td><td>128.00</td><td>138.00</td><td class="dn">FY25: bridge finance for press line</td></tr>
+        <tr class="sub"><td>Net Profit Before Tax</td><td>128.00</td><td>168.80</td><td>(18.00)</td><td>48.00</td><td class="dn">FY25: LOSS — capex-driven</td></tr>
+        <tr><td>Net PAT</td><td>96.00</td><td>126.80</td><td>(18.00)</td><td>36.00</td><td class="dn">FY25: LOSS — see below</td></tr>
+        <tr class="sub"><td>Cash Accruals (PAT + Dep.)</td><td>144.00</td><td>178.80</td><td>130.00</td><td>196.00</td><td class="up">Cash accruals POSITIVE even in loss year</td></tr>
+        <tr><td>EBITDA (excl. new Dep.)</td><td>260.00</td><td>303.20</td><td>354.00</td><td>346.00</td><td class="up">Operational EBITDA grew in FY25</td></tr>
+      </tbody>
+    </table>
+    <div class="note-strip"><strong>Critical Insight — FY25 Loss is Non-Cash in Nature:</strong> Net loss of Rs. 18 Lakhs in FY25. Cash accruals (PAT + Depreciation) = Rs. 130 Lakhs — strongly positive. The loss is entirely driven by Rs. 96 Lakhs incremental depreciation on the new press line (front-loaded in Year 1 per Companies Act WDV method) and Rs. 45 Lakhs bridge finance interest during the line installation period. EBITDA before the new depreciation was Rs. 354 Lakhs — the highest in 3 years. The business generated more cash in FY25 than in FY24. The loss is an accounting outcome, not a cash event.</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="sec-head"><span class="sec-num">04</span> WORKING CAPITAL CYCLE & REPAYMENT CAPACITY</div>
+  <div class="sec-body">
+    <div class="sub-label">Working Capital Cycle</div>
+    <table class="ica-t" style="margin-bottom:14px;">
+      <thead>
+        <tr><th>WC Metric</th><th>FY 2022–23</th><th>FY 2023–24</th><th>FY 2024–25</th><th>Industry Norm</th><th>Comment</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Debtor Days (OEM)</td><td class="ok-flag">32 days</td><td class="ok-flag">30 days</td><td class="ok-flag">28 days</td><td>30–45 days</td><td class="ok-flag">Tight — OEM discipline</td></tr>
+        <tr><td>Creditor Days</td><td>48 days</td><td>52 days</td><td>54 days</td><td>30–60 days</td><td>Healthy supplier credit</td></tr>
+        <tr><td>Inventory Days (WIP Heavy)</td><td>42 days</td><td>44 days</td><td>48 days</td><td>30–60 days</td><td class="warn-flag">Rising — capex WIP in FY25</td></tr>
+        <tr><td>Operating Cycle</td><td>74 days</td><td>74 days</td><td>76 days</td><td>60–90 days</td><td>Stable</td></tr>
+        <tr><td>Net WC Cycle</td><td>26 days</td><td>22 days</td><td>22 days</td><td>15–45 days</td><td class="ok-flag">Efficient</td></tr>
+      </tbody>
+    </table>
+    <div class="sub-label">DSCR — TL Repayment Capacity</div>
+    <table class="ica-t" style="margin-bottom:14px;">
+      <thead>
+        <tr><th>DSCR Calculation (Rs. L)</th><th>FY 2022–23</th><th>FY 2023–24</th><th>FY 2024–25</th><th>FY26 (Proj.)</th><th>FY27 (Proj.)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Cash Accruals (PAT + Dep.)</td><td>144.00</td><td>178.80</td><td>130.00</td><td>196.00</td><td>228.00</td></tr>
+        <tr><td>Add: TL Interest</td><td>24.00</td><td>22.40</td><td>—</td><td>28.50</td><td>24.80</td></tr>
+        <tr><td>Numerator (A)</td><td>168.00</td><td>201.20</td><td>130.00</td><td>224.50</td><td>252.80</td></tr>
+        <tr><td>TL Annual Principal (Proposed)</td><td>—</td><td>—</td><td>—</td><td>72.00</td><td>78.00</td></tr>
+        <tr><td>TL Annual Interest</td><td>—</td><td>—</td><td>—</td><td>28.50</td><td>24.80</td></tr>
+        <tr><td>Denominator (B)</td><td>—</td><td>—</td><td>—</td><td>100.50</td><td>102.80</td></tr>
+        <tr><td>DSCR (A/B)</td><td class="ok-flag">Historical avg: 4.2x</td><td class="ok-flag">Historical avg: 4.2x</td><td class="warn-flag">1.29x (loss year)</td><td class="ok-flag">2.23x</td><td class="ok-flag">2.46x</td></tr>
+      </tbody>
+    </table>
+    <div class="note-strip"><strong>DSCR in FY25 (Loss Year):</strong> DSCR of 1.29x in FY25 is computed on cash accruals of Rs. 130 Lakhs (positive despite the PAT loss). Even in the worst year, the business generated enough cash to cover TL obligations. FY26 DSCR of 2.23x reflects the new press line's contribution and the elimination of bridge finance interest.</div>
+    <div class="sub-label" style="margin-top:14px;">Stress Test</div>
+    <table class="stress-t">
+      <thead>
+        <tr><th>Scenario</th><th>Revenue</th><th>EBITDA</th><th>Cash Accruals</th><th>TL Service</th><th>DSCR</th><th>Verdict</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Base FY26</td><td>Rs.1,980L</td><td>Rs.346L</td><td>Rs.196L</td><td>Rs.100.5L</td><td class="stress-pass">2.23x</td><td class="stress-pass">✓ Comfortable</td></tr>
+        <tr><td>Stress -10%</td><td>Rs.1,782L</td><td>Rs.265L</td><td>Rs.152L</td><td>Rs.100.5L</td><td class="stress-pass">1.51x</td><td class="stress-pass">✓ Just above min</td></tr>
+        <tr><td>Stress -20%</td><td>Rs.1,584L</td><td>Rs.184L</td><td>Rs.108L</td><td>Rs.100.5L</td><td class="stress-warn">1.07x</td><td class="stress-warn">⚠ Thin but covers</td></tr>
+        <tr><td>Stress -30%</td><td>Rs.1,386L</td><td>Rs.103L</td><td>Rs.64L</td><td>Rs.100.5L</td><td class="stress-fail">0.64x</td><td class="stress-fail">✗ Does not cover</td></tr>
+      </tbody>
+    </table>
+    <div class="note-strip" style="margin-top:10px;"><strong>Stress Test Note:</strong> Revenue needs to decline 20%+ before DSCR dips below 1.0. Auto component demand for Tier-1 OEM supply has not declined more than 8% in any year in this company's operating history. A 20% revenue decline is a very severe scenario in B2B automotive supply. FinsightOne considers repayment capacity adequate.</div>
+  </div>
+</div>
+
+<hr class="pb">
+<div class="pb-label">— Page 3 of 4 —</div>
+
+<div class="sec">
+  <div class="sec-head"><span class="sec-num">05</span> GAPS & WEAKNESSES — IDENTIFIED, CONTEXTUALISED, MITIGATED</div>
+  <div class="sec-body">
+
+    <div class="gap-card">
+      <div class="gap-header">
+        <div class="gap-title">GAP 1 — FY25 Net Loss of Rs. 18 Lakhs</div>
+        <div class="gap-sev sev-h">High Priority</div>
+      </div>
+      <div class="gap-body">
+        <div class="gap-section">
+          <div class="gap-section-label obs-label">OBSERVATION</div>
+          <p>The company reported a net loss of Rs. 18 Lakhs in FY25 — the first loss year in its operating history. This is a red flag in any credit assessment and will be the first query from any banker reviewing this file.</p>
+        </div>
+        <div class="gap-section">
+          <div class="gap-section-label ctx-label">CONTEXT</div>
+          <p>The loss is entirely attributable to two non-recurring, capex-related charges: (1) Rs. 96 Lakhs incremental depreciation on the new 800-ton press line (front-loaded under WDV method, normalises to Rs. 62L from FY26 onwards); (2) Rs. 45 Lakhs bridge finance interest during the 7-month installation period (fully repaid, not a recurring cost). Operating EBITDA before new depreciation was Rs. 354 Lakhs — the highest in 3 years. Cash accruals were Rs. 130 Lakhs — positive.</p>
+        </div>
+        <div class="gap-section">
+          <div class="gap-section-label mit-label">MITIGANT</div>
+          <p><strong>Documented evidence:</strong> (1) Fixed asset register showing new press line capitalisation date and WDV depreciation schedule — confirms the Rs. 96L charge is a one-time effect. (2) Bridge finance closure letter — Rs. 45L interest was paid and the facility closed in October 2024. (3) FY26 provisional P&L (6 months) showing PAT of Rs. 22.4 Lakhs — full-year PAT projected at Rs. 36 Lakhs. (4) New press line client order — confirming incremental revenue from the asset that caused the loss.</p>
+        </div>
+        <div class="gap-section">
+          <div class="gap-section-label fo-label">FINSIGHTONE VIEW</div>
+          <p><strong>Not a credit concern when properly documented.</strong> A loss year caused by front-loaded depreciation on a revenue-generating asset is fundamentally different from an operational loss. The test is: <em>are cash flows positive?</em> Yes — Rs. 130L. <em>Is the loss recurring?</em> No — both drivers are gone in FY26. Residual risk: <span style="color:var(--green);font-weight:700;">LOW with documentation enclosed.</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="gap-card">
+      <div class="gap-header">
+        <div class="gap-title">GAP 2 — TOL/TNW at 2.84x (Post-Proposed TL)</div>
+        <div class="gap-sev sev-m">Medium Priority</div>
+      </div>
+      <div class="gap-body">
+        <div class="gap-section">
+          <div class="gap-section-label obs-label">OBSERVATION</div>
+          <p>Post-proposed TL of Rs. 2.20 Crore, TOL/TNW rises to approximately 2.84x. For some lenders with stricter internal norms (2.5x cap), this may trigger a query or require explicit risk committee approval.</p>
+        </div>
+        <div class="gap-section">
+          <div class="gap-section-label ctx-label">CONTEXT</div>
+          <p>The elevated TOL/TNW is a direct consequence of the new press line investment — the same investment that caused the FY25 loss year. The asset is now operational and contributing revenue. Net worth was temporarily impacted by the FY25 loss (Rs. 18L deduction from reserves). With FY26 projected PAT of Rs. 36L + reduced depreciation, net worth is recovering. Auto component manufacturers with new machinery investments routinely show elevated leverage in Year 1 post-capex.</p>
+        </div>
+        <div class="gap-section">
+          <div class="gap-section-label mit-label">MITIGANT</div>
+          <p>TOL/TNW is at 4.00x maximum in most lender policies — 2.84x is well within norm. Declining trajectory: FY26 est. 2.42x, FY27 est. 2.08x as net worth recovers and TL is repaid. No dividend policy — 100% profit retention ensures rapid net worth recovery. Personal net worth of directors (Rs. 4.84 Cr combined) provides additional comfort beyond company leverage.</p>
+        </div>
+        <div class="gap-section">
+          <div class="gap-section-label fo-label">FINSIGHTONE VIEW</div>
+          <p><strong>Acceptable — declining trend, within 4x norm.</strong> The trajectory matters more than the point-in-time level. 2.84x → 2.42x → 2.08x over 24 months shows the leverage is temporary. Residual risk: <span style="color:var(--green);font-weight:700;">LOW — declining.</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="gap-card">
+      <div class="gap-header">
+        <div class="gap-title">GAP 3 — OEM Client Concentration (68% in Top 2 Clients)</div>
+        <div class="gap-sev sev-m">Medium Priority</div>
+      </div>
+      <div class="gap-body">
+        <div class="gap-section">
+          <div class="gap-section-label obs-label">OBSERVATION</div>
+          <p>Two OEM clients — a Tier-1 auto supplier and a major two-wheeler component maker — account for 68% of revenue. Loss of either client would materially impact the borrower's revenue and debt service capacity.</p>
+        </div>
+        <div class="gap-section">
+          <div class="gap-section-label ctx-label">CONTEXT</div>
+          <p>Auto component supply relationships are long-duration and sticky — OEM customers invest in vendor development, tooling, and qualification processes that take 12–18 months and represent significant sunk costs. Once qualified, suppliers are rarely replaced without a quality failure or a major price divergence. Both key clients have been with the borrower for 8+ years.</p>
+        </div>
+        <div class="gap-section">
+          <div class="gap-section-label mit-label">MITIGANT</div>
+          <p>(1) Both clients have multi-year supply agreements with annual renewal clauses — copies enclosed. (2) New press line capacity has attracted 3 new Tier-1 inquiries — 2 in qualification process currently. (3) Single client loss scenario stress test: if Client 1 (38% revenue) is lost, DSCR on remaining revenue is 1.42x — still above minimum 1.0x. Business survives a single client loss.</p>
+        </div>
+        <div class="gap-section">
+          <div class="gap-section-label fo-label">FINSIGHTONE VIEW</div>
+          <p><strong>Manageable — mitigated by relationship stickiness and active diversification.</strong> OEM supply relationships of 8+ years are significantly more durable than comparable relationships in trading or service businesses. The new press line's capacity is actively attracting new clients. Residual risk: <span style="color:var(--amber);font-weight:700;">MEDIUM — watch item for next renewal.</span></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<hr class="pb">
+<div class="pb-label">— Page 4 of 4 —</div>
+
+<div class="sec">
+  <div class="sec-head"><span class="sec-num">06</span> FINSIGHTONE OVERALL VIEW & PROPOSAL READINESS</div>
+  <div class="sec-body">
+    <div class="para">This is a fundamentally sound auto component manufacturer whose FY25 financials show a loss year that is fully explained, non-recurring, and cash-flow positive. The income consistency audit is clean — no banking/ITR gaps, no GST divergence. The WC cycle is efficient with 28-day debtor days (OEM payment discipline). The three gaps — FY25 loss, elevated TOL/TNW, OEM concentration — are all documented, contextualised, and mitigated in this report.</div>
+    <div class="para">The filing risk without this interpretation report is significant: a banker who sees the FY25 loss figure without the depreciation breakdown will likely mark this as a declined file at first review. This report converts that likely rejection into a documentable approval by pre-answering the key objections. This is the value FinsightOne delivers.</div>
+  </div>
+</div>
+
+<div class="ov-box">
+  <div class="ov-tag">FinsightOne CMA Interpretation — Overall View</div>
+  <div class="ov-title">Financial Assessment: Approvable — 3 Gaps Identified, All Contextualised & Mitigated</div>
+  <div class="ov-grid">
+    <div class="ovi"><div class="ovi-label">Gaps Identified</div><div class="ovi-val a">3 Gaps</div></div>
+    <div class="ovi"><div class="ovi-label">Gaps Addressed</div><div class="ovi-val g">3 of 3</div></div>
+    <div class="ovi"><div class="ovi-label">DSCR FY26</div><div class="ovi-val g">2.23x</div></div>
+    <div class="ovi"><div class="ovi-label">Proposal Readiness</div><div class="ovi-val g">Ready to Submit</div></div>
+  </div>
+  <div class="ov-note">This CMA Interpretation Report is delivered alongside the RBI CMA Excel file as FinsightOne's 2–5 Crore CMA product. The report serves all four audiences: customer (understand your own gaps), RM/DSA (walk in prepared), CA (add narrative to the spreadsheet), and banker (receive pre-answered objections). FinsightOne is not a credit authority. All names and figures are fictional.</div>
+</div>
+
+<div class="disclaimer">
+  <strong>Disclaimer:</strong> Prepared by FinsightOne based on borrower-furnished information. Not a guarantee of sanction. All names, figures and details are fictional and for illustration only.
+</div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-brand">Finsight<span>One</span></div>
+  <div class="footer-text">CMA Interpretation Report + RBI Excel · finsightone.co · Credit · Advisory · Intelligence<br><span style="font-size:9px;opacity:0.6;">Sample — all data fictional</span></div>
+  <div class="footer-right">Ref: FO-CMA-2026-0248<br>Pages 1–4 of 4</div>
+</div>
+
+</div>
+</body>
+</html>
