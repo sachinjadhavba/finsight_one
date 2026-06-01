@@ -64,14 +64,14 @@ export const SERVICES = [
   {
     id: "s4", icon: "📊",
     num: "Step 04 · Monthly Plans",
-    title: "Keep Your Finances Always Ready",
-    pitch: "Monthly alerts so your business finances are always in order — not just when you need a loan.",
+    title: "Keep Your Limits Growing",
+    pitch: "Your finances, banker-ready every single month.",
     items: [
       { name: "Credit Watch",    price: "₹499/mo"   },
-      { name: "Business Health", price: "₹2,999/mo", sample: "/reports/s2-03-loan-readiness-plan.html" },
+      { name: "Business Health", price: "₹2,999/mo", sample: "/reports/s2-03-loan-readiness-plan.html", popular: true },
       { name: "Premium",         price: "₹4,999/mo" },
     ],
-    btn: "Start Monthly Monitoring →", page: "analytics",
+    btn: "View Plans →", page: "analytics",
     numColor: "#16A34A", priceColor: "#16A34A",
     headBg: "#F0FDF4",
     btnBg: "#16A34A", btnColor: "#FFFFFF", btnBorder: "#16A34A",
@@ -116,29 +116,52 @@ export const TESTIMONIALS = [
 
 export const PLANS = [
   {
-    name: "Starter", price: "₹499", per: "/ month", featured: false,
-    desc: "For individuals and small businesses who want to track their credit score regularly.",
-    features: ["Monthly credit score update", "Score change alerts via WhatsApp", "Simple 1-page summary report", "Tips to improve your score"],
+    name: "Credit Watch", price: "₹499", per: "/ month", featured: false,
+    desc: "Know what your banker sees that you don't — before it becomes a problem.",
+    features: [
+      "Monthly bureau score tracking — promoter + business",
+      "CC utilisation pattern alert — flags stress before banker notices",
+      "Cheque return frequency tracker",
+      "GST filing status check — catch gaps before your bank does",
+      "ROC / MCA compliance alert",
+      "Monthly one-page summary report",
+    ],
   },
   {
-    name: "Business", price: "₹2,999", per: "/ month", featured: true, badge: "Most Popular",
-    desc: "For MSME owners who want to stay on top of their business finances and stay loan-ready.",
-    features: ["Monthly business health report", "Working capital position tracking", "Loan eligibility status update", "WhatsApp alerts on key changes", "Quarterly expert review call"],
+    name: "Business Health", price: "₹2,999", per: "/ month", featured: true, badge: "Most Popular",
+    desc: "For MSME owners who want to stay enhancement-ready all year and grow their banking limits.",
+    features: [
+      "Everything in Credit Watch",
+      "Monthly review of 8 key banking ratios — DSCR, debtor days, creditor days, drawing power, turnover vs GST",
+      "Traffic light dashboard — Green / Amber / Red vs your bank's actual benchmarks",
+      "One specific fix-it action every month with a clear deadline",
+      "Quarterly enhancement readiness score — know your chances before you ask",
+      "12-month enhancement calendar — when to prepare, when to approach, what to say",
+    ],
   },
   {
     name: "Premium", price: "₹4,999", per: "/ month", featured: false,
-    desc: "For growing businesses that need a live dashboard and dedicated monthly advisory support.",
-    features: ["Everything in Business plan", "Custom MIS Dashboard (live)", "Loan portfolio tracker", "Monthly expert advisory call", "Priority document turnaround"],
+    desc: "For growing businesses that want active guidance through every banker conversation and enhancement.",
+    features: [
+      "Everything in Business Health",
+      "Dedicated relationship manager — monthly review call on your numbers",
+      "Bank-specific enhancement strategy — what your banker looks for, what narrative wins",
+      "Enhancement application preparation — amount, justification, supporting data",
+      "Banker meeting script — exactly what to say, what not to volunteer",
+      "Pre-meeting mock Q&A — 10 likely credit manager questions with your answers",
+      "Post-meeting debrief — we decode what the banker's signals mean and what to do next",
+      "Rate negotiation brief — market comparable rates to use as leverage",
+    ],
   },
 ];
 
 export const WHAT_INCLUDED = [
-  { icon: "📋", title: "Business Health Report", desc: "A plain-language summary of how your business finances looked this month — profit, cash, and loan readiness." },
-  { icon: "📱", title: "WhatsApp Alerts", desc: "Instant alert if your working capital drops, your credit score changes, or a loan renewal is coming up." },
-  { icon: "📈", title: "Loan Readiness Score", desc: "Every month we tell you: if you applied for a loan today, here is your chance of approval. No surprises." },
-  { icon: "🗓️", title: "Expert Review Call", desc: "A 20-minute call with our advisor to go over the report and answer your questions. Every quarter in Business plan." },
-  { icon: "📊", title: "Custom Dashboard", desc: "Premium plan clients get a live dashboard with all key numbers in one place — updated monthly. (Premium only)" },
-  { icon: "🔄", title: "Renewal Reminders", desc: "We track your loan renewal dates and alert you 90 days in advance so you are never caught off guard." },
+  { icon: "👁️", title: "Bank-View Monitoring", desc: "We track the signals your banker watches — utilisation patterns, cheque returns, GST gaps, and bureau enquiries — before they quietly damage your creditworthiness." },
+  { icon: "📈", title: "Enhancement Readiness Score", desc: "Every quarter we tell you: if you walked into your bank today and asked for a higher limit, here is your actual chance of success." },
+  { icon: "🚦", title: "Traffic Light Dashboard", desc: "Eight key banking ratios rated Green, Amber, or Red against your bank's actual benchmarks — not generic industry averages." },
+  { icon: "🎯", title: "Monthly Fix-It Action", desc: "One specific, precise instruction every month based on your exact numbers — not generic advice but a clear action with a deadline." },
+  { icon: "📅", title: "12-Month Enhancement Calendar", desc: "A full-year roadmap showing when to prepare your financials, when to approach the bank, and what supporting data to bring." },
+  { icon: "🤝", title: "Banker Meeting Prep", desc: "Meeting script, mock Q&A based on your live financials, and post-meeting debrief — so every banker conversation moves you closer to a higher limit. (Premium)" },
 ];
 
 export const DOC_PRODUCTS = [
@@ -159,7 +182,6 @@ export const DOC_PRODUCTS = [
   },
 ];
 
-// REMOVED: Stop loan going bad, New business setup, Personal financial planning
 export const ADVISORY_PRODUCTS = [
   {
     icon: "🏗️", name: "How to Structure Your Loan",
@@ -192,5 +214,3 @@ export const CREDENTIALS = [
   { period: "2023 – 2024", title: "Independent Consultant", org: "MSME Advisory · Helped 100+ businesses get approved" },
   { period: "2025 – Present", title: "Founder, FinsightOne", org: "India's Credit & Loan Advisory Platform" },
 ];
-
-
