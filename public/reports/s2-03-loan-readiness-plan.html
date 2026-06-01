@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loan Readiness Plan — FinsightOne</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange:#F97316;--orange-light:#FFF7ED;--orange-mid:#FED7AA;--orange-dark:#C2410C;
+    --navy:#0F172A;--navy-mid:#1E293B;--navy-light:#334155;
+    --slate:#475569;--muted:#94A3B8;--border:#E2E8F0;--white:#FFFFFF;
+    --green:#16A34A;--green-light:#F0FDF4;--green-mid:#86EFAC;--green-dark:#166534;
+    --amber:#D97706;--amber-light:#FFFBEB;--amber-mid:#FDE68A;
+    --red:#DC2626;--red-light:#FEF2F2;--red-mid:#FECACA;
+    --purple:#7C3AED;--purple-light:#F5F3FF;--purple-mid:#DDD6FE;
+    --teal:#0D9488;--teal-light:#F0FDFA;--teal-mid:#99F6E4;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Inter',sans-serif;background:#F1F5F9;color:var(--navy);font-size:14px;line-height:1.6;}
+
+  body::before{
+    content:'SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE';
+    position:fixed;top:-50%;left:-50%;width:200%;height:200%;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Inter',sans-serif;font-size:18px;font-weight:600;
+    color:rgba(15,23,42,0.04);letter-spacing:4px;transform:rotate(-35deg);
+    word-spacing:40px;line-height:5;z-index:1000;pointer-events:none;
+    white-space:pre-wrap;text-align:center;
+  }
+
+  .page{max-width:880px;margin:0 auto;background:var(--white);box-shadow:0 4px 40px rgba(0,0,0,0.09);}
+
+  /* ── HEADER ── */
+  .header{background:var(--navy);position:relative;overflow:hidden;}
+  .header-geo{position:absolute;top:0;right:0;width:320px;height:100%;pointer-events:none;}
+  .header-geo::before{content:'';position:absolute;top:-40px;right:-40px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(249,115,22,0.2) 0%,transparent 70%);}
+  .header-geo::after{content:'';position:absolute;bottom:-20px;right:60px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(249,115,22,0.1) 0%,transparent 70%);}
+  .header-inner{padding:28px 40px 22px;display:flex;align-items:flex-start;justify-content:space-between;position:relative;z-index:1;}
+  .brand-name{font-family:'Playfair Display',serif;font-size:26px;color:var(--white);letter-spacing:-0.3px;margin-bottom:3px;}
+  .brand-name span{color:var(--orange);}
+  .brand-tagline{font-size:11px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;font-weight:500;}
+  .hdr-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px;}
+  .badge{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;border-radius:3px;}
+  .badge-tier{background:var(--orange);color:var(--white);}
+  .badge-sample{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.15);}
+  .title-bar{background:var(--orange);padding:12px 40px;display:flex;align-items:center;justify-content:space-between;}
+  .title-bar-l{font-family:'Playfair Display',serif;font-size:19px;color:var(--white);}
+  .title-bar-r{font-size:12px;color:rgba(255,255,255,0.85);font-weight:500;}
+  .title-bar-r strong{font-size:16px;color:var(--white);font-weight:700;}
+
+  /* CLIENT STRIP */
+  .client-strip{background:var(--navy-mid);padding:14px 40px;display:grid;grid-template-columns:repeat(5,1fr);gap:20px;}
+  .cf label{font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;font-weight:600;display:block;margin-bottom:3px;}
+  .cf span{font-size:12.5px;color:var(--white);font-weight:500;}
+  .blurred{filter:blur(5px);user-select:none;pointer-events:none;}
+
+  .report-meta{padding:12px 40px;border-bottom:1px solid var(--border);background:#FAFAFA;display:flex;gap:28px;flex-wrap:wrap;}
+  .meta-item label{font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;font-weight:600;display:block;margin-bottom:2px;}
+  .meta-item span{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--slate);}
+
+  .body{padding:36px 40px;}
+
+  /* SECTION HEADING */
+  .sh{font-family:'Playfair Display',serif;font-size:17px;color:var(--navy);margin-bottom:18px;display:flex;align-items:center;gap:10px;}
+  .sh::after{content:'';flex:1;height:1px;background:var(--border);}
+
+  /* READINESS SUMMARY */
+  .summary-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:32px;}
+  .sum-card{border-radius:10px;padding:18px 16px;border:1.5px solid;}
+  .sum-card.sc-now{background:#FFF7ED;border-color:var(--orange-mid);}
+  .sum-card.sc-after{background:var(--green-light);border-color:var(--green-mid);}
+  .sum-card.sc-timeline{background:var(--purple-light);border-color:var(--purple-mid);}
+  .sc-tag{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:5px;}
+  .sc-now .sc-tag{color:var(--orange);}
+  .sc-after .sc-tag{color:var(--green);}
+  .sc-timeline .sc-tag{color:var(--purple);}
+  .sc-value{font-family:'Playfair Display',serif;font-size:28px;color:var(--navy);line-height:1.1;margin-bottom:4px;}
+  .sc-label{font-size:12px;color:var(--slate);font-weight:400;line-height:1.4;}
+
+  /* READINESS METER */
+  .meter-section{background:#F8FAFC;border:1px solid var(--border);border-radius:10px;padding:20px 24px;margin-bottom:32px;}
+  .meter-title{font-size:11px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;font-weight:600;margin-bottom:14px;}
+  .meter-bars{display:flex;flex-direction:column;gap:10px;}
+  .mbar-row{display:grid;grid-template-columns:160px 1fr 48px;align-items:center;gap:12px;}
+  .mbar-label{font-size:12px;font-weight:500;color:var(--slate);}
+  .mbar-track{height:8px;background:var(--border);border-radius:5px;overflow:hidden;position:relative;}
+  .mbar-fill{height:100%;border-radius:5px;position:relative;}
+  .mbar-target{position:absolute;top:-3px;height:14px;width:2px;background:rgba(15,23,42,0.25);border-radius:1px;}
+  .mbar-val{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:var(--navy);text-align:right;}
+  .mbar-now{background:var(--orange);}
+  .mbar-proj{background:var(--green);}
+  .meter-legend{display:flex;gap:20px;margin-top:14px;}
+  .ml-item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--slate);}
+  .ml-dot{width:10px;height:10px;border-radius:2px;}
+
+  /* PLAN HEADER */
+  .plan-intro{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%);border-radius:12px;padding:24px 28px;margin-bottom:28px;position:relative;overflow:hidden;}
+  .plan-intro::before{content:'';position:absolute;top:-30px;right:-30px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(249,115,22,0.15) 0%,transparent 70%);pointer-events:none;}
+  .pi-tag{font-size:10px;color:var(--orange);letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:5px;}
+  .pi-title{font-family:'Playfair Display',serif;font-size:20px;color:var(--white);margin-bottom:6px;}
+  .pi-body{font-size:12.5px;color:rgba(255,255,255,0.65);line-height:1.6;max-width:600px;}
+  .pi-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+  .pi-chip{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);font-size:11px;padding:4px 12px;border-radius:20px;font-weight:500;}
+  .pi-chip.active{background:rgba(249,115,22,0.2);border-color:rgba(249,115,22,0.4);color:var(--orange);}
+
+  /* PHASE STRUCTURE */
+  .phase-block{margin-bottom:28px;}
+  .phase-header{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
+  .phase-badge{padding:6px 16px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;white-space:nowrap;}
+  .pb-1{background:#FFF7ED;color:var(--orange);border:1.5px solid var(--orange-mid);}
+  .pb-2{background:var(--amber-light);color:var(--amber);border:1.5px solid var(--amber-mid);}
+  .pb-3{background:var(--green-light);color:var(--green);border:1.5px solid var(--green-mid);}
+  .pb-4{background:var(--purple-light);color:var(--purple);border:1.5px solid var(--purple-mid);}
+  .phase-title{font-family:'Playfair Display',serif;font-size:16px;color:var(--navy);}
+  .phase-subtitle{font-size:12px;color:var(--muted);font-weight:400;margin-top:1px;}
+
+  /* WEEK CARDS */
+  .week-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .week-card{border:1px solid var(--border);border-radius:9px;overflow:hidden;}
+  .wc-head{padding:10px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);}
+  .wc-week{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:var(--muted);}
+  .wc-focus{font-size:11.5px;font-weight:700;color:var(--navy);}
+  .wc-owner{font-size:10px;padding:2px 8px;border-radius:10px;font-weight:600;}
+  .own-you{background:#EFF6FF;color:#2563EB;}
+  .own-ca{background:var(--purple-light);color:var(--purple);}
+  .own-fo{background:var(--orange-light);color:var(--orange);}
+  .wc-body{padding:12px 16px;display:flex;flex-direction:column;gap:7px;}
+  .task-item{display:flex;align-items:flex-start;gap:8px;font-size:12px;color:var(--slate);line-height:1.45;}
+  .task-icon{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0;margin-top:1px;}
+  .ti-action{background:var(--orange-light);color:var(--orange);}
+  .ti-doc{background:#EFF6FF;color:#2563EB;}
+  .ti-check{background:var(--green-light);color:var(--green);}
+  .ti-ca{background:var(--purple-light);color:var(--purple);}
+  .task-text{}
+  .task-text strong{color:var(--navy);font-weight:600;}
+
+  /* CHECKPOINT */
+  .checkpoint{background:#F8FAFC;border:1px solid var(--border);border-left:3px solid var(--orange);border-radius:8px;padding:14px 18px;margin-top:14px;display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;}
+  .cp-icon{font-size:20px;}
+  .cp-title{font-size:12.5px;font-weight:700;color:var(--navy);margin-bottom:3px;}
+  .cp-text{font-size:12px;color:var(--slate);line-height:1.5;}
+
+  /* DOCUMENT CHECKLIST */
+  .doc-section{margin-bottom:32px;}
+  .doc-categories{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+  .doc-cat{border:1px solid var(--border);border-radius:9px;overflow:hidden;}
+  .dc-head{padding:10px 14px;font-size:11.5px;font-weight:700;display:flex;align-items:center;gap:6px;}
+  .dc-head-kyc{background:#EFF6FF;color:#1D4ED8;}
+  .dc-head-fin{background:var(--green-light);color:var(--green-dark);}
+  .dc-head-biz{background:var(--amber-light);color:#92400E;}
+  .dc-list{padding:10px 14px;display:flex;flex-direction:column;gap:6px;}
+  .dc-item{display:flex;align-items:flex-start;gap:7px;font-size:12px;color:var(--slate);}
+  .dc-check{width:16px;height:16px;border:1.5px solid var(--border);border-radius:3px;flex-shrink:0;margin-top:2px;background:var(--white);display:flex;align-items:center;justify-content:center;}
+  .dc-check.ready{background:var(--green-light);border-color:var(--green-mid);color:var(--green);font-size:9px;}
+  .dc-check.pending{background:var(--amber-light);border-color:var(--amber-mid);color:var(--amber);font-size:9px;}
+
+  /* PROJECTED OUTCOME */
+  .outcome-section{background:var(--navy);border-radius:12px;padding:26px 30px;margin-bottom:32px;position:relative;overflow:hidden;}
+  .outcome-section::before{content:'';position:absolute;bottom:-40px;right:-40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(249,115,22,0.15) 0%,transparent 70%);pointer-events:none;}
+  .os-tag{font-size:10px;color:var(--orange);letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:6px;}
+  .os-title{font-family:'Playfair Display',serif;font-size:20px;color:var(--white);margin-bottom:16px;}
+  .os-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  .os-item{border-left:2px solid rgba(255,255,255,0.1);padding-left:14px;}
+  .os-label{font-size:10px;color:var(--muted);letter-spacing:0.8px;text-transform:uppercase;font-weight:600;margin-bottom:4px;}
+  .os-before{font-size:11px;color:rgba(255,255,255,0.35);text-decoration:line-through;margin-bottom:2px;font-family:'JetBrains Mono',monospace;}
+  .os-after{font-size:16px;font-weight:700;color:var(--white);font-family:'JetBrains Mono',monospace;}
+  .os-after span{font-size:11px;color:var(--orange);font-weight:500;margin-left:4px;}
+
+  /* ADVISORY CTA */
+  .advisory-cta{border:2px solid var(--orange);border-radius:12px;padding:22px 26px;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;margin-bottom:32px;background:var(--orange-light);}
+  .ac-tag{font-size:10px;color:var(--orange);letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:5px;}
+  .ac-title{font-family:'Playfair Display',serif;font-size:17px;color:var(--navy);margin-bottom:5px;}
+  .ac-body{font-size:12.5px;color:var(--slate);line-height:1.55;}
+  .ac-btn{background:var(--orange);color:var(--white);border:none;border-radius:8px;padding:13px 22px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;font-family:'Inter',sans-serif;text-decoration:none;display:inline-block;text-align:center;}
+  .ac-btn span{display:block;font-size:10px;font-weight:500;opacity:0.85;margin-top:2px;}
+
+  .disclaimer{background:#F8FAFC;border:1px solid var(--border);border-radius:8px;padding:14px 18px;margin-bottom:28px;}
+  .disclaimer p{font-size:11.5px;color:var(--muted);line-height:1.6;}
+  .disclaimer strong{color:var(--slate);}
+
+  .page-break{border:none;border-top:2px dashed var(--border);margin:36px 0;}
+  .page-label{text-align:center;font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin:-8px 0 28px;font-weight:600;}
+
+  .footer{background:var(--navy);padding:18px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+  .footer-brand{font-family:'Playfair Display',serif;font-size:15px;color:var(--white);}
+  .footer-brand span{color:var(--orange);}
+  .footer-text{font-size:11px;color:var(--muted);text-align:center;}
+  .footer-right{font-size:11px;color:var(--muted);text-align:right;}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-geo"></div>
+    <div class="header-inner">
+      <div>
+        <div class="brand-name">Finsight<span>One</span></div>
+        <div class="brand-tagline">Credit · Advisory · Intelligence</div>
+      </div>
+      <div class="hdr-right">
+        <div class="badge badge-tier">Rs. 2,999 Report</div>
+        <div class="badge badge-sample">Sample Document</div>
+      </div>
+    </div>
+    <div class="title-bar">
+      <div class="title-bar-l">Loan Readiness Plan</div>
+      <div class="title-bar-r">Stream 2 — Loan Readiness &nbsp;·&nbsp; Price: <strong>Rs. 2,999</strong> + GST</div>
+    </div>
+  </div>
+
+  <!-- CLIENT STRIP -->
+  <div class="client-strip">
+    <div class="cf"><label>Applicant</label><span class="blurred">Rajkumar Pharma</span></div>
+    <div class="cf"><label>Loan Type</label><span>Working Capital — CC/OD</span></div>
+    <div class="cf"><label>Amount Required</label><span>Rs. 75 Lakhs</span></div>
+    <div class="cf"><label>City</label><span>Ahmedabad, Gujarat</span></div>
+    <div class="cf"><label>Report Date</label><span>June 2026</span></div>
+  </div>
+
+  <div class="report-meta">
+    <div class="meta-item"><label>Report ID</label><span>FO-LRP-2026-0112</span></div>
+    <div class="meta-item"><label>Industry</label><span>Pharma Distribution</span></div>
+    <div class="meta-item"><label>Constitution</label><span>Pvt Ltd — 4 yrs old</span></div>
+    <div class="meta-item"><label>Current Score</label><span>58 / 100</span></div>
+    <div class="meta-item"><label>Target Score</label><span>78 / 100</span></div>
+    <div class="meta-item"><label>Plan Duration</label><span>45 Days</span></div>
+  </div>
+
+  <div class="body">
+
+    <!-- SUMMARY GRID -->
+    <div class="summary-grid">
+      <div class="sum-card sc-now">
+        <div class="sc-tag">Where You Are Today</div>
+        <div class="sc-value">58<span style="font-size:16px;color:var(--slate)">/100</span></div>
+        <div class="sc-label">Partial eligibility. Loan possible at reduced amount — approx Rs.35–40L at a higher rate.</div>
+      </div>
+      <div class="sum-card sc-after">
+        <div class="sc-tag">Where You'll Be in 45 Days</div>
+        <div class="sc-value">78<span style="font-size:16px;color:var(--slate)">/100</span></div>
+        <div class="sc-label">Strong eligibility. Full Rs.75L WC likely achievable at competitive rate with right documentation.</div>
+      </div>
+      <div class="sum-card sc-timeline">
+        <div class="sc-tag">Plan Duration</div>
+        <div class="sc-value">45 <span style="font-size:16px;color:var(--slate)">days</span></div>
+        <div class="sc-label">6-phase action plan. 3 phases require your action; 2 are documentation; 1 is submission.</div>
+      </div>
+    </div>
+
+    <!-- READINESS METER -->
+    <div class="meter-section">
+      <div class="meter-title">Parameter Improvement Roadmap — Before vs After Plan</div>
+      <div class="meter-bars">
+        <div class="mbar-row">
+          <div class="mbar-label">CIBIL Score</div>
+          <div class="mbar-track">
+            <div class="mbar-fill mbar-now" style="width:72%"></div>
+            <div class="mbar-target" style="left:80%"></div>
+          </div>
+          <div class="mbar-val">718→740</div>
+        </div>
+        <div class="mbar-row">
+          <div class="mbar-label">Banking Turnover</div>
+          <div class="mbar-track">
+            <div class="mbar-fill mbar-now" style="width:48%"></div>
+            <div class="mbar-target" style="left:80%"></div>
+          </div>
+          <div class="mbar-val">Low→Good</div>
+        </div>
+        <div class="mbar-row">
+          <div class="mbar-label">ITR Income Match</div>
+          <div class="mbar-track">
+            <div class="mbar-fill mbar-now" style="width:55%"></div>
+            <div class="mbar-target" style="left:85%"></div>
+          </div>
+          <div class="mbar-val">Partial→Full</div>
+        </div>
+        <div class="mbar-row">
+          <div class="mbar-label">Document Readiness</div>
+          <div class="mbar-track">
+            <div class="mbar-fill mbar-now" style="width:35%"></div>
+            <div class="mbar-target" style="left:95%"></div>
+          </div>
+          <div class="mbar-val">35%→95%</div>
+        </div>
+        <div class="mbar-row">
+          <div class="mbar-label">GST Filing Status</div>
+          <div class="mbar-track">
+            <div class="mbar-fill mbar-now" style="width:70%"></div>
+            <div class="mbar-target" style="left:90%"></div>
+          </div>
+          <div class="mbar-val">3 pending→Current</div>
+        </div>
+      </div>
+      <div class="meter-legend">
+        <div class="ml-item"><div class="ml-dot" style="background:var(--orange)"></div>Current Position</div>
+        <div class="ml-item"><div class="ml-dot" style="background:var(--green)"></div>Target After Plan</div>
+        <div class="ml-item" style="font-size:10px;color:var(--muted);">| Vertical line = lender benchmark threshold</div>
+      </div>
+    </div>
+
+    <!-- PLAN INTRO -->
+    <div class="plan-intro">
+      <div class="pi-tag">Your 45-Day Action Plan</div>
+      <div class="pi-title">Week-by-week roadmap to a banker-ready Working Capital application</div>
+      <div class="pi-body">This plan is structured in 4 phases across 6 weeks. Each task is assigned to either you, your CA, or FinsightOne. Nothing is left vague — every action has a deadline and an owner. Complete all phases before applying.</div>
+      <div class="pi-chips">
+        <div class="pi-chip active">Phase 1 — Foundation (Wk 1–2)</div>
+        <div class="pi-chip active">Phase 2 — Financials (Wk 2–3)</div>
+        <div class="pi-chip active">Phase 3 — Banking (Wk 3–5)</div>
+        <div class="pi-chip active">Phase 4 — File & Apply (Wk 6)</div>
+      </div>
+    </div>
+
+    <!-- PHASE 1 -->
+    <div class="phase-block">
+      <div class="phase-header">
+        <div class="phase-badge pb-1">Phase 1 &nbsp;·&nbsp; Week 1–2</div>
+        <div>
+          <div class="phase-title">Foundation — Fix what's broken before you start</div>
+          <div class="phase-subtitle">KYC alignment, credit card dues, GST filings</div>
+        </div>
+      </div>
+      <div class="week-grid">
+        <div class="week-card">
+          <div class="wc-head">
+            <div class="wc-week">WEEK 1</div>
+            <div class="wc-focus">Address & KYC Alignment</div>
+            <div class="wc-owner own-you">You</div>
+          </div>
+          <div class="wc-body">
+            <div class="task-item">
+              <div class="task-icon ti-action">→</div>
+              <div class="task-text"><strong>Check all 4 KYC docs</strong> — GST cert, UDYAM, bank account, ROC registered address. All must show identical address.</div>
+            </div>
+            <div class="task-item">
+              <div class="task-icon ti-action">→</div>
+              <div class="task-text">If address mismatch found, <strong>file address update request</strong> with GST portal and bank in the same week. Allow 7–10 days for update.</div>
+            </div>
+            <div class="task-item">
+              <div class="task-icon ti-check">✓</div>
+              <div class="task-text">Verify Director DIN is active on MCA portal and annual ROC filing (AOC-4) is current.</div>
+            </div>
+          </div>
+        </div>
+        <div class="week-card">
+          <div class="wc-head">
+            <div class="wc-week">WEEK 2</div>
+            <div class="wc-focus">Credit Score & GST Filings</div>
+            <div class="wc-owner own-ca">CA + You</div>
+          </div>
+          <div class="wc-body">
+            <div class="task-item">
+              <div class="task-icon ti-action">→</div>
+              <div class="task-text"><strong>Pay full credit card outstanding</strong> (Rs.22,000). Bring utilisation to 0% this cycle. Score improvement of 10–15 pts in 30 days.</div>
+            </div>
+            <div class="task-item">
+              <div class="task-icon ti-ca">CA</div>
+              <div class="task-text"><strong>File pending GSTR-3B</strong> for last 3 months immediately. Lenders check GST compliance status digitally — 3 months pending is an automatic flag.</div>
+            </div>
+            <div class="task-item">
+              <div class="task-icon ti-check">✓</div>
+              <div class="task-text">Download CIBIL report yourself and check for any incorrect entries. Raise dispute if any account appears as overdue incorrectly.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="checkpoint">
+        <div class="cp-icon">🎯</div>
+        <div>
+          <div class="cp-title">Phase 1 Checkpoint — Before moving to Phase 2</div>
+          <div class="cp-text">All KYC addresses aligned · GST filings current · Credit card cleared · CIBIL dispute filed if needed · ROC filings confirmed</div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="page-break">
+    <div class="page-label">— Page 2 of 3 —</div>
+
+    <!-- PHASE 2 -->
+    <div class="phase-block">
+      <div class="phase-header">
+        <div class="phase-badge pb-2">Phase 2 &nbsp;·&nbsp; Week 2–3</div>
+        <div>
+          <div class="phase-title">Financials — Strengthen the income story</div>
+          <div class="phase-subtitle">ITR filing, P&L alignment, turnover documentation</div>
+        </div>
+      </div>
+      <div class="week-grid">
+        <div class="week-card">
+          <div class="wc-head">
+            <div class="wc-week">WEEK 2–3</div>
+            <div class="wc-focus">ITR Filing & Income Documentation</div>
+            <div class="wc-owner own-ca">CA</div>
+          </div>
+          <div class="wc-body">
+            <div class="task-item">
+              <div class="task-icon ti-ca">CA</div>
+              <div class="task-text"><strong>File FY 2025–26 ITR</strong> before applying. Ensure declared net income of Rs.55L+ is supported by P&L and matches banking inflows.</div>
+            </div>
+            <div class="task-item">
+              <div class="task-icon ti-ca">CA</div>
+              <div class="task-text">Prepare <strong>provisional financials</strong> for Apr–Jun 2026 showing revenue run-rate of Rs.1.8Cr+ annualised. Lenders assess latest period heavily.</div>
+            </div>
+            <div class="task-item">
+              <div class="task-icon ti-doc">📄</div>
+              <div class="task-text">Ensure <strong>FY24 and FY25 audited financials</strong> show consistent revenue growth. If FY25 showed a dip, prepare a brief written explanation for the file.</div>
+            </div>
+          </div>
+        </div>
+        <div class="week-card">
+          <div class="wc-head">
+            <div class="wc-week">WEEK 3</div>
+            <div class="wc-focus">Business Performance Documentation</div>
+            <div class="wc-owner own-you">You + CA</div>
+          </div>
+          <div class="wc-body">
+            <div class="task-item">
+              <div class="task-icon ti-doc">📄</div>
+              <div class="task-text">Compile <strong>top 5 customer invoices</strong> and outstanding receivables list. For WC loans, lenders assess debtors quality — named clients from institutional buyers strengthen the case.</div>
+            </div>
+            <div class="task-item">
+              <div class="task-icon ti-action">→</div>
+              <div class="task-text">Prepare a <strong>2-page business note</strong> — what the WC will be used for, how it improves the purchase cycle, expected revenue impact. FinsightOne can assist with this.</div>
+            </div>
+            <div class="task-item">
+              <div class="task-icon ti-check">✓</div>
+              <div class="task-text">Collect drug licence copy, GST registration cert, and FSSAI/pharma distributor licence — all must be valid and not expiring in next 12 months.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="checkpoint">
+        <div class="cp-icon">🎯</div>
+        <div>
+          <div class="cp-title">Phase 2 Checkpoint</div>
+          <div class="cp-text">FY26 ITR filed · Provisional financials ready · Audited FY24 & FY25 P&L available · Top customer list compiled · Business note drafted · All business licences valid</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHASE 3 -->
+    <div class="phase-block">
+      <div class="phase-header">
+        <div class="phase-badge pb-3">Phase 3 &nbsp;·&nbsp; Week 3–5</div>
+        <div>
+          <div class="phase-title">Banking — Build the inflow trail lenders will see</div>
+          <div class="phase-subtitle">Turnover routing, bounce elimination, statement cleanup</div>
+        </div>
+      </div>
+      <div class="week-grid">
+        <div class="week-card">
+          <div class="wc-head">
+            <div class="wc-week">WEEK 3–4</div>
+            <div class="wc-focus">Route All Collections Through Bank</div>
+            <div class="wc-owner own-you">You</div>
+          </div>
+          <div class="wc-body">
+            <div class="task-item">
+              <div class="task-icon ti-action">→</div>
+              <div class="task-text"><strong>Deposit all pending cash collections immediately.</strong> For pharma distribution, distributor payments often come in cash — these must hit your current account same day, not end of week.</div>
+            </div>
+            <div class="task-item">
+              <div class="task-icon ti-action">→</div>
+              <div class="task-text">Switch all customer payment instructions to <strong>NEFT / RTGS / UPI to current account</strong>. Share new instructions with your top 10 clients this week.</div>
+            </div>
+            <div class="task-item">
+              <div class="task-icon ti-check">✓</div>
+              <div class="task-text">Ensure monthly credits average <strong>Rs.15L+</strong> for at least 2 consecutive months before applying. Lenders typically look at last 3–6 months of bank statement.</div>
+            </div>
+          </div>
+        </div>
+        <div class="week-card">
+          <div class="wc-head">
+            <div class="wc-week">WEEK 4–5</div>
+            <div class="wc-focus">Statement Hygiene & Bounce Check</div>
+            <div class="wc-owner own-you">You</div>
+          </div>
+          <div class="wc-body">
+            <div class="task-item">
+              <div class="task-icon ti-action">→</div>
+              <div class="task-text"><strong>Eliminate all cheque bounces.</strong> Even 1 outward bounce in the last 3 months will be flagged. Set up auto-credit for loan EMI accounts if any.</div>
+            </div>
+            <div class="task-item">
+              <div class="task-icon ti-action">→</div>
+              <div class="task-text">Avoid large unexplained <strong>cash withdrawals</strong> in the review period. Every big debit without a matching business purpose weakens the statement narrative.</div>
+            </div>
+            <div class="task-item">
+              <div class="task-icon ti-check">✓</div>
+              <div class="task-text">Maintain <strong>EOD balance of Rs.50,000+</strong> on most days. Consistently low balances signal liquidity stress to lender analysts reviewing statements.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="checkpoint">
+        <div class="cp-icon">🎯</div>
+        <div>
+          <div class="cp-title">Phase 3 Checkpoint</div>
+          <div class="cp-text">Monthly credits Rs.15L+ for 2 months · Zero cheque bounces · All cash collections deposited · Statement shows healthy EOD balance · No unexplained large debits</div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="page-break">
+    <div class="page-label">— Page 3 of 3 —</div>
+
+    <!-- PHASE 4 -->
+    <div class="phase-block">
+      <div class="phase-header">
+        <div class="phase-badge pb-4">Phase 4 &nbsp;·&nbsp; Week 6</div>
+        <div>
+          <div class="phase-title">File & Apply — Submit a banker-ready file</div>
+          <div class="phase-subtitle">Document collation, file structure, submission support</div>
+        </div>
+      </div>
+      <div class="week-grid">
+        <div class="week-card">
+          <div class="wc-head">
+            <div class="wc-week">WEEK 6</div>
+            <div class="wc-focus">Final File Assembly</div>
+            <div class="wc-owner own-fo">FinsightOne</div>
+          </div>
+          <div class="wc-body">
+            <div class="task-item">
+              <div class="task-icon ti-action">→</div>
+              <div class="task-text">FinsightOne reviews all documents for <strong>consistency checks</strong> — ITR vs GST vs bank turnover numbers must align. Any gaps are flagged and resolved before submission.</div>
+            </div>
+            <div class="task-item">
+              <div class="task-icon ti-doc">📄</div>
+              <div class="task-text">We structure the file in <strong>banker-preferred sequence</strong> — lenders receive 40+ files a week; a well-structured, tabbed submission stands out and gets processed faster.</div>
+            </div>
+            <div class="task-item">
+              <div class="task-icon ti-check">✓</div>
+              <div class="task-text">Cover note prepared explaining business context, loan purpose, and repayment rationale. Upgrades to <strong>Banker Presentation Pack</strong> (Rs.9,999) if full submission support needed.</div>
+            </div>
+          </div>
+        </div>
+        <div class="week-card">
+          <div class="wc-head">
+            <div class="wc-week">WEEK 6</div>
+            <div class="wc-focus">Application & Follow-Up</div>
+            <div class="wc-owner own-fo">FinsightOne</div>
+          </div>
+          <div class="wc-body">
+            <div class="task-item">
+              <div class="task-icon ti-action">→</div>
+              <div class="task-text">Identify the <strong>right lender for your profile</strong> — WC lenders vary significantly on FOIR, turnover, and sector preferences. Applying to the wrong lender wastes time and creates hard enquiries.</div>
+            </div>
+            <div class="task-item">
+              <div class="task-icon ti-action">→</div>
+              <div class="task-text">Submit application and remain available for <strong>lender query responses within 24 hours.</strong> Fast response time is a strong positive signal during processing.</div>
+            </div>
+            <div class="task-item">
+              <div class="task-icon ti-check">✓</div>
+              <div class="task-text">Track application status weekly. FinsightOne advisory support available for query handling, additional document requests, and negotiating sanction terms.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DOCUMENT CHECKLIST -->
+    <div class="doc-section">
+      <div class="sh">Document Readiness Checklist</div>
+      <div class="doc-categories">
+        <div class="doc-cat">
+          <div class="dc-head dc-head-kyc">🪪 &nbsp;KYC Documents</div>
+          <div class="dc-list">
+            <div class="dc-item"><div class="dc-check ready">✓</div>PAN Card (Company + Directors)</div>
+            <div class="dc-item"><div class="dc-check ready">✓</div>Aadhaar (All Directors)</div>
+            <div class="dc-item"><div class="dc-check pending">!</div>GST Registration Cert (update address)</div>
+            <div class="dc-item"><div class="dc-check ready">✓</div>UDYAM / Udyog Certificate</div>
+            <div class="dc-item"><div class="dc-check ready">✓</div>MOA / AOA + Certificate of Incorp</div>
+            <div class="dc-item"><div class="dc-check pending">!</div>ROC Annual Filing — FY25 pending</div>
+          </div>
+        </div>
+        <div class="doc-cat">
+          <div class="dc-head dc-head-fin">📊 &nbsp;Financial Documents</div>
+          <div class="dc-list">
+            <div class="dc-item"><div class="dc-check ready">✓</div>Audited Financials FY23 + FY24</div>
+            <div class="dc-item"><div class="dc-check pending">!</div>Audited / CA Certified FY25</div>
+            <div class="dc-item"><div class="dc-check pending">!</div>FY26 ITR — Not yet filed</div>
+            <div class="dc-item"><div class="dc-check ready">✓</div>GSTR-3B (last 12 months) — 3 pending</div>
+            <div class="dc-item"><div class="dc-check ready">✓</div>Bank Statements — 12 months</div>
+            <div class="dc-item"><div class="dc-check pending">!</div>Provisional P&L Apr–Jun 2026</div>
+          </div>
+        </div>
+        <div class="doc-cat">
+          <div class="dc-head dc-head-biz">🏭 &nbsp;Business Documents</div>
+          <div class="dc-list">
+            <div class="dc-item"><div class="dc-check ready">✓</div>Drug Licence (Valid till 2027)</div>
+            <div class="dc-item"><div class="dc-check ready">✓</div>FSSAI Licence</div>
+            <div class="dc-item"><div class="dc-check ready">✓</div>Office Lease Agreement</div>
+            <div class="dc-item"><div class="dc-check pending">!</div>Top Customer List + Sample Invoices</div>
+            <div class="dc-item"><div class="dc-check pending">!</div>Business Note (Loan purpose + plan)</div>
+            <div class="dc-item"><div class="dc-check ready">✓</div>Existing Loan Sanction Letters</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECTED OUTCOME -->
+    <div class="outcome-section">
+      <div class="os-tag">Projected Outcome — After Completing This Plan</div>
+      <div class="os-title">What changes when you arrive bank-ready</div>
+      <div class="os-grid">
+        <div class="os-item">
+          <div class="os-label">Eligibility Score</div>
+          <div class="os-before">58 / 100</div>
+          <div class="os-after">78 / 100 <span>↑ +20 pts</span></div>
+        </div>
+        <div class="os-item">
+          <div class="os-label">Eligible Amount</div>
+          <div class="os-before">~Rs.35–40L</div>
+          <div class="os-after">Rs.70–75L <span>↑ 2x</span></div>
+        </div>
+        <div class="os-item">
+          <div class="os-label">Expected Rate</div>
+          <div class="os-before">~18–20%</div>
+          <div class="os-after">~14–16% <span>↓ better</span></div>
+        </div>
+        <div class="os-item">
+          <div class="os-label">Processing Time</div>
+          <div class="os-before">~4–6 weeks</div>
+          <div class="os-after">~2–3 weeks <span>↑ faster</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ADVISORY CTA -->
+    <div class="advisory-cta">
+      <div>
+        <div class="ac-tag">Need Help Executing This Plan?</div>
+        <div class="ac-title">FinsightOne Advisory — we do the heavy lifting for you</div>
+        <div class="ac-body">This plan tells you exactly what to do. If you'd rather hand it off — we handle document collection, CA coordination, file structuring, and submission as part of our advisory service. Also available if your need is urgent and you cannot wait 45 days.</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+        <a href="https://finsightone.co/check" class="ac-btn">
+          Talk to Advisory
+          <span>finsightone.co/check</span>
+        </a>
+        <div style="font-size:11px;color:var(--slate);text-align:center;">From Rs. 10,000 + GST</div>
+      </div>
+    </div>
+
+    <!-- DISCLAIMER -->
+    <div class="disclaimer">
+      <p><strong>Important:</strong> This plan is based on self-declared information and general credit guidelines. Projected scores and outcomes are indicative only and not a guarantee of loan approval. Actual lender decisions depend on their credit policies, verification, and market conditions at the time of application. FinsightOne does not lend money and is not affiliated with any bank or NBFC. All client data in this sample report is fictional.</p>
+    </div>
+
+  </div><!-- /body -->
+
+  <div class="footer">
+    <div class="footer-brand">Finsight<span>One</span></div>
+    <div class="footer-text">Prepared by FinsightOne &nbsp;|&nbsp; finsightone.co &nbsp;|&nbsp; Credit · Advisory · Intelligence<br>
+    <span style="font-size:10px;color:rgba(255,255,255,0.3);">This is a sample report. All client data and figures are fictional and for illustration only.</span></div>
+    <div class="footer-right">Report ID: FO-LRP-2026-0112<br>Page 1–3 of 3</div>
+  </div>
+
+</div>
+</body>
+</html>
