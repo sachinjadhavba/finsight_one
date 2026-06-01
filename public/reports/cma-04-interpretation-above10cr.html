@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CMA Interpretation Report — FinsightOne</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Source+Sans+3:wght@300;400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0A1929;--navy-light:#1A3357;--orange:#F97316;--orange-light:#FFF7ED;--orange-mid:#FED7AA;--border:#C8D6E0;--bg:#F2F6FA;--white:#FFFFFF;--green:#1A6B3A;--green-light:#EEF8F2;--amber:#8A5200;--amber-light:#FFF8EC;--red:#8B1A1A;--red-light:#FDF3F3;--muted:#7A8FA6;--text-primary:#0A1929;--text-body:#2E3F52;--text-sub:#5A6E82;--rule:#B8C8D4;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"Source Sans 3",sans-serif;background:#D8E2EC;color:var(--text-primary);font-size:13px;line-height:1.6;}
+body::before{content:"SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE";position:fixed;top:-50%;left:-50%;width:200%;height:200%;font-size:17px;font-weight:700;color:rgba(10,25,41,0.038);letter-spacing:4px;transform:rotate(-35deg);word-spacing:38px;line-height:5;z-index:1000;pointer-events:none;white-space:pre-wrap;text-align:center;}
+.page{max-width:920px;margin:0 auto;background:var(--white);box-shadow:0 4px 32px rgba(0,0,0,0.1);}
+.lh-top{background:var(--navy);padding:20px 48px 16px;display:flex;align-items:flex-start;justify-content:space-between;}
+.brand-name{font-family:"Merriweather",serif;font-size:22px;color:var(--white);margin-bottom:3px;}
+.brand-name span{color:var(--orange);}
+.brand-tagline{font-size:10px;color:rgba(255,255,255,0.45);letter-spacing:2.5px;text-transform:uppercase;font-weight:600;}
+.lh-right{display:flex;flex-direction:column;align-items:flex-end;gap:5px;}
+.badge{font-size:9.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:2px;}
+.badge-price{background:var(--orange);color:var(--white);}
+.badge-sample{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.45);border:1px solid rgba(255,255,255,0.12);}
+.lh-band{background:var(--orange);padding:7px 48px;display:flex;align-items:center;justify-content:space-between;}
+.lhb-l{font-family:"Merriweather",serif;font-size:13px;color:var(--white);font-weight:700;}
+.lhb-r{font-size:11px;color:rgba(255,255,255,0.85);font-weight:600;}
+.ref-wrap{padding:16px 48px 0;}
+.ref-table{width:100%;border-collapse:collapse;margin-bottom:16px;}
+.ref-table td{padding:5px 12px 5px 0;font-size:12px;vertical-align:top;}
+.ref-table td:nth-child(odd){color:var(--text-sub);font-weight:600;width:160px;}
+.ref-table td:nth-child(even){color:var(--text-primary);border-bottom:1px solid var(--border);padding-right:32px;}
+.blurred{filter:blur(4.5px);user-select:none;pointer-events:none;}
+.divider{height:1px;background:var(--rule);margin:0 48px 16px;}
+.body{padding:0 48px 40px;}
+
+/* CHALLENGE BANNER */
+.challenge-banner{background:#7F1D1D;border-left:4px solid #EF4444;padding:12px 16px;margin-bottom:20px;display:flex;align-items:flex-start;gap:12px;}
+.cb-icon{font-size:18px;line-height:1;margin-top:1px;}
+.cb-text{flex:1;}
+.cb-title{font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#FCA5A5;margin-bottom:4px;}
+.cb-body{font-size:12px;color:rgba(252,165,165,0.85);line-height:1.55;}
+
+/* HEALTH DASHBOARD */
+.health-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--border);margin-bottom:0;}
+.hg-item{padding:12px 10px;border-right:1px solid var(--border);text-align:center;}
+.hg-item:last-child{border-right:none;}
+.hg-label{font-size:9.5px;color:var(--text-sub);letter-spacing:0.5px;text-transform:uppercase;font-weight:600;margin-bottom:6px;}
+.hg-val{font-family:"Source Code Pro",monospace;font-size:16px;font-weight:700;margin-bottom:4px;}
+.hg-tag{font-size:9px;font-weight:700;padding:2px 7px;border-radius:10px;letter-spacing:0.5px;}
+.rag-g{background:var(--green-light);color:var(--green);}
+.rag-a{background:var(--amber-light);color:var(--amber);}
+.rag-r{background:var(--red-light);color:var(--red);}
+.rag-g-val{color:var(--green);}
+.rag-a-val{color:var(--amber);}
+.rag-r-val{color:var(--red);}
+
+/* SECTION HEADERS */
+.sec-hd{margin:20px 0 12px;padding-bottom:7px;border-bottom:2px solid var(--navy);}
+.sec-hd-num{font-size:9.5px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:2px;}
+.sec-hd-title{font-family:"Merriweather",serif;font-size:14px;color:var(--navy);}
+.para{font-size:12.5px;color:var(--text-body);line-height:1.7;margin-bottom:10px;}
+
+/* GAP CARDS */
+.gap-card{border:1px solid var(--border);margin-bottom:16px;border-radius:2px;}
+.gap-header{background:var(--navy);padding:10px 14px;display:flex;align-items:center;justify-content:space-between;}
+.gap-title{font-size:13px;font-weight:700;color:var(--white);}
+.gap-sev{font-size:9.5px;font-weight:700;padding:2px 8px;border-radius:2px;letter-spacing:1px;text-transform:uppercase;}
+.sev-h{background:#7F1D1D;color:#FCA5A5;}
+.sev-m{background:#78350F;color:#FCD34D;}
+.sev-l{background:#14532D;color:#86EFAC;}
+.gap-body{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+.gap-section{padding:12px 14px;border-bottom:1px solid var(--border);}
+.gap-section:nth-child(odd){border-right:1px solid var(--border);}
+.gap-section-label{font-size:9.5px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+.obs-label{color:var(--red);}
+.ctx-label{color:var(--amber);}
+.mit-label{color:var(--green);}
+.fo-label{color:var(--orange);}
+.gap-section p{font-size:12px;color:var(--text-body);line-height:1.65;}
+.gap-section p strong{color:var(--text-primary);}
+.gap-full{padding:12px 14px;}
+.gap-full p{font-size:12px;color:var(--text-body);line-height:1.65;}
+
+/* TABLES */
+.data-t{width:100%;border-collapse:collapse;margin-bottom:16px;}
+.data-t th{background:var(--navy-light);color:var(--white);font-size:10.5px;font-weight:700;padding:7px 10px;text-align:right;letter-spacing:0.5px;}
+.data-t th:first-child{text-align:left;}
+.data-t td{padding:7px 10px;font-size:12px;border-bottom:1px solid #EEF2F6;text-align:right;font-family:"Source Code Pro",monospace;}
+.data-t td:first-child{font-family:"Source Sans 3",sans-serif;font-weight:600;color:var(--text-primary);text-align:left;}
+.data-t tr:nth-child(even) td{background:#FAFBFC;}
+.data-t .tot td{background:var(--navy);color:var(--white);font-weight:700;}
+.data-t .sub td{background:#F2F6FA;font-weight:600;}
+.flag-r{color:var(--red);font-weight:700;}
+.flag-a{color:var(--amber);font-weight:700;}
+.flag-g{color:var(--green);font-weight:700;}
+
+/* GROUP STRUCTURE */
+.group-wrap{border:1px solid var(--border);margin-bottom:16px;}
+.group-header{background:var(--navy-light);padding:8px 14px;font-size:10.5px;font-weight:700;color:var(--white);letter-spacing:0.5px;}
+.group-row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;border-bottom:1px solid var(--border);}
+.group-row:last-child{border-bottom:none;}
+.group-row.hd{background:#F2F6FA;}
+.gr-cell{padding:7px 10px;font-size:11.5px;}
+.gr-cell:not(:first-child){text-align:right;font-family:"Source Code Pro",monospace;}
+.gr-hd{font-size:10px;font-weight:700;color:var(--text-sub);text-transform:uppercase;letter-spacing:0.5px;}
+.gr-entity{font-weight:600;color:var(--text-primary);}
+.gr-lead{background:var(--orange-light);}
+
+/* CAPEX TABLE */
+.capex-wrap{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+.capex-box{border:1px solid var(--border);padding:14px;}
+.capex-box-title{font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-sub);margin-bottom:10px;}
+.capex-item{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #F0F4F8;font-size:12px;}
+.capex-item:last-child{border-bottom:none;font-weight:700;color:var(--text-primary);}
+.capex-val{font-family:"Source Code Pro",monospace;font-weight:600;}
+
+/* OVERALL */
+.overall-box{background:var(--green-light);border:1px solid var(--green);border-left:4px solid var(--green);padding:14px 16px;margin-top:20px;}
+.ob-title{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:6px;}
+.ob-body{font-size:12.5px;color:var(--text-body);line-height:1.65;}
+
+/* FOOTER */
+.footer{background:var(--navy);padding:16px 48px;display:flex;align-items:center;justify-content:space-between;margin-top:0;}
+.footer-brand{font-family:"Merriweather",serif;font-size:13px;color:var(--white);}
+.footer-brand span{color:var(--orange);}
+.footer-disc{font-size:10px;color:rgba(255,255,255,0.35);max-width:520px;line-height:1.5;}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- HEADER -->
+<div class="lh-top">
+  <div>
+    <div class="brand-name">Finsight<span>One</span></div>
+    <div class="brand-tagline">Loan Advisory · Document Preparation · Credit Analysis</div>
+  </div>
+  <div class="lh-right">
+    <div class="badge badge-price">Confirm on Call · Above 10 Cr Tier</div>
+    <div class="badge badge-sample">Sample Document</div>
+  </div>
+</div>
+<div class="lh-band">
+  <div class="lhb-l">CMA Interpretation Report</div>
+  <div class="lhb-r">Stream 1 — Documents &nbsp;·&nbsp; CMA Data: Above 10 Cr Tier &nbsp;·&nbsp; Price: Confirm on Call</div>
+</div>
+
+<!-- REFERENCE -->
+<div class="ref-wrap">
+  <table class="ref-table">
+    <tr>
+      <td>Report Reference</td><td>FSO/CMA/10CR/0009</td>
+      <td>Prepared For</td><td class="blurred">Kalyani Textiles Group, Ichalkaranji MH</td>
+    </tr>
+    <tr>
+      <td>Industry / Segment</td><td>Integrated Textiles — Spinning + Weaving + Processing</td>
+      <td>GST Registration</td><td class="blurred">27AABCK4892R1ZP</td>
+    </tr>
+    <tr>
+      <td>Facility Proposed</td><td>TL Rs.9.00 Cr (Capex) + WC CC Rs.5.50 Cr = Rs.14.50 Cr Total</td>
+      <td>Constitution</td><td>Group — 3 entities (Lead: Pvt Ltd, 16 Years)</td>
+    </tr>
+    <tr>
+      <td>Report Date</td><td class="blurred">28 January 2025</td>
+      <td>Prepared By</td><td>FinsightOne Financial Advisory LLP</td>
+    </tr>
+  </table>
+</div>
+<div class="divider"></div>
+
+<div class="body">
+
+<!-- CHALLENGE BANNER -->
+<div class="challenge-banner">
+  <div class="cb-icon">⚠</div>
+  <div class="cb-text">
+    <div class="cb-title">Complex Profile — Group Entity CMA Consolidation &amp; Mid-Cycle Capex Timing Risk</div>
+    <div class="cb-body">This CMA involves two structural complexities requiring dedicated lender communication: (1) <strong>Group entity structure</strong> — three inter-related entities (one Pvt Ltd, one partnership, one proprietorship) with cross-guarantees and shared promoters. Standard CMA templates capture standalone financials; FinsightOne's interpretation consolidates group exposure and maps inter-company flows transparently. (2) <strong>Mid-cycle capex</strong> — the proposed Rs.9.00 Cr TL funds a spinning capacity expansion mid-way through a prior TL repayment cycle. The combined debt service peak in FY26 creates a DSCR trough that must be contextualised with project revenue ramp-up. Both challenges are documentable and fully addressed in this report.</div>
+  </div>
+</div>
+
+<!-- RAG DASHBOARD -->
+<div class="sec-hd">
+  <div class="sec-hd-num">Section 01</div>
+  <div class="sec-hd-title">Financial Health Dashboard — Consolidated Group Assessment</div>
+</div>
+<div class="health-grid">
+  <div class="hg-item">
+    <div class="hg-label">Consol. DSCR FY25</div>
+    <div class="hg-val rag-g-val">2.12x</div>
+    <div class="hg-tag rag-g">ADEQUATE</div>
+  </div>
+  <div class="hg-item">
+    <div class="hg-label">DSCR FY26 (Trough)</div>
+    <div class="hg-val rag-a-val">1.61x</div>
+    <div class="hg-tag rag-a">TROUGH</div>
+  </div>
+  <div class="hg-item">
+    <div class="hg-label">Group TOL/TNW</div>
+    <div class="hg-val rag-a-val">3.12x</div>
+    <div class="hg-tag rag-a">HIGH</div>
+  </div>
+  <div class="hg-item">
+    <div class="hg-label">Capex IRR (Project)</div>
+    <div class="hg-val rag-g-val">22.4%</div>
+    <div class="hg-tag rag-g">VIABLE</div>
+  </div>
+  <div class="hg-item">
+    <div class="hg-label">Group CIBIL (Promoter)</div>
+    <div class="hg-val rag-g-val">762</div>
+    <div class="hg-tag rag-g">CLEAN</div>
+  </div>
+</div>
+<div style="border:1px solid var(--border);border-top:none;padding:10px 14px;margin-bottom:20px;background:#FAFBFC;">
+  <p class="para" style="margin:0;font-size:11.5px;color:var(--text-sub);">FY26 DSCR trough reflects overlap of existing TL (Rs.72L annual) + proposed TL (Rs.108L annual) debt service in FY26. Post-FY27 (existing TL discharged), consolidated debt service normalises to Rs.108L and projected DSCR recovers to 2.38x. This is a timing artefact, not a structural weakness — documented in Section 05 capex coverage waterfall.</p>
+</div>
+
+<!-- GROUP STRUCTURE -->
+<div class="sec-hd">
+  <div class="sec-hd-num">Section 02</div>
+  <div class="sec-hd-title">Group Entity Structure — Consolidated Exposure Map</div>
+</div>
+<p class="para">Standard standalone CMA understates the group's collective financial strength and also requires cross-guarantee exposure to be mapped transparently. FinsightOne presents consolidated financials across all three entities — combined promoter group with shared ownership, common address, and related-party transactions disclosed.</p>
+<div class="group-wrap">
+  <div class="group-header">Group Entity Summary — FY25 Audited Standalone Financials</div>
+  <div class="group-row hd">
+    <div class="gr-cell gr-hd">Entity</div>
+    <div class="gr-cell gr-hd">Turnover (Rs. L)</div>
+    <div class="gr-cell gr-hd">PAT (Rs. L)</div>
+    <div class="gr-cell gr-hd">Bank Exposure</div>
+    <div class="gr-cell gr-hd">Role in Group</div>
+  </div>
+  <div class="group-row gr-lead">
+    <div class="gr-cell gr-entity">Kalyani Textiles Pvt Ltd (Lead Entity)</div>
+    <div class="gr-cell flag-g">2,840</div>
+    <div class="gr-cell flag-g">164</div>
+    <div class="gr-cell">Rs.6.20 Cr (existing)</div>
+    <div class="gr-cell">Spinning + Processing</div>
+  </div>
+  <div class="group-row">
+    <div class="gr-cell gr-entity">Kalyani Weavers Partnership</div>
+    <div class="gr-cell">980</div>
+    <div class="gr-cell">42</div>
+    <div class="gr-cell">Rs.1.40 Cr (WC CC)</div>
+    <div class="gr-cell">Weaving — grey fabric</div>
+  </div>
+  <div class="group-row">
+    <div class="gr-cell gr-entity">Kalyani Exports (Proprietorship)</div>
+    <div class="gr-cell">620</div>
+    <div class="gr-cell">28</div>
+    <div class="gr-cell">Rs.0.80 Cr (packing credit)</div>
+    <div class="gr-cell">Export — finished fabric</div>
+  </div>
+  <div class="group-row" style="background:var(--navy);color:var(--white);">
+    <div class="gr-cell" style="font-weight:700;color:var(--white);">Consolidated Group Total</div>
+    <div class="gr-cell" style="text-align:right;font-family:monospace;font-weight:700;color:var(--white);">4,440</div>
+    <div class="gr-cell" style="text-align:right;font-family:monospace;font-weight:700;color:var(--white);">234</div>
+    <div class="gr-cell" style="text-align:right;font-weight:700;color:var(--white);">Rs.8.40 Cr</div>
+    <div class="gr-cell" style="font-weight:700;color:var(--orange);">Integrated Textiles</div>
+  </div>
+</div>
+<p class="para" style="font-size:11.5px;"><strong>Inter-company transactions (FY25):</strong> Kalyani Weavers supplies grey fabric to Kalyani Textiles Pvt Ltd (Rs.380L, arm's-length rate). Kalyani Exports procures finished fabric from Kalyani Textiles Pvt Ltd (Rs.240L). All inter-company transactions are GST-invoiced, disclosed in related party schedule of respective ITRs, and are at market rates verified against third-party price benchmarks. No circular cash flow or inflated revenue.</p>
+
+<!-- CMA FINANCIAL SUMMARY -->
+<div class="sec-hd">
+  <div class="sec-hd-num">Section 03</div>
+  <div class="sec-hd-title">CMA Financial Summary — Lead Entity: Kalyani Textiles Pvt Ltd</div>
+</div>
+<table class="data-t">
+  <tr><th>Parameter</th><th>FY23 (Audited)</th><th>FY24 (Audited)</th><th>FY25 (Audited)</th><th>FY26 (Projected)</th><th>FY27 (Projected)</th></tr>
+  <tr><td>Net Sales (Rs. Lakhs)</td><td>2,240</td><td>2,540</td><td>2,840</td><td>3,360</td><td>3,920</td></tr>
+  <tr><td>Revenue Growth %</td><td>—</td><td class="flag-g">+13.4%</td><td class="flag-g">+11.8%</td><td class="flag-g">+18.3%</td><td class="flag-g">+16.7%</td></tr>
+  <tr><td>EBITDA (Rs. Lakhs)</td><td>298</td><td>342</td><td>388</td><td>462</td><td>540</td></tr>
+  <tr><td>EBITDA Margin %</td><td>13.3%</td><td>13.5%</td><td>13.7%</td><td>13.8%</td><td>13.8%</td></tr>
+  <tr><td>Depreciation (Rs. Lakhs)</td><td>84</td><td>88</td><td>92</td><td>124</td><td>130</td></tr>
+  <tr><td>PAT (Rs. Lakhs)</td><td>118</td><td>138</td><td>164</td><td>194</td><td>238</td></tr>
+  <tr><td>Cash Accruals (Rs. Lakhs)</td><td>202</td><td>226</td><td>256</td><td>318</td><td>368</td></tr>
+  <tr><td>Banking Turnover (Rs. L)</td><td>2,112</td><td>2,394</td><td>2,672</td><td>—</td><td>—</td></tr>
+  <tr class="sub"><td>Banking / ITR Ratio</td><td class="flag-g">94.3%</td><td class="flag-g">94.3%</td><td class="flag-g">94.1%</td><td>—</td><td>—</td></tr>
+  <tr><td>Debtors (Days)</td><td>68</td><td>62</td><td>58</td><td>52</td><td>48</td></tr>
+  <tr><td>Inventory (Days)</td><td>72</td><td>68</td><td>64</td><td>60</td><td>55</td></tr>
+  <tr class="tot"><td>TOL/TNW (Lead Entity)</td><td>2.84x</td><td>2.71x</td><td>2.58x</td><td>2.82x</td><td>2.64x</td></tr>
+</table>
+<p class="para" style="font-size:11.5px;"><strong>Note on FY26 TOL/TNW increase:</strong> The projected increase from 2.58x (FY25) to 2.82x (FY26) reflects the new TL drawdown (Rs.9 Cr) during capex execution phase before revenue contribution begins. This is a standard capex-cycle pattern — leverage peaks at drawdown, then reduces through repayment + earnings. By FY27, TOL/TNW is projected to return to 2.64x and declining.</p>
+
+<!-- CAPEX SECTION -->
+<div class="sec-hd">
+  <div class="sec-hd-num">Section 04</div>
+  <div class="sec-hd-title">Proposed Capex — Spinning Capacity Expansion</div>
+</div>
+<div class="capex-wrap">
+  <div class="capex-box">
+    <div class="capex-box-title">Project Cost — Means of Finance</div>
+    <div class="capex-item"><span>Ring Frame Machines (6 units)</span><span class="capex-val">Rs.480 L</span></div>
+    <div class="capex-item"><span>Auto-winding Equipment</span><span class="capex-val">Rs.160 L</span></div>
+    <div class="capex-item"><span>Power Loom Upgrades (12 units)</span><span class="capex-val">Rs.120 L</span></div>
+    <div class="capex-item"><span>Civil Work — Shed Expansion</span><span class="capex-val">Rs.80 L</span></div>
+    <div class="capex-item"><span>Electrification + Utilities</span><span class="capex-val">Rs.40 L</span></div>
+    <div class="capex-item"><span>Contingency (5%)</span><span class="capex-val">Rs.44 L</span></div>
+    <div class="capex-item"><span><strong>Total Project Cost</strong></span><span class="capex-val"><strong>Rs.924 L</strong></span></div>
+    <div class="capex-item"><span>Term Loan (Proposed)</span><span class="capex-val">Rs.900 L</span></div>
+    <div class="capex-item"><span>Promoter Contribution</span><span class="capex-val">Rs.24 L</span></div>
+  </div>
+  <div class="capex-box">
+    <div class="capex-box-title">Project Viability Metrics</div>
+    <div class="capex-item"><span>Incremental Revenue (FY27)</span><span class="capex-val">Rs.520 L</span></div>
+    <div class="capex-item"><span>Incremental EBITDA (FY27)</span><span class="capex-val">Rs.72 L</span></div>
+    <div class="capex-item"><span>EBITDA Margin (Incremental)</span><span class="capex-val">13.8%</span></div>
+    <div class="capex-item"><span>Project Payback Period</span><span class="capex-val">5.8 Years</span></div>
+    <div class="capex-item"><span>Project IRR (10-Year)</span><span class="capex-val">22.4%</span></div>
+    <div class="capex-item"><span>Break-even Utilisation</span><span class="capex-val">62% capacity</span></div>
+    <div class="capex-item"><span>Current Order Coverage</span><span class="capex-val">78% capacity</span></div>
+  </div>
+</div>
+<p class="para" style="font-size:11.5px;background:var(--orange-light);border:1px solid var(--orange-mid);padding:10px 12px;"><strong>FinsightOne Note:</strong> Ring frame machines sourced from Lakshmi Machine Works (Coimbatore) — established domestic OEM with 3-year service warranty. Equipment quotation dated within 90 days. Existing order book of Rs.420 Lakhs (3 institutional buyers — export house, hosiery manufacturer, state handloom cooperative) already committed against incremental capacity at 78% utilisation. The capex does not rely on speculative demand — existing buyers have signed purchase commitments (copies enclosed).</p>
+
+<!-- GAP CARDS -->
+<div class="sec-hd">
+  <div class="sec-hd-num">Section 05</div>
+  <div class="sec-hd-title">CMA Gap Analysis — Identified Issues &amp; FinsightOne Positions</div>
+</div>
+
+<!-- GAP 1 -->
+<div class="gap-card">
+  <div class="gap-header">
+    <div class="gap-title">Gap 01 — FY26 DSCR Trough (1.61x) — Mid-Capex Debt Service Peak</div>
+    <div class="gap-sev sev-h">High</div>
+  </div>
+  <div class="gap-body">
+    <div class="gap-section">
+      <div class="gap-section-label obs-label">Observation</div>
+      <p>In FY26, the company will service both the existing TL (Rs.72L annual, final year) and the proposed TL (Rs.108L annual, commencing year). Combined debt service of Rs.180L against projected cash accruals of Rs.318L gives DSCR of 1.61x — below the 2.0x threshold preferred for project lending above Rs.10 Cr. This trough is mechanically inevitable and is not a deterioration in business performance.</p>
+    </div>
+    <div class="gap-section">
+      <div class="gap-section-label ctx-label">Context</div>
+      <p>FY26 is the final year of the existing TL (Rs.72L repayment) coinciding with the first full year of the proposed TL (Rs.108L repayment). Revenue from the new capacity begins only in Q2 FY26 (equipment delivery + commissioning: ~6 months from sanction). The revenue ramp from the incremental capacity — Rs.520L incremental turnover — contributes only partially in FY26 but fully from FY27. The DSCR trough is a timing overlap, not a capability deficit.</p>
+    </div>
+  </div>
+  <div class="gap-body" style="border-top:1px solid var(--border);">
+    <div class="gap-section">
+      <div class="gap-section-label mit-label">Mitigant</div>
+      <p>FinsightOne proposes a 6-month principal moratorium on the proposed TL to avoid FY26 overlap. With moratorium: FY26 debt service = Rs.72L (existing TL only) + Rs.54L (interest only on new TL) = Rs.126L. FY26 DSCR with moratorium = 2.52x — comfortably above threshold. From FY27, existing TL discharged; new TL only = Rs.108L. FY27 DSCR projected 3.41x. Moratorium interest cost is modest (~Rs.27L total) and improves credit quality substantially.</p>
+    </div>
+    <div class="gap-section">
+      <div class="gap-section-label fo-label">FinsightOne View</div>
+      <p><strong>Resolvable via moratorium structure.</strong> FinsightOne has structured the repayment schedule with a 6-month principal moratorium as the proposed term — not as a workaround but as the appropriate structure for any capex loan with 6-month commissioning lead time. This is standard practice for project term loans. With moratorium, FY26 DSCR exceeds 2.0x and the gap disappears entirely.</p>
+    </div>
+  </div>
+</div>
+
+<!-- GAP 2 -->
+<div class="gap-card">
+  <div class="gap-header">
+    <div class="gap-title">Gap 02 — Group TOL/TNW 3.12x — Elevated Consolidated Leverage</div>
+    <div class="gap-sev sev-m">Medium</div>
+  </div>
+  <div class="gap-body">
+    <div class="gap-section">
+      <div class="gap-section-label obs-label">Observation</div>
+      <p>Consolidated group TOL/TNW of 3.12x exceeds the 3.0x threshold applied by most public sector banks for term lending above Rs.10 Cr. This arises because the partnership and proprietorship entities carry higher leverage ratios (4.2x and 3.8x respectively) relative to the lead entity (2.58x) — pulling up the consolidated ratio.</p>
+    </div>
+    <div class="gap-section">
+      <div class="gap-section-label ctx-label">Context</div>
+      <p>The partnership (Kalyani Weavers) and proprietorship (Kalyani Exports) are capital-light businesses — weaving and export commission. Their balance sheets carry minimal fixed assets with working capital funded through bank CC. The high TOL/TNW in these entities reflects WC-intensive business models, not structural over-leverage. Their debt is 100% self-liquidating WC CC — no long-term debt, no project loans, no unsecured borrowing.</p>
+    </div>
+  </div>
+  <div class="gap-body" style="border-top:1px solid var(--border);">
+    <div class="gap-section">
+      <div class="gap-section-label mit-label">Mitigant</div>
+      <p>Lead entity standalone TOL/TNW of 2.58x is within threshold. FinsightOne's approach: (a) present lead entity CMA as the primary credit story, (b) disclose group entities as co-obligants with cross-guarantees (not co-borrowers), (c) show that group entities carry zero long-term debt — their contribution to consolidated TOL is exclusively WC CC which is self-liquidating. Lender exposure is to lead entity; group exposure is disclosed as contingent.</p>
+    </div>
+    <div class="gap-section">
+      <div class="gap-section-label fo-label">FinsightOne View</div>
+      <p><strong>Manageable with correct entity structuring.</strong> The loan application is structured on lead entity standalone financials. Group entities are disclosed as related parties with guarantees — a transparency measure, not a red flag. Lenders evaluating the lead entity will see 2.58x TOL/TNW (declining trend). The consolidated 3.12x is a mathematical artefact of aggregating WC-funded capital-light businesses — not a signal of group-level over-indebtedness.</p>
+    </div>
+  </div>
+</div>
+
+<!-- GAP 3 -->
+<div class="gap-card">
+  <div class="gap-header">
+    <div class="gap-title">Gap 03 — Debtor Days 58 — Moderate Receivables in Export-Adjacent Business</div>
+    <div class="gap-sev sev-l">Low</div>
+  </div>
+  <div class="gap-body">
+    <div class="gap-section">
+      <div class="gap-section-label obs-label">Observation</div>
+      <p>Debtor days of 58 (FY25), while improving year-on-year (68→62→58), is on the higher end of the range for a domestic textile manufacturer. Some lenders set a 45-day debtor ceiling for manufacturing credit without specific justification — this profile exceeds that ceiling.</p>
+    </div>
+    <div class="gap-section">
+      <div class="gap-section-label ctx-label">Context</div>
+      <p>The company's top-3 buyers are: an export house (net-60 terms standard in export trade), a state handloom cooperative (government procurement, inherent payment cycle lag), and a hosiery manufacturer (established 7-year relationship, occasional 45–75 day settlements). None of these are high-risk debtors — the extended debtor days reflect buyer profile, not collection risk. Debtor days are improving 10 days/year — directionally correct.</p>
+    </div>
+  </div>
+  <div class="gap-body" style="border-top:1px solid var(--border);">
+    <div class="gap-section">
+      <div class="gap-section-label mit-label">Mitigant</div>
+      <p>Ageing analysis (annexure): 100% of debtors are within 90 days; zero beyond 120 days; zero disputed. Top-3 debtors represent 72% of total debtors — all with documented purchase agreements and 7+ year payment history. No bad debts written off in 5 years. CIBIL commercial report on top-3 buyers enclosed — all investment-grade. FinsightOne has proposed debtor assignment as a structural enhancement to the CC facility.</p>
+    </div>
+    <div class="gap-section">
+      <div class="gap-section-label fo-label">FinsightOne View</div>
+      <p><strong>Low-risk gap with improving trend.</strong> 58-day debtors with zero overdue, zero write-offs, and improving annual trajectory is a very low-risk receivables position. The buyer profile (export house + state cooperative + established hoisery manufacturer) justifies the extended terms. This gap is fully documented and is expected to close to 48 days by FY27 per projection — which will be within most lender thresholds without any structural change.</p>
+    </div>
+  </div>
+</div>
+
+<!-- DSCR WATERFALL -->
+<div class="sec-hd">
+  <div class="sec-hd-num">Section 06</div>
+  <div class="sec-hd-title">DSCR Waterfall — With and Without Moratorium</div>
+</div>
+<table class="data-t">
+  <tr><th>Scenario</th><th>FY25 (Pre-Loan)</th><th>FY26 (Without Moratorium)</th><th>FY26 (With 6M Moratorium)</th><th>FY27 (Post-Stabilisation)</th></tr>
+  <tr><td>Cash Accruals (Rs. L)</td><td>256</td><td>318</td><td>318</td><td>368</td></tr>
+  <tr><td>Existing TL Repayment (Rs. L)</td><td>72</td><td>72</td><td>72</td><td>0</td></tr>
+  <tr><td>New TL Repayment (Rs. L)</td><td>—</td><td>108</td><td>54 (interest only)</td><td>108</td></tr>
+  <tr><td>Total Debt Service (Rs. L)</td><td>121</td><td>180</td><td>126</td><td>108</td></tr>
+  <tr style="background:var(--red-light);"><td>DSCR Without Moratorium</td><td>2.12x</td><td class="flag-r">1.61x ⚠</td><td>—</td><td>3.41x</td></tr>
+  <tr style="background:var(--green-light);"><td>DSCR With 6M Moratorium</td><td>2.12x</td><td class="flag-g">2.52x ✓</td><td class="flag-g">2.52x ✓</td><td class="flag-g">3.41x ✓</td></tr>
+</table>
+<p class="para" style="font-size:11.5px;background:var(--green-light);border:1px solid var(--green);padding:10px 12px;"><strong>Proposed structure: 6-month principal moratorium on new TL.</strong> With moratorium, DSCR remains above 2.0x in all years. FinsightOne has included this as the proposed repayment structure — not a contingency plan. The moratorium is commercially standard for any TL with commissioning period and adds minimal cost (Rs.27L over 6 months) while materially improving the credit story.</p>
+
+<!-- OVERALL -->
+<div class="overall-box">
+  <div class="ob-title">Overall CMA Assessment — FinsightOne Position</div>
+  <div class="ob-body">This is a complex but fundamentally strong credit profile. The group's <strong>16-year operating history, Rs.4,440 Lakh consolidated turnover, consistent EBITDA margins of 13–14%, and clean CIBIL across promoters and entities</strong> form a solid credit foundation. Three gaps identified: DSCR trough (resolved via moratorium structure), consolidated TOL/TNW (resolved via entity structuring), and debtor days (resolved via ageing analysis + buyer credit quality). <strong>All three gaps are addressed. FinsightOne's assessment: approvable with 6-month moratorium and lead entity application structure. Recommended lender tier: Mid-size PSU banks (Union Bank, Bank of Baroda) or private banks with textile vertical (Axis Bank, ICICI Commercial).</strong></div>
+</div>
+
+</div><!-- /body -->
+
+<div class="footer">
+  <div class="footer-brand">Finsight<span>One</span></div>
+  <div class="footer-disc">This report is prepared by FinsightOne Financial Advisory LLP on behalf of the borrower for submission to financial institutions. Client name and identifying details are redacted in this sample. All financial data is illustrative for demonstration purposes only. finsightone.co</div>
+</div>
+
+</div><!-- /page -->
+</body>
+</html>
