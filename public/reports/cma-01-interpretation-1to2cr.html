@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CMA Interpretation Report — FinsightOne</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Source+Sans+3:wght@300;400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0A1929;--navy-light:#1A3357;--orange:#F97316;--orange-light:#FFF7ED;--orange-mid:#FED7AA;--border:#C8D6E0;--bg:#F2F6FA;--white:#FFFFFF;--green:#1A6B3A;--green-light:#EEF8F2;--amber:#8A5200;--amber-light:#FFF8EC;--red:#8B1A1A;--red-light:#FDF3F3;--muted:#7A8FA6;--text-primary:#0A1929;--text-body:#2E3F52;--text-sub:#5A6E82;--rule:#B8C8D4;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"Source Sans 3",sans-serif;background:#D8E2EC;color:var(--text-primary);font-size:13px;line-height:1.6;}
+body::before{content:"SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE";position:fixed;top:-50%;left:-50%;width:200%;height:200%;font-size:17px;font-weight:700;color:rgba(10,25,41,0.038);letter-spacing:4px;transform:rotate(-35deg);word-spacing:38px;line-height:5;z-index:1000;pointer-events:none;white-space:pre-wrap;text-align:center;}
+.page{max-width:920px;margin:0 auto;background:var(--white);box-shadow:0 4px 32px rgba(0,0,0,0.1);}
+.lh-top{background:var(--navy);padding:20px 48px 16px;display:flex;align-items:flex-start;justify-content:space-between;}
+.brand-name{font-family:"Merriweather",serif;font-size:22px;color:var(--white);margin-bottom:3px;}
+.brand-name span{color:var(--orange);}
+.brand-tagline{font-size:10px;color:rgba(255,255,255,0.45);letter-spacing:2.5px;text-transform:uppercase;font-weight:600;}
+.lh-right{display:flex;flex-direction:column;align-items:flex-end;gap:5px;}
+.badge{font-size:9.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:2px;}
+.badge-price{background:var(--orange);color:var(--white);}
+.badge-sample{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.45);border:1px solid rgba(255,255,255,0.12);}
+.lh-band{background:var(--orange);padding:7px 48px;display:flex;align-items:center;justify-content:space-between;}
+.lhb-l{font-family:"Merriweather",serif;font-size:13px;color:var(--white);font-weight:700;}
+.lhb-r{font-size:11px;color:rgba(255,255,255,0.85);font-weight:600;}
+.ref-wrap{padding:16px 48px 0;}
+.ref-table{width:100%;border-collapse:collapse;margin-bottom:16px;}
+.ref-table td{padding:5px 12px 5px 0;font-size:12px;vertical-align:top;}
+.ref-table td:nth-child(odd){color:var(--text-sub);font-weight:600;width:160px;}
+.ref-table td:nth-child(even){color:var(--text-primary);border-bottom:1px solid var(--border);padding-right:32px;}
+.blurred{filter:blur(4.5px);user-select:none;pointer-events:none;}
+.divider{height:1px;background:var(--rule);margin:0 48px 16px;}
+.body{padding:0 48px 40px;}
+
+/* HEALTH DASHBOARD */
+.health-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--border);margin-bottom:0;}
+.hg-item{padding:12px 10px;border-right:1px solid var(--border);text-align:center;}
+.hg-item:last-child{border-right:none;}
+.hg-label{font-size:9.5px;color:var(--text-sub);letter-spacing:0.5px;text-transform:uppercase;font-weight:600;margin-bottom:6px;}
+.hg-val{font-family:"Source Code Pro",monospace;font-size:16px;font-weight:700;margin-bottom:4px;}
+.hg-tag{font-size:9px;font-weight:700;padding:2px 7px;border-radius:10px;letter-spacing:0.5px;}
+.rag-g{background:var(--green-light);color:var(--green);}
+.rag-a{background:var(--amber-light);color:var(--amber);}
+.rag-r{background:var(--red-light);color:var(--red);}
+.rag-g-val{color:var(--green);}
+.rag-a-val{color:var(--amber);}
+.rag-r-val{color:var(--red);}
+
+/* GAP CARDS */
+.gap-card{border:1px solid var(--border);margin-bottom:16px;border-radius:2px;}
+.gap-header{background:var(--navy);padding:10px 14px;display:flex;align-items:center;justify-content:space-between;}
+.gap-title{font-size:13px;font-weight:700;color:var(--white);}
+.gap-sev{font-size:9.5px;font-weight:700;padding:2px 8px;border-radius:2px;letter-spacing:1px;text-transform:uppercase;}
+.sev-h{background:#7F1D1D;color:#FCA5A5;}
+.sev-m{background:#78350F;color:#FCD34D;}
+.sev-l{background:#14532D;color:#86EFAC;}
+.gap-body{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+.gap-section{padding:12px 14px;border-bottom:1px solid var(--border);}
+.gap-section:nth-child(odd){border-right:1px solid var(--border);}
+.gap-section-label{font-size:9.5px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+.obs-label{color:var(--red);}
+.ctx-label{color:var(--amber);}
+.mit-label{color:var(--green);}
+.fo-label{color:var(--orange);}
+.gap-section p{font-size:12px;color:var(--text-body);line-height:1.65;}
+.gap-section p strong{color:var(--text-primary);}
+.gap-full{padding:12px 14px;border-top:0;}
+.gap-full p{font-size:12px;color:var(--text-body);line-height:1.65;}
+.gap-full p strong{color:var(--text-primary);}
+
+/* INCOME CONSISTENCY */
+.ica-t{width:100%;border-collapse:collapse;}
+.ica-t th{background:var(--navy-light);color:var(--white);font-size:10.5px;font-weight:700;padding:7px 10px;text-align:right;letter-spacing:0.5px;}
+.ica-t th:first-child{text-align:left;}
+.ica-t td{padding:7px 10px;font-size:12px;border-bottom:1px solid #EEF2F6;text-align:right;font-family:"Source Code Pro",monospace;}
+.ica-t td:first-child{font-family:"Source Sans 3",sans-serif;font-weight:600;color:var(--text-primary);text-align:left;}
+.ica-t tr:nth-child(even) td{background:#FAFBFC;}
+.ica-t .gap-flag{color:var(--red);font-weight:700;}
+.ica-t .ok-flag{color:var(--green);font-weight:700;}
+.ica-t .warn-flag{color:var(--amber);font-weight:700;}
+.ica-t .tot td{background:var(--navy);color:var(--white);font-weight:700;}
+
+/* WC CYCLE */
+.wc-t{width:100%;border-collapse:collapse;}
+.wc-t th{background:var(--navy-light);color:var(--white);font-size:10.5px;font-weight:700;padding:7px 10px;text-align:right;letter-spacing:0.5px;}
+.wc-t th:first-child{text-align:left;}
+.wc-t td{padding:7px 10px;font-size:12px;border-bottom:1px solid #EEF2F6;text-align:right;font-family:"Source Code Pro",monospace;}
+.wc-t td:first-child{font-family:"Source Sans 3",sans-serif;font-weight:600;color:var(--text-primary);text-align:left;}
+.wc-t tr:nth-child(even) td{background:#FAFBFC;}
+
+/* STRESS TEST */
+.stress-t{width:100%;border-collapse:collapse;}
+.stress-t th{background:var(--navy-light);color:var(--white);font-size:10.5px;font-weight:700;padding:7px 10px;text-align:center;letter-spacing:0.5px;}
+.stress-t th:first-child{text-align:left;}
+.stress-t td{padding:7px 10px;font-size:12px;border-bottom:1px solid #EEF2F6;text-align:center;font-family:"Source Code Pro",monospace;}
+.stress-t td:first-child{font-family:"Source Sans 3",sans-serif;font-weight:600;color:var(--text-primary);text-align:left;}
+.stress-t tr:nth-child(even) td{background:#FAFBFC;}
+.stress-pass{color:var(--green);font-weight:700;}
+.stress-warn{color:var(--amber);font-weight:700;}
+.stress-fail{color:var(--red);font-weight:700;}
+
+/* OVERALL VIEW */
+.ov-box{background:var(--navy);padding:16px 18px;margin-top:0;}
+.ov-tag{font-size:9.5px;color:var(--orange);letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:5px;}
+.ov-title{font-family:"Merriweather",serif;font-size:15px;color:var(--white);margin-bottom:10px;}
+.ov-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid rgba(255,255,255,0.1);margin-bottom:12px;}
+.ovi{padding:10px 14px;border-right:1px solid rgba(255,255,255,0.1);}
+.ovi:last-child{border-right:none;}
+.ovi-label{font-size:9.5px;color:rgba(255,255,255,0.4);letter-spacing:1px;text-transform:uppercase;font-weight:600;margin-bottom:4px;}
+.ovi-val{font-family:"Source Code Pro",monospace;font-size:13px;font-weight:700;}
+.ovi-val.g{color:#4ADE80;}
+.ovi-val.a{color:#FCD34D;}
+.ovi-val.r{color:#FCA5A5;}
+.ov-note{font-size:11.5px;color:rgba(255,255,255,0.55);line-height:1.6;}
+
+.sec{margin-bottom:24px;}
+.sec-head{font-family:"Merriweather",serif;font-size:12px;font-weight:700;color:var(--white);background:var(--navy);padding:7px 14px;display:flex;align-items:center;gap:10px;}
+.sec-num{font-family:"Source Code Pro",monospace;font-size:10px;color:rgba(255,255,255,0.45);font-weight:400;}
+.sec-body{border:1px solid var(--border);border-top:none;padding:14px 16px;}
+.para{font-size:12.5px;color:var(--text-body);line-height:1.7;margin-bottom:10px;}
+.para:last-child{margin-bottom:0;}
+.para strong{color:var(--text-primary);}
+.note-strip{background:var(--orange-light);border:1px solid var(--orange-mid);border-radius:3px;padding:8px 12px;font-size:11px;color:var(--text-body);margin-top:10px;}
+.note-strip strong{color:var(--orange);}
+.info-strip{background:#EEF6FF;border:1px solid #BFDBFE;border-radius:3px;padding:8px 12px;font-size:11px;color:#1E3A5F;margin-top:10px;}
+.info-strip strong{color:#1E40AF;}
+.pb{border:none;border-top:1px dashed var(--rule);margin:24px 0;}
+.pb-label{text-align:center;font-size:9.5px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin:-6px 0 20px;font-weight:700;}
+.footer{background:var(--navy);padding:12px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;border-top:3px solid var(--orange);}
+.footer-brand{font-family:"Merriweather",serif;font-size:12px;color:var(--white);}
+.footer-brand span{color:var(--orange);}
+.footer-text{font-size:10px;color:rgba(255,255,255,0.4);text-align:center;}
+.footer-right{font-size:10px;color:rgba(255,255,255,0.4);text-align:right;}
+.disclaimer{font-size:10.5px;color:var(--muted);line-height:1.6;padding:12px 0;border-top:1px solid var(--border);margin-top:16px;}
+.sub-label{font-size:11px;font-weight:700;color:var(--navy);margin:12px 0 8px;text-transform:uppercase;letter-spacing:0.5px;}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div style="border-bottom:3px solid var(--navy);">
+  <div class="lh-top">
+    <div>
+      <div class="brand-name">Finsight<span>One</span></div>
+      <div class="brand-tagline">Credit · Advisory · Intelligence</div>
+    </div>
+    <div class="lh-right">
+      <div class="badge badge-price">Rs. 4,999 + GST — CMA 1–2 Cr</div>
+      <div class="badge badge-sample">Sample Document</div>
+    </div>
+  </div>
+  <div class="lh-band">
+    <div class="lhb-l">CMA INTERPRETATION REPORT — FINANCIAL ANALYSIS WITH ADVISORY LAYER</div>
+    <div class="lhb-r">Stream 2 — CMA · 1–2 Cr Tier · Delivered with RBI CMA Excel</div>
+  </div>
+</div>
+
+<div class="ref-wrap">
+  <table class="ref-table">
+    <tr>
+      <td>Report Reference</td><td>FO-CMA-2026-0112</td>
+      <td>Date</td><td>June 2026</td>
+    </tr>
+    <tr>
+      <td>Borrower</td><td class="blurred">Saraswati Pharma Distributors</td>
+      <td>Constitution</td><td>Proprietorship</td>
+    </tr>
+    <tr>
+      <td>Activity</td><td>Wholesale pharmaceutical distribution — scheduled and OTC medicines, Indore, Madhya Pradesh</td>
+      <td>Facility</td><td>WC Cash Credit Enhancement: Rs. 45L → Rs. 1.40 Crore</td>
+    </tr>
+    <tr>
+      <td>CMA Period</td><td>FY23 (Aud.) · FY24 (Aud.) · FY25 (Prov.) · FY26–27 (Projected)</td>
+      <td>Challenges Identified</td><td>Low Banking Turnover vs ITR · High Debtor Days · Thin Margins</td>
+    </tr>
+  </table>
+</div>
+<div class="divider"></div>
+
+<div class="body">
+
+<!-- SECTION 1: HEALTH DASHBOARD -->
+<div class="sec">
+  <div class="sec-head"><span class="sec-num">01</span> FINANCIAL HEALTH SNAPSHOT — RAG DASHBOARD</div>
+  <div class="sec-body">
+    <div class="health-grid">
+      <div class="hg-item">
+        <div class="hg-label">Current Ratio</div>
+        <div class="hg-val rag-a-val">1.18x</div>
+        <div class="hg-tag rag-a">WATCH</div>
+      </div>
+      <div class="hg-item">
+        <div class="hg-label">DSCR (Post CC)</div>
+        <div class="hg-val rag-g-val">2.84x</div>
+        <div class="hg-tag rag-g">STRONG</div>
+      </div>
+      <div class="hg-item">
+        <div class="hg-label">TOL / TNW</div>
+        <div class="hg-val rag-g-val">1.42x</div>
+        <div class="hg-tag rag-g">NORMAL</div>
+      </div>
+      <div class="hg-item">
+        <div class="hg-label">Debtor Days</div>
+        <div class="hg-val rag-a-val">62 Days</div>
+        <div class="hg-tag rag-a">WATCH</div>
+      </div>
+      <div class="hg-item">
+        <div class="hg-label">Banking vs ITR</div>
+        <div class="hg-val rag-r-val">0.72x</div>
+        <div class="hg-tag rag-r">GAP — SEE NOTE</div>
+      </div>
+    </div>
+    <div class="note-strip" style="margin-top:10px;"><strong>How to read this dashboard:</strong> GREEN = comfortable, no action needed. AMBER = requires monitoring or explanation. RED = a gap that must be addressed in the file — explanation and mitigant provided in the Gaps section below. This dashboard is designed for RM/DSA reference and for banker's initial assessment.</div>
+  </div>
+</div>
+
+<!-- SECTION 2: INCOME CONSISTENCY AUDIT -->
+<div class="sec">
+  <div class="sec-head"><span class="sec-num">02</span> INCOME CONSISTENCY AUDIT — ITR vs GST vs BANKING</div>
+  <div class="sec-body">
+    <div class="para">The income consistency audit compares three independent data sources — ITR (declared income), GST GSTR-1 (sales declared to tax authorities), and banking (actual credits in current account). Significant divergences between these three are the most common reason for loan rejections or credit committee queries. FinsightOne identifies and explains all divergences here.</div>
+    <table class="ica-t" style="margin-top:12px;">
+      <thead>
+        <tr><th>Metric</th><th>FY 2022–23</th><th>FY 2023–24</th><th>FY 2024–25</th><th>Variance Direction</th><th>Assessment</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>ITR — Gross Sales (Rs. Lakhs)</td><td>824.00</td><td>968.00</td><td>1,124.00</td><td class="ok-flag">↑ Consistent growth</td><td class="ok-flag">✓ Clean</td></tr>
+        <tr><td>GST GSTR-1 — Taxable Turnover</td><td>812.40</td><td>952.00</td><td>1,108.00</td><td class="warn-flag">ITR slightly higher</td><td class="warn-flag">⚠ See Note 1</td></tr>
+        <tr><td>Banking Turnover (CC + CA Credits)</td><td>592.00</td><td>698.00</td><td>808.00</td><td class="gap-flag">Significantly lower than ITR</td><td class="gap-flag">⚠ GAP — See Note 2</td></tr>
+        <tr><td>Banking / ITR Ratio</td><td>0.719x</td><td>0.721x</td><td>0.719x</td><td class="gap-flag">Consistently ~72%</td><td class="gap-flag">⚠ See Note 2</td></tr>
+        <tr><td>GST / ITR Ratio</td><td>0.986x</td><td>0.983x</td><td>0.986x</td><td class="ok-flag">Near-perfect alignment</td><td class="ok-flag">✓ No gap</td></tr>
+      </tbody>
+    </table>
+    <div style="margin-top:14px;">
+      <div class="sub-label">Note 1 — ITR vs GST Minor Divergence (Rs. 11–16 Lakhs)</div>
+      <div class="para">The small divergence between ITR gross sales and GST taxable turnover is attributable to: (a) medicines under Schedule H and H1 are exempt from GST — these are included in ITR sales but do not appear in GSTR-1 taxable turnover; (b) credit notes and returns post-period which adjust GST filings but not ITR. This is a standard feature of pharmaceutical distribution. FinsightOne View: <strong>No concern.</strong></div>
+      <div class="sub-label">Note 2 — Banking Turnover 72% of ITR (KEY GAP)</div>
+      <div class="para">The banking/ITR ratio of 0.719x — consistent across 3 years — is the primary gap in this file. <strong>Observation:</strong> Banking credits are approximately 28% lower than ITR-declared sales. <strong>Context:</strong> Pharmaceutical distribution involves payment by retailers in mixed modes — approximately 60% RTGS/NEFT (captured in banking), 28% post-dated cheques deposited in personal savings account (not in business CC), and 12% cash (declared in ITR, not banking). This is sector-standard for Tier-2 distributor collections. <strong>Mitigant:</strong> Borrower has agreed to migrate 100% of collections to the CC account going forward as a condition of enhancement. GST/ITR alignment at 98.6% confirms there is no undeclared income — the gap is a collections routing issue, not an income fabrication issue. <strong>FinsightOne View:</strong> Acceptable with collection routing undertaking. GST alignment provides the critical income verification that banking alone cannot provide here.</div>
+    </div>
+  </div>
+</div>
+
+<hr class="pb">
+<div class="pb-label">— Page 2 of 3 —</div>
+
+<!-- SECTION 3: WC CYCLE -->
+<div class="sec">
+  <div class="sec-head"><span class="sec-num">03</span> WORKING CAPITAL CYCLE ANALYSIS</div>
+  <div class="sec-body">
+    <table class="wc-t">
+      <thead>
+        <tr><th>WC Metric</th><th>FY 2022–23</th><th>FY 2023–24</th><th>FY 2024–25</th><th>Industry Norm</th><th>Trend</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Debtor Days</td><td class="warn-flag">68 days</td><td class="warn-flag">65 days</td><td class="warn-flag">62 days</td><td>30–60 days</td><td class="ok-flag">↓ Improving</td></tr>
+        <tr><td>Creditor Days (Pharma Companies)</td><td>42 days</td><td>44 days</td><td>46 days</td><td>30–60 days</td><td>↑ Stretching slightly</td></tr>
+        <tr><td>Inventory Days</td><td>24 days</td><td>22 days</td><td>20 days</td><td>15–30 days</td><td class="ok-flag">↓ Efficient</td></tr>
+        <tr><td>Operating Cycle (Debtors + Inventory)</td><td>92 days</td><td>87 days</td><td>82 days</td><td>45–90 days</td><td class="ok-flag">↓ Improving</td></tr>
+        <tr><td>Net WC Cycle (Op. Cycle - Creditors)</td><td>50 days</td><td>43 days</td><td>36 days</td><td>15–60 days</td><td class="ok-flag">↓ Strong improvement</td></tr>
+        <tr><td>WC Required (Net Cycle × Daily Sales)</td><td>Rs. 113L</td><td>Rs. 114L</td><td>Rs. 111L</td><td>—</td><td>Stable</td></tr>
+        <tr><td>CC Proposed</td><td>—</td><td>—</td><td>Rs. 140L</td><td>—</td><td class="ok-flag">26% headroom over requirement</td></tr>
+      </tbody>
+    </table>
+    <div class="note-strip" style="margin-top:10px;"><strong>On Debtor Days (62 days — above norm):</strong> Pharma retail credit in Tier-2/3 markets runs at 45–75 days routinely. The borrower's 62-day debtor reflects a mix of: CFA (C&F Agent) clients at 30 days, retail chemist chains at 45–60 days, and independent pharmacies at 60–90 days. The 3-year improving trend (68→62 days) demonstrates active collection management. The proposed CC limit has been sized to accommodate the 62-day cycle with buffer. FinsightOne considers this manageable within proposed limits.</div>
+  </div>
+</div>
+
+<!-- SECTION 4: REPAYMENT CAPACITY + STRESS TEST -->
+<div class="sec">
+  <div class="sec-head"><span class="sec-num">04</span> REPAYMENT CAPACITY — DSCR & STRESS TEST</div>
+  <div class="sec-body">
+    <div class="para">For a WC CC facility, DSCR measures the borrower's ability to service interest on the CC limit from operating cash flows. The CC principal is revolving — it does not require scheduled repayment. The stress test below shows how interest coverage behaves under revenue decline scenarios.</div>
+    <div class="sub-label">Base Case Repayment Capacity</div>
+    <table class="wc-t" style="margin-bottom:14px;">
+      <thead>
+        <tr><th>Particulars (Rs. Lakhs)</th><th>FY 2022–23</th><th>FY 2023–24</th><th>FY 2024–25</th><th>FY 2025–26 (Proj.)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Net Sales</td><td>824.00</td><td>968.00</td><td>1,124.00</td><td>1,300.00</td></tr>
+        <tr><td>Gross Margin (8.5%)</td><td>70.04</td><td>82.28</td><td>95.54</td><td>110.50</td></tr>
+        <tr><td>Operating Expenses</td><td>38.00</td><td>44.00</td><td>52.00</td><td>60.00</td></tr>
+        <tr><td>EBITDA</td><td>32.04</td><td>38.28</td><td>43.54</td><td>50.50</td></tr>
+        <tr><td>CC Interest @ 10% on Rs. 1.40 Cr</td><td>—</td><td>—</td><td>—</td><td>14.00</td></tr>
+        <tr><td>EBITDA / CC Interest (ICR)</td><td>—</td><td>—</td><td>—</td><td class="ok-flag">3.61x</td></tr>
+        <tr><td>Cash Accruals (PAT + Dep.)</td><td>22.80</td><td>27.40</td><td>31.80</td><td>36.50</td></tr>
+        <tr><td>Cash Accruals / CC Interest</td><td>—</td><td>—</td><td>—</td><td class="ok-flag">2.61x</td></tr>
+      </tbody>
+    </table>
+    <div class="sub-label">Stress Test — Revenue Decline Scenarios</div>
+    <table class="stress-t">
+      <thead>
+        <tr><th>Scenario</th><th>Revenue (Rs. L)</th><th>EBITDA (Rs. L)</th><th>CC Interest (Rs. L)</th><th>ICR</th><th>Verdict</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Base Case (FY26 Projected)</td><td>1,300</td><td>50.50</td><td>14.00</td><td class="stress-pass">3.61x</td><td class="stress-pass">✓ Comfortable</td></tr>
+        <tr><td>Stress -10% Revenue</td><td>1,170</td><td>39.45</td><td>14.00</td><td class="stress-pass">2.82x</td><td class="stress-pass">✓ Comfortable</td></tr>
+        <tr><td>Stress -20% Revenue</td><td>1,040</td><td>28.40</td><td>14.00</td><td class="stress-warn">2.03x</td><td class="stress-warn">⚠ Manageable</td></tr>
+        <tr><td>Stress -30% Revenue (Severe)</td><td>910</td><td>17.35</td><td>14.00</td><td class="stress-warn">1.24x</td><td class="stress-warn">⚠ Thin — Acceptable</td></tr>
+        <tr><td>Break-even (Covers CC Interest)</td><td>764</td><td>14.00</td><td>14.00</td><td>1.00x</td><td class="stress-fail">Revenue needs to drop 41% to break-even</td></tr>
+      </tbody>
+    </table>
+    <div class="note-strip" style="margin-top:10px;"><strong>Stress Test Summary:</strong> The borrower needs a 41% revenue decline before CC interest becomes uncoverable. In a stable essential commodity like pharmaceuticals — where demand is inelastic and the borrower has held 14% market share in Indore pharma distribution for 6 years — a 41% revenue decline is an extreme tail scenario. FinsightOne considers repayment capacity strong.</div>
+  </div>
+</div>
+
+<!-- SECTION 5: GAPS ADDRESSED -->
+<div class="sec">
+  <div class="sec-head"><span class="sec-num">05</span> GAPS & WEAKNESSES — IDENTIFIED, CONTEXTUALISED, MITIGATED</div>
+  <div class="sec-body">
+
+    <div class="gap-card">
+      <div class="gap-header">
+        <div class="gap-title">GAP 1 — Banking Turnover at 72% of ITR (Consistent 3-Year Pattern)</div>
+        <div class="gap-sev sev-h">High Priority</div>
+      </div>
+      <div class="gap-body">
+        <div class="gap-section">
+          <div class="gap-section-label obs-label">OBSERVATION</div>
+          <p>Banking credits in CC + CA account total Rs. 808 Lakhs in FY25 against ITR-declared sales of Rs. 1,124 Lakhs. The shortfall of Rs. 316 Lakhs (28%) has been consistent at ~28% across all three audited years — ruling out a one-time anomaly.</p>
+        </div>
+        <div class="gap-section">
+          <div class="gap-section-label ctx-label">CONTEXT</div>
+          <p>Pharmaceutical retail collections in Tier-2 India routinely involve post-dated cheques deposited in the proprietor's personal savings account (a common practice among smaller distributors) and cash collections for smaller pharmacies. Neither route reflects in the CC account. The GST/ITR alignment at 98.6% rules out income fabrication — the sales are real and declared to tax authorities; only the collection route differs.</p>
+        </div>
+        <div class="gap-section">
+          <div class="gap-section-label mit-label">MITIGANT</div>
+          <p><strong>Structural fix proposed:</strong> (1) Borrower to provide undertaking to route 100% collections through CC account within 90 days of enhancement. (2) Bank to verify personal savings account statements for FY25 — expected to show Rs. 280–320 Lakhs credits matching the gap. (3) Future renewal to be conditioned on banking turnover reaching 90%+ of GST turnover.</p>
+        </div>
+        <div class="gap-section">
+          <div class="gap-section-label fo-label">FINSIGHTONE VIEW</div>
+          <p><strong>Acceptable with routing undertaking.</strong> This is a documentation and banking behaviour issue, not an income fabrication issue. GST provides the independent income verification that banking alone cannot provide in this case. Residual risk: <span style="color:var(--amber);font-weight:700;">MEDIUM → LOW</span> with undertaking.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="gap-card">
+      <div class="gap-header">
+        <div class="gap-title">GAP 2 — Debtor Days at 62 Days (Above 30–45 Day Trading Norm)</div>
+        <div class="gap-sev sev-m">Medium Priority</div>
+      </div>
+      <div class="gap-body">
+        <div class="gap-section">
+          <div class="gap-section-label obs-label">OBSERVATION</div>
+          <p>Debtor days of 62 days are above the 30–45 day norm expected for trading businesses. Outstanding debtors at Rs. 190.8 Lakhs represent 17% of annual revenue — a significant proportion of current assets tied up in receivables.</p>
+        </div>
+        <div class="gap-section">
+          <div class="gap-section-label ctx-label">CONTEXT</div>
+          <p>Pharmaceutical distribution to independent pharmacies (which constitute 65% of this borrower's client base) consistently runs at 45–75 days in Tier-2 markets. This is a sector characteristic. The borrower's top 20 clients account for 62% of revenue — all are established pharmacies with 3–8 year relationships and no default history.</p>
+        </div>
+        <div class="gap-section">
+          <div class="gap-section-label mit-label">MITIGANT</div>
+          <p>Debtor ageing statement enclosed — zero debtors beyond 90 days. Zero bad debt write-off in the last 3 years. CC sizing has been calibrated to the 62-day cycle with 26% headroom (CC Rs. 140L vs WC requirement Rs. 111L). Improving trend (68→62 days) demonstrates active collection management.</p>
+        </div>
+        <div class="gap-section">
+          <div class="gap-section-label fo-label">FINSIGHTONE VIEW</div>
+          <p><strong>Acceptable — within sector norm for this client mix.</strong> The combination of zero bad debts, improving trend, and CC sized to cover the cycle makes this a monitored parameter, not a disqualifying concern. Residual risk: <span style="color:var(--green);font-weight:700;">LOW</span>.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="gap-card">
+      <div class="gap-header">
+        <div class="gap-title">GAP 3 — Thin EBITDA Margin (3.87% on Sales)</div>
+        <div class="gap-sev sev-l">Low Priority</div>
+      </div>
+      <div class="gap-body">
+        <div class="gap-section">
+          <div class="gap-section-label obs-label">OBSERVATION</div>
+          <p>EBITDA margin of 3.87% on net sales is thin. A revenue decline of 41% is required to break even on CC interest — indicating low margin of safety relative to revenue volatility.</p>
+        </div>
+        <div class="gap-section">
+          <div class="gap-section-label ctx-label">CONTEXT</div>
+          <p>Pharmaceutical distribution margins in India range from 6–10% gross margin with 3–5% EBITDA — this borrower's margins are within sector norms. The absolute EBITDA of Rs. 43.54 Lakhs in FY25 is sufficient for business needs. Pharma distribution revenue is highly resilient — essential medicine demand is inelastic and volumes are stable regardless of economic cycles.</p>
+        </div>
+        <div class="gap-section">
+          <div class="gap-section-label mit-label">MITIGANT</div>
+          <p>Revenue resilience of pharma distribution mitigates the margin thinness. 6-year track record with zero revenue decline in any year. CC interest coverage of 3.61x in base case provides 2.61x downside before debt service is threatened. The business has never had a year where EBITDA did not cover its debt obligations.</p>
+        </div>
+        <div class="gap-section">
+          <div class="gap-section-label fo-label">FINSIGHTONE VIEW</div>
+          <p><strong>No concern at this loan size.</strong> Thin margins are sector-standard. The relevant risk is revenue stability — pharma distribution revenue is among the most stable revenue streams in MSME lending. Residual risk: <span style="color:var(--green);font-weight:700;">LOW</span>.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<hr class="pb">
+<div class="pb-label">— Page 3 of 3 —</div>
+
+<!-- SECTION 6: OVERALL VIEW -->
+<div class="sec">
+  <div class="sec-head"><span class="sec-num">06</span> FINSIGHTONE OVERALL VIEW & PROPOSAL READINESS</div>
+  <div class="sec-body">
+    <div class="para">The borrower is a 6-year pharmaceutical distributor in Indore with consistent revenue growth (824→1,124 Lakhs over 3 years), zero bad debts, an improving working capital cycle, and a DSCR of 2.84x post-enhancement. The three gaps identified in this report — banking vs ITR divergence, elevated debtor days, thin margins — are all explainable, mitigated, and within the norms of pharmaceutical distribution in Tier-2 India.</div>
+    <div class="para">The banking/ITR gap is the only item that requires a specific undertaking from the borrower — routing 100% of collections through the CC account. With this undertaking in place, and with the GST/ITR alignment providing independent income verification, FinsightOne considers this a well-documented, approvable file at the proposed limit of Rs. 1.40 Crore.</div>
+  </div>
+</div>
+
+<div class="ov-box">
+  <div class="ov-tag">FinsightOne CMA Interpretation — Overall View</div>
+  <div class="ov-title">Financial Assessment: Approvable — 3 Gaps Identified, All Addressed</div>
+  <div class="ov-grid">
+    <div class="ovi"><div class="ovi-label">Gaps Identified</div><div class="ovi-val a">3 Gaps</div></div>
+    <div class="ovi"><div class="ovi-label">Gaps Addressed</div><div class="ovi-val g">3 of 3</div></div>
+    <div class="ovi"><div class="ovi-label">DSCR (Post-CC)</div><div class="ovi-val g">2.84x</div></div>
+    <div class="ovi"><div class="ovi-label">Proposal Readiness</div><div class="ovi-val g">Ready to Submit</div></div>
+  </div>
+  <div class="ov-note">This CMA Interpretation Report is prepared by FinsightOne and delivered alongside the RBI CMA Excel file. Both documents together constitute FinsightOne's CMA product for the 1–2 Crore tier. The interpretation report is designed for use by the customer (to understand their own file), RM/DSA (to walk into the banker's meeting prepared), and the banker (to receive a file with pre-answered objections). FinsightOne is not a credit authority. All names and figures in this sample are fictional.</div>
+</div>
+
+<div class="disclaimer">
+  <strong>Disclaimer:</strong> This CMA Interpretation Report is prepared by FinsightOne based on information furnished by the borrower. FinsightOne does not independently audit financial statements. This report does not constitute a guarantee of sanction. All names, figures and details are fictional and for illustration only.
+</div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-brand">Finsight<span>One</span></div>
+  <div class="footer-text">CMA Interpretation Report + RBI Excel · finsightone.co · Credit · Advisory · Intelligence<br><span style="font-size:9px;opacity:0.6;">Sample — all data fictional</span></div>
+  <div class="footer-right">Ref: FO-CMA-2026-0112<br>Pages 1–3 of 3</div>
+</div>
+
+</div>
+</body>
+</html>
