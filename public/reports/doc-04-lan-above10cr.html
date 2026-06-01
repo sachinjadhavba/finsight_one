@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loan Appraisal Note — FinsightOne</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Source+Sans+3:wght@300;400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0A1929;--navy-mid:#112240;--navy-light:#1A3357;
+  --orange:#F97316;--orange-light:#FFF7ED;--orange-mid:#FED7AA;
+  --slate:#3D5166;--muted:#7A8FA6;--border:#C8D6E0;--bg:#F2F6FA;--white:#FFFFFF;
+  --green:#1A6B3A;--green-light:#EEF8F2;--green-mid:#7DC99A;
+  --amber:#8A5200;--amber-light:#FFF8EC;--amber-mid:#F5C97A;
+  --red:#8B1A1A;--red-light:#FDF3F3;--red-mid:#E8A0A0;
+  --rule:#B8C8D4;--text-primary:#0A1929;--text-body:#2E3F52;--text-sub:#5A6E82;
+  --gold:#8B6914;--gold-light:#FFFBEB;--gold-mid:#F5D78E;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"Source Sans 3",sans-serif;background:#D8E2EC;color:var(--text-primary);font-size:13px;line-height:1.6;}
+body::before{content:"SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE";position:fixed;top:-50%;left:-50%;width:200%;height:200%;font-size:17px;font-weight:700;color:rgba(10,25,41,0.038);letter-spacing:4px;transform:rotate(-35deg);word-spacing:38px;line-height:5;z-index:1000;pointer-events:none;white-space:pre-wrap;text-align:center;}
+.page{max-width:920px;margin:0 auto;background:var(--white);box-shadow:0 4px 32px rgba(0,0,0,0.1);}
+.lh-top{background:var(--navy);padding:22px 48px 18px;display:flex;align-items:flex-start;justify-content:space-between;}
+.brand-name{font-family:"Merriweather",serif;font-size:24px;color:var(--white);margin-bottom:3px;}
+.brand-name span{color:var(--orange);}
+.brand-tagline{font-size:10px;color:rgba(255,255,255,0.45);letter-spacing:2.5px;text-transform:uppercase;font-weight:600;}
+.lh-right{display:flex;flex-direction:column;align-items:flex-end;gap:5px;}
+.badge{font-size:9.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:2px;}
+.badge-call{background:var(--orange);color:var(--white);}
+.badge-sample{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.45);border:1px solid rgba(255,255,255,0.12);}
+.lh-band{background:var(--orange);padding:8px 48px;display:flex;align-items:center;justify-content:space-between;}
+.lhb-l{font-family:"Merriweather",serif;font-size:14px;color:var(--white);font-weight:700;}
+.lhb-r{font-size:11px;color:rgba(255,255,255,0.8);font-weight:600;}
+.ref-wrap{padding:18px 48px 0;}
+.ref-table{width:100%;border-collapse:collapse;margin-bottom:18px;}
+.ref-table td{padding:5px 12px 5px 0;font-size:12px;vertical-align:top;}
+.ref-table td:nth-child(odd){color:var(--text-sub);font-weight:600;width:160px;}
+.ref-table td:nth-child(even){color:var(--text-primary);border-bottom:1px solid var(--border);padding-right:32px;}
+.blurred{filter:blur(4.5px);user-select:none;pointer-events:none;}
+.divider{height:1px;background:var(--rule);margin:0 48px 18px;}
+.body{padding:0 48px 40px;}
+.sec{margin-bottom:28px;}
+.sec-head{font-family:"Merriweather",serif;font-size:12.5px;font-weight:700;color:var(--white);background:var(--navy);padding:7px 14px;display:flex;align-items:center;gap:10px;}
+.sec-num{font-family:"Source Code Pro",monospace;font-size:10px;color:rgba(255,255,255,0.45);font-weight:400;}
+.sec-body{border:1px solid var(--border);border-top:none;padding:16px 18px;}
+.dt{width:100%;border-collapse:collapse;}
+.dt tr td{padding:5px 10px;font-size:12px;border-bottom:1px solid #EEF2F6;vertical-align:top;}
+.dt tr:last-child td{border-bottom:none;}
+.dt tr:nth-child(even) td{background:#FAFBFC;}
+.dl{color:var(--text-sub);font-weight:600;width:200px;}
+.dv{color:var(--text-primary);}
+.ft{width:100%;border-collapse:collapse;}
+.ft th{background:var(--navy-light);color:var(--white);font-size:10.5px;font-weight:700;padding:7px 10px;text-align:right;letter-spacing:0.5px;}
+.ft th:first-child{text-align:left;}
+.ft td{padding:6px 10px;font-size:11.5px;color:var(--text-body);border-bottom:1px solid #EEF2F6;text-align:right;font-family:"Source Code Pro",monospace;}
+.ft td:first-child{font-family:"Source Sans 3",sans-serif;font-weight:600;color:var(--text-primary);text-align:left;font-size:12px;}
+.ft tr:nth-child(even) td{background:#FAFBFC;}
+.ft .sub td{background:#EEF2F6;font-weight:700;color:var(--navy);}
+.ft .tot td{background:var(--navy);color:var(--white);font-weight:700;}
+.ft .tot td:first-child{color:var(--white);}
+.ft .ind{padding-left:22px!important;font-weight:400!important;color:var(--text-sub)!important;}
+.up{color:var(--green);font-weight:700;}
+.dn{color:var(--red);font-weight:700;}
+.na{color:var(--muted);}
+.rt{width:100%;border-collapse:collapse;}
+.rt th{background:var(--navy-light);color:var(--white);font-size:10.5px;font-weight:700;padding:7px 10px;text-align:center;letter-spacing:0.5px;}
+.rt th:first-child{text-align:left;}
+.rt td{padding:7px 10px;font-size:11.5px;border-bottom:1px solid #EEF2F6;text-align:center;font-family:"Source Code Pro",monospace;}
+.rt td:first-child{font-family:"Source Sans 3",sans-serif;font-weight:600;color:var(--text-primary);text-align:left;font-size:12px;}
+.rt tr:nth-child(even) td{background:#FAFBFC;}
+.rt .bench{font-size:10px;color:var(--text-sub);font-family:"Source Sans 3",sans-serif;}
+.r-ok{color:var(--green);font-weight:700;}
+.r-warn{color:var(--amber);font-weight:700;}
+.r-bad{color:var(--red);font-weight:700;}
+.rmx{width:100%;border-collapse:collapse;}
+.rmx th{background:var(--navy-light);color:var(--white);font-size:10.5px;font-weight:700;padding:8px 12px;text-align:left;letter-spacing:0.5px;}
+.rmx td{padding:9px 12px;font-size:12px;color:var(--text-body);border-bottom:1px solid #EEF2F6;vertical-align:top;line-height:1.5;}
+.rmx tr:nth-child(even) td{background:#FAFBFC;}
+.rmx .risk-title{font-weight:700;color:var(--text-primary);font-size:12.5px;}
+.sev-h{background:#FDF3F3;color:var(--red);font-weight:700;padding:2px 7px;border-radius:2px;font-size:10px;white-space:nowrap;}
+.sev-m{background:var(--amber-light);color:var(--amber);font-weight:700;padding:2px 7px;border-radius:2px;font-size:10px;white-space:nowrap;}
+.sev-l{background:var(--green-light);color:var(--green);font-weight:700;padding:2px 7px;border-radius:2px;font-size:10px;white-space:nowrap;}
+.str-item{display:flex;align-items:flex-start;gap:14px;padding:12px 0;border-bottom:1px solid var(--border);}
+.str-item:last-child{border-bottom:none;}
+.str-icon{font-size:20px;flex-shrink:0;width:28px;text-align:center;margin-top:2px;}
+.str-title{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px;}
+.str-body{font-size:12px;color:var(--text-body);line-height:1.6;}
+.prop-box{background:var(--navy);padding:18px 20px;margin-top:0;}
+.pb-tag{font-size:9.5px;color:var(--orange);letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:5px;}
+.pb-title{font-family:"Merriweather",serif;font-size:16px;color:var(--white);margin-bottom:14px;}
+.pb-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid rgba(255,255,255,0.1);margin-bottom:12px;}
+.pbi{padding:10px 14px;border-right:1px solid rgba(255,255,255,0.1);}
+.pbi:last-child{border-right:none;}
+.pbi-label{font-size:9.5px;color:rgba(255,255,255,0.4);letter-spacing:1px;text-transform:uppercase;font-weight:600;margin-bottom:4px;}
+.pbi-val{font-family:"Source Code Pro",monospace;font-size:13px;font-weight:700;color:var(--white);}
+.pbi-val.fav{color:#4ADE80;}
+.pb-note{font-size:11.5px;color:rgba(255,255,255,0.55);line-height:1.6;}
+.note-strip{background:var(--orange-light);border:1px solid var(--orange-mid);border-radius:3px;padding:9px 13px;font-size:11px;color:var(--text-body);margin-top:10px;}
+.note-strip strong{color:var(--orange);}
+.info-strip{background:#EEF6FF;border:1px solid #BFDBFE;border-radius:3px;padding:9px 13px;font-size:11px;color:#1E3A5F;margin-top:10px;}
+.info-strip strong{color:#1E40AF;}
+.gold-strip{background:var(--gold-light);border:1px solid var(--gold-mid);border-radius:3px;padding:9px 13px;font-size:11px;color:#5C3D00;margin-top:10px;}
+.gold-strip strong{color:var(--gold);}
+.pb{border:none;border-top:1px dashed var(--rule);margin:28px 0;}
+.pb-label{text-align:center;font-size:9.5px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin:-6px 0 24px;font-weight:700;}
+.para{font-size:12.5px;color:var(--text-body);line-height:1.75;margin-bottom:12px;}
+.para:last-child{margin-bottom:0;}
+.para strong{color:var(--text-primary);}
+.sub-label{font-size:11px;font-weight:700;color:var(--navy);margin:14px 0 8px;text-transform:uppercase;letter-spacing:0.5px;}
+.challenge-banner{background:linear-gradient(135deg,#1A3357 0%,#0A1929 100%);border-left:5px solid var(--orange);padding:14px 18px;margin-bottom:0;}
+.cb-label{font-size:9.5px;color:var(--orange);letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:6px;}
+.cb-title{font-size:14px;font-weight:700;color:var(--white);margin-bottom:8px;}
+.cb-body{font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6;}
+.cb-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
+.chip{font-size:10px;font-weight:700;padding:3px 10px;border-radius:12px;letter-spacing:0.5px;}
+.chip-r{background:rgba(139,26,26,0.4);color:#FCA5A5;border:1px solid rgba(252,165,165,0.3);}
+.chip-a{background:rgba(138,82,0,0.4);color:#FCD34D;border:1px solid rgba(252,211,77,0.3);}
+.chip-g{background:rgba(26,107,58,0.4);color:#86EFAC;border:1px solid rgba(134,239,172,0.3);}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+.two-col .col:first-child{border-right:1px solid var(--border);padding-right:14px;}
+.two-col .col:last-child{padding-left:14px;}
+.stv-t{width:100%;border-collapse:collapse;}
+.stv-t th{background:var(--navy-light);color:var(--white);font-size:10.5px;font-weight:700;padding:7px 10px;text-align:right;letter-spacing:0.5px;}
+.stv-t th:first-child{text-align:left;}
+.stv-t td{padding:7px 10px;font-size:11.5px;border-bottom:1px solid #EEF2F6;text-align:right;font-family:"Source Code Pro",monospace;}
+.stv-t td:first-child{font-family:"Source Sans 3",sans-serif;font-weight:600;color:var(--text-primary);text-align:left;font-size:12px;}
+.stv-t tr:nth-child(even) td{background:#FAFBFC;}
+.stv-t .tot td{background:var(--navy);color:var(--white);font-weight:700;}
+.stv-t .tot td:first-child{color:var(--white);}
+.ind-box{background:var(--bg);border-left:4px solid var(--orange);padding:14px 16px;margin-top:0;}
+.ind-box p{font-size:12.5px;color:var(--text-body);line-height:1.7;margin-bottom:8px;}
+.ind-box p:last-child{margin-bottom:0;}
+.ind-box strong{color:var(--navy);}
+.footer{background:var(--navy);padding:14px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;border-top:3px solid var(--orange);}
+.footer-brand{font-family:"Merriweather",serif;font-size:13px;color:var(--white);}
+.footer-brand span{color:var(--orange);}
+.footer-text{font-size:10px;color:rgba(255,255,255,0.4);text-align:center;}
+.footer-right{font-size:10px;color:rgba(255,255,255,0.4);text-align:right;}
+.disclaimer{font-size:10.5px;color:var(--muted);line-height:1.6;padding:12px 0;border-top:1px solid var(--border);margin-top:18px;}
+.disclaimer strong{color:var(--text-sub);}
+.mgmt-t{width:100%;border-collapse:collapse;}
+.mgmt-t th{background:var(--navy-light);color:var(--white);font-size:10.5px;font-weight:700;padding:7px 10px;text-align:left;letter-spacing:0.5px;}
+.mgmt-t td{padding:8px 10px;font-size:12px;border-bottom:1px solid #EEF2F6;vertical-align:top;color:var(--text-body);}
+.mgmt-t tr:nth-child(even) td{background:#FAFBFC;}
+.mgmt-t td:first-child{font-weight:700;color:var(--text-primary);}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div style="border-bottom:3px solid var(--navy);">
+  <div class="lh-top">
+    <div>
+      <div class="brand-name">Finsight<span>One</span></div>
+      <div class="brand-tagline">Credit · Advisory · Intelligence</div>
+    </div>
+    <div class="lh-right">
+      <div class="badge badge-call">Price: Confirm on Call · Above 10 Cr Tier</div>
+      <div class="badge badge-sample">Sample Document</div>
+    </div>
+  </div>
+  <div class="lh-band">
+    <div class="lhb-l">LOAN APPRAISAL NOTE (LAN) — INSTITUTIONAL CREDIT FORMAT</div>
+    <div class="lhb-r">Stream 1 — Documents &nbsp;·&nbsp; TL + WC Gold Metal Loan · Above 10 Cr Tier</div>
+  </div>
+</div>
+
+<div style="padding:0 48px;margin-top:20px;">
+  <div class="challenge-banner">
+    <div class="cb-label">FinsightOne · Complex & Scrutiny-Prone Profile — Fully Addressed</div>
+    <div class="cb-title">B2B Jewellery Manufacturer · Stock Valuation Risk · Gold Price Volatility · Family Constitution · Thin Declared Margins</div>
+    <div class="cb-body">This LAN demonstrates FinsightOne's deepest advisory capability — a sector that most banks approach with caution and many reject reflexively. Every concern a credit officer or risk committee would raise is anticipated, documented, and addressed with structural mitigants in this note. The borrower is strong. The sector requires skill to present. FinsightOne provides that skill.</div>
+    <div class="cb-chips">
+      <span class="chip chip-r">Stock Valuation: Subjectivity Risk</span>
+      <span class="chip chip-r">Gold Price: Volatility Exposure</span>
+      <span class="chip chip-a">Family Constitution: Governance Risk</span>
+      <span class="chip chip-a">Thin Margins: 3.2% PAT/Sales</span>
+      <span class="chip chip-g">DSCR: 3.42x Post-Sanction</span>
+      <span class="chip chip-g">Security Coverage: 157%</span>
+      <span class="chip chip-g">Export Revenue: 100% FEMA Documented</span>
+    </div>
+  </div>
+</div>
+
+<div class="ref-wrap" style="margin-top:20px;">
+  <table class="ref-table">
+    <tr>
+      <td>LAN Reference No.</td><td>FO-LAN-2026-0687</td>
+      <td>Date of Preparation</td><td>June 2026</td>
+    </tr>
+    <tr>
+      <td>Name of Borrower</td><td class="blurred">Rajputana Gems & Jewels Pvt. Ltd.</td>
+      <td>Constitution</td><td>Private Limited Company (Family Promoted)</td>
+    </tr>
+    <tr>
+      <td>Industry / Activity</td><td>B2B Wholesale Jewellery Manufacturing — Gemstone-studded silver & gold jewellery export to EU and Middle East buyers</td>
+      <td>Location</td><td>Jaipur, Rajasthan (Sitapura EPIP Zone)</td>
+    </tr>
+    <tr>
+      <td>Facility 1</td><td>Term Loan — Machinery & Factory Extension: <strong>Rs. 6.00 Crore</strong></td>
+      <td>Facility 2</td><td>WC Gold Metal Loan (GML) — Working Capital: <strong>Rs. 8.50 Crore</strong></td>
+    </tr>
+    <tr>
+      <td>Total Proposed</td><td><strong>Rs. 14.50 Crore</strong></td>
+      <td>Document Tier</td><td>Institutional Commercial — Above Rs. 10 Crore</td>
+    </tr>
+  </table>
+</div>
+<div class="divider"></div>
+
+<div class="body">
+
+<div class="sec">
+  <div class="sec-head"><span class="sec-num">01</span> EXECUTIVE OVERVIEW & ADVISORY CONTEXT</div>
+  <div class="sec-body">
+    <div class="para">This Loan Appraisal Note has been prepared by FinsightOne on behalf of the borrower to present a structured case for a <strong>combined Term Loan of Rs. 6.00 Crore</strong> for machinery and factory expansion, and a <strong>Gold Metal Loan (GML) of Rs. 8.50 Crore</strong> for working capital against gold inventory — aggregate exposure of Rs. 14.50 Crore. The borrower is a Private Limited company engaged in B2B gemstone-studded jewellery manufacturing and export, operating from Jaipur's Sitapura EPIP Export Zone for 18 years.</div>
+    <div class="para">FinsightOne acknowledges that jewellery sector lending carries a specific set of concerns that lenders consistently raise, and which, if not addressed proactively, result in file delays or rejections that are not warranted by the underlying business quality. This note has been structured to address each of those concerns directly:</div>
+    <div class="para"><strong>Concern 1 — Stock valuation subjectivity:</strong> Addressed in Section 06 with bank-empanelled auditor methodology and conservative IBJA-based valuation. <strong>Concern 2 — Gold price volatility:</strong> Addressed in Section 07 — the GML structure itself is a pass-through mechanism; the borrower does not carry gold price risk the way a retailer does. <strong>Concern 3 — Family constitution governance:</strong> Addressed in Section 03 with Big-4 associate CA appointment, disclosed RPT register, and family settlement documentation. <strong>Concern 4 — Thin margins:</strong> Addressed in Section 08 — thin PAT margins in jewellery export are a sector norm driven by high material value; EBITDA margins and absolute cash generation are the correct metrics.</div>
+    <div class="info-strip"><strong>FinsightOne Advisory Note:</strong> Jewellery sector files that get rejected at credit committees are almost always rejected not because of bad fundamentals but because of inadequate documentation and unanswered objections. This file has been built to pre-answer all standard objections. The Risk Mitigation Matrix in Section 09 provides a structured response to every credit concern with documented evidence and FinsightOne's residual risk view.</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="sec-head"><span class="sec-num">02</span> BORROWER PROFILE</div>
+  <div class="sec-body">
+    <table class="dt">
+      <tr><td class="dl">Company Name</td><td class="dv blurred">Rajputana Gems & Jewels Pvt. Ltd.</td><td class="dl">Incorporated</td><td class="dv">April 2008 (18 years)</td></tr>
+      <tr><td class="dl">Constitution</td><td class="dv">Private Limited Company</td><td class="dl">CIN</td><td class="dv">U36911RJ2008PTC000XXX</td></tr>
+      <tr><td class="dl">Activity</td><td class="dv">Manufacturing and B2B export of gemstone-studded silver and 18K gold jewellery to wholesale buyers in UK, Germany, UAE, and USA. No retail operations. All sales are export FOB. 100% FEMA documented.</td><td class="dl">Location</td><td class="dv">Plot No. XX, Sitapura EPIP Zone, Jaipur — 302022, Rajasthan</td></tr>
+      <tr><td class="dl">Export Credentials</td><td class="dv">IEC Code: XXXXXXXXX · EPIP Zone Unit · BIS Hallmarking License · Active SEBI-registered commodity hedge (MCX) · Member: Gems & Jewellery Export Promotion Council (GJEPC)</td><td class="dl">GST / GSTIN</td><td class="dv">08XXXXX0000X1ZX (Active — Regular)</td></tr>
+      <tr><td class="dl">CMR Rating</td><td class="dv"><strong>CMR-2</strong> (TransUnion CIBIL) — Strong commercial credit performance</td><td class="dl">CIBIL — Promoters</td><td class="dv">Dir. 1: <strong>768</strong> · Dir. 2: <strong>752</strong> · Dir. 3: <strong>741</strong> — All clean</td></tr>
+      <tr><td class="dl">Existing Facilities</td><td class="dv" colspan="3">CC (Gold Metal Loan) Rs. 4.00 Cr (Standard, 9 years with current bank) · Vehicle Loan O/S Rs. 8.40 Lakhs (Standard) · No NPA, no overdue on any facility since inception</td></tr>
+      <tr><td class="dl">Key Buyers</td><td class="dv" colspan="3">Germany (Wholesale): 38% · UAE (Dubai Wholesale): 24% · UK (B2B): 22% · USA (Wholesale): 12% · Others: 4%. All buyers with 5+ year relationship. SWIFT payment terms: advance 30% + balance against shipping documents.</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="sec-head"><span class="sec-num">03</span> MANAGEMENT PROFILE & GOVERNANCE STRUCTURE</div>
+  <div class="sec-body">
+    <div class="para" style="margin-bottom:12px;"><strong>FinsightOne's position on family-promoted companies:</strong> Family-run businesses constitute the backbone of India's MSME jewellery sector. The governance risk in family companies is real but manageable — and in this case, it has been proactively addressed through formal documentation. The borrower has appointed a Big-4 associate CA firm as statutory auditor (replacing the previous family-connected CA), has submitted a disclosed RPT register for the last 3 years, and has executed a formal family settlement agreement that delineates ownership and management succession clearly.</div>
+    <table class="mgmt-t">
+      <thead><tr><th>Name</th><th>Role</th><th>Experience</th><th>Key Credentials</th><th>Net Worth</th></tr></thead>
+      <tbody>
+        <tr><td class="blurred">Sri Mahendra Surana</td><td>MD — Strategy & Finance</td><td>28 years</td><td>GIA-certified gemologist (Antwerp, Belgium); member GJEPC for 20+ years; manages all export buyer relationships; primary signatory on IEC and SEBI hedge account</td><td>Rs. 8.42 Cr</td></tr>
+        <tr><td class="blurred">Sri Pradeep Surana</td><td>Director — Production</td><td>24 years</td><td>BIS Hallmarking license holder; heads manufacturing and quality; 3 national design awards; manages 180 artisan workforce</td><td>Rs. 5.84 Cr</td></tr>
+        <tr><td class="blurred">Sri Arvind Surana</td><td>Director — Operations</td><td>18 years</td><td>MBA Finance (XLRI Jamshedpur); manages treasury, banking, compliance; appointed post governance restructuring in 2022</td><td>Rs. 3.62 Cr</td></tr>
+      </tbody>
+    </table>
+    <div class="note-strip" style="margin-top:12px;"><strong>Governance Upgrades — 2022 onwards:</strong> (1) Big-4 associate CA appointed as statutory auditor — FY23 and FY24 audited accounts are fully INDAS compliant. (2) RPT register disclosed — all inter-family transactions documented and approved by Board. (3) Family Settlement Agreement executed and notarised — succession and ownership delineated across 3 branches. (4) Independent Director appointed on Board. These are structural improvements, not cosmetic additions.</div>
+  </div>
+</div>
+
+<hr class="pb">
+<div class="pb-label">— Page 2 of 5 —</div>
+
+<div class="sec">
+  <div class="sec-head"><span class="sec-num">04</span> INDUSTRY CONTEXT — JAIPUR JEWELLERY EXPORT SECTOR</div>
+  <div class="sec-body">
+    <div class="ind-box">
+      <p><strong>Jaipur as a Global Jewellery Hub:</strong> Jaipur is the world's largest centre for coloured gemstone cutting and processing, and one of India's top 3 export jewellery manufacturing locations. The Sitapura EPIP Zone alone houses 400+ export-oriented jewellery units. India's gems and jewellery exports exceeded USD 37 billion in FY24. Jaipur units — particularly those specialising in gemstone-studded designs — serve a global B2B market that has limited alternative supply bases outside India.</p>
+      <p><strong>B2B Export Model — Lower Risk than Retail:</strong> The borrower operates exclusively in the B2B wholesale export segment — no retail, no domestic credit sales. This model eliminates consumer credit risk, retail inventory build-up risk, and fashion cycle risk. B2B buyers place orders with specific design and delivery specifications; production is against confirmed purchase orders, not speculative inventory build. SWIFT payment terms ensure advance receipt before shipment, providing strong working capital predictability.</p>
+      <p><strong>On Thin Margins — The Correct Interpretation:</strong> PAT margins of 3–4% in export jewellery are a sector characteristic, not a business weakness. The entire industry operates on high-value material (gold, gemstones) with low value-addition as a percentage of FOB value. The correct profitability metric is EBITDA on value-added, not PAT on gross FOB value. The borrower's EBITDA on value-added (manufacturing spread) is 28–32% — strong by any manufacturing standard. A lender who measures jewellery profitability purely on PAT/Sales will systematically misread every good jewellery file.</p>
+    </div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="sec-head"><span class="sec-num">05</span> FACILITY PROPOSED</div>
+  <div class="sec-body">
+    <div class="two-col">
+      <div class="col">
+        <div class="sub-label">Facility 1 — Term Loan</div>
+        <table class="dt">
+          <tr><td class="dl">Amount</td><td class="dv"><strong>Rs. 6.00 Crore</strong></td></tr>
+          <tr><td class="dl">Purpose</td><td class="dv">6 CNC laser cutting machines, 2 3D jewellery printers (CAD/CAM), clean room extension 2,400 sq.ft., gemstone grading lab equipment</td></tr>
+          <tr><td class="dl">Project Cost</td><td class="dv">Rs. 8.00 Crore (TL: 75% / Promoter: 25%)</td></tr>
+          <tr><td class="dl">Tenure</td><td class="dv">84 months incl. 6-month moratorium</td></tr>
+          <tr><td class="dl">Indicative EMI</td><td class="dv">Rs. 9,84,200 per month post-moratorium</td></tr>
+          <tr><td class="dl">Expected COD</td><td class="dv">March 2027</td></tr>
+        </table>
+      </div>
+      <div class="col">
+        <div class="sub-label">Facility 2 — Gold Metal Loan (GML)</div>
+        <table class="dt">
+          <tr><td class="dl">Amount</td><td class="dv"><strong>Rs. 8.50 Crore</strong> (Enhancement from Rs. 4.00 Cr)</td></tr>
+          <tr><td class="dl">Purpose</td><td class="dv">Working capital for gold procurement against confirmed export purchase orders</td></tr>
+          <tr><td class="dl">Nature</td><td class="dv">Revolving WC — gold metal issued by bank, returned after export realisation</td></tr>
+          <tr><td class="dl">Tenure</td><td class="dv">12 months renewable against confirmed orders</td></tr>
+          <tr><td class="dl">Gold Price Risk</td><td class="dv">Pass-through — see Section 07 for structure</td></tr>
+          <tr><td class="dl">FEMA Compliance</td><td class="dv">All GML drawals against confirmed POs, FEMA documented, AD bank verified</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="gold-strip"><strong>On Gold Metal Loan Structure:</strong> A GML is fundamentally different from a cash WC loan against gold inventory. The bank provides gold metal (not cash), the borrower manufactures and exports, and repays the bank in gold or equivalent on export realisation. The borrower's exposure is to the manufacturing spread, not the gold price. This is the RBI-approved mechanism for export jewellery working capital and is used by all major Indian jewellery exporters.</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="sec-head"><span class="sec-num">06</span> STOCK VALUATION — THE CRITICAL SECTION</div>
+  <div class="sec-body">
+    <div class="para"><strong>FinsightOne's position:</strong> Stock valuation is the most contested area in jewellery lending. The challenge is that gold and gemstone inventory value changes with commodity prices and subjectivity in gemstone grading. FinsightOne has structured the stock valuation approach in this file to eliminate subjectivity to the maximum extent possible.</div>
+    <div class="sub-label">Stock Valuation Methodology</div>
+    <table class="stv-t">
+      <thead>
+        <tr><th>Inventory Component</th><th>Valuation Basis</th><th>Book Value (Rs. Cr)</th><th>LTV Applied</th><th>Eligible for GML (Rs. Cr)</th><th>FO View</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Raw Gold (916/750 purity, weighed)</td><td>IBJA daily rate — day of stock audit</td><td>4.82</td><td>75%</td><td>3.62</td><td class="r-ok">Objective — market rate</td></tr>
+        <tr><td>Silver (processed, weighed)</td><td>MCX spot rate — day of stock audit</td><td>1.24</td><td>70%</td><td>0.87</td><td class="r-ok">Objective — market rate</td></tr>
+        <tr><td>Gemstones (cut, graded)</td><td>Bank-empanelled gemmologist — GIA methodology</td><td>3.60</td><td>60%</td><td>2.16</td><td class="r-warn">Subjective — mitigated by empanelled expert</td></tr>
+        <tr><td>Semi-finished Jewellery (WIP)</td><td>Cost-of-material basis only (no fabrication value)</td><td>2.18</td><td>55%</td><td>1.20</td><td class="r-ok">Conservative — material only</td></tr>
+        <tr><td>Finished Goods (export-ready)</td><td>Export invoice value less 20% haircut</td><td>1.86</td><td>60%</td><td>1.12</td><td class="r-ok">Invoice-backed</td></tr>
+        <tr class="tot"><td>Total Inventory</td><td>—</td><td>13.70</td><td>Weighted: 65%</td><td>9.97</td><td>Exceeds GML requirement</td></tr>
+      </tbody>
+    </table>
+    <div class="note-strip" style="margin-top:10px;"><strong>Key Safeguard:</strong> Bank-empanelled stock auditor (not borrower-appointed) to conduct monthly stock audits with surprise element. All gold and silver to be weighed on calibrated scales in auditor's presence. Gemstone valuation to use GIA grading methodology exclusively. LTV caps are conservative relative to standard jewellery sector practice (75–80% for gold) — FinsightOne has applied 75% for gold and 60% for gemstones as a built-in safety margin. Eligible collateral of Rs. 9.97 Crore provides 117% coverage of the Rs. 8.50 Crore GML request.</div>
+  </div>
+</div>
+
+<hr class="pb">
+<div class="pb-label">— Page 3 of 5 —</div>
+
+<div class="sec">
+  <div class="sec-head"><span class="sec-num">07</span> GOLD PRICE RISK — STRUCTURE & HEDGE</div>
+  <div class="sec-body">
+    <div class="para"><strong>How the GML mechanism eliminates gold price risk:</strong> Under the Gold Metal Loan structure, the borrower receives gold from the bank at the prevailing MCX/IBJA price on the date of disbursement. The borrower manufactures and exports. Upon export realisation, the borrower repays the bank in gold (or cash equivalent at prevailing price on repayment date). The borrower's manufacturing spread — the difference between the export value of finished jewellery and the cost of gold — is fixed by the export purchase order price agreed with the buyer. The borrower is therefore <strong>price-agnostic on gold</strong>: a rise in gold price increases both the cost of gold received and the export realisation, maintaining the spread.</div>
+    <div class="para"><strong>SEBI-registered MCX Hedge — additional protection:</strong> The borrower maintains an active SEBI-registered MCX commodity hedge for anticipated gold purchases exceeding 3 months forward. As on date, the borrower holds MCX sell positions for 8 kg gold at Rs. 72,400/10g, providing downside protection for the next quarter's production schedule. The hedge position and SEBI registration are enclosed.</div>
+    <div class="gold-strip"><strong>FinsightOne View on Gold Price Risk:</strong> The GML is a pass-through mechanism — not a speculative gold position. The bank's exposure is to the borrower's manufacturing creditworthiness, not to gold price direction. Gold price risk on the bank's collateral (stock of gold) is mitigated by the conservative 75% LTV and monthly stock revaluation at IBJA prices. If gold prices rise, collateral value rises. If gold prices fall, the GML limit is proportionally adjusted via the stock audit mechanism. The risk is managed by structure, not by assumption.</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="sec-head"><span class="sec-num">08</span> FINANCIAL ANALYSIS</div>
+  <div class="sec-body">
+    <div class="sub-label">A. P&L Summary (Rs. Lakhs) — Note on Margin Interpretation</div>
+    <div class="info-strip" style="margin-bottom:12px;"><strong>How to read jewellery export financials:</strong> Net sales in jewellery include the full FOB value — gold, gems, and manufacturing spread combined. PAT/Net Sales appears thin because the denominator is inflated by material value. The correct margin metric is EBITDA on value-added (manufacturing spread). For this borrower, manufacturing spread = FOB export value minus material cost = 28–32% — strong.</div>
+    <table class="ft" style="margin-bottom:16px;">
+      <thead>
+        <tr><th>Particulars (Rs. Lakhs)</th><th>FY 2022–23</th><th>FY 2023–24</th><th>FY 2024–25</th><th>FY 2025–26 (Prov.)</th><th>Trend</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Net FOB Export Revenue</td><td>6,840.00</td><td>7,920.00</td><td>9,180.00</td><td>10,620.00</td><td class="up">+15.8% CAGR</td></tr>
+        <tr><td class="ind">— Of which: Gold/Silver material value</td><td>4,788.00</td><td>5,544.00</td><td>6,426.00</td><td>7,434.00</td><td class="na">~70% of FOB</td></tr>
+        <tr><td class="ind">— Of which: Manufacturing spread</td><td>2,052.00</td><td>2,376.00</td><td>2,754.00</td><td>3,186.00</td><td class="up">~30% of FOB</td></tr>
+        <tr><td>EBITDA (on value-added)</td><td>574.00</td><td>664.00</td><td>770.00</td><td>892.00</td><td class="up">+15.9% CAGR</td></tr>
+        <tr><td>EBITDA Margin (on value-added)</td><td>27.97%</td><td>27.95%</td><td>27.96%</td><td>28.00%</td><td class="up">Consistent</td></tr>
+        <tr><td>EBITDA Margin (on gross FOB)</td><td>8.39%</td><td>8.38%</td><td>8.39%</td><td>8.40%</td><td class="up">Consistent</td></tr>
+        <tr><td>Depreciation</td><td>48.00</td><td>52.00</td><td>58.00</td><td>64.00</td><td class="na">—</td></tr>
+        <tr><td>Interest on Existing GML</td><td>36.00</td><td>36.00</td><td>36.00</td><td>76.50</td><td class="na">Increases post-enhancement</td></tr>
+        <tr class="sub"><td>Net Profit Before Tax (Rs. Lakhs)</td><td>490.00</td><td>576.00</td><td>676.00</td><td>751.50</td><td class="up">+15.3% CAGR</td></tr>
+        <tr><td>Net Profit After Tax</td><td>219.12</td><td>257.40</td><td>302.40</td><td>336.00</td><td class="up">+15.3% CAGR</td></tr>
+        <tr><td>PAT / Net Sales (FOB basis)</td><td>3.20%</td><td>3.25%</td><td>3.30%</td><td>3.17%</td><td class="r-warn">Thin — sector norm, not a weakness</td></tr>
+        <tr class="sub"><td>Cash Accruals (PAT + Dep.)</td><td>267.12</td><td>309.40</td><td>360.40</td><td>400.00</td><td class="up">+14.4% CAGR</td></tr>
+        <tr><td>Banking Turnover (CA Credits)</td><td>7,200.00</td><td>8,320.00</td><td>9,640.00</td><td>11,180.00</td><td class="up">+15.8% CAGR</td></tr>
+      </tbody>
+    </table>
+    <div class="sub-label">B. Balance Sheet Highlights (Rs. Lakhs)</div>
+    <table class="ft">
+      <thead>
+        <tr><th>Particulars</th><th>FY 2022–23</th><th>FY 2023–24</th><th>FY 2024–25</th><th>Movement</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Net Worth (Paid-up + Reserves)</td><td>842.00</td><td>1,082.00</td><td>1,362.00</td><td class="up">+27.2% CAGR — strong retention</td></tr>
+        <tr><td>Total Outside Liabilities</td><td>1,248.00</td><td>1,384.00</td><td>1,562.00</td><td class="na">Controlled growth</td></tr>
+        <tr><td>TOL / Adj. TNW</td><td>1.48x</td><td>1.28x</td><td>1.15x</td><td class="up">Rapid deleveraging</td></tr>
+        <tr><td>Current Ratio</td><td>1.84x</td><td>1.96x</td><td>2.18x</td><td class="up">Improving consistently</td></tr>
+        <tr><td>Debtor Days (Export Receivables)</td><td>28 days</td><td>24 days</td><td>21 days</td><td class="up">Tight — advance payment model</td></tr>
+        <tr><td>Inventory Days</td><td>62 days</td><td>58 days</td><td>54 days</td><td class="up">Improving cycle</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr class="pb">
+<div class="pb-label">— Page 4 of 5 —</div>
+
+<div class="sec">
+  <div class="sec-head"><span class="sec-num">09</span> RISK MITIGATION MATRIX — ALL SECTOR CHALLENGES ADDRESSED</div>
+  <div class="sec-body">
+    <table class="rmx">
+      <thead>
+        <tr><th style="width:17%;">Risk / Challenge</th><th style="width:10%;">Severity</th><th style="width:30%;">Specific Mitigant</th><th style="width:12%;">Residual Risk</th><th style="width:31%;">FinsightOne View</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="risk-title">Stock Valuation Subjectivity (Gemstones)</span></td>
+          <td><span class="sev-h">HIGH</span></td>
+          <td>Bank-empanelled gemmologist (not borrower-appointed) values all gemstone inventory using GIA grading methodology. Conservative LTV of 60% applied on gemstones vs industry norm of 65–70%. Monthly surprise audits. All gold/silver valued at objective IBJA/MCX rates. Section 06 provides complete stock breakup with LTV applied per component.</td>
+          <td><span class="sev-l">LOW</span></td>
+          <td>The subjectivity risk is substantially mitigated by the empanelled expert and conservative LTV. The residual risk is that the expert's assessment could be challenged — this is a standard audit risk present in all secured lending. The 60% LTV provides a 40% buffer above which gold price or gem value would need to fall before the bank is exposed. FinsightOne considers this manageable.</td>
+        </tr>
+        <tr>
+          <td><span class="risk-title">Gold Price Volatility</span></td>
+          <td><span class="sev-m">MEDIUM</span></td>
+          <td>GML is a pass-through mechanism — borrower is price-agnostic (Section 07). MCX SEBI-registered hedge held for 3-month forward production. GML limit is revalued monthly against IBJA price; if gold price falls, limit reduces proportionally maintaining LTV. LTV of 75% provides 25% buffer on gold price movement before collateral is impaired.</td>
+          <td><span class="sev-l">LOW</span></td>
+          <td>Gold has not fallen more than 15% in any 12-month period in the last decade. The 25% LTV buffer on a monthly-revalued position provides adequate protection. The GML structure eliminates speculative gold exposure for both borrower and bank. FinsightOne views gold price risk as the least relevant concern in this file.</td>
+        </tr>
+        <tr>
+          <td><span class="risk-title">Family Constitution / Governance Risk</span></td>
+          <td><span class="sev-m">MEDIUM</span></td>
+          <td>Big-4 associate CA appointed as statutory auditor (FY23 onwards). Family Settlement Agreement executed and notarised — ownership and succession documented across 3 family branches. Independent Director on Board. RPT register disclosed and Board-approved. Director 3 (MBA Finance, XLRI) appointed specifically for governance and banking interface. All three directors have separate net worth certificates and provide individual personal guarantees.</td>
+          <td><span class="sev-l">LOW</span></td>
+          <td>Family disputes are a risk in any family business — they cannot be eliminated. The mitigants here reduce the probability significantly: clear ownership documentation, independent audit, and disclosed RPTs remove the information asymmetry that turns family disputes into banking crises. Individual personal guarantees ensure all three family members have personal skin in the game. FinsightOne considers governance risk well-managed.</td>
+        </tr>
+        <tr>
+          <td><span class="risk-title">Thin Declared PAT Margins (3.2%)</span></td>
+          <td><span class="sev-m">MEDIUM</span></td>
+          <td>Thin PAT/Sales is a structural feature of export jewellery — not a profitability concern. EBITDA on value-added (manufacturing spread) is 28% — strong. Cash accruals of Rs. 360 Lakhs in FY25 are sufficient to service total proposed debt obligations of Rs. 105 Lakhs annually (DSCR 3.42x). Absolute profit in rupees — Rs. 302 Lakhs PAT in FY25 — is substantial for an MSME. Section 04 explains the correct profitability framework for this sector.</td>
+          <td><span class="sev-l">LOW</span></td>
+          <td>Any lender who has processed jewellery export files understands that PAT/Sales is not the relevant margin metric. The relevant metrics are EBITDA on value-added and DSCR — both are strong. FinsightOne's view is that this is a documentation and explanation issue, not a genuine financial risk.</td>
+        </tr>
+        <tr>
+          <td><span class="risk-title">Buyer Concentration (Germany 38%)</span></td>
+          <td><span class="sev-m">MEDIUM</span></td>
+          <td>Primary German buyer has 12-year relationship with no payment default. SWIFT advance payments (30%) reduce credit exposure to transit period only. UAE (24%), UK (22%), USA (12%) provide meaningful diversification. The borrower's GJEPC membership provides access to global buyer network for further diversification. No single buyer exceeds 40% of revenue.</td>
+          <td><span class="sev-l">LOW</span></td>
+          <td>The 12-year relationship with the primary German buyer, combined with SWIFT advance payment terms, substantially reduces concentration risk. A buyer who advances 30% of invoice value before shipment has demonstrated commitment. FinsightOne views this as manageable concentration with strong relationship mitigant.</td>
+        </tr>
+        <tr>
+          <td><span class="risk-title">Post-Sanction TOL/TNW (Rises to ~2.80x)</span></td>
+          <td><span class="sev-m">MEDIUM</span></td>
+          <td>TOL/TNW rises from 1.15x to approximately 2.80x post full drawdown of proposed facilities. However: (a) this remains well within the 4.00x lender norm; (b) net worth is growing at 27% CAGR and will absorb the debt within 2 years; (c) the GML is revolving — it is fully self-liquidating against export receipts and does not represent a permanent leverage increase.</td>
+          <td><span class="sev-l">LOW</span></td>
+          <td>2.80x TOL/TNW for a business with 28% value-added margins, DSCR of 3.42x, and 27% net worth CAGR is very comfortable. The leverage is temporary and declining. FinsightOne views the post-sanction leverage as appropriate for the scale and profitability of this business.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="sec-head"><span class="sec-num">10</span> SECURITY PROPOSED</div>
+  <div class="sec-body">
+    <table class="dt">
+      <tr><td class="dl">Primary — TL</td><td class="dv">First exclusive hypothecation over funded machinery — 6 CNC laser machines, 2 CAD/CAM 3D printers, grading lab equipment. Comprehensive insurance with bank as nominee. Import invoices to be submitted at disbursement.</td></tr>
+      <tr><td class="dl">Primary — GML</td><td class="dv">First exclusive hypothecation charge over gold metal issued by bank and all jewellery inventory manufactured from bank-issued gold. Monthly stock audit by bank-empanelled gemmologist. All gold inventory to be stored in bank-supervised vault during non-production hours.</td></tr>
+      <tr><td class="dl">Collateral — Factory</td><td class="dv">Equitable mortgage of factory property at Sitapura EPIP Zone — registered in company name, EPIP lease with 24 years remaining. Independent valuation Rs. 8.40 Crore (bank-empanelled valuer, May 2026). NA industrial (EPIP zone) — high realisation in Jaipur EPIP.</td></tr>
+      <tr><td class="dl">Collateral — Residential</td><td class="dv">Residential property of Director 1 — Civil Lines, Jaipur. Value Rs. 3.20 Crore. Clear title, EC clean. Equitable mortgage offered.</td></tr>
+      <tr><td class="dl">Personal Guarantee</td><td class="dv">All three Directors — individual PGs. Combined net worth: Rs. 17.88 Crore (CA certified). Exceeds total proposed exposure of Rs. 14.50 Crore by 23%.</td></tr>
+      <tr><td class="dl">Coverage Summary</td><td class="dv"><strong>TL Security:</strong> Machinery (Rs. 7.60 Cr) + Factory mortgage (Rs. 8.40 Cr) = Rs. 16.00 Cr vs TL Rs. 6.00 Cr = 267%. <strong>GML Security:</strong> Gold inventory at conservative LTV (Rs. 9.97 Cr per Section 06) vs GML Rs. 8.50 Cr = 117%. <strong>Combined overall:</strong> Rs. 27.17 Cr vs Rs. 14.50 Cr = <strong>187%</strong>.</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="sec-head"><span class="sec-num">11</span> KEY RATIOS & DSCR</div>
+  <div class="sec-body">
+    <table class="rt">
+      <thead>
+        <tr><th>Ratio</th><th>FY 2022–23</th><th>FY 2023–24</th><th>FY 2024–25</th><th>Post-Sanction (Proj. FY27)</th><th>Benchmark</th><th>Assessment</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>DSCR (TL Service)</td><td class="r-ok">5.18x</td><td class="r-ok">6.24x</td><td class="r-ok">7.82x</td><td class="r-ok">3.42x</td><td class="bench">Min 1.50x</td><td class="r-ok">✓ Very Comfortable</td></tr>
+        <tr><td>Current Ratio</td><td class="r-ok">1.84x</td><td class="r-ok">1.96x</td><td class="r-ok">2.18x</td><td class="r-ok">1.72x</td><td class="bench">Min 1.20x</td><td class="r-ok">✓ Strong</td></tr>
+        <tr><td>TOL / Adj. TNW</td><td class="r-warn">1.48x</td><td class="r-ok">1.28x</td><td class="r-ok">1.15x</td><td class="r-warn">2.80x (post-sanction)</td><td class="bench">Max 4.00x</td><td class="r-ok">✓ Within Norm</td></tr>
+        <tr><td>EBITDA / Interest (ICR)</td><td class="r-ok">15.94x</td><td class="r-ok">18.44x</td><td class="r-ok">21.39x</td><td class="r-ok">7.84x</td><td class="bench">Min 2.00x</td><td class="r-ok">✓ Excellent</td></tr>
+        <tr><td>Debtor Days (Export)</td><td class="r-ok">28 days</td><td class="r-ok">24 days</td><td class="r-ok">21 days</td><td class="r-ok">22 days</td><td class="bench">Under 30 days</td><td class="r-ok">✓ Tight Collection</td></tr>
+        <tr><td>Banking Turnover / Total Exposure</td><td class="na">—</td><td class="na">—</td><td class="r-ok">6.65x</td><td class="r-ok">5.78x</td><td class="bench">Min 1.50x</td><td class="r-ok">✓ Strong</td></tr>
+      </tbody>
+    </table>
+    <div class="note-strip" style="margin-top:10px;"><strong>DSCR Calculation (Post-Sanction FY27):</strong> Cash Accruals Rs. 400L + TL Interest Rs. 49L = Rs. 449L numerator. TL Annual Principal Rs. 118L + TL Interest Rs. 49L = Rs. 167L denominator. DSCR = 449/167 = <strong>2.69x</strong> on TL alone. Including GML interest (Rs. 76.5L): Combined DSCR = (449+76.5)/(167+76.5) = 525.5/243.5 = <strong>2.16x</strong>. Well above 1.50x threshold.</div>
+  </div>
+</div>
+
+<hr class="pb">
+<div class="pb-label">— Page 5 of 5 —</div>
+
+<div class="sec">
+  <div class="sec-head"><span class="sec-num">12</span> PROPOSAL STRENGTHS</div>
+  <div class="sec-body">
+    <div class="str-item">
+      <div class="str-icon">🏆</div>
+      <div>
+        <div class="str-title">18 Years in Export Jewellery — Zero NPA, CMR-2 Rating</div>
+        <div class="str-body">The borrower's 18-year operating history in Jaipur's jewellery export sector, with CMR-2 rating and zero NPA on the existing GML (9 years), is the strongest underwriting signal available. The existing Rs. 4.00 Crore GML has been recycled multiple times per year without a single default event. This is a proven, creditworthy borrower in a sector that many banks view with generic caution.</div>
+      </div>
+    </div>
+    <div class="str-item">
+      <div class="str-icon">💰</div>
+      <div>
+        <div class="str-title">Advance Payment Model — 30% SWIFT Before Shipment</div>
+        <div class="str-body">The borrower's B2B export model requires buyers to pay 30% SWIFT advance before shipment, with the balance against shipping documents. This means debtor days of 21 days are not credit risk — they are shipping transit plus document processing time. The borrower does not extend credit to buyers; buyers extend advance to the borrower. This is a structurally superior receivables model.</div>
+      </div>
+    </div>
+    <div class="str-item">
+      <div class="str-icon">📊</div>
+      <div>
+        <div class="str-title">Net Worth Growing at 27% CAGR — Rs. 13.62 Crore and Rising</div>
+        <div class="str-body">Net worth has grown from Rs. 8.42 Crore (FY23) to Rs. 13.62 Crore (FY25) — driven entirely by profit retention. No dividends paid. This rapid equity build-up means the leverage effect of the proposed borrowing will diminish quickly. TOL/TNW, even post-sanction at 2.80x, will return to below 2.0x within 24 months if the current retention pattern continues.</div>
+      </div>
+    </div>
+    <div class="str-item">
+      <div class="str-icon">🌍</div>
+      <div>
+        <div class="str-title">100% Export — 4 Countries, All FEMA Documented, BIS Hallmarked</div>
+        <div class="str-body">Every rupee of revenue is documented through FEMA returns, AD bank inward remittances, DGFT shipping bills, and GJEPC export data. The BIS hallmarking licence certifies product quality to international standards. This triple-source documentation — FEMA + DGFT + AD bank — eliminates the income documentation gaps that are endemic in domestic jewellery businesses. There is no undeclared income, no cash sales, and no unexplained turnover in this profile.</div>
+      </div>
+    </div>
+    <div class="str-item">
+      <div class="str-icon">⚖️</div>
+      <div>
+        <div class="str-title">Governance Restructured — Big-4 Auditor, Family Settlement, Independent Director</div>
+        <div class="str-body">The governance upgrades completed in 2022 — Big-4 associate auditor, family settlement, Independent Director, RPT disclosure — were proactively undertaken without any bank requirement. A family-promoted business that reforms its governance without external pressure demonstrates a maturity of management that is itself a credit positive. The auditor change and family settlement together address the two governance concerns that lenders most frequently raise with family jewellery businesses.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="sec-head"><span class="sec-num">13</span> ADVISORY CONCLUSION</div>
+  <div class="sec-body">
+    <div class="para">This Loan Appraisal Note presents an 18-year export jewellery manufacturer with CMR-2 rating, zero NPA history, Rs. 13.62 Crore net worth growing at 27% CAGR, DSCR of 3.42x post-sanction, and 187% combined security coverage. Every sector-specific concern — stock valuation, gold price risk, family governance, thin margins — has been addressed with documented structural mitigants, not narrative assurances.</div>
+    <div class="para">FinsightOne presents this proposal with the view that the borrower's underlying business quality is strong, the risks are manageable and documented, and the lending opportunity is sound at the proposed terms. We note that jewellery sector files are often assessed through a lens of generic sectoral concern rather than specific borrower analysis. This note is designed to enable the lender to assess this specific borrower on its specific merits.</div>
+    <div class="para">FinsightOne is acting as the borrower's advisory firm and not as a credit authority. We remain available for any clarification during the lender's review process.</div>
+  </div>
+</div>
+
+<div class="prop-box">
+  <div class="pb-tag">FinsightOne — Loan Appraisal Summary</div>
+  <div class="pb-title">We Propose: TL Rs.6.00 Cr + GML Rs.8.50 Cr = Rs.14.50 Crore for Favourable Consideration</div>
+  <div class="pb-grid">
+    <div class="pbi"><div class="pbi-label">Total Proposed</div><div class="pbi-val fav">Rs. 14.50 Cr</div></div>
+    <div class="pbi"><div class="pbi-label">DSCR (Post-Sanction)</div><div class="pbi-val fav">3.42x</div></div>
+    <div class="pbi"><div class="pbi-label">Combined Security</div><div class="pbi-val fav">187%</div></div>
+    <div class="pbi"><div class="pbi-label">Export Track Record</div><div class="pbi-val fav">18 Years</div></div>
+  </div>
+  <div class="pb-note">This LAN has been prepared by FinsightOne Credit Advisory Desk on behalf of the borrower. FinsightOne is acting as the borrower's advisory firm and not as a credit authority. Final sanction rests entirely with the lending institution. All client details in this sample are fictional and for illustration only.</div>
+</div>
+
+<div class="disclaimer">
+  <strong>Disclaimer:</strong> Prepared by FinsightOne based on borrower-furnished information. Not a guarantee of sanction. All names, figures and details are fictional and for illustration purposes only.
+</div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-brand">Finsight<span>One</span></div>
+  <div class="footer-text">Prepared by FinsightOne Credit Advisory Desk &nbsp;|&nbsp; finsightone.co &nbsp;|&nbsp; Credit · Advisory · Intelligence<br><span style="font-size:9.5px;opacity:0.6;">Sample — all client data fictional</span></div>
+  <div class="footer-right">LAN Ref: FO-LAN-2026-0687<br>Pages 1–5 of 5</div>
+</div>
+
+</div>
+</body>
+</html>
