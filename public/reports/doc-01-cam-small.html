@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loan Appraisal Note — FinsightOne</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Source+Sans+3:wght@300;400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange:#F97316;--orange-light:#FFF7ED;--orange-mid:#FED7AA;
+    --navy:#0A1929;--navy-mid:#112240;--navy-light:#1A3357;
+    --slate:#3D5166;--muted:#7A8FA6;--border:#C8D6E0;--bg:#F2F6FA;--white:#FFFFFF;
+    --green:#1A6B3A;--green-light:#EEF8F2;--green-mid:#7DC99A;
+    --amber:#8A5200;--amber-light:#FFF8EC;--amber-mid:#F5C97A;
+    --red:#8B1A1A;--red-light:#FDF3F3;--red-mid:#E8A0A0;
+    --rule:#B8C8D4;
+    --text-primary:#0A1929;--text-body:#2E3F52;--text-sub:#5A6E82;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Source Sans 3',sans-serif;background:#D8E2EC;color:var(--text-primary);font-size:13px;line-height:1.6;}
+
+  body::before{
+    content:'SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE';
+    position:fixed;top:-50%;left:-50%;width:200%;height:200%;
+    font-size:17px;font-weight:700;color:rgba(10,25,41,0.038);
+    letter-spacing:4px;transform:rotate(-35deg);word-spacing:38px;line-height:5;
+    z-index:1000;pointer-events:none;white-space:pre-wrap;text-align:center;
+    display:flex;align-items:center;justify-content:center;
+  }
+
+  .page{max-width:900px;margin:0 auto;background:var(--white);box-shadow:0 4px 32px rgba(0,0,0,0.1);}
+
+  /* LETTERHEAD */
+  .letterhead{border-bottom:3px solid var(--navy);}
+  .lh-top{background:var(--navy);padding:22px 48px 18px;display:flex;align-items:flex-start;justify-content:space-between;}
+  .brand-name{font-family:'Merriweather',serif;font-size:24px;color:var(--white);letter-spacing:-0.3px;margin-bottom:3px;}
+  .brand-name span{color:var(--orange);}
+  .brand-tagline{font-size:10px;color:rgba(255,255,255,0.45);letter-spacing:2.5px;text-transform:uppercase;font-weight:600;}
+  .lh-right{display:flex;flex-direction:column;align-items:flex-end;gap:5px;}
+  .lh-badge{font-size:9.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:2px;}
+  .lb-tier{background:var(--orange);color:var(--white);}
+  .lb-sample{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.45);border:1px solid rgba(255,255,255,0.12);}
+  .lh-title-band{background:var(--orange);padding:8px 48px;display:flex;align-items:center;justify-content:space-between;}
+  .lhtb-l{font-family:'Merriweather',serif;font-size:14px;color:var(--white);font-weight:700;letter-spacing:0.5px;}
+  .lhtb-r{font-size:11px;color:rgba(255,255,255,0.8);font-weight:600;}
+  .lhtb-r strong{color:var(--white);}
+
+  /* LAN REFERENCE HEADER */
+  .lan-header{padding:18px 48px 0;}
+  .lan-ref-table{width:100%;border-collapse:collapse;margin-bottom:18px;}
+  .lan-ref-table td{padding:5px 12px 5px 0;font-size:12px;vertical-align:top;}
+  .lan-ref-table td:nth-child(odd){color:var(--text-sub);font-weight:600;width:160px;}
+  .lan-ref-table td:nth-child(even){color:var(--text-primary);border-bottom:1px solid var(--border);padding-right:32px;}
+  .lan-ref-table .blurred{filter:blur(4.5px);user-select:none;pointer-events:none;}
+  .lan-divider{height:1px;background:var(--rule);margin:0 48px 18px;}
+
+  .body{padding:0 48px 40px;}
+
+  /* SECTION */
+  .sec{margin-bottom:26px;}
+  .sec-head{font-family:'Merriweather',serif;font-size:12.5px;font-weight:700;color:var(--white);background:var(--navy);padding:6px 12px;display:flex;align-items:center;gap:10px;}
+  .sec-num{font-family:'Source Code Pro',monospace;font-size:10px;color:rgba(255,255,255,0.45);font-weight:400;}
+  .sec-body{border:1px solid var(--border);border-top:none;padding:14px 16px;}
+
+  /* DATA TABLE */
+  .dt{width:100%;border-collapse:collapse;}
+  .dt tr td{padding:5px 10px;font-size:12px;border-bottom:1px solid #EEF2F6;vertical-align:top;}
+  .dt tr:last-child td{border-bottom:none;}
+  .dt tr:nth-child(even) td{background:#FAFBFC;}
+  .dt .dl{color:var(--text-sub);font-weight:600;width:200px;}
+  .dt .dv{color:var(--text-primary);}
+  .dt .dv.blurred{filter:blur(4.5px);user-select:none;pointer-events:none;}
+
+  /* FIN TABLE */
+  .ft{width:100%;border-collapse:collapse;}
+  .ft th{background:var(--navy-light);color:var(--white);font-size:10.5px;font-weight:700;letter-spacing:0.5px;padding:7px 10px;text-align:right;}
+  .ft th:first-child{text-align:left;}
+  .ft td{padding:6px 10px;font-size:11.5px;color:var(--text-body);border-bottom:1px solid #EEF2F6;text-align:right;font-family:'Source Code Pro',monospace;}
+  .ft td:first-child{font-family:'Source Sans 3',sans-serif;font-weight:600;color:var(--text-primary);text-align:left;font-size:12px;}
+  .ft tr:nth-child(even) td{background:#FAFBFC;}
+  .ft .sub td{background:#EEF2F6;font-weight:700;color:var(--navy);}
+  .ft .tot td{background:var(--navy);color:var(--white);font-weight:700;border-top:2px solid var(--navy-light);}
+  .ft .tot td:first-child{color:var(--white);}
+  .ft .ind{padding-left:22px !important;font-weight:400 !important;color:var(--text-sub) !important;}
+  .up{color:var(--green);font-weight:700;}
+  .dn{color:var(--red);font-weight:700;}
+  .na{color:var(--muted);}
+
+  /* RATIO TABLE */
+  .rt{width:100%;border-collapse:collapse;}
+  .rt th{background:var(--navy-light);color:var(--white);font-size:10.5px;font-weight:700;padding:7px 10px;text-align:center;letter-spacing:0.5px;}
+  .rt th:first-child{text-align:left;}
+  .rt td{padding:7px 10px;font-size:11.5px;border-bottom:1px solid #EEF2F6;text-align:center;font-family:'Source Code Pro',monospace;}
+  .rt td:first-child{font-family:'Source Sans 3',sans-serif;font-weight:600;color:var(--text-primary);text-align:left;font-size:12px;}
+  .rt tr:nth-child(even) td{background:#FAFBFC;}
+  .rt .bench{font-size:10px;color:var(--text-sub);font-family:'Source Sans 3',sans-serif;}
+  .r-ok{color:var(--green);font-weight:700;}
+  .r-warn{color:var(--amber);font-weight:700;}
+  .r-bad{color:var(--red);font-weight:700;}
+
+  /* SECURITY TABLE */
+  .st{width:100%;border-collapse:collapse;}
+  .st th{background:var(--navy-light);color:var(--white);font-size:10.5px;font-weight:700;padding:7px 10px;text-align:left;letter-spacing:0.5px;}
+  .st td{padding:7px 10px;font-size:12px;color:var(--text-body);border-bottom:1px solid #EEF2F6;vertical-align:top;}
+  .st tr:last-child td{border-bottom:none;}
+  .st tr:nth-child(even) td{background:#FAFBFC;}
+  .st td:first-child{font-weight:700;color:var(--text-primary);width:180px;}
+
+  /* REPAYMENT TABLE */
+  .rpt{width:100%;border-collapse:collapse;}
+  .rpt th{background:var(--navy-light);color:var(--white);font-size:10.5px;font-weight:700;padding:7px 10px;text-align:center;letter-spacing:0.5px;}
+  .rpt td{padding:6px 10px;font-size:11.5px;text-align:center;border-bottom:1px solid #EEF2F6;font-family:'Source Code Pro',monospace;color:var(--text-body);}
+  .rpt tr:last-child td{border-bottom:none;font-weight:700;background:var(--bg);color:var(--navy);}
+  .rpt tr:nth-child(even) td{background:#FAFBFC;}
+
+  .cam-para{font-size:12.5px;color:var(--text-body);line-height:1.7;margin-bottom:10px;}
+  .cam-para:last-child{margin-bottom:0;}
+  .cam-para strong{color:var(--text-primary);}
+
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+  .two-col .col:first-child{border-right:1px solid var(--border);padding-right:14px;}
+  .two-col .col:last-child{padding-left:14px;}
+
+  /* STRENGTHS & CONCERNS */
+  .sc-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .sc-box{border-radius:3px;padding:12px 14px;}
+  .sc-str{background:var(--green-light);border-left:3px solid var(--green);}
+  .sc-con{background:var(--amber-light);border-left:3px solid var(--amber-mid);}
+  .sc-title{font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;}
+  .sc-str .sc-title{color:var(--green);}
+  .sc-con .sc-title{color:var(--amber);}
+  .sc-item{font-size:12px;color:var(--text-body);margin-bottom:5px;display:flex;align-items:flex-start;gap:6px;line-height:1.4;}
+  .sc-item:last-child{margin-bottom:0;}
+  .sc-str .sc-item::before{content:'✓';color:var(--green);font-weight:900;flex-shrink:0;font-size:10px;margin-top:2px;}
+  .sc-con .sc-item::before{content:'⚠';color:var(--amber);flex-shrink:0;font-size:10px;margin-top:2px;}
+
+  /* PROPOSAL STRENGTHS */
+  .strengths-grid{display:flex;flex-direction:column;gap:0;}
+  .str-item{display:flex;align-items:flex-start;gap:14px;padding:12px 0;border-bottom:1px solid var(--border);}
+  .str-item:last-child{border-bottom:none;}
+  .str-icon{font-size:20px;flex-shrink:0;width:28px;text-align:center;margin-top:2px;}
+  .str-title{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px;}
+  .str-body{font-size:12px;color:var(--text-body);line-height:1.6;}
+
+  /* PROPOSAL BOX */
+  .prop-box{background:var(--navy);padding:16px 18px;margin-top:0;}
+  .pb-tag{font-size:9.5px;color:var(--orange);letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:5px;}
+  .pb-title{font-family:'Merriweather',serif;font-size:16px;color:var(--white);margin-bottom:12px;}
+  .pb-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid rgba(255,255,255,0.1);margin-bottom:12px;}
+  .pbi{padding:10px 14px;border-right:1px solid rgba(255,255,255,0.1);}
+  .pbi:last-child{border-right:none;}
+  .pbi-label{font-size:9.5px;color:rgba(255,255,255,0.4);letter-spacing:1px;text-transform:uppercase;font-weight:600;margin-bottom:4px;}
+  .pbi-val{font-family:'Source Code Pro',monospace;font-size:13px;font-weight:700;color:var(--white);}
+  .pbi-val.fav{color:#4ADE80;}
+  .pb-note{font-size:11.5px;color:rgba(255,255,255,0.55);line-height:1.6;}
+
+  .note-strip{background:var(--orange-light);border:1px solid var(--orange-mid);border-radius:3px;padding:8px 12px;font-size:11px;color:var(--text-body);margin-top:8px;}
+  .note-strip strong{color:var(--orange);}
+
+  /* PROPOSAL STRENGTHS */
+  .strengths-grid{display:flex;flex-direction:column;gap:0;}
+  .str-item{display:flex;align-items:flex-start;gap:14px;padding:12px 0;border-bottom:1px solid var(--border);}
+  .str-item:last-child{border-bottom:none;}
+  .str-icon{font-size:20px;flex-shrink:0;width:28px;text-align:center;margin-top:2px;}
+  .str-title{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px;}
+  .str-body{font-size:12px;color:var(--text-body);line-height:1.6;}
+
+  .pb{border:none;border-top:1px dashed var(--rule);margin:26px 0;}
+  .pb-label{text-align:center;font-size:9.5px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin:-6px 0 22px;font-weight:700;}
+
+  .footer{background:var(--navy);padding:14px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;border-top:3px solid var(--orange);}
+  .footer-brand{font-family:'Merriweather',serif;font-size:13px;color:var(--white);}
+  .footer-brand span{color:var(--orange);}
+  .footer-text{font-size:10px;color:rgba(255,255,255,0.4);text-align:center;}
+  .footer-right{font-size:10px;color:rgba(255,255,255,0.4);text-align:right;}
+
+  .disclaimer{font-size:10.5px;color:var(--muted);line-height:1.6;padding:12px 0;border-top:1px solid var(--border);margin-top:16px;}
+  .disclaimer strong{color:var(--text-sub);}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- LETTERHEAD -->
+  <div class="letterhead">
+    <div class="lh-top">
+      <div>
+        <div class="brand-name">Finsight<span>One</span></div>
+        <div class="brand-tagline">Credit · Advisory · Intelligence</div>
+      </div>
+      <div class="lh-right">
+        <div class="lh-badge lb-tier">Rs. 3,999 — Loan Appraisal Note</div>
+        <div class="lh-badge lb-sample">Sample Document</div>
+      </div>
+    </div>
+    <div class="lh-title-band">
+      <div class="lhtb-l">LOAN APPRAISAL NOTE (LAN)</div>
+      <div class="lhtb-r">Stream 1 — Documents &nbsp;·&nbsp; Term Loan: 1–2 Cr Tier &nbsp;·&nbsp; Price: <strong>Rs. 3,999</strong> + GST</div>
+    </div>
+  </div>
+
+  <!-- LAN REFERENCE HEADER -->
+  <div class="lan-header">
+    <br>
+    <table class="lan-ref-table">
+      <tr>
+        <td>LAN Reference No.</td><td>FO-LAN-2026-0221</td>
+        <td>Date of Preparation</td><td>June 2026</td>
+      </tr>
+      <tr>
+        <td>Name of Borrower</td><td class="blurred">Kalyani Agro Industries</td>
+        <td>Constitution</td><td>Partnership Firm</td>
+      </tr>
+      <tr>
+        <td>Industry / Activity</td><td>Agro Processing — Rice Milling</td>
+        <td>Location</td><td>Nellore, Andhra Pradesh</td>
+      </tr>
+      <tr>
+        <td>Facility Proposed</td><td>Term Loan — Plant & Machinery</td>
+        <td>Amount Proposed</td><td><strong>Rs. 1,50,00,000 (Rs. 1.50 Crore)</strong></td>
+      </tr>
+      <tr>
+        <td>Prepared By</td><td>FinsightOne Credit Advisory Desk</td>
+        <td>Document Tier</td><td>Standard — Loan up to Rs. 2 Crore</td>
+      </tr>
+    </table>
+  </div>
+  <div class="lan-divider"></div>
+
+  <div class="body">
+
+    <!-- SECTION 1: EXECUTIVE SUMMARY -->
+    <div class="sec">
+      <div class="sec-head"><span class="sec-num">01</span> EXECUTIVE OVERVIEW</div>
+      <div class="sec-body">
+        <div class="cam-para">This Loan Appraisal Note has been prepared by FinsightOne on behalf of the borrower to present a structured case for a <strong>Term Loan of Rs. 1.50 Crore</strong> for acquisition of rice processing machinery. The borrower is a well-established partnership firm engaged in rice milling and agro by-product processing at Nellore, Andhra Pradesh, with 12 years of continuous operations. The proposed facility will fund the purchase of a rice sorting & grading machine and paddy dryer, enabling a capacity expansion from 4 MT/hour to 8 MT/hour.</div>
+        <div class="cam-para">The borrower presents a clean credit bureau profile (partners' CIBIL 748 and 731), consistent revenue growth at approximately 11–13% per annum over three audited years, and a banking turnover of Rs. 3.38 Crore in FY25 — providing strong banking trail relative to the proposed loan. The firm's existing Working Capital facility of Rs. 35 Lakhs is being serviced without overdue. The proposed expansion is backed by confirmed procurement interest from state government agencies and is expected to improve realisations by 30–35% through reduced rejection losses.</div>
+        <div class="cam-para">The security package proposed — primary hypothecation of funded machinery and equitable mortgage of factory land and building valued at Rs. 2.40 Crore — provides a combined coverage of approximately <strong>293% of the proposed loan amount</strong>, offering strong recovery comfort to the lending institution.</div>
+      </div>
+    </div>
+
+    <!-- SECTION 2: BORROWER PROFILE -->
+    <div class="sec">
+      <div class="sec-head"><span class="sec-num">02</span> BORROWER PROFILE</div>
+      <div class="sec-body">
+        <table class="dt">
+          <tr><td class="dl">Name of Firm</td><td class="dv blurred">Kalyani Agro Industries</td><td class="dl">Year Established</td><td class="dv">March 2014 (12 years)</td></tr>
+          <tr><td class="dl">Constitution</td><td class="dv">Partnership Firm</td><td class="dl">No. of Partners</td><td class="dv">2 (husband & wife)</td></tr>
+          <tr><td class="dl">Business Activity</td><td class="dv">Rice milling; husk-based fuel blocks; rice bran oil extraction</td><td class="dl">GST Registration</td><td class="dv">37XXXXX0000X1ZX — Active, Regular</td></tr>
+          <tr><td class="dl">Factory Address</td><td class="dv">APSIDCO Industrial Area, Nellore — 524004</td><td class="dl">UDYAM No.</td><td class="dv">UDYAM-AP-XX-XXXXXX (Active)</td></tr>
+          <tr><td class="dl">Partner 1 (Lead)</td><td class="dv blurred">Sri Venkata Ramana Reddy</td><td class="dl">Industry Experience</td><td class="dv">18 years in agro processing</td></tr>
+          <tr><td class="dl">Partner 2</td><td class="dv blurred">Smt. Lakshmi Reddy</td><td class="dl">Role</td><td class="dv">Administration & Accounts</td></tr>
+          <tr><td class="dl">CIBIL — Partner 1</td><td class="dv"><strong>748</strong> — Clean; no overdue, no NPA</td><td class="dl">CIBIL — Partner 2</td><td class="dv"><strong>731</strong> — Clean; no overdue, no NPA</td></tr>
+          <tr><td class="dl">Existing Banking</td><td class="dv" colspan="3">Current Account (9-year banking relationship) · WC Cash Credit Rs. 35L — Standard · Vehicle Loan O/S Rs. 3.8L — Standard</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- SECTION 3: FACILITY PROPOSED -->
+    <div class="sec">
+      <div class="sec-head"><span class="sec-num">03</span> FACILITY PROPOSED</div>
+      <div class="sec-body">
+        <div class="two-col">
+          <div class="col">
+            <table class="dt">
+              <tr><td class="dl">Facility Type</td><td class="dv">Term Loan</td></tr>
+              <tr><td class="dl">Purpose</td><td class="dv">Purchase of rice sorting & grading machine (1 unit, Satake India) and paddy dryer (1 unit, RIETER Agro). Quotations enclosed.</td></tr>
+              <tr><td class="dl">Amount Proposed</td><td class="dv"><strong>Rs. 1,50,00,000</strong></td></tr>
+              <tr><td class="dl">Promoter Contribution</td><td class="dv">Rs. 50,00,000 (25% of project cost)</td></tr>
+              <tr><td class="dl">Total Project Cost</td><td class="dv">Rs. 2,00,00,000</td></tr>
+              <tr><td class="dl">Debt : Equity Ratio</td><td class="dv">75:25</td></tr>
+              <tr><td class="dl">Priority Sector</td><td class="dv">Yes — Agro Processing / Food & Agriculture</td></tr>
+            </table>
+          </div>
+          <div class="col">
+            <table class="dt">
+              <tr><td class="dl">Tenure Proposed</td><td class="dv">60 Months (incl. moratorium)</td></tr>
+              <tr><td class="dl">Moratorium Period</td><td class="dv">3 Months from first disbursement</td></tr>
+              <tr><td class="dl">Indicative Rate</td><td class="dv">9.75% p.a. reducing (subject to lender)</td></tr>
+              <tr><td class="dl">Indicative EMI</td><td class="dv">Rs. 3,16,800 per month</td></tr>
+              <tr><td class="dl">Repayment Mode</td><td class="dv">ECS / NACH debit</td></tr>
+              <tr><td class="dl">Disbursement Plan</td><td class="dv">In 2 tranches against delivery challans</td></tr>
+              <tr><td class="dl">Expected COD</td><td class="dv">October 2026</td></tr>
+            </table>
+          </div>
+        </div>
+        <div class="note-strip" style="margin-top:12px;"><strong>Purpose Justification:</strong> Proposed machinery will double processing throughput (4→8 MT/hour) and reduce moisture-related rejection losses by an estimated 30–35%, directly improving net realisations per tonne. Expansion is demand-backed — borrower has received procurement interest from state government agencies for higher-grade milled rice.</div>
+      </div>
+    </div>
+
+    <!-- SECTION 4: INDUSTRY -->
+    <div class="sec">
+      <div class="sec-head"><span class="sec-num">04</span> INDUSTRY & MARKET CONTEXT</div>
+      <div class="sec-body">
+        <div class="cam-para">Rice milling is a core segment of India's agro-processing value chain. Andhra Pradesh is among the top three paddy-producing states, ensuring consistent raw material availability for the borrower. The regulated procurement ecosystem — FCI, MARKFED and state agencies — provides a price floor that reduces revenue volatility for millers meeting quality standards, which the proposed machinery expansion directly addresses.</div>
+        <div class="cam-para">The by-product segments (husk fuel blocks and rice bran) represent meaningful incremental revenue — bran constitutes 8–10% of paddy weight and bran oil extraction adds Rs. 12–15 per kg in realisation. The borrower is already monetising these streams and the capacity expansion strengthens the primary milling volume that feeds into them.</div>
+        <div class="cam-para"><strong>Key Risk — Seasonality:</strong> Paddy procurement is concentrated in Oct–Dec post-harvest. This is a structural feature of the industry, not a business-specific concern. The borrower manages this through advance procurement contracts with FPOs at fixed prices, reducing spot exposure. The existing WC CC facility absorbs seasonal working capital gaps — this has been serviced without overdue through multiple cycles.</div>
+      </div>
+    </div>
+
+    <hr class="pb">
+    <div class="pb-label">— Page 2 of 3 —</div>
+
+    <!-- SECTION 5: FINANCIAL ANALYSIS -->
+    <div class="sec">
+      <div class="sec-head"><span class="sec-num">05</span> FINANCIAL ANALYSIS</div>
+      <div class="sec-body">
+        <div style="font-size:10.5px;color:var(--muted);margin-bottom:10px;font-style:italic;">All figures in Rs. Lakhs. Source: ITR, CA-certified P&L and Balance Sheet (FY23–FY25 Audited), Provisional Financials and Bank Statements (FY26). Banking turnover independently derived from 12-month current account statements.</div>
+
+        <div style="font-size:11px;font-weight:700;color:var(--navy);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px;">A. Profit & Loss Summary</div>
+        <table class="ft" style="margin-bottom:16px;">
+          <thead>
+            <tr><th>Particulars (Rs. Lakhs)</th><th>FY 2022–23</th><th>FY 2023–24</th><th>FY 2024–25</th><th>FY 2025–26 (Prov.)</th><th>YoY Growth FY25</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Net Sales / Turnover</td><td>248.40</td><td>286.15</td><td>318.72</td><td>348.00</td><td class="up">+11.4%</td></tr>
+            <tr><td class="ind">— Rice & Rice Products</td><td>198.72</td><td>228.92</td><td>254.98</td><td>278.40</td><td class="na">—</td></tr>
+            <tr><td class="ind">— Husk / Bran By-products</td><td>49.68</td><td>57.23</td><td>63.74</td><td>69.60</td><td class="na">—</td></tr>
+            <tr><td>Raw Material Cost (Paddy)</td><td>161.46</td><td>185.99</td><td>204.94</td><td>222.72</td><td class="na">—</td></tr>
+            <tr><td>Gross Profit</td><td>86.94</td><td>100.16</td><td>113.78</td><td>125.28</td><td class="up">+13.6%</td></tr>
+            <tr><td>Gross Margin %</td><td>35.0%</td><td>35.0%</td><td>35.7%</td><td>36.0%</td><td class="up">Improving</td></tr>
+            <tr><td>Operating & Admin Expenses</td><td>28.57</td><td>32.90</td><td>36.65</td><td>39.10</td><td class="na">—</td></tr>
+            <tr><td>Power & Fuel</td><td>12.42</td><td>14.31</td><td>15.94</td><td>17.40</td><td class="na">—</td></tr>
+            <tr><td>Labour (Wages)</td><td>18.63</td><td>21.46</td><td>23.90</td><td>26.10</td><td class="na">—</td></tr>
+            <tr><td>EBITDA</td><td>27.32</td><td>31.49</td><td>37.29</td><td>42.68</td><td class="up">+18.4%</td></tr>
+            <tr><td>Depreciation</td><td>3.20</td><td>3.20</td><td>3.80</td><td>4.20</td><td class="na">—</td></tr>
+            <tr><td>Interest on Existing Facilities</td><td>3.85</td><td>3.42</td><td>3.08</td><td>2.88</td><td class="up">Declining</td></tr>
+            <tr class="sub"><td>Net Profit Before Tax</td><td>20.27</td><td>24.87</td><td>30.41</td><td>35.60</td><td class="up">+22.4%</td></tr>
+            <tr><td>Net Profit After Tax (est.)</td><td>18.24</td><td>22.16</td><td>26.46</td><td>30.80</td><td class="up">+19.4%</td></tr>
+            <tr class="sub"><td>Cash Accruals (PAT + Depreciation)</td><td>21.44</td><td>25.36</td><td>30.26</td><td>35.00</td><td class="up">+19.3%</td></tr>
+            <tr><td>Banking Turnover (Current A/C Credits)</td><td>262.40</td><td>302.80</td><td>338.40</td><td>370.00 (est.)</td><td class="up">+11.8%</td></tr>
+          </tbody>
+        </table>
+
+        <div style="font-size:11px;font-weight:700;color:var(--navy);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px;">B. Balance Sheet Highlights (Rs. Lakhs)</div>
+        <table class="ft" style="margin-bottom:0;">
+          <thead>
+            <tr><th>Particulars</th><th>FY 2022–23</th><th>FY 2023–24</th><th>FY 2024–25</th><th>Movement</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Partners' Capital / Tangible Net Worth</td><td>38.20</td><td>42.80</td><td>68.26</td><td class="up">Strong growth</td></tr>
+            <tr><td>Total Outside Liabilities (TOL)</td><td>72.80</td><td>68.40</td><td>72.18</td><td class="na">Stable</td></tr>
+            <tr><td>TOL / Adj. TNW Ratio</td><td>1.91x</td><td>1.60x</td><td>1.06x</td><td class="up">Improving consistently</td></tr>
+            <tr><td>Net Working Capital (NWC)</td><td>12.60</td><td>18.42</td><td>24.68</td><td class="up">+Rs.6.26L YoY</td></tr>
+            <tr><td>Current Ratio</td><td>1.24x</td><td>1.38x</td><td>1.62x</td><td class="up">Improving consistently</td></tr>
+            <tr><td>Debtor Days</td><td>26 days</td><td>22 days</td><td>19 days</td><td class="up">Tightening — efficient collections</td></tr>
+            <tr><td>Creditor Days</td><td>32 days</td><td>28 days</td><td>24 days</td><td class="up">Reducing — improving vendor terms</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SECTION 6: KEY RATIOS -->
+    <div class="sec">
+      <div class="sec-head"><span class="sec-num">06</span> KEY FINANCIAL RATIOS</div>
+      <div class="sec-body">
+        <div style="font-size:10.5px;color:var(--muted);margin-bottom:10px;font-style:italic;">DSCR computed as (PAT + Depreciation + Interest on Term Loan) ÷ (Term Loan Principal Repayment + Interest on Term Loan) for each year. Historical DSCR uses existing debt obligations only; post-loan DSCR incorporates proposed EMI.</div>
+        <table class="rt">
+          <thead>
+            <tr><th>Ratio</th><th>FY 2022–23</th><th>FY 2023–24</th><th>FY 2024–25</th><th>Post-Loan (Proj. FY26)</th><th>Benchmark</th><th>Assessment</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>DSCR</td>
+              <td class="r-ok">4.82x</td><td class="r-ok">5.68x</td><td class="r-ok">6.92x</td>
+              <td class="r-ok">2.18x</td>
+              <td class="bench">Min 1.50x</td><td class="r-ok">✓ Comfortable</td>
+            </tr>
+            <tr>
+              <td>Current Ratio</td>
+              <td class="r-ok">1.24x</td><td class="r-ok">1.38x</td><td class="r-ok">1.62x</td>
+              <td class="r-ok">1.58x</td>
+              <td class="bench">Min 1.20x</td><td class="r-ok">✓ Improving trend</td>
+            </tr>
+            <tr>
+              <td>TOL / Adj. TNW</td>
+              <td class="r-warn">1.91x</td><td class="r-warn">1.60x</td><td class="r-ok">1.06x</td>
+              <td class="r-warn">2.48x (post-loan)</td>
+              <td class="bench">Max 4.00x</td><td class="r-ok">✓ Well within norm</td>
+            </tr>
+            <tr>
+              <td>Interest Coverage (ICR)</td>
+              <td class="r-ok">7.10x</td><td class="r-ok">9.20x</td><td class="r-ok">12.11x</td>
+              <td class="r-ok">6.84x</td>
+              <td class="bench">Min 2.00x</td><td class="r-ok">✓ Strong</td>
+            </tr>
+            <tr>
+              <td>Net Profit Margin</td>
+              <td>7.34%</td><td>7.75%</td><td>8.30%</td>
+              <td>8.85% (proj.)</td>
+              <td class="bench">Positive trend</td><td class="r-ok">✓ Steady improvement</td>
+            </tr>
+            <tr>
+              <td>Banking Turnover / Proposed Loan</td>
+              <td>1.75x</td><td>2.02x</td><td>2.25x</td>
+              <td>2.47x (proj.)</td>
+              <td class="bench">Min 1.50x</td><td class="r-ok">✓ Adequate — improving</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="note-strip" style="margin-top:10px;"><strong>Post-Loan DSCR Note:</strong> Projected FY26 Cash Accruals Rs. 35.00L. Proposed TL annual obligation: EMI Rs. 38.02L (Rs. 3,16,800 × 12) + Interest Rs. 14.63L. DSCR = (35.00 + 4.20 + 14.63) ÷ (38.02 + 14.63) = 53.83 ÷ 52.65 = <strong>2.18x</strong>. Lender to independently verify at time of sanction.</div>
+      </div>
+    </div>
+
+    <hr class="pb">
+    <div class="pb-label">— Page 3 of 3 —</div>
+
+    <!-- SECTION 7: SECURITY -->
+    <div class="sec">
+      <div class="sec-head"><span class="sec-num">07</span> SECURITY PROPOSED</div>
+      <div class="sec-body">
+        <table class="st">
+          <thead>
+            <tr><th>Security Type</th><th>Description</th><th>Value / Coverage</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Primary — Hypothecation</td>
+              <td>First exclusive hypothecation charge over rice sorting & grading machine and paddy dryer to be purchased from the proposed loan. Machinery to be comprehensively insured with the lending institution as nominee throughout the loan tenure. Invoice value supported by enclosed quotations.</td>
+              <td>Rs. 2.00 Cr (incl. installation)<br><strong>133% of loan</strong></td>
+            </tr>
+            <tr>
+              <td>Collateral — Mortgage</td>
+              <td>Equitable mortgage of factory land and building — Survey No. XX, APSIDCO Industrial Area, Nellore — registered in the firm's name. EC and title deed enclosed. Independent valuation report (empanelled valuer) dated May 2026 enclosed.</td>
+              <td>Rs. 2.40 Cr (market value)<br><strong>160% of loan</strong></td>
+            </tr>
+            <tr>
+              <td>Personal Guarantee</td>
+              <td>Personal guarantees of both partners. CA-certified net worth certificates enclosed with the file.</td>
+              <td>P1: Rs. 38.4L NW<br>P2: Rs. 24.8L NW</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="note-strip" style="margin-top:10px;"><strong>Combined Security Coverage:</strong> Primary hypothecation (Rs. 2.00 Cr) + collateral mortgage (Rs. 2.40 Cr) = Rs. 4.40 Cr total security against Rs. 1.50 Cr proposed loan — <strong>293% coverage</strong>. Recovery position is considered strong.</div>
+      </div>
+    </div>
+
+    <!-- SECTION 8: REPAYMENT -->
+    <div class="sec">
+      <div class="sec-head"><span class="sec-num">08</span> INDICATIVE REPAYMENT SCHEDULE</div>
+      <div class="sec-body">
+        <table class="rpt">
+          <thead>
+            <tr><th>Period</th><th>Months</th><th>EMI (Rs.)</th><th>Principal (Rs.)</th><th>Interest (Rs.)</th><th>Balance O/S (Rs.)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Moratorium (Month 1–3)</td><td>3</td><td>Interest only</td><td>—</td><td>~36,563 / mo</td><td>1,50,00,000</td></tr>
+            <tr><td>Year 1 (Month 4–15)</td><td>12</td><td>3,16,800</td><td>1,96,200</td><td>1,20,600</td><td>1,26,44,400</td></tr>
+            <tr><td>Year 2 (Month 16–27)</td><td>12</td><td>3,16,800</td><td>2,20,100</td><td>96,700</td><td>99,01,200</td></tr>
+            <tr><td>Year 3 (Month 28–39)</td><td>12</td><td>3,16,800</td><td>2,46,800</td><td>70,000</td><td>69,45,600</td></tr>
+            <tr><td>Year 4 (Month 40–51)</td><td>12</td><td>3,16,800</td><td>2,76,600</td><td>40,200</td><td>36,28,800</td></tr>
+            <tr><td>Year 5 (Month 52–63)</td><td>12</td><td>3,16,800</td><td>3,02,400</td><td>14,400</td><td>—</td></tr>
+            <tr><td>Total</td><td>63</td><td>—</td><td>1,50,00,000</td><td>~22,68,400</td><td>Nil</td></tr>
+          </tbody>
+        </table>
+        <div class="note-strip" style="margin-top:10px;"><strong>Note:</strong> Indicative at 9.75% p.a. reducing. EMI commences Month 4 after 3-month moratorium. Actual schedule to be issued by lender at sanction based on prevailing rate and disbursement date.</div>
+      </div>
+    </div>
+
+    <!-- SECTION 9: STRENGTHS & CONCERNS -->
+    <div class="sec">
+      <div class="sec-head"><span class="sec-num">09</span> CREDIT STRENGTHS & CONCERNS</div>
+      <div class="sec-body">
+        <div class="sc-grid">
+          <div class="sc-box sc-str">
+            <div class="sc-title">Factors Supporting the Proposal</div>
+            <div class="sc-item">12 years of uninterrupted operations in rice milling — strong vintage well above typical MSME lending thresholds</div>
+            <div class="sc-item">Both partners maintain clean CIBIL scores (748 & 731) with no overdue, no NPA, no settlement on personal or business bureau</div>
+            <div class="sc-item">Revenue growing consistently at 11–13% CAGR; EBITDA growing at 18% in FY25 — margins expanding, not just topline</div>
+            <div class="sc-item">Banking turnover Rs. 3.38 Cr (FY25) against proposed loan Rs. 1.50 Cr — 2.25x cover; all income well documented in banking records</div>
+            <div class="sc-item">Debt profile improving year-on-year — TOL/TNW has declined from 1.91x (FY23) to 1.06x (FY25); disciplined borrower</div>
+            <div class="sc-item">Strong security package — 293% combined coverage from machinery hypothecation and independently-valued factory property</div>
+            <div class="sc-item">Priority sector classification (agro processing) — may attract better pricing and preferential processing at eligible lenders</div>
+          </div>
+          <div class="sc-box sc-con">
+            <div class="sc-title">Areas for Lender's Consideration</div>
+            <div class="sc-item"><strong>Partnership constitution:</strong> Succession risk in case of incapacitation of lead partner. Both partners are active in the business; business continuity insurance is proposed as a safeguard.</div>
+            <div class="sc-item"><strong>Seasonal revenue concentration:</strong> Oct–Dec procurement-heavy pattern is an industry-wide characteristic, not business-specific. WC CC facility has historically absorbed lean period gaps without overdue.</div>
+            <div class="sc-item"><strong>TOL/TNW rises to ~2.48x post-loan</strong> from current 1.06x — remains well within the 4x outer norm. Will revert as loan is progressively repaid over 60 months.</div>
+            <div class="sc-item"><strong>Single commodity concentration (rice):</strong> Partially offset by by-product revenue streams (husk blocks, bran) which provide year-round cash flow independent of main milling volumes.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- SECTION 10: PROPOSAL STRENGTHS -->
+    <div class="sec">
+      <div class="sec-head"><span class="sec-num">10</span> PROPOSAL STRENGTHS — WHY THIS FILE STANDS OUT</div>
+      <div class="sec-body">
+        <div style="font-size:11.5px;color:var(--text-sub);margin-bottom:14px;font-style:italic;">The following factors, drawn directly from the borrower's financial and operational record, highlight what makes this proposal stand out and are presented for the lending institution's consideration.</div>
+        <div class="strengths-grid">
+          <div class="str-item">
+            <div class="str-icon">🏦</div>
+            <div>
+              <div class="str-title">Exemplary Banking Conduct — 9-Year Clean Record</div>
+              <div class="str-body">The borrower maintains a 9-year primary banking relationship. Current account credits have grown consistently from Rs. 2.18 Cr/month (FY23) to Rs. 2.82 Cr/month (FY25) — a clean, uninterrupted trail with no cheque bounces, no CC overutilisation, and the existing WC Cash Credit of Rs. 35 Lakhs serviced without overdue across multiple renewal cycles.</div>
+            </div>
+          </div>
+          <div class="str-item">
+            <div class="str-icon">📋</div>
+            <div>
+              <div class="str-title">Full GST Compliance — 36 Months Without a Pending Return</div>
+              <div class="str-body">GSTR-3B filings are current for all 36 months. GST-declared turnover for FY25 (Rs. 3.18 Cr) is fully consistent with ITR declared income and banking credits — no unexplained gaps, no cash dependency concerns. The income story is consistent across all three data sources a lender will check: ITR, GST, and bank statement.</div>
+            </div>
+          </div>
+          <div class="str-item">
+            <div class="str-icon">🏛️</div>
+            <div>
+              <div class="str-title">Strong Collateral Position — 293% Combined Coverage</div>
+              <div class="str-body">Factory land and building at APSIDCO Industrial Area (industrial NA-use) is independently valued at Rs. 2.40 Crore — covering 160% of the proposed loan on its own. Combined with primary hypothecation on funded machinery (Rs. 2.00 Cr), total security stands at 293% of loan. The property is free of encumbrances; title deed, EC, and valuation report are enclosed in the file.</div>
+            </div>
+          </div>
+          <div class="str-item">
+            <div class="str-icon">🏢</div>
+            <div>
+              <div class="str-title">Institutional Buyers — FCI &amp; State Government Procurement</div>
+              <div class="str-body">A significant portion of output is supplied to FCI and state government procurement agencies under fixed-price contracts — rated, regulated entities with assured payment cycles. This materially reduces receivables risk and provides stable, predictable revenue visibility. The proposed expansion directly targets increased allocation under this channel.</div>
+            </div>
+          </div>
+          <div class="str-item">
+            <div class="str-icon">📈</div>
+            <div>
+              <div class="str-title">Consistent Multi-Year Financial Improvement</div>
+              <div class="str-body">Every key metric has improved across all three audited years: EBITDA Rs. 27.32L → Rs. 37.29L (+36%); Net Profit Margin 7.34% → 8.30%; TOL/TNW 1.91x → 1.06x; Current Ratio 1.24x → 1.62x; Debtor Days 26 → 19 days. This is a consistent multi-year trajectory — not a single-year improvement ahead of a loan application.</div>
+            </div>
+          </div>
+          <div class="str-item">
+            <div class="str-icon">👤</div>
+            <div>
+              <div class="str-title">Experienced Promoters with Clean Personal Bureau</div>
+              <div class="str-body">Lead partner has 18 years of industry experience. Both partners carry strong personal CIBIL scores (748 and 731) with no NPA, no settlement, and no written-off accounts. Personal guarantees are backed by meaningful individual net worth (Rs. 38.4L and Rs. 24.8L respectively), reflecting genuine personal commitment to the facility.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROPOSAL BOX -->
+    <div class="sec">
+      <div class="sec-head"><span class="sec-num">11</span> SUMMARY & PROPOSAL</div>
+      <div class="sec-body">
+        <div class="cam-para">The borrower presents a well-documented, financially sound case for the proposed term loan. Revenue has grown consistently, margins are improving, and the banking trail fully supports the declared financials. All key credit parameters are within acceptable ranges — DSCR at 2.18x post-loan, current ratio improving at 1.62x, TOL/TNW at 1.06x (pre-loan) with a clear trajectory of decline. The security package provides 293% coverage, offering strong recovery comfort independent of business performance.</div>
+        <div class="cam-para">The proposed expansion is operationally justified — the machinery investment directly addresses the quality constraint limiting access to higher-value government procurement. The investment will be self-funding within the loan tenure based on conservative revenue projections.</div>
+        <div class="cam-para">FinsightOne presents this Loan Appraisal Note to the lending institution on behalf of the borrower with the view that the proposal merits favourable consideration for sanction at the amount and terms described herein.</div>
+      </div>
+    </div>
+
+    <div class="prop-box">
+      <div class="pb-tag">FinsightOne — Loan Appraisal Summary</div>
+      <div class="pb-title">We Propose: Term Loan of Rs. 1.50 Crore for Favourable Consideration</div>
+      <div class="pb-grid">
+        <div class="pbi"><div class="pbi-label">Facility Proposed</div><div class="pbi-val fav">Rs. 1.50 Crore</div></div>
+        <div class="pbi"><div class="pbi-label">Post-Loan DSCR</div><div class="pbi-val fav">2.18x</div></div>
+        <div class="pbi"><div class="pbi-label">Security Coverage</div><div class="pbi-val fav">293%</div></div>
+        <div class="pbi"><div class="pbi-label">Proposal Strengths</div><div class="pbi-val">6 Key Factors</div></div>
+      </div>
+      <div class="pb-note">This Loan Appraisal Note has been prepared by FinsightOne Credit Advisory Desk on behalf of the borrower, based on documents and information furnished by them. FinsightOne is acting as the borrower's advisory firm and not as a credit authority. Final sanction and terms rest entirely with the lending institution. We remain available to provide any additional information or clarification required during the lender's assessment process.</div>
+    </div>
+
+    <div class="disclaimer">
+      <strong>Disclaimer:</strong> This Loan Appraisal Note has been prepared by FinsightOne Credit Advisory Desk based on information, documents and data furnished by the borrower. FinsightOne does not independently audit, verify or certify the accuracy of financial statements or documents. This note is prepared to present the borrower's case to the lending institution and does not constitute a guarantee or assurance of loan sanction. Final credit decision rests entirely with the lending institution in accordance with its own credit policy, risk framework and applicable regulatory guidelines. All names, figures and details in this sample document are fictional and for illustration purposes only.
+    </div>
+
+  </div><!-- /body -->
+
+  <div class="footer">
+    <div class="footer-brand">Finsight<span>One</span></div>
+    <div class="footer-text">Prepared by FinsightOne Credit Advisory Desk &nbsp;|&nbsp; finsightone.co &nbsp;|&nbsp; Credit · Advisory · Intelligence<br><span style="font-size:9.5px;opacity:0.6;">Sample document — all client data fictional and for illustration only.</span></div>
+    <div class="footer-right">LAN Ref: FO-LAN-2026-0221<br>Page 1–3 of 3</div>
+  </div>
+
+</div>
+</body>
+</html>
