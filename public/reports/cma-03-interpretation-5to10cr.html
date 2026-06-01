@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CMA Interpretation Report — FinsightOne</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Source+Sans+3:wght@300;400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0A1929;--navy-light:#1A3357;--orange:#F97316;--orange-light:#FFF7ED;--orange-mid:#FED7AA;--border:#C8D6E0;--bg:#F2F6FA;--white:#FFFFFF;--green:#1A6B3A;--green-light:#EEF8F2;--amber:#8A5200;--amber-light:#FFF8EC;--red:#8B1A1A;--red-light:#FDF3F3;--muted:#7A8FA6;--text-primary:#0A1929;--text-body:#2E3F52;--text-sub:#5A6E82;--rule:#B8C8D4;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"Source Sans 3",sans-serif;background:#D8E2EC;color:var(--text-primary);font-size:13px;line-height:1.6;}
+body::before{content:"SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE";position:fixed;top:-50%;left:-50%;width:200%;height:200%;font-size:17px;font-weight:700;color:rgba(10,25,41,0.038);letter-spacing:4px;transform:rotate(-35deg);word-spacing:38px;line-height:5;z-index:1000;pointer-events:none;white-space:pre-wrap;text-align:center;}
+.page{max-width:920px;margin:0 auto;background:var(--white);box-shadow:0 4px 32px rgba(0,0,0,0.1);}
+.lh-top{background:var(--navy);padding:20px 48px 16px;display:flex;align-items:flex-start;justify-content:space-between;}
+.brand-name{font-family:"Merriweather",serif;font-size:22px;color:var(--white);margin-bottom:3px;}
+.brand-name span{color:var(--orange);}
+.brand-tagline{font-size:10px;color:rgba(255,255,255,0.45);letter-spacing:2.5px;text-transform:uppercase;font-weight:600;}
+.lh-right{display:flex;flex-direction:column;align-items:flex-end;gap:5px;}
+.badge{font-size:9.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:2px;}
+.badge-price{background:var(--orange);color:var(--white);}
+.badge-sample{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.45);border:1px solid rgba(255,255,255,0.12);}
+.lh-band{background:var(--orange);padding:7px 48px;display:flex;align-items:center;justify-content:space-between;}
+.lhb-l{font-family:"Merriweather",serif;font-size:13px;color:var(--white);font-weight:700;}
+.lhb-r{font-size:11px;color:rgba(255,255,255,0.85);font-weight:600;}
+.ref-wrap{padding:16px 48px 0;}
+.ref-table{width:100%;border-collapse:collapse;margin-bottom:16px;}
+.ref-table td{padding:5px 12px 5px 0;font-size:12px;vertical-align:top;}
+.ref-table td:nth-child(odd){color:var(--text-sub);font-weight:600;width:160px;}
+.ref-table td:nth-child(even){color:var(--text-primary);border-bottom:1px solid var(--border);padding-right:32px;}
+.blurred{filter:blur(4.5px);user-select:none;pointer-events:none;}
+.divider{height:1px;background:var(--rule);margin:0 48px 16px;}
+.body{padding:0 48px 40px;}
+
+/* CHALLENGE BANNER */
+.challenge-banner{background:#7F1D1D;border-left:4px solid #EF4444;padding:12px 16px;margin-bottom:20px;display:flex;align-items:flex-start;gap:12px;}
+.cb-icon{font-size:18px;line-height:1;margin-top:1px;}
+.cb-text{flex:1;}
+.cb-title{font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#FCA5A5;margin-bottom:4px;}
+.cb-body{font-size:12px;color:rgba(252,165,165,0.85);line-height:1.55;}
+
+/* HEALTH DASHBOARD */
+.health-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--border);margin-bottom:0;}
+.hg-item{padding:12px 10px;border-right:1px solid var(--border);text-align:center;}
+.hg-item:last-child{border-right:none;}
+.hg-label{font-size:9.5px;color:var(--text-sub);letter-spacing:0.5px;text-transform:uppercase;font-weight:600;margin-bottom:6px;}
+.hg-val{font-family:"Source Code Pro",monospace;font-size:16px;font-weight:700;margin-bottom:4px;}
+.hg-tag{font-size:9px;font-weight:700;padding:2px 7px;border-radius:10px;letter-spacing:0.5px;}
+.rag-g{background:var(--green-light);color:var(--green);}
+.rag-a{background:var(--amber-light);color:var(--amber);}
+.rag-r{background:var(--red-light);color:var(--red);}
+.rag-g-val{color:var(--green);}
+.rag-a-val{color:var(--amber);}
+.rag-r-val{color:var(--red);}
+
+/* SECTION HEADERS */
+.sec-hd{margin:20px 0 12px;padding-bottom:7px;border-bottom:2px solid var(--navy);}
+.sec-hd-num{font-size:9.5px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:2px;}
+.sec-hd-title{font-family:"Merriweather",serif;font-size:14px;color:var(--navy);}
+.para{font-size:12.5px;color:var(--text-body);line-height:1.7;margin-bottom:10px;}
+
+/* GAP CARDS */
+.gap-card{border:1px solid var(--border);margin-bottom:16px;border-radius:2px;}
+.gap-header{background:var(--navy);padding:10px 14px;display:flex;align-items:center;justify-content:space-between;}
+.gap-title{font-size:13px;font-weight:700;color:var(--white);}
+.gap-sev{font-size:9.5px;font-weight:700;padding:2px 8px;border-radius:2px;letter-spacing:1px;text-transform:uppercase;}
+.sev-h{background:#7F1D1D;color:#FCA5A5;}
+.sev-m{background:#78350F;color:#FCD34D;}
+.sev-l{background:#14532D;color:#86EFAC;}
+.gap-body{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+.gap-section{padding:12px 14px;border-bottom:1px solid var(--border);}
+.gap-section:nth-child(odd){border-right:1px solid var(--border);}
+.gap-section-label{font-size:9.5px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+.obs-label{color:var(--red);}
+.ctx-label{color:var(--amber);}
+.mit-label{color:var(--green);}
+.fo-label{color:var(--orange);}
+.gap-section p{font-size:12px;color:var(--text-body);line-height:1.65;}
+.gap-section p strong{color:var(--text-primary);}
+.gap-full{padding:12px 14px;}
+.gap-full p{font-size:12px;color:var(--text-body);line-height:1.65;}
+.gap-full p strong{color:var(--text-primary);}
+
+/* TABLES */
+.data-t{width:100%;border-collapse:collapse;margin-bottom:16px;}
+.data-t th{background:var(--navy-light);color:var(--white);font-size:10.5px;font-weight:700;padding:7px 10px;text-align:right;letter-spacing:0.5px;}
+.data-t th:first-child{text-align:left;}
+.data-t td{padding:7px 10px;font-size:12px;border-bottom:1px solid #EEF2F6;text-align:right;font-family:"Source Code Pro",monospace;}
+.data-t td:first-child{font-family:"Source Sans 3",sans-serif;font-weight:600;color:var(--text-primary);text-align:left;}
+.data-t tr:nth-child(even) td{background:#FAFBFC;}
+.data-t .tot td{background:var(--navy);color:var(--white);font-weight:700;}
+.data-t .sub td{background:#F2F6FA;font-weight:600;}
+.flag-r{color:var(--red);font-weight:700;}
+.flag-a{color:var(--amber);font-weight:700;}
+.flag-g{color:var(--green);font-weight:700;}
+
+/* SEASONAL CHART */
+.season-wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--border);margin-bottom:16px;}
+.season-col{border-right:1px solid var(--border);text-align:center;}
+.season-col:last-child{border-right:none;}
+.season-qtr{background:var(--navy-light);color:var(--white);font-size:9.5px;font-weight:700;padding:5px;letter-spacing:1px;text-transform:uppercase;}
+.season-months{font-size:10px;color:var(--text-sub);padding:4px 6px;border-bottom:1px solid var(--border);}
+.season-bar-wrap{padding:8px 6px;display:flex;align-items:flex-end;justify-content:center;height:70px;}
+.season-bar{width:40px;background:var(--orange);border-radius:2px 2px 0 0;position:relative;}
+.season-bar.peak{background:var(--navy);}
+.season-bar.low{background:#CBD5E1;}
+.season-pct{font-family:"Source Code Pro",monospace;font-size:11px;font-weight:700;padding:4px;border-top:1px solid var(--border);}
+.season-label{font-size:9.5px;color:var(--text-sub);padding:4px 4px 6px;font-weight:600;}
+
+/* DSCR TABLE */
+.dscr-row td:last-child{background:var(--orange-light);color:var(--orange);font-weight:700;}
+
+/* OVERALL */
+.overall-box{background:var(--green-light);border:1px solid var(--green);border-left:4px solid var(--green);padding:14px 16px;margin-top:20px;}
+.ob-title{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:6px;}
+.ob-body{font-size:12.5px;color:var(--text-body);line-height:1.65;}
+
+/* FOOTER */
+.footer{background:var(--navy);padding:16px 48px;display:flex;align-items:center;justify-content:space-between;margin-top:0;}
+.footer-brand{font-family:"Merriweather",serif;font-size:13px;color:var(--white);}
+.footer-brand span{color:var(--orange);}
+.footer-disc{font-size:10px;color:rgba(255,255,255,0.35);max-width:520px;line-height:1.5;}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- HEADER -->
+<div class="lh-top">
+  <div>
+    <div class="brand-name">Finsight<span>One</span></div>
+    <div class="brand-tagline">Loan Advisory · Document Preparation · Credit Analysis</div>
+  </div>
+  <div class="lh-right">
+    <div class="badge badge-price">Confirm on Call · Above 5 Cr Tier</div>
+    <div class="badge badge-sample">Sample Document</div>
+  </div>
+</div>
+<div class="lh-band">
+  <div class="lhb-l">CMA Interpretation Report</div>
+  <div class="lhb-r">Stream 1 — Documents &nbsp;·&nbsp; CMA Data: 5–10 Cr Tier &nbsp;·&nbsp; Price: Confirm on Call</div>
+</div>
+
+<!-- REFERENCE -->
+<div class="ref-wrap">
+  <table class="ref-table">
+    <tr>
+      <td>Report Reference</td><td>FSO/CMA/5CR/0031</td>
+      <td>Prepared For</td><td class="blurred">Mangalam Cold Storage Pvt. Ltd., Nashik MH</td>
+    </tr>
+    <tr>
+      <td>Industry / Segment</td><td>Cold Chain & Temperature-Controlled Storage</td>
+      <td>GST Registration</td><td class="blurred">27AABCM7341R1ZK</td>
+    </tr>
+    <tr>
+      <td>Facility Proposed</td><td>WC CC Rs.5.50 Cr + TL Rs.2.00 Cr = Rs.7.50 Cr Total</td>
+      <td>Constitution</td><td>Private Limited Company — 11 Years</td>
+    </tr>
+    <tr>
+      <td>Report Date</td><td class="blurred">14 March 2025</td>
+      <td>Prepared By</td><td>FinsightOne Financial Advisory LLP</td>
+    </tr>
+  </table>
+</div>
+<div class="divider"></div>
+
+<div class="body">
+
+<!-- CHALLENGE BANNER -->
+<div class="challenge-banner">
+  <div class="cb-icon">⚠</div>
+  <div class="cb-text">
+    <div class="cb-title">Challenging Profile — Seasonal Revenue Concentration &amp; Stock Valuation Risk</div>
+    <div class="cb-body">This CMA profile presents two structural challenges that require proactive documentation: (1) <strong>Seasonal cash flow pattern</strong> — 68% of annual revenue is generated in Rabi harvest months (Nov–Mar), creating apparent lean-period stress in Q1/Q2 financial metrics; and (2) <strong>Cold storage stock valuation</strong> — borrower's primary current asset is perishable agricultural commodity stock held under temperature-controlled conditions, which standard CMA templates do not adequately capture. FinsightOne's CMA interpretation provides the lender context required to evaluate these structural features as manageable sector characteristics — not credit weaknesses.</div>
+  </div>
+</div>
+
+<!-- RAG DASHBOARD -->
+<div class="sec-hd">
+  <div class="sec-hd-num">Section 01</div>
+  <div class="sec-hd-title">Financial Health Dashboard — Key Ratio Assessment</div>
+</div>
+<div class="health-grid">
+  <div class="hg-item">
+    <div class="hg-label">Peak DSCR (FY25)</div>
+    <div class="hg-val rag-g-val">2.34x</div>
+    <div class="hg-tag rag-g">STRONG</div>
+  </div>
+  <div class="hg-item">
+    <div class="hg-label">Lean DSCR (Q1 Ann.)</div>
+    <div class="hg-val rag-a-val">1.42x</div>
+    <div class="hg-tag rag-a">SEASONAL</div>
+  </div>
+  <div class="hg-item">
+    <div class="hg-label">TOL/TNW</div>
+    <div class="hg-val rag-a-val">2.41x</div>
+    <div class="hg-tag rag-a">ELEVATED</div>
+  </div>
+  <div class="hg-item">
+    <div class="hg-label">Current Ratio</div>
+    <div class="hg-val rag-a-val">1.28x</div>
+    <div class="hg-tag rag-a">ADEQUATE</div>
+  </div>
+  <div class="hg-item">
+    <div class="hg-label">Stock Margin</div>
+    <div class="hg-val rag-r-val">60%</div>
+    <div class="hg-tag rag-r">REVIEW</div>
+  </div>
+</div>
+<div style="border:1px solid var(--border);border-top:none;padding:10px 14px;margin-bottom:20px;background:#FAFBFC;">
+  <p class="para" style="margin:0;font-size:11.5px;color:var(--text-sub);">Dashboard reflects FY25 audited financials. Lean-period DSCR is annualised Q1 FY25 standalone — not indicative of full-year debt service. Stock margin flagged for lender policy check — agricultural commodities held under licensed cold storage qualify for enhanced margin under NABARD/NHB guidelines in most lender policies.</p>
+</div>
+
+<!-- SEASONAL REVENUE PROFILE -->
+<div class="sec-hd">
+  <div class="sec-hd-num">Section 02</div>
+  <div class="sec-hd-title">Seasonal Revenue Profile — Harvest Cycle Mapping</div>
+</div>
+<p class="para">Cold chain and temperature-controlled storage businesses in Maharashtra operate on an agricultural calendar, not a financial calendar. Revenue recognition follows commodity intake cycles — Rabi (Nov–Mar) and Kharif (Jun–Sep) harvests drive storage demand. This pattern is structural, industry-wide, and entirely predictable. CMA annual averages conceal quarter-level concentration; FinsightOne's harvest cycle mapping corrects this.</p>
+
+<div class="season-wrap">
+  <div class="season-col">
+    <div class="season-qtr">Q1 (Apr–Jun)</div>
+    <div class="season-months">Lean — Rabi dispatch, Kharif gap</div>
+    <div class="season-bar-wrap"><div class="season-bar low" style="height:28px;"></div></div>
+    <div class="season-pct flag-a">12%</div>
+    <div class="season-label">Rs.0.90 Cr revenue</div>
+  </div>
+  <div class="season-col">
+    <div class="season-qtr">Q2 (Jul–Sep)</div>
+    <div class="season-months">Moderate — Kharif intake begins</div>
+    <div class="season-bar-wrap"><div class="season-bar" style="height:48px;"></div></div>
+    <div class="season-pct flag-a">20%</div>
+    <div class="season-label">Rs.1.50 Cr revenue</div>
+  </div>
+  <div class="season-col">
+    <div class="season-qtr">Q3 (Oct–Dec)</div>
+    <div class="season-months">Building — Rabi sowing, pre-intake</div>
+    <div class="season-bar-wrap"><div class="season-bar peak" style="height:55px;"></div></div>
+    <div class="season-pct flag-g">23%</div>
+    <div class="season-label">Rs.1.72 Cr revenue</div>
+  </div>
+  <div class="season-col">
+    <div class="season-qtr">Q4 (Jan–Mar)</div>
+    <div class="season-months">Peak — Full Rabi harvest intake</div>
+    <div class="season-bar-wrap"><div class="season-bar peak" style="height:70px;"></div></div>
+    <div class="season-pct flag-g">45%</div>
+    <div class="season-label">Rs.3.38 Cr revenue</div>
+  </div>
+</div>
+<p class="para" style="font-size:11.5px;background:var(--orange-light);border:1px solid var(--orange-mid);padding:10px 12px;"><strong>FinsightOne View:</strong> The Q1 lean period creates a mechanically low annualised DSCR if evaluated in isolation. The correct evaluation frame is the full Rabi-cycle annual DSCR of 2.34x, which already encompasses the lean period as an integrated component. Lenders with cold chain exposure (NABARD refinance-eligible lenders, cooperative banks, SBI Agri vertical) are familiar with this pattern and will not flag Q1 revenue as a credit concern.</p>
+
+<!-- CMA DATA SUMMARY -->
+<div class="sec-hd">
+  <div class="sec-hd-num">Section 03</div>
+  <div class="sec-hd-title">CMA Financial Summary — Three-Year Trend</div>
+</div>
+<table class="data-t">
+  <tr><th>Parameter</th><th>FY23 (Audited)</th><th>FY24 (Audited)</th><th>FY25 (Audited)</th><th>FY26 (Projected)</th></tr>
+  <tr><td>Net Sales (Rs. Lakhs)</td><td>618</td><td>702</td><td>750</td><td>862</td></tr>
+  <tr><td>Revenue Growth %</td><td>—</td><td class="flag-g">+13.6%</td><td class="flag-g">+6.8%</td><td class="flag-g">+14.9%</td></tr>
+  <tr><td>Gross Profit Margin</td><td>34.2%</td><td>35.8%</td><td>36.4%</td><td>37.0%</td></tr>
+  <tr><td>EBITDA (Rs. Lakhs)</td><td>112</td><td>134</td><td>148</td><td>172</td></tr>
+  <tr><td>EBITDA Margin %</td><td>18.1%</td><td>19.1%</td><td>19.7%</td><td>20.0%</td></tr>
+  <tr><td>PAT (Rs. Lakhs)</td><td>44</td><td>58</td><td>72</td><td>88</td></tr>
+  <tr><td>Cash Accruals (Rs. Lakhs)</td><td>88</td><td>104</td><td>120</td><td>140</td></tr>
+  <tr><td>Banking Turnover (Rs. Lakhs)</td><td>580</td><td>661</td><td>714</td><td>—</td></tr>
+  <tr><td>ITR Declared Sales</td><td>615</td><td>698</td><td>747</td><td>—</td></tr>
+  <tr class="sub"><td>Banking / ITR Ratio</td><td class="flag-a">94.3%</td><td class="flag-a">94.7%</td><td class="flag-a">95.6%</td><td>—</td></tr>
+  <tr><td>Inventory Days</td><td>148</td><td>152</td><td>158</td><td>145 (est)</td></tr>
+  <tr><td>Debtor Days</td><td>22</td><td>19</td><td>17</td><td>15 (est)</td></tr>
+  <tr><td>DSCR (Full Year)</td><td>2.18x</td><td>2.26x</td><td>2.34x</td><td>2.41x</td></tr>
+  <tr class="tot"><td>TOL/TNW</td><td>2.58x</td><td>2.49x</td><td>2.41x</td><td>2.35x (proj)</td></tr>
+</table>
+<p class="para" style="font-size:11.5px;"><strong>Key observation:</strong> High inventory days (148–158) reflect the nature of cold storage operations — stock is the operating asset, not a liquidity concern. Unlike trading firms where 150-day inventory signals collection risk, in cold chain businesses, stock represents committed storage revenue already under contract. Debtor days of 17–22 are excellent for the sector.</p>
+
+<!-- STOCK VALUATION SECTION -->
+<div class="sec-hd">
+  <div class="sec-hd-num">Section 04</div>
+  <div class="sec-hd-title">Stock Valuation Methodology — Agricultural Commodity Risk</div>
+</div>
+<table class="data-t">
+  <tr><th>Commodity Category</th><th>Value (Rs. L)</th><th>Valuation Basis</th><th>Lender Margin Applied</th><th>Drawing Power</th></tr>
+  <tr><td>Onion (Cold Storage)</td><td>148</td><td>APMC Nashik rate</td><td>40%</td><td>Rs.88.8 L</td></tr>
+  <tr><td>Grapes (Pre-export)</td><td>92</td><td>Export invoice + APEDA cert</td><td>35%</td><td>Rs.59.8 L</td></tr>
+  <tr><td>Pomegranate</td><td>74</td><td>Mandi receipt + rate</td><td>40%</td><td>Rs.44.4 L</td></tr>
+  <tr><td>Potato (WH receipt)</td><td>56</td><td>Warehouse receipt (WDRA)</td><td>30%</td><td>Rs.39.2 L</td></tr>
+  <tr><td>Other Vegetables</td><td>68</td><td>Mandi rate composite</td><td>45%</td><td>Rs.37.4 L</td></tr>
+  <tr class="tot"><td>Total Stock Value</td><td>438</td><td>—</td><td>~39% blended</td><td>Rs.269.6 L</td></tr>
+</table>
+<p class="para" style="font-size:11.5px;background:var(--amber-light);border:1px solid #FCD34D;padding:10px 12px;"><strong>FinsightOne Note:</strong> All commodities are valued against publicly verifiable APMC/Mandi rates dated within 7 days of this report. Lender margins applied are conservative — WDRA-backed warehouse receipts for potato qualify for 25% margin under RBI Circular DBR.No.BP.BC.26/21.04.172/2015-16 (Negotiable Warehouse Receipt programme). FinsightOne has applied 30% (vs. permitted 25%) as a deliberate buffer. Stock insurance (fire + transit) is active for all categories with bank's lien noted.</p>
+
+<!-- GAP CARDS -->
+<div class="sec-hd">
+  <div class="sec-hd-num">Section 05</div>
+  <div class="sec-hd-title">CMA Gap Analysis — Identified Issues &amp; FinsightOne Positions</div>
+</div>
+
+<!-- GAP 1 -->
+<div class="gap-card">
+  <div class="gap-header">
+    <div class="gap-title">Gap 01 — Seasonal Revenue Creates Misleading Annualised Ratios</div>
+    <div class="gap-sev sev-h">High</div>
+  </div>
+  <div class="gap-body">
+    <div class="gap-section">
+      <div class="gap-section-label obs-label">Observation</div>
+      <p>Q1 FY25 standalone revenue of Rs.22.5 Lakhs annualises to Rs.90 Lakhs — 12% of full-year actuals. If a banker screens the Q1 quarterly cash flows in isolation, the annualised DSCR drops to 1.42x and TOL/TNW appears elevated relative to operating capacity. Standard CMA templates do not flag this as a seasonal pattern — they present it as a cash flow weakness.</p>
+    </div>
+    <div class="gap-section">
+      <div class="gap-section-label ctx-label">Context</div>
+      <p>Cold storage businesses globally operate on harvest-cycle revenue patterns. Maharashtra's Rabi calendar (Nov–Mar dominant) is published by the State Agriculture Department and is consistent across the sector. This is not a business-specific weakness — it is how the sector works. Banks with cold chain experience (SBI, Bank of Maharashtra, NABARD-refinanced lenders) routinely evaluate annual DSCR, not quarterly annualised DSCR, for seasonal agricultural businesses.</p>
+    </div>
+  </div>
+  <div class="gap-body" style="border-top:1px solid var(--border);">
+    <div class="gap-section">
+      <div class="gap-section-label mit-label">Mitigant</div>
+      <p>FinsightOne has appended a quarterly revenue mapping (Section 02) showing the seasonal profile across FY23–FY25 with Rabi/Kharif cycle overlay. Full-year DSCR of 2.34x (FY25) comfortably covers debt service including proposed TL EMI. Annual cash accruals of Rs.120 Lakhs against annual debt service of Rs.51 Lakhs (proposed) = coverage ratio of 2.35x. The lean period is absorbed within the annual cycle without CC overdue.</p>
+    </div>
+    <div class="gap-section">
+      <div class="gap-section-label fo-label">FinsightOne View</div>
+      <p><strong>This gap is resolvable through lender selection and narrative.</strong> Lenders with NABARD Agri-allied vertical exposure understand harvest-cycle businesses. FinsightOne's lender shortlisting for this profile excludes lenders who evaluate seasonal businesses on quarterly cash flow screens. With appropriate lender routing, this gap does not arise at the credit desk.</p>
+    </div>
+  </div>
+</div>
+
+<!-- GAP 2 -->
+<div class="gap-card">
+  <div class="gap-header">
+    <div class="gap-title">Gap 02 — High Inventory Days (158 Days) — Structural vs. Liquidity Signal</div>
+    <div class="gap-sev sev-m">Medium</div>
+  </div>
+  <div class="gap-body">
+    <div class="gap-section">
+      <div class="gap-section-label obs-label">Observation</div>
+      <p>Inventory days of 158 in FY25 will flag amber or red in most automated credit scoring systems. Standard CMA ratio interpretation treats high inventory days as a sign of slow-moving stock or collection difficulty — which would represent a genuine credit risk in a trading or manufacturing context.</p>
+    </div>
+    <div class="gap-section">
+      <div class="gap-section-label ctx-label">Context</div>
+      <p>In cold storage, inventory IS the service product. The company doesn't own the commodity — it stores it on behalf of farmers and traders. Inventory on the balance sheet represents stored goods under contractual obligation, not unsold product risk. The higher the storage utilisation, the higher the inventory days — which is a revenue signal, not a risk signal. Inventory in cold chain = revenue backlog.</p>
+    </div>
+  </div>
+  <div class="gap-body" style="border-top:1px solid var(--border);">
+    <div class="gap-section">
+      <div class="gap-section-label mit-label">Mitigant</div>
+      <p>Storage contracts (presented in annexure) confirm 92% utilisation as of report date. All stored commodity is either owned by the borrower (Rs.220L, margin-funded) or held on lien/pledge for trade clients (Rs.218L, covered by bailment receipts). No speculative or uncovered stock. Insurance coverage of Rs.480 Lakhs active — exceeds total stock value.</p>
+    </div>
+    <div class="gap-section">
+      <div class="gap-section-label fo-label">FinsightOne View</div>
+      <p><strong>Resolvable with sector context note.</strong> FinsightOne has drafted a sector context paragraph (included in loan proposal) explaining cold chain inventory mechanics to the credit appraiser. Once the banker understands that 158-day inventory = 92% facility utilisation (a positive metric), the ratio is reinterpreted correctly. This is a documentation gap, not a financial weakness.</p>
+    </div>
+  </div>
+</div>
+
+<!-- GAP 3 -->
+<div class="gap-card">
+  <div class="gap-header">
+    <div class="gap-title">Gap 03 — Banking / ITR Variance — ~5% Unexplained Gap</div>
+    <div class="gap-sev sev-l">Low</div>
+  </div>
+  <div class="gap-body">
+    <div class="gap-section">
+      <div class="gap-section-label obs-label">Observation</div>
+      <p>Banking turnover across FY23–FY25 reflects 94–96% of ITR declared sales — a 4–6% gap exists consistently. While this is significantly better than the 70–80% gaps seen in trading profiles, some banks flag any banking/ITR divergence as a potential income understatement signal.</p>
+    </div>
+    <div class="gap-section">
+      <div class="gap-section-label ctx-label">Context</div>
+      <p>The gap is attributable to a specific, documentable transaction type: advance storage deposits received in cash from small farmers. Maharashtra's agricultural communities — particularly Nashik district onion growers — often pay cold storage booking advances in cash (Rs.500–2,000 per tonne). These are declared in ITR as service income but settle as cash, not banking credit. This is a documented, legal, sector-specific cash flow pattern.</p>
+    </div>
+  </div>
+  <div class="gap-body" style="border-top:1px solid var(--border);">
+    <div class="gap-section">
+      <div class="gap-section-label mit-label">Mitigant</div>
+      <p>FinsightOne has prepared a cash flow reconciliation note matching the Rs.36 Lakhs (FY25) banking/ITR gap to farmer advance receipts, supported by: (a) farm-level mandi receipts confirming farmer identities, (b) GST-compliant tax invoices for all storage services, (c) ITR Schedule BP reflecting service income inclusive of cash advances. No income suppression — full transparency.</p>
+    </div>
+    <div class="gap-section">
+      <div class="gap-section-label fo-label">FinsightOne View</div>
+      <p><strong>Fully resolvable — documentation is complete.</strong> A 94–96% banking/ITR ratio is among the strongest seen in agricultural service businesses. The reconciliation note pre-empts the lender's query and demonstrates that the company maintains transparent books. This gap, once explained, typically converts to a credit strength (disciplined income reporting).</p>
+    </div>
+  </div>
+</div>
+
+<!-- DSCR TABLE -->
+<div class="sec-hd">
+  <div class="sec-hd-num">Section 06</div>
+  <div class="sec-hd-title">DSCR Analysis — Annual Full-Cycle (Correct Evaluation Frame)</div>
+</div>
+<table class="data-t">
+  <tr><th>Parameter</th><th>FY23</th><th>FY24</th><th>FY25</th><th>FY26 (Proj)</th></tr>
+  <tr><td>Net Cash Accruals (Rs. L)</td><td>88</td><td>104</td><td>120</td><td>140</td></tr>
+  <tr><td>Existing TL Repayment (Rs. L)</td><td>18</td><td>18</td><td>18</td><td>12</td></tr>
+  <tr><td>Proposed TL EMI (Rs. L)</td><td>—</td><td>—</td><td>—</td><td>39</td></tr>
+  <tr><td>Total Debt Service (Rs. L)</td><td>40</td><td>46</td><td>51</td><td>51</td></tr>
+  <tr class="dscr-row"><td>DSCR</td><td>2.18x</td><td>2.26x</td><td>2.34x</td><td>2.41x</td></tr>
+</table>
+<p class="para" style="font-size:11.5px;background:var(--green-light);border:1px solid var(--green);padding:10px 12px;"><strong>All historical DSCR years populated — improving trend across FY23–FY25.</strong> Post-loan DSCR of 2.41x (FY26 projected) reflects addition of Rs.2 Cr TL (7-year tenor, Rs.39L annual repayment). DSCR remains above 2.0x even in stress scenario (15% revenue decline + 20% opex increase = 1.68x, above lender floor of 1.5x for secured term lending).</p>
+
+<!-- OVERALL -->
+<div class="overall-box">
+  <div class="ob-title">Overall CMA Assessment — FinsightOne Position</div>
+  <div class="ob-body">This CMA profile presents three identified gaps — all sector-structural and none indicative of financial distress or management quality concern. The business demonstrates <strong>11 years of operations, consistent EBITDA margins of 18–20%, improving DSCR trajectory (2.18x→2.34x), and strong stock insurance coverage</strong>. The seasonal revenue pattern, high inventory days, and minor banking/ITR gap are characteristic of the cold chain sector and are fully documented with lender-ready explanations. FinsightOne's assessment: <strong>All three gaps addressed — profile is approvable with appropriate lender selection (NABARD/Agri-vertical lenders preferred).</strong></div>
+</div>
+
+</div><!-- /body -->
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-brand">Finsight<span>One</span></div>
+  <div class="footer-disc">This report is prepared by FinsightOne Financial Advisory LLP on behalf of the borrower for submission to financial institutions. Client name and identifying details are redacted in this sample. All financial data is illustrative for demonstration purposes only. finsightone.co</div>
+</div>
+
+</div><!-- /page -->
+</body>
+</html>
