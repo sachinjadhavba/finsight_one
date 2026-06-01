@@ -49,10 +49,10 @@ export const SERVICES = [
     items: [
       { name: "Loan Appraisal Note 1–2 Cr",   price: "₹3,999", sample: "/reports/doc-01-cam-small.html" },
       { name: "Loan Appraisal Note 2–5 Cr",   price: "₹7,999", sample: "/reports/doc-02-cam-large.html" },
-      { name: "Loan Appraisal Note Above 5 Cr", price: "On Call" },
+      { name: "Loan Appraisal Note Above 5 Cr", price: "On Call", sample: "/reports/doc-03-lan-5to10cr.html" },
       { name: "CMA Financial Analysis 1–2 Cr", price: "₹4,999", sample: "/reports/cma-01-interpretation-1to2cr.html" },
       { name: "CMA Financial Analysis 2–5 Cr", price: "₹8,999", sample: "/reports/cma-02-interpretation-2to5cr.html" },
-      { name: "CMA Above 5 Cr",                price: "On Call" },
+      { name: "CMA Above 5 Cr",                price: "On Call", sample: "/reports/cma-03-interpretation-5to10cr.html" },
       { name: "Project Report (DPR) 2–5 Cr",   price: "₹9,999" },
       { name: "DPR Above 5 Cr",                price: "On Call" },
     ],
