@@ -393,66 +393,6 @@ export default function Home({ navigate }) {
         </div>
       </div>
 
-      {/* ── WHO WE HELP ── */}
-      <div style={{ background: GRAY, padding: "clamp(40px,5vw,64px) clamp(20px,4vw,48px)" }}>
-        <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: 2.5, textTransform: "uppercase", color: ORANGE, marginBottom: 10, textAlign: "center" }}>Who We Help</div>
-        <h2 style={{ fontSize: "clamp(22px,3vw,30px)", fontWeight: 900, textAlign: "center", marginBottom: 36, color: DARK }}>Built for Every Borrower</h2>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: 20, maxWidth: 1000, margin: "0 auto" }}>
-          {[
-            { id:"msme",        icon:"🏭", title:"MSMEs & SMEs",     color:INDIGO,    desc:"Working capital, term loans, machinery, LAP. We structure your case, match the right lender, and submit professionally.", items:["Working Capital CC / OD","Machinery Loans","Loan Against Property","Unsecured Business Loans"] },
-            { id:"individuals", icon:"🏠", title:"Individuals",       color:ORANGE,    desc:"Home loan, personal loan, LAP. We tell you what you qualify for and get you to the right bank first time.", items:["Home Loan","Personal Loan","Loan Against Property","Professional Loans"] },
-            { id:"partners",    icon:"💼", title:"CA & DSA Partners", color:"#059669", desc:"White-label documents under your firm name. Full referral dashboard. Three income streams your bank DSA does not offer.", items:["Referral commission on every disbursement","White-label CAM/CMA/DPR","Monthly monitoring resale","Help stuck cases get approved"] },
-          ].map(w => (
-            <div key={w.id} style={{ background: WHITE, border: "1px solid #E5E7EB", borderRadius: 12, padding: 22, borderTop: `3px solid ${w.color}` }}>
-              <div style={{ fontSize: 26, marginBottom: 10 }}>{w.icon}</div>
-              <h3 style={{ fontSize: 15, fontWeight: 700, color: DARK, marginBottom: 7 }}>{w.title}</h3>
-              <p style={{ fontSize: 13, color: MUTED, lineHeight: 1.6, marginBottom: 12 }}>{w.desc}</p>
-              <ul style={{ listStyle: "none", padding: 0, margin: "0 0 14px" }}>
-                {w.items.map(i => (
-                  <li key={i} style={{ fontSize: 12, color: "#374151", padding: "3px 0", display: "flex", alignItems: "center", gap: 7 }}>
-                    <span style={{ width: 4, height: 4, background: ORANGE, borderRadius: "50%", flexShrink: 0 }} />{i}
-                  </li>
-                ))}
-              </ul>
-              <button onClick={() => navigate(w.id)} style={{ background: "transparent", border: `1px solid ${w.color}40`, color: w.color, fontSize: 12, fontWeight: 600, padding: "7px 14px", borderRadius: 6, cursor: "pointer", fontFamily: "inherit" }}>
-                Explore {w.title} →
-              </button>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* ── HOW IT WORKS ── */}
-      <div style={{ padding: "clamp(40px,5vw,64px) clamp(20px,4vw,48px)", background: WHITE }}>
-        <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: 2.5, textTransform: "uppercase", color: ORANGE, marginBottom: 10, textAlign: "center" }}>How It Works</div>
-        <h2 style={{ fontSize: "clamp(22px,3vw,30px)", fontWeight: 900, textAlign: "center", marginBottom: 36, color: DARK }}>Simple. Clear. 4 Steps.</h2>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(160px,1fr))", gap: 24, maxWidth: 900, margin: "0 auto" }}>
-          {STEPS.map(st => (
-            <div key={st.num} style={{ textAlign: "center" }}>
-              <div style={{ width: 46, height: 46, borderRadius: "50%", background: INDIGO, color: WHITE, fontSize: 17, fontWeight: 800, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 12px" }}>{st.num}</div>
-              <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 5, color: DARK }}>{st.title}</div>
-              <div style={{ fontSize: 12, color: MUTED, lineHeight: 1.5 }}>{st.desc}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* ── TESTIMONIALS ── */}
-      <div style={{ padding: "clamp(40px,5vw,64px) clamp(20px,4vw,48px)", background: GRAY }}>
-        <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: 2.5, textTransform: "uppercase", color: ORANGE, marginBottom: 10, textAlign: "center" }}>Client Stories</div>
-        <h2 style={{ fontSize: "clamp(22px,3vw,30px)", fontWeight: 900, textAlign: "center", marginBottom: 32, color: DARK }}>Real People. Real Approvals.</h2>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: 20, maxWidth: 1000, margin: "0 auto" }}>
-          {TESTIMONIALS.map(t => (
-            <div key={t.author} style={{ background: WHITE, border: "1px solid #E5E7EB", borderRadius: 14, padding: 22 }}>
-              <div style={{ color: ORANGE, fontSize: 13, marginBottom: 10 }}>★★★★★</div>
-              <div style={{ fontSize: 13, color: "#374151", lineHeight: 1.6, marginBottom: 14, fontStyle: "italic" }}>"{t.quote}"</div>
-              <div style={{ fontSize: 12, fontWeight: 700, color: DARK }}>{t.author}</div>
-              <div style={{ fontSize: 11, color: "#9CA3AF" }}>{t.role}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-
       {/* ── CTA ── */}
       <div style={{ background: DARK, padding: "clamp(40px,5vw,60px) clamp(20px,4vw,48px)", textAlign: "center" }}>
         <h2 style={{ fontSize: "clamp(22px,3vw,30px)", fontWeight: 900, color: WHITE, marginBottom: 12 }}>Ready to Get Your Loan Approved?</h2>
@@ -467,3 +407,4 @@ export default function Home({ navigate }) {
     </div>
   );
 }
+
