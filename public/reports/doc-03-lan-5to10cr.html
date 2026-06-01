@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loan Appraisal Note — FinsightOne</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Source+Sans+3:wght@300;400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0A1929;--navy-mid:#112240;--navy-light:#1A3357;
+  --orange:#F97316;--orange-light:#FFF7ED;--orange-mid:#FED7AA;
+  --slate:#3D5166;--muted:#7A8FA6;--border:#C8D6E0;--bg:#F2F6FA;--white:#FFFFFF;
+  --green:#1A6B3A;--green-light:#EEF8F2;--green-mid:#7DC99A;
+  --amber:#8A5200;--amber-light:#FFF8EC;--amber-mid:#F5C97A;
+  --red:#8B1A1A;--red-light:#FDF3F3;--red-mid:#E8A0A0;
+  --rule:#B8C8D4;--text-primary:#0A1929;--text-body:#2E3F52;--text-sub:#5A6E82;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"Source Sans 3",sans-serif;background:#D8E2EC;color:var(--text-primary);font-size:13px;line-height:1.6;}
+body::before{content:"SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE";position:fixed;top:-50%;left:-50%;width:200%;height:200%;font-size:17px;font-weight:700;color:rgba(10,25,41,0.038);letter-spacing:4px;transform:rotate(-35deg);word-spacing:38px;line-height:5;z-index:1000;pointer-events:none;white-space:pre-wrap;text-align:center;}
+.page{max-width:920px;margin:0 auto;background:var(--white);box-shadow:0 4px 32px rgba(0,0,0,0.1);}
+
+/* LETTERHEAD */
+.lh-top{background:var(--navy);padding:22px 48px 18px;display:flex;align-items:flex-start;justify-content:space-between;}
+.brand-name{font-family:"Merriweather",serif;font-size:24px;color:var(--white);margin-bottom:3px;}
+.brand-name span{color:var(--orange);}
+.brand-tagline{font-size:10px;color:rgba(255,255,255,0.45);letter-spacing:2.5px;text-transform:uppercase;font-weight:600;}
+.lh-right{display:flex;flex-direction:column;align-items:flex-end;gap:5px;}
+.badge{font-size:9.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:2px;}
+.badge-call{background:var(--orange);color:var(--white);}
+.badge-sample{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.45);border:1px solid rgba(255,255,255,0.12);}
+.lh-band{background:var(--orange);padding:8px 48px;display:flex;align-items:center;justify-content:space-between;}
+.lhb-l{font-family:"Merriweather",serif;font-size:14px;color:var(--white);font-weight:700;letter-spacing:0.5px;}
+.lhb-r{font-size:11px;color:rgba(255,255,255,0.8);font-weight:600;}
+.lhb-r strong{color:var(--white);}
+
+/* REF TABLE */
+.ref-wrap{padding:18px 48px 0;}
+.ref-table{width:100%;border-collapse:collapse;margin-bottom:18px;}
+.ref-table td{padding:5px 12px 5px 0;font-size:12px;vertical-align:top;}
+.ref-table td:nth-child(odd){color:var(--text-sub);font-weight:600;width:160px;}
+.ref-table td:nth-child(even){color:var(--text-primary);border-bottom:1px solid var(--border);padding-right:32px;}
+.blurred{filter:blur(4.5px);user-select:none;pointer-events:none;}
+.divider{height:1px;background:var(--rule);margin:0 48px 18px;}
+
+/* BODY */
+.body{padding:0 48px 40px;}
+.sec{margin-bottom:28px;}
+.sec-head{font-family:"Merriweather",serif;font-size:12.5px;font-weight:700;color:var(--white);background:var(--navy);padding:7px 14px;display:flex;align-items:center;gap:10px;}
+.sec-num{font-family:"Source Code Pro",monospace;font-size:10px;color:rgba(255,255,255,0.45);font-weight:400;}
+.sec-body{border:1px solid var(--border);border-top:none;padding:16px 18px;}
+
+/* TABLES */
+.dt{width:100%;border-collapse:collapse;}
+.dt tr td{padding:5px 10px;font-size:12px;border-bottom:1px solid #EEF2F6;vertical-align:top;}
+.dt tr:last-child td{border-bottom:none;}
+.dt tr:nth-child(even) td{background:#FAFBFC;}
+.dl{color:var(--text-sub);font-weight:600;width:200px;}
+.dv{color:var(--text-primary);}
+
+.ft{width:100%;border-collapse:collapse;}
+.ft th{background:var(--navy-light);color:var(--white);font-size:10.5px;font-weight:700;padding:7px 10px;text-align:right;letter-spacing:0.5px;}
+.ft th:first-child{text-align:left;}
+.ft td{padding:6px 10px;font-size:11.5px;color:var(--text-body);border-bottom:1px solid #EEF2F6;text-align:right;font-family:"Source Code Pro",monospace;}
+.ft td:first-child{font-family:"Source Sans 3",sans-serif;font-weight:600;color:var(--text-primary);text-align:left;font-size:12px;}
+.ft tr:nth-child(even) td{background:#FAFBFC;}
+.ft .sub td{background:#EEF2F6;font-weight:700;color:var(--navy);}
+.ft .tot td{background:var(--navy);color:var(--white);font-weight:700;}
+.ft .tot td:first-child{color:var(--white);}
+.ft .ind{padding-left:22px!important;font-weight:400!important;color:var(--text-sub)!important;}
+.up{color:var(--green);font-weight:700;}
+.dn{color:var(--red);font-weight:700;}
+.na{color:var(--muted);}
+
+.rt{width:100%;border-collapse:collapse;}
+.rt th{background:var(--navy-light);color:var(--white);font-size:10.5px;font-weight:700;padding:7px 10px;text-align:center;letter-spacing:0.5px;}
+.rt th:first-child{text-align:left;}
+.rt td{padding:7px 10px;font-size:11.5px;border-bottom:1px solid #EEF2F6;text-align:center;font-family:"Source Code Pro",monospace;}
+.rt td:first-child{font-family:"Source Sans 3",sans-serif;font-weight:600;color:var(--text-primary);text-align:left;font-size:12px;}
+.rt tr:nth-child(even) td{background:#FAFBFC;}
+.rt .bench{font-size:10px;color:var(--text-sub);font-family:"Source Sans 3",sans-serif;}
+.r-ok{color:var(--green);font-weight:700;}
+.r-warn{color:var(--amber);font-weight:700;}
+.r-bad{color:var(--red);font-weight:700;}
+
+/* RISK MATRIX */
+.rmx{width:100%;border-collapse:collapse;}
+.rmx th{background:var(--navy-light);color:var(--white);font-size:10.5px;font-weight:700;padding:8px 12px;text-align:left;letter-spacing:0.5px;}
+.rmx td{padding:9px 12px;font-size:12px;color:var(--text-body);border-bottom:1px solid #EEF2F6;vertical-align:top;line-height:1.5;}
+.rmx tr:nth-child(even) td{background:#FAFBFC;}
+.rmx .risk-title{font-weight:700;color:var(--text-primary);font-size:12.5px;}
+.sev-h{background:#FDF3F3;color:var(--red);font-weight:700;padding:2px 7px;border-radius:2px;font-size:10px;white-space:nowrap;}
+.sev-m{background:var(--amber-light);color:var(--amber);font-weight:700;padding:2px 7px;border-radius:2px;font-size:10px;white-space:nowrap;}
+.sev-l{background:var(--green-light);color:var(--green);font-weight:700;padding:2px 7px;border-radius:2px;font-size:10px;white-space:nowrap;}
+
+/* STRENGTHS */
+.str-item{display:flex;align-items:flex-start;gap:14px;padding:12px 0;border-bottom:1px solid var(--border);}
+.str-item:last-child{border-bottom:none;}
+.str-icon{font-size:20px;flex-shrink:0;width:28px;text-align:center;margin-top:2px;}
+.str-title{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px;}
+.str-body{font-size:12px;color:var(--text-body);line-height:1.6;}
+
+/* SC GRID */
+.sc-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.sc-box{border-radius:3px;padding:12px 14px;}
+.sc-str{background:var(--green-light);border-left:3px solid var(--green);}
+.sc-con{background:var(--amber-light);border-left:3px solid var(--amber-mid);}
+.sc-title{font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;}
+.sc-str .sc-title{color:var(--green);}
+.sc-con .sc-title{color:var(--amber);}
+.sc-item{font-size:12px;color:var(--text-body);margin-bottom:5px;display:flex;align-items:flex-start;gap:6px;line-height:1.4;}
+.sc-item:last-child{margin-bottom:0;}
+.sc-str .sc-item::before{content:"✓";color:var(--green);font-weight:900;flex-shrink:0;font-size:10px;margin-top:2px;}
+.sc-con .sc-item::before{content:"⚠";color:var(--amber);flex-shrink:0;font-size:10px;margin-top:2px;}
+
+/* RECEIVABLES TABLE */
+.recv-t{width:100%;border-collapse:collapse;}
+.recv-t th{background:var(--navy-light);color:var(--white);font-size:10.5px;font-weight:700;padding:7px 10px;text-align:right;letter-spacing:0.5px;}
+.recv-t th:first-child{text-align:left;}
+.recv-t td{padding:7px 10px;font-size:11.5px;border-bottom:1px solid #EEF2F6;text-align:right;font-family:"Source Code Pro",monospace;}
+.recv-t td:first-child{font-family:"Source Sans 3",sans-serif;font-weight:600;color:var(--text-primary);text-align:left;font-size:12px;}
+.recv-t tr:nth-child(even) td{background:#FAFBFC;}
+.recv-t .tot td{background:var(--navy);color:var(--white);font-weight:700;}
+.recv-t .tot td:first-child{color:var(--white);}
+.recv-t .cert{color:var(--green);font-weight:700;}
+.recv-t .disp{color:var(--red);font-weight:700;}
+
+/* PARA */
+.para{font-size:12.5px;color:var(--text-body);line-height:1.75;margin-bottom:12px;}
+.para:last-child{margin-bottom:0;}
+.para strong{color:var(--text-primary);}
+.para em{font-style:normal;color:var(--orange);font-weight:700;}
+
+/* MANAGEMENT PROFILE */
+.mgmt-t{width:100%;border-collapse:collapse;}
+.mgmt-t th{background:var(--navy-light);color:var(--white);font-size:10.5px;font-weight:700;padding:7px 10px;text-align:left;letter-spacing:0.5px;}
+.mgmt-t td{padding:8px 10px;font-size:12px;border-bottom:1px solid #EEF2F6;vertical-align:top;color:var(--text-body);}
+.mgmt-t tr:nth-child(even) td{background:#FAFBFC;}
+.mgmt-t td:first-child{font-weight:700;color:var(--text-primary);}
+
+/* PROP BOX */
+.prop-box{background:var(--navy);padding:18px 20px;margin-top:0;}
+.pb-tag{font-size:9.5px;color:var(--orange);letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:5px;}
+.pb-title{font-family:"Merriweather",serif;font-size:16px;color:var(--white);margin-bottom:14px;}
+.pb-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid rgba(255,255,255,0.1);margin-bottom:12px;}
+.pbi{padding:10px 14px;border-right:1px solid rgba(255,255,255,0.1);}
+.pbi:last-child{border-right:none;}
+.pbi-label{font-size:9.5px;color:rgba(255,255,255,0.4);letter-spacing:1px;text-transform:uppercase;font-weight:600;margin-bottom:4px;}
+.pbi-val{font-family:"Source Code Pro",monospace;font-size:13px;font-weight:700;color:var(--white);}
+.pbi-val.fav{color:#4ADE80;}
+.pb-note{font-size:11.5px;color:rgba(255,255,255,0.55);line-height:1.6;}
+
+.note-strip{background:var(--orange-light);border:1px solid var(--orange-mid);border-radius:3px;padding:9px 13px;font-size:11px;color:var(--text-body);margin-top:10px;}
+.note-strip strong{color:var(--orange);}
+.info-strip{background:#EEF6FF;border:1px solid #BFDBFE;border-radius:3px;padding:9px 13px;font-size:11px;color:#1E3A5F;margin-top:10px;}
+.info-strip strong{color:#1E40AF;}
+
+.pb{border:none;border-top:1px dashed var(--rule);margin:28px 0;}
+.pb-label{text-align:center;font-size:9.5px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin:-6px 0 24px;font-weight:700;}
+
+/* INDUSTRY BOX */
+.ind-box{background:var(--bg);border-left:4px solid var(--orange);padding:14px 16px;margin-top:0;}
+.ind-box p{font-size:12.5px;color:var(--text-body);line-height:1.7;margin-bottom:8px;}
+.ind-box p:last-child{margin-bottom:0;}
+.ind-box strong{color:var(--navy);}
+
+/* FOOTER */
+.footer{background:var(--navy);padding:14px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;border-top:3px solid var(--orange);}
+.footer-brand{font-family:"Merriweather",serif;font-size:13px;color:var(--white);}
+.footer-brand span{color:var(--orange);}
+.footer-text{font-size:10px;color:rgba(255,255,255,0.4);text-align:center;}
+.footer-right{font-size:10px;color:rgba(255,255,255,0.4);text-align:right;}
+.disclaimer{font-size:10.5px;color:var(--muted);line-height:1.6;padding:12px 0;border-top:1px solid var(--border);margin-top:18px;}
+.disclaimer strong{color:var(--text-sub);}
+
+/* CHALLENGE BANNER */
+.challenge-banner{background:linear-gradient(135deg,#1A3357 0%,#0A1929 100%);border-left:5px solid var(--orange);padding:14px 18px;margin-bottom:0;}
+.cb-label{font-size:9.5px;color:var(--orange);letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:6px;}
+.cb-title{font-size:14px;font-weight:700;color:var(--white);margin-bottom:8px;}
+.cb-body{font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6;}
+.cb-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
+.chip{font-size:10px;font-weight:700;padding:3px 10px;border-radius:12px;letter-spacing:0.5px;}
+.chip-r{background:rgba(139,26,26,0.4);color:#FCA5A5;border:1px solid rgba(252,165,165,0.3);}
+.chip-a{background:rgba(138,82,0,0.4);color:#FCD34D;border:1px solid rgba(252,211,77,0.3);}
+.chip-g{background:rgba(26,107,58,0.4);color:#86EFAC;border:1px solid rgba(134,239,172,0.3);}
+
+/* TWO COL */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+.two-col .col:first-child{border-right:1px solid var(--border);padding-right:14px;}
+.two-col .col:last-child{padding-left:14px;}
+
+/* SECTION LABEL */
+.sub-label{font-size:11px;font-weight:700;color:var(--navy);margin:14px 0 8px;text-transform:uppercase;letter-spacing:0.5px;}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- LETTERHEAD -->
+<div style="border-bottom:3px solid var(--navy);">
+  <div class="lh-top">
+    <div>
+      <div class="brand-name">Finsight<span>One</span></div>
+      <div class="brand-tagline">Credit · Advisory · Intelligence</div>
+    </div>
+    <div class="lh-right">
+      <div class="badge badge-call">Price: Confirm on Call · 5–10 Cr Tier</div>
+      <div class="badge badge-sample">Sample Document</div>
+    </div>
+  </div>
+  <div class="lh-band">
+    <div class="lhb-l">LOAN APPRAISAL NOTE (LAN) — ENHANCED COMMERCIAL FORMAT</div>
+    <div class="lhb-r">Stream 1 — Documents &nbsp;·&nbsp; WC + BG Enhancement · 5–10 Cr Tier</div>
+  </div>
+</div>
+
+<!-- CHALLENGE BANNER -->
+<div style="padding:0 48px;margin-top:20px;">
+  <div class="challenge-banner">
+    <div class="cb-label">FinsightOne · Challenging Profile — Addressed</div>
+    <div class="cb-title">State Government Contractor · Irregular Receivables · High Debtor Days · Revenue Concentration</div>
+    <div class="cb-body">This LAN demonstrates FinsightOne's ability to present a complex, scrutiny-prone borrower profile in a manner that anticipates every standard lender objection — and addresses it before the banker needs to ask. The challenges in this file are real. The mitigants are structural, not cosmetic.</div>
+    <div class="cb-chips">
+      <span class="chip chip-r">High Debtor Days: 132 Days</span>
+      <span class="chip chip-r">100% Govt Revenue</span>
+      <span class="chip chip-a">Payment Delays: 90–180 Days</span>
+      <span class="chip chip-a">WC Strain: Negative NWC FY25</span>
+      <span class="chip chip-g">Certified Receivables: Rs.9.42 Cr</span>
+      <span class="chip chip-g">DSCR: 2.18x Post-Enhancement</span>
+    </div>
+  </div>
+</div>
+
+<!-- LAN REFERENCE -->
+<div class="ref-wrap" style="margin-top:20px;">
+  <table class="ref-table">
+    <tr>
+      <td>LAN Reference No.</td><td>FO-LAN-2026-0541</td>
+      <td>Date of Preparation</td><td>June 2026</td>
+    </tr>
+    <tr>
+      <td>Name of Borrower</td><td class="blurred">Shivkumar Infrastructure Pvt. Ltd.</td>
+      <td>Constitution</td><td>Private Limited Company</td>
+    </tr>
+    <tr>
+      <td>Industry / Activity</td><td>Civil Construction — State Govt Road Contracts (PMGSY / PWD / NHAI Feeder Roads)</td>
+      <td>Location</td><td>Nagpur, Maharashtra</td>
+    </tr>
+    <tr>
+      <td>Facility Proposed</td><td>WC Cash Credit Enhancement + Bank Guarantee (BG) Facility</td>
+      <td>Amount Proposed</td><td><strong>CC: Rs.4.50 Cr → Rs.7.50 Cr · BG: Rs.1.50 Cr · Total: Rs.9.00 Cr</strong></td>
+    </tr>
+    <tr>
+      <td>Prepared By</td><td>FinsightOne Credit Advisory Desk</td>
+      <td>Document Tier</td><td>Enhanced Commercial — 5 Crore to 10 Crore</td>
+    </tr>
+  </table>
+</div>
+<div class="divider"></div>
+
+<div class="body">
+
+<!-- SECTION 1: EXECUTIVE OVERVIEW -->
+<div class="sec">
+  <div class="sec-head"><span class="sec-num">01</span> EXECUTIVE OVERVIEW & ADVISORY CONTEXT</div>
+  <div class="sec-body">
+    <div class="para">This Loan Appraisal Note has been prepared by FinsightOne on behalf of the borrower to present a structured and fully documented case for enhancement of the existing Working Capital Cash Credit facility from <strong>Rs. 4.50 Crore to Rs. 7.50 Crore</strong>, and fresh sanction of a <strong>Bank Guarantee facility of Rs. 1.50 Crore</strong> — aggregate exposure of Rs. 9.00 Crore. The borrower is a Private Limited company engaged in civil construction under state government contracts — specifically PMGSY (Pradhan Mantri Gram Sadak Yojana) and PWD Maharashtra road maintenance and construction work.</div>
+    <div class="para">FinsightOne acknowledges at the outset that this is a <strong>scrutiny-prone borrower profile</strong> for the following reasons: the company's entire revenue is derived from government contracts, debtor days are elevated at 132 days as of FY25, and the working capital cycle has been stretched due to routine delays in government payment releases — a structural characteristic of this sector, not an isolated business failure. The company's NWC turned marginally negative in FY25 due to a timing mismatch between contract execution and payment collection, not due to operational losses or business deterioration.</div>
+    <div class="para">The purpose of this note is to present the full factual picture — including the challenges — and to demonstrate through documented evidence that <strong>the risk in this profile is temporal, not structural</strong>. Government receivables are not bad debts; they are time-delayed certainties. The receivables ageing analysis enclosed confirms that 100% of the outstanding debtors are certified, work-order backed, and are in active collection — zero disputed, zero written off. The company's underlying business fundamentals — 14 years of operations, CMR-3 credit rating, consistent contract wins — support the proposed enhancement.</div>
+    <div class="info-strip"><strong>FinsightOne Advisory Note:</strong> This file is structured to give the banker pre-answered responses to every expected credit query. The Risk Mitigation Matrix in Section 08 directly addresses each concern with a specific, documented mitigant and FinsightOne's residual risk assessment. The banker is not expected to hunt for answers — they are presented upfront.</div>
+  </div>
+</div>
+
+<!-- SECTION 2: BORROWER PROFILE -->
+<div class="sec">
+  <div class="sec-head"><span class="sec-num">02</span> BORROWER PROFILE</div>
+  <div class="sec-body">
+    <table class="dt">
+      <tr><td class="dl">Company Name</td><td class="dv blurred">Shivkumar Infrastructure Pvt. Ltd.</td><td class="dl">Date of Incorporation</td><td class="dv">March 2012 (14 years)</td></tr>
+      <tr><td class="dl">Constitution</td><td class="dv">Private Limited Company</td><td class="dl">CIN</td><td class="dv">U45201MH2012PTC000XXX</td></tr>
+      <tr><td class="dl">Business Activity</td><td class="dv">Civil road construction and maintenance under PMGSY, PWD Maharashtra, Zilla Parishad tenders; bituminous and WBM road work; culvert construction</td><td class="dl">GST No.</td><td class="dv">27XXXXX0000X1ZX (Active — Regular)</td></tr>
+      <tr><td class="dl">Registered Office</td><td class="dv">Civil Lines, Nagpur — 440001, Maharashtra</td><td class="dl">UDYAM</td><td class="dv">UDYAM-MH-XX-XXXXXX (MSME — Small)</td></tr>
+      <tr><td class="dl">Director 1 (MD)</td><td class="dv blurred">Sri Ramkumar Deshmukh</td><td class="dl">Experience</td><td class="dv">22 years in government civil contracts — roads, culverts, drainage</td></tr>
+      <tr><td class="dl">Director 2</td><td class="dv blurred">Sri Nikhil Deshmukh</td><td class="dl">Role</td><td class="dv">Site Execution & Tendering (10 years with company)</td></tr>
+      <tr><td class="dl">CIBIL — Director 1</td><td class="dv"><strong>741</strong> — Clean; no NPA, no overdue, no settlement on personal record</td><td class="dl">CIBIL — Director 2</td><td class="dv"><strong>728</strong> — Clean; no overdue</td></tr>
+      <tr><td class="dl">CMR Rating</td><td class="dv"><strong>CMR-3</strong> (TransUnion CIBIL) — Satisfactory commercial credit performance</td><td class="dl">Banking Relationship</td><td class="dv">8 years with current banker · CC facility Standard · No overdue, no excess</td></tr>
+      <tr><td class="dl">Active Contracts</td><td class="dv" colspan="3">6 active work orders — PMGSY (3), PWD MH (2), ZP Nagpur (1) · Total order value Rs. 28.40 Crore · Work completed but unbilled/unpaid: Rs. 9.42 Crore</td></tr>
+      <tr><td class="dl">Registration</td><td class="dv" colspan="3">PWD Maharashtra Class-A Registered Contractor · PMGSY Empanelled Contractor · Nagpur ZP Approved Vendor</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- SECTION 3: MANAGEMENT PROFILE -->
+<div class="sec">
+  <div class="sec-head"><span class="sec-num">03</span> MANAGEMENT PROFILE & TRACK RECORD</div>
+  <div class="sec-body">
+    <table class="mgmt-t">
+      <thead>
+        <tr><th>Name</th><th>Role</th><th>Experience</th><th>Key Credentials</th><th>Net Worth</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="blurred">Sri Ramkumar Deshmukh</td>
+          <td>Managing Director</td>
+          <td>22 years</td>
+          <td>BE Civil Engineering (VNIT Nagpur); Former site engineer with L&T Infrastructure (4 years); Founded company in 2012; 14 PMGSY projects executed successfully; zero project abandonment record</td>
+          <td>Rs. 3.84 Cr (CA certified)</td>
+        </tr>
+        <tr>
+          <td class="blurred">Sri Nikhil Deshmukh</td>
+          <td>Director — Operations</td>
+          <td>14 years</td>
+          <td>Diploma Civil; manages tendering, site supervision, and government liaison; managed 8 concurrent active contracts in FY25; holds valid PWD registration independently</td>
+          <td>Rs. 1.92 Cr (CA certified)</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="para" style="margin-top:12px;">The promoter's 22-year track record in government civil construction — predating the company's formal incorporation — is the single strongest indicator of execution capability in this sector. Government departments do not repeatedly award contracts to underperforming contractors. The fact that the borrower holds <strong>6 simultaneous active work orders</strong> across three government departments — PMGSY, PWD, and Zilla Parishad — is direct evidence of the government's confidence in this contractor's delivery capability. In this sector, the contractor's reputation with the awarding authority is the most important business asset, and it takes years to build and is difficult to replicate.</div>
+  </div>
+</div>
+
+<hr class="pb">
+<div class="pb-label">— Page 2 of 5 —</div>
+
+<!-- SECTION 4: INDUSTRY CONTEXT -->
+<div class="sec">
+  <div class="sec-head"><span class="sec-num">04</span> INDUSTRY CONTEXT & SECTOR CHARACTERISTICS</div>
+  <div class="sec-body">
+    <div class="ind-box">
+      <p><strong>Road Construction — Government Sector in India:</strong> India's road construction sector is one of the largest recipients of government capital expenditure. Under the PMGSY programme alone, the central government has allocated over Rs. 1.25 lakh crore for rural road connectivity since inception. Maharashtra's PWD annual capex budget exceeds Rs. 8,000 Crore. This ensures a deep and consistent pipeline of work orders for empanelled contractors, with no demand risk.</p>
+      <p><strong>Payment Cycle — A Sector-Wide Structural Characteristic:</strong> The most misunderstood aspect of government contractor lending is the receivables cycle. Government clients do not default — they delay. The payment cycle for PMGSY and PWD Maharashtra works follows a defined administrative process: work completion → Engineer certification → Division Office approval → Treasury release → Bank credit. This cycle typically takes 90 to 180 days. The delay is bureaucratic, not credit-related. Lenders who understand this sector treat 120-day government receivables very differently from 120-day private trade receivables — one is a timing issue, the other is a credit issue.</p>
+      <p><strong>FinsightOne View on Sector Risk:</strong> The primary risk in government contractor lending is not receivable recovery — it is contractor execution capacity. A contractor who cannot execute becomes a contractor who cannot bill, and the government's payment cycle never starts. This borrower's 14-year track record of zero abandonment, with 6 active contracts currently in execution, demonstrates the risk that matters most is well-managed. The elevated debtor days are a feature of the sector, not a characteristic of this borrower's credit quality.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 5: FACILITY PROPOSED -->
+<div class="sec">
+  <div class="sec-head"><span class="sec-num">05</span> FACILITY PROPOSED & WORKING CAPITAL SIZING</div>
+  <div class="sec-body">
+    <div class="two-col">
+      <div class="col">
+        <div class="sub-label">Facility Details</div>
+        <table class="dt">
+          <tr><td class="dl">Facility 1</td><td class="dv">WC Cash Credit Enhancement: Rs. 4.50 Cr → <strong>Rs. 7.50 Cr</strong></td></tr>
+          <tr><td class="dl">Facility 2</td><td class="dv">Bank Guarantee (BG) — Tender Security / Performance: <strong>Rs. 1.50 Cr</strong></td></tr>
+          <tr><td class="dl">Total Enhancement</td><td class="dv"><strong>Rs. 9.00 Crore</strong></td></tr>
+          <tr><td class="dl">Nature</td><td class="dv">Revolving WC + Non-fund based BG</td></tr>
+          <tr><td class="dl">Tenure</td><td class="dv">CC: 12 months (annual renewal) · BG: Tenor of each guarantee</td></tr>
+          <tr><td class="dl">Purpose — CC</td><td class="dv">Fund mobilisation costs, labour, material procurement, sub-contractor payments during execution phase before government payment release</td></tr>
+          <tr><td class="dl">Purpose — BG</td><td class="dv">Tender submission (EMD), performance security deposits with PMGSY/PWD — mandatory for contract award</td></tr>
+        </table>
+      </div>
+      <div class="col">
+        <div class="sub-label">WC Assessment — Turnover Method</div>
+        <table class="dt">
+          <tr><td class="dl">Projected Revenue FY26</td><td class="dv">Rs. 42.00 Crore</td></tr>
+          <tr><td class="dl">WC Cycle (Industry Norm)</td><td class="dv">120–150 days (govt payment delay)</td></tr>
+          <tr><td class="dl">WC Requirement @ 25% of Revenue</td><td class="dv">Rs. 10.50 Crore</td></tr>
+          <tr><td class="dl">Less: Borrower's Own Margin (25%)</td><td class="dv">Rs. 2.63 Crore</td></tr>
+          <tr><td class="dl">Less: Creditor Support (sub-contractors)</td><td class="dv">Rs. 0.37 Crore</td></tr>
+          <tr><td class="dl">Net Bank Finance Required</td><td class="dv"><strong>Rs. 7.50 Crore</strong></td></tr>
+          <tr><td class="dl">BG Assessment</td><td class="dv">EMD @ 2% on Rs. 75 Cr tendered = Rs. 1.50 Cr (non-fund based)</td></tr>
+        </table>
+        <div class="note-strip"><strong>Sizing Justification:</strong> The proposed CC of Rs. 7.50 Cr = 17.86% of projected revenue — conservative relative to the Nayak Committee norm of 20%. The enhancement is demand-driven by contract volume growth, not leverage-driven.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 6: RECEIVABLES AGEING ANALYSIS -->
+<div class="sec">
+  <div class="sec-head"><span class="sec-num">06</span> RECEIVABLES AGEING ANALYSIS — THE CORE OF THIS FILE</div>
+  <div class="sec-body">
+    <div class="para"><strong>FinsightOne's position:</strong> The most important section in any government contractor LAN is the receivables analysis. A debtor day of 132 days means nothing without understanding what is behind it. This section provides granular, contract-by-contract visibility on every outstanding receivable — certified status, days outstanding, and expected collection timeline.</div>
+    <table class="recv-t" style="margin-top:12px;">
+      <thead>
+        <tr><th>Work Order / Dept.</th><th>Contract Value</th><th>Work Done</th><th>Billed</th><th>Collected</th><th>Outstanding</th><th>Certified?</th><th>Days O/S</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>PMGSY — Wardha Dist. Road</td><td>4,82,00,000</td><td>4,82,00,000</td><td>4,82,00,000</td><td>3,60,00,000</td><td>1,22,00,000</td><td class="cert">✓ Certified</td><td>94</td><td class="cert">In Treasury</td>
+        </tr>
+        <tr>
+          <td>PMGSY — Yavatmal Link Road</td><td>3,96,00,000</td><td>3,96,00,000</td><td>3,96,00,000</td><td>2,80,00,000</td><td>1,16,00,000</td><td class="cert">✓ Certified</td><td>112</td><td class="cert">In Treasury</td>
+        </tr>
+        <tr>
+          <td>PMGSY — Amravati Rural</td><td>5,40,00,000</td><td>4,20,00,000</td><td>3,80,00,000</td><td>2,40,00,000</td><td>1,40,00,000</td><td class="cert">✓ Certified</td><td>78</td><td class="cert">Division Office</td>
+        </tr>
+        <tr>
+          <td>PWD MH — NH Feeder, Nagpur</td><td>6,80,00,000</td><td>6,80,00,000</td><td>6,80,00,000</td><td>4,20,00,000</td><td>2,60,00,000</td><td class="cert">✓ Certified</td><td>142</td><td class="r-warn">Sanctioned, Transfer Pending</td>
+        </tr>
+        <tr>
+          <td>PWD MH — Bhandara District</td><td>4,20,00,000</td><td>3,90,00,000</td><td>3,40,00,000</td><td>1,96,00,000</td><td>1,44,00,000</td><td class="cert">✓ Certified</td><td>118</td><td class="cert">Division Office</td>
+        </tr>
+        <tr>
+          <td>ZP Nagpur — Rural Roads</td><td>3,22,00,000</td><td>3,22,00,000</td><td>3,22,00,000</td><td>2,02,00,000</td><td>1,60,00,000</td><td class="cert">✓ Certified</td><td>168</td><td class="r-warn">Audit Clearance Stage</td>
+        </tr>
+        <tr class="tot">
+          <td>Total — All 6 Contracts</td><td>28,40,00,000</td><td>26,90,00,000</td><td>26,00,00,000</td><td>16,98,00,000</td><td>9,42,00,000</td><td>100% Certified</td><td>Avg: 119</td><td>Zero Disputed</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note-strip" style="margin-top:10px;"><strong>Key Finding:</strong> All Rs. 9.42 Crore of outstanding receivables are certified by the relevant government engineer. Zero receivables are disputed, litigated, or at risk of non-payment. The delays are at the treasury/audit stage — administrative steps, not credit events. Collection probability: <strong>100%</strong>. Collection timeline: 30–90 days from date of this note.</div>
+    <div class="info-strip"><strong>FinsightOne Proposed Structure:</strong> The bank may consider assigning the contract payment proceeds to the borrower's CC account as a condition of enhancement — giving the bank direct visibility on government receipts. The borrower has agreed to route all government receipts through the lending bank's current account.</div>
+  </div>
+</div>
+
+<hr class="pb">
+<div class="pb-label">— Page 3 of 5 —</div>
+
+<!-- SECTION 7: FINANCIAL ANALYSIS -->
+<div class="sec">
+  <div class="sec-head"><span class="sec-num">07</span> FINANCIAL ANALYSIS</div>
+  <div class="sec-body">
+    <div class="sub-label">A. Profit & Loss Summary (Rs. Lakhs)</div>
+    <table class="ft" style="margin-bottom:16px;">
+      <thead>
+        <tr><th>Particulars</th><th>FY 2022–23</th><th>FY 2023–24</th><th>FY 2024–25</th><th>FY 2025–26 (Proj.)</th><th>Trend</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Contract Revenue (Gross Billing)</td><td>2,840.00</td><td>3,320.00</td><td>3,680.00</td><td>4,200.00</td><td class="up">+13.9% CAGR</td></tr>
+        <tr><td>Less: Sub-contractor & Material Cost</td><td>2,130.00</td><td>2,490.00</td><td>2,760.00</td><td>3,150.00</td><td class="na">—</td></tr>
+        <tr><td>Gross Margin</td><td>710.00</td><td>830.00</td><td>920.00</td><td>1,050.00</td><td class="up">+13.9% CAGR</td></tr>
+        <tr><td>Gross Margin %</td><td>25.0%</td><td>25.0%</td><td>25.0%</td><td>25.0%</td><td class="up">Consistent</td></tr>
+        <tr><td>Operating Expenses (Labour, Overheads)</td><td>284.00</td><td>332.00</td><td>368.00</td><td>420.00</td><td class="na">~10% of revenue</td></tr>
+        <tr><td>EBITDA</td><td>426.00</td><td>498.00</td><td>552.00</td><td>630.00</td><td class="up">+13.9% CAGR</td></tr>
+        <tr><td>Depreciation (Machinery)</td><td>42.00</td><td>42.00</td><td>48.00</td><td>52.00</td><td class="na">—</td></tr>
+        <tr><td>Interest on CC (Existing)</td><td>38.25</td><td>38.25</td><td>38.25</td><td>63.75</td><td class="na">Increases post-enhancement</td></tr>
+        <tr class="sub"><td>Net Profit Before Tax</td><td>345.75</td><td>417.75</td><td>465.75</td><td>514.25</td><td class="up">+14.1% CAGR</td></tr>
+        <tr><td>Net Profit After Tax</td><td>258.00</td><td>310.00</td><td>342.00</td><td>376.00</td><td class="up">+13.4% CAGR</td></tr>
+        <tr class="sub"><td>Cash Accruals (PAT + Dep.)</td><td>300.00</td><td>352.00</td><td>390.00</td><td>428.00</td><td class="up">+12.6% CAGR</td></tr>
+        <tr><td>Banking Turnover (CC Credits)</td><td>2,920.00</td><td>3,480.00</td><td>3,780.00</td><td>4,340.00</td><td class="up">Consistent</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sub-label">B. Key Balance Sheet Parameters (Rs. Lakhs)</div>
+    <table class="ft">
+      <thead>
+        <tr><th>Particulars</th><th>FY 2022–23</th><th>FY 2023–24</th><th>FY 2024–25</th><th>Movement</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Net Worth (Paid-up + Reserves)</td><td>384.00</td><td>480.00</td><td>592.00</td><td class="up">Growing consistently</td></tr>
+        <tr><td>Total Outside Liabilities</td><td>620.00</td><td>694.00</td><td>798.00</td><td class="na">Controlled</td></tr>
+        <tr><td>TOL / Adj. TNW</td><td>1.61x</td><td>1.45x</td><td>1.35x</td><td class="up">Improving</td></tr>
+        <tr><td>Sundry Debtors (Govt Receivables)</td><td>820.00</td><td>940.00</td><td>1,060.00</td><td class="r-warn">High — all certified</td></tr>
+        <tr><td>Debtor Days</td><td>105 days</td><td>103 days</td><td>132 days</td><td class="r-warn">See Section 06 explanation</td></tr>
+        <tr><td>Net Working Capital</td><td>42.00</td><td>28.00</td><td>(18.00)</td><td class="r-warn">Negative — timing only</td></tr>
+        <tr><td>Current Ratio</td><td>1.08x</td><td>1.04x</td><td>0.97x</td><td class="r-warn">Marginally below 1.0</td></tr>
+      </tbody>
+    </table>
+    <div class="note-strip" style="margin-top:10px;"><strong>On Negative NWC and Sub-1 Current Ratio:</strong> The negative NWC of Rs. 18 Lakhs in FY25 and current ratio of 0.97x are a direct consequence of the government payment delay — receivables are real and certified but sit in the debtors line as current assets against which CC is drawn. Once the Rs. 9.42 Crore receivables are collected (expected 30–90 days), NWC turns strongly positive. This is a recurring but temporary quarterly phenomenon, not a structural liquidity problem.</div>
+  </div>
+</div>
+
+<!-- SECTION 8: RISK MITIGATION MATRIX -->
+<div class="sec">
+  <div class="sec-head"><span class="sec-num">08</span> RISK MITIGATION MATRIX — CHALLENGES ADDRESSED</div>
+  <div class="sec-body">
+    <div class="para">The following matrix identifies every significant risk in this borrower profile, assesses its severity, and provides the specific mitigant and FinsightOne's residual risk view. This is prepared proactively so the banker has pre-answered responses to each expected credit query.</div>
+    <table class="rmx" style="margin-top:12px;">
+      <thead>
+        <tr><th style="width:18%;">Risk / Challenge</th><th style="width:10%;">Severity</th><th style="width:30%;">Specific Mitigant</th><th style="width:15%;">Residual Risk</th><th style="width:27%;">FinsightOne View</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="risk-title">High Debtor Days (132 days)</span></td>
+          <td><span class="sev-m">MEDIUM</span></td>
+          <td>100% of debtors are government-certified receivables. Receivables ageing analysis (Section 06) confirms zero disputed amount. All 6 contracts show work completion + engineer certification. Payment is guaranteed by government treasury — only timing is uncertain, not collectability.</td>
+          <td><span class="sev-l">LOW</span></td>
+          <td>132-day government debtor ≠ 132-day private trade debtor. The credit quality of a certified government receivable is equivalent to a government-guaranteed instrument. Residual risk is collection timeline, not collection amount. FinsightOne considers this manageable.</td>
+        </tr>
+        <tr>
+          <td><span class="risk-title">100% Revenue from Government</span></td>
+          <td><span class="sev-m">MEDIUM</span></td>
+          <td>While concentration in government is a dependency, it is a dependency on the most creditworthy counterparty class available. Government contracts do not go bad — only private contracts do. The borrower is registered with 3 separate government departments (PMGSY, PWD, ZP), reducing single-department dependency.</td>
+          <td><span class="sev-l">LOW</span></td>
+          <td>Government revenue concentration in this sector is a strength, not a weakness. It eliminates receivable default risk entirely. The risk is contract renewal — mitigated by the borrower's 14-year track record and Class-A PWD registration.</td>
+        </tr>
+        <tr>
+          <td><span class="risk-title">Negative NWC — FY25 (Rs. 18L)</span></td>
+          <td><span class="sev-m">MEDIUM</span></td>
+          <td>Negative NWC is a timing phenomenon — CC is drawn for execution costs, but government payment has not yet arrived. Upon collection of Rs. 9.42 Crore certified receivables, NWC turns positive by Rs. 9.24 Crore. The proposed enhancement itself is designed to ease this timing mismatch permanently.</td>
+          <td><span class="sev-l">LOW</span></td>
+          <td>The CC enhancement from Rs. 4.50 Cr to Rs. 7.50 Cr directly addresses this — the borrower will no longer need to exhaust the facility to fund execution gaps. FY26 NWC projected at Rs. 42 Lakhs positive post-enhancement.</td>
+        </tr>
+        <tr>
+          <td><span class="risk-title">PWD Nagpur — 142 Days O/S</span></td>
+          <td><span class="sev-h">HIGH-WATCH</span></td>
+          <td>The PWD NH Feeder road receivable of Rs. 2.60 Crore (142 days) is at the "sanctioned, transfer pending" stage — meaning the payment order has been issued by the Division Office, but inter-department transfer to the borrower's bank has not yet been completed. This is an administrative, not approval, delay. Expected credit: 15–21 days.</td>
+          <td><span class="sev-l">LOW</span></td>
+          <td>FinsightOne has reviewed the payment advice copy. The amount is sanctioned — it is an administrative disbursement pending, not a disputed payment. We treat this as Rs. 2.60 Crore current cash, not a debtor risk.</td>
+        </tr>
+        <tr>
+          <td><span class="risk-title">ZP Nagpur — 168 Days O/S (Audit Stage)</span></td>
+          <td><span class="sev-h">HIGH-WATCH</span></td>
+          <td>The ZP receivable of Rs. 1.60 Crore at 168 days is at audit clearance stage — a mandatory pre-payment review by the Zilla Parishad's internal audit committee. This is a standard 30–45 day stage in ZP payment cycles. Engineer certification is complete. No audit objection has been raised. Expected credit: 30–45 days.</td>
+          <td><span class="sev-m">MEDIUM</span></td>
+          <td>While the ZP audit process has discretionary elements, the work certification by the engineer eliminates payment obligation risk. The audit reviews whether the work was done per specification — which it has been certified as meeting. FinsightOne considers collection probable within 45 days.</td>
+        </tr>
+        <tr>
+          <td><span class="risk-title">DSCR on WC Enhancement</span></td>
+          <td><span class="sev-l">LOW</span></td>
+          <td>CC is a revolving facility — DSCR framework applies to the interest burden, not principal. Post-enhancement interest at 9% on Rs. 7.50 Cr = Rs. 67.50 Lakhs pa. DSCR (Cash Accruals / Interest) = Rs. 390L / Rs. 67.50L = 5.78x — highly comfortable. BG is non-fund based — no interest burden.</td>
+          <td><span class="sev-l">LOW</span></td>
+          <td>Strong repayment comfort. The EBITDA margin of 25% on a Rs. 42 Crore order book generates Rs. 630L annual EBITDA — more than 9x the proposed interest burden. No concern.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr class="pb">
+<div class="pb-label">— Page 4 of 5 —</div>
+
+<!-- SECTION 9: SECURITY -->
+<div class="sec">
+  <div class="sec-head"><span class="sec-num">09</span> SECURITY PROPOSED</div>
+  <div class="sec-body">
+    <table class="dt">
+      <tr><td class="dl">Primary — Hypothecation</td><td class="dv">First exclusive hypothecation charge over all current assets — book debts (government certified receivables Rs. 9.42 Cr), stock of construction material, WIP. Lender has first right over government payment receipts routed through borrower's current account.</td></tr>
+      <tr><td class="dl">Primary — Equitable Mortgage</td><td class="dv">Equitable mortgage of office property at Civil Lines, Nagpur — owned by Director 1, value Rs. 1.84 Crore (independent valuation enclosed). Clear title; EC clean; NA residential use.</td></tr>
+      <tr><td class="dl">Collateral — Residential</td><td class="dv">Residential flat — Dharampeth, Nagpur — owned by Director 2. Value Rs. 1.12 Crore. EC clean, title clear. Offered as additional collateral.</td></tr>
+      <tr><td class="dl">Assignment of Contracts</td><td class="dv">Assignment of proceeds from all 6 active work orders to the lending bank's current account. Government payment advice copies to be submitted to bank upon receipt. All payments routed through lending bank — this provides direct monitoring comfort.</td></tr>
+      <tr><td class="dl">Personal Guarantee</td><td class="dv">Personal guarantees of both Directors. Director 1 NW Rs. 3.84 Cr; Director 2 NW Rs. 1.92 Cr. Total personal NW: Rs. 5.76 Crore — 64% of total exposure.</td></tr>
+      <tr><td class="dl">Combined Coverage</td><td class="dv"><strong>Hypothecation (current assets Rs. 9.42 Cr certified receivables) + Property (Rs. 2.96 Cr) = Rs. 12.38 Crore against Rs. 9.00 Crore exposure = 138% coverage.</strong></td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- SECTION 10: PROPOSAL STRENGTHS -->
+<div class="sec">
+  <div class="sec-head"><span class="sec-num">10</span> PROPOSAL STRENGTHS — WHY THIS FILE MERITS SANCTION</div>
+  <div class="sec-body">
+    <div style="font-size:11.5px;color:var(--text-sub);margin-bottom:14px;font-style:italic;">The following factors are drawn from the borrower's documented operational record. FinsightOne presents these as the strongest positive arguments for sanction, beyond the risk mitigants already addressed in Section 08.</div>
+    <div class="str-item">
+      <div class="str-icon">🏛️</div>
+      <div>
+        <div class="str-title">14 Years — Zero Contract Abandonment, Zero Government Dispute</div>
+        <div class="str-body">In 14 years of operations, the borrower has executed 38 government contracts across PMGSY, PWD, and Zilla Parishad programmes. Zero contracts have been abandoned, terminated, or gone into dispute. Zero performance guarantees have been encashed against the borrower. This is the single most important underwriting factor in government contractor lending — it tells the lender that the borrower will execute, deliver, and collect. The record speaks louder than any financial ratio.</div>
+      </div>
+    </div>
+    <div class="str-item">
+      <div class="str-icon">📋</div>
+      <div>
+        <div class="str-title">Rs. 9.42 Crore Certified Receivables — The Collateral That Matters Most</div>
+        <div class="str-body">The actual economic collateral in this file is not the property — it is the Rs. 9.42 Crore of certified government receivables. Every rupee has been certified by a government engineer, meaning the work has been verified and the payment obligation confirmed. These receivables are, in substance, government-backed instruments. Their value is not contingent on market conditions, valuations, or third-party performance. They will be collected — the only question is when. The bank's primary security is therefore of the highest quality available in MSME lending.</div>
+      </div>
+    </div>
+    <div class="str-item">
+      <div class="str-icon">📈</div>
+      <div>
+        <div class="str-title">Rs. 28.40 Crore Active Order Book — 14 Months Revenue Visibility</div>
+        <div class="str-body">The borrower's active work order book of Rs. 28.40 Crore represents 14 months of revenue at the current run rate. This is not pipeline or LOI — these are active, government-issued work orders already under execution. The revenue for the next 12+ months is therefore government-confirmed. The CC enhancement is not funding speculative growth — it is funding confirmed, contracted, government-approved work that is already in progress.</div>
+      </div>
+    </div>
+    <div class="str-item">
+      <div class="str-icon">🏦</div>
+      <div>
+        <div class="str-title">8-Year Banking Relationship — CC Always Standard, No Excess, No Bounce</div>
+        <div class="str-body">The borrower's 8-year banking relationship shows a CC account that has remained Standard throughout — never overdue, never exceeded without sanction, no cheque returns on current account. The existing CC of Rs. 4.50 Crore has been utilised, recycled, and maintained cleanly for multiple cycles. This is the strongest behavioural credit signal available — the borrower manages the facility responsibly even under the stress of delayed government payments.</div>
+      </div>
+    </div>
+    <div class="str-item">
+      <div class="str-icon">🎯</div>
+      <div>
+        <div class="str-title">Assignment of Contract Proceeds — Bank Gets First Claim on All Government Payments</div>
+        <div class="str-body">The proposed assignment of all 6 contract proceeds to the lending bank's current account transforms this from a simple CC enhancement into a structured, self-liquidating working capital facility. Every government payment — upon receipt — will credit the CC account, reducing utilisation automatically. The bank does not need to pursue collection; the government's payment mechanism does it for them. This structure eliminates the primary operational risk in government contractor lending.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="pb">
+<div class="pb-label">— Page 5 of 5 —</div>
+
+<!-- SECTION 11: RATIOS -->
+<div class="sec">
+  <div class="sec-head"><span class="sec-num">11</span> KEY FINANCIAL RATIOS</div>
+  <div class="sec-body">
+    <table class="rt">
+      <thead>
+        <tr><th>Ratio</th><th>FY 2022–23</th><th>FY 2023–24</th><th>FY 2024–25</th><th>Post-Enhancement (Proj. FY26)</th><th>Benchmark</th><th>Assessment</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>EBITDA / Interest (ICR)</td><td class="r-ok">11.13x</td><td class="r-ok">13.02x</td><td class="r-ok">14.44x</td><td class="r-ok">9.88x</td><td class="bench">Min 2.0x</td><td class="r-ok">✓ Very Strong</td></tr>
+        <tr><td>Cash Accruals / CC Interest</td><td class="r-ok">7.84x</td><td class="r-ok">9.20x</td><td class="r-ok">10.20x</td><td class="r-ok">6.32x</td><td class="bench">Min 1.5x</td><td class="r-ok">✓ Comfortable</td></tr>
+        <tr><td>TOL / Adj. TNW</td><td class="r-ok">1.61x</td><td class="r-ok">1.45x</td><td class="r-ok">1.35x</td><td class="r-ok">1.62x</td><td class="bench">Max 4.0x</td><td class="r-ok">✓ Well Within</td></tr>
+        <tr><td>Current Ratio</td><td class="r-ok">1.08x</td><td class="r-ok">1.04x</td><td class="r-warn">0.97x</td><td class="r-ok">1.18x</td><td class="bench">Min 1.0x</td><td class="r-warn">⚠ See Note Below</td></tr>
+        <tr><td>Debtor Days</td><td class="r-warn">105 days</td><td class="r-warn">103 days</td><td class="r-warn">132 days</td><td class="r-warn">~110 days</td><td class="bench">Sector: 90–150</td><td class="r-warn">⚠ Within Sector Norm</td></tr>
+        <tr><td>Net Profit Margin</td><td class="r-ok">9.08%</td><td class="r-ok">9.34%</td><td class="r-ok">9.29%</td><td class="r-ok">8.95%</td><td class="bench">Positive & stable</td><td class="r-ok">✓ Consistent</td></tr>
+        <tr><td>Banking Turnover / CC Limit</td><td class="r-ok">6.49x</td><td class="r-ok">7.73x</td><td class="r-ok">8.40x</td><td class="r-ok">5.79x</td><td class="bench">Min 1.5x</td><td class="r-ok">✓ Strong</td></tr>
+      </tbody>
+    </table>
+    <div class="note-strip" style="margin-top:10px;"><strong>On Current Ratio 0.97x (FY25):</strong> Current ratio below 1.0 in a government contractor is a well-documented sector phenomenon. The current assets include Rs. 10.60 Crore of government receivables — all certified. If these receivables are collected at Rs. 9.42 Crore (which they will be, based on Section 06), the post-collection current ratio is 2.04x. The FY25 current ratio of 0.97x is a point-in-time snapshot during a peak disbursement period, not a structural liquidity concern.</div>
+  </div>
+</div>
+
+<!-- SECTION 12: SUMMARY & PROPOSAL -->
+<div class="sec">
+  <div class="sec-head"><span class="sec-num">12</span> SUMMARY & ADVISORY PROPOSAL</div>
+  <div class="sec-body">
+    <div class="para">This Loan Appraisal Note presents a government road contractor with 14 years of clean operations, a Rs. 28.40 Crore active order book, Rs. 9.42 Crore of 100% certified government receivables, and a banking relationship of 8 years without a single NPA event. The challenges in this profile — elevated debtor days, temporarily negative NWC, below-1 current ratio — are all explained by the structural payment cycle of the government contracting sector, not by any failure of business or credit discipline.</div>
+    <div class="para">FinsightOne has structured the proposal with contract assignment as a condition, ensuring all government receipts flow through the lending bank's account. This converts the CC into a self-liquidating facility backed by sovereign-quality receivables. The proposed enhancement is conservative — at 17.86% of projected revenue against a Nayak Committee norm of 20%. The BG facility enables the borrower to bid for larger contracts, directly supporting revenue growth that will increase banking turnover with the lender.</div>
+    <div class="para">We present this proposal to the lending institution with the view that it represents a well-documented, appropriately-structured lending opportunity in a sector that requires understanding rather than avoidance. The risks are temporal; the business fundamentals are sound; the mitigants are structural. FinsightOne remains available for any clarification required during the lender's review process.</div>
+  </div>
+</div>
+
+<div class="prop-box">
+  <div class="pb-tag">FinsightOne — Loan Appraisal Summary</div>
+  <div class="pb-title">We Propose: WC CC Enhancement (Rs.4.50→7.50 Cr) + BG (Rs.1.50 Cr) for Favourable Consideration</div>
+  <div class="pb-grid">
+    <div class="pbi"><div class="pbi-label">Total Facility</div><div class="pbi-val fav">Rs. 9.00 Cr</div></div>
+    <div class="pbi"><div class="pbi-label">ICR (Post-Enhancement)</div><div class="pbi-val fav">9.88x</div></div>
+    <div class="pbi"><div class="pbi-label">Certified Receivables</div><div class="pbi-val fav">Rs. 9.42 Cr</div></div>
+    <div class="pbi"><div class="pbi-label">Security Coverage</div><div class="pbi-val fav">138%</div></div>
+  </div>
+  <div class="pb-note">This Loan Appraisal Note has been prepared by FinsightOne Credit Advisory Desk on behalf of the borrower. FinsightOne is acting as the borrower's advisory firm and not as a credit authority. Final sanction and all terms rest entirely with the lending institution. All client details in this sample are fictional and for illustration only.</div>
+</div>
+
+<div class="disclaimer">
+  <strong>Disclaimer:</strong> This Loan Appraisal Note has been prepared by FinsightOne based on information furnished by the borrower. FinsightOne does not independently audit or certify financial statements. This note presents the borrower's case and does not constitute a guarantee of sanction. All names, figures and details in this sample are fictional and for illustration purposes only.
+</div>
+
+</div><!-- body -->
+
+<div class="footer">
+  <div class="footer-brand">Finsight<span>One</span></div>
+  <div class="footer-text">Prepared by FinsightOne Credit Advisory Desk &nbsp;|&nbsp; finsightone.co &nbsp;|&nbsp; Credit · Advisory · Intelligence<br><span style="font-size:9.5px;opacity:0.6;">Sample — all client data fictional</span></div>
+  <div class="footer-right">LAN Ref: FO-LAN-2026-0541<br>Pages 1–5 of 5</div>
+</div>
+
+</div><!-- page -->
+</body>
+</html>
