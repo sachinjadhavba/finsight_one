@@ -31,10 +31,10 @@ export const SERVICES = [
     pitch: "Find out exactly where you stand before walking into a bank. We tell you your chances, what is weak, and exactly how to fix it.",
     items: [
       { name: "Free Eligibility Score",      price: "Free" },
-      { name: "Detailed Eligibility Report", price: "₹799",   sample: "/reports/business-services/05_loan_readiness_pharma.html" },
-      { name: "Loan Readiness Plan",         price: "₹2,999", sample: "/reports/business-services/05_loan_readiness_pharma.html" },
-      { name: "Banker Presentation Pack",    price: "₹9,999", sample: "/reports/business-services/07_banker_presentation_hospitality.html" },
-      { name: "Rejection Analysis Report",   price: "₹4,999", sample: "/reports/business-services/08_rejected_loan_recovery_auto.html" },
+      { name: "Detailed Eligibility Report", price: "₹799",   sample: "/reports/s2-02-detailed-eligibility.html" },
+      { name: "Loan Readiness Plan",         price: "₹2,999", sample: "/reports/s2-03-loan-readiness-plan.html" },
+      { name: "Banker Presentation Pack",    price: "₹9,999", sample: "/reports/s2-04-banker-presentation-pack.html" },
+      { name: "Rejection Analysis Report",   price: "₹4,999", sample: "/reports/s2-05-rejection-analysis.html" },
     ],
     btn: "Check My Loan Score — Free", page: "check",
     numColor: "#2563EB", priceColor: "#0A1929",
@@ -47,11 +47,11 @@ export const SERVICES = [
     title: "Loan Appraisal & CMA Documents",
     pitch: "Bank-ready LAN, CMA and DPR prepared by ex-bankers — exactly the way lenders read a file.",
     items: [
-      { name: "Loan Appraisal Note 1–2 Cr",   price: "₹3,999", sample: "/reports/banker-pack/01_basic_textile_cam_cma.html" },
-      { name: "Loan Appraisal Note 2–5 Cr",   price: "₹7,999", sample: "/reports/banker-pack/02_standard_food_hdfc.html" },
+      { name: "Loan Appraisal Note 1–2 Cr",   price: "₹3,999", sample: "/reports/doc-01-cam-small.html" },
+      { name: "Loan Appraisal Note 2–5 Cr",   price: "₹7,999", sample: "/reports/doc-02-cam-large.html" },
       { name: "Loan Appraisal Note Above 5 Cr", price: "On Call" },
-      { name: "CMA Financial Analysis 1–2 Cr", price: "₹4,999", sample: "/reports/banker-pack/01_basic_textile_cam_cma.html" },
-      { name: "CMA Financial Analysis 2–5 Cr", price: "₹8,999", sample: "/reports/banker-pack/02_standard_food_hdfc.html" },
+      { name: "CMA Financial Analysis 1–2 Cr", price: "₹4,999", sample: "/reports/cma-01-interpretation-1to2cr.html" },
+      { name: "CMA Financial Analysis 2–5 Cr", price: "₹8,999", sample: "/reports/cma-02-interpretation-2to5cr.html" },
       { name: "CMA Above 5 Cr",                price: "On Call" },
       { name: "Project Report (DPR) 2–5 Cr",   price: "₹9,999" },
       { name: "DPR Above 5 Cr",                price: "On Call" },
@@ -68,7 +68,7 @@ export const SERVICES = [
     pitch: "Monthly alerts so your business finances are always in order — not just when you need a loan.",
     items: [
       { name: "Credit Watch",    price: "₹499/mo"   },
-      { name: "Business Health", price: "₹2,999/mo", sample: "/reports/monthly-business-health-report.html" },
+      { name: "Business Health", price: "₹2,999/mo", sample: "/reports/s2-03-loan-readiness-plan.html" },
       { name: "Premium",         price: "₹4,999/mo" },
     ],
     btn: "Start Monthly Monitoring →", page: "analytics",
@@ -192,4 +192,5 @@ export const CREDENTIALS = [
   { period: "2023 – 2024", title: "Independent Consultant", org: "MSME Advisory · Helped 100+ businesses get approved" },
   { period: "2025 – Present", title: "Founder, FinsightOne", org: "India's Credit & Loan Advisory Platform" },
 ];
+
 
