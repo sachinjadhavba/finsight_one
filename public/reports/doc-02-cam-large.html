@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loan Appraisal Note — FinsightOne</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Source+Sans+3:wght@300;400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange:#F97316;--orange-light:#FFF7ED;--orange-mid:#FED7AA;
+    --navy:#0A1929;--navy-mid:#112240;--navy-light:#1A3357;
+    --slate:#3D5166;--muted:#7A8FA6;--border:#C8D6E0;--bg:#F2F6FA;--white:#FFFFFF;
+    --green:#1A6B3A;--green-light:#EEF8F2;--green-mid:#7DC99A;
+    --amber:#8A5200;--amber-light:#FFF8EC;--amber-mid:#F5C97A;
+    --red:#8B1A1A;--red-light:#FDF3F3;--red-mid:#E8A0A0;
+    --rule:#B8C8D4;
+    --text-primary:#0A1929;--text-body:#2E3F52;--text-sub:#5A6E82;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Source Sans 3',sans-serif;background:#D8E2EC;color:var(--text-primary);font-size:13px;line-height:1.6;}
+  body::before{content:'SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE';position:fixed;top:-50%;left:-50%;width:200%;height:200%;font-size:17px;font-weight:700;color:rgba(10,25,41,0.038);letter-spacing:4px;transform:rotate(-35deg);word-spacing:38px;line-height:5;z-index:1000;pointer-events:none;white-space:pre-wrap;text-align:center;display:flex;align-items:center;justify-content:center;}
+  .page{max-width:900px;margin:0 auto;background:var(--white);box-shadow:0 4px 32px rgba(0,0,0,0.1);}
+
+  .letterhead{border-bottom:3px solid var(--navy);}
+  .lh-top{background:var(--navy);padding:22px 48px 18px;display:flex;align-items:flex-start;justify-content:space-between;}
+  .brand-name{font-family:'Merriweather',serif;font-size:24px;color:var(--white);letter-spacing:-0.3px;margin-bottom:3px;}
+  .brand-name span{color:var(--orange);}
+  .brand-tagline{font-size:10px;color:rgba(255,255,255,0.45);letter-spacing:2.5px;text-transform:uppercase;font-weight:600;}
+  .lh-right{display:flex;flex-direction:column;align-items:flex-end;gap:5px;}
+  .lh-badge{font-size:9.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:2px;}
+  .lb-tier{background:var(--orange);color:var(--white);}
+  .lb-sample{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.45);border:1px solid rgba(255,255,255,0.12);}
+  .lh-title-band{background:var(--orange);padding:8px 48px;display:flex;align-items:center;justify-content:space-between;}
+  .lhtb-l{font-family:'Merriweather',serif;font-size:14px;color:var(--white);font-weight:700;letter-spacing:0.5px;}
+  .lhtb-r{font-size:11px;color:rgba(255,255,255,0.8);font-weight:600;}
+  .lhtb-r strong{color:var(--white);}
+
+  .lan-header{padding:18px 48px 0;}
+  .lan-ref-table{width:100%;border-collapse:collapse;margin-bottom:18px;}
+  .lan-ref-table td{padding:5px 12px 5px 0;font-size:12px;vertical-align:top;}
+  .lan-ref-table td:nth-child(odd){color:var(--text-sub);font-weight:600;width:160px;}
+  .lan-ref-table td:nth-child(even){color:var(--text-primary);border-bottom:1px solid var(--border);padding-right:32px;}
+  .lan-ref-table .blurred{filter:blur(4.5px);user-select:none;pointer-events:none;}
+  .lan-divider{height:1px;background:var(--rule);margin:0 48px 18px;}
+
+  .body{padding:0 48px 40px;}
+
+  .sec{margin-bottom:26px;}
+  .sec-head{font-family:'Merriweather',serif;font-size:12.5px;font-weight:700;color:var(--white);background:var(--navy);padding:6px 12px;display:flex;align-items:center;gap:10px;}
+  .sec-num{font-family:'Source Code Pro',monospace;font-size:10px;color:rgba(255,255,255,0.45);font-weight:400;}
+  .sec-body{border:1px solid var(--border);border-top:none;padding:14px 16px;}
+
+  .dt{width:100%;border-collapse:collapse;}
+  .dt tr td{padding:5px 10px;font-size:12px;border-bottom:1px solid #EEF2F6;vertical-align:top;}
+  .dt tr:last-child td{border-bottom:none;}
+  .dt tr:nth-child(even) td{background:#FAFBFC;}
+  .dt .dl{color:var(--text-sub);font-weight:600;width:200px;}
+  .dt .dv{color:var(--text-primary);}
+  .dt .dv.blurred{filter:blur(4.5px);user-select:none;pointer-events:none;}
+
+  .ft{width:100%;border-collapse:collapse;}
+  .ft th{background:var(--navy-light);color:var(--white);font-size:10.5px;font-weight:700;letter-spacing:0.5px;padding:7px 10px;text-align:right;}
+  .ft th:first-child{text-align:left;}
+  .ft td{padding:6px 10px;font-size:11.5px;color:var(--text-body);border-bottom:1px solid #EEF2F6;text-align:right;font-family:'Source Code Pro',monospace;}
+  .ft td:first-child{font-family:'Source Sans 3',sans-serif;font-weight:600;color:var(--text-primary);text-align:left;font-size:12px;}
+  .ft tr:nth-child(even) td{background:#FAFBFC;}
+  .ft .sub td{background:#EEF2F6;font-weight:700;color:var(--navy);}
+  .ft .tot td{background:var(--navy);color:var(--white);font-weight:700;border-top:2px solid var(--navy-light);}
+  .ft .tot td:first-child{color:var(--white);}
+  .ft .ind{padding-left:22px !important;font-weight:400 !important;color:var(--text-sub) !important;}
+  .up{color:var(--green);font-weight:700;}
+  .dn{color:var(--red);font-weight:700;}
+  .na{color:var(--muted);}
+
+  .rt{width:100%;border-collapse:collapse;}
+  .rt th{background:var(--navy-light);color:var(--white);font-size:10.5px;font-weight:700;padding:7px 10px;text-align:center;letter-spacing:0.5px;}
+  .rt th:first-child{text-align:left;}
+  .rt td{padding:7px 10px;font-size:11.5px;border-bottom:1px solid #EEF2F6;text-align:center;font-family:'Source Code Pro',monospace;}
+  .rt td:first-child{font-family:'Source Sans 3',sans-serif;font-weight:600;color:var(--text-primary);text-align:left;font-size:12px;}
+  .rt tr:nth-child(even) td{background:#FAFBFC;}
+  .rt .bench{font-size:10px;color:var(--text-sub);font-family:'Source Sans 3',sans-serif;}
+  .r-ok{color:var(--green);font-weight:700;}
+  .r-warn{color:var(--amber);font-weight:700;}
+  .r-bad{color:var(--red);font-weight:700;}
+
+  .st{width:100%;border-collapse:collapse;}
+  .st th{background:var(--navy-light);color:var(--white);font-size:10.5px;font-weight:700;padding:7px 10px;text-align:left;letter-spacing:0.5px;}
+  .st td{padding:7px 10px;font-size:12px;color:var(--text-body);border-bottom:1px solid #EEF2F6;vertical-align:top;}
+  .st tr:last-child td{border-bottom:none;}
+  .st tr:nth-child(even) td{background:#FAFBFC;}
+  .st td:first-child{font-weight:700;color:var(--text-primary);width:180px;}
+
+  .rpt{width:100%;border-collapse:collapse;}
+  .rpt th{background:var(--navy-light);color:var(--white);font-size:10.5px;font-weight:700;padding:7px 10px;text-align:center;letter-spacing:0.5px;}
+  .rpt td{padding:6px 10px;font-size:11.5px;text-align:center;border-bottom:1px solid #EEF2F6;font-family:'Source Code Pro',monospace;color:var(--text-body);}
+  .rpt tr:last-child td{border-bottom:none;font-weight:700;background:var(--bg);color:var(--navy);}
+  .rpt tr:nth-child(even) td{background:#FAFBFC;}
+
+  .cam-para{font-size:12.5px;color:var(--text-body);line-height:1.7;margin-bottom:10px;}
+  .cam-para:last-child{margin-bottom:0;}
+  .cam-para strong{color:var(--text-primary);}
+
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+  .two-col .col:first-child{border-right:1px solid var(--border);padding-right:14px;}
+  .two-col .col:last-child{padding-left:14px;}
+
+  .sc-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .sc-box{border-radius:3px;padding:12px 14px;}
+  .sc-str{background:var(--green-light);border-left:3px solid var(--green);}
+  .sc-con{background:var(--amber-light);border-left:3px solid var(--amber-mid);}
+  .sc-title{font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;}
+  .sc-str .sc-title{color:var(--green);}
+  .sc-con .sc-title{color:var(--amber);}
+  .sc-item{font-size:12px;color:var(--text-body);margin-bottom:5px;display:flex;align-items:flex-start;gap:6px;line-height:1.4;}
+  .sc-item:last-child{margin-bottom:0;}
+  .sc-str .sc-item::before{content:'✓';color:var(--green);font-weight:900;flex-shrink:0;font-size:10px;margin-top:2px;}
+  .sc-con .sc-item::before{content:'⚠';color:var(--amber);flex-shrink:0;font-size:10px;margin-top:2px;}
+
+  .strengths-grid{display:flex;flex-direction:column;gap:0;}
+  .str-item{display:flex;align-items:flex-start;gap:14px;padding:12px 0;border-bottom:1px solid var(--border);}
+  .str-item:last-child{border-bottom:none;}
+  .str-icon{font-size:20px;flex-shrink:0;width:28px;text-align:center;margin-top:2px;}
+  .str-title{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px;}
+  .str-body{font-size:12px;color:var(--text-body);line-height:1.6;}
+
+  .prop-box{background:var(--navy);padding:16px 18px;margin-top:0;}
+  .pb-tag{font-size:9.5px;color:var(--orange);letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:5px;}
+  .pb-title{font-family:'Merriweather',serif;font-size:16px;color:var(--white);margin-bottom:12px;}
+  .pb-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid rgba(255,255,255,0.1);margin-bottom:12px;}
+  .pbi{padding:10px 14px;border-right:1px solid rgba(255,255,255,0.1);}
+  .pbi:last-child{border-right:none;}
+  .pbi-label{font-size:9.5px;color:rgba(255,255,255,0.4);letter-spacing:1px;text-transform:uppercase;font-weight:600;margin-bottom:4px;}
+  .pbi-val{font-family:'Source Code Pro',monospace;font-size:13px;font-weight:700;color:var(--white);}
+  .pbi-val.fav{color:#4ADE80;}
+  .pb-note{font-size:11.5px;color:rgba(255,255,255,0.55);line-height:1.6;}
+
+  .note-strip{background:var(--orange-light);border:1px solid var(--orange-mid);border-radius:3px;padding:8px 12px;font-size:11px;color:var(--text-body);margin-top:8px;}
+  .note-strip strong{color:var(--orange);}
+
+  .pb{border:none;border-top:1px dashed var(--rule);margin:26px 0;}
+  .pb-label{text-align:center;font-size:9.5px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin:-6px 0 22px;font-weight:700;}
+
+  .footer{background:var(--navy);padding:14px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;border-top:3px solid var(--orange);}
+  .footer-brand{font-family:'Merriweather',serif;font-size:13px;color:var(--white);}
+  .footer-brand span{color:var(--orange);}
+  .footer-text{font-size:10px;color:rgba(255,255,255,0.4);text-align:center;}
+  .footer-right{font-size:10px;color:rgba(255,255,255,0.4);text-align:right;}
+  .disclaimer{font-size:10.5px;color:var(--muted);line-height:1.6;padding:12px 0;border-top:1px solid var(--border);margin-top:16px;}
+  .disclaimer strong{color:var(--text-sub);}
+
+  /* LARGER LOAN SPECIFIC */
+  .project-cost-table{width:100%;border-collapse:collapse;}
+  .project-cost-table th{background:var(--navy-light);color:var(--white);font-size:10.5px;font-weight:700;padding:7px 10px;text-align:right;letter-spacing:0.5px;}
+  .project-cost-table th:first-child{text-align:left;}
+  .project-cost-table td{padding:7px 10px;font-size:12px;color:var(--text-body);border-bottom:1px solid #EEF2F6;text-align:right;font-family:'Source Code Pro',monospace;}
+  .project-cost-table td:first-child{font-family:'Source Sans 3',sans-serif;font-weight:600;color:var(--text-primary);text-align:left;}
+  .project-cost-table .tot td{background:var(--navy);color:var(--white);font-weight:700;}
+  .project-cost-table .tot td:first-child{color:var(--white);}
+  .project-cost-table tr:nth-child(even) td{background:#FAFBFC;}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- LETTERHEAD -->
+  <div class="letterhead">
+    <div class="lh-top">
+      <div>
+        <div class="brand-name">Finsight<span>One</span></div>
+        <div class="brand-tagline">Credit · Advisory · Intelligence</div>
+      </div>
+      <div class="lh-right">
+        <div class="lh-badge lb-tier">Rs. 7,999 — Loan Appraisal Note</div>
+        <div class="lh-badge lb-sample">Sample Document</div>
+      </div>
+    </div>
+    <div class="lh-title-band">
+      <div class="lhtb-l">LOAN APPRAISAL NOTE (LAN)</div>
+      <div class="lhtb-r">Stream 1 — Documents &nbsp;·&nbsp; Term Loan: 2–5 Cr Tier &nbsp;·&nbsp; Price: <strong>Rs. 7,999</strong> + GST</div>
+    </div>
+  </div>
+
+  <!-- LAN REFERENCE HEADER -->
+  <div class="lan-header">
+    <br>
+    <table class="lan-ref-table">
+      <tr>
+        <td>LAN Reference No.</td><td>FO-LAN-2026-0318</td>
+        <td>Date of Preparation</td><td>June 2026</td>
+      </tr>
+      <tr>
+        <td>Name of Borrower</td><td class="blurred">Pratap Garments Pvt. Ltd.</td>
+        <td>Constitution</td><td>Private Limited Company</td>
+      </tr>
+      <tr>
+        <td>Industry / Activity</td><td>Readymade Garment Manufacturing — Export Oriented</td>
+        <td>Location</td><td>Tiruppur, Tamil Nadu</td>
+      </tr>
+      <tr>
+        <td>Facility Proposed</td><td>Term Loan — Machinery & Capacity Expansion</td>
+        <td>Amount Proposed</td><td><strong>Rs. 3,50,00,000 (Rs. 3.50 Crore)</strong></td>
+      </tr>
+      <tr>
+        <td>Prepared By</td><td>FinsightOne Credit Advisory Desk</td>
+        <td>Document Tier</td><td>Enhanced — Loan Rs. 2 Crore to Rs. 5 Crore</td>
+      </tr>
+    </table>
+  </div>
+  <div class="lan-divider"></div>
+
+  <div class="body">
+
+    <!-- SECTION 1: EXECUTIVE OVERVIEW -->
+    <div class="sec">
+      <div class="sec-head"><span class="sec-num">01</span> EXECUTIVE OVERVIEW</div>
+      <div class="sec-body">
+        <div class="cam-para">This Loan Appraisal Note has been prepared by FinsightOne on behalf of the borrower to present a structured case for a <strong>Term Loan of Rs. 3.50 Crore</strong> for machinery acquisition and factory expansion. The borrower is a Private Limited company engaged in readymade garment manufacturing and export at Tiruppur, Tamil Nadu — the acknowledged hosiery and knitwear capital of India. The company has been in operations for 11 years and exports to buyers in the EU and Middle East.</div>
+        <div class="cam-para">The proposed facility will fund the purchase of 24 automated knitting machines, 6 computerised embroidery units, and civil work for an additional 4,000 sq.ft. production floor — enabling capacity expansion from 1.2 lakh pieces/month to 2.4 lakh pieces/month. The expansion is fully backed by confirmed export orders from 3 overseas buyers with Letters of Intent enclosed, providing revenue visibility for the first 18 months post-expansion.</div>
+        <div class="cam-para">The company presents a clean credit profile — Directors' CIBIL scores of 762 and 748, consistent export turnover growth at 16% CAGR over three years, and ITR, GST, and banking data fully aligned. The security package — primary hypothecation of funded machinery and collateral mortgage of factory premises valued at Rs. 5.60 Crore — provides <strong>combined coverage of 276%</strong> of the proposed loan, offering strong recovery comfort to the lending institution.</div>
+      </div>
+    </div>
+
+    <!-- SECTION 2: BORROWER PROFILE -->
+    <div class="sec">
+      <div class="sec-head"><span class="sec-num">02</span> BORROWER PROFILE</div>
+      <div class="sec-body">
+        <table class="dt">
+          <tr><td class="dl">Company Name</td><td class="dv blurred">Pratap Garments Pvt. Ltd.</td><td class="dl">Date of Incorporation</td><td class="dv">March 2015 (11 years)</td></tr>
+          <tr><td class="dl">Constitution</td><td class="dv">Private Limited Company</td><td class="dl">CIN</td><td class="dv">U18101TN2015PTC000XXX</td></tr>
+          <tr><td class="dl">Business Activity</td><td class="dv">Knitted readymade garment manufacturing; export of hosiery, t-shirts, polo shirts to EU & Middle East buyers</td><td class="dl">GST No.</td><td class="dv">33XXXXX0000X1ZX (Active — Regular)</td></tr>
+          <tr><td class="dl">Factory Address</td><td class="dv">SIDCO Industrial Estate, Phase II, Tiruppur — 641604, Tamil Nadu</td><td class="dl">UDYAM</td><td class="dv">UDYAM-TN-XX-XXXXXX (MSME — Medium)</td></tr>
+          <tr><td class="dl">Director 1 (MD)</td><td class="dv blurred">Sri Pratap Narayanan</td><td class="dl">Industry Experience</td><td class="dv">22 years in garment manufacturing & export</td></tr>
+          <tr><td class="dl">Director 2</td><td class="dv blurred">Sri Karthik Narayanan</td><td class="dl">Role</td><td class="dv">Operations & Production (9 years in company)</td></tr>
+          <tr><td class="dl">CIBIL — Director 1</td><td class="dv"><strong>762</strong> — Clean; no NPA, no overdue, no settlement</td><td class="dl">CIBIL — Director 2</td><td class="dv"><strong>748</strong> — Clean; no NPA, no overdue</td></tr>
+          <tr><td class="dl">Existing Banking</td><td class="dv" colspan="3">Current Account (7-year relationship) · WC Export Packing Credit Rs. 80L (Standard) · Vehicle Loan O/S Rs. 6.2L (Standard) · No overdue on any facility</td></tr>
+          <tr><td class="dl">Export Credentials</td><td class="dv" colspan="3">IEC Code: XXXXXXXXX · AD Code registered · Active exports to Germany (42%), UAE (28%), UK (18%), Others (12%)</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- SECTION 3: FACILITY PROPOSED -->
+    <div class="sec">
+      <div class="sec-head"><span class="sec-num">03</span> FACILITY PROPOSED</div>
+      <div class="sec-body">
+        <div class="two-col">
+          <div class="col">
+            <table class="dt">
+              <tr><td class="dl">Facility Type</td><td class="dv">Term Loan</td></tr>
+              <tr><td class="dl">Purpose</td><td class="dv">24 automated knitting machines (Mayer & Cie / equivalent), 6 computerised embroidery units, civil work for 4,000 sq.ft. expansion floor</td></tr>
+              <tr><td class="dl">Amount Proposed</td><td class="dv"><strong>Rs. 3,50,00,000</strong></td></tr>
+              <tr><td class="dl">Promoter Contribution</td><td class="dv">Rs. 1,50,00,000 (30% of project cost)</td></tr>
+              <tr><td class="dl">Total Project Cost</td><td class="dv">Rs. 5,00,00,000</td></tr>
+              <tr><td class="dl">Debt : Equity Ratio</td><td class="dv">70:30</td></tr>
+              <tr><td class="dl">Priority Sector</td><td class="dv">Yes — Export Credit / MSME Manufacturing</td></tr>
+            </table>
+          </div>
+          <div class="col">
+            <table class="dt">
+              <tr><td class="dl">Tenure Proposed</td><td class="dv">72 Months (incl. moratorium)</td></tr>
+              <tr><td class="dl">Moratorium Period</td><td class="dv">6 Months from first disbursement</td></tr>
+              <tr><td class="dl">Indicative Rate</td><td class="dv">9.50% p.a. reducing (subject to lender)</td></tr>
+              <tr><td class="dl">Indicative EMI</td><td class="dv">Rs. 6,28,400 per month</td></tr>
+              <tr><td class="dl">Repayment Mode</td><td class="dv">ECS / NACH debit from primary account</td></tr>
+              <tr><td class="dl">Disbursement Plan</td><td class="dv">3 tranches — machinery delivery + civil completion</td></tr>
+              <tr><td class="dl">Expected COD</td><td class="dv">January 2027</td></tr>
+            </table>
+          </div>
+        </div>
+
+        <!-- PROJECT COST BREAKUP — additional in the larger tier -->
+        <div style="font-size:11px;font-weight:700;color:var(--navy);margin:14px 0 8px;text-transform:uppercase;letter-spacing:0.5px;">Project Cost Breakup</div>
+        <table class="project-cost-table">
+          <thead>
+            <tr><th>Component</th><th>Vendor / Source</th><th>Units / Area</th><th>Cost Estimate (Rs.)</th><th>% of Total</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Automated Knitting Machines</td><td>Mayer & Cie (Germany) via authorised importer</td><td>24 units</td><td>2,88,00,000</td><td>57.6%</td></tr>
+            <tr><td>Computerised Embroidery Units</td><td>Tajima / Barudan equivalent</td><td>6 units</td><td>72,00,000</td><td>14.4%</td></tr>
+            <tr><td>Civil & Structural Work</td><td>Local contractor — approved plan enclosed</td><td>4,000 sq.ft.</td><td>80,00,000</td><td>16.0%</td></tr>
+            <tr><td>Electrical, HVAC & Utilities</td><td>Various</td><td>Lumpsum</td><td>32,00,000</td><td>6.4%</td></tr>
+            <tr><td>Misc. Installation & Contingency</td><td>—</td><td>—</td><td>28,00,000</td><td>5.6%</td></tr>
+            <tr class="tot"><td>Total Project Cost</td><td></td><td></td><td>5,00,00,000</td><td>100%</td></tr>
+          </tbody>
+        </table>
+        <div class="note-strip" style="margin-top:10px;"><strong>Expansion Rationale:</strong> Company holds confirmed export purchase orders worth Rs. 8.40 Crore from 3 buyers (LOIs enclosed) to be executed within 18 months of expansion. Current capacity of 1.2L pieces/month is fully utilised. The expansion directly addresses this unfulfilled order book and doubles throughput to 2.4L pieces/month.</div>
+      </div>
+    </div>
+
+    <!-- SECTION 4: INDUSTRY -->
+    <div class="sec">
+      <div class="sec-head"><span class="sec-num">04</span> INDUSTRY & MARKET CONTEXT</div>
+      <div class="sec-body">
+        <div class="cam-para">Tiruppur contributes approximately 90% of India's total knitwear exports and is a globally recognised apparel manufacturing hub. The cluster benefits from decades of accumulated supply chain depth — yarn suppliers, dyeing units, finishing facilities, and export agents all within a 30 km radius, keeping costs competitive relative to other manufacturing geographies. India's garment exports have benefited from the China+1 diversification strategy adopted by European and US buyers post-2020, and Tiruppur units with established buyer relationships are direct beneficiaries.</div>
+        <div class="cam-para">The borrower operates in the higher-margin branded and private-label segment (polo shirts, premium t-shirts) for EU buyers — these are not commodity garments. EU buyers typically require compliance with OEKO-TEX, GOTS, or equivalent certifications, which the borrower holds, creating a meaningful barrier to entry and reducing substitution risk from lower-cost competitors.</div>
+        <div class="cam-para"><strong>Key Risk — Buyer Concentration:</strong> Germany accounts for 42% of revenues. This is partially mitigated by the long-standing nature of the relationship (8 years with the primary German buyer) and the addition of 2 new LOI buyers in UAE and UK who collectively represent the next 18 months' incremental volume. Geographic diversification is a stated strategic priority for FY27.</div>
+      </div>
+    </div>
+
+    <hr class="pb">
+    <div class="pb-label">— Page 2 of 4 —</div>
+
+    <!-- SECTION 5: FINANCIAL ANALYSIS -->
+    <div class="sec">
+      <div class="sec-head"><span class="sec-num">05</span> FINANCIAL ANALYSIS</div>
+      <div class="sec-body">
+        <div style="font-size:10.5px;color:var(--muted);margin-bottom:10px;font-style:italic;">All figures in Rs. Lakhs. Source: ITR, CA-certified financials (FY23–FY25 Audited), Provisional Financials and Bank Statements (FY26). Export turnover independently corroborated from DGFT filings and bank FEMA returns. Banking turnover derived from current account statements (12 months).</div>
+
+        <div style="font-size:11px;font-weight:700;color:var(--navy);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px;">A. Profit & Loss Summary</div>
+        <table class="ft" style="margin-bottom:16px;">
+          <thead>
+            <tr><th>Particulars (Rs. Lakhs)</th><th>FY 2022–23</th><th>FY 2023–24</th><th>FY 2024–25</th><th>FY 2025–26 (Prov.)</th><th>CAGR / Trend</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Net Sales / Export Turnover</td><td>486.40</td><td>564.20</td><td>652.80</td><td>742.00</td><td class="up">+16.0% CAGR</td></tr>
+            <tr><td class="ind">— Export Sales (FOB)</td><td>438.00</td><td>508.00</td><td>588.00</td><td>668.00</td><td class="na">~90% of total</td></tr>
+            <tr><td class="ind">— Domestic Sales</td><td>48.40</td><td>56.20</td><td>64.80</td><td>74.00</td><td class="na">~10% of total</td></tr>
+            <tr><td>Raw Material (Yarn, Fabric, Accessories)</td><td>291.84</td><td>338.52</td><td>391.68</td><td>445.20</td><td class="na">—</td></tr>
+            <tr><td>Gross Profit</td><td>194.56</td><td>225.68</td><td>261.12</td><td>296.80</td><td class="up">+16.2% CAGR</td></tr>
+            <tr><td>Gross Margin %</td><td>40.0%</td><td>40.0%</td><td>40.0%</td><td>40.0%</td><td class="up">Consistent</td></tr>
+            <tr><td>Operating & Admin Expenses</td><td>62.40</td><td>72.40</td><td>83.70</td><td>95.20</td><td class="na">—</td></tr>
+            <tr><td>Power, Fuel & Utilities</td><td>24.32</td><td>28.21</td><td>32.64</td><td>37.10</td><td class="na">—</td></tr>
+            <tr><td>Labour (Direct)</td><td>48.64</td><td>56.42</td><td>65.28</td><td>74.20</td><td class="na">—</td></tr>
+            <tr><td>EBITDA</td><td>59.20</td><td>68.65</td><td>79.50</td><td>90.30</td><td class="up">+16.0% CAGR</td></tr>
+            <tr><td>Depreciation</td><td>8.40</td><td>8.40</td><td>9.20</td><td>10.40</td><td class="na">—</td></tr>
+            <tr><td>Interest on Existing Facilities</td><td>7.80</td><td>7.20</td><td>6.40</td><td>5.80</td><td class="up">Declining</td></tr>
+            <tr class="sub"><td>Net Profit Before Tax</td><td>43.00</td><td>53.05</td><td>63.90</td><td>74.10</td><td class="up">+16.6% CAGR</td></tr>
+            <tr><td>Net Profit After Tax</td><td>36.55</td><td>44.30</td><td>52.50</td><td>60.40</td><td class="up">+16.6% CAGR</td></tr>
+            <tr class="sub"><td>Cash Accruals (PAT + Depreciation)</td><td>44.95</td><td>52.70</td><td>61.70</td><td>70.80</td><td class="up">+16.2% CAGR</td></tr>
+            <tr><td>Banking Turnover (Current A/C Credits)</td><td>522.00</td><td>606.00</td><td>702.00</td><td>800.00 (est.)</td><td class="up">+16.2% CAGR</td></tr>
+          </tbody>
+        </table>
+
+        <div style="font-size:11px;font-weight:700;color:var(--navy);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px;">B. Balance Sheet Highlights (Rs. Lakhs)</div>
+        <table class="ft" style="margin-bottom:0;">
+          <thead>
+            <tr><th>Particulars</th><th>FY 2022–23</th><th>FY 2023–24</th><th>FY 2024–25</th><th>Movement</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Paid-Up Capital + Reserves (Net Worth)</td><td>82.40</td><td>126.70</td><td>178.20</td><td class="up">Consistent retention</td></tr>
+            <tr><td>Total Outside Liabilities (TOL)</td><td>124.60</td><td>138.40</td><td>148.80</td><td class="na">Controlled growth</td></tr>
+            <tr><td>TOL / Adj. TNW Ratio</td><td>1.51x</td><td>1.09x</td><td>0.84x</td><td class="up">Rapid deleveraging</td></tr>
+            <tr><td>Net Working Capital (NWC)</td><td>38.20</td><td>56.80</td><td>78.40</td><td class="up">Strong growth</td></tr>
+            <tr><td>Current Ratio</td><td>1.42x</td><td>1.62x</td><td>1.88x</td><td class="up">Improving consistently</td></tr>
+            <tr><td>Debtor Days (Export Receivables)</td><td>42 days</td><td>38 days</td><td>34 days</td><td class="up">Tightening</td></tr>
+            <tr><td>Inventory Days</td><td>28 days</td><td>25 days</td><td>22 days</td><td class="up">Efficient cycle</td></tr>
+            <tr><td>Gross Block</td><td>148.40</td><td>156.80</td><td>168.40</td><td class="na">Modest additions</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SECTION 6: KEY RATIOS -->
+    <div class="sec">
+      <div class="sec-head"><span class="sec-num">06</span> KEY FINANCIAL RATIOS</div>
+      <div class="sec-body">
+        <div style="font-size:10.5px;color:var(--muted);margin-bottom:10px;font-style:italic;">Historical DSCR computed on existing debt obligations. Post-loan DSCR incorporates proposed EMI of Rs. 6,28,400/month. DSCR formula: (PAT + Depreciation + Interest on TL) ÷ (TL Principal Repayment + Interest on TL).</div>
+        <table class="rt">
+          <thead>
+            <tr><th>Ratio</th><th>FY 2022–23</th><th>FY 2023–24</th><th>FY 2024–25</th><th>Post-Loan (Proj. FY27)</th><th>Benchmark</th><th>Assessment</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>DSCR</td>
+              <td class="r-ok">4.24x</td><td class="r-ok">5.12x</td><td class="r-ok">6.38x</td>
+              <td class="r-ok">2.24x</td>
+              <td class="bench">Min 1.50x</td><td class="r-ok">✓ Comfortable</td>
+            </tr>
+            <tr>
+              <td>Current Ratio</td>
+              <td class="r-ok">1.42x</td><td class="r-ok">1.62x</td><td class="r-ok">1.88x</td>
+              <td class="r-ok">1.72x</td>
+              <td class="bench">Min 1.20x</td><td class="r-ok">✓ Strong & improving</td>
+            </tr>
+            <tr>
+              <td>TOL / Adj. TNW</td>
+              <td class="r-warn">1.51x</td><td class="r-ok">1.09x</td><td class="r-ok">0.84x</td>
+              <td class="r-warn">2.62x (post-loan)</td>
+              <td class="bench">Max 4.00x</td><td class="r-ok">✓ Well within norm</td>
+            </tr>
+            <tr>
+              <td>Interest Coverage (ICR)</td>
+              <td class="r-ok">7.59x</td><td class="r-ok">9.53x</td><td class="r-ok">12.42x</td>
+              <td class="r-ok">5.18x</td>
+              <td class="bench">Min 2.00x</td><td class="r-ok">✓ Strong</td>
+            </tr>
+            <tr>
+              <td>Net Profit Margin</td>
+              <td>7.51%</td><td>7.85%</td><td>8.04%</td>
+              <td>8.20% (proj.)</td>
+              <td class="bench">Positive trend</td><td class="r-ok">✓ Consistent</td>
+            </tr>
+            <tr>
+              <td>Banking Turnover / Proposed Loan</td>
+              <td>1.49x</td><td>1.73x</td><td>2.01x</td>
+              <td>2.29x (proj.)</td>
+              <td class="bench">Min 1.50x</td><td class="r-ok">✓ Above threshold</td>
+            </tr>
+            <tr>
+              <td>Export Receivables Coverage (EPC)</td>
+              <td>438.00</td><td>508.00</td><td>588.00</td>
+              <td>—</td>
+              <td class="bench">Confirms sales</td><td class="r-ok">✓ Fully documented</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="note-strip" style="margin-top:10px;"><strong>Post-Loan DSCR Note:</strong> Projected post-expansion annual cash accrual Rs. 88.40L (FY27 estimate). Proposed TL annual obligation: EMI Rs. 75.41L (Rs. 6,28,400 × 12) + Interest Rs. 29.68L. DSCR = (88.40 + 10.40 + 29.68) ÷ (75.41 + 29.68) = 128.48 ÷ 105.09 = <strong>2.24x</strong>. Expansion EBITDA uplift of Rs. 42L pa assumed at 60% capacity utilisation in Year 1. Lender to independently verify.</div>
+      </div>
+    </div>
+
+    <hr class="pb">
+    <div class="pb-label">— Page 3 of 4 —</div>
+
+    <!-- SECTION 7: SECURITY -->
+    <div class="sec">
+      <div class="sec-head"><span class="sec-num">07</span> SECURITY PROPOSED</div>
+      <div class="sec-body">
+        <table class="st">
+          <thead>
+            <tr><th>Security Type</th><th>Description</th><th>Value / Coverage</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Primary — Hypothecation</td>
+              <td>First exclusive hypothecation charge over 24 automated knitting machines and 6 embroidery units purchased from the proposed loan proceeds. All machinery to be comprehensively insured with the lending institution as nominee throughout loan tenure. Import documents and invoices to be submitted at disbursement.</td>
+              <td>Rs. 3.60 Cr (incl. installation)<br><strong>103% of loan</strong></td>
+            </tr>
+            <tr>
+              <td>Collateral — Mortgage</td>
+              <td>Equitable mortgage of factory land and building — SIDCO Industrial Estate Phase II, Tiruppur — registered in company name. Clear title; EC enclosed. Independent valuation report (empanelled valuer) dated May 2026 enclosed. NA industrial use land; lease from SIDCO with 32 years remaining.</td>
+              <td>Rs. 5.60 Cr (market value)<br><strong>160% of loan</strong></td>
+            </tr>
+            <tr>
+              <td>Personal Guarantee</td>
+              <td>Personal guarantees of both Directors. CA-certified net worth certificates enclosed. Director 1 NW Rs. 64.8L; Director 2 NW Rs. 42.2L.</td>
+              <td>D1: Rs. 64.8L NW<br>D2: Rs. 42.2L NW</td>
+            </tr>
+            <tr>
+              <td>Export Receivables (Additional)</td>
+              <td>Assignment of proceeds from confirmed export purchase orders (3 buyers, LOIs enclosed) totalling Rs. 8.40 Crore. Export receivables to be channelled through borrower's primary account with the lending institution, if accepted by lender.</td>
+              <td>Rs. 8.40 Cr (LOI value)<br>Supplementary comfort</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="note-strip" style="margin-top:10px;"><strong>Combined Security Coverage:</strong> Primary hypothecation (Rs. 3.60 Cr) + collateral mortgage (Rs. 5.60 Cr) = Rs. 9.20 Cr against proposed loan Rs. 3.50 Cr — <strong>263% primary + collateral coverage</strong>. Additionally, LOI-backed export receivables of Rs. 8.40 Cr provide further comfort on revenue visibility. Total comfort including receivables exceeds 500% of loan.</div>
+      </div>
+    </div>
+
+    <!-- SECTION 8: REPAYMENT SCHEDULE -->
+    <div class="sec">
+      <div class="sec-head"><span class="sec-num">08</span> INDICATIVE REPAYMENT SCHEDULE</div>
+      <div class="sec-body">
+        <table class="rpt">
+          <thead>
+            <tr><th>Period</th><th>Months</th><th>EMI (Rs.)</th><th>Principal (Rs.)</th><th>Interest (Rs.)</th><th>Balance O/S (Rs.)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Moratorium (Month 1–6)</td><td>6</td><td>Interest only</td><td>—</td><td>~2,77,083/mo</td><td>3,50,00,000</td></tr>
+            <tr><td>Year 1 (Month 7–18)</td><td>12</td><td>6,28,400</td><td>3,65,400</td><td>2,63,000</td><td>3,06,15,200</td></tr>
+            <tr><td>Year 2 (Month 19–30)</td><td>12</td><td>6,28,400</td><td>4,00,800</td><td>2,27,600</td><td>2,57,97,600</td></tr>
+            <tr><td>Year 3 (Month 31–42)</td><td>12</td><td>6,28,400</td><td>4,39,600</td><td>1,88,800</td><td>2,05,24,800</td></tr>
+            <tr><td>Year 4 (Month 43–54)</td><td>12</td><td>6,28,400</td><td>4,82,200</td><td>1,46,200</td><td>1,47,38,400</td></tr>
+            <tr><td>Year 5 (Month 55–66)</td><td>12</td><td>6,28,400</td><td>5,29,100</td><td>99,300</td><td>84,00,000</td></tr>
+            <tr><td>Year 6 (Month 67–78)</td><td>12</td><td>6,28,400</td><td>5,81,200</td><td>47,200</td><td>—</td></tr>
+            <tr><td>Total</td><td>78</td><td>—</td><td>3,50,00,000</td><td>~49,28,400</td><td>Nil</td></tr>
+          </tbody>
+        </table>
+        <div class="note-strip" style="margin-top:10px;"><strong>Note:</strong> Indicative schedule at 9.50% p.a. reducing over 72 months (6-month moratorium + 66 repayment months). Actual schedule to be issued by lender at sanction. EMI commencement from Month 7 post-moratorium.</div>
+      </div>
+    </div>
+
+    <!-- SECTION 9: STRENGTHS & CONCERNS -->
+    <div class="sec">
+      <div class="sec-head"><span class="sec-num">09</span> CREDIT STRENGTHS & CONCERNS</div>
+      <div class="sec-body">
+        <div class="sc-grid">
+          <div class="sc-box sc-str">
+            <div class="sc-title">Factors Supporting the Proposal</div>
+            <div class="sc-item">11 years in garment export — established buyer relationships in EU and Middle East spanning 8+ years; repeat order history with primary German buyer</div>
+            <div class="sc-item">Directors CIBIL 762 and 748 — clean bureau, no NPA, no overdue, no settlement on personal or business record</div>
+            <div class="sc-item">Revenue at consistent 16% CAGR over 3 years; EBITDA margin stable at 40% gross — disciplined cost management</div>
+            <div class="sc-item">LOI-backed order book of Rs. 8.40 Crore provides 18-month revenue visibility post expansion — demand for capacity is confirmed, not projected</div>
+            <div class="sc-item">TOL/TNW has declined from 1.51x to 0.84x over 3 years — strong deleveraging trend; net worth growing at 46% CAGR through profit retention</div>
+            <div class="sc-item">OEKO-TEX and GOTS certified — compliance with EU buyer standards creates a moat against commodity garment competition</div>
+            <div class="sc-item">Export receivables fully documented through FEMA returns and DGFT data — no unexplained income gaps</div>
+          </div>
+          <div class="sc-box sc-con">
+            <div class="sc-title">Areas for Lender's Consideration</div>
+            <div class="sc-item"><strong>Buyer concentration — Germany 42%:</strong> Single country risk. Company is actively diversifying; UAE and UK LOI buyers represent deliberate geographic spread. New buyer mix reduces Germany share to ~35% post-expansion.</div>
+            <div class="sc-item"><strong>Import-dependent machinery (Mayer & Cie):</strong> Long lead time (16–20 weeks) and forex exposure on import invoice. Both are industry-standard; company has managed prior machinery imports without issue.</div>
+            <div class="sc-item"><strong>TOL/TNW rises to ~2.62x post-loan</strong> from current 0.84x — remains within 4x norm and will revert as loan is repaid. FY25 net worth of Rs. 1.78 Cr provides strong equity buffer.</div>
+            <div class="sc-item"><strong>6-month moratorium increases total interest cost</strong> — accepted by promoters as operationally necessary given machine installation timeline. Post-expansion cash flow comfortably absorbs EMI from Month 7 onwards.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="pb">
+    <div class="pb-label">— Page 4 of 4 —</div>
+
+    <!-- SECTION 10: PROPOSAL STRENGTHS -->
+    <div class="sec">
+      <div class="sec-head"><span class="sec-num">10</span> PROPOSAL STRENGTHS — WHY THIS FILE STANDS OUT</div>
+      <div class="sec-body">
+        <div style="font-size:11.5px;color:var(--text-sub);margin-bottom:14px;font-style:italic;">The following factors, drawn directly from the borrower's operational record and verified documentation, highlight what makes this proposal stand out and are presented for the lending institution's consideration.</div>
+        <div class="strengths-grid">
+
+          <div class="str-item">
+            <div class="str-icon">🏦</div>
+            <div>
+              <div class="str-title">Exemplary Banking Conduct — 7 Years Clean, Growing Inflows</div>
+              <div class="str-body">Current account credits have grown from Rs. 4.35 Cr/month (FY23) to Rs. 5.85 Cr/month (FY25) — a consistent, documented upward trend. The existing Export Packing Credit of Rs. 80 Lakhs has been renewed multiple times without overdue. Zero cheque bounces, zero CC excesses on record. Banking turnover at 2.01x of proposed loan in FY25 — income fully traceable through banking system.</div>
+            </div>
+          </div>
+
+          <div class="str-item">
+            <div class="str-icon">🌍</div>
+            <div>
+              <div class="str-title">Export Credentials Fully Verified — DGFT, FEMA, and AD Bank Records</div>
+              <div class="str-body">Export turnover is corroborated across three independent sources: DGFT shipping bills, FEMA return submissions, and AD bank inward remittance records — all consistent with ITR and GST filings. This triple-source verification eliminates the income documentation risk that lenders frequently encounter with export-oriented borrowers. GST GSTR-1 and GSTR-3B are current for all 36 months with zero pending returns.</div>
+            </div>
+          </div>
+
+          <div class="str-item">
+            <div class="str-icon">📦</div>
+            <div>
+              <div class="str-title">Demand-Backed Expansion — Rs. 8.40 Crore Confirmed Order Book</div>
+              <div class="str-body">This is not a speculative capacity build. Three overseas buyers have issued Letters of Intent totalling Rs. 8.40 Crore for delivery within 18 months post-expansion. The primary German buyer has a continuous relationship of 8 years with no year of zero orders. The LOI value alone is 2.4x the proposed loan — indicating that the expansion is essentially self-funded through the revenue it unlocks.</div>
+            </div>
+          </div>
+
+          <div class="str-item">
+            <div class="str-icon">🏛️</div>
+            <div>
+              <div class="str-title">Strong Collateral — Factory Property at 160% LTV Coverage</div>
+              <div class="str-body">The SIDCO Industrial Estate factory property — industrial NA use, clear title, 32 years remaining on SIDCO lease — is independently valued at Rs. 5.60 Crore. This single collateral covers 160% of the proposed loan without counting the primary hypothecation. SIDCO industrial land in Tiruppur has demonstrated consistent value appreciation given the cluster's export-driven demand. Title and EC are clean and enclosed.</div>
+            </div>
+          </div>
+
+          <div class="str-item">
+            <div class="str-icon">📈</div>
+            <div>
+              <div class="str-title">Rapid Deleveraging — Net Worth More Than Doubled in 3 Years</div>
+              <div class="str-body">Net worth has grown from Rs. 82.4L (FY23) to Rs. 178.2L (FY25) — a 116% increase in 3 years — driven entirely by profit retention. The company has paid no dividends, reinvesting cash flows into the business. This discipline has driven TOL/TNW from 1.51x to 0.84x over the same period — one of the strongest deleveraging trajectories in this loan size category.</div>
+            </div>
+          </div>
+
+          <div class="str-item">
+            <div class="str-icon">🎖️</div>
+            <div>
+              <div class="str-title">Quality Certifications Create a Defensible Market Position</div>
+              <div class="str-body">The company holds OEKO-TEX Standard 100 and GOTS (Global Organic Textile Standard) certifications — mandatory for supply to most EU retail chains. These certifications take 12–18 months and significant investment to obtain, and require annual renewal audits. They represent a meaningful barrier to substitution: EU buyers cannot simply switch to an uncertified supplier. This structural moat underpins the long-term stability of the borrower's revenue base.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 11: SUMMARY & PROPOSAL -->
+    <div class="sec">
+      <div class="sec-head"><span class="sec-num">11</span> SUMMARY & PROPOSAL</div>
+      <div class="sec-body">
+        <div class="cam-para">The borrower is a financially disciplined, export-focused garment manufacturer with 11 years of operations, consistent 16% revenue CAGR, and a demonstrated track record of deleveraging. The proposed expansion is demand-backed with confirmed LOIs — not speculative. Key financial parameters are strong: DSCR 2.24x post-loan, current ratio 1.88x (improving trend), and net worth growing at 46% CAGR. The security package provides 263% combined coverage, with additionally documented export receivables providing further comfort.</div>
+        <div class="cam-para">FinsightOne presents this Loan Appraisal Note to the lending institution on behalf of the borrower with the view that the proposal presents a well-documented, low-risk case for sanction at the amount and terms described. We remain available to provide any additional information or clarification required during the lender's review process.</div>
+      </div>
+    </div>
+
+    <div class="prop-box">
+      <div class="pb-tag">FinsightOne — Loan Appraisal Summary</div>
+      <div class="pb-title">We Propose: Term Loan of Rs. 3.50 Crore for Favourable Consideration</div>
+      <div class="pb-grid">
+        <div class="pbi"><div class="pbi-label">Facility Proposed</div><div class="pbi-val fav">Rs. 3.50 Crore</div></div>
+        <div class="pbi"><div class="pbi-label">Post-Loan DSCR</div><div class="pbi-val fav">2.24x</div></div>
+        <div class="pbi"><div class="pbi-label">Security Coverage</div><div class="pbi-val fav">263%</div></div>
+        <div class="pbi"><div class="pbi-label">Order Book Comfort</div><div class="pbi-val fav">Rs. 8.40 Cr</div></div>
+      </div>
+      <div class="pb-note">This Loan Appraisal Note has been prepared by FinsightOne Credit Advisory Desk on behalf of the borrower, based on documents and information furnished by them. FinsightOne is acting as the borrower's advisory firm and not as a credit authority. Final sanction and all terms rest entirely with the lending institution. We remain available for any clarification during the review process.</div>
+    </div>
+
+    <div class="disclaimer">
+      <strong>Disclaimer:</strong> This Loan Appraisal Note has been prepared by FinsightOne Credit Advisory Desk based on information, documents and data furnished by the borrower. FinsightOne does not independently audit, verify or certify the accuracy of financial statements or documents. This note presents the borrower's case to the lending institution and does not constitute a guarantee of loan sanction. Final credit decision rests entirely with the lending institution in accordance with its own credit policy and regulatory guidelines. All names, figures and details in this sample document are fictional and for illustration purposes only.
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div class="footer-brand">Finsight<span>One</span></div>
+    <div class="footer-text">Prepared by FinsightOne Credit Advisory Desk &nbsp;|&nbsp; finsightone.co &nbsp;|&nbsp; Credit · Advisory · Intelligence<br><span style="font-size:9.5px;opacity:0.6;">Sample document — all client data fictional and for illustration only.</span></div>
+    <div class="footer-right">LAN Ref: FO-LAN-2026-0318<br>Page 1–4 of 4</div>
+  </div>
+
+</div>
+</body>
+</html>
