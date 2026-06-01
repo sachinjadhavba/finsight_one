@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rejection Analysis Report — FinsightOne</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Nunito+Sans:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange:#F97316;--orange-light:#FFF7ED;--orange-mid:#FED7AA;
+    --navy:#0F172A;--navy-mid:#1E293B;--navy-soft:#2D3F55;
+    --slate:#475569;--muted:#94A3B8;--border:#E2E8F0;--bg:#F4F7FA;--white:#FFFFFF;
+    --green:#15803D;--green-light:#F0FDF4;--green-mid:#86EFAC;
+    --amber:#B45309;--amber-light:#FFFBEB;--amber-mid:#FDE68A;
+    --red:#DC2626;--red-dark:#991B1B;--red-light:#FEF2F2;--red-mid:#FECACA;
+    --purple:#6D28D9;--purple-light:#F5F3FF;--purple-mid:#DDD6FE;
+    --teal:#0F766E;--teal-light:#F0FDFA;--teal-mid:#99F6E4;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Nunito Sans',sans-serif;background:#EAEEf3;color:var(--navy);font-size:13.5px;line-height:1.65;}
+
+  body::before{
+    content:'SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE';
+    position:fixed;top:-50%;left:-50%;width:200%;height:200%;
+    font-size:18px;font-weight:700;color:rgba(15,23,42,0.038);
+    letter-spacing:4px;transform:rotate(-35deg);word-spacing:40px;line-height:5;
+    z-index:1000;pointer-events:none;white-space:pre-wrap;text-align:center;
+    display:flex;align-items:center;justify-content:center;
+  }
+
+  .page{max-width:880px;margin:0 auto;background:var(--white);box-shadow:0 6px 44px rgba(0,0,0,0.1);}
+
+  /* HEADER */
+  .header{background:var(--navy);position:relative;overflow:hidden;}
+  .hdr-accent{position:absolute;inset:0;pointer-events:none;}
+  .hdr-accent::before{content:'';position:absolute;top:-60px;right:-60px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(220,38,38,0.15) 0%,transparent 65%);}
+  .hdr-accent::after{content:'';position:absolute;bottom:-40px;left:80px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(249,115,22,0.1) 0%,transparent 65%);}
+  .header-inner{padding:28px 44px 22px;display:flex;align-items:flex-start;justify-content:space-between;position:relative;z-index:1;}
+  .brand-name{font-family:'Libre Baskerville',serif;font-size:26px;color:var(--white);letter-spacing:-0.3px;margin-bottom:3px;}
+  .brand-name span{color:var(--orange);}
+  .brand-tagline{font-size:11px;color:var(--muted);letter-spacing:2.5px;text-transform:uppercase;font-weight:600;}
+  .hdr-badges{display:flex;flex-direction:column;align-items:flex-end;gap:6px;}
+  .badge{font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 11px;border-radius:3px;}
+  .b-tier{background:var(--orange);color:var(--white);}
+  .b-sample{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.45);border:1px solid rgba(255,255,255,0.12);}
+  .title-bar{background:var(--red-dark);padding:11px 44px;display:flex;align-items:center;justify-content:space-between;}
+  .tb-l{font-family:'Libre Baskerville',serif;font-size:18px;color:var(--white);}
+  .tb-r{font-size:12px;color:rgba(255,255,255,0.8);font-weight:600;}
+  .tb-r strong{font-size:15px;color:var(--white);}
+
+  /* CLIENT STRIP */
+  .client-strip{background:var(--navy-mid);padding:14px 44px;display:grid;grid-template-columns:repeat(5,1fr);gap:18px;}
+  .cf label{font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;font-weight:700;display:block;margin-bottom:3px;}
+  .cf span{font-size:12.5px;color:var(--white);font-weight:600;}
+  .blurred{filter:blur(5px);user-select:none;pointer-events:none;}
+
+  .report-meta{padding:11px 44px;border-bottom:1px solid var(--border);background:#FAFBFC;display:flex;gap:26px;flex-wrap:wrap;}
+  .mi label{font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;font-weight:700;display:block;margin-bottom:2px;}
+  .mi span{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--slate);}
+
+  .body{padding:36px 44px;}
+
+  /* SECTION HEADING */
+  .sh{font-family:'Libre Baskerville',serif;font-size:17px;color:var(--navy);margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+  .sh::after{content:'';flex:1;height:1px;background:var(--border);}
+
+  /* REJECTION ALERT BOX */
+  .rejection-alert{background:var(--red-light);border:2px solid var(--red-mid);border-left:5px solid var(--red);border-radius:10px;padding:20px 24px;margin-bottom:28px;display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;}
+  .ra-icon{font-size:32px;line-height:1;}
+  .ra-label{font-size:10px;color:var(--red);letter-spacing:2px;text-transform:uppercase;font-weight:800;margin-bottom:5px;}
+  .ra-title{font-family:'Libre Baskerville',serif;font-size:19px;color:var(--navy);margin-bottom:6px;line-height:1.3;}
+  .ra-body{font-size:13px;color:var(--slate);line-height:1.65;}
+
+  /* WHAT HAPPENED TIMELINE */
+  .timeline{display:flex;flex-direction:column;gap:0;margin-bottom:32px;position:relative;}
+  .timeline::before{content:'';position:absolute;left:19px;top:20px;bottom:20px;width:2px;background:linear-gradient(to bottom,var(--red-mid),var(--amber-mid),var(--green-mid));z-index:0;}
+  .tl-item{display:flex;gap:16px;padding:12px 0;position:relative;z-index:1;}
+  .tl-dot{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;border:2px solid;}
+  .td-red{background:var(--red-light);border-color:var(--red-mid);color:var(--red);}
+  .td-amber{background:var(--amber-light);border-color:var(--amber-mid);color:var(--amber);}
+  .td-green{background:var(--green-light);border-color:var(--green-mid);color:var(--green);}
+  .tl-content{}
+  .tl-label{font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;font-weight:700;margin-bottom:3px;}
+  .tl-title{font-size:13.5px;font-weight:700;color:var(--navy);margin-bottom:3px;}
+  .tl-desc{font-size:12.5px;color:var(--slate);line-height:1.5;}
+
+  /* ROOT CAUSE CARDS */
+  .causes-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:32px;}
+  .cause-card{border-radius:10px;overflow:hidden;border:1.5px solid var(--border);}
+  .cc-header{padding:13px 18px 11px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);}
+  .cc-left{display:flex;align-items:center;gap:10px;}
+  .cc-icon{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+  .cc-name{font-size:13px;font-weight:700;color:var(--navy);}
+  .cc-sub{font-size:10.5px;color:var(--muted);margin-top:1px;}
+  .severity-pill{font-size:10.5px;font-weight:800;padding:3px 10px;border-radius:20px;letter-spacing:0.5px;}
+  .sp-critical{background:var(--red-light);color:var(--red);border:1px solid var(--red-mid);}
+  .sp-major{background:var(--amber-light);color:var(--amber);border:1px solid var(--amber-mid);}
+  .sp-minor{background:var(--green-light);color:var(--green);border:1px solid var(--green-mid);}
+  .cc-body{padding:14px 18px;display:flex;flex-direction:column;gap:10px;}
+  .cc-what{font-size:12.5px;color:var(--slate);line-height:1.55;}
+  .cc-lender-view{background:var(--bg);border-radius:6px;padding:9px 12px;font-size:12px;color:var(--navy-soft);line-height:1.5;border-left:3px solid var(--muted);}
+  .cc-lender-view strong{color:var(--navy);font-weight:700;}
+  .cc-fix{display:flex;align-items:flex-start;gap:8px;padding:9px 12px;border-radius:6px;}
+  .cf-red{background:var(--red-light);border:1px solid var(--red-mid);}
+  .cf-amber{background:var(--amber-light);border:1px solid var(--amber-mid);}
+  .cf-green{background:var(--green-light);border:1px solid var(--green-mid);}
+  .cc-fix-text{font-size:12px;color:var(--navy);line-height:1.5;}
+  .cc-fix-text strong{font-weight:700;}
+  .cf-red .cc-fix-text strong{color:var(--red);}
+  .cf-amber .cc-fix-text strong{color:var(--amber);}
+  .cf-green .cc-fix-text strong{color:var(--green);}
+
+  .ci-red .cc-header{background:var(--red-light);}
+  .ci-amber .cc-header{background:var(--amber-light);}
+  .ci-green .cc-header{background:var(--green-light);}
+  .ii-red{background:#FEE2E2;}
+  .ii-amber{background:#FEF9C3;}
+  .ii-green{background:#DCFCE7;}
+
+  /* LENDER COMPARISON */
+  .lender-compare{margin-bottom:32px;}
+  .lc-table{width:100%;border-collapse:collapse;}
+  .lc-table th{background:var(--navy);color:var(--white);font-size:10.5px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;padding:10px 16px;text-align:left;}
+  .lc-table th:not(:first-child){text-align:center;}
+  .lc-table td{padding:11px 16px;font-size:12.5px;color:var(--slate);border-bottom:1px solid var(--border);vertical-align:middle;}
+  .lc-table tr:last-child td{border-bottom:none;}
+  .lc-table tr:nth-child(even) td{background:#FAFBFC;}
+  .lc-table td:first-child{font-weight:700;color:var(--navy);}
+  .lc-table td:not(:first-child){text-align:center;font-family:'JetBrains Mono',monospace;font-size:11.5px;}
+  .verdict-cell{display:inline-flex;align-items:center;justify-content:center;gap:4px;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;}
+  .vc-declined{background:var(--red-light);color:var(--red);}
+  .vc-possible{background:var(--amber-light);color:var(--amber);}
+  .vc-likely{background:var(--green-light);color:var(--green);}
+  .lc-note{font-size:11px;color:var(--muted);margin-top:8px;font-style:italic;}
+
+  /* REAPPLICATION ROADMAP */
+  .roadmap{margin-bottom:32px;}
+  .rm-phases{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .rm-phase{border-radius:10px;padding:18px 16px;border:1.5px solid;}
+  .rmp-1{background:var(--red-light);border-color:var(--red-mid);}
+  .rmp-2{background:var(--amber-light);border-color:var(--amber-mid);}
+  .rmp-3{background:var(--green-light);border-color:var(--green-mid);}
+  .rmp-tag{font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+  .rmp-1 .rmp-tag{color:var(--red);}
+  .rmp-2 .rmp-tag{color:var(--amber);}
+  .rmp-3 .rmp-tag{color:var(--green);}
+  .rmp-title{font-family:'Libre Baskerville',serif;font-size:14.5px;color:var(--navy);margin-bottom:10px;}
+  .rmp-items{display:flex;flex-direction:column;gap:7px;}
+  .rmp-item{display:flex;align-items:flex-start;gap:7px;font-size:12px;color:var(--slate);line-height:1.45;}
+  .rmp-num{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;flex-shrink:0;margin-top:2px;}
+  .rmp-1 .rmp-num{background:var(--red);color:var(--white);}
+  .rmp-2 .rmp-num{background:var(--amber);color:var(--white);}
+  .rmp-3 .rmp-num{background:var(--green);color:var(--white);}
+  .rmp-duration{margin-top:12px;padding-top:10px;border-top:1px solid rgba(0,0,0,0.08);font-size:11px;font-weight:700;}
+  .rmp-1 .rmp-duration{color:var(--red);}
+  .rmp-2 .rmp-duration{color:var(--amber);}
+  .rmp-3 .rmp-duration{color:var(--green);}
+
+  /* CREDIT SCORE IMPACT */
+  .score-impact{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:20px 24px;margin-bottom:32px;}
+  .si-title{font-size:11px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;font-weight:700;margin-bottom:14px;}
+  .si-bars{display:flex;flex-direction:column;gap:10px;}
+  .si-row{display:grid;grid-template-columns:180px 1fr 80px;align-items:center;gap:12px;}
+  .si-label{font-size:12px;font-weight:600;color:var(--slate);}
+  .si-track{height:8px;background:var(--border);border-radius:4px;overflow:hidden;}
+  .si-fill{height:100%;border-radius:4px;}
+  .si-now{background:var(--red);}
+  .si-target{background:var(--green);}
+  .si-val{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:var(--navy);text-align:right;}
+  .si-legend{display:flex;gap:20px;margin-top:12px;}
+  .si-leg{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--slate);}
+  .si-leg-dot{width:10px;height:10px;border-radius:2px;}
+
+  /* ENQUIRY WARNING */
+  .enquiry-warn{background:var(--amber-light);border:1.5px solid var(--amber-mid);border-radius:10px;padding:16px 20px;margin-bottom:32px;display:flex;align-items:flex-start;gap:14px;}
+  .ew-icon{font-size:24px;flex-shrink:0;}
+  .ew-title{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px;}
+  .ew-body{font-size:12.5px;color:var(--slate);line-height:1.55;}
+
+  /* ADVISORY CTA */
+  .advisory-box{background:var(--navy);border-radius:12px;padding:26px 30px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;margin-bottom:32px;position:relative;overflow:hidden;}
+  .advisory-box::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(249,115,22,0.18) 0%,transparent 70%);pointer-events:none;}
+  .ab-tag{font-size:10px;color:var(--orange);letter-spacing:2px;text-transform:uppercase;font-weight:800;margin-bottom:5px;}
+  .ab-title{font-family:'Libre Baskerville',serif;font-size:20px;color:var(--white);margin-bottom:8px;}
+  .ab-body{font-size:12.5px;color:rgba(255,255,255,0.6);line-height:1.6;margin-bottom:12px;}
+  .ab-feats{display:flex;flex-direction:column;gap:5px;}
+  .ab-feat{display:flex;align-items:center;gap:7px;font-size:12px;color:rgba(255,255,255,0.75);}
+  .ab-feat::before{content:'→';color:var(--orange);font-weight:800;font-size:11px;flex-shrink:0;}
+  .ab-cta-wrap{display:flex;flex-direction:column;align-items:center;gap:6px;}
+  .ab-btn{background:var(--orange);color:var(--white);border:none;border-radius:8px;padding:14px 22px;font-size:13.5px;font-weight:800;cursor:pointer;white-space:nowrap;font-family:'Nunito Sans',sans-serif;text-decoration:none;display:inline-block;text-align:center;line-height:1.4;}
+  .ab-btn span{display:block;font-size:10px;font-weight:600;opacity:0.85;margin-top:2px;}
+  .ab-price{font-size:11.5px;color:rgba(255,255,255,0.4);text-align:center;}
+
+  .disclaimer{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px 18px;margin-bottom:28px;}
+  .disclaimer p{font-size:11px;color:var(--muted);line-height:1.6;}
+  .disclaimer strong{color:var(--slate);}
+
+  .page-break{border:none;border-top:2px dashed var(--border);margin:36px 0;}
+  .pg-label{text-align:center;font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin:-8px 0 28px;font-weight:700;}
+
+  .footer{background:var(--navy);padding:18px 44px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+  .footer-brand{font-family:'Libre Baskerville',serif;font-size:15px;color:var(--white);}
+  .footer-brand span{color:var(--orange);}
+  .footer-text{font-size:10.5px;color:var(--muted);text-align:center;}
+  .footer-right{font-size:10.5px;color:var(--muted);text-align:right;}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="hdr-accent"></div>
+    <div class="header-inner">
+      <div>
+        <div class="brand-name">Finsight<span>One</span></div>
+        <div class="brand-tagline">Credit · Advisory · Intelligence</div>
+      </div>
+      <div class="hdr-badges">
+        <div class="badge b-tier">Rs. 4,999 Report</div>
+        <div class="badge b-sample">Sample Document</div>
+      </div>
+    </div>
+    <div class="title-bar">
+      <div class="tb-l">Rejection Analysis Report</div>
+      <div class="tb-r">Stream 2 — Loan Readiness &nbsp;·&nbsp; Price: <strong>Rs. 4,999</strong> + GST</div>
+    </div>
+  </div>
+
+  <!-- CLIENT STRIP -->
+  <div class="client-strip">
+    <div class="cf"><label>Applicant</label><span class="blurred">Pradeep Nair</span></div>
+    <div class="cf"><label>Loan Applied For</label><span>Home Loan</span></div>
+    <div class="cf"><label>Amount Applied</label><span>Rs. 55 Lakhs</span></div>
+    <div class="cf"><label>City</label><span>Kochi, Kerala</span></div>
+    <div class="cf"><label>Report Date</label><span>June 2026</span></div>
+  </div>
+
+  <div class="report-meta">
+    <div class="mi"><label>Report ID</label><span>FO-RAR-2026-0198</span></div>
+    <div class="mi"><label>Employment</label><span>Self-Employed — IT Consultant</span></div>
+    <div class="mi"><label>Rejection Date</label><span>May 2026</span></div>
+    <div class="mi"><label>Lender Type</label><span>Private Sector Bank</span></div>
+    <div class="mi"><label>Current CIBIL</label><span>698</span></div>
+    <div class="mi"><label>Reapply Readiness</label><span>3–4 Months</span></div>
+  </div>
+
+  <div class="body">
+
+    <!-- REJECTION ALERT -->
+    <div class="rejection-alert">
+      <div class="ra-icon">🚫</div>
+      <div>
+        <div class="ra-label">Loan Application — Rejected</div>
+        <div class="ra-title">Home Loan of Rs.55L declined by a private sector bank in May 2026</div>
+        <div class="ra-body">Your application was declined after initial processing. The lender did not share detailed reasons — this is standard practice. However, FinsightOne's analysis of your profile, credit bureau data and application details has identified <strong>4 root causes</strong> that most likely triggered the rejection. This report explains each cause, shows exactly how the lender would have viewed your file, and gives you a concrete plan to reapply successfully.</div>
+      </div>
+    </div>
+
+    <!-- WHAT HAPPENED -->
+    <div class="sh">What Happened — Application Timeline</div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot td-red">📋</div>
+        <div class="tl-content">
+          <div class="tl-label">Step 1 — Application Submitted</div>
+          <div class="tl-title">Application filed with private sector bank — April 2026</div>
+          <div class="tl-desc">Home loan application submitted for Rs.55L against property in Kochi valued at Rs.72L. ITR for FY24 and FY25 submitted. 12-month bank statements included. Application entered processing queue.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot td-red">🔍</div>
+        <div class="tl-content">
+          <div class="tl-label">Step 2 — Bureau Check Triggered</div>
+          <div class="tl-title">Hard enquiry placed on CIBIL — pulled score dropped to 698</div>
+          <div class="tl-desc">The bank ran a hard enquiry on your CIBIL report. This is the <strong>3rd hard enquiry in 6 months</strong> — two from earlier informal applications at other lenders. Each hard enquiry reduces score by 8–12 points. Your score at the time of this enquiry stood at 698 — below the bank's 700 floor for home loans.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot td-red">❌</div>
+        <div class="tl-content">
+          <div class="tl-label">Step 3 — Credit Assessment Failed</div>
+          <div class="tl-title">File flagged at credit assessment — FOIR and income consistency issues</div>
+          <div class="tl-desc">Beyond the score, the bank's credit team found two additional concerns — ITR declared income for FY24 was significantly lower than FY25 (suggesting income volatility), and the current FOIR including the proposed home loan EMI exceeded the bank's internal threshold for self-employed borrowers.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot td-amber">📬</div>
+        <div class="tl-content">
+          <div class="tl-label">Step 4 — Rejection Communicated</div>
+          <div class="tl-title">Decline intimation received — no detailed reason given</div>
+          <div class="tl-desc">Bank communicated rejection without detailed breakdown as is standard practice. The enquiry remains on your CIBIL record. Applying immediately at another lender will cause another hard enquiry — further damaging the score. <strong>Do not apply anywhere for at least 60 days.</strong></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot td-green">🎯</div>
+        <div class="tl-content">
+          <div class="tl-label">Step 5 — Where You Are Now</div>
+          <div class="tl-title">FinsightOne analysis complete — 4 causes identified, all fixable</div>
+          <div class="tl-desc">All 4 root causes identified are addressable within 3–4 months. With the right preparation, your profile can be rebuilt to a score of 730+ and a file strong enough for approval at the right lender. This report maps exactly how.</div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="page-break">
+    <div class="pg-label">— Page 2 of 3 —</div>
+
+    <!-- ROOT CAUSE ANALYSIS -->
+    <div class="sh">Root Cause Analysis — 4 Reasons Your Application Was Declined</div>
+    <div class="causes-grid">
+
+      <!-- CAUSE 1: CIBIL -->
+      <div class="cause-card ci-red">
+        <div class="cc-header">
+          <div class="cc-left">
+            <div class="cc-icon ii-red">📉</div>
+            <div>
+              <div class="cc-name">Cause 1 — CIBIL Score Below Floor</div>
+              <div class="cc-sub">Score: 698 vs Bank's 700 minimum</div>
+            </div>
+          </div>
+          <div class="severity-pill sp-critical">Critical</div>
+        </div>
+        <div class="cc-body">
+          <div class="cc-what">Your CIBIL score at the time of application was <strong>698</strong> — 2 points below this bank's stated minimum of 700 for home loans to self-employed borrowers. The score was pulled down primarily by 3 hard enquiries in 6 months (this bank + 2 earlier lenders you spoke to informally).</div>
+          <div class="cc-lender-view"><strong>How the lender saw it:</strong> "Score below product floor. Ineligible for processing under current credit policy. No exceptions applicable for self-employed applicants below 700."</div>
+          <div class="cc-fix cf-red">
+            <span>🔧</span>
+            <div class="cc-fix-text"><strong>Fix:</strong> Stop all new credit applications immediately. Hard enquiries age and reduce impact after 6 months. Pay any outstanding credit card dues fully. Score will naturally recover to 715–720 within 90 days of no new enquiries — then apply.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CAUSE 2: INCOME VOLATILITY -->
+      <div class="cause-card ci-red">
+        <div class="cc-header">
+          <div class="cc-left">
+            <div class="cc-icon ii-red">📊</div>
+            <div>
+              <div class="cc-name">Cause 2 — Income Inconsistency (ITR)</div>
+              <div class="cc-sub">FY24: Rs.3.8L vs FY25: Rs.7.2L declared</div>
+            </div>
+          </div>
+          <div class="severity-pill sp-critical">Critical</div>
+        </div>
+        <div class="cc-body">
+          <div class="cc-what">ITR shows declared net income of <strong>Rs.3.8L in FY24</strong> jumping to <strong>Rs.7.2L in FY25</strong> — a 90% increase in one year. For self-employed IT consultants, lenders view sudden income spikes with suspicion. Most lenders average the last 2–3 years and use the lower or average figure for eligibility calculation.</div>
+          <div class="cc-lender-view"><strong>How the lender saw it:</strong> "Income appears inflated in latest year to meet eligibility. Using 2-year average of Rs.5.5L/yr. Eligible amount at this income level: Rs.38–40L — applicant has applied for Rs.55L. Eligibility gap exists."</div>
+          <div class="cc-fix cf-red">
+            <span>🔧</span>
+            <div class="cc-fix-text"><strong>Fix:</strong> File FY26 ITR showing consistent income of Rs.7L+ before reapplying. Two years of Rs.7L+ removes the spike concern — lenders see a trend, not a jump. FY26 ITR filing is the single most important action to take.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CAUSE 3: FOIR -->
+      <div class="cause-card ci-amber">
+        <div class="cc-header">
+          <div class="cc-left">
+            <div class="cc-icon ii-amber">⚖️</div>
+            <div>
+              <div class="cc-name">Cause 3 — FOIR Threshold Exceeded</div>
+              <div class="cc-sub">Post-loan FOIR: 82% vs Bank's 75% cap</div>
+            </div>
+          </div>
+          <div class="severity-pill sp-major">Major</div>
+        </div>
+        <div class="cc-body">
+          <div class="cc-what">Using the bank's averaged income figure of Rs.5.5L/year (Rs.45,833/month), and your existing obligations (personal loan EMI Rs.12,000 + credit card minimum Rs.3,000), the proposed home loan EMI of Rs.43,500/month pushes your total FOIR to <strong>82%</strong> — above this bank's 75% ceiling for self-employed borrowers. Note: different banks have different FOIR caps (some go to 80%+); this bank's policy was restrictive.</div>
+          <div class="cc-lender-view"><strong>How the lender saw it:</strong> "Post-obligation FOIR at 82% exceeds our 75% policy limit for SE borrowers. Under a co-applicant structure, this may be reassessable — but no co-applicant was included in this application."</div>
+          <div class="cc-fix cf-amber">
+            <span>🔧</span>
+            <div class="cc-fix-text"><strong>Fix:</strong> Pre-close your personal loan (outstanding ~Rs.1.8L — manageable) before reapplying. This removes Rs.12,000/month from obligations, bringing FOIR to ~70%. Alternatively, add spouse as co-applicant if they have income — income clubbing improves eligible amount significantly.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CAUSE 4: HARD ENQUIRIES -->
+      <div class="cause-card ci-amber">
+        <div class="cc-header">
+          <div class="cc-left">
+            <div class="cc-icon ii-amber">🔎</div>
+            <div>
+              <div class="cc-name">Cause 4 — Multiple Hard Enquiries</div>
+              <div class="cc-sub">3 enquiries in 6 months — bureau red flag</div>
+            </div>
+          </div>
+          <div class="severity-pill sp-major">Major</div>
+        </div>
+        <div class="cc-body">
+          <div class="cc-what">Your CIBIL report shows <strong>3 hard enquiries in the past 6 months</strong> — one from the rejected application above, and two from when you spoke to other lenders/DSAs earlier this year and they pulled your bureau without your complete awareness. Multiple enquiries signal "credit-hungry" behaviour to lenders and are a standalone negative signal beyond the score impact.</div>
+          <div class="cc-lender-view"><strong>How the lender saw it:</strong> "Applicant has 3 bureau pulls in 6 months. Pattern suggests the applicant was rejected or declined informally at 2 prior institutions. This is a cautionary signal for credit discipline."</div>
+          <div class="cc-fix cf-amber">
+            <span>🔧</span>
+            <div class="cc-fix-text"><strong>Fix:</strong> Do not give consent to any lender or DSA/broker to pull your CIBIL for the next 90 days. Always ask: "Is this a soft check or hard enquiry?" Only consent to a hard enquiry when you are fully ready to proceed with that specific lender. Use FinsightOne's soft assessment first.</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /causes grid -->
+
+    <!-- SCORE IMPACT TRACKER -->
+    <div class="score-impact">
+      <div class="si-title">Score Recovery Projection — Next 90 Days (No New Applications)</div>
+      <div class="si-bars">
+        <div class="si-row">
+          <div class="si-label">Score at Rejection</div>
+          <div class="si-track"><div class="si-fill si-now" style="width:66%"></div></div>
+          <div class="si-val">698</div>
+        </div>
+        <div class="si-row">
+          <div class="si-label">After 30 Days (no action)</div>
+          <div class="si-track"><div class="si-fill" style="width:68%;background:#F59E0B;"></div></div>
+          <div class="si-val">~705</div>
+        </div>
+        <div class="si-row">
+          <div class="si-label">After 60 Days + CC cleared</div>
+          <div class="si-track"><div class="si-fill" style="width:71%;background:#84CC16;"></div></div>
+          <div class="si-val">~715</div>
+        </div>
+        <div class="si-row">
+          <div class="si-label">After 90 Days + PL closed</div>
+          <div class="si-track"><div class="si-fill" style="width:74%;background:var(--green);"></div></div>
+          <div class="si-val">~728</div>
+        </div>
+        <div class="si-row">
+          <div class="si-label">After FY26 ITR filed (4 mo)</div>
+          <div class="si-track"><div class="si-fill si-target" style="width:79%"></div></div>
+          <div class="si-val">~738</div>
+        </div>
+      </div>
+      <div class="si-legend">
+        <div class="si-leg"><div class="si-leg-dot" style="background:var(--red)"></div>Current (at rejection)</div>
+        <div class="si-leg"><div class="si-leg-dot" style="background:var(--green)"></div>Target for reapplication</div>
+        <div class="si-leg" style="font-size:10.5px;color:var(--muted);">Projections are indicative. Actual recovery depends on credit activity and bureau processing cycles.</div>
+      </div>
+    </div>
+
+    <!-- ENQUIRY WARNING -->
+    <div class="enquiry-warn">
+      <div class="ew-icon">⚠️</div>
+      <div>
+        <div class="ew-title">Critical: Do Not Apply to Any Lender for 60–90 Days</div>
+        <div class="ew-body">Every new application triggers a hard enquiry. With your score at 698, another enquiry will push you to 685–690 — the point at which even lenders with 680 floors may decline. Use the next 60–90 days purely to repair. FinsightOne can do a <strong>soft-check assessment</strong> of your readiness without any bureau impact — use this when you're ready to assess before applying.</div>
+      </div>
+    </div>
+
+    <hr class="page-break">
+    <div class="pg-label">— Page 3 of 3 —</div>
+
+    <!-- REAPPLICATION ROADMAP -->
+    <div class="sh">Reapplication Roadmap — 3-Phase Plan</div>
+    <div class="rm-phases">
+      <div class="rm-phase rmp-1">
+        <div class="rmp-tag">🛑 Phase 1 — Month 1–2</div>
+        <div class="rmp-title">Stop the Bleeding</div>
+        <div class="rmp-items">
+          <div class="rmp-item"><div class="rmp-num">1</div><span>Zero new loan/card applications — hard stop on all enquiries</span></div>
+          <div class="rmp-item"><div class="rmp-num">2</div><span>Pay full credit card outstanding — bring utilisation to 0%</span></div>
+          <div class="rmp-item"><div class="rmp-num">3</div><span>Pre-close personal loan (Rs.1.8L outstanding)</span></div>
+          <div class="rmp-item"><div class="rmp-num">4</div><span>Download CIBIL report — check for any incorrect derogatory entries, raise dispute immediately if found</span></div>
+        </div>
+        <div class="rmp-duration">⏱ Duration: 45–60 days</div>
+      </div>
+      <div class="rm-phase rmp-2">
+        <div class="rmp-tag">🔧 Phase 2 — Month 2–3</div>
+        <div class="rmp-title">Rebuild the File</div>
+        <div class="rmp-items">
+          <div class="rmp-item"><div class="rmp-num">1</div><span>File FY26 ITR with consistent income of Rs.7L+ — this is the most critical single action</span></div>
+          <div class="rmp-item"><div class="rmp-num">2</div><span>Decide on co-applicant — spouse ITR and income documents if adding</span></div>
+          <div class="rmp-item"><div class="rmp-num">3</div><span>Ensure 6 months of clean bank statements from today forward</span></div>
+          <div class="rmp-item"><div class="rmp-num">4</div><span>Get property documents in order — title deed, EC, approved plan, tax receipts all ready</span></div>
+        </div>
+        <div class="rmp-duration">⏱ Duration: 30–45 days</div>
+      </div>
+      <div class="rm-phase rmp-3">
+        <div class="rmp-tag">✅ Phase 3 — Month 3–4</div>
+        <div class="rmp-title">Apply Smart</div>
+        <div class="rmp-items">
+          <div class="rmp-item"><div class="rmp-num">1</div><span>Use FinsightOne soft assessment to confirm score 725+ before applying</span></div>
+          <div class="rmp-item"><div class="rmp-num">2</div><span>Identify lenders with 80%+ FOIR tolerance for self-employed — apply to only 1 lender at a time</span></div>
+          <div class="rmp-item"><div class="rmp-num">3</div><span>Submit complete, banker-ready file — no missing documents that force follow-up</span></div>
+          <div class="rmp-item"><div class="rmp-num">4</div><span>FinsightOne advisory support for query handling and sanction negotiation</span></div>
+        </div>
+        <div class="rmp-duration">⏱ Duration: 2–3 weeks</div>
+      </div>
+    </div>
+
+    <!-- LENDER LANDSCAPE -->
+    <div class="lender-compare" style="margin-top:28px;">
+      <div class="sh">Lender Landscape — Where You Can Reapply After Fixing</div>
+      <table class="lc-table">
+        <thead>
+          <tr>
+            <th>Lender Type</th>
+            <th>Min CIBIL</th>
+            <th>SE FOIR Cap</th>
+            <th>Income Averaging</th>
+            <th>Verdict (Post-Fix)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Lender that rejected you</td>
+            <td>700</td>
+            <td>75%</td>
+            <td>2-year avg</td>
+            <td><span class="verdict-cell vc-possible">⚠ Possible after FY26 ITR</span></td>
+          </tr>
+          <tr>
+            <td>PSU Banks (SBI / BOB)</td>
+            <td>650–700</td>
+            <td>60–70%</td>
+            <td>3-year avg</td>
+            <td><span class="verdict-cell vc-possible">⚠ Possible — lower rate but slower</span></td>
+          </tr>
+          <tr>
+            <td>Other Private Sector Banks</td>
+            <td>700–720</td>
+            <td>75–80%</td>
+            <td>Latest year or avg</td>
+            <td><span class="verdict-cell vc-likely">✓ Likely post score recovery</span></td>
+          </tr>
+          <tr>
+            <td>HFCs (HDFC, PNB HFL etc.)</td>
+            <td>680–700</td>
+            <td>80%+</td>
+            <td>Flexible — latest year</td>
+            <td><span class="verdict-cell vc-likely">✓ Best fit for your profile</span></td>
+          </tr>
+          <tr>
+            <td>NBFCs (Bajaj, Tata Capital)</td>
+            <td>650–680</td>
+            <td>80–85%</td>
+            <td>Flexible</td>
+            <td><span class="verdict-cell vc-likely">✓ Can apply sooner, higher rate</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="lc-note">FinsightOne's advisory can help identify the specific lender whose current policy best fits your post-fix profile — before you apply and before any hard enquiry is triggered.</div>
+    </div>
+
+    <!-- ADVISORY CTA -->
+    <div class="advisory-box">
+      <div>
+        <div class="ab-tag">Don't Go It Alone</div>
+        <div class="ab-title">FinsightOne Advisory — get it right the second time</div>
+        <div class="ab-body">Reapplying after a rejection with an unrepaired profile is the most common mistake borrowers make. Our advisory ensures you apply only when you're ready, to the right lender, with the strongest possible file.</div>
+        <div class="ab-feats">
+          <div class="ab-feat">Soft-check readiness assessment before any hard enquiry</div>
+          <div class="ab-feat">Lender matching — identify who will approve your profile today</div>
+          <div class="ab-feat">File preparation with CA coordination — ITR, statements, property docs</div>
+          <div class="ab-feat">Submission and follow-up support until sanction</div>
+        </div>
+      </div>
+      <div class="ab-cta-wrap">
+        <a href="https://finsightone.co/check" class="ab-btn">
+          Start Advisory
+          <span>finsightone.co/check</span>
+        </a>
+        <div class="ab-price">From Rs. 10,000 + GST</div>
+      </div>
+    </div>
+
+    <!-- DISCLAIMER -->
+    <div class="disclaimer">
+      <p><strong>Important:</strong> This analysis is based on self-declared information, publicly available credit guidelines and general underwriting practices. FinsightOne does not have access to the actual rejection reason from the lender — causes identified are based on profile analysis and represent the most probable factors. This report does not guarantee approval at any lender. Score projections are indicative only. FinsightOne is not a lender or credit bureau and is not affiliated with any bank or NBFC. All client data in this sample is fictional and for illustration only.</p>
+    </div>
+
+  </div><!-- /body -->
+
+  <div class="footer">
+    <div class="footer-brand">Finsight<span>One</span></div>
+    <div class="footer-text">Prepared by FinsightOne &nbsp;|&nbsp; finsightone.co &nbsp;|&nbsp; Credit · Advisory · Intelligence<br>
+    <span style="font-size:10px;color:rgba(255,255,255,0.3);">This is a sample report. All client data and figures are fictional and for illustration only.</span></div>
+    <div class="footer-right">Report ID: FO-RAR-2026-0198<br>Page 1–3 of 3</div>
+  </div>
+
+</div>
+</body>
+</html>
