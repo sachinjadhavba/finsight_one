@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Banker Presentation Pack — FinsightOne</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange:#F97316;--orange-light:#FFF7ED;--orange-mid:#FED7AA;--orange-dark:#C2410C;
+    --navy:#0A1628;--navy-mid:#152036;--navy-light:#1E3050;--navy-soft:#243B55;
+    --slate:#4A5568;--muted:#8896A7;--border:#DDE3EC;--bg:#F4F6FA;--white:#FFFFFF;
+    --green:#15803D;--green-light:#F0FDF4;--green-mid:#86EFAC;
+    --amber:#B45309;--amber-light:#FFFBEB;--amber-mid:#FDE68A;
+    --red:#B91C1C;--red-light:#FEF2F2;--red-mid:#FECACA;
+    --gold:#92400E;--gold-light:#FFFBEB;
+    --ink:#1A2332;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'IBM Plex Sans',sans-serif;background:#E8ECF2;color:var(--ink);font-size:13.5px;line-height:1.65;}
+
+  body::before{
+    content:'SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE SAMPLE';
+    position:fixed;top:-50%;left:-50%;width:200%;height:200%;
+    font-family:'IBM Plex Sans',sans-serif;font-size:18px;font-weight:600;
+    color:rgba(10,22,40,0.038);letter-spacing:4px;transform:rotate(-35deg);
+    word-spacing:40px;line-height:5;z-index:1000;pointer-events:none;
+    white-space:pre-wrap;text-align:center;display:flex;
+    align-items:center;justify-content:center;
+  }
+
+  .page{max-width:900px;margin:0 auto;background:var(--white);box-shadow:0 8px 48px rgba(0,0,0,0.12);}
+
+  /* ── COVER PAGE ── */
+  .cover{background:var(--navy);min-height:280px;position:relative;overflow:hidden;padding:0;}
+  .cover-grid{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(255,255,255,0.025) 39px,rgba(255,255,255,0.025) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(255,255,255,0.025) 39px,rgba(255,255,255,0.025) 40px);pointer-events:none;}
+  .cover-glow{position:absolute;top:-80px;right:-80px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(249,115,22,0.18) 0%,transparent 65%);pointer-events:none;}
+  .cover-glow2{position:absolute;bottom:-60px;left:-60px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(249,115,22,0.08) 0%,transparent 65%);pointer-events:none;}
+  .cover-inner{position:relative;z-index:1;padding:36px 48px 32px;}
+  .cover-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:36px;}
+  .brand-name{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--white);letter-spacing:-0.3px;}
+  .brand-name span{color:var(--orange);}
+  .brand-tagline{font-size:11px;color:var(--muted);letter-spacing:2.5px;text-transform:uppercase;font-weight:500;margin-top:3px;}
+  .cover-badges{display:flex;flex-direction:column;align-items:flex-end;gap:6px;}
+  .cbadge{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 12px;border-radius:3px;}
+  .cb-premium{background:var(--orange);color:var(--white);}
+  .cb-sample{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.45);border:1px solid rgba(255,255,255,0.12);}
+  .cover-divider{width:48px;height:3px;background:var(--orange);border-radius:2px;margin-bottom:16px;}
+  .cover-doc-type{font-size:11px;color:rgba(255,255,255,0.45);letter-spacing:3px;text-transform:uppercase;font-weight:600;margin-bottom:8px;}
+  .cover-title{font-family:'Cormorant Garamond',serif;font-size:38px;color:var(--white);line-height:1.15;letter-spacing:-0.5px;margin-bottom:6px;}
+  .cover-subtitle{font-size:13px;color:rgba(255,255,255,0.55);font-weight:400;margin-bottom:28px;}
+  .cover-meta-row{display:flex;gap:0;border-top:1px solid rgba(255,255,255,0.1);padding-top:20px;}
+  .cm-item{flex:1;padding-right:24px;border-right:1px solid rgba(255,255,255,0.1);}
+  .cm-item:last-child{border-right:none;padding-right:0;padding-left:24px;}
+  .cm-item:not(:first-child):not(:last-child){padding-left:24px;}
+  .cm-label{font-size:10px;color:rgba(255,255,255,0.35);letter-spacing:1.5px;text-transform:uppercase;font-weight:600;margin-bottom:4px;}
+  .cm-val{font-size:13px;color:var(--white);font-weight:500;}
+  .cm-val.blurred{filter:blur(5px);user-select:none;pointer-events:none;}
+
+  /* ORANGE TITLE BAR */
+  .title-bar{background:var(--orange);padding:10px 48px;display:flex;align-items:center;justify-content:space-between;}
+  .tb-l{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--white);letter-spacing:0.2px;}
+  .tb-r{font-size:11.5px;color:rgba(255,255,255,0.85);font-weight:500;}
+  .tb-r strong{font-size:15px;color:var(--white);}
+
+  /* BODY */
+  .body{padding:36px 48px;}
+
+  /* SECTION HEADING */
+  .sh{font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--navy);margin-bottom:16px;display:flex;align-items:center;gap:12px;letter-spacing:-0.2px;}
+  .sh-num{width:28px;height:28px;background:var(--navy);color:var(--white);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;flex-shrink:0;}
+  .sh::after{content:'';flex:1;height:1px;background:var(--border);}
+
+  /* EXECUTIVE SUMMARY */
+  .exec-summary{background:var(--bg);border:1px solid var(--border);border-left:4px solid var(--orange);border-radius:10px;padding:22px 26px;margin-bottom:32px;}
+  .es-label{font-size:10px;color:var(--orange);letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:8px;}
+  .es-title{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--navy);margin-bottom:10px;line-height:1.3;}
+  .es-para{font-size:13px;color:var(--slate);line-height:1.7;margin-bottom:12px;}
+  .es-para:last-child{margin-bottom:0;}
+  .es-highlight{display:inline;background:var(--orange-light);border-bottom:2px solid var(--orange-mid);padding:0 2px;}
+
+  /* PROPOSAL BOX */
+  .proposal-box{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:32px;}
+  .pb-col{padding:20px 22px;}
+  .pb-col:first-child{border-right:1px solid var(--border);}
+  .pb-col-title{font-size:10px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;font-weight:700;margin-bottom:14px;}
+  .pb-row{display:flex;justify-content:space-between;align-items:baseline;padding:8px 0;border-bottom:1px solid var(--border);}
+  .pb-row:last-child{border-bottom:none;}
+  .pb-key{font-size:12px;color:var(--slate);font-weight:500;}
+  .pb-val{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:var(--navy);}
+  .pb-val.highlight{color:var(--orange);font-size:13px;}
+
+  /* BORROWER SNAPSHOT */
+  .snapshot-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:32px;}
+  .snap-card{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px 16px;}
+  .snap-label{font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;font-weight:600;margin-bottom:5px;}
+  .snap-val{font-size:13.5px;font-weight:600;color:var(--navy);}
+  .snap-sub{font-size:11px;color:var(--slate);margin-top:2px;}
+
+  /* FINANCIAL TABLE */
+  .fin-table{width:100%;border-collapse:collapse;margin-bottom:8px;}
+  .fin-table th{background:var(--navy);color:var(--white);font-size:10.5px;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;padding:10px 14px;text-align:right;}
+  .fin-table th:first-child{text-align:left;}
+  .fin-table td{padding:10px 14px;font-size:12px;color:var(--slate);border-bottom:1px solid var(--border);text-align:right;font-family:'IBM Plex Mono',monospace;}
+  .fin-table td:first-child{font-family:'IBM Plex Sans',sans-serif;font-weight:600;color:var(--navy);text-align:left;}
+  .fin-table tr:nth-child(even) td{background:#FAFBFC;}
+  .fin-table tr.total-row td{background:var(--bg);font-weight:700;color:var(--navy);border-top:2px solid var(--border);}
+  .fin-table .trend-up{color:var(--green);font-weight:600;}
+  .fin-table .trend-dn{color:var(--red);font-weight:600;}
+  .fin-table .trend-na{color:var(--muted);}
+  .table-note{font-size:11px;color:var(--muted);margin-bottom:28px;font-style:italic;}
+
+  /* RATIO CARDS */
+  .ratio-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:8px;}
+  .ratio-card{border-radius:8px;padding:14px 14px;border:1.5px solid;}
+  .rc-green{background:var(--green-light);border-color:var(--green-mid);}
+  .rc-amber{background:var(--amber-light);border-color:var(--amber-mid);}
+  .rc-red{background:var(--red-light);border-color:var(--red-mid);}
+  .ratio-label{font-size:10px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;margin-bottom:4px;}
+  .rc-green .ratio-label{color:var(--green);}
+  .rc-amber .ratio-label{color:var(--amber);}
+  .rc-red .ratio-label{color:var(--red);}
+  .ratio-val{font-family:'IBM Plex Mono',monospace;font-size:20px;font-weight:700;color:var(--navy);margin-bottom:3px;}
+  .ratio-bench{font-size:10.5px;color:var(--slate);}
+
+  /* SECURITY TABLE */
+  .security-table{width:100%;border-collapse:collapse;margin-bottom:28px;}
+  .security-table th{background:var(--navy-mid);color:var(--white);font-size:10.5px;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;padding:10px 16px;text-align:left;}
+  .security-table td{padding:11px 16px;font-size:12.5px;color:var(--slate);border-bottom:1px solid var(--border);vertical-align:top;}
+  .security-table tr:last-child td{border-bottom:none;}
+  .security-table td:first-child{font-weight:600;color:var(--navy);width:160px;}
+  .security-table tr:nth-child(even) td{background:#FAFBFC;}
+
+  /* REPAYMENT SCHEDULE */
+  .repay-table{width:100%;border-collapse:collapse;margin-bottom:8px;}
+  .repay-table th{background:var(--navy);color:var(--white);font-size:10.5px;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;padding:9px 14px;text-align:center;}
+  .repay-table td{padding:9px 14px;font-size:12px;text-align:center;border-bottom:1px solid var(--border);font-family:'IBM Plex Mono',monospace;color:var(--slate);}
+  .repay-table tr:last-child td{border-bottom:none;font-weight:700;color:var(--navy);background:var(--bg);}
+  .repay-table tr:nth-child(even) td{background:#FAFBFC;}
+
+  /* STRENGTH WEAKNESS */
+  .sw-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px;}
+  .sw-box{border-radius:10px;padding:18px 20px;border:1.5px solid;}
+  .sw-str{background:var(--green-light);border-color:var(--green-mid);}
+  .sw-con{background:var(--amber-light);border-color:var(--amber-mid);}
+  .sw-title{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;}
+  .sw-str .sw-title{color:var(--green);}
+  .sw-con .sw-title{color:var(--amber);}
+  .sw-item{display:flex;align-items:flex-start;gap:8px;font-size:12.5px;color:var(--slate);margin-bottom:8px;line-height:1.45;}
+  .sw-item:last-child{margin-bottom:0;}
+  .sw-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:6px;}
+  .sw-str .sw-dot{background:var(--green);}
+  .sw-con .sw-dot{background:var(--amber);}
+
+  /* RECOMMENDATION */
+  .recommendation{background:var(--navy);border-radius:12px;padding:26px 30px;margin-bottom:32px;position:relative;overflow:hidden;}
+  .rec-glow{position:absolute;top:-40px;right:-40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(249,115,22,0.18) 0%,transparent 70%);pointer-events:none;}
+  .rec-label{font-size:10px;color:var(--orange);letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:6px;}
+  .rec-title{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--white);margin-bottom:14px;}
+  .rec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid rgba(255,255,255,0.08);border-radius:8px;overflow:hidden;margin-bottom:16px;}
+  .rec-item{padding:14px 16px;border-right:1px solid rgba(255,255,255,0.08);}
+  .rec-item:last-child{border-right:none;}
+  .rec-item-label{font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:1px;text-transform:uppercase;font-weight:600;margin-bottom:5px;}
+  .rec-item-val{font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:700;color:var(--white);}
+  .rec-item-val.rec-approve{color:#4ADE80;}
+  .rec-note{font-size:12.5px;color:rgba(255,255,255,0.55);line-height:1.6;}
+
+  /* DOCUMENT INDEX */
+  .doc-index{margin-bottom:32px;}
+  .di-table{width:100%;border-collapse:collapse;}
+  .di-table th{background:var(--bg);font-size:10.5px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;padding:9px 14px;text-align:left;color:var(--slate);border-bottom:2px solid var(--border);}
+  .di-table td{padding:9px 14px;font-size:12px;color:var(--slate);border-bottom:1px solid var(--border);}
+  .di-table tr:last-child td{border-bottom:none;}
+  .di-table td:first-child{font-family:'IBM Plex Mono',monospace;color:var(--muted);width:36px;}
+  .di-table td:nth-child(2){font-weight:600;color:var(--navy);}
+  .di-status{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;padding:2px 8px;border-radius:10px;}
+  .ds-ok{background:var(--green-light);color:var(--green);}
+  .ds-inc{background:var(--amber-light);color:var(--amber);}
+
+  /* PAGE BREAK */
+  .page-break{border:none;border-top:2px dashed var(--border);margin:36px 0;}
+  .pg-label{text-align:center;font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin:-8px 0 28px;font-weight:600;}
+
+  /* FOOTER */
+  .footer{background:var(--navy);padding:16px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+  .footer-brand{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--white);}
+  .footer-brand span{color:var(--orange);}
+  .footer-text{font-size:10.5px;color:var(--muted);text-align:center;}
+  .footer-right{font-size:10.5px;color:var(--muted);text-align:right;}
+
+  .confidential-strip{background:var(--navy-light);padding:6px 48px;display:flex;align-items:center;justify-content:center;gap:12px;}
+  .conf-text{font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:2px;text-transform:uppercase;font-weight:600;}
+
+  .disclaimer{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px 18px;margin-bottom:28px;}
+  .disclaimer p{font-size:11px;color:var(--muted);line-height:1.6;}
+  .disclaimer strong{color:var(--slate);}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- COVER -->
+  <div class="cover">
+    <div class="cover-grid"></div>
+    <div class="cover-glow"></div>
+    <div class="cover-glow2"></div>
+    <div class="cover-inner">
+      <div class="cover-top">
+        <div>
+          <div class="brand-name">Finsight<span>One</span></div>
+          <div class="brand-tagline">Credit · Advisory · Intelligence</div>
+        </div>
+        <div class="cover-badges">
+          <div class="cbadge cb-premium">Rs. 9,999 — Premium Report</div>
+          <div class="cbadge cb-sample">Sample Document</div>
+        </div>
+      </div>
+      <div class="cover-divider"></div>
+      <div class="cover-doc-type">Banker Presentation Pack &nbsp;·&nbsp; Stream 2</div>
+      <div class="cover-title">Credit Submission<br>Dossier</div>
+      <div class="cover-subtitle">Complete submission-ready file structured the way bankers read it</div>
+      <div class="cover-meta-row">
+        <div class="cm-item">
+          <div class="cm-label">Applicant</div>
+          <div class="cm-val blurred">Srinivas Steel Works</div>
+        </div>
+        <div class="cm-item">
+          <div class="cm-label">Facility Requested</div>
+          <div class="cm-val">Term Loan — Machinery</div>
+        </div>
+        <div class="cm-item">
+          <div class="cm-label">Amount</div>
+          <div class="cm-val">Rs. 1.80 Crore</div>
+        </div>
+        <div class="cm-item">
+          <div class="cm-label">Date of Submission</div>
+          <div class="cm-val">June 2026</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TITLE BAR -->
+  <div class="title-bar">
+    <div class="tb-l">Banker Presentation Pack — Credit Submission Dossier</div>
+    <div class="tb-r">Price: <strong>Rs. 9,999</strong> + GST &nbsp;·&nbsp; Prepared by FinsightOne</div>
+  </div>
+
+  <!-- CONFIDENTIAL STRIP -->
+  <div class="confidential-strip">
+    <div class="conf-text">Confidential &nbsp;·&nbsp; Prepared for Lending Institution Use &nbsp;·&nbsp; Not for Circulation</div>
+  </div>
+
+  <div class="body">
+
+    <!-- EXECUTIVE SUMMARY -->
+    <div class="sh"><div class="sh-num">1</div>Executive Summary</div>
+    <div class="exec-summary">
+      <div class="es-label">Credit Submission Overview</div>
+      <div class="es-title">Term Loan of Rs.1.80 Crore for Machinery Acquisition — Steel Fabrication Unit, Coimbatore</div>
+      <div class="es-para">
+        <span class="es-highlight" style="filter:blur(5px);user-select:none;pointer-events:none;">Srinivas Steel Works</span>, a proprietorship concern engaged in structural steel fabrication and supply, is seeking a Term Loan of <strong>Rs.1.80 Crore</strong> for the acquisition of a CNC plasma cutting machine and hydraulic press brake to expand production capacity from the current 180 MT/month to 320 MT/month. The unit has been in operations for 9 years at its registered premises in Coimbatore, Tamil Nadu.
+      </div>
+      <div class="es-para">
+        The borrower presents a <strong>clean credit bureau profile</strong> (CIBIL 741), consistent ITR-declared income of Rs.68L in FY25, and banking turnover of Rs.1.42Cr for the same period — indicating sound banking discipline. Existing debt obligations are limited to a vehicle loan (outstanding Rs.4.8L) with impeccable repayment history. The proposed loan is fully backed by primary hypothecation of funded machinery and supported by collateral in the form of a residential property at an LTV of 58%.
+      </div>
+      <div class="es-para">
+        The expansion is demand-led — the borrower has confirmed orders from 3 infrastructure contractors amounting to Rs.2.8Cr over the next 12 months, copies of which are enclosed in the document dossier. Post-expansion DSCR is projected at 2.1x, providing comfortable debt servicing headroom.
+      </div>
+    </div>
+
+    <!-- PROPOSAL AT A GLANCE -->
+    <div class="sh"><div class="sh-num">2</div>Proposal at a Glance</div>
+    <div class="proposal-box">
+      <div class="pb-col">
+        <div class="pb-col-title">Facility Details</div>
+        <div class="pb-row"><div class="pb-key">Facility Type</div><div class="pb-val">Term Loan</div></div>
+        <div class="pb-row"><div class="pb-key">Loan Amount Requested</div><div class="pb-val highlight">Rs.1,80,00,000</div></div>
+        <div class="pb-row"><div class="pb-key">Purpose</div><div class="pb-val">Machinery Purchase</div></div>
+        <div class="pb-row"><div class="pb-key">Tenure Requested</div><div class="pb-val">60 Months</div></div>
+        <div class="pb-row"><div class="pb-key">Moratorium</div><div class="pb-val">3 Months</div></div>
+        <div class="pb-row"><div class="pb-key">Repayment Mode</div><div class="pb-val">EMI — Monthly</div></div>
+        <div class="pb-row"><div class="pb-key">Indicative EMI</div><div class="pb-val">Rs.3,84,500/mo</div></div>
+      </div>
+      <div class="pb-col">
+        <div class="pb-col-title">Borrower Profile</div>
+        <div class="pb-row"><div class="pb-key">Constitution</div><div class="pb-val">Proprietorship</div></div>
+        <div class="pb-row"><div class="pb-key">Industry</div><div class="pb-val">Steel Fabrication</div></div>
+        <div class="pb-row"><div class="pb-key">Location</div><div class="pb-val">Coimbatore, TN</div></div>
+        <div class="pb-row"><div class="pb-key">Business Vintage</div><div class="pb-val">9 Years</div></div>
+        <div class="pb-row"><div class="pb-key">CIBIL Score</div><div class="pb-val highlight">741</div></div>
+        <div class="pb-row"><div class="pb-key">FY25 Declared Income</div><div class="pb-val">Rs.68 Lakhs</div></div>
+        <div class="pb-row"><div class="pb-key">NPA / Default History</div><div class="pb-val" style="color:var(--green);">NIL</div></div>
+      </div>
+    </div>
+
+    <!-- BORROWER SNAPSHOT -->
+    <div class="sh"><div class="sh-num">3</div>Borrower Snapshot</div>
+    <div class="snapshot-grid">
+      <div class="snap-card"><div class="snap-label">Business Name</div><div class="snap-val" style="filter:blur(5px);user-select:none;pointer-events:none;">Srinivas Steel Works</div></div>
+      <div class="snap-card"><div class="snap-label">Proprietor</div><div class="snap-val" style="filter:blur(5px);user-select:none;pointer-events:none;">K. Srinivasan</div></div>
+      <div class="snap-card"><div class="snap-label">Date of Establishment</div><div class="snap-val">April 2017</div></div>
+      <div class="snap-card"><div class="snap-label">UDYAM Registration</div><div class="snap-val">UDYAM-TN-08-XXXXXX</div><div class="snap-sub">Active — MSME Medium</div></div>
+      <div class="snap-card"><div class="snap-label">GST Number</div><div class="snap-val">33XXXXX0000X1ZX</div><div class="snap-sub">Active — Regular</div></div>
+      <div class="snap-card"><div class="snap-label">PAN</div><div class="snap-val">AXXPS0000X</div><div class="snap-sub">Individual PAN</div></div>
+      <div class="snap-card"><div class="snap-label">Factory Address</div><div class="snap-val">SIDCO Industrial Estate</div><div class="snap-sub">Coimbatore — 641021</div></div>
+      <div class="snap-card"><div class="snap-label">Primary Banker</div><div class="snap-val">Current Account — Active</div><div class="snap-sub">12 years relationship</div></div>
+      <div class="snap-card"><div class="snap-label">Existing Loans</div><div class="snap-val">1 — Vehicle Loan</div><div class="snap-sub">O/S Rs.4.8L · Standard</div></div>
+    </div>
+
+    <hr class="page-break">
+    <div class="pg-label">— Page 2 of 4 —</div>
+
+    <!-- FINANCIAL ANALYSIS -->
+    <div class="sh"><div class="sh-num">4</div>Financial Analysis — Last 3 Years</div>
+    <table class="fin-table">
+      <thead>
+        <tr>
+          <th>Particulars (Rs. Lakhs)</th>
+          <th>FY 2022–23</th>
+          <th>FY 2023–24</th>
+          <th>FY 2024–25</th>
+          <th>Growth FY25</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Gross Sales / Turnover</td><td>82.40</td><td>96.15</td><td>114.80</td><td class="trend-up">+19.4%</td></tr>
+        <tr><td>Raw Material Cost</td><td>49.44</td><td>56.73</td><td>67.12</td><td class="trend-na">—</td></tr>
+        <tr><td>Gross Profit</td><td>32.96</td><td>39.42</td><td>47.68</td><td class="trend-up">+20.9%</td></tr>
+        <tr><td>Gross Margin %</td><td>40.0%</td><td>41.0%</td><td>41.5%</td><td class="trend-up">Stable ↑</td></tr>
+        <tr><td>Operating Expenses</td><td>14.82</td><td>17.23</td><td>18.96</td><td class="trend-na">—</td></tr>
+        <tr><td>EBITDA</td><td>18.14</td><td>22.19</td><td>28.72</td><td class="trend-up">+29.4%</td></tr>
+        <tr><td>Depreciation</td><td>2.40</td><td>2.40</td><td>2.80</td><td class="trend-na">—</td></tr>
+        <tr><td>Interest (existing)</td><td>1.20</td><td>0.96</td><td>0.72</td><td class="trend-up">Declining</td></tr>
+        <tr><td>Net Profit (before tax)</td><td>14.54</td><td>18.83</td><td>25.20</td><td class="trend-up">+33.8%</td></tr>
+        <tr class="total-row"><td>Net Profit After Tax (est.)</td><td>12.18</td><td>15.62</td><td>20.80</td><td class="trend-up">+33.2%</td></tr>
+        <tr><td>Banking Turnover (Credits)</td><td>88.40</td><td>118.60</td><td>142.30</td><td class="trend-up">+20.0%</td></tr>
+        <tr><td>ITR Declared Income</td><td>54.20</td><td>61.80</td><td>68.00</td><td class="trend-up">+10.0%</td></tr>
+      </tbody>
+    </table>
+    <div class="table-note">Source: ITR filings, CA-certified financials, bank statements. Banking turnover independently verified from 12-month bank statement.</div>
+
+    <!-- KEY RATIOS -->
+    <div class="sh" style="margin-top:28px;"><div class="sh-num">5</div>Key Credit Ratios</div>
+    <div class="ratio-grid">
+      <div class="ratio-card rc-green">
+        <div class="ratio-label">DSCR (Projected)</div>
+        <div class="ratio-val">2.10x</div>
+        <div class="ratio-bench">Benchmark: ≥1.50x ✓</div>
+      </div>
+      <div class="ratio-card rc-green">
+        <div class="ratio-label">FOIR (Post Loan)</div>
+        <div class="ratio-val">68%</div>
+        <div class="ratio-bench">Within 65–80% band ✓</div>
+      </div>
+      <div class="ratio-card rc-green">
+        <div class="ratio-label">LTV (Collateral)</div>
+        <div class="ratio-val">58%</div>
+        <div class="ratio-bench">Benchmark: ≤75% ✓</div>
+      </div>
+      <div class="ratio-card rc-amber">
+        <div class="ratio-label">TOL / TNW</div>
+        <div class="ratio-val">1.42x</div>
+        <div class="ratio-bench">Acceptable &lt;3x; monitor</div>
+      </div>
+    </div>
+    <div style="margin-bottom:28px;margin-top:8px;font-size:11.5px;color:var(--slate);">
+      <strong>DSCR Note:</strong> Post-expansion EMI of Rs.3.84L/month. FY25 EBITDA of Rs.28.72L/year = Rs.2.39L/month net cash. Projected post-expansion EBITDA Rs.48L/year based on order book — gives DSCR of 2.1x. Conservative projection used; upside scenario gives 2.6x.
+    </div>
+
+    <!-- SECURITY -->
+    <div class="sh"><div class="sh-num">6</div>Security Details</div>
+    <table class="security-table">
+      <thead>
+        <tr><th>Security Type</th><th>Description</th><th>Value</th><th>Coverage</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Primary — Hypothecation</td>
+          <td>First and exclusive hypothecation charge over CNC Plasma Cutting Machine and Hydraulic Press Brake to be purchased out of bank finance. Machinery to be insured with Bank as nominee throughout loan tenure.</td>
+          <td>Rs.2.20 Cr (machine value + installation)</td>
+          <td>122% of loan</td>
+        </tr>
+        <tr>
+          <td>Collateral — Mortgage</td>
+          <td>Equitable mortgage of residential property — House No. XX, Plot No. XX, Coimbatore — 641021 — registered in name of proprietor. Property valuation report from empanelled valuer enclosed.</td>
+          <td>Rs.3.10 Cr (valuation)</td>
+          <td>172% of loan</td>
+        </tr>
+        <tr>
+          <td>Personal Guarantee</td>
+          <td>Personal guarantee of proprietor with net worth of Rs.28.4L as per CA certificate dated March 2026.</td>
+          <td>Rs.28.4L NW</td>
+          <td>Supplementary</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr class="page-break">
+    <div class="pg-label">— Page 3 of 4 —</div>
+
+    <!-- REPAYMENT SCHEDULE -->
+    <div class="sh"><div class="sh-num">7</div>Indicative Repayment Schedule</div>
+    <table class="repay-table">
+      <thead>
+        <tr>
+          <th>Period</th>
+          <th>Months</th>
+          <th>EMI (Rs.)</th>
+          <th>Principal (Rs.)</th>
+          <th>Interest (Rs.)</th>
+          <th>Balance O/S (Rs.)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Moratorium (Month 1–3)</td><td>3</td><td>Interest only</td><td>—</td><td>~45,000/mo</td><td>1,80,00,000</td></tr>
+        <tr><td>Year 1 (Month 4–15)</td><td>12</td><td>3,84,500</td><td>2,42,800</td><td>1,41,700</td><td>1,50,86,400</td></tr>
+        <tr><td>Year 2 (Month 16–27)</td><td>12</td><td>3,84,500</td><td>2,72,400</td><td>1,12,100</td><td>1,17,74,400</td></tr>
+        <tr><td>Year 3 (Month 28–39)</td><td>12</td><td>3,84,500</td><td>3,05,300</td><td>79,200</td><td>81,22,800</td></tr>
+        <tr><td>Year 4 (Month 40–51)</td><td>12</td><td>3,84,500</td><td>3,42,100</td><td>42,400</td><td>40,18,600</td></tr>
+        <tr><td>Year 5 (Month 52–63)</td><td>12</td><td>3,84,500</td><td>3,49,600</td><td>34,900</td><td>—</td></tr>
+        <tr><td><strong>Total</strong></td><td><strong>63</strong></td><td>—</td><td><strong>1,80,00,000</strong></td><td><strong>~27,68,400</strong></td><td><strong>Nil</strong></td></tr>
+      </tbody>
+    </table>
+    <div class="table-note" style="margin-bottom:28px;">Indicative schedule at 9.5% p.a. (reducing). Actual rate, EMI and schedule subject to lender's sanction terms.</div>
+
+    <!-- STRENGTHS & CONCERNS -->
+    <div class="sh"><div class="sh-num">8</div>Credit Strengths & Mitigants</div>
+    <div class="sw-grid">
+      <div class="sw-box sw-str">
+        <div class="sw-title">✓ Credit Strengths</div>
+        <div class="sw-item"><div class="sw-dot"></div>9 years of continuous operations — well above MSME lender vintage requirement of 3 years</div>
+        <div class="sw-item"><div class="sw-dot"></div>CIBIL 741 — clean bureau, no overdue, no settlement, no NPA in personal or business record</div>
+        <div class="sw-item"><div class="sw-dot"></div>Consistent revenue growth — 19% CAGR over 3 years with improving margins</div>
+        <div class="sw-item"><div class="sw-dot"></div>Banking turnover Rs.1.42Cr vs ITR income Rs.68L — income fully traceable, no cash dependency concern</div>
+        <div class="sw-item"><div class="sw-dot"></div>Demand-backed expansion — confirmed order book of Rs.2.8Cr from 3 institutional clients</div>
+        <div class="sw-item"><div class="sw-dot"></div>Collateral coverage 172% — strong security comfort for lender</div>
+        <div class="sw-item"><div class="sw-dot"></div>Projected DSCR 2.10x — comfortable repayment capacity with headroom for downside</div>
+      </div>
+      <div class="sw-box sw-con">
+        <div class="sw-title">⚠ Concerns & Mitigants</div>
+        <div class="sw-item"><div class="sw-dot"></div><strong>Proprietorship constitution:</strong> Business continuity risk in event of incapacitation. <em>Mitigant: Keyman insurance to be taken as loan condition; son (age 28) actively involved in operations.</em></div>
+        <div class="sw-item"><div class="sw-dot"></div><strong>Single industry concentration:</strong> Revenue 100% from steel fabrication — cyclical sector. <em>Mitigant: Infrastructure sector demand in TN structural — 3 confirmed long-term contracts provide visibility.</em></div>
+        <div class="sw-item"><div class="sw-dot"></div><strong>TOL/TNW at 1.42x:</strong> Elevated but within acceptable range. Will improve post loan repayment. <em>Mitigant: Collateral property value provides adequate cushion.</em></div>
+        <div class="sw-item"><div class="sw-dot"></div><strong>FY25 ITR filed July 2025:</strong> Slight delay, no penalty. <em>Mitigant: Filing history otherwise consistent; no prior delay.</em></div>
+      </div>
+    </div>
+
+    <!-- RECOMMENDATION -->
+    <div class="recommendation">
+      <div class="rec-glow"></div>
+      <div class="rec-label">FinsightOne Advisory Assessment</div>
+      <div class="rec-title">Recommendation — Support Sanction</div>
+      <div class="rec-grid">
+        <div class="rec-item">
+          <div class="rec-item-label">Recommendation</div>
+          <div class="rec-item-val rec-approve">SUPPORT SANCTION</div>
+        </div>
+        <div class="rec-item">
+          <div class="rec-item-label">Recommended Amount</div>
+          <div class="rec-item-val">Rs.1.80 Crore</div>
+        </div>
+        <div class="rec-item">
+          <div class="rec-item-label">Risk Category</div>
+          <div class="rec-item-val">Standard / Acceptable</div>
+        </div>
+      </div>
+      <div class="rec-note">The borrower presents a well-documented, demand-backed expansion case with strong collateral coverage, clean credit history and consistent financial performance. The proposed facility is within comfortable repayment capacity at a projected DSCR of 2.1x. Security package provides adequate recovery comfort. Key conditions recommended: keyman insurance, machine hypothecation with bank as nominee, quarterly sales statements for first 2 years.</div>
+    </div>
+
+    <hr class="page-break">
+    <div class="pg-label">— Page 4 of 4 —</div>
+
+    <!-- DOCUMENT INDEX -->
+    <div class="sh"><div class="sh-num">9</div>Document Submission Index</div>
+    <div class="doc-index">
+      <table class="di-table">
+        <thead>
+          <tr><th>#</th><th>Document</th><th>Category</th><th>Period / Version</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>01</td><td>PAN Card — Proprietor</td><td>KYC</td><td>Current</td><td><span class="di-status ds-ok">✓ Enclosed</span></td></tr>
+          <tr><td>02</td><td>Aadhaar Card — Proprietor</td><td>KYC</td><td>Current</td><td><span class="di-status ds-ok">✓ Enclosed</span></td></tr>
+          <tr><td>03</td><td>UDYAM Registration Certificate</td><td>KYC</td><td>Current</td><td><span class="di-status ds-ok">✓ Enclosed</span></td></tr>
+          <tr><td>04</td><td>GST Registration Certificate</td><td>KYC</td><td>Current</td><td><span class="di-status ds-ok">✓ Enclosed</span></td></tr>
+          <tr><td>05</td><td>Shop & Establishment Licence</td><td>KYC</td><td>Valid till 2027</td><td><span class="di-status ds-ok">✓ Enclosed</span></td></tr>
+          <tr><td>06</td><td>ITR — AY 2023–24</td><td>Financial</td><td>FY2022–23</td><td><span class="di-status ds-ok">✓ Enclosed</span></td></tr>
+          <tr><td>07</td><td>ITR — AY 2024–25</td><td>Financial</td><td>FY2023–24</td><td><span class="di-status ds-ok">✓ Enclosed</span></td></tr>
+          <tr><td>08</td><td>ITR — AY 2025–26</td><td>Financial</td><td>FY2024–25</td><td><span class="di-status ds-ok">✓ Enclosed</span></td></tr>
+          <tr><td>09</td><td>Audited P&L and Balance Sheet</td><td>Financial</td><td>FY23, FY24, FY25</td><td><span class="di-status ds-ok">✓ Enclosed</span></td></tr>
+          <tr><td>10</td><td>GSTR-3B Returns</td><td>Financial</td><td>Apr 2024–Mar 2025</td><td><span class="di-status ds-ok">✓ Enclosed</span></td></tr>
+          <tr><td>11</td><td>Bank Statements — Current A/C</td><td>Financial</td><td>Jun 2025–May 2026</td><td><span class="di-status ds-ok">✓ Enclosed</span></td></tr>
+          <tr><td>12</td><td>Machine Quotation — CNC Plasma Cutter</td><td>Project</td><td>May 2026</td><td><span class="di-status ds-ok">✓ Enclosed</span></td></tr>
+          <tr><td>13</td><td>Machine Quotation — Hydraulic Press Brake</td><td>Project</td><td>May 2026</td><td><span class="di-status ds-ok">✓ Enclosed</span></td></tr>
+          <tr><td>14</td><td>Order Confirmations (3 clients)</td><td>Project</td><td>FY2026–27</td><td><span class="di-status ds-ok">✓ Enclosed</span></td></tr>
+          <tr><td>15</td><td>Property Documents — Mortgage</td><td>Security</td><td>Title clear</td><td><span class="di-status ds-ok">✓ Enclosed</span></td></tr>
+          <tr><td>16</td><td>Property Valuation Report</td><td>Security</td><td>June 2026</td><td><span class="di-status ds-ok">✓ Enclosed</span></td></tr>
+          <tr><td>17</td><td>CIBIL Report — Proprietor</td><td>Bureau</td><td>June 2026</td><td><span class="di-status ds-ok">✓ Enclosed</span></td></tr>
+          <tr><td>18</td><td>Existing Loan Sanction Letter — Vehicle</td><td>Obligations</td><td>Current</td><td><span class="di-status ds-ok">✓ Enclosed</span></td></tr>
+          <tr><td>19</td><td>CA Net Worth Certificate — Proprietor</td><td>Financial</td><td>March 2026</td><td><span class="di-status ds-ok">✓ Enclosed</span></td></tr>
+          <tr><td>20</td><td>Provisional Financials Apr–May 2026</td><td>Financial</td><td>FY2025–26</td><td><span class="di-status ds-inc">! Awaited from CA</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- DISCLAIMER -->
+    <div class="disclaimer">
+      <p><strong>Important:</strong> This Banker Presentation Pack has been prepared by FinsightOne based on information and documents provided by the applicant. FinsightOne does not independently verify the authenticity of documents and is not responsible for any misrepresentation by the applicant. This pack does not constitute a guarantee of loan approval. Final sanction is subject to the lending institution's own credit assessment, policy, and risk framework. FinsightOne is not a lender, NBFC, or bank. All client data in this sample document is fictional and for illustration only.</p>
+    </div>
+
+  </div><!-- /body -->
+
+  <div class="footer">
+    <div class="footer-brand">Finsight<span>One</span></div>
+    <div class="footer-text">Prepared by FinsightOne &nbsp;|&nbsp; finsightone.co &nbsp;|&nbsp; Credit · Advisory · Intelligence<br>
+    <span style="font-size:10px;color:rgba(255,255,255,0.3);">This is a sample report. All client data and figures are fictional and for illustration only.</span></div>
+    <div class="footer-right">Report ID: FO-BPP-2026-0156<br>Page 1–4 of 4</div>
+  </div>
+
+</div>
+</body>
+</html>
