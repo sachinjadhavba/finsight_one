@@ -1,92 +1,188 @@
+import { useState } from "react";
+import Footer from "../components/Footer";
 import { VALUES, CREDENTIALS } from "../data";
 
-function Footer({ navigate }) {
-  return (
-    <footer style={{ background: "#111827", padding: "32px 48px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
-      <div style={{ fontSize: 16, fontWeight: 900, letterSpacing: 1.5, color: "#fff" }}>FINSIGHT<span style={{ color: "#F59E0B" }}>ONE</span></div>
-      <div style={{ display: "flex", gap: 20 }}>
-        {[["home","Home"],["check","Check Eligibility"],["analytics","Plans"],["advisory","Advisory"]].map(([id,l]) => (
-          <span key={id} onClick={() => navigate(id)} style={{ fontSize: 12, color: "#6B7280", cursor: "pointer" }}>{l}</span>
-        ))}
-      </div>
-      <div style={{ fontSize: 11, color: "#4B5563" }}>© 2026 FinsightOne</div>
-    </footer>
-  );
-}
+const ORANGE = "#EA580C";
+const DARK   = "#111827";
+const MUTED  = "#6B7280";
+const WHITE  = "#fff";
+const GRAY   = "#F9FAFB";
+const GREEN  = "#059669";
+const INDIGO = "#4F46E5";
+const WA     = "919579453635";
+
+const STORY_PARAS = [
+  "FinsightOne was built from one observation: most Indians get rejected for loans not because they do not qualify — but because their application is not prepared correctly. We watched this happen from the inside. For 20 years, our team sat on the other side of the table — reviewing files, approving loans, and rejecting applications that should have been approved.",
+  "We rejected good businesses because their CMA was in the wrong format. We declined home loan applications because the co-applicant income was not structured correctly. We turned down MSMEs because nobody had told them that their banking turnover needed to match their GST turnover within a certain range. These were not bad borrowers. They were unprepared borrowers.",
+  "In 2025, we switched sides. FinsightOne exists to give every borrower — MSME owner, salaried professional, self-employed individual — the same quality of credit guidance that bank insiders give to their own families. Not algorithms. Not chatbots. Real ex-bankers, working for you.",
+];
+
+const WHAT_WE_DONT = [
+  { icon: "🚫", title: "We do not cold call", desc: "We never call you unsolicited. Every conversation starts when you reach out." },
+  { icon: "🚫", title: "We do not spam lenders", desc: "We never submit your file to multiple lenders simultaneously. One right lender, first time." },
+  { icon: "🚫", title: "We do not hide fees", desc: "Our fee is agreed upfront before we start. No surprises at disbursement." },
+  { icon: "🚫", title: "We do not take commission from banks", desc: "For paid advisory, we earn from you — not from the lender. That keeps our incentive aligned with yours." },
+];
 
 export default function About({ navigate }) {
   return (
-    <div>
+    <div style={{ fontFamily:"Arial,sans-serif", color:DARK }}>
+
       {/* HERO */}
-      <div style={{ background: "linear-gradient(135deg,#1E3A5F,#0F2140)", color: "#fff", padding: "56px 48px 80px", textAlign: "center" }}>
-        <div style={{ display: "inline-block", background: "#FCD34D20", border: "1px solid #FCD34D50", color: "#FCD34D", fontSize: 11, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", padding: "5px 16px", borderRadius: 100, marginBottom: 16 }}>
-          Our Story
+      <div style={{ background:"linear-gradient(135deg,#0F172A 0%,#1E1B4B 100%)", color:WHITE, padding:"clamp(56px,8vw,88px) clamp(20px,4vw,48px)", textAlign:"center" }}>
+        <div style={{ maxWidth:720, margin:"0 auto" }}>
+          <div style={{ display:"inline-block", background:"rgba(234,88,12,0.2)", border:"1px solid rgba(234,88,12,0.4)", color:"#FB923C", fontSize:11, fontWeight:700, letterSpacing:2, textTransform:"uppercase", padding:"5px 16px", borderRadius:100, marginBottom:20 }}>
+            Our Story
+          </div>
+          <h1 style={{ fontSize:"clamp(26px,3.5vw,42px)", fontWeight:900, lineHeight:1.15, marginBottom:16 }}>
+            Built by Bankers.<br />
+            <span style={{ color:"#FB923C" }}>For People Who Need Loans.</span>
+          </h1>
+          <p style={{ fontSize:16, fontWeight:600, color:"#CBD5E1", maxWidth:580, margin:"0 auto 14px", lineHeight:1.7 }}>
+            We spent 20 years inside banks rejecting loan applications that should have been approved. In 2025 we switched sides.
+          </p>
+          <p style={{ fontSize:13, color:"rgba(255,255,255,0.4)", letterSpacing:1 }}>
+            FinsightOne · Credit · Advisory · Intelligence
+          </p>
         </div>
-        <h1 style={{ fontSize: "clamp(24px,3.5vw,34px)", fontWeight: 900, marginBottom: 10 }}>
-          Built by Bankers.<br />For People Who Need Loans.
-        </h1>
-        <p style={{ fontSize: 15, color: "#93C5FD", maxWidth: 600, margin: "0 auto", lineHeight: 1.7 }}>
-          FinsightOne was built from one simple observation: most Indians get rejected for loans not because they don't qualify — but because their application is not prepared correctly.
-        </p>
       </div>
 
       {/* TEAM CARD */}
-      <div style={{ padding: "0 48px 64px", background: "#F9FAFB" }}>
-        <div style={{ maxWidth: 900, margin: "-40px auto 0", background: "#fff", borderRadius: 16, padding: 36, boxShadow: "0 16px 48px rgba(0,0,0,0.10)", position: "relative", zIndex: 10, display: "grid", gridTemplateColumns: "160px 1fr", gap: 32, alignItems: "start" }}>
-          <div style={{ width: 140, height: 140, borderRadius: "50%", background: "linear-gradient(135deg,#1E3A5F,#2563EB)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 48, flexShrink: 0 }}>🏦</div>
+      <div style={{ padding:"0 clamp(20px,4vw,48px) 0", background:GRAY }}>
+        <div style={{ maxWidth:900, margin:"-40px auto 0", background:WHITE, borderRadius:16, padding:"32px 36px", boxShadow:"0 16px 48px rgba(0,0,0,0.10)", position:"relative", zIndex:10, display:"grid", gridTemplateColumns:"auto 1fr", gap:28, alignItems:"start" }}>
+          <div style={{ width:100, height:100, borderRadius:"50%", background:`linear-gradient(135deg,${INDIGO},#0F172A)`, display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>
+            <span style={{ fontSize:36, fontWeight:900, color:WHITE }}>FO</span>
+          </div>
           <div>
-            <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: 2, textTransform: "uppercase", color: "#B45309", marginBottom: 8 }}>Expert Credit Advisory Team</div>
-            <div style={{ fontSize: 24, fontWeight: 900, marginBottom: 4 }}>FinsightOne Expert Team</div>
-            <div style={{ fontSize: 13, color: "#6B7280", marginBottom: 16 }}>20+ Years Combined · MSME & Retail Banking · Former Senior Bankers</div>
-            <div style={{ fontSize: 13, color: "#374151", lineHeight: 1.7, marginBottom: 16 }}>
+            <div style={{ fontSize:10, fontWeight:800, letterSpacing:2, textTransform:"uppercase", color:ORANGE, marginBottom:6 }}>Expert Credit Advisory Team</div>
+            <div style={{ fontSize:22, fontWeight:900, color:DARK, marginBottom:4 }}>FinsightOne Expert Team</div>
+            <div style={{ fontSize:13, color:MUTED, marginBottom:14 }}>20+ Years Combined · MSME & Retail Banking · Former Senior Bankers</div>
+            <div style={{ fontSize:13, color:"#374151", lineHeight:1.7, marginBottom:16 }}>
               Our team spent 20+ years inside banks — reviewing loan applications, rejecting files, and watching good businesses fail because their paperwork was wrong. We started FinsightOne to fix that. Every client we work with gets the same quality of guidance that bank insiders give to their own families.
             </div>
-            <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-              {["20 Yrs Banking", "MSME Credit", "Retail Lending", "Project Finance", "NPA Recovery"].map(b => (
-                <div key={b} style={{ background: "#F3F4F6", borderRadius: 8, padding: "6px 12px", fontSize: 11, fontWeight: 700, color: "#374151" }}>{b}</div>
+            <div style={{ display:"flex", gap:8, flexWrap:"wrap" }}>
+              {["20 Yrs Banking","MSME Credit","Retail Lending","Project Finance","NPA Recovery"].map(b => (
+                <div key={b} style={{ background:GRAY, borderRadius:6, padding:"5px 11px", fontSize:11, fontWeight:700, color:"#374151" }}>{b}</div>
               ))}
             </div>
           </div>
         </div>
       </div>
 
+      {/* OUR STORY */}
+      <div style={{ background:GRAY, padding:"clamp(56px,6vw,72px) clamp(20px,4vw,48px)" }}>
+        <div style={{ maxWidth:760, margin:"0 auto" }}>
+          <div style={{ textAlign:"center", marginBottom:36 }}>
+            <div style={{ fontSize:11, fontWeight:700, color:ORANGE, letterSpacing:2.5, textTransform:"uppercase", marginBottom:10 }}>Why We Exist</div>
+            <h2 style={{ fontSize:"clamp(22px,3vw,28px)", fontWeight:900, color:DARK, marginBottom:0 }}>
+              We Switched Sides in 2025
+            </h2>
+          </div>
+          {STORY_PARAS.map((p, i) => (
+            <p key={i} style={{ fontSize:14.5, color:"#374151", lineHeight:1.85, marginBottom:20, borderLeft: i === 1 ? `3px solid ${ORANGE}` : "none", paddingLeft: i === 1 ? 16 : 0, fontStyle: i === 1 ? "italic" : "normal" }}>
+              {p}
+            </p>
+          ))}
+          {/* Mission statement */}
+          <div style={{ background:DARK, borderRadius:12, padding:"20px 24px", marginTop:28, textAlign:"center" }}>
+            <div style={{ fontSize:11, fontWeight:700, color:ORANGE, letterSpacing:2, textTransform:"uppercase", marginBottom:8 }}>Our Mission</div>
+            <div style={{ fontSize:16, fontWeight:700, color:WHITE, lineHeight:1.6 }}>
+              To give every Indian borrower the same credit intelligence that bank insiders keep to themselves.
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* VALUES */}
-      <div style={{ padding: "clamp(40px,5vw,64px) clamp(20px,4vw,48px)" }}>
-        <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: 2.5, textTransform: "uppercase", color: "#B45309", marginBottom: 10, textAlign: "center" }}>Why We Are Different</div>
-        <div style={{ fontSize: 30, fontWeight: 800, textAlign: "center", marginBottom: 40, lineHeight: 1.25 }}>No Agent Commissions. No Hidden Fees.<br />Just Expert Help.</div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(180px,1fr))", gap: 16, maxWidth: 900, margin: "0 auto" }}>
-          {VALUES.map(v => (
-            <div key={v.title} style={{ textAlign: "center", padding: "24px 16px", background: "#fff", border: "1px solid #E5E7EB", borderRadius: 14 }}>
-              <div style={{ fontSize: 28, marginBottom: 10 }}>{v.icon}</div>
-              <div style={{ fontSize: 13, fontWeight: 800, marginBottom: 6 }}>{v.title}</div>
-              <div style={{ fontSize: 11.5, color: "#6B7280", lineHeight: 1.5 }}>{v.desc}</div>
-            </div>
-          ))}
+      <div style={{ background:WHITE, padding:"clamp(40px,5vw,64px) clamp(20px,4vw,48px)" }}>
+        <div style={{ maxWidth:960, margin:"0 auto" }}>
+          <div style={{ textAlign:"center", marginBottom:36 }}>
+            <div style={{ fontSize:11, fontWeight:700, color:ORANGE, letterSpacing:2.5, textTransform:"uppercase", marginBottom:10 }}>Why We Are Different</div>
+            <h2 style={{ fontSize:"clamp(22px,3vw,28px)", fontWeight:900, color:DARK }}>No Agent Commissions. No Hidden Fees.<br />Just Expert Help.</h2>
+          </div>
+          <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(200px,1fr))", gap:16 }}>
+            {VALUES.map(v => (
+              <div key={v.title} style={{ textAlign:"center", padding:"24px 16px", background:GRAY, border:"1px solid #E5E7EB", borderRadius:12 }}>
+                <div style={{ fontSize:28, marginBottom:10 }}>{v.icon}</div>
+                <div style={{ fontSize:13, fontWeight:800, color:DARK, marginBottom:6 }}>{v.title}</div>
+                <div style={{ fontSize:12, color:MUTED, lineHeight:1.6 }}>{v.desc}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* CREDENTIALS */}
-      <div style={{ padding: "clamp(40px,5vw,64px) clamp(20px,4vw,48px)", background: "#F9FAFB" }}>
-        <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: 2.5, textTransform: "uppercase", color: "#B45309", marginBottom: 10, textAlign: "center" }}>Experience</div>
-        <div style={{ fontSize: 30, fontWeight: 800, textAlign: "center", marginBottom: 32 }}>20 Years of Banking Expertise</div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", gap: 16, maxWidth: 900, margin: "0 auto" }}>
-          {CREDENTIALS.map(c => (
-            <div key={c.period} style={{ background: "#F9FAFB", borderRadius: 12, padding: 20, borderLeft: "4px solid #B45309" }}>
-              <div style={{ fontSize: 11, fontWeight: 800, color: "#B45309", letterSpacing: 1, marginBottom: 6 }}>{c.period}</div>
-              <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 4 }}>{c.title}</div>
-              <div style={{ fontSize: 12, color: "#6B7280" }}>{c.org}</div>
-            </div>
-          ))}
+      {/* CREDENTIALS TIMELINE */}
+      <div style={{ background:GRAY, padding:"clamp(40px,5vw,64px) clamp(20px,4vw,48px)" }}>
+        <div style={{ maxWidth:720, margin:"0 auto" }}>
+          <div style={{ textAlign:"center", marginBottom:36 }}>
+            <div style={{ fontSize:11, fontWeight:700, color:ORANGE, letterSpacing:2.5, textTransform:"uppercase", marginBottom:10 }}>Experience</div>
+            <h2 style={{ fontSize:"clamp(22px,3vw,28px)", fontWeight:900, color:DARK }}>20 Years of Banking Expertise</h2>
+          </div>
+          <div style={{ position:"relative" }}>
+            {/* Vertical line */}
+            <div style={{ position:"absolute", left:18, top:8, bottom:8, width:2, background:"#E5E7EB", zIndex:0 }} />
+            {CREDENTIALS.map((c, i) => (
+              <div key={c.period} style={{ display:"flex", gap:20, marginBottom: i < CREDENTIALS.length - 1 ? 24 : 0, position:"relative", zIndex:1 }}>
+                {/* Dot */}
+                <div style={{ width:38, height:38, borderRadius:"50%", background: i === CREDENTIALS.length - 1 ? ORANGE : WHITE, border:`2px solid ${i === CREDENTIALS.length - 1 ? ORANGE : "#E5E7EB"}`, display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0, marginTop:2 }}>
+                  <div style={{ width:10, height:10, borderRadius:"50%", background: i === CREDENTIALS.length - 1 ? WHITE : ORANGE }} />
+                </div>
+                {/* Content */}
+                <div style={{ background:WHITE, borderRadius:10, padding:"14px 18px", flex:1, borderLeft:`3px solid ${i === CREDENTIALS.length - 1 ? ORANGE : "#E5E7EB"}` }}>
+                  <div style={{ fontSize:11, fontWeight:800, color:ORANGE, letterSpacing:1, marginBottom:4 }}>{c.period}</div>
+                  <div style={{ fontSize:14, fontWeight:700, color:DARK, marginBottom:3 }}>{c.title}</div>
+                  <div style={{ fontSize:12.5, color:MUTED }}>{c.org}</div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* CTA */}
-      <div style={{ background: "linear-gradient(135deg,#B45309,#92400E)", padding: "clamp(32px,5vw,56px) clamp(20px,4vw,48px)", textAlign: "center", color: "#fff" }}>
-        <h2 style={{ fontSize: 28, fontWeight: 800, marginBottom: 10 }}>Ready to Work With Us?</h2>
-        <p style={{ fontSize: 14, color: "#FEF3C7", marginBottom: 24 }}>Start with a free eligibility check — no commitment, no documents needed.</p>
-        <button onClick={() => navigate("check")} style={{ background: "#fff", color: "#B45309", fontSize: 14, fontWeight: 800, padding: "14px 32px", borderRadius: 10, border: "none", cursor: "pointer" }}>
-          Check My Eligibility — Free →
-        </button>
+      {/* WHAT WE DON'T DO */}
+      <div style={{ background:WHITE, padding:"clamp(40px,5vw,64px) clamp(20px,4vw,48px)" }}>
+        <div style={{ maxWidth:960, margin:"0 auto" }}>
+          <div style={{ textAlign:"center", marginBottom:36 }}>
+            <div style={{ fontSize:11, fontWeight:700, color:ORANGE, letterSpacing:2.5, textTransform:"uppercase", marginBottom:10 }}>Honest Expectations</div>
+            <h2 style={{ fontSize:"clamp(22px,3vw,28px)", fontWeight:900, color:DARK }}>What We Don't Do</h2>
+            <p style={{ fontSize:14, color:MUTED, maxWidth:480, margin:"10px auto 0", lineHeight:1.6 }}>We think you should know this before you engage us.</p>
+          </div>
+          <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(220px,1fr))", gap:16 }}>
+            {WHAT_WE_DONT.map(w => (
+              <div key={w.title} style={{ background:GRAY, border:"1px solid #E5E7EB", borderRadius:12, padding:"18px 18px" }}>
+                <div style={{ display:"flex", alignItems:"center", gap:10, marginBottom:8 }}>
+                  <span style={{ fontSize:18 }}>{w.icon}</span>
+                  <span style={{ fontSize:13.5, fontWeight:700, color:DARK }}>{w.title}</span>
+                </div>
+                <p style={{ fontSize:12.5, color:MUTED, lineHeight:1.65, margin:0 }}>{w.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* BOTTOM CTA */}
+      <div style={{ background:`linear-gradient(135deg,#0F172A 0%,#1E1B4B 100%)`, padding:"clamp(40px,5vw,56px) clamp(20px,4vw,48px)", textAlign:"center" }}>
+        <div style={{ maxWidth:540, margin:"0 auto" }}>
+          <h2 style={{ fontSize:"clamp(22px,3vw,28px)", fontWeight:900, color:WHITE, marginBottom:12 }}>
+            Ready to Work With Us?
+          </h2>
+          <p style={{ fontSize:14, color:"#CBD5E1", marginBottom:28, lineHeight:1.7 }}>
+            Start with a free eligibility check — no commitment, no documents needed.
+          </p>
+          <div style={{ display:"flex", gap:12, justifyContent:"center", flexWrap:"wrap" }}>
+            <button onClick={() => navigate("check")} style={{ background:ORANGE, color:WHITE, fontSize:14, fontWeight:700, padding:"13px 28px", borderRadius:8, border:"none", cursor:"pointer", fontFamily:"inherit" }}>
+              Check My Eligibility — Free →
+            </button>
+            <button
+              onClick={() => window.open("https://wa.me/" + WA + "?text=" + encodeURIComponent("Hi FinsightOne, I want to know more about your team and how you work"), "_blank")}
+              style={{ background:"rgba(255,255,255,0.1)", color:WHITE, fontSize:14, fontWeight:600, padding:"13px 28px", borderRadius:8, border:"1px solid rgba(255,255,255,0.2)", cursor:"pointer", fontFamily:"inherit" }}>
+              💬 Talk to the Team
+            </button>
+          </div>
+          <div style={{ fontSize:11, color:"#475569", marginTop:16 }}>🔒 Free · No documents needed · No spam</div>
+        </div>
       </div>
 
       <Footer navigate={navigate} />
