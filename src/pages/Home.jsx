@@ -290,7 +290,7 @@ function HeroCard({ navigate }) {
 
 export default function Home({ navigate }) {
   return (
-    <div style={{ fontFamily: "Arial,'Helvetica Neue',sans-serif" }}>
+    <div style={{ fontFamily: "Arial, Helvetica Neue, sans-serif" }}>
 
       {/* ── HERO ── */}
       <div style={{ background: WHITE, padding: "clamp(24px,4vw,56px) clamp(16px,4vw,48px)", overflow: "hidden" }}>
@@ -374,12 +374,9 @@ export default function Home({ navigate }) {
               </div>
               <div style={{ padding: "10px 16px 4px", borderTop: "1px solid #F3F4F6", flex: 1 }}>
                 {svc.items.map(it => (
-                  <div key={it.name} style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", padding: "5px 0", borderBottom: "1px solid #F9FAFB" }}>
-                    <div>
-                      <span style={{ fontSize: 11, color: "#374151" }}>{it.name}</span>
-                      {it.tagline && <div style={{ fontSize: 9.5, color: "#9CA3AF", lineHeight: 1.4, marginTop: 2, maxWidth: 130 }}>{it.tagline}</div>}
-                    </div>
-                    <div style={{ display: "flex", alignItems: "center", gap: 4, flexShrink: 0, marginLeft: 8 }}>
+                  <div key={it.name} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "5px 0", borderBottom: "1px solid #F9FAFB" }}>
+                    <span style={{ fontSize: 11, color: "#374151" }}>{it.name}</span>
+                    <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
                       <span style={{ fontWeight: 700, fontSize: 10.5, color: svc.priceColor, whiteSpace: "nowrap" }}>{it.price}</span>
                       {it.sample && (<button onClick={() => window.open(it.sample,'_blank')} style={{ fontSize: 9, color: svc.btnColor, background: svc.btnBg, border: `1px solid ${svc.btnBorder}`, borderRadius: 3, padding: "1px 5px", cursor: "pointer", whiteSpace: "nowrap", fontFamily: "inherit" }}>Sample</button>)}
                     </div>
