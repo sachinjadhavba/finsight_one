@@ -116,7 +116,7 @@ export const TESTIMONIALS = [
 export const PLANS = [
   {
     name: "Credit Watch", price: "₹499", per: "/ month", featured: false,
-    desc: "Know what your banker sees that you don’t — before it becomes a problem.",
+    desc: "Know what your banker sees that you don't — before it becomes a problem.",
     features: [
       "Monthly bureau score tracking — promoter + business",
       "CC utilisation pattern alert — flags stress before banker notices",
@@ -132,7 +132,7 @@ export const PLANS = [
     features: [
       "Everything in Credit Watch",
       "Monthly review of 8 key banking ratios — DSCR, debtor days, creditor days, drawing power, turnover vs GST",
-      "Traffic light dashboard — Green / Amber / Red vs your bank’s actual benchmarks",
+      "Traffic light dashboard — Green / Amber / Red vs your bank's actual benchmarks",
       "One specific fix-it action every month with a clear deadline",
       "Quarterly enhancement readiness score — know your chances before you ask",
       "12-month enhancement calendar — when to prepare, when to approach, what to say",
@@ -148,7 +148,7 @@ export const PLANS = [
       "Enhancement application preparation — amount, justification, supporting data",
       "Banker meeting script — exactly what to say, what not to volunteer",
       "Pre-meeting mock Q&A — 10 likely credit manager questions with your answers",
-      "Post-meeting debrief — we decode what the banker’s signals mean and what to do next",
+      "Post-meeting debrief — we decode what the banker's signals mean and what to do next",
       "Rate negotiation brief — market comparable rates to use as leverage",
     ],
   },
@@ -157,7 +157,7 @@ export const PLANS = [
 export const WHAT_INCLUDED = [
   { icon: "👁️", title: "Bank-View Monitoring", desc: "We track the signals your banker watches — utilisation patterns, cheque returns, GST gaps, and bureau enquiries — before they quietly damage your creditworthiness." },
   { icon: "📈", title: "Enhancement Readiness Score", desc: "Every quarter we tell you: if you walked into your bank today and asked for a higher limit, here is your actual chance of success." },
-  { icon: "🚦", title: "Traffic Light Dashboard", desc: "Eight key banking ratios rated Green, Amber, or Red against your bank’s actual benchmarks — not generic industry averages." },
+  { icon: "🚦", title: "Traffic Light Dashboard", desc: "Eight key banking ratios rated Green, Amber, or Red against your bank's actual benchmarks — not generic industry averages." },
   { icon: "🎯", title: "Monthly Fix-It Action", desc: "One specific, precise instruction every month based on your exact numbers — not generic advice but a clear action with a deadline." },
   { icon: "📅", title: "12-Month Enhancement Calendar", desc: "A full-year roadmap showing when to prepare your financials, when to approach the bank, and what supporting data to bring." },
   { icon: "🤝", title: "Banker Meeting Prep", desc: "Meeting script, mock Q&A based on your live financials, and post-meeting debrief — so every banker conversation moves you closer to a higher limit. (Premium)" },
@@ -201,7 +201,7 @@ export const DOC_PRODUCTS = [
 export const ADVISORY_PRODUCTS = [
   {
     icon: "📈", name: "Business Loan Enhancement",
-    desc: "Your business has grown but your bank limit hasn’t kept up. We build the enhancement case the way your lender’s credit committee wants to see it — with the right numbers, narrative, and timing.",
+    desc: "Your business has grown but your bank limit hasn't kept up. We build the enhancement case the way your lender's credit committee wants to see it — with the right numbers, narrative, and timing.",
     color: "#4F46E5",
     price: "₹10,000 – ₹25,000",
     priceNote: "Based on loan size & complexity",
@@ -257,4 +257,6 @@ export const CREDENTIALS = [
   { period: "2005 – 2010", title: "Retail Lending Officer", org: "Leading Public Sector Bank · Home & Personal Loans" },
   { period: "2010 – 2018", title: "MSME Credit Manager", org: "Mid-Size Private Bank · Working Capital & Term Loans" },
   { period: "2018 – 2023", title: "Senior Credit Analyst", org: "Large NBFC · Project Finance & Structured Lending" },
-  { period: "2023 – 2024", title: "Independent Consultant", org: "MSME Advisory
+  { period: "2023 – 2024", title: "Independent Consultant", org: "MSME Advisory · Helped 100+ businesses get approved" },
+  { period: "2025 – Present", title: "Founder, FinsightOne", org: "India's Credit & Loan Advisory Platform" },
+];
