@@ -1,0 +1,409 @@
+{
+  "_meta": {
+    "version": "1.0",
+    "updated": "June 2026",
+    "purpose": "Bank-specific MSME CC/OD lending benchmarks for FinsightOne traffic light analysis. Used by Module 3A of the Master Prompt Library.",
+    "usage": "In n8n, match client's primary_bank field to a key below and pass the object as {{bank_benchmarks_json}} to the Claude prompt.",
+    "fallback_logic": "If bank not found: use PSU_DEFAULT for govt banks, PRIVATE_DEFAULT for private banks, NBFC_DEFAULT for NBFCs."
+  },
+
+  "PSU_DEFAULT": {
+    "bank_type": "PSU",
+    "display_name": "Public Sector Bank (Standard)",
+    "benchmarks": {
+      "dscr_minimum": 1.25,
+      "dscr_comfortable": 1.50,
+      "cc_utilisation_flag": 75,
+      "cc_utilisation_concern": 85,
+      "debtor_days_max": 60,
+      "debtor_days_amber": 45,
+      "creditor_days_min": 15,
+      "creditor_days_max": 45,
+      "dp_coverage_minimum": 100,
+      "turnover_gst_match_min": 90,
+      "bureau_score_minimum": 700,
+      "bureau_score_comfortable": 730,
+      "cheque_returns_amber": 1,
+      "cheque_returns_red": 3,
+      "bureau_enquiries_amber": 2,
+      "bureau_enquiries_red": 4
+    },
+    "interest_rate_range": { "min": 11.50, "max": 13.50, "typical_msme": 12.50 },
+    "enhancement_timing": {
+      "best_months": ["April", "May", "October", "November"],
+      "avoid_months": ["March", "September"],
+      "reason": "PSU banks do limit reviews post-quarter. March and September are balance sheet driven — they are conservative then."
+    },
+    "dp_formula": "75% of stock (as per latest stock statement) + 75% of debtors under 90 days − creditors",
+    "credit_culture": "Conservative. Relationship-driven. Weight repayment track record and ITR consistency above all else. Slow approval cycles (4–8 weeks). Respond well to routing more business through their account.",
+    "key_documents_for_enhancement": ["Last 2 audited balance sheets", "Last 2 ITRs", "6-month bank statement", "Current stock statement", "Debtor ageing statement"]
+  },
+
+  "PRIVATE_DEFAULT": {
+    "bank_type": "Private",
+    "display_name": "Private Sector Bank (Standard)",
+    "benchmarks": {
+      "dscr_minimum": 1.20,
+      "dscr_comfortable": 1.40,
+      "cc_utilisation_flag": 75,
+      "cc_utilisation_concern": 85,
+      "debtor_days_max": 60,
+      "debtor_days_amber": 50,
+      "creditor_days_min": 10,
+      "creditor_days_max": 45,
+      "dp_coverage_minimum": 100,
+      "turnover_gst_match_min": 88,
+      "bureau_score_minimum": 700,
+      "bureau_score_comfortable": 720,
+      "cheque_returns_amber": 1,
+      "cheque_returns_red": 2,
+      "bureau_enquiries_amber": 2,
+      "bureau_enquiries_red": 3
+    },
+    "interest_rate_range": { "min": 10.50, "max": 13.00, "typical_msme": 11.75 },
+    "enhancement_timing": {
+      "best_months": ["January", "February", "July", "August"],
+      "avoid_months": ["March", "December"],
+      "reason": "Private banks operate on calendar-year targets. H1 and post-July are hungry for good MSME book growth."
+    },
+    "dp_formula": "75% of stock + 80% of debtors under 90 days − creditors (some private banks use 80% for debtors)",
+    "credit_culture": "More aggressive. Score-driven. Faster approvals (1–3 weeks for clean files). Less relationship-weight, more data-weight. Bureau score and CC utilisation pattern are automated flags.",
+    "key_documents_for_enhancement": ["Last 2 audited balance sheets", "Last 2 ITRs", "3-month bank statement", "Current stock statement"]
+  },
+
+  "NBFC_DEFAULT": {
+    "bank_type": "NBFC",
+    "display_name": "NBFC (Standard)",
+    "benchmarks": {
+      "dscr_minimum": 1.10,
+      "dscr_comfortable": 1.30,
+      "cc_utilisation_flag": 80,
+      "cc_utilisation_concern": 90,
+      "debtor_days_max": 75,
+      "debtor_days_amber": 60,
+      "creditor_days_min": 10,
+      "creditor_days_max": 60,
+      "dp_coverage_minimum": 90,
+      "turnover_gst_match_min": 85,
+      "bureau_score_minimum": 680,
+      "bureau_score_comfortable": 700,
+      "cheque_returns_amber": 2,
+      "cheque_returns_red": 4,
+      "bureau_enquiries_amber": 3,
+      "bureau_enquiries_red": 5
+    },
+    "interest_rate_range": { "min": 13.00, "max": 20.00, "typical_msme": 16.00 },
+    "enhancement_timing": {
+      "best_months": ["Any — NBFCs are less seasonal"],
+      "avoid_months": [],
+      "reason": "NBFCs are targets-driven year round. Timing matters less than file quality."
+    },
+    "dp_formula": "70% of stock + 70% of debtors under 120 days − creditors (varies widely by NBFC)",
+    "credit_culture": "Flexible on collateral and financials. Higher rates compensate for risk. Faster but more expensive. Good for MSMEs who cannot get PSU/private bank approval. Do not stay with NBFC long-term if bank options exist.",
+    "key_documents_for_enhancement": ["Last ITR", "6-month bank statement", "Current stock or invoices"]
+  },
+
+  "SBI": {
+    "bank_type": "PSU",
+    "display_name": "State Bank of India",
+    "parent": "PSU_DEFAULT",
+    "overrides": {
+      "dscr_minimum": 1.33,
+      "dscr_comfortable": 1.50,
+      "cc_utilisation_flag": 75,
+      "bureau_score_minimum": 700,
+      "bureau_score_comfortable": 725,
+      "turnover_gst_match_min": 90
+    },
+    "interest_rate_range": { "min": 11.15, "max": 13.65, "typical_msme": 12.50, "base_rate": "MCLR + 2.50%" },
+    "enhancement_timing": {
+      "best_months": ["May", "June", "October", "November"],
+      "avoid_months": ["March", "September"],
+      "reason": "SBI does MSME limit reviews post-half-year. Credit managers have fresh targets in April and October."
+    },
+    "processing_route": "Limits above ₹25L go through MSME processing centre. Branch RM recommends; credit centre approves. Relationship with branch RM is key — they draft the internal note.",
+    "credit_culture": "Most conservative of all PSU banks. Heavy weight on ITR consistency, DSCR, and zero cheque returns. Respond strongly to routing all primary transactions through SBI. Processing time: 4–8 weeks for clean files.",
+    "enhancement_docs_required": ["Last 2 audited B/S + P&L", "Last 2 ITRs (self-attested + CA certified)", "12-month bank statement (all banks)", "Stock statement as of last month-end", "Debtor + creditor ageing", "Current sanction letter"],
+    "dp_formula": "75% of paid stock + 75% of debtors under 90 days − all creditors",
+    "negotiation_note": "SBI rates are MCLR-linked. Negotiation is possible at renewal for scores above 720. Route all transactions through SBI and mention it explicitly — branch credit managers are told to reward primary account relationships.",
+    "common_rejection_reasons": ["CC utilisation above 80% at review", "ITR income inconsistent with bank credits", "Cheque returns in prior 12 months", "Promoter score below 700", "DP below sanctioned limit"]
+  },
+
+  "Bank of Baroda": {
+    "bank_type": "PSU",
+    "display_name": "Bank of Baroda",
+    "parent": "PSU_DEFAULT",
+    "overrides": {
+      "dscr_minimum": 1.25,
+      "cc_utilisation_flag": 75,
+      "bureau_score_minimum": 700
+    },
+    "interest_rate_range": { "min": 11.00, "max": 13.50, "typical_msme": 12.25 },
+    "enhancement_timing": {
+      "best_months": ["May", "October"],
+      "avoid_months": ["March", "September"]
+    },
+    "processing_route": "MSME limits processed at Baroda MSME Sulabh branches. Faster than SBI for documented files.",
+    "credit_culture": "Moderately conservative. Slightly more open than SBI on DSCR thresholds. Active MSME book growth target. Processing time: 3–6 weeks.",
+    "dp_formula": "75% of stock + 75% of debtors under 90 days − creditors",
+    "negotiation_note": "BoB has been competitive on MSME rates to gain book share. Negotiation possible for bureau score above 715."
+  },
+
+  "Punjab National Bank": {
+    "bank_type": "PSU",
+    "display_name": "Punjab National Bank",
+    "parent": "PSU_DEFAULT",
+    "overrides": {
+      "dscr_minimum": 1.25,
+      "bureau_score_minimum": 695,
+      "cc_utilisation_flag": 80
+    },
+    "interest_rate_range": { "min": 11.25, "max": 13.75, "typical_msme": 12.75 },
+    "enhancement_timing": {
+      "best_months": ["June", "November"],
+      "avoid_months": ["March"]
+    },
+    "credit_culture": "Conservative. Slower processing than BoB. Strong relationship with North India MSME sector. Branch manager has more discretion than SBI."
+  },
+
+  "Canara Bank": {
+    "bank_type": "PSU",
+    "display_name": "Canara Bank",
+    "parent": "PSU_DEFAULT",
+    "overrides": {
+      "dscr_minimum": 1.25,
+      "bureau_score_minimum": 700,
+      "cc_utilisation_flag": 75
+    },
+    "interest_rate_range": { "min": 11.00, "max": 13.50, "typical_msme": 12.25 },
+    "enhancement_timing": {
+      "best_months": ["May", "October"],
+      "avoid_months": ["March", "September"]
+    },
+    "credit_culture": "Strong in South India MSME sector. Moderately conservative. Good for manufacturing MSMEs."
+  },
+
+  "Union Bank": {
+    "bank_type": "PSU",
+    "display_name": "Union Bank of India",
+    "parent": "PSU_DEFAULT",
+    "overrides": {
+      "bureau_score_minimum": 695
+    },
+    "interest_rate_range": { "min": 11.15, "max": 13.65, "typical_msme": 12.50 },
+    "enhancement_timing": {
+      "best_months": ["May", "October"]
+    }
+  },
+
+  "HDFC Bank": {
+    "bank_type": "Private",
+    "display_name": "HDFC Bank",
+    "parent": "PRIVATE_DEFAULT",
+    "overrides": {
+      "dscr_minimum": 1.20,
+      "dscr_comfortable": 1.40,
+      "cc_utilisation_flag": 75,
+      "cc_utilisation_concern": 85,
+      "bureau_score_minimum": 700,
+      "bureau_score_comfortable": 720,
+      "turnover_gst_match_min": 88,
+      "cheque_returns_red": 2
+    },
+    "interest_rate_range": { "min": 10.75, "max": 13.00, "typical_msme": 11.75, "base_rate": "RLLR + spread" },
+    "enhancement_timing": {
+      "best_months": ["January", "February", "July", "August"],
+      "avoid_months": ["March", "December"],
+      "reason": "HDFC runs half-yearly MSME book reviews. Relationship managers have fresh enhancement targets in Jan and July."
+    },
+    "processing_route": "Most MSME CC/OD processed at branch level up to ₹5Cr. Above ₹5Cr goes to regional credit. Fast for clean files — 5–10 business days.",
+    "credit_culture": "Data-driven. Automated bureau and utilisation triggers. CC utilisation above 80% gets auto-flagged for closer monitoring. Bureau score below 700 rarely gets manual override. Faster but less forgiving on bureau.",
+    "enhancement_docs_required": ["Last 2 audited B/S + P&L", "Last 2 ITRs", "3-month bank statement", "Current stock statement"],
+    "dp_formula": "80% of stock + 80% of debtors under 90 days − creditors",
+    "negotiation_note": "HDFC negotiates on rate for bureau 720+ clients. They respond to competitor rate quotes — especially from ICICI and Axis. Mention the competitor rate calmly, not as a threat.",
+    "common_rejection_reasons": ["Bureau score below 700", "CC utilisation above 85% at review date", "Any cheque return in prior 6 months", "GST mismatch above 15%"]
+  },
+
+  "ICICI Bank": {
+    "bank_type": "Private",
+    "display_name": "ICICI Bank",
+    "parent": "PRIVATE_DEFAULT",
+    "overrides": {
+      "dscr_minimum": 1.20,
+      "cc_utilisation_flag": 75,
+      "bureau_score_minimum": 700,
+      "bureau_score_comfortable": 720
+    },
+    "interest_rate_range": { "min": 10.50, "max": 12.75, "typical_msme": 11.50, "base_rate": "RLLR + spread" },
+    "enhancement_timing": {
+      "best_months": ["January", "July", "August"],
+      "avoid_months": ["March", "December"]
+    },
+    "processing_route": "ICICI iMobile and digital-first for smaller limits. Above ₹2Cr — relationship manager driven. Fast digital processing for clean files.",
+    "credit_culture": "Most aggressive of large private banks for MSME acquisition. Willing to match competitor rates. Strong digital bureau integration — bureau flags are instant. Good for growing MSME businesses with strong GST data.",
+    "dp_formula": "75% of stock + 80% of debtors under 90 days − creditors",
+    "negotiation_note": "ICICI is the most negotiation-friendly on rates. They actively compete with HDFC. Bureau 720+ with clean utilisation can get 10.75–11.25%.",
+    "common_rejection_reasons": ["Bureau score below 700", "Multiple hard enquiries in 90 days", "GST filing gaps"]
+  },
+
+  "Axis Bank": {
+    "bank_type": "Private",
+    "display_name": "Axis Bank",
+    "parent": "PRIVATE_DEFAULT",
+    "overrides": {
+      "dscr_minimum": 1.20,
+      "cc_utilisation_flag": 75,
+      "cc_utilisation_concern": 85,
+      "bureau_score_minimum": 700,
+      "bureau_score_comfortable": 720
+    },
+    "interest_rate_range": { "min": 10.75, "max": 13.00, "typical_msme": 11.75 },
+    "enhancement_timing": {
+      "best_months": ["February", "August"],
+      "avoid_months": ["March", "September"]
+    },
+    "processing_route": "SME Business Banking vertical. Dedicated SME RM for limits above ₹1Cr. Processing 7–14 days.",
+    "credit_culture": "Balanced between data-driven and relationship. More flexible than HDFC on DSCR thresholds for established customers. Responds well to long banking vintage.",
+    "dp_formula": "75% of stock + 75% of debtors under 90 days − creditors",
+    "negotiation_note": "Axis responds to vintage-based loyalty arguments. 5+ year customers with clean record can get 0.25–0.50% below standard rate."
+  },
+
+  "Kotak Mahindra Bank": {
+    "bank_type": "Private",
+    "display_name": "Kotak Mahindra Bank",
+    "parent": "PRIVATE_DEFAULT",
+    "overrides": {
+      "dscr_minimum": 1.25,
+      "bureau_score_minimum": 710,
+      "bureau_score_comfortable": 730,
+      "cc_utilisation_flag": 70
+    },
+    "interest_rate_range": { "min": 11.00, "max": 13.50, "typical_msme": 12.25 },
+    "enhancement_timing": {
+      "best_months": ["February", "August"]
+    },
+    "credit_culture": "Conservative for a private bank. Higher bureau score expectation. Good for high-income professional MSME owners. Selective about sectors.",
+    "dp_formula": "75% of stock + 75% of debtors under 90 days − creditors",
+    "negotiation_note": "Less negotiation-friendly than ICICI/HDFC. Kotak maintains standard rates and rarely moves on price."
+  },
+
+  "IndusInd Bank": {
+    "bank_type": "Private",
+    "display_name": "IndusInd Bank",
+    "parent": "PRIVATE_DEFAULT",
+    "overrides": {
+      "dscr_minimum": 1.20,
+      "bureau_score_minimum": 695,
+      "cc_utilisation_flag": 80
+    },
+    "interest_rate_range": { "min": 11.25, "max": 14.00, "typical_msme": 12.50 },
+    "enhancement_timing": {
+      "best_months": ["Any — target-driven throughout year"]
+    },
+    "credit_culture": "Aggressive MSME growth targets. More flexible on bureau and collateral than HDFC/ICICI. Good option for businesses needing faster approval or with slightly lower scores."
+  },
+
+  "IDFC First Bank": {
+    "bank_type": "Private",
+    "display_name": "IDFC First Bank",
+    "parent": "PRIVATE_DEFAULT",
+    "overrides": {
+      "dscr_minimum": 1.15,
+      "bureau_score_minimum": 690,
+      "cc_utilisation_flag": 80,
+      "turnover_gst_match_min": 85
+    },
+    "interest_rate_range": { "min": 11.50, "max": 15.00, "typical_msme": 13.00 },
+    "enhancement_timing": {
+      "best_months": ["Any"]
+    },
+    "credit_culture": "Growth-oriented. Competitive on digital MSME products. Less history than older banks — more flexible on criteria but slightly higher rates."
+  },
+
+  "Yes Bank": {
+    "bank_type": "Private",
+    "display_name": "Yes Bank",
+    "parent": "PRIVATE_DEFAULT",
+    "overrides": {
+      "dscr_minimum": 1.25,
+      "bureau_score_minimum": 700,
+      "cc_utilisation_flag": 75
+    },
+    "interest_rate_range": { "min": 11.50, "max": 14.50, "typical_msme": 13.00 },
+    "enhancement_timing": {
+      "best_months": ["February", "August"]
+    },
+    "credit_culture": "Rebuilding MSME book post-2020 crisis. Stricter on documentation. Slightly higher rates. Relationship manager quality varies by branch.",
+    "analyst_note": "Advise clients to keep Yes Bank as secondary bank only. Do not recommend building primary banking relationship with Yes Bank currently."
+  },
+
+  "Bajaj Finance": {
+    "bank_type": "NBFC",
+    "display_name": "Bajaj Finance Limited",
+    "parent": "NBFC_DEFAULT",
+    "overrides": {
+      "bureau_score_minimum": 685,
+      "cc_utilisation_flag": 85,
+      "dscr_minimum": 1.10
+    },
+    "interest_rate_range": { "min": 14.00, "max": 22.00, "typical_msme": 17.00 },
+    "enhancement_timing": {
+      "best_months": ["Any"]
+    },
+    "credit_culture": "Fully digital underwriting. Fast (24–72 hours). High rates. Good for bridge finance or clients who cannot get bank approval. Advise to refinance to bank CC within 12–18 months.",
+    "analyst_note": "Bajaj Finance CC is a last resort for MSME clients. Rates are 4–6% above PSU banks. Always recommend moving to bank product if possible."
+  },
+
+  "Tata Capital": {
+    "bank_type": "NBFC",
+    "display_name": "Tata Capital",
+    "parent": "NBFC_DEFAULT",
+    "overrides": {
+      "bureau_score_minimum": 690,
+      "dscr_minimum": 1.15
+    },
+    "interest_rate_range": { "min": 13.50, "max": 19.00, "typical_msme": 16.50 },
+    "credit_culture": "More conservative than Bajaj. Tata brand brings better underwriting standards. Suitable for larger MSME working capital where banks are slow."
+  },
+
+  "Ugro Capital": {
+    "bank_type": "NBFC",
+    "display_name": "Ugro Capital",
+    "parent": "NBFC_DEFAULT",
+    "overrides": {
+      "bureau_score_minimum": 675,
+      "dscr_minimum": 1.05,
+      "turnover_gst_match_min": 80
+    },
+    "interest_rate_range": { "min": 15.00, "max": 24.00, "typical_msme": 18.00 },
+    "credit_culture": "Sector-focused NBFC. Specialises in 8 MSME sectors. Uses GST data heavily for underwriting. Good for newer businesses with thin ITR history."
+  },
+
+  "Lendingkart": {
+    "bank_type": "NBFC",
+    "display_name": "Lendingkart Finance",
+    "parent": "NBFC_DEFAULT",
+    "overrides": {
+      "bureau_score_minimum": 650,
+      "dscr_minimum": 1.00,
+      "turnover_gst_match_min": 80
+    },
+    "interest_rate_range": { "min": 15.00, "max": 27.00, "typical_msme": 19.00 },
+    "credit_culture": "Digital-only. Cash flow-based underwriting from bank statements and GST. No physical documents needed. Very fast (hours). Very expensive. Only for urgent bridge needs.",
+    "analyst_note": "Lendingkart rates are very high. Only recommend if client has exhausted all bank options and needs funds urgently. Always pair with a plan to refinance."
+  },
+
+  "_market_rates_june_2026": {
+    "_note": "Current market CC/OD rates for MSME clients with bureau score 700–750, 3+ year vintage, clean repayment. Updated June 2026. Used by Module 4C (Rate Negotiation Brief).",
+    "rates": [
+      { "bank": "ICICI Bank", "product": "Working Capital OD", "rate_min": 10.50, "rate_max": 12.00, "profile": "CIBIL 730+, ₹2Cr+ turnover, 3yr vintage" },
+      { "bank": "HDFC Bank", "product": "CC / OD", "rate_min": 10.75, "rate_max": 12.25, "profile": "CIBIL 720+, 3yr vintage, clean 12 months" },
+      { "bank": "Axis Bank", "product": "CC (MSME)", "rate_min": 10.75, "rate_max": 12.50, "profile": "CIBIL 720+, 5yr vintage preferred" },
+      { "bank": "SBI", "product": "Cash Credit", "rate_min": 11.15, "rate_max": 13.65, "profile": "MCLR-linked. CIBIL 700+, ITR consistent" },
+      { "bank": "Bank of Baroda", "product": "CC (MSME)", "rate_min": 11.00, "rate_max": 13.50, "profile": "CIBIL 700+, clean repayment" },
+      { "bank": "Kotak Mahindra", "product": "Business OD", "rate_min": 11.00, "rate_max": 13.50, "profile": "CIBIL 710+, professional/high-income promoter" },
+      { "bank": "IndusInd Bank", "product": "Working Capital CC", "rate_min": 11.25, "rate_max": 14.00, "profile": "CIBIL 695+, flexible on collateral" },
+      { "bank": "IDFC First Bank", "product": "Business CC", "rate_min": 11.50, "rate_max": 15.00, "profile": "CIBIL 690+, growth-stage MSME" }
+    ]
+  }
+}
