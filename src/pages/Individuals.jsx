@@ -20,7 +20,7 @@ function IndRow({ label, value, note, rag }) {
   const c = RAG[rag];
   return (
     <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", padding:"5px 0", borderBottom:"1px solid #F3F4F6", gap:8 }}>
-      <span style={{ fontSize:11, color:MUTED, fontWeight:600, minWidth:90 }}>{label}</span>
+      <span style={{ fontSize:11, color:"#CBD5E1", fontWeight:600, minWidth:90 }}>{label}</span>
       <div style={{ display:"flex", alignItems:"center", gap:6, flex:1, justifyContent:"flex-end" }}>
         <span style={{ fontSize:11.5, fontWeight:700, color:DARK }}>{value}</span>
         <span style={{ fontSize:10, color:c.text, background:c.bg, border:`1px solid ${c.border}`, borderRadius:10, padding:"1px 7px", whiteSpace:"nowrap" }}>{note}</span>
@@ -105,7 +105,7 @@ export default function Individuals({ navigate }) {
     <div style={{ fontFamily:"Arial,sans-serif", color:DARK }}>
 
       {/* HERO */}
-      <div style={{ background:WHITE, padding:"clamp(44px,6vw,72px) clamp(20px,4vw,48px)", borderBottom:"1px solid #E5E7EB", textAlign:"center" }}>
+      <div style={{ background:"linear-gradient(135deg,#0F172A 0%,#1E1B4B 100%)", padding:"clamp(44px,6vw,72px) clamp(20px,4vw,48px)", textAlign:"center" }}>
         <div style={{ maxWidth:780, margin:"0 auto" }}>
           <div style={{ display:"inline-block", background:"rgba(234,88,12,0.1)", border:"1px solid rgba(234,88,12,0.3)", color:ORANGE, fontSize:11, fontWeight:700, letterSpacing:2, textTransform:"uppercase", padding:"5px 16px", borderRadius:100, marginBottom:20 }}>
             For Salaried & Self-Employed Individuals
