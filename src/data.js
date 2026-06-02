@@ -44,17 +44,16 @@ export const SERVICES = [
   {
     id: "s3", icon: "📄",
     num: "Step 03 · Loan Documents",
-    title: "Loan Appraisal & CMA Documents",
-    pitch: "Bank-ready LAN, CMA and DPR prepared by ex-bankers — exactly the way lenders read a file.",
+    title: "Loan Appraisal & Project Reports",
+    pitch: "Bank-ready LAN and DPR prepared by ex-bankers — exactly the way lenders read a file.",
     items: [
-      { name: "Loan Appraisal Note 1–2 Cr",   price: "₹3,999", sample: "/reports/doc-01-cam-small.html" },
-      { name: "Loan Appraisal Note 2–5 Cr",   price: "₹7,999", sample: "/reports/doc-02-cam-large.html" },
-      { name: "Loan Appraisal Note Above 5 Cr", price: "On Call", sample: "/reports/doc-03-lan-5to10cr.html" },
-      { name: "CMA Financial Analysis 1–2 Cr", price: "₹4,999", sample: "/reports/cma-01-interpretation-1to2cr.html" },
-      { name: "CMA Financial Analysis 2–5 Cr", price: "₹8,999", sample: "/reports/cma-02-interpretation-2to5cr.html" },
-      { name: "CMA Above 5 Cr",                price: "On Call", sample: "/reports/cma-03-interpretation-5to10cr.html" },
-      { name: "Project Report (DPR) Upto 5 Cr", price: "₹4,999" },
-      { name: "DPR Above 5 Cr",                price: "₹9,999" },
+      { name: "Loan Appraisal Note Upto 2 Cr",    price: "₹3,999", sample: "/reports/doc-01-cam-small.html" },
+      { name: "Loan Appraisal Note Upto 5 Cr",    price: "₹4,999", sample: "/reports/doc-02-cam-large.html" },
+      { name: "Loan Appraisal Note Above 5 Cr",   price: "₹9,999", sample: "/reports/doc-03-lan-5to10cr.html" },
+      { name: "CMA Financial Analysis Upto 5 Cr", price: "₹4,999", sample: "/reports/cma-01-interpretation-1to2cr.html" },
+      { name: "CMA Above 5 Cr",                   price: "₹9,999", sample: "/reports/cma-02-interpretation-2to5cr.html" },
+      { name: "Project Report (DPR) Upto 5 Cr",  price: "₹4,999", sample: "/reports/dpr-02-greenfield-upto5cr.html" },
+      { name: "DPR Above 5 Cr",                   price: "₹9,999", sample: "/reports/dpr-above-5cr-template.html" },
     ],
     btn: "Get My Documents →", page: "docs",
     numColor: "#0A1929", priceColor: "#0A1929",
@@ -67,9 +66,9 @@ export const SERVICES = [
     title: "Keep Your Limits Growing",
     pitch: "Your finances, banker-ready every single month.",
     items: [
-      { name: "Credit Watch",    price: "₹499/mo",   tagline: "Know what your banker sees that you don't — before it becomes a problem." },
-      { name: "Business Health", price: "₹2,999/mo", tagline: "Stay enhancement-ready all year and grow your banking limits.", sample: "/reports/s2-03-loan-readiness-plan.html", popular: true },
-      { name: "Premium",         price: "₹4,999/mo", tagline: "Active guidance through every banker conversation and enhancement." },
+      { name: "Credit Watch",    price: "₹499/mo"   },
+      { name: "Business Health", price: "₹2,999/mo", sample: "/reports/s2-03-loan-readiness-plan.html", popular: true },
+      { name: "Premium",         price: "₹4,999/mo" },
     ],
     btn: "View Plans →", page: "analytics",
     numColor: "#16A34A", priceColor: "#16A34A",
@@ -116,7 +115,7 @@ export const TESTIMONIALS = [
 
 export const PLANS = [
   {
-    name: "Credit Watch", price: "₹499", per: "/ month", featured: false, sampleReport: "/reports/credit-watch-monthly-report.html",
+    name: "Credit Watch", price: "₹499", per: "/ month", featured: false,
     desc: "Know what your banker sees that you don't — before it becomes a problem.",
     features: [
       "Monthly bureau score tracking — promoter + business",
@@ -128,7 +127,7 @@ export const PLANS = [
     ],
   },
   {
-    name: "Business Health", price: "₹2,999", per: "/ month", featured: true, badge: "Most Popular", sampleReport: "/reports/monthly-business-health-report.html",
+    name: "Business Health", price: "₹2,999", per: "/ month", featured: true, badge: "Most Popular",
     desc: "For MSME owners who want to stay enhancement-ready all year and grow their banking limits.",
     features: [
       "Everything in Credit Watch",
@@ -140,7 +139,7 @@ export const PLANS = [
     ],
   },
   {
-    name: "Premium", price: "₹4,999", per: "/ month", featured: false, sampleReport: "/reports/premium-monthly-report.html",
+    name: "Premium", price: "₹4,999", per: "/ month", featured: false,
     desc: "For growing businesses that want active guidance through every banker conversation and enhancement.",
     features: [
       "Everything in Business Health",
@@ -166,95 +165,37 @@ export const WHAT_INCLUDED = [
 
 export const DOC_PRODUCTS = [
   {
-    icon: "📑",
-    name: "Loan Appraisal Note (LAN)",
-    desc: "The main document banks use to decide on your loan — prepared by ex-bankers in the exact format lenders read. Covers business profile, income analysis, repayment capacity, security, and proposal strengths.",
-    price: "₹3,999 – ₹7,999",
-    priceDetail: "1–2 Cr: ₹3,999  |  2–5 Cr: ₹7,999  |  Above 5 Cr: Confirm on Call",
-    who: "For: All business loan applicants",
-    samples: [
-      { label: "Sample — 1–2 Cr",     url: "/reports/doc-01-cam-small.html" },
-      { label: "Sample — 2–5 Cr",     url: "/reports/doc-02-cam-large.html" },
-      { label: "Sample — 5–10 Cr",    url: "/reports/doc-03-lan-5to10cr.html" },
-      { label: "Sample — Above 10 Cr",url: "/reports/doc-04-lan-above10cr.html" },
-    ],
+    icon: "📑", name: "Loan Application Report (CAM)",
+    desc: "The main document banks use to decide on your loan. We prepare it in the exact format your bank uses — covering your business, income, assets, and repayment ability.",
+    price: "₹1,499 – ₹2,00,000", who: "For: All loan applicants",
   },
   {
-    icon: "📊",
-    name: "CMA Financial Analysis",
-    desc: "A detailed 3 to 5 year financial analysis required by most banks for loans above ₹10 Lakh. Prepared per RBI CMA format — includes Balance Sheet, P&L, Working Capital assessment, DSCR, and ratio analysis with FinsightOne advisory interpretation.",
-    price: "₹4,999 – ₹8,999",
-    priceDetail: "1–2 Cr: ₹4,999  |  2–5 Cr: ₹8,999  |  Above 5 Cr: Confirm on Call",
-    who: "For: Business loan applicants",
-    samples: [
-      { label: "Sample — 1–2 Cr",     url: "/reports/cma-01-interpretation-1to2cr.html" },
-      { label: "Sample — 2–5 Cr",     url: "/reports/cma-02-interpretation-2to5cr.html" },
-      { label: "Sample — 5–10 Cr",    url: "/reports/cma-03-interpretation-5to10cr.html" },
-      { label: "Sample — Above 10 Cr",url: "/reports/cma-04-interpretation-above10cr.html" },
-    ],
+    icon: "📊", name: "Financial Analysis Report (CMA)",
+    desc: "A detailed 3 to 5 year analysis of your business finances — required by most banks for loans above ₹10 lakh. We prepare all 7 mandatory statements as per RBI guidelines.",
+    price: "₹3,999 – ₹50,000+", who: "For: Business loan applicants",
   },
   {
-    icon: "📘",
-    name: "Detailed Project Report (DPR)",
-    desc: "For new projects and greenfield expansions — a complete project report covering technical feasibility, financial projections, break-even analysis, and implementation schedule. Required by banks for project finance above ₹2 Crore.",
-    price: "₹9,999",
-    priceDetail: "2–5 Cr: ₹9,999  |  Above 5 Cr: Confirm on Call",
-    who: "For: New project / expansion loans",
-    samples: [],
+    icon: "📘", name: "Full Project Report (DPR)",
+    desc: "For larger loans above ₹25 crore — a complete project report covering viability, projections, risk analysis, and compliance. Prepared as per RBI 2025 Project Finance Directions.",
+    price: "₹40,000 – ₹3,50,000", who: "For: Large project / infrastructure loans",
   },
 ];
 
 export const ADVISORY_PRODUCTS = [
   {
-    icon: "📈",
-    name: "Business Loan Enhancement",
-    desc: "Your existing CC or TL limit is too low for your current business scale. We build the case for enhancement — structuring the request, preparing updated financials, and presenting it to your lender in the format their credit committee expects.",
-    price: "₹10,000 – ₹25,000",
-    priceNote: "Excl. GST · Based on loan size and complexity",
-    who: "For: Existing loan holders needing higher limit",
-    bullets: [
-      "Credit limit enhancement strategy",
-      "Updated CMA and banking analysis",
-      "Lender presentation preparation",
-      "CC / TL restructuring if needed",
-      "End-to-end submission support",
-    ],
-    outcome: "Typical outcome: CC limit enhanced within 6–10 weeks of engagement",
-    color: "#4F46E5",
+    icon: "🏗️", name: "How to Structure Your Loan",
+    desc: "Advice on the best loan type, amount, tenure, and lender for your specific situation — so you get maximum approval at minimum cost.",
+    price: "₹15,000 – ₹50,000", who: "For: First-time or large loan borrowers",
   },
   {
-    icon: "🏢",
-    name: "New Business Loan Setup",
-    desc: "Your business is not yet bankable — vintage is short, income documentation is incomplete, or banking conduct needs work. We build a 90-day roadmap to make you lender-ready, then structure and submit the right facility to the right bank.",
-    price: "₹10,000 – ₹20,000",
-    priceNote: "Excl. GST · Based on loan size and complexity",
-    who: "For: New businesses or first-time borrowers",
-    bullets: [
-      "Bankability gap assessment",
-      "30 / 60 / 90-day readiness roadmap",
-      "Banking conduct improvement plan",
-      "Lender shortlisting and approach strategy",
-      "Full loan file preparation and submission",
-    ],
-    outcome: "Typical outcome: First facility sanctioned within 3–4 months of engagement",
-    color: "#EA580C",
+    icon: "🔄", name: "Loan Recovery & Restructuring",
+    desc: "If you are struggling with loan repayments — we advise on how to restructure, negotiate with the bank, and avoid your loan going bad.",
+    price: "₹25,000 – ₹75,000", who: "For: Businesses under financial stress",
   },
   {
-    icon: "🛡️",
-    name: "NPA Prevention Advisory",
-    desc: "Your loan repayments are under stress — missed EMIs, overdue CC, or a TL that is slipping. We diagnose the situation, negotiate restructuring with your lender, and build a recovery plan that keeps your account standard and your CIBIL intact.",
-    price: "₹20,000 – ₹50,000",
-    priceNote: "Excl. GST · Based on outstanding exposure and complexity",
-    who: "For: Businesses with repayment concerns",
-    bullets: [
-      "NPA risk assessment and timeline",
-      "Bank negotiation strategy",
-      "OTS / restructuring proposal preparation",
-      "CIBIL damage control plan",
-      "Post-resolution monitoring support",
-    ],
-    outcome: "Typical outcome: Restructuring agreed and account regularised within 60–90 days",
-    color: "#059669",
+    icon: "📈", name: "Increase Your Loan Limit",
+    desc: "Already have a loan but need more? We advise on how to enhance your existing credit limit with your current bank or move to a better lender.",
+    price: "₹10,000 – ₹25,000", who: "For: Existing loan holders",
   },
 ];
 
@@ -272,5 +213,4 @@ export const CREDENTIALS = [
   { period: "2023 – 2024", title: "Independent Consultant", org: "MSME Advisory · Helped 100+ businesses get approved" },
   { period: "2025 – Present", title: "Founder, FinsightOne", org: "India's Credit & Loan Advisory Platform" },
 ];
-
-
+             
