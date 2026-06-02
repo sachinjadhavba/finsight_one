@@ -234,20 +234,42 @@ export default function Readiness({ navigate }) {
           <p style={{ fontSize: 14, color: MUTED, maxWidth: 520, margin: "0 auto" }}>Start free. Go deeper when you need to. Every paid report includes a 20-minute expert consultation.</p>
         </div>
 
+        <style>{`
+          @media(max-width:768px){
+            .rcard-inner { display: block !important; }
+            .rcard-left  { display: block !important; }
+            .rcard-step  { display: inline-flex !important; margin-bottom: 10px !important; }
+            .rcard-body  { padding-left: 0 !important; }
+            .rcard-right {
+              width: 100% !important;
+              flex-direction: row !important;
+              align-items: center !important;
+              justify-content: space-between !important;
+              border-top: 1px solid #E5E7EB;
+              margin-top: 14px !important;
+              padding-top: 12px !important;
+              gap: 10px !important;
+            }
+            .rcard-price { text-align: left !important; }
+            .rcard-cta-wrap { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; flex: 1; }
+            .rcard-cta { font-size: 13px !important; padding: 10px 14px !important; white-space: nowrap !important; }
+            .rcard-sample { font-size: 11px !important; }
+          }
+        `}</style>
+
         <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
           {PRODUCTS.map((p) => (
             <div key={p.id} style={{ background: WHITE, border: `1px solid ${p.border}`, borderLeft: `4px solid ${p.color}`, borderRadius: 12, overflow: "hidden" }}>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr minmax(0,auto)", alignItems: "start", padding: "clamp(14px,3vw,20px) clamp(12px,3vw,24px)", gap: "clamp(8px,2vw,16px)" }}>
+              <div className="rcard-inner" style={{ display: "grid", gridTemplateColumns: "1fr minmax(0,auto)", alignItems: "start", padding: "clamp(14px,3vw,20px) clamp(16px,3vw,24px)", gap: "clamp(8px,2vw,16px)" }}>
 
-                {/* LEFT */}
-                <div style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
-                  <div style={{ background: p.bg, border: `1px solid ${p.border}`, borderRadius: 8, padding: "4px 10px", flexShrink: 0, marginTop: 2 }}>
+                {/* LEFT — step badge + content */}
+                <div className="rcard-left" style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
+                  <div className="rcard-step" style={{ background: p.bg, border: `1px solid ${p.border}`, borderRadius: 8, padding: "4px 10px", flexShrink: 0, marginTop: 2 }}>
                     <div style={{ fontSize: 9, fontWeight: 800, color: p.color, letterSpacing: 1.5, textTransform: "uppercase" }}>{p.step}</div>
                   </div>
-                  <div style={{ flex: 1 }}>
+                  <div className="rcard-body" style={{ flex: 1 }}>
                     <div style={{ fontSize: 16, fontWeight: 800, color: DARK, marginBottom: 4 }}>{p.label}</div>
                     <div style={{ fontSize: 13, color: MUTED, lineHeight: 1.6, marginBottom: 10 }}>{p.desc}</div>
-                    {/* Bullets */}
                     <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
                       {p.bullets.map((b, i) => (
                         <div key={i} style={{ display: "flex", alignItems: "center", gap: 5, background: p.bg, border: `1px solid ${p.border}`, borderRadius: 20, padding: "3px 10px", fontSize: 11.5, color: p.color, fontWeight: 500 }}>
@@ -258,23 +280,26 @@ export default function Readiness({ navigate }) {
                   </div>
                 </div>
 
-                {/* RIGHT */}
-                <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 10, flexShrink: 0, minWidth: 0, width: "clamp(130px,38%,175px)" }}>
-                  <div style={{ textAlign: "right" }}>
+                {/* RIGHT — price + CTA */}
+                <div className="rcard-right" style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 10, flexShrink: 0, minWidth: 0, width: "clamp(130px,38%,175px)" }}>
+                  <div className="rcard-price" style={{ textAlign: "right" }}>
                     <div style={{ fontSize: 22, fontWeight: 900, color: p.color }}>{p.price}</div>
                     <div style={{ fontSize: 11, color: MUTED }}>{p.priceNote}</div>
                   </div>
-                  <button
-                    onClick={p.waFlow ? handleWA : () => handleOrder(p)}
-                    style={{ background: p.ctaBg, color: p.ctaColor, fontSize: 12, fontWeight: 700, padding: "10px 18px", borderRadius: 8, border: "none", cursor: "pointer", fontFamily: "inherit", whiteSpace: "nowrap", width: "100%", textAlign: "center" }}>
-                    {p.cta}
-                  </button>
-                  {p.sample && (
-                    <a href={p.sample} target="_blank" rel="noreferrer"
-                      style={{ fontSize: 11.5, color: INDIGO, fontWeight: 600, textDecoration: "none", textAlign: "center" }}>
-                      View Sample Report →
-                    </a>
-                  )}
+                  <div className="rcard-cta-wrap">
+                    <button
+                      className="rcard-cta"
+                      onClick={p.waFlow ? handleWA : () => handleOrder(p)}
+                      style={{ background: p.ctaBg, color: p.ctaColor, fontSize: 12, fontWeight: 700, padding: "10px 18px", borderRadius: 8, border: "none", cursor: "pointer", fontFamily: "inherit", whiteSpace: "nowrap", width: "100%", textAlign: "center" }}>
+                      {p.cta}
+                    </button>
+                    {p.sample && (
+                      <a className="rcard-sample" href={p.sample} target="_blank" rel="noreferrer"
+                        style={{ fontSize: 11.5, color: INDIGO, fontWeight: 600, textDecoration: "none", textAlign: "center" }}>
+                        View Sample Report →
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
