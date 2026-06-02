@@ -22,7 +22,7 @@ export default function App() {
   const navigate = (p) => { setPage(p); window.scrollTo(0, 0); };
 
   return (
-    <div style={{ fontFamily: "Arial,'Helvetica Neue',sans-serif", background: "#fff", color: "#111827", minWidth: 320 }}>
+    <div style={{ fontFamily: "Arial,sans-serif", background: "#fff", color: "#111827", minWidth: 320 }}>
       <Nav page={page} navigate={navigate} />
       {page === "home"         && <Home navigate={navigate} />}
       {page === "check"        && <Check navigate={navigate} />}
