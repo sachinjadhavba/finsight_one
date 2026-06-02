@@ -18,7 +18,7 @@ export default function Analytics({ navigate }) {
   return (
     <div>
       {/* HERO */}
-      <div style={{ background: "linear-gradient(135deg,#064E3B,#022C22)", color: "#fff", padding: "clamp(32px,5vw,56px) clamp(20px,4vw,48px)", textAlign: "center" }}>
+      <div style={{ background: "linear-gradient(135deg,#0F172A 0%,#1E1B4B 100%)", color: "#fff", padding: "clamp(32px,5vw,56px) clamp(20px,4vw,48px)", textAlign: "center" }}>
         <div style={{ display: "inline-block", background: "#34D39920", border: "1px solid #34D39950", color: "#34D399", fontSize: 11, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", padding: "5px 16px", borderRadius: 100, marginBottom: 16 }}>
           Monthly Plans · Cancel Anytime
         </div>
