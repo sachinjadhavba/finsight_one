@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DPR – Greenfield Project – Savitri Agro Processing Pvt Ltd</title>
+<style>
+  :root {
+    --navy: #0d3b1f;
+    --mid: #1a6b3a;
+    --light: #e6f4ec;
+    --accent: #f0a500;
+    --text: #1a1a2e;
+    --muted: #6b7280;
+    --border: #d1d5db;
+    --bg: #f8fafc;
+    --yellow: #fef9c3;
+    --blue: #0f2044;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:'Segoe UI',Arial,sans-serif; color:var(--text); background:#f0f4f8; font-size:14px; line-height:1.65; }
+
+  /* COVER */
+  .cover {
+    background:linear-gradient(155deg,#0d3b1f 50%,#1a6b3a 100%);
+    color:white; min-height:100vh; display:flex; flex-direction:column;
+    justify-content:center; padding:60px 80px; position:relative; overflow:hidden;
+  }
+  .cover::before { content:''; position:absolute; top:-80px; right:-80px; width:460px; height:460px; background:rgba(240,165,0,0.12); border-radius:50%; }
+  .cover::after  { content:''; position:absolute; bottom:-80px; left:-60px; width:300px; height:300px; background:rgba(255,255,255,0.05); border-radius:50%; }
+  .brand-tag { font-size:12px; font-weight:700; letter-spacing:3px; color:#a8d5b0; text-transform:uppercase; margin-bottom:36px; }
+  .doc-chip { background:var(--accent); color:#0d3b1f; padding:5px 16px; border-radius:4px; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; display:inline-block; margin-bottom:24px; }
+  .cover h1 { font-size:36px; font-weight:800; line-height:1.2; margin-bottom:8px; max-width:620px; }
+  .cover .sub { font-size:16px; color:#a8d5b0; margin-bottom:8px; }
+  .cover .tagline { font-size:13px; color:rgba(255,255,255,0.45); margin-bottom:44px; }
+  .cover-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; max-width:680px; margin-bottom:44px; }
+  .cg-item { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.13); border-radius:8px; padding:12px 16px; }
+  .cg-item .cl { font-size:10px; color:#a8d5b0; text-transform:uppercase; letter-spacing:1px; margin-bottom:3px; }
+  .cg-item .cv { font-size:14px; font-weight:700; }
+  .cover-badge { position:absolute; top:40px; right:80px; background:rgba(255,255,255,0.12); color:white; font-weight:700; font-size:12px; padding:7px 16px; border-radius:20px; border:1px solid rgba(255,255,255,0.25); z-index:10; }
+  .cover-footer { position:absolute; bottom:36px; left:80px; right:80px; display:flex; justify-content:space-between; font-size:11px; color:rgba(255,255,255,0.3); border-top:1px solid rgba(255,255,255,0.08); padding-top:14px; }
+
+  /* BODY */
+  .wrap { max-width:900px; margin:0 auto; padding:36px 20px; }
+  .sec { background:white; border-radius:12px; padding:30px; margin-bottom:24px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+  .sh { display:flex; align-items:center; gap:12px; margin-bottom:20px; padding-bottom:14px; border-bottom:2px solid var(--bg); }
+  .sn { background:var(--navy); color:white; width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; flex-shrink:0; }
+  .st { font-size:17px; font-weight:700; color:var(--navy); }
+  .ss { font-size:12px; color:var(--muted); margin-top:2px; }
+
+  .adv { background:var(--light); border-left:4px solid var(--mid); border-radius:0 8px 8px 0; padding:13px 16px; margin-bottom:18px; font-size:13px; color:#064e3b; }
+  .adv strong { color:var(--navy); }
+  .highlight { background:var(--yellow); border-left:3px solid var(--accent); padding:12px 16px; border-radius:0 8px 8px 0; margin-bottom:16px; font-size:13px; }
+
+  .narr { font-size:14px; line-height:1.8; margin-bottom:14px; }
+  .narr strong { color:var(--navy); }
+
+  table { width:100%; border-collapse:collapse; margin-bottom:14px; font-size:13px; }
+  thead th { background:var(--navy); color:white; padding:9px 13px; text-align:left; font-size:12px; font-weight:600; }
+  thead th:not(:first-child) { text-align:right; }
+  tbody tr:nth-child(even) { background:var(--bg); }
+  td { padding:8px 13px; border-bottom:1px solid var(--border); }
+  td:not(:first-child) { text-align:right; }
+  .sub-r td { font-weight:600; background:#f0f4f0!important; border-top:2px solid var(--border); }
+  .tot-r td { font-weight:700; background:var(--navy)!important; color:white!important; }
+  .grn-r td { background:var(--light)!important; font-weight:600; color:var(--navy); }
+  .yel-r td { background:var(--yellow)!important; font-weight:600; }
+  .acc-r td { background:#fff3cd!important; font-weight:600; color:#92400e; }
+
+  .two-col { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  .three-col { display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; }
+
+  .info-box { background:var(--bg); border:1px solid var(--border); border-radius:8px; padding:14px; }
+  .info-box h4 { font-size:13px; color:var(--navy); margin-bottom:8px; }
+  .info-box ul { padding-left:16px; font-size:13px; color:#334155; }
+  .info-box ul li { margin-bottom:4px; }
+
+  .kpi-row { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:18px; }
+  .kpi { background:var(--bg); border:1px solid var(--border); border-radius:10px; padding:14px; text-align:center; }
+  .kpi .kv { font-size:22px; font-weight:800; }
+  .kpi .kl { font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin-top:3px; }
+  .kpi.good .kv { color:var(--mid); }
+  .kpi.navy .kv { color:var(--blue); }
+  .kpi.gold .kv { color:#92400e; }
+
+  .milestone { display:flex; gap:0; margin-bottom:18px; }
+  .ms-item { flex:1; text-align:center; position:relative; }
+  .ms-item::before { content:''; position:absolute; top:15px; left:50%; right:-50%; height:2px; background:var(--border); z-index:0; }
+  .ms-item:last-child::before { display:none; }
+  .ms-dot { width:30px; height:30px; background:var(--navy); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-size:11px; font-weight:700; margin:0 auto 6px; position:relative; z-index:1; }
+  .ms-dot.phase { background:var(--mid); }
+  .ms-label { font-size:11px; color:var(--muted); }
+  .ms-month { font-size:12px; font-weight:600; color:var(--navy); }
+
+  .risk-row { display:flex; align-items:flex-start; gap:12px; padding:10px 0; border-bottom:1px solid var(--border); }
+  .risk-pill { padding:3px 10px; border-radius:12px; font-size:11px; font-weight:700; white-space:nowrap; margin-top:2px; }
+  .low  { background:#d1fae5; color:#065f46; }
+  .med  { background:#fef3c7; color:#92400e; }
+  .high { background:#fee2e2; color:#991b1b; }
+
+  .footer { background:var(--navy); color:white; padding:26px 40px; border-radius:12px; margin-top:36px; display:flex; justify-content:space-between; align-items:center; }
+  .footer .bf { font-weight:800; font-size:17px; }
+  .footer .price { background:var(--accent); color:var(--navy); padding:7px 18px; border-radius:20px; font-weight:800; font-size:15px; }
+  .footer .fn { font-size:11px; color:rgba(255,255,255,0.4); margin-top:4px; }
+  .wm { text-align:center; color:var(--muted); font-size:11px; padding:18px; opacity:0.6; }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="brand-tag">FinsightOne Financial Services</div>
+  <div class="doc-chip">DPR · Greenfield Project</div>
+  <h1>Savitri Agro Processing Pvt Ltd</h1>
+  <div class="sub">Detailed Project Report — Dal Mill &amp; Pulse Processing Unit</div>
+  <div class="tagline">New Greenfield Unit | MIDC Latur, Maharashtra | Capacity: 15 MT/Day</div>
+
+  <div class="cover-grid">
+    <div class="cg-item"><div class="cl">Term Loan Sought</div><div class="cv">₹4.50 Crore</div></div>
+    <div class="cg-item"><div class="cl">Total Project Cost</div><div class="cv">₹6.00 Crore</div></div>
+    <div class="cg-item"><div class="cl">Promoter Equity</div><div class="cv">₹1.50 Cr (25%)</div></div>
+    <div class="cg-item"><div class="cl">Sector</div><div class="cv">Agro Processing – Dal/Pulses</div></div>
+    <div class="cg-item"><div class="cl">Location</div><div class="cv">MIDC Latur, Maharashtra</div></div>
+    <div class="cg-item"><div class="cl">Repayment Period</div><div class="cv">84 Months (7 Years)</div></div>
+  </div>
+
+  <div class="cover-badge">Sample Document</div>
+  <div class="cover-footer">
+    <span>Confidential — For Advisory Purposes Only</span>
+    <span>FinsightOne Financial Services · finsightone.in</span>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="wrap">
+
+  <!-- 1. EXECUTIVE SUMMARY -->
+  <div class="sec">
+    <div class="sh"><div class="sn">1</div><div><div class="st">Executive Summary</div><div class="ss">The project in brief — what, where, why, and how much</div></div></div>
+    <div class="adv"><strong>What is a Greenfield DPR?</strong> A Greenfield project means starting from zero — new land, new building, new machinery, new enterprise. This DPR explains the full vision: what the business will do, where it will be located, what it will earn, and exactly how the bank's money will be deployed and returned. We present this to lenders on your behalf in clear, advisory language.</div>
+
+    <div class="kpi-row">
+      <div class="kpi good"><div class="kv">₹4.50 Cr</div><div class="kl">Term Loan</div></div>
+      <div class="kpi"><div class="kv">15 MT/Day</div><div class="kl">Processing Capacity</div></div>
+      <div class="kpi navy"><div class="kv">1.76×</div><div class="kl">Avg DSCR (7 yr)</div></div>
+      <div class="kpi gold"><div class="kv">3.5 Yrs</div><div class="kl">Payback Period</div></div>
+    </div>
+
+    <p class="narr"><strong>Savitri Agro Processing Private Limited</strong> (proposed company, incorporation in process) is being promoted by Mr. Vishwanath Ramrao Shinde and Mrs. Sunanda Vishwanath Shinde of Latur, Maharashtra. The company proposes to set up a <strong>mechanised dal milling and pulse cleaning/grading unit</strong> with a processing capacity of 15 MT per day of raw pulses (tur, chana, moong, urad).</p>
+
+    <p class="narr">Latur district is one of India's largest pulse-growing regions — Maharashtra contributes ~20% of India's total pulse production, with Latur, Osmanabad, and Nanded being the primary cultivation belt. Despite being at the heart of raw material supply, the region has very limited <strong>value-added processing capacity</strong>. Most raw pulses travel 200–400 km to processors in Solapur, Hyderabad, or Nagpur, only to return as packaged dal at higher cost. This project fills that gap.</p>
+
+    <div class="highlight">
+      <strong>The Business Logic:</strong> Buy raw tur/chana at farm gate (₹62–68/kg). Process into clean, graded, packaged dal. Sell to wholesalers, ration shops, and direct to institutions at ₹85–92/kg. Value addition of ₹20–25/kg on 15 MT/day = ₹3,000–3,750 value addition per day.
+    </div>
+  </div>
+
+  <!-- 2. PROMOTER BACKGROUND -->
+  <div class="sec">
+    <div class="sh"><div class="sn">2</div><div><div class="st">The Promoters — Who Is Behind This Project</div><div class="ss">Background, experience, and financial standing</div></div></div>
+    <div class="adv"><strong>For a Greenfield Project, the Promoter IS the Business:</strong> There is no track record of the company — only the track record of the people starting it. Lenders assess greenfield proposals primarily on the promoter's domain knowledge, financial capacity, and commitment to the project.</div>
+
+    <div class="two-col">
+      <div>
+        <table>
+          <thead><tr><th colspan="2">Lead Promoter — Mr. V.R. Shinde</th></tr></thead>
+          <tbody>
+            <tr><td>Full Name</td><td>Vishwanath Ramrao Shinde</td></tr>
+            <tr><td>Age</td><td>44 Years</td></tr>
+            <tr><td>Education</td><td>B.Sc. Agriculture, Vasantrao Naik Marathwada University, Nanded (2002)</td></tr>
+            <tr><td>Domain Experience</td><td>20 years in agricultural commodity trading (pulses, oilseeds)</td></tr>
+            <tr><td>Current Business</td><td>Shinde Agri Traders — wholesale pulse trading since 2006 (turnover ₹4.8 Cr FY24)</td></tr>
+            <tr><td>Industry Network</td><td>Registered FPO aggregator; empanelled with NAFED for pulse procurement</td></tr>
+            <tr><td>PAN</td><td>BVAPS6612K</td></tr>
+            <tr><td>Net Worth</td><td>₹2.20 Crore (as per CA-certified net worth statement)</td></tr>
+            <tr><td>CIBIL Score</td><td>742 (Individual)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <div class="info-box" style="margin-bottom:14px">
+          <h4>Co-Promoter — Mrs. Sunanda V. Shinde</h4>
+          <ul>
+            <li>Age: 40 years; B.Com, Latur</li>
+            <li>Handles accounts for Shinde Agri Traders for 12 years</li>
+            <li>Will manage accounts, admin, and GST compliance for the new company</li>
+            <li>CIBIL Score: 718</li>
+          </ul>
+        </div>
+        <div class="info-box">
+          <h4>Why the Promoter Can Execute This</h4>
+          <ul>
+            <li>Has sold raw pulses to processors for 18 years — knows the supply chain end-to-end</li>
+            <li>Existing trader relationships with 40+ farmers in Latur / Udgir belt</li>
+            <li>Has sourced tur procurement for 3 government agencies — understands quality grading</li>
+            <li>Existing business has zero loan default in 12 years</li>
+            <li>Personally visited 6 dal mills in Solapur and Hyderabad before designing this project</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. THE PROJECT -->
+  <div class="sec">
+    <div class="sh"><div class="sn">3</div><div><div class="st">The Project — What We Are Setting Up</div><div class="ss">Products, process, and plant layout</div></div></div>
+
+    <p class="narr">The unit will process raw whole pulses (tur, chana, moong, urad) into cleaned, graded, and packaged split dals — the final stage before consumer-ready product. The plant will be located at <strong>Plot No. B-114, MIDC Latur, Maharashtra – 413512</strong>, a 2,500 sq mt plot allotted to the company by MIDC. Construction of a 5,000 sq ft factory shed + storage godown is planned.</p>
+
+    <table>
+      <thead><tr><th>Machinery / Equipment</th><th>Make / Type</th><th>Qty</th><th>Cost (₹L)</th></tr></thead>
+      <tbody>
+        <tr><td>Pulse Pre-Cleaner (scalper + de-stoner)</td><td>Agrosaw / Roff make, 3 TPH capacity each</td><td>2 Nos.</td><td>14.00</td></tr>
+        <tr><td>Pulse Grader (grading by size + density)</td><td>Indosaw, 2 TPH</td><td>2 Nos.</td><td>12.00</td></tr>
+        <tr><td>Dal Dehusking / Milling Machine (pitting + rolling)</td><td>Satake or Bühler type, 1.5 TPH</td><td>3 Nos.</td><td>36.00</td></tr>
+        <tr><td>Split Dal Polisher</td><td>Vertical type, 1 TPH each</td><td>2 Nos.</td><td>8.00</td></tr>
+        <tr><td>Automatic Pouch Packing Machine (500g, 1kg, 5kg)</td><td>Premier Tech / Nichrome</td><td>1 No.</td><td>18.00</td></tr>
+        <tr><td>Boiler / Steam System (oil softening)</td><td>400 kg/hr capacity</td><td>1 No.</td><td>10.00</td></tr>
+        <tr><td>Material Handling (conveyors, elevators, storage bins)</td><td>Fabricated</td><td>L/S</td><td>14.00</td></tr>
+        <tr><td>Electrical Panel, Wiring, Lighting, DG Set (62.5 KVA)</td><td>Standard make</td><td>L/S</td><td>12.00</td></tr>
+        <tr class="sub-r"><td colspan="3"><strong>Total Plant &amp; Machinery</strong></td><td><strong>124.00</strong></td></tr>
+        <tr><td>Land (MIDC plot — 2,500 sq mt, already allotted)</td><td>MIDC Latur rate ₹1,200/sqmt</td><td>1 plot</td><td>30.00</td></tr>
+        <tr><td>Factory Shed &amp; Godown Construction (5,000 sq ft)</td><td>RCC structure @ ₹1,200/sq ft</td><td>5,000 sq ft</td><td>60.00</td></tr>
+        <tr><td>Office + Weighbridge + Compound Wall</td><td></td><td></td><td>18.00</td></tr>
+        <tr class="sub-r"><td colspan="3"><strong>Total Civil &amp; Land</strong></td><td><strong>108.00</strong></td></tr>
+        <tr><td>Pre-Operative Expenses (company reg., consultancy, trial run)</td><td></td><td></td><td>10.00</td></tr>
+        <tr><td>Working Capital Margin (first cycle — promoter funded)</td><td>25% of WC needed</td><td></td><td>40.00</td></tr>
+        <tr><td>Contingency (6% of project cost)</td><td></td><td></td><td>18.00</td></tr>
+        <tr class="tot-r"><td colspan="3"><strong>Total Project Cost</strong></td><td><strong>300.00</strong></td></tr>
+      </tbody>
+    </table>
+
+    <div class="two-col" style="margin-top:14px">
+      <div class="info-box">
+        <h4>📦 Production Plan (Capacity Utilisation)</h4>
+        <ul>
+          <li>Installed capacity: 15 MT raw pulses/day × 300 working days</li>
+          <li>Total raw material input/year: <strong>4,500 MT</strong></li>
+          <li>Dal recovery rate: ~72% (varies by pulse type)</li>
+          <li>Finished dal output/year: <strong>~3,240 MT</strong></li>
+          <li>Year 1: 60% utilisation (2,700 MT input processed)</li>
+          <li>Year 2: 75% utilisation, Year 3 onwards: 85%+</li>
+        </ul>
+      </div>
+      <div class="info-box">
+        <h4>🌾 Product Mix (Revenue by Type)</h4>
+        <ul>
+          <li>Tur Dal (split): 40% of output — highest margin</li>
+          <li>Chana Dal: 30% — institutional demand (ICDS, midday meal)</li>
+          <li>Moong Dal: 20% — premium branded market</li>
+          <li>Urad Dal: 10% — wholesale/restaurant trade</li>
+          <li>By-product (husk, brokens): sold as cattle feed — revenue: ~₹18L/yr</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. MARKET ANALYSIS -->
+  <div class="sec">
+    <div class="sh"><div class="sn">4</div><div><div class="st">Market &amp; Demand Analysis</div><div class="ss">Who will buy this dal and why Latur is the right place</div></div></div>
+    <div class="adv"><strong>Demand Pull is Structural:</strong> India consumes 22–24 million MT of pulses annually. Maharashtra alone requires ~1.8 MT. Processing capacity in Marathwada is severely under-invested relative to production — the region grows the crop but processes it elsewhere. Proximity to raw material = lower procurement cost and fresher product.</div>
+
+    <div class="two-col">
+      <div>
+        <table>
+          <thead><tr><th>Target Customer Segment</th><th>Estimated Annual Revenue Potential</th></tr></thead>
+          <tbody>
+            <tr><td>District wholesale dealers (Latur, Osmanabad, Nanded)</td><td>₹1.80 Cr/yr</td></tr>
+            <tr><td>Government procurement (NFSA, PDS, ICDS)</td><td>₹1.20 Cr/yr</td></tr>
+            <tr><td>Institutional buyers (hotels, canteens, schools)</td><td>₹0.60 Cr/yr</td></tr>
+            <tr><td>Online / branded retail (Year 3+)</td><td>₹0.40 Cr/yr</td></tr>
+            <tr><td>By-product sales (husk, brokens as cattle feed)</td><td>₹0.18 Cr/yr</td></tr>
+            <tr class="grn-r"><td><strong>Total Revenue Potential (Full Capacity)</strong></td><td><strong>₹4.18 Cr/yr</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <table>
+          <thead><tr><th>Location Advantage — Why MIDC Latur?</th><th></th></tr></thead>
+          <tbody>
+            <tr><td>Distance to pulse growing belt (Udgir, Nilanga, Ausa)</td><td>15–80 km</td></tr>
+            <tr><td>Latur APMC — average daily pulse arrivals</td><td>500–1,200 MT/day</td></tr>
+            <tr><td>Existing dal mills in Latur MIDC</td><td>Only 3 (significant gap)</td></tr>
+            <tr><td>MSEDCL power availability (3-phase industrial)</td><td>Available, 60 KW sanctioned</td></tr>
+            <tr><td>NH-52 (Latur–Solapur) connectivity</td><td>2 km from plant</td></tr>
+            <tr><td>MIDC water supply</td><td>Available at ₹45/KL</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="highlight" style="margin-top:14px">
+      <strong>Government Procurement Advantage:</strong> The promoter is already NAFED-empanelled as a pulse aggregator. The company can directly bid for State Government / NHM dal procurement tenders — a captive, assured revenue stream from Year 1 itself.
+    </div>
+  </div>
+
+  <!-- 5. MEANS OF FINANCE -->
+  <div class="sec">
+    <div class="sh"><div class="sn">5</div><div><div class="st">Project Cost &amp; Funding Structure</div><div class="ss">How the ₹6 Crore project will be funded (₹ in Lakhs)</div></div></div>
+
+    <div class="two-col">
+      <div>
+        <table>
+          <thead><tr><th>Cost Head</th><th>₹ Lakhs</th><th>% Share</th></tr></thead>
+          <tbody>
+            <tr><td>Land (MIDC allotment)</td><td>30.00</td><td>10.0%</td></tr>
+            <tr><td>Civil Construction</td><td>78.00</td><td>26.0%</td></tr>
+            <tr><td>Plant &amp; Machinery</td><td>124.00</td><td>41.3%</td></tr>
+            <tr><td>Pre-Operative Expenses</td><td>10.00</td><td>3.3%</td></tr>
+            <tr><td>Working Capital Margin</td><td>40.00</td><td>13.3%</td></tr>
+            <tr><td>Contingency @ 6%</td><td>18.00</td><td>6.0%</td></tr>
+            <tr class="tot-r"><td><strong>Total Project Cost</strong></td><td><strong>300.00</strong></td><td><strong>100%</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <table>
+          <thead><tr><th>Source of Funds</th><th>₹ Lakhs</th><th>% Share</th></tr></thead>
+          <tbody>
+            <tr><td>Term Loan — Bank of Maharashtra / SBI</td><td>225.00</td><td>75.0%</td></tr>
+            <tr><td colspan="3" style="font-weight:700;font-size:12px;color:var(--navy);padding-top:8px;background:#f0f9f4">Promoter Contribution</td></tr>
+            <tr><td>&nbsp;&nbsp;Own savings (FDs, liquid assets)</td><td>50.00</td><td>16.7%</td></tr>
+            <tr><td>&nbsp;&nbsp;Property mortgage proceeds</td><td>25.00</td><td>8.3%</td></tr>
+            <tr class="sub-r"><td><strong>Total Promoter Margin</strong></td><td><strong>75.00</strong></td><td><strong>25%</strong></td></tr>
+            <tr class="tot-r"><td><strong>Total Means of Finance</strong></td><td><strong>300.00</strong></td><td><strong>100%</strong></td></tr>
+          </tbody>
+        </table>
+        <div class="adv" style="margin-top:10px;font-size:12px">
+          Debt-equity ratio at sanction: <strong>3:1</strong> — well within acceptable norms for a greenfield agro-processing project (max permissible: 4:1 for MSME sector).
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. REVENUE PROJECTIONS -->
+  <div class="sec">
+    <div class="sh"><div class="sn">6</div><div><div class="st">Revenue &amp; Profitability Projections (5 Years)</div><div class="ss">How the business grows from Year 1 to Year 5 (₹ in Lakhs)</div></div></div>
+    <div class="adv"><strong>How These Projections Are Built:</strong> Year 1 assumes 6-month moratorium + production at 60% capacity in second half. Year 2 is the first full operational year at 75% utilisation. Selling prices are based on prevailing Latur/Solapur wholesale rates with a conservative 2% annual escalation. Raw material cost uses last 3-year average with 3% annual escalation.</div>
+
+    <table>
+      <thead>
+        <tr><th>Particulars</th><th>Y1 (FY26)</th><th>Y2 (FY27)</th><th>Y3 (FY28)</th><th>Y4 (FY29)</th><th>Y5 (FY30)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Raw Pulse Processed (MT)</td><td>1,350</td><td>2,700</td><td>3,375</td><td>3,825</td><td>3,960</td></tr>
+        <tr><td>Capacity Utilisation</td><td>30%</td><td>60%</td><td>75%</td><td>85%</td><td>88%</td></tr>
+        <tr><td><strong>Net Revenue from Dal Sales</strong></td><td><strong>1,18.00</strong></td><td><strong>2,24.00</strong></td><td><strong>2,96.00</strong></td><td><strong>3,42.00</strong></td><td><strong>3,60.00</strong></td></tr>
+        <tr><td>By-product / Husk Revenue</td><td>4.50</td><td>9.00</td><td>12.00</td><td>14.00</td><td>16.00</td></tr>
+        <tr class="sub-r"><td><strong>Total Revenue</strong></td><td><strong>1,22.50</strong></td><td><strong>2,33.00</strong></td><td><strong>3,08.00</strong></td><td><strong>3,56.00</strong></td><td><strong>3,76.00</strong></td></tr>
+
+        <tr><td>Raw Material Cost (pulses @ ₹65/kg avg)</td><td>87.75</td><td>1,75.50</td><td>2,19.38</td><td>2,52.45</td><td>2,64.60</td></tr>
+        <tr><td>Direct Labour (22 workers + supervisor)</td><td>18.48</td><td>19.80</td><td>21.00</td><td>22.40</td><td>23.80</td></tr>
+        <tr><td>Power &amp; Fuel</td><td>5.40</td><td>10.80</td><td>13.50</td><td>15.30</td><td>15.84</td></tr>
+        <tr><td>Packaging Material</td><td>4.05</td><td>8.10</td><td>10.13</td><td>11.48</td><td>11.88</td></tr>
+        <tr class="sub-r"><td><strong>Cost of Production</strong></td><td><strong>1,15.68</strong></td><td><strong>2,14.20</strong></td><td><strong>2,64.01</strong></td><td><strong>3,01.63</strong></td><td><strong>3,16.12</strong></td></tr>
+        <tr class="sub-r"><td><strong>Gross Profit</strong></td><td><strong>6.82</strong></td><td><strong>18.80</strong></td><td><strong>43.99</strong></td><td><strong>54.37</strong></td><td><strong>59.88</strong></td></tr>
+
+        <tr><td>Admin &amp; Selling Expenses</td><td>6.00</td><td>9.00</td><td>11.00</td><td>13.00</td><td>14.00</td></tr>
+        <tr><td>Depreciation (SLM — buildings 5%, machinery 15%)</td><td>22.50</td><td>22.50</td><td>22.50</td><td>22.50</td><td>22.50</td></tr>
+        <tr><td>Interest on TL @ 10.5% (reducing balance)</td><td>18.90</td><td>20.48</td><td>17.26</td><td>14.04</td><td>10.82</td></tr>
+        <tr class="sub-r"><td><strong>Profit / (Loss) Before Tax</strong></td><td><strong>(40.58)</strong></td><td><strong>(33.18)</strong></td><td><strong>(6.77)</strong></td><td><strong>4.83</strong></td><td><strong>12.56</strong></td></tr>
+        <tr><td style="font-size:12px;color:var(--muted)">Note: Initial years show accounting loss due to high depreciation (₹22.5L/yr) — cash generation remains positive. Tax liability arises only from Year 4.</td><td colspan="5"></td></tr>
+        <tr class="grn-r"><td><strong>Cash Profit (PAT + Depreciation)</strong></td><td><strong>(18.08)</strong></td><td><strong>(10.68)</strong></td><td><strong>15.73</strong></td><td><strong>27.33</strong></td><td><strong>35.06</strong></td></tr>
+      </tbody>
+    </table>
+
+    <div class="adv">
+      <strong>Why Initial Years Show Accounting Loss:</strong> A greenfield project with heavy depreciation and interest during ramp-up typically shows accounting losses in Years 1–2. This is expected and normal. The <strong>cash profit</strong> (actual money generated before depreciation) turns positive from Year 3 and grows strongly. The loan is repaid from cash flow — not accounting profit. Banks assess DSCR (cash-based), not accounting profitability, for repayment capacity.
+    </div>
+  </div>
+
+  <!-- 7. DSCR AND REPAYMENT -->
+  <div class="sec">
+    <div class="sh"><div class="sn">7</div><div><div class="st">Loan Repayment Schedule &amp; DSCR</div><div class="ss">Repayment over 7 years with 12-month moratorium on principal (₹ in Lakhs)</div></div></div>
+
+    <table>
+      <thead>
+        <tr><th>Year</th><th>Opening Balance</th><th>Principal Repaid</th><th>Interest</th><th>Total Debt Service (B)</th><th>Cash Accrual (A)</th><th>DSCR (A÷B)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Y1 (FY26) — Moratorium</td><td>225.00</td><td>—</td><td>18.90</td><td>18.90</td><td>4.42</td><td style="color:#d97706;font-weight:700">0.23× (interest only)</td></tr>
+        <tr><td>Y2 (FY27)</td><td>225.00</td><td>24.00</td><td>20.48</td><td>44.48</td><td>11.82</td><td style="color:#d97706;font-weight:700">0.27×</td></tr>
+        <tr><td>Y3 (FY28)</td><td>201.00</td><td>30.00</td><td>17.26</td><td>47.26</td><td>38.23</td><td style="color:#d97706;font-weight:700">0.81×</td></tr>
+        <tr><td>Y4 (FY29)</td><td>171.00</td><td>36.00</td><td>14.04</td><td>50.04</td><td>49.83</td><td style="color:var(--mid);font-weight:700">1.00×</td></tr>
+        <tr><td>Y5 (FY30)</td><td>135.00</td><td>36.00</td><td>10.82</td><td>46.82</td><td>57.56</td><td style="color:var(--mid);font-weight:700">1.23×</td></tr>
+        <tr><td>Y6 (FY31)</td><td>99.00</td><td>36.00</td><td>7.60</td><td>43.60</td><td>64.00</td><td style="color:green;font-weight:700">1.47×</td></tr>
+        <tr><td>Y7 (FY32)</td><td>63.00</td><td>63.00</td><td>3.80</td><td>66.80</td><td>72.00</td><td style="color:green;font-weight:700">1.08×</td></tr>
+        <tr class="grn-r"><td colspan="6"><strong>Average DSCR (7-year)</strong></td><td><strong>0.87×</strong></td></tr>
+        <tr class="acc-r"><td colspan="7">Note: Years 1–3 show DSCR below 1.0 — standard for greenfield during ramp-up. Promoter has confirmed to bridge shortfall from existing business (Shinde Agri Traders generates ₹28–32L annual profit). Combined DSCR including existing business: 1.68× average.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="adv">
+      <strong>Greenfield DSCR Context:</strong> Think of this like a new cinema hall — it doesn't generate revenue on Day 1, but within 18 months of opening it is packed. Banks evaluate greenfield proposals differently from expansion proposals. The key questions are: (a) Is the promoter financially strong enough to bridge early-year gaps? Yes — existing business earns ₹28L+/year. (b) Does the project become self-sustaining? Yes — from Year 4. (c) Is the asset mortgaged as security? Yes — fully covered.
+    </div>
+  </div>
+
+  <!-- 8. BREAK-EVEN -->
+  <div class="sec">
+    <div class="sh"><div class="sn">8</div><div><div class="st">Break-Even &amp; Payback Analysis</div><div class="ss">At what production level does the business stop losing money?</div></div></div>
+
+    <div class="three-col" style="margin-bottom:18px">
+      <div class="kpi good"><div class="kv">2,640 MT</div><div class="kl">BEP — Annual Input (Raw Pulses)</div></div>
+      <div class="kpi navy"><div class="kv">48%</div><div class="kl">BEP Capacity Utilisation</div></div>
+      <div class="kpi gold"><div class="kv">3.5 Yrs</div><div class="kl">Payback on Total Investment</div></div>
+    </div>
+
+    <table>
+      <thead><tr><th>Component</th><th>Annual Amount (₹L)</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr><td>Fixed Costs: Depreciation</td><td>22.50</td><td>SLM on civil + machinery</td></tr>
+        <tr><td>Fixed Costs: Interest (Year 3)</td><td>17.26</td><td>Reducing each year</td></tr>
+        <tr><td>Fixed Costs: Labour (fixed component)</td><td>14.40</td><td>Management + permanent staff × 12</td></tr>
+        <tr><td>Fixed Costs: Admin, rent/lease dues</td><td>5.00</td><td>MIDC charges, insurance</td></tr>
+        <tr class="sub-r"><td><strong>Total Annual Fixed Costs</strong></td><td><strong>59.16</strong></td><td></td></tr>
+        <tr><td>Variable Contribution Margin (Revenue – Variable Cost, per MT output)</td><td>~₹2,800/MT</td><td>After raw material + direct power + packaging</td></tr>
+        <tr class="grn-r"><td><strong>Break-Even Output (Fixed Cost ÷ Contribution/MT)</strong></td><td><strong>~2,113 MT dal (from 2,940 MT raw)</strong></td><td><strong>= 65% of Year 2 capacity = achieved in Year 3</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 9. IMPLEMENTATION SCHEDULE -->
+  <div class="sec">
+    <div class="sh"><div class="sn">9</div><div><div class="st">Implementation Schedule — 18 Month Plan</div><div class="ss">From company incorporation to first commercial dispatch</div></div></div>
+
+    <div class="milestone">
+      <div class="ms-item"><div class="ms-dot phase">1</div><div class="ms-month">M1–M2</div><div class="ms-label">Company incorporation, MIDC plot takeover, loan documentation</div></div>
+      <div class="ms-item"><div class="ms-dot phase">2</div><div class="ms-month">M2–M5</div><div class="ms-label">Civil construction (factory shed, godown, compound wall)</div></div>
+      <div class="ms-item"><div class="ms-dot">3</div><div class="ms-month">M3–M6</div><div class="ms-label">Machinery procurement, MSEDCL 60KW connection</div></div>
+      <div class="ms-item"><div class="ms-dot">4</div><div class="ms-month">M6–M8</div><div class="ms-label">Machinery installation, trial runs, quality grading setup</div></div>
+      <div class="ms-item"><div class="ms-dot">5</div><div class="ms-month">M8–M10</div><div class="ms-label">FSSAI licence, AGMARK grading approval, govt. empanelment</div></div>
+      <div class="ms-item"><div class="ms-dot">6</div><div class="ms-month">M10+</div><div class="ms-label">Commercial production at 30–60% utilisation</div></div>
+    </div>
+
+    <table>
+      <thead><tr><th>Activity</th><th>Agency / Owner</th><th>Timeline</th><th>Status / Readiness</th></tr></thead>
+      <tbody>
+        <tr><td>Company Incorporation (Pvt Ltd)</td><td>CS / MCA portal</td><td>Month 1</td><td>Documents ready; CIN applied</td></tr>
+        <tr><td>MIDC Plot Allotment Letter</td><td>MIDC Latur</td><td>Done</td><td>Plot B-114 allotted; payment pending ₹30L</td></tr>
+        <tr><td>Factory Building Construction</td><td>Local contractor (quote ₹62L)</td><td>Month 2–5</td><td>Design finalised, approvals pending</td></tr>
+        <tr><td>Machinery Order (Agrosaw, Nichrome)</td><td>Promoter</td><td>Month 3</td><td>Quotes received; negotiation in process</td></tr>
+        <tr><td>MSEDCL 60 KW LT Power Connection</td><td>MSEDCL Latur Division</td><td>Month 3–5</td><td>Application to be submitted post-sanction</td></tr>
+        <tr><td>FSSAI Manufacturing Licence</td><td>FSSAI Regional Office, Mumbai</td><td>Month 8</td><td>Form-B to be submitted with plant layout</td></tr>
+        <tr><td>AGMARK Grading Approval</td><td>Directorate of Marketing &amp; Inspection</td><td>Month 9</td><td>Required for government procurement tenders</td></tr>
+        <tr><td>Recruitment (22 processing workers + 3 supervisors)</td><td>Promoter — local hiring, Latur ITI</td><td>Month 7–8</td><td>Preliminary discussions with ITI Latur done</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 10. SECURITY -->
+  <div class="sec">
+    <div class="sh"><div class="sn">10</div><div><div class="st">Security &amp; Collateral Offered</div><div class="ss">Assets available to secure the ₹4.50 Crore Term Loan</div></div></div>
+
+    <table>
+      <thead><tr><th>Security</th><th>Description</th><th>Value (₹L)</th><th>% Coverage</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Primary Security</strong></td><td>First charge on all project assets — land, building, machinery (hypothecation)</td><td>232.00</td><td>103%</td></tr>
+        <tr><td><strong>Collateral — Residential Property</strong></td><td>Equitable mortgage: House No. 14, Sector B, Latur (owned by Mr. V.R. Shinde; market value as per valuer)</td><td>82.00</td><td>36%</td></tr>
+        <tr><td><strong>Collateral — Agricultural Land</strong></td><td>6-acre land at Nilanga, Latur district (Mr. Shinde's agricultural land — second charge)</td><td>54.00</td><td>24%</td></tr>
+        <tr><td><strong>Personal Guarantee</strong></td><td>Mr. Vishwanath R. Shinde + Mrs. Sunanda V. Shinde</td><td>—</td><td>Full</td></tr>
+        <tr class="grn-r"><td colspan="2"><strong>Total Security Cover</strong></td><td><strong>368.00</strong></td><td><strong>163% of TL</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 11. RISK ANALYSIS -->
+  <div class="sec">
+    <div class="sh"><div class="sn">11</div><div><div class="st">Risk Analysis — Being Transparent About Challenges</div><div class="ss">Risks the business faces and how each is mitigated</div></div></div>
+
+    <div class="risk-row"><span class="risk-pill high">High</span><div><strong>Raw Material Price Volatility:</strong> Pulse prices swing 20–40% in a season based on monsoon. <em>Mitigation:</em> Promoter has 18 years of commodity trading experience — knows when to buy forward. Seasonal price drop (post-harvest) is used to build inventory. Raw material sourced directly from farmers at pre-agreed prices through FPO network.</div></div>
+    <div class="risk-row"><span class="risk-pill med">Medium</span><div><strong>Ramp-Up Risk:</strong> Building a customer base from zero takes time. <em>Mitigation:</em> Promoter already has wholesale customer relationships through Shinde Agri Traders; government procurement pipeline via NAFED empanelment provides assured offtake from Month 10.</div></div>
+    <div class="risk-row"><span class="risk-pill med">Medium</span><div><strong>Civil Construction Delay:</strong> Factory building may take longer than 5 months. <em>Mitigation:</em> 12-month moratorium requested (standard for greenfield MSME); contractor shortlisted; design finalised. 2-month buffer built into schedule.</div></div>
+    <div class="risk-row"><span class="risk-pill low">Low</span><div><strong>Competition:</strong> Larger processors from Solapur entering Latur market. <em>Mitigation:</em> Location advantage (lower logistics cost), fresher product (processed closer to source), and government/institutional buyer preference for local procurement.</div></div>
+    <div class="risk-row"><span class="risk-pill low">Low</span><div><strong>DSCR Shortfall in Years 1–3:</strong> Cash flow insufficient to service debt in early years. <em>Mitigation:</em> Promoter's existing business (Shinde Agri Traders) generates ₹28L+ annual surplus to bridge gap; personal assets as collateral provide security buffer.</div></div>
+    <div class="risk-row"><span class="risk-pill low">Low</span><div><strong>Regulatory / FSSAI:</strong> Delay in food processing licence. <em>Mitigation:</em> FSSAI application to be submitted 3 months before trial production; FSSAI processing takes 30–60 days typically. Well within schedule.</div></div>
+  </div>
+
+  <!-- 12. LICENCES -->
+  <div class="sec">
+    <div class="sh"><div class="sn">12</div><div><div class="st">Licences, Approvals &amp; Compliance Roadmap</div><div class="ss">All regulatory requirements and their status</div></div></div>
+
+    <table>
+      <thead><tr><th>Licence / Approval</th><th>Authority</th><th>Status</th><th>Expected By</th></tr></thead>
+      <tbody>
+        <tr><td>Company Incorporation (CIN)</td><td>Ministry of Corporate Affairs</td><td>In Process (application submitted)</td><td>Month 1</td></tr>
+        <tr><td>MIDC Plot Allotment</td><td>MIDC Latur Industrial Area</td><td>✅ Allotment letter received — Plot B-114</td><td>Done</td></tr>
+        <tr><td>MSME Udyam Registration</td><td>Ministry of MSME</td><td>To be done post-incorporation</td><td>Month 1</td></tr>
+        <tr><td>GST Registration (Manufacturing)</td><td>GST Authority, Maharashtra</td><td>To be done post-incorporation</td><td>Month 1</td></tr>
+        <tr><td>Factory Licence (Factories Act)</td><td>Maharashtra Factory Inspector, Latur</td><td>Application to be filed post-construction</td><td>Month 6</td></tr>
+        <tr><td>FSSAI Manufacturing Licence</td><td>FSSAI — Food Safety Officer, Maharashtra</td><td>Form B to be filed with plant layout</td><td>Month 8</td></tr>
+        <tr><td>AGMARK Grading Approval</td><td>Directorate of Marketing &amp; Inspection, Nagpur</td><td>Application after FSSAI</td><td>Month 9</td></tr>
+        <tr><td>MSEDCL 60 KW Power Connection</td><td>MSEDCL Latur Division</td><td>Application pending post-sanction</td><td>Month 4</td></tr>
+        <tr><td>Water Connection (MIDC)</td><td>MIDC Latur</td><td>Applied — 12 KLD allocation</td><td>Month 3</td></tr>
+        <tr><td>Environment Compliance</td><td>MPCB, Maharashtra</td><td>Agro processing (dal milling) — "Orange" category; Consent to Establish required</td><td>Month 2</td></tr>
+        <tr><td>Trade Licence</td><td>Latur Municipal Corporation</td><td>To be applied post-construction</td><td>Month 7</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 13. ADVISORY CONCLUSION -->
+  <div class="sec">
+    <div class="sh"><div class="sn">13</div><div><div class="st">FinsightOne's Advisory Assessment</div><div class="ss">Overall view on the project's viability and fundability</div></div></div>
+
+    <div style="background:linear-gradient(135deg,#0d3b1f,#1a6b3a);color:white;border-radius:10px;padding:24px;margin-bottom:20px">
+      <div style="font-size:11px;letter-spacing:2px;color:#a8d5b0;margin-bottom:10px">ADVISORY SUMMARY — SAVITRI AGRO PROCESSING PVT LTD</div>
+      <p style="font-size:15px;line-height:1.8;margin-bottom:14px">This is a well-conceived greenfield project built on genuine market insight. The promoter knows the pulse trade from the inside — he has been buying and selling the same raw material for 18 years that the factory will now process. That is the ideal profile for a greenfield agro-processing investment.</p>
+      <p style="font-size:15px;line-height:1.8;margin-bottom:14px">The early-year DSCR will require bridging from the promoter's existing business — this is typical and expected for greenfield agro-processing. What banks should weigh carefully: security coverage of 163%, a promoter with proven commodity market experience and government procurement access, and a project in a region severely undersupplied with dal milling capacity.</p>
+      <p style="font-size:15px;line-height:1.8"><strong style="color:#a8d5b0">We assess this as a viable greenfield proposal — best suited for Bank of Maharashtra (Agro Plus scheme), SBI (PMEGP/MSME), or NABARD-refinanced lending under agro-infrastructure. A 12-month moratorium and Government of India PMFME subsidy of 35% on machinery (if applied) would significantly improve Year 1–2 economics.</strong></p>
+    </div>
+
+    <div class="highlight">
+      <strong>Subsidy Opportunity:</strong> This project may be eligible for the <strong>PM Formalisation of Micro Food Processing Enterprises (PMFME) scheme</strong> — credit-linked capital subsidy of 35% of eligible project cost (max ₹10 lakh per unit) for new food processing units. FinsightOne will assist in applying for this subsidy alongside the loan.
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div><div class="bf">FinsightOne</div><div class="fn">Financial Advisory · MSME Loan Services · finsightone.in</div></div>
+    <div style="text-align:center"><div style="font-size:10px;color:rgba(255,255,255,0.4);margin-bottom:4px">Document Fee</div><div class="price">₹ 4,999</div></div>
+    <div style="text-align:right"><div style="font-size:11px;color:rgba(255,255,255,0.5)">DPR · Greenfield · Upto ₹5 Crore</div><div style="font-size:10px;color:rgba(255,255,255,0.35);margin-top:4px">Prepared June 2025</div></div>
+  </div>
+  <div class="wm">This DPR is prepared by FinsightOne Financial Services for advisory purposes only. It is not a guarantee of loan approval. All projections are based on business data, market estimates, and information provided by the promoter.</div>
+
+</div>
+</body>
+</html>
