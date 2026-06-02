@@ -166,19 +166,39 @@ export const WHAT_INCLUDED = [
 
 export const DOC_PRODUCTS = [
   {
-    icon: "📑", name: "Loan Application Report (CAM)",
-    desc: "The main document banks use to decide on your loan. We prepare it in the exact format your bank uses — covering your business, income, assets, and repayment ability.",
-    price: "₹1,499 – ₹2,00,000", who: "For: All loan applicants",
+    icon: "📑",
+    name: "Loan Appraisal Note (LAN)",
+    desc: "The main document banks use to decide on your loan — prepared by ex-bankers in the exact format lenders read. Covers business profile, income analysis, repayment capacity, security, and proposal strengths.",
+    price: "₹3,999 – ₹7,999",
+    priceDetail: "1–2 Cr: ₹3,999  |  2–5 Cr: ₹7,999  |  Above 5 Cr: Confirm on Call",
+    who: "For: All business loan applicants",
+    samples: [
+      { label: "Sample — 1–2 Cr", url: "/reports/doc-01-cam-small.html" },
+      { label: "Sample — 2–5 Cr", url: "/reports/doc-02-cam-large.html" },
+      { label: "Sample — Above 5 Cr", url: "/reports/doc-03-lan-5to10cr.html" },
+    ],
   },
   {
-    icon: "📊", name: "Financial Analysis Report (CMA)",
-    desc: "A detailed 3 to 5 year analysis of your business finances — required by most banks for loans above ₹10 lakh. We prepare all 7 mandatory statements as per RBI guidelines.",
-    price: "₹3,999 – ₹50,000+", who: "For: Business loan applicants",
+    icon: "📊",
+    name: "CMA Financial Analysis",
+    desc: "A detailed 3 to 5 year financial analysis required by most banks for loans above ₹10 Lakh. Prepared per RBI CMA format — includes Balance Sheet, P&L, Working Capital assessment, DSCR, and ratio analysis with FinsightOne's advisory interpretation.",
+    price: "₹4,999 – ₹8,999",
+    priceDetail: "1–2 Cr: ₹4,999  |  2–5 Cr: ₹8,999  |  Above 5 Cr: Confirm on Call",
+    who: "For: Business loan applicants",
+    samples: [
+      { label: "Sample — 1–2 Cr", url: "/reports/cma-01-interpretation-1to2cr.html" },
+      { label: "Sample — 2–5 Cr", url: "/reports/cma-02-interpretation-2to5cr.html" },
+      { label: "Sample — Above 5 Cr", url: "/reports/cma-03-interpretation-5to10cr.html" },
+    ],
   },
   {
-    icon: "📘", name: "Full Project Report (DPR)",
-    desc: "For larger loans above ₹25 crore — a complete project report covering viability, projections, risk analysis, and compliance. Prepared as per RBI 2025 Project Finance Directions.",
-    price: "₹40,000 – ₹3,50,000", who: "For: Large project / infrastructure loans",
+    icon: "📘",
+    name: "Detailed Project Report (DPR)",
+    desc: "For new projects and greenfield expansions — a complete project report covering technical feasibility, financial projections, break-even analysis, and implementation schedule. Required by banks for project finance above ₹2 Crore.",
+    price: "₹9,999",
+    priceDetail: "2–5 Cr: ₹9,999  |  Above 5 Cr: Confirm on Call",
+    who: "For: New project / expansion loans",
+    samples: [],
   },
 ];
 
@@ -214,3 +234,4 @@ export const CREDENTIALS = [
   { period: "2023 – 2024", title: "Independent Consultant", org: "MSME Advisory · Helped 100+ businesses get approved" },
   { period: "2025 – Present", title: "Founder, FinsightOne", org: "India's Credit & Loan Advisory Platform" },
 ];
+
