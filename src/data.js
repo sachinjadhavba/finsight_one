@@ -198,24 +198,28 @@ export const DOC_PRODUCTS = [
 
 export const ADVISORY_PRODUCTS = [
   {
-    icon: "🏗️", name: "How to Structure Your Loan",
-    desc: "Advice on the best loan type, amount, tenure, and lender for your specific situation — so you get maximum approval at minimum cost.",
-    price: "₹15,000 – ₹50,000", who: "For: First-time or large loan borrowers",
+    icon: "📈", name: "Business Loan Enhancement",
+    desc: "Your business has grown but your bank limit hasn't kept up. We build the enhancement case the way your lender's credit committee wants to see it — with the right numbers, narrative, and timing.",
+    color: "#4F46E5",
+    price: "₹10,000 – ₹25,000",
+    priceNote: "Based on loan size & complexity",
+    who: "For: Existing loan holders seeking higher limits",
+    bullets: [
+      "Assessment of current limit vs actual business need",
+      "Enhancement application with financial justification",
+      "Banker meeting prep — what to say, what not to volunteer",
+      "Follow-up until sanction or clear rejection reason",
+    ],
+    outcome: "Higher CC or TL limit sanctioned within 4–8 weeks of submission.",
   },
   {
-    icon: "🔄", name: "Loan Recovery & Restructuring",
-    desc: "If you are struggling with loan repayments — we advise on how to restructure, negotiate with the bank, and avoid your loan going bad.",
-    price: "₹25,000 – ₹75,000", who: "For: Businesses under financial stress",
-  },
-  {
-    icon: "📈", name: "Increase Your Loan Limit",
-    desc: "Already have a loan but need more? We advise on how to enhance your existing credit limit with your current bank or move to a better lender.",
-    price: "₹10,000 – ₹25,000", who: "For: Existing loan holders",
-  },
-];
-
-export const VALUES = [
-  { icon: "🔍", title: "We Tell You the Truth", desc: "If your application is weak, we tell you — and fix it before submitting." },
-  { icon: "🏦", title: "We Know Banks From Inside", desc: "Our expert team spent 20+ years reviewing loan files. We know exactly what bankers look for." },
-  { icon: "⚡", title: "72-Hour Turnaround", desc: "Bank-ready documents prepared and delivered in 72 hours — not weeks." },
-  { icon: "🔒", title: "Your Data Is Safe", desc: "We never share your fin
+    icon: "🏢", name: "New Business Loan Setup",
+    desc: "First-time borrower? We assess your bankability, fix the gaps, and guide you to the right lender with a fully prepared file — so your first application has the best chance of approval.",
+    color: "#EA580C",
+    price: "₹10,000 – ₹20,000",
+    priceNote: "Based on loan size & complexity",
+    who: "For: First-time or large loan borrowers",
+    bullets: [
+      "Bankability assessment — income, CIBIL, collateral, turnover",
+      "Right lender identification from our 275+ network",
+      "Complete document preparation — LAN, CMA, s
