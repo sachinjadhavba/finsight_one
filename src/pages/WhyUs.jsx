@@ -72,16 +72,16 @@ export default function WhyUs({ navigate }) {
     <div style={{ fontFamily:"Arial,sans-serif", color:DARK }}>
 
       {/* HERO */}
-      <div style={{ background:WHITE, padding:"clamp(44px,6vw,72px) clamp(20px,4vw,48px)", textAlign:"center", borderBottom:"1px solid #E5E7EB" }}>
+      <div style={{ background:"linear-gradient(135deg,#0F172A 0%,#1E1B4B 100%)", padding:"clamp(44px,6vw,72px) clamp(20px,4vw,48px)", textAlign:"center" }}>
         <div style={{ maxWidth:700, margin:"0 auto" }}>
           <div style={{ display:"inline-block", background:"rgba(234,88,12,0.1)", border:"1px solid rgba(234,88,12,0.3)", color:ORANGE, fontSize:11, fontWeight:700, letterSpacing:2, textTransform:"uppercase", padding:"5px 16px", borderRadius:100, marginBottom:20 }}>
             The Honest Comparison
           </div>
-          <h1 style={{ fontSize:"clamp(26px,3.5vw,42px)", fontWeight:900, color:DARK, lineHeight:1.15, marginBottom:16 }}>
+          <h1 style={{ fontSize:"clamp(26px,3.5vw,42px)", fontWeight:900, color:WHITE, lineHeight:1.15, marginBottom:16 }}>
             Why FinsightOne?<br />
             <span style={{ color:ORANGE }}>Not a Bank. Not a DSA. Not Your CA.</span>
           </h1>
-          <p style={{ fontSize:15, color:MUTED, maxWidth:560, margin:"0 auto", lineHeight:1.7 }}>
+          <p style={{ fontSize:15, color:"#CBD5E1", maxWidth:560, margin:"0 auto", lineHeight:1.7 }}>
             Each of these serves a different purpose. Here is an honest breakdown of what each one does — and does not do — for you.
           </p>
         </div>
