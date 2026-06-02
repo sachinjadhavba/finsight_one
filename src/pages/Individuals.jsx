@@ -107,13 +107,13 @@ export default function Individuals({ navigate }) {
       {/* HERO */}
       <div style={{ background:"linear-gradient(135deg,#0F172A 0%,#1E1B4B 100%)", padding:"clamp(44px,6vw,72px) clamp(20px,4vw,48px)", textAlign:"center" }}>
         <div style={{ maxWidth:780, margin:"0 auto" }}>
-          <div style={{ display:"inline-block", background:"rgba(234,88,12,0.1)", border:"1px solid rgba(234,88,12,0.3)", color:ORANGE, fontSize:11, fontWeight:700, letterSpacing:2, textTransform:"uppercase", padding:"5px 16px", borderRadius:100, marginBottom:20 }}>
+          <div style={{ display:"inline-block", background:"rgba(234,88,12,0.2)", border:"1px solid rgba(234,88,12,0.4)", color:"#FB923C", fontSize:11, fontWeight:700, letterSpacing:2, textTransform:"uppercase", padding:"5px 16px", borderRadius:100, marginBottom:20 }}>
             For Salaried & Self-Employed Individuals
           </div>
-          <h1 style={{ fontSize:"clamp(26px,3.5vw,42px)", fontWeight:900, color:DARK, lineHeight:1.15, marginBottom:16 }}>
+          <h1 style={{ fontSize:"clamp(26px,3.5vw,42px)", fontWeight:900, color:WHITE, lineHeight:1.2, marginBottom:16 }}>
             Know <span style={{ color:ORANGE }}>Exactly What You Qualify For</span><br />Before Applying Anywhere
           </h1>
-          <p style={{ fontSize:15, color:MUTED, maxWidth:560, margin:"0 auto 32px", lineHeight:1.75 }}>
+          <p style={{ fontSize:15, color:"#CBD5E1", maxWidth:560, margin:"0 auto 32px", lineHeight:1.75 }}>
             Most loan rejections are not credit rejections — they are preparation rejections. We tell you what to fix, which lender to approach, and what amount you actually qualify for.
           </p>
           <div style={{ display:"flex", gap:12, justifyContent:"center", flexWrap:"wrap" }}>
@@ -121,7 +121,7 @@ export default function Individuals({ navigate }) {
               Check My Eligibility — Free →
             </button>
             <button onClick={() => window.open(`https://wa.me/${WA}?text=${encodeURIComponent("Hi FinsightOne, I need help with my personal loan")}`, "_blank")}
-              style={{ background:WHITE, color:DARK, fontSize:14, fontWeight:600, padding:"13px 28px", borderRadius:8, border:"1px solid #E5E7EB", cursor:"pointer", fontFamily:"inherit" }}>
+              style={{ background:"rgba(255,255,255,0.1)", color:WHITE, fontSize:14, fontWeight:600, padding:"13px 28px", borderRadius:8, border:"1px solid rgba(255,255,255,0.2)", cursor:"pointer", fontFamily:"inherit" }}>
               💬 Talk to an Expert
             </button>
           </div>
