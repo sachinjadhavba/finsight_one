@@ -290,7 +290,7 @@ export default function Home({ navigate }) {
       <style>{`
         @media(max-width:768px){
           #hero-grid { grid-template-columns: 1fr !important; }
-          #hero-card-wrap { display: none !important; }
+          #hero-card-wrap { height: 300px !important; min-height: 300px !important; max-height: 300px !important; }
           #services-grid { grid-template-columns: 1fr !important; }
           .svc-item-name { font-size: 12px !important; }
           .svc-item-price { font-size: 11px !important; }
@@ -404,8 +404,4 @@ export default function Home({ navigate }) {
                 </button>
               </div>
             </div>
-          ))}
-        </div>
-      </div>
-
-      {/* ── CTA ── *
+          ))
