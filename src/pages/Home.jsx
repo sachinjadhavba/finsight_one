@@ -279,6 +279,10 @@ function HeroCard({ navigate }) {
       <style>{`
         @keyframes waIn { from{opacity:0;transform:translateY(3px)} to{opacity:1;transform:translateY(0)} }
         @keyframes waTyp { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-4px)} }
+        @media(max-width:768px){
+          #hero-grid { grid-template-columns: 1fr !important; }
+          #hero-card-wrap { height: 300px !important; min-height: 300px !important; max-height: 300px !important; }
+        }
       `}</style>
     </div>
   );
@@ -287,29 +291,10 @@ function HeroCard({ navigate }) {
 export default function Home({ navigate }) {
   return (
     <div style={{ fontFamily: "Arial, Helvetica Neue, sans-serif" }}>
-      <style>{`
-        @media(max-width:768px){
-          #hero-grid { grid-template-columns: 1fr !important; }
-          #hero-card-wrap { height: 300px !important; min-height: 300px !important; max-height: 300px !important; }
-          #services-grid { grid-template-columns: 1fr !important; }
-          .svc-item-name { font-size: 12px !important; }
-          .svc-item-price { font-size: 11px !important; }
-          .svc-sample-btn { font-size: 10px !important; padding: 2px 7px !important; }
-          .hero-pill { font-size: 11px !important; padding: 5px 11px !important; }
-          .hero-cta-btn { width: 100% !important; text-align: center !important; justify-content: center !important; }
-          .hero-ctas { flex-direction: column !important; }
-          .svc-card-head { padding: 16px 14px 12px !important; }
-          .svc-card-body { padding: 8px 14px 4px !important; }
-          .svc-card-foot { padding: 10px 14px 14px !important; }
-        }
-        @media(max-width:480px){
-          #services-grid { gap: 12px !important; }
-        }
-      `}</style>
 
       {/* ── HERO ── */}
       <div style={{ background: WHITE, padding: "clamp(24px,4vw,56px) clamp(16px,4vw,48px)", overflow: "hidden" }}>
-        <div id="hero-grid" style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 420px", gap: "clamp(28px,4vw,48px)", alignItems: "stretch" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 420px", gap: "clamp(28px,4vw,48px)", alignItems: "stretch", gridTemplateColumnsSmall: "1fr" }}>
 
           {/* Left — copy */}
           <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
@@ -342,11 +327,11 @@ export default function Home({ navigate }) {
               ))}
             </div>
             {/* CTAs */}
-            <div className="hero-ctas" style={{ display: "flex", gap: 10, marginBottom: 28, flexWrap: "wrap" }}>
-              <button onClick={() => navigate("check")} className="hero-cta-btn" style={{ background: ORANGE, color: WHITE, fontSize: 14, fontWeight: 700, padding: "13px 24px", borderRadius: 8, border: "none", cursor: "pointer", fontFamily: "inherit", boxShadow: "0 4px 12px rgba(234,88,12,0.25)" }}>
+            <div style={{ display: "flex", gap: 10, marginBottom: 28, flexWrap: "wrap" }}>
+              <button onClick={() => navigate("check")} style={{ background: ORANGE, color: WHITE, fontSize: 14, fontWeight: 700, padding: "12px 24px", borderRadius: 8, border: "none", cursor: "pointer", fontFamily: "inherit", boxShadow: "0 4px 12px rgba(234,88,12,0.25)" }}>
                 Check If I Qualify — Free
               </button>
-              <button onClick={() => navigate("whyus")} className="hero-cta-btn" style={{ background: WHITE, color: DARK, fontSize: 13, fontWeight: 600, padding: "13px 24px", borderRadius: 8, border: "1px solid #E5E7EB", cursor: "pointer", fontFamily: "inherit" }}>
+              <button onClick={() => navigate("whyus")} style={{ background: WHITE, color: DARK, fontSize: 13, fontWeight: 600, padding: "12px 24px", borderRadius: 8, border: "1px solid #E5E7EB", cursor: "pointer", fontFamily: "inherit" }}>
                 How It Works →
               </button>
             </div>
@@ -378,30 +363,49 @@ export default function Home({ navigate }) {
         <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: 2.5, textTransform: "uppercase", color: ORANGE, marginBottom: 10, textAlign: "center" }}>Our Services</div>
         <h2 style={{ fontSize: "clamp(22px,3vw,30px)", fontWeight: 900, textAlign: "center", marginBottom: 10, color: DARK }}>One Platform for Every Loan Need</h2>
         <p style={{ fontSize: 14, color: MUTED, textAlign: "center", maxWidth: 560, margin: "0 auto 36px", lineHeight: 1.7 }}>Whether you are a business owner or an individual — we have a service that fits your stage and budget.</p>
-        <div id="services-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 16, maxWidth: 1200, margin: "0 auto" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", gap: 16, maxWidth: 1200, margin: "0 auto" }}>
           {SERVICES.map(svc => (
             <div key={svc.id} style={{ borderRadius: 14, border: "1px solid #E5E7EB", background: WHITE, overflow: "hidden", display: "flex", flexDirection: "column" }}>
-              <div className="svc-card-head" style={{ padding: "18px 16px 14px", background: svc.headBg }}>
+              <div style={{ padding: "18px 16px 14px", background: svc.headBg }}>
                 <div style={{ fontSize: 26, marginBottom: 8 }}>{svc.icon}</div>
                 <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: 2, textTransform: "uppercase", marginBottom: 4, color: svc.numColor }}>{svc.num}</div>
                 <div style={{ fontSize: 13, fontWeight: 800, color: DARK, marginBottom: 5 }}>{svc.title}</div>
                 <div style={{ fontSize: 11.5, color: MUTED, lineHeight: 1.5 }}>{svc.pitch}</div>
               </div>
-              <div className="svc-card-body" style={{ padding: "10px 16px 4px", borderTop: "1px solid #F3F4F6", flex: 1 }}>
+              <div style={{ padding: "10px 16px 4px", borderTop: "1px solid #F3F4F6", flex: 1 }}>
                 {svc.items.map(it => (
-                  <div key={it.name} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "6px 0", borderBottom: "1px solid #F9FAFB" }}>
-                    <span className="svc-item-name" style={{ fontSize: 12, color: "#374151", lineHeight: 1.3 }}>{it.name}</span>
-                    <div style={{ display: "flex", alignItems: "center", gap: 5, flexShrink: 0, marginLeft: 6 }}>
-                      <span className="svc-item-price" style={{ fontWeight: 700, fontSize: 11, color: svc.priceColor, whiteSpace: "nowrap" }}>{it.price}</span>
-                      {it.sample && (<button onClick={() => window.open(it.sample,'_blank')} className="svc-sample-btn" style={{ fontSize: 10, color: svc.btnColor, background: svc.btnBg, border: `1px solid ${svc.btnBorder}`, borderRadius: 4, padding: "2px 6px", cursor: "pointer", whiteSpace: "nowrap", fontFamily: "inherit" }}>Sample</button>)}
+                  <div key={it.name} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "5px 0", borderBottom: "1px solid #F9FAFB" }}>
+                    <span style={{ fontSize: 11, color: "#374151" }}>{it.name}</span>
+                    <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
+                      <span style={{ fontWeight: 700, fontSize: 10.5, color: svc.priceColor, whiteSpace: "nowrap" }}>{it.price}</span>
+                      {it.sample && (<button onClick={() => window.open(it.sample,'_blank')} style={{ fontSize: 9, color: svc.btnColor, background: svc.btnBg, border: `1px solid ${svc.btnBorder}`, borderRadius: 3, padding: "1px 5px", cursor: "pointer", whiteSpace: "nowrap", fontFamily: "inherit" }}>Sample</button>)}
                     </div>
                   </div>
                 ))}
               </div>
-              <div className="svc-card-foot" style={{ padding: "10px 16px 16px" }}>
-                <button onClick={() => navigate(svc.page)} style={{ display: "block", width: "100%", padding: "10px 8px", borderRadius: 8, fontSize: 13, fontWeight: 700, cursor: "pointer", background: svc.btnBg, color: svc.btnColor, border: `1px solid ${svc.btnBorder}`, fontFamily: "inherit" }}>
+              <div style={{ padding: "10px 16px 16px" }}>
+                <button onClick={() => navigate(svc.page)} style={{ display: "block", width: "100%", padding: 8, borderRadius: 8, fontSize: 12, fontWeight: 700, cursor: "pointer", background: svc.btnBg, color: svc.btnColor, border: `1px solid ${svc.btnBorder}`, fontFamily: "inherit" }}>
                   {svc.btn}
                 </button>
               </div>
             </div>
-          ))
+          ))}
+        </div>
+      </div>
+
+      {/* ── CTA ── */}
+      <div style={{ background: DARK, padding: "clamp(40px,5vw,60px) clamp(20px,4vw,48px)", textAlign: "center" }}>
+        <h2 style={{ fontSize: "clamp(22px,3vw,30px)", fontWeight: 900, color: WHITE, marginBottom: 12 }}>Ready to Get Your Loan Approved?</h2>
+        <p style={{ fontSize: 14, color: "#6B7280", marginBottom: 24 }}>Check if you qualify — free, instant, no documents needed.</p>
+        <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
+          <button onClick={() => navigate("check")} style={{ background: ORANGE, color: WHITE, fontSize: 14, fontWeight: 700, padding: "13px 28px", borderRadius: 8, border: "none", cursor: "pointer", fontFamily: "inherit" }}>Check My Eligibility — Free →</button>
+          <button onClick={() => navigate("advisory")} style={{ background: "transparent", color: WHITE, fontSize: 14, fontWeight: 500, padding: "13px 28px", borderRadius: 8, border: "1px solid rgba(255,255,255,0.2)", cursor: "pointer", fontFamily: "inherit" }}>Talk to an Expert</button>
+        </div>
+      </div>
+
+      <Footer navigate={navigate} />
+    </div>
+  );
+}
+
+
