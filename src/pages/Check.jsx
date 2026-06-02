@@ -574,15 +574,27 @@ export default function Check({ navigate }) {
   // ── RESULT ───────────────────────────────────────────────────────────────
   if (phase === "result") return (
     <div style={{ fontFamily: "Arial,sans-serif", minHeight: "100vh", background: GRAY }}>
-      <div style={{ maxWidth: 540, margin: "0 auto", padding: "clamp(32px,5vw,52px) 20px", textAlign: "center" }}>
+      <style>{`
+        @media(max-width:480px){
+          #check-result-wrap { padding: 20px 14px !important; }
+          #check-result-card { padding: 14px 12px !important; }
+          #check-result-card .step-row { gap: 10px !important; margin-bottom: 10px !important; }
+          #check-result-card .step-icon { font-size: 18px !important; }
+          #check-result-card .step-title { font-size: 13px !important; }
+          #check-result-card .step-desc { font-size: 11px !important; }
+          #check-result-heading { font-size: 18px !important; }
+          #check-result-subtext { font-size: 13px !important; }
+        }
+      `}</style>
+      <div id="check-result-wrap" style={{ maxWidth: 540, margin: "0 auto", padding: "clamp(32px,5vw,52px) 20px", textAlign: "center" }}>
         <div style={{ fontSize: 48, marginBottom: 14 }}>✅</div>
-        <h2 style={{ fontSize: "clamp(18px,3vw,24px)", fontWeight: 900, color: DARK, marginBottom: 10, lineHeight: 1.2 }}>
+        <h2 id="check-result-heading" style={{ fontSize: "clamp(18px,3vw,24px)", fontWeight: 900, color: DARK, marginBottom: 10, lineHeight: 1.2 }}>
           Profile received.<br />Expert review underway.
         </h2>
-        <p style={{ fontSize: 14, color: MUTED, maxWidth: 420, margin: "0 auto 24px", lineHeight: 1.7 }}>
+        <p id="check-result-subtext" style={{ fontSize: 14, color: MUTED, maxWidth: 420, margin: "0 auto 24px", lineHeight: 1.7 }}>
           Our banking expert is reviewing your profile right now. You will receive a detailed personalised assessment on WhatsApp <strong style={{ color: DARK }}>+91 {contact.mobile}</strong> within 2 hours.
         </p>
-        <div style={{ background: WHITE, borderRadius: 14, padding: 20, border: "1px solid #E5E7EB", textAlign: "left", marginBottom: 20 }}>
+        <div id="check-result-card" style={{ background: WHITE, borderRadius: 14, padding: 20, border: "1px solid #E5E7EB", textAlign: "left", marginBottom: 20 }}>
           <div style={{ fontSize: 11, fontWeight: 700, color: INDIGO, marginBottom: 12, textTransform: "uppercase", letterSpacing: 1 }}>What happens next</div>
           {[
             ["🔍","Expert review","Our banker analyses your profile against 80+ lenders."],
@@ -590,11 +602,11 @@ export default function Check({ navigate }) {
             ["📱","WhatsApp delivery","Eligible amount, lender match, next steps — on WhatsApp."],
             ["📞","Your call","If you want to proceed, we take it forward at zero cost."],
           ].map(([icon,title,desc]) => (
-            <div key={title} style={{ display: "flex", gap: 12, marginBottom: 12 }}>
-              <span style={{ fontSize: 20, flexShrink: 0 }}>{icon}</span>
+            <div key={title} className="step-row" style={{ display: "flex", gap: 12, marginBottom: 12, alignItems: "flex-start" }}>
+              <span className="step-icon" style={{ fontSize: 20, flexShrink: 0, marginTop: 1 }}>{icon}</span>
               <div>
-                <div style={{ fontSize: 13, fontWeight: 600, color: DARK }}>{title}</div>
-                <div style={{ fontSize: 12, color: MUTED, lineHeight: 1.5 }}>{desc}</div>
+                <div className="step-title" style={{ fontSize: 13, fontWeight: 600, color: DARK }}>{title}</div>
+                <div className="step-desc" style={{ fontSize: 12, color: MUTED, lineHeight: 1.5 }}>{desc}</div>
               </div>
             </div>
           ))}
