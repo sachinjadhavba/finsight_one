@@ -165,19 +165,34 @@ export const WHAT_INCLUDED = [
 
 export const DOC_PRODUCTS = [
   {
-    icon: "📑", name: "Loan Application Report (CAM)",
+    icon: "📑", name: "Loan Appraisal Note (LAN)",
     desc: "The main document banks use to decide on your loan. We prepare it in the exact format your bank uses — covering your business, income, assets, and repayment ability.",
-    price: "₹1,499 – ₹2,00,000", who: "For: All loan applicants",
+    priceDetail: "Upto 2 Cr: ₹3,999  |  Upto 5 Cr: ₹4,999  |  Above 5 Cr: ₹9,999",
+    who: "For: All loan applicants",
+    samples: [
+      { url: "/reports/doc-01-cam-small.html", label: "Sample Upto 2 Cr" },
+      { url: "/reports/doc-02-cam-large.html", label: "Sample Upto 5 Cr" },
+    ],
   },
   {
     icon: "📊", name: "Financial Analysis Report (CMA)",
     desc: "A detailed 3 to 5 year analysis of your business finances — required by most banks for loans above ₹10 lakh. We prepare all 7 mandatory statements as per RBI guidelines.",
-    price: "₹3,999 – ₹50,000+", who: "For: Business loan applicants",
+    priceDetail: "Upto 5 Cr: ₹4,999  |  Above 5 Cr: ₹9,999",
+    who: "For: Business loan applicants",
+    samples: [
+      { url: "/reports/cma-01-interpretation-1to2cr.html", label: "Sample Upto 2 Cr" },
+      { url: "/reports/cma-02-interpretation-2to5cr.html", label: "Sample Upto 5 Cr" },
+    ],
   },
   {
-    icon: "📘", name: "Full Project Report (DPR)",
-    desc: "For larger loans above ₹25 crore — a complete project report covering viability, projections, risk analysis, and compliance. Prepared as per RBI 2025 Project Finance Directions.",
-    price: "₹40,000 – ₹3,50,000", who: "For: Large project / infrastructure loans",
+    icon: "📘", name: "Detailed Project Report (DPR)",
+    desc: "For term loans — covers project viability, promoter background, means of finance, revenue projections, DSCR, and implementation timeline. Prepared by ex-bankers who know exactly what a credit committee reads.",
+    priceDetail: "Upto 5 Cr: ₹4,999  |  Above 5 Cr: ₹9,999",
+    who: "For: Term loan / project finance applicants",
+    samples: [
+      { url: "/reports/dpr-01-expansion-upto2cr.html", label: "Sample Expansion" },
+      { url: "/reports/dpr-02-greenfield-upto5cr.html", label: "Sample Greenfield" },
+    ],
   },
 ];
 
@@ -203,13 +218,4 @@ export const VALUES = [
   { icon: "🔍", title: "We Tell You the Truth", desc: "If your application is weak, we tell you — and fix it before submitting." },
   { icon: "🏦", title: "We Know Banks From Inside", desc: "Our expert team spent 20+ years reviewing loan files. We know exactly what bankers look for." },
   { icon: "⚡", title: "72-Hour Turnaround", desc: "Bank-ready documents prepared and delivered in 72 hours — not weeks." },
-  { icon: "🔒", title: "Your Data Is Safe", desc: "We never share your financial information without your written consent." },
-];
-
-export const CREDENTIALS = [
-  { period: "2005 – 2010", title: "Retail Lending Officer", org: "Leading Public Sector Bank · Home & Personal Loans" },
-  { period: "2010 – 2018", title: "MSME Credit Manager", org: "Mid-Size Private Bank · Working Capital & Term Loans" },
-  { period: "2018 – 2023", title: "Senior Credit Analyst", org: "Large NBFC · Project Finance & Structured Lending" },
-  { period: "2023 – 2024", title: "Independent Consultant", org: "MSME Advisory · Helped 100+ businesses get approved" },
-  { period: "2025 – Present", title: "Founder, FinsightOne", org: "India's Credit & Loan Advisory Platform" },
-];
+  { icon: "🔒", title: "Your Data Is Safe", desc: "We never share your fin
