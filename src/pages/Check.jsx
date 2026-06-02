@@ -362,6 +362,18 @@ export default function Check({ navigate }) {
   // ── START ────────────────────────────────────────────────────────────────
   if (phase === "start") return (
     <div style={{ fontFamily: "Arial,sans-serif", minHeight: "100vh", background: GRAY }}>
+      <style>{`
+        @media(max-width:480px){
+          #check-start-grid { grid-template-columns: 1fr !important; }
+          #check-start-grid > div { padding: 16px 14px !important; }
+        }
+        @media(max-width:768px){
+          .check-opt-btn { padding: 12px 14px !important; font-size: 14px !important; min-height: 48px !important; }
+          #check-flow-card { padding: 20px 16px !important; }
+          #check-flow-card h2 { font-size: 16px !important; }
+          .check-multi-btn { padding: 12px 14px !important; font-size: 14px !important; min-height: 48px !important; }
+        }
+      `}</style>
       <div style={{ maxWidth: 740, margin: "0 auto", padding: "clamp(32px,5vw,52px) 20px" }}>
         <div style={{ textAlign: "center", marginBottom: 36 }}>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "#EEF2FF", border: "1px solid #C7D2FE", color: INDIGO, fontSize: 11, fontWeight: 700, padding: "5px 14px", borderRadius: 20, marginBottom: 14 }}>
@@ -375,7 +387,7 @@ export default function Check({ navigate }) {
             Answer a few questions. Our expert team reviews your profile and sends a personalised eligibility assessment to your WhatsApp — free, within 2 hours.
           </p>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(200px,1fr))", gap: 12 }}>
+        <div id="check-start-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(200px,1fr))", gap: 12 }}>
           {LOAN_CARDS.map(c => (
             <div key={c.id} onClick={() => handleLoanType(c.id)}
               style={{ background: WHITE, border: "2px solid #E5E7EB", borderRadius: 12, padding: "20px 16px", cursor: "pointer", transition: "all 0.15s" }}
@@ -394,6 +406,12 @@ export default function Check({ navigate }) {
   // ── FLOW ─────────────────────────────────────────────────────────────────
   if (phase === "flow" && currentStep) return (
     <div style={{ fontFamily: "Arial,sans-serif", minHeight: "100vh", background: GRAY }}>
+      <style>{`
+        @media(max-width:768px){
+          .check-opt-btn { padding: 12px 14px !important; font-size: 14px !important; min-height: 48px !important; }
+          .check-multi-btn { padding: 12px 14px !important; font-size: 14px !important; min-height: 48px !important; }
+        }
+      `}</style>
       <div style={{ maxWidth: 600, margin: "0 auto", padding: "clamp(24px,4vw,44px) 20px" }}>
 
         {/* Progress */}
@@ -442,7 +460,7 @@ export default function Check({ navigate }) {
           {!isMulti && (
             <div style={{ display: "flex", flexDirection: "column", gap: 7 }}>
               {currentStep.options.map(opt => (
-                <button key={opt} onClick={() => handleSingle(opt)} style={{
+                <button key={opt} onClick={() => handleSingle(opt)} className="check-opt-btn" style={{
                   background: answers[currentKey] === opt ? INDIGO : WHITE,
                   color: answers[currentKey] === opt ? WHITE : DARK,
                   border: `1.5px solid ${answers[currentKey] === opt ? INDIGO : "#E5E7EB"}`,
@@ -464,7 +482,7 @@ export default function Check({ navigate }) {
                 {currentStep.options.map(opt => {
                   const selected = multiSel.includes(opt);
                   return (
-                    <button key={opt} onClick={() => toggleMulti(opt)} style={{
+                    <button key={opt} onClick={() => toggleMulti(opt)} className="check-multi-btn" style={{
                       background: selected ? "#EEF2FF" : WHITE,
                       color: selected ? INDIGO : DARK,
                       border: `1.5px solid ${selected ? INDIGO : "#E5E7EB"}`,
@@ -576,23 +594,4 @@ export default function Check({ navigate }) {
             <div key={title} style={{ display: "flex", gap: 12, marginBottom: 12 }}>
               <span style={{ fontSize: 20, flexShrink: 0 }}>{icon}</span>
               <div>
-                <div style={{ fontSize: 13, fontWeight: 600, color: DARK }}>{title}</div>
-                <div style={{ fontSize: 12, color: MUTED, lineHeight: 1.5 }}>{desc}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-        <button onClick={() => window.open(`https://wa.me/919579453635?text=Hi%20FinsightOne%2C%20I%20just%20submitted%20my%20eligibility%20check%20for%20${encodeURIComponent(contact.name)}`, "_blank")}
-          style={{ background: "#25D366", color: WHITE, fontSize: 14, fontWeight: 700, padding: "12px 24px", borderRadius: 8, border: "none", cursor: "pointer", fontFamily: "inherit", marginBottom: 10, display: "block", width: "100%" }}>
-          💬 Chat with us on WhatsApp
-        </button>
-        <button onClick={() => navigate("home")}
-          style={{ background: "transparent", color: MUTED, fontSize: 13, padding: "10px 20px", border: "1px solid #E5E7EB", borderRadius: 8, cursor: "pointer", fontFamily: "inherit", width: "100%" }}>
-          Back to Home
-        </button>
-      </div>
-    </div>
-  );
-
-  return null;
-}
+                <div style={{ fontSize: 13, fontWeight: 600, color: DARK }}>{tit
