@@ -237,7 +237,7 @@ export default function Readiness({ navigate }) {
         <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
           {PRODUCTS.map((p) => (
             <div key={p.id} style={{ background: WHITE, border: `1px solid ${p.border}`, borderLeft: `4px solid ${p.color}`, borderRadius: 12, overflow: "hidden" }}>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr auto", alignItems: "start", padding: "20px 24px", gap: 16 }}>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr minmax(0,auto)", alignItems: "start", padding: "clamp(14px,3vw,20px) clamp(12px,3vw,24px)", gap: "clamp(8px,2vw,16px)" }}>
 
                 {/* LEFT */}
                 <div style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
@@ -259,7 +259,7 @@ export default function Readiness({ navigate }) {
                 </div>
 
                 {/* RIGHT */}
-                <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 10, flexShrink: 0, minWidth: 160 }}>
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 10, flexShrink: 0, minWidth: 0, width: "clamp(130px,38%,175px)" }}>
                   <div style={{ textAlign: "right" }}>
                     <div style={{ fontSize: 22, fontWeight: 900, color: p.color }}>{p.price}</div>
                     <div style={{ fontSize: 11, color: MUTED }}>{p.priceNote}</div>
