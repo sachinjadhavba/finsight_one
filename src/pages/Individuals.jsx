@@ -102,7 +102,7 @@ const REJECTIONS = [
 
 export default function Individuals({ navigate }) {
   return (
-    <div style={{ fontFamily:"Arial,'Helvetica Neue',sans-serif", color:DARK }}>
+    <div style={{ fontFamily:"Arial,sans-serif", color:DARK }}>
 
       {/* HERO */}
       <div style={{ background:WHITE, padding:"clamp(44px,6vw,72px) clamp(20px,4vw,48px)", borderBottom:"1px solid #E5E7EB", textAlign:"center" }}>
