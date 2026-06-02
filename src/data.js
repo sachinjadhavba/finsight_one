@@ -206,19 +206,55 @@ export const DOC_PRODUCTS = [
 
 export const ADVISORY_PRODUCTS = [
   {
-    icon: "🏗️", name: "How to Structure Your Loan",
-    desc: "Advice on the best loan type, amount, tenure, and lender for your specific situation — so you get maximum approval at minimum cost.",
-    price: "₹15,000 – ₹50,000", who: "For: First-time or large loan borrowers",
+    icon: "📈",
+    name: "Business Loan Enhancement",
+    desc: "Your existing CC or TL limit is too low for your current business scale. We build the case for enhancement — structuring the request, preparing updated financials, and presenting it to your lender in the format their credit committee expects.",
+    price: "₹10,000 – ₹25,000",
+    priceNote: "Excl. GST · Based on loan size and complexity",
+    who: "For: Existing loan holders needing higher limit",
+    bullets: [
+      "Credit limit enhancement strategy",
+      "Updated CMA and banking analysis",
+      "Lender presentation preparation",
+      "CC / TL restructuring if needed",
+      "End-to-end submission support",
+    ],
+    outcome: "Typical outcome: CC limit enhanced within 6–10 weeks of engagement",
+    color: "#4F46E5",
   },
   {
-    icon: "🔄", name: "Loan Recovery & Restructuring",
-    desc: "If you are struggling with loan repayments — we advise on how to restructure, negotiate with the bank, and avoid your loan going bad.",
-    price: "₹25,000 – ₹75,000", who: "For: Businesses under financial stress",
+    icon: "🏢",
+    name: "New Business Loan Setup",
+    desc: "Your business is not yet bankable — vintage is short, income documentation is incomplete, or banking conduct needs work. We build a 90-day roadmap to make you lender-ready, then structure and submit the right facility to the right bank.",
+    price: "₹10,000 – ₹20,000",
+    priceNote: "Excl. GST · Based on loan size and complexity",
+    who: "For: New businesses or first-time borrowers",
+    bullets: [
+      "Bankability gap assessment",
+      "30 / 60 / 90-day readiness roadmap",
+      "Banking conduct improvement plan",
+      "Lender shortlisting and approach strategy",
+      "Full loan file preparation and submission",
+    ],
+    outcome: "Typical outcome: First facility sanctioned within 3–4 months of engagement",
+    color: "#EA580C",
   },
   {
-    icon: "📈", name: "Increase Your Loan Limit",
-    desc: "Already have a loan but need more? We advise on how to enhance your existing credit limit with your current bank or move to a better lender.",
-    price: "₹10,000 – ₹25,000", who: "For: Existing loan holders",
+    icon: "🛡️",
+    name: "NPA Prevention Advisory",
+    desc: "Your loan repayments are under stress — missed EMIs, overdue CC, or a TL that is slipping. We diagnose the situation, negotiate restructuring with your lender, and build a recovery plan that keeps your account standard and your CIBIL intact.",
+    price: "₹20,000 – ₹50,000",
+    priceNote: "Excl. GST · Based on outstanding exposure and complexity",
+    who: "For: Businesses with repayment concerns",
+    bullets: [
+      "NPA risk assessment and timeline",
+      "Bank negotiation strategy",
+      "OTS / restructuring proposal preparation",
+      "CIBIL damage control plan",
+      "Post-resolution monitoring support",
+    ],
+    outcome: "Typical outcome: Restructuring agreed and account regularised within 60–90 days",
+    color: "#059669",
   },
 ];
 
@@ -236,4 +272,5 @@ export const CREDENTIALS = [
   { period: "2023 – 2024", title: "Independent Consultant", org: "MSME Advisory · Helped 100+ businesses get approved" },
   { period: "2025 – Present", title: "Founder, FinsightOne", org: "India's Credit & Loan Advisory Platform" },
 ];
+
 
