@@ -51,7 +51,7 @@ export default function PartnerLogin({ navigate }) {
 
   // ── DASHBOARD ───────────────────────────────────────────────────────────────
   if (step === "dashboard") return (
-    <div style={{ fontFamily: "Arial,sans-serif" }}>
+    <div style={{ fontFamily: "Arial,sans-serif", background: "linear-gradient(135deg,#0F172A 0%,#1E1B4B 100%)", minHeight: "100vh" }}>
       <div style={{ background: DARK, padding: "20px clamp(20px,4vw,48px)", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
         <div>
           <div style={{ fontSize: 11, color: "#6B7280", marginBottom: 3, letterSpacing: 1 }}>PARTNER DASHBOARD</div>
