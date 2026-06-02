@@ -294,7 +294,7 @@ export default function Home({ navigate }) {
 
       {/* ── HERO ── */}
       <div style={{ background: "linear-gradient(135deg,#0F172A 0%,#1E1B4B 100%)", padding: "clamp(24px,4vw,56px) clamp(16px,4vw,48px)", overflow: "hidden" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 420px", gap: "clamp(28px,4vw,48px)", alignItems: "stretch", gridTemplateColumnsSmall: "1fr" }}>
+        <div id="hero-grid" style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 420px", gap: "clamp(28px,4vw,48px)", alignItems: "stretch" }}>
 
           {/* Left — copy */}
           <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
@@ -331,7 +331,7 @@ export default function Home({ navigate }) {
               <button onClick={() => navigate("check")} style={{ background: ORANGE, color: WHITE, fontSize: 14, fontWeight: 700, padding: "12px 24px", borderRadius: 8, border: "none", cursor: "pointer", fontFamily: "inherit", boxShadow: "0 4px 12px rgba(234,88,12,0.25)" }}>
                 Check If I Qualify — Free
               </button>
-              <button onClick={() => navigate("whyus")} style={{ background: WHITE, color: WHITE, fontSize: 13, fontWeight: 600, padding: "12px 24px", borderRadius: 8, border: "1px solid #E5E7EB", cursor: "pointer", fontFamily: "inherit" }}>
+              <button onClick={() => navigate("whyus")} style={{ background: WHITE, color: DARK, fontSize: 13, fontWeight: 600, padding: "12px 24px", borderRadius: 8, border: "1px solid #E5E7EB", cursor: "pointer", fontFamily: "inherit" }}>
                 How It Works →
               </button>
             </div>
