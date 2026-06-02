@@ -22,7 +22,7 @@ export default function SampleReport({ navigate }) {
   const score = 74;
 
   return (
-    <div style={{ fontFamily: "Arial,'Helvetica Neue',sans-serif", background: GRAY }}>
+    <div style={{ fontFamily: "Arial,sans-serif", background: GRAY }}>
 
       {/* ── REPORT HEADER ── */}
       <div style={{ background: DARK, padding: "clamp(24px,4vw,40px) clamp(20px,4vw,48px)" }}>
