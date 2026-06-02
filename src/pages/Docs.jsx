@@ -16,16 +16,16 @@ export default function Docs({ navigate }) {
     <div style={{ fontFamily: "Arial,sans-serif" }}>
 
       {/* ── HERO ── */}
-      <div style={{ background: WHITE, padding: "clamp(44px,6vw,72px) clamp(20px,4vw,48px)", borderBottom: "1px solid #E5E7EB" }}>
+      <div style={{ background: "linear-gradient(135deg,#0F172A 0%,#1E1B4B 100%)", padding: "clamp(44px,6vw,72px) clamp(20px,4vw,48px)" }}>
         <div style={{ maxWidth: 780, margin: "0 auto", textAlign: "center" }}>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "#EEF2FF", border: "1px solid #C7D2FE", color: INDIGO, fontSize: 11, fontWeight: 700, padding: "5px 14px", borderRadius: 20, marginBottom: 20 }}>
             <span style={{ width: 5, height: 5, background: ORANGE, borderRadius: "50%", display: "inline-block" }} />
             Expert-Prepared · 72-Hour Delivery · 20 Years Banking Experience
           </div>
-          <h1 style={{ fontSize: "clamp(26px,4vw,40px)", fontWeight: 900, color: DARK, lineHeight: 1.15, marginBottom: 14, letterSpacing: "-0.03em" }}>
+          <h1 style={{ fontSize: "clamp(26px,4vw,40px)", fontWeight: 900, color: WHITE, lineHeight: 1.15, marginBottom: 14, letterSpacing: "-0.03em" }}>
             Banker-Ready <span style={{ color: INDIGO }}>Loan Documents</span><br />Prepared by Our Expert Team
           </h1>
-          <p style={{ fontSize: 16, color: MUTED, maxWidth: 580, margin: "0 auto 28px", lineHeight: 1.7 }}>
+          <p style={{ fontSize: 16, color: "#CBD5E1", maxWidth: 580, margin: "0 auto 28px", lineHeight: 1.7 }}>
             Loan Appraisal Note (LAN), CMA, DPR — every document a bank asks for, prepared correctly in the exact format your lender uses. Banks reject files on technicalities. We make sure that never happens to you.
           </p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
@@ -46,7 +46,7 @@ export default function Docs({ navigate }) {
         {[["72 hrs", "Fastest TAT"], ["3", "Document Types"], ["20 yrs", "Banking Expertise"], ["Ex-Bankers", "Not Algorithms"]].map(([v, l]) => (
           <div key={l} style={{ textAlign: "center" }}>
             <div style={{ fontSize: 20, fontWeight: 900, color: ORANGE }}>{v}</div>
-            <div style={{ fontSize: 11, color: MUTED, marginTop: 2 }}>{l}</div>
+            <div style={{ fontSize: 11, color: "#CBD5E1", marginTop: 2 }}>{l}</div>
           </div>
         ))}
       </div>
@@ -55,7 +55,7 @@ export default function Docs({ navigate }) {
       <div style={{ padding: "clamp(40px,5vw,64px) clamp(20px,4vw,48px)", background: WHITE }}>
         <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: 2.5, textTransform: "uppercase", color: ORANGE, marginBottom: 10, textAlign: "center" }}>Document Services</div>
         <h2 style={{ fontSize: "clamp(22px,3vw,28px)", fontWeight: 900, textAlign: "center", marginBottom: 8, color: DARK }}>Three Documents. Every Loan. One Team.</h2>
-        <p style={{ fontSize: 14, color: MUTED, textAlign: "center", maxWidth: 540, margin: "0 auto 36px", lineHeight: 1.7 }}>
+        <p style={{ fontSize: 14, color: "#CBD5E1", textAlign: "center", maxWidth: 540, margin: "0 auto 36px", lineHeight: 1.7 }}>
           Banks ask for different documents depending on loan type and amount. We prepare all three — correctly, completely, on time.
         </p>
 
