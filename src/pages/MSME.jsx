@@ -122,21 +122,21 @@ export default function MSME({ navigate }) {
       {/* ── HERO ── */}
       <div style={{ background: "linear-gradient(135deg,#0F172A 0%,#1E1B4B 100%)", padding: "clamp(44px,6vw,72px) clamp(20px,4vw,48px)", textAlign: "center" }}>
         <div style={{ maxWidth: 780, margin: "0 auto" }}>
-          <div style={{ display: "inline-block", background: "rgba(234,88,12,0.1)", border: "1px solid rgba(234,88,12,0.3)", color: ORANGE, fontSize: 11, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", padding: "5px 16px", borderRadius: 100, marginBottom: 20 }}>
+          <div style={{ display: "inline-block", background: "rgba(234,88,12,0.2)", border: "1px solid rgba(234,88,12,0.4)", color: "#FB923C", fontSize: 11, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", padding: "5px 16px", borderRadius: 100, marginBottom: 20 }}>
             For MSMEs & SMEs
           </div>
-          <h1 style={{ fontSize: "clamp(26px,3.5vw,42px)", fontWeight: 900, color: DARK, lineHeight: 1.15, marginBottom: 16 }}>
+          <h1 style={{ fontSize: "clamp(26px,3.5vw,42px)", fontWeight: 900, color: WHITE, lineHeight: 1.2, marginBottom: 16 }}>
             Your Bank Knows Your Balance Sheet.<br />
             <span style={{ color: ORANGE }}>We Know How to Get You Approved.</span>
           </h1>
-          <p style={{ fontSize: 15, color: MUTED, maxWidth: 580, margin: "0 auto 32px", lineHeight: 1.75 }}>
+          <p style={{ fontSize: 15, color: "#CBD5E1", maxWidth: 580, margin: "0 auto 32px", lineHeight: 1.75 }}>
             20 years inside banking credit teams. We know exactly what makes a banker approve — and exactly what makes them reject. We fix the second so you get the first.
           </p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
             <button onClick={() => navigate("check")} style={{ background: ORANGE, color: WHITE, fontSize: 14, fontWeight: 700, padding: "13px 32px", borderRadius: 8, border: "none", cursor: "pointer", fontFamily: "inherit" }}>
               Check My Business Eligibility — Free →
             </button>
-            <button onClick={() => window.open(`https://wa.me/${WA}?text=${encodeURIComponent("Hi FinsightOne, I need help with my MSME loan")}`, "_blank")} style={{ background: WHITE, color: DARK, fontSize: 14, fontWeight: 600, padding: "13px 28px", borderRadius: 8, border: "1px solid #E5E7EB", cursor: "pointer", fontFamily: "inherit" }}>
+            <button onClick={() => window.open(`https://wa.me/${WA}?text=${encodeURIComponent("Hi FinsightOne, I need help with my MSME loan")}`, "_blank")} style={{ background: "rgba(255,255,255,0.1)", color: WHITE, fontSize: 14, fontWeight: 600, padding: "13px 28px", borderRadius: 8, border: "1px solid rgba(255,255,255,0.2)", cursor: "pointer", fontFamily: "inherit" }}>
               💬 Talk to an Expert
             </button>
           </div>
