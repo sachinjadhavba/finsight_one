@@ -26,9 +26,9 @@ const CASES = [
       { val:"12",      label:"Risk Flags Fixed" },
       { val:"4.17x",   label:"ICR by FY30" },
     ],
-    difference: "Rebuilt DPR to comply with RBI 2025 Project Finance Directions and integrated PPA revenue — the two items both previous submissions had missed.",
-    problem: "A Maharashtra sugar co-operative had applied twice to a consortium of banks and been rejected both times. The bank cited weak CMA projections, missing ICR calculations, wrong DPR format non-compliant with RBI 2025 Project Finance Directions, and no Power Purchase Agreement revenue integration in the financials.",
-    solution: "FinsightOne rebuilt the complete LAN, CMA and DPR from scratch. We restructured projections to integrate seasonal crushing income and PPA revenue, demonstrating ICR of 4.17x by FY30. All 12 risk flags cited by the credit committee were addressed directly in the file narrative. Resubmitted to the lead bank in the same consortium.",
+    difference: "Rebuilt the DPR to comply with RBI 2025 Project Finance Directions and integrated PPA revenue into CMA projections — the two items both previous submissions had missed entirely.",
+    problem: "A Maharashtra sugar co-operative had applied twice to a consortium of banks and been rejected both times. The bank cited weak CMA projections, missing ICR calculations, DPR format non-compliant with RBI 2025 Project Finance Directions, and no Power Purchase Agreement revenue integration in the financial model. The co-operative had engaged two local CAs previously — both had prepared files that did not meet consortium lending standards.",
+    solution: "FinsightOne rebuilt the complete LAN, CMA and DPR from scratch. We restructured projections to correctly integrate seasonal crushing income with PPA co-generation revenue across a 10-year projection period, demonstrating ICR of 4.17x by FY30. Each of the 12 risk flags cited by the credit committee was addressed with a specific, documented mitigant in the file narrative. Resubmitted to the lead bank in the same consortium — sanctioned in 38 days.",
     cta: "advisory",
   },
   {
@@ -45,75 +45,35 @@ const CASES = [
       { val:"₹2.1 Cr",  label:"NABARD Subsidy" },
       { val:"5 Weeks",  label:"To Sanction" },
     ],
-    difference: "Established NABARD DEDS subsidy eligibility — reducing effective bank exposure and improving DSCR from 0.98x to 1.42x. This alone converted a rejection into an approval.",
-    problem: "A family-owned dairy farm had been rejected by two different banks. The primary issues: promoter's CIBIL showed a 3-year-old settled account marked as Written Off, the project lacked a techno-economic viability report, and NABARD DEDS subsidy eligibility had not been established in the file.",
-    solution: "FinsightOne obtained CIBIL dispute resolution and a NOC letter from the original lender. Commissioned an independent TEV study. Established and documented NABARD DEDS eligibility of ₹2.1 Crore, which reduced effective bank exposure and improved DSCR from 0.98x to 1.42x. Submitted to a PSU bank with a strong track record in agri-lending.",
+    difference: "Establishing NABARD DEDS subsidy eligibility reduced effective bank exposure by ₹2.1 Crore — converting a DSCR of 0.98x (below lender floor) to 1.42x (approvable). The subsidy was always available. No one had documented it.",
+    problem: "A family-owned dairy farm had been rejected by two different banks. Three issues compounded each other: the promoter's CIBIL showed a 3-year-old settled account incorrectly marked as Written Off, the project lacked a techno-economic viability report meeting bank standards, and NABARD DEDS subsidy eligibility — which would have materially improved the DSCR — had never been established or documented in either submission.",
+    solution: "FinsightOne obtained CIBIL dispute resolution and a NOC letter from the original lender confirming the settlement, which corrected the Written Off classification. Commissioned an independent TEV study meeting bank requirements. Established and fully documented NABARD DEDS eligibility of ₹2.1 Crore — reducing effective bank exposure and improving DSCR from 0.98x to 1.42x. Submitted to a PSU bank with a strong agri-lending track record. Sanctioned in 5 weeks.",
     cta: "advisory",
   },
   {
-    id: "cs03",
-    filter: "rejection",
-    tag: "LOGISTICS & TRANSPORT · DELHI NCR",
-    color: "#7C3AED", bgColor: "#4C1D95", tagColor: "#C4B5FD",
-    icon: "🚛",
-    title: "₹22 Crore Fleet Expansion — WC + Term Loan",
-    subtitle: "Wrong NIC code caused rejection. Corrected and sanctioned by same bank.",
-    stats: [
-      { val:"₹22 Cr",    label:"Loan Sanctioned" },
-      { val:"1",          label:"Rejection Reversed" },
-      { val:"Same Bank",  label:"Resubmitted To" },
-      { val:"4 Weeks",   label:"Sanction Timeline" },
-    ],
-    difference: "Identified a single NIC code mismatch that had been triggering an automated credit ceiling cap. One correction — same bank, same credit committee — different outcome.",
-    problem: "A Delhi NCR logistics company with a fleet of 38 commercial vehicles was rejected by their existing lender for a ₹22 Cr fleet expansion loan. The bank cited incorrect NIC code classification, which meant their turnover was being assessed under a lower credit ceiling than applicable for commercial transport businesses.",
-    solution: "FinsightOne identified the NIC code mismatch, filed the correction with the Udyam registration, and rebuilt the LAN with the correct industry classification. Re-approached the same bank with corrected documents, demonstrating eligibility under the commercial transport lending framework. Sanctioned within 4 weeks of resubmission.",
-    cta: "docs",
-  },
-  {
-    id: "cs04",
-    filter: "individual",
-    tag: "INDIVIDUAL · HOME LOAN · PUNE",
-    color: "#0369A1", bgColor: "#0C4A6E", tagColor: "#7DD3FC",
-    icon: "🏠",
-    title: "₹68 Lakh Home Loan — Self-Employed Professional",
-    subtitle: "FOIR exceeded. Co-applicant structured. Approved at best available rate.",
-    stats: [
-      { val:"₹68 L",   label:"Loan Sanctioned" },
-      { val:"8.65%",   label:"Interest Rate" },
-      { val:"38%",     label:"FOIR After Fix" },
-      { val:"18 Days", label:"Time to Sanction" },
-    ],
-    difference: "Adding a zero-EMI co-applicant reduced effective FOIR from 64% to 38% — converting a certain rejection into a best-rate approval at a lender that values CA income profiles.",
-    problem: "A Pune-based chartered accountant with 12 years of practice applied for a ₹68L home loan. A leading private bank rejected the application citing FOIR of 64% — exceeding their 50% cap — due to two active business loans and a credit card EMI. The applicant had a CIBIL of 768 and stable income — a strong profile that was being blocked by a structuring issue, not a credit issue.",
-    solution: "FinsightOne analysed the co-applicant option — the spouse, a salaried professional with no existing EMIs. Adding the spouse as co-applicant reduced effective FOIR to 38%. Identified a lender with a strong track record for CA professionals and business income ITRs. Prepared income assessment using 3-year ITR averaging with appropriate add-backs. Sanctioned in 18 working days at 8.65% — 35 bps better than the original offer.",
-    cta: "check",
-  },
-  {
     id: "cs05",
-    filter: "individual",
-    tag: "INDIVIDUAL · LAP · MUMBAI",
+    filter: "business",
+    tag: "TEXTILES & EXPORT · SURAT",
     color: "#B45309", bgColor: "#78350F", tagColor: "#FCD34D",
-    icon: "🏢",
-    title: "₹1.4 Crore LAP Against Commercial Office — Mumbai",
-    subtitle: "Title chain gap resolved. LTV maximised. Approved by a leading NBFC.",
+    icon: "🧵",
+    title: "₹12 Crore WC Enhancement — Textile Exporter",
+    subtitle: "Thin PAT margins misread for 4 years. Correct framework presented. Enhancement sanctioned.",
     stats: [
-      { val:"₹1.4 Cr", label:"Loan Sanctioned" },
-      { val:"62%",      label:"LTV Achieved" },
-      { val:"3 Weeks",  label:"Post-Fix Sanction" },
-      { val:"2",        label:"Prior Rejections" },
+      { val:"₹12 Cr",  label:"CC Limit Sanctioned" },
+      { val:"4 Years", label:"Stuck at ₹6 Cr" },
+      { val:"28%",     label:"EBITDA on Value-Added" },
+      { val:"2.8%",    label:"PAT/Sales — Correctly Explained" },
     ],
-    difference: "A missing sale deed from 2009 had been silently blocking every application. Once traced and resolved with a clean title opinion, the same property that two banks had rejected was sanctioned by an NBFC in 3 weeks.",
-    problem: "A Mumbai-based MSME owner applied for LAP against a commercial office unit. Two lenders declined — one cited a title chain gap (missing sale deed for one transfer in 2009) and another cited property age exceeding their internal limit. The borrower needed a minimum of ₹1.2 Crore to fund working capital and equipment.",
-    solution: "FinsightOne appointed a property title specialist to trace the 2009 transfer gap. Obtained a certified copy of the missing sale deed from the Sub-Registrar office and secured a clean title advocate opinion. Identified a lender that accepts commercial property of this age with clear title. Re-valued the property with an empanelled valuer — achieved 62% LTV = ₹1.4 Cr sanctioned. Disbursed in 3 weeks after title resolution.",
-    cta: "check",
+    difference: "The lender's credit team was applying a manufacturing margin benchmark to an export business — structurally incorrect. Rebuilding the CMA to show EBITDA on value-added (28%) instead of PAT on gross FOB (2.8%) changed the credit story entirely — with the same underlying numbers.",
+    problem: "A Surat textile exporter with ₹42 Crore FOB export turnover had been stuck at a WC CC limit of ₹6 Crore for 4 years. Every annual renewal assessment flagged 2.8% PAT/Sales as dangerously thin margins — and the lender's credit team declined enhancement year after year on that basis. The business was profitable, growing, and fully compliant. The problem was entirely in how the financials were being read — PAT/Sales is the wrong metric for an export business where high material cost (fabric, yarn) structurally suppresses the ratio relative to FOB value.",
+    solution: "FinsightOne rebuilt the CMA to separate value-added margin (manufacturing spread) from gross FOB revenue. Demonstrated EBITDA of 28% on value-added — well above manufacturing sector benchmarks. Prepared a detailed industry context note explaining the correct profitability framework for textile export businesses, supported by RBI and ECGC sector guidelines. Routed the file to the lender's trade finance vertical — which has analysts familiar with export sector economics — rather than the retail MSME desk that had been reviewing it for 4 years. Enhancement from ₹6 Cr to ₹12 Cr sanctioned.",
+    cta: "docs",
   },
 ];
 
 const FILTERS = [
-  { id:"all",        label:"All Cases" },
-  { id:"business",   label:"Business Loans" },
-  { id:"individual", label:"Individual" },
-  { id:"rejection",  label:"Rejection Recovery" },
+  { id:"all",      label:"All Cases" },
+  { id:"business", label:"Business Loans" },
 ];
 
 const CTA_MAP = {
@@ -175,7 +135,7 @@ function CaseCard({ cs, navigate }) {
             {cta.label}
           </button>
           <button
-            onClick={() => window.open(`https://wa.me/${WA}?text=${encodeURIComponent("Hi FinsightOne, I have a similar situation to your case study — " + cs.title)}`, "_blank")}
+            onClick={() => window.open(`https://wa.me/${WA}?text=${encodeURIComponent("Hi FinsightOne, I have a similar situation — " + cs.title)}`, "_blank")}
             style={{ background:"transparent", color:DARK, fontSize:12, fontWeight:600, padding:"8px 18px", borderRadius:6, border:"1px solid #E5E7EB", cursor:"pointer", fontFamily:"inherit" }}>
             💬 Similar Situation?
           </button>
@@ -187,7 +147,6 @@ function CaseCard({ cs, navigate }) {
 
 export default function CaseStudies({ navigate }) {
   const [active, setActive] = useState("all");
-
   const filtered = active === "all" ? CASES : CASES.filter(c => c.filter === active);
 
   return (
@@ -208,9 +167,9 @@ export default function CaseStudies({ navigate }) {
         </div>
       </div>
 
-      {/* STATS — all from actual case data */}
+      {/* STATS */}
       <div style={{ background:GRAY, borderBottom:"1px solid #E5E7EB", padding:"16px clamp(20px,4vw,48px)", display:"flex", justifyContent:"space-around", flexWrap:"wrap", gap:16 }}>
-        {[["5","Case Studies Published"],["₹60 Cr","Largest Case"],["18 Days","Fastest Sanction"],["38 Days","Fastest Consortium"]].map(([v,l]) => (
+        {[["3","Case Studies Published"],["₹60 Cr","Largest Case"],["5 Weeks","Fastest Sanction"],["4.17x","Highest ICR Achieved"]].map(([v,l]) => (
           <div key={l} style={{ textAlign:"center" }}>
             <div style={{ fontSize:20, fontWeight:900, color:ORANGE }}>{v}</div>
             <div style={{ fontSize:11, color:MUTED, marginTop:2 }}>{l}</div>
@@ -223,24 +182,15 @@ export default function CaseStudies({ navigate }) {
         {FILTERS.map(f => (
           <button key={f.id}
             onClick={() => setActive(f.id)}
-            style={{ padding:"7px 18px", borderRadius:20, fontSize:12.5, fontWeight:600, cursor:"pointer", fontFamily:"inherit", border: active === f.id ? `1px solid ${ORANGE}` : "1px solid #E5E7EB", background: active === f.id ? `${ORANGE}10` : WHITE, color: active === f.id ? ORANGE : MUTED, transition:"all 0.15s" }}>
+            style={{ padding:"7px 18px", borderRadius:20, fontSize:12.5, fontWeight:600, cursor:"pointer", fontFamily:"inherit", border: active===f.id ? `1px solid ${ORANGE}` : "1px solid #E5E7EB", background: active===f.id ? `${ORANGE}10` : WHITE, color: active===f.id ? ORANGE : MUTED, transition:"all 0.15s" }}>
             {f.label}
-            {f.id !== "all" && (
-              <span style={{ marginLeft:6, background: active===f.id ? ORANGE : "#E5E7EB", color: active===f.id ? WHITE : MUTED, fontSize:10, fontWeight:700, padding:"1px 6px", borderRadius:10 }}>
-                {CASES.filter(c => c.filter === f.id).length}
-              </span>
-            )}
           </button>
         ))}
       </div>
 
       {/* CASES */}
       <div style={{ padding:"clamp(28px,4vw,48px) clamp(20px,4vw,48px)", maxWidth:1100, margin:"0 auto", display:"flex", flexDirection:"column", gap:24 }}>
-        {filtered.length === 0 ? (
-          <div style={{ textAlign:"center", padding:"48px", color:MUTED, fontSize:14 }}>No cases in this category yet.</div>
-        ) : (
-          filtered.map(cs => <CaseCard key={cs.id} cs={cs} navigate={navigate} />)
-        )}
+        {filtered.map(cs => <CaseCard key={cs.id} cs={cs} navigate={navigate} />)}
       </div>
 
       {/* BOTTOM CTA */}
