@@ -15,6 +15,7 @@ import WhyUs from "./pages/WhyUs";
 import Blog from "./pages/Blog";
 import PartnerLogin from "./pages/PartnerLogin";
 import SampleReport from "./pages/SampleReport";
+import Readiness from "./pages/Readiness";
 
 export default function App() {
   const [page, setPage] = useState("home");
@@ -25,6 +26,7 @@ export default function App() {
       <Nav page={page} navigate={navigate} />
       {page === "home"         && <Home navigate={navigate} />}
       {page === "check"        && <Check navigate={navigate} />}
+      {page === "readiness"    && <Readiness navigate={navigate} />}
       {page === "analytics"    && <Analytics navigate={navigate} />}
       {page === "advisory"     && <Advisory navigate={navigate} />}
       {page === "docs"         && <Docs navigate={navigate} />}
@@ -41,3 +43,4 @@ export default function App() {
     </div>
   );
 }
+
