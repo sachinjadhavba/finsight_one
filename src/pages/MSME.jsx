@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Footer from "../components/Footer";
 
-const ORANGE = "#EA580C";
+const ORANGE = "#FB923C";
 const INDIGO = "#4F46E5";
 const DARK   = "#111827";
 const MUTED  = "#6B7280";
@@ -120,7 +120,7 @@ export default function MSME({ navigate }) {
     <div style={{ fontFamily: "Arial,sans-serif", color: DARK }}>
 
       {/* ── HERO ── */}
-      <div style={{ background: WHITE, padding: "clamp(44px,6vw,72px) clamp(20px,4vw,48px)", borderBottom: "1px solid #E5E7EB", textAlign: "center" }}>
+      <div style={{ background: "linear-gradient(135deg,#0F172A 0%,#1E1B4B 100%)", padding: "clamp(44px,6vw,72px) clamp(20px,4vw,48px)", textAlign: "center" }}>
         <div style={{ maxWidth: 780, margin: "0 auto" }}>
           <div style={{ display: "inline-block", background: "rgba(234,88,12,0.1)", border: "1px solid rgba(234,88,12,0.3)", color: ORANGE, fontSize: 11, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", padding: "5px 16px", borderRadius: 100, marginBottom: 20 }}>
             For MSMEs & SMEs
