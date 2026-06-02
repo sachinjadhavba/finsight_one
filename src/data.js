@@ -213,4 +213,3 @@ export const CREDENTIALS = [
   { period: "2023 – 2024", title: "Independent Consultant", org: "MSME Advisory · Helped 100+ businesses get approved" },
   { period: "2025 – Present", title: "Founder, FinsightOne", org: "India's Credit & Loan Advisory Platform" },
 ];
-             
