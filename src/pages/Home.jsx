@@ -282,6 +282,7 @@ function HeroCard({ navigate }) {
         @media(max-width:768px){
           #hero-grid { grid-template-columns: 1fr !important; }
           #hero-card-wrap { height: 300px !important; min-height: 300px !important; max-height: 300px !important; }
+          #hero-wa-card { display: none !important; }
         }
       `}</style>
     </div>
@@ -346,8 +347,10 @@ export default function Home({ navigate }) {
             </div>
           </div>
 
-          {/* Right — Hero Card */}
-          <HeroCard navigate={navigate} />
+          {/* Right — Hero Card (hidden on mobile) */}
+          <div id="hero-wa-card">
+            <HeroCard navigate={navigate} />
+          </div>
         </div>
       </div>
 
