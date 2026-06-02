@@ -67,9 +67,9 @@ export const SERVICES = [
     title: "Keep Your Limits Growing",
     pitch: "Your finances, banker-ready every single month.",
     items: [
-      { name: "Credit Watch",    price: "₹499/mo"   },
-      { name: "Business Health", price: "₹2,999/mo", sample: "/reports/s2-03-loan-readiness-plan.html", popular: true },
-      { name: "Premium",         price: "₹4,999/mo" },
+      { name: "Credit Watch",    price: "₹499/mo",   tagline: "Know what your banker sees that you don't — before it becomes a problem." },
+      { name: "Business Health", price: "₹2,999/mo", tagline: "Stay enhancement-ready all year and grow your banking limits.", sample: "/reports/s2-03-loan-readiness-plan.html", popular: true },
+      { name: "Premium",         price: "₹4,999/mo", tagline: "Active guidance through every banker conversation and enhancement." },
     ],
     btn: "View Plans →", page: "analytics",
     numColor: "#16A34A", priceColor: "#16A34A",
@@ -116,7 +116,7 @@ export const TESTIMONIALS = [
 
 export const PLANS = [
   {
-    name: "Credit Watch", price: "₹499", per: "/ month", featured: false,
+    name: "Credit Watch", price: "₹499", per: "/ month", featured: false, sampleReport: "/reports/credit-watch-monthly-report.html",
     desc: "Know what your banker sees that you don't — before it becomes a problem.",
     features: [
       "Monthly bureau score tracking — promoter + business",
@@ -128,7 +128,7 @@ export const PLANS = [
     ],
   },
   {
-    name: "Business Health", price: "₹2,999", per: "/ month", featured: true, badge: "Most Popular",
+    name: "Business Health", price: "₹2,999", per: "/ month", featured: true, badge: "Most Popular", sampleReport: "/reports/monthly-business-health-report.html",
     desc: "For MSME owners who want to stay enhancement-ready all year and grow their banking limits.",
     features: [
       "Everything in Credit Watch",
@@ -140,7 +140,7 @@ export const PLANS = [
     ],
   },
   {
-    name: "Premium", price: "₹4,999", per: "/ month", featured: false,
+    name: "Premium", price: "₹4,999", per: "/ month", featured: false, sampleReport: "/reports/premium-monthly-report.html",
     desc: "For growing businesses that want active guidance through every banker conversation and enhancement.",
     features: [
       "Everything in Business Health",
