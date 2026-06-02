@@ -172,6 +172,7 @@ export const DOC_PRODUCTS = [
     samples: [
       { url: "/reports/doc-01-cam-small.html", label: "Sample Upto 2 Cr" },
       { url: "/reports/doc-02-cam-large.html", label: "Sample Upto 5 Cr" },
+      { url: "/reports/doc-03-lan-5to10cr.html", label: "Sample Above 5 Cr" },
     ],
   },
   {
@@ -192,6 +193,7 @@ export const DOC_PRODUCTS = [
     samples: [
       { url: "/reports/dpr-01-expansion-upto2cr.html", label: "Sample Expansion" },
       { url: "/reports/dpr-02-greenfield-upto5cr.html", label: "Sample Greenfield" },
+      { url: "/reports/dpr-above-5cr-template.html", label: "Sample Above 5 Cr" },
     ],
   },
 ];
@@ -255,6 +257,4 @@ export const CREDENTIALS = [
   { period: "2005 – 2010", title: "Retail Lending Officer", org: "Leading Public Sector Bank · Home & Personal Loans" },
   { period: "2010 – 2018", title: "MSME Credit Manager", org: "Mid-Size Private Bank · Working Capital & Term Loans" },
   { period: "2018 – 2023", title: "Senior Credit Analyst", org: "Large NBFC · Project Finance & Structured Lending" },
-  { period: "2023 – 2024", title: "Independent Consultant", org: "MSME Advisory · Helped 100+ businesses get approved" },
-  { period: "2025 – Present", title: "Founder, FinsightOne", org: "India’s Credit & Loan Advisory Platform" },
-];
+  { period: "2023 – 2024", title: "Independent Consultant", org: "MSME Advisory
