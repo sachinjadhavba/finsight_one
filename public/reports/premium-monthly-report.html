@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Premium Monthly Report — May 2026 | FinsightOne</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, 'Helvetica Neue', sans-serif; background: #F8FAFC; color: #111827; font-size: 13px; }
+
+  .cover { background: linear-gradient(135deg, #1E1B4B 0%, #312E81 60%, #4F46E5 100%); color: #fff; padding: 40px 48px 36px; }
+  .cover-logo { font-size: 18px; font-weight: 900; letter-spacing: 1.5px; margin-bottom: 28px; }
+  .cover-logo span { color: #A5B4FC; }
+  .cover-badge { display: inline-block; background: rgba(165,180,252,0.15); border: 1px solid rgba(165,180,252,0.4); color: #A5B4FC; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 4px 14px; border-radius: 100px; margin-bottom: 12px; }
+  .cover-title { font-size: 28px; font-weight: 900; line-height: 1.2; margin-bottom: 6px; }
+  .cover-sub { font-size: 12px; color: #C7D2FE; margin-bottom: 24px; }
+  .cover-meta { display: flex; gap: 28px; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,0.12); padding-top: 18px; }
+  .cover-meta div { font-size: 11px; color: rgba(255,255,255,0.5); }
+  .cover-meta strong { display: block; font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+  .cover-rm { display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 10px; padding: 10px 16px; margin-top: 16px; }
+  .cover-rm-avatar { width: 36px; height: 36px; border-radius: 50%; background: #4F46E5; border: 2px solid #A5B4FC; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 13px; flex-shrink: 0; }
+  .cover-rm-name { font-size: 12px; font-weight: 700; }
+  .cover-rm-title { font-size: 10px; color: rgba(255,255,255,0.55); }
+
+  .body-wrap { max-width: 900px; margin: 0 auto; padding: 28px 20px; }
+  .section { background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; margin-bottom: 20px; overflow: hidden; }
+  .section-header { padding: 13px 20px; border-bottom: 1px solid #F3F4F6; display: flex; align-items: center; justify-content: space-between; background: #F9FAFB; }
+  .section-title { font-size: 13px; font-weight: 800; color: #111827; display: flex; align-items: center; gap: 8px; }
+  .section-body { padding: 20px; }
+
+  /* Score band */
+  .score-band { display: flex; gap: 14px; flex-wrap: wrap; padding: 18px; }
+  .score-box { flex: 1; min-width: 130px; border: 1.5px solid #E5E7EB; border-radius: 10px; padding: 14px 16px; text-align: center; }
+  .score-box.good { border-color: #BBF7D0; background: #F0FDF4; }
+  .score-box.warn { border-color: #FDE68A; background: #FFFBEB; }
+  .score-box.red  { border-color: #FECACA; background: #FEF2F2; }
+  .score-num { font-size: 32px; font-weight: 900; color: #4F46E5; line-height: 1; }
+  .score-box.good .score-num { color: #059669; }
+  .score-box.warn .score-num { color: #D97706; }
+  .score-box.red  .score-num { color: #DC2626; }
+  .score-label { font-size: 10px; color: #6B7280; margin-top: 4px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; }
+  .score-change { font-size: 11px; margin-top: 5px; font-weight: 700; }
+  .up   { color: #059669; }
+  .down { color: #DC2626; }
+  .flat { color: #6B7280; }
+
+  /* Traffic table */
+  .tl-table { width: 100%; border-collapse: collapse; }
+  .tl-table th { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #6B7280; padding: 8px 12px; text-align: left; background: #F9FAFB; border-bottom: 1px solid #E5E7EB; }
+  .tl-table td { padding: 10px 12px; border-bottom: 1px solid #F3F4F6; font-size: 12px; vertical-align: middle; }
+  .tl-table tr:last-child td { border-bottom: none; }
+  .pill { display: inline-block; font-size: 10px; font-weight: 800; padding: 3px 10px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .pill.green { background: #D1FAE5; color: #065F46; }
+  .pill.amber { background: #FEF3C7; color: #92400E; }
+  .pill.red   { background: #FEE2E2; color: #991B1B; }
+
+  /* Fix-it */
+  .action-box { background: #FFFBEB; border: 1.5px solid #FDE68A; border-radius: 10px; padding: 18px 20px; }
+  .action-label { font-size: 9px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #D97706; margin-bottom: 6px; }
+  .action-title { font-size: 15px; font-weight: 800; color: #111827; margin-bottom: 8px; }
+  .action-desc { font-size: 12px; color: #374151; line-height: 1.6; margin-bottom: 12px; }
+  .action-deadline { display: inline-flex; align-items: center; gap: 6px; background: #D97706; color: #fff; font-size: 11px; font-weight: 700; padding: 5px 14px; border-radius: 100px; }
+
+  /* Enhancement strategy */
+  .strat-box { background: #EEF2FF; border: 1px solid #C7D2FE; border-radius: 10px; padding: 18px 20px; margin-bottom: 16px; }
+  .strat-label { font-size: 9px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #4F46E5; margin-bottom: 8px; }
+  .strat-body { font-size: 12px; color: #374151; line-height: 1.7; }
+  .strat-body strong { color: #1E1B4B; }
+
+  /* Meeting script */
+  .script-block { border-left: 3px solid #4F46E5; padding: 10px 16px; margin-bottom: 12px; background: #F5F3FF; border-radius: 0 8px 8px 0; }
+  .script-q { font-size: 11px; font-weight: 800; color: #4F46E5; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .script-a { font-size: 12px; color: #1E1B4B; line-height: 1.6; }
+  .script-avoid { font-size: 11px; color: #DC2626; margin-top: 5px; font-style: italic; }
+
+  /* Q&A */
+  .qa-item { border: 1px solid #E5E7EB; border-radius: 8px; margin-bottom: 10px; overflow: hidden; }
+  .qa-q { background: #F9FAFB; padding: 10px 14px; font-size: 12px; font-weight: 700; color: #374151; border-bottom: 1px solid #E5E7EB; }
+  .qa-a { padding: 10px 14px; font-size: 12px; color: #111827; line-height: 1.6; }
+  .qa-tip { font-size: 11px; color: #4F46E5; margin-top: 5px; font-weight: 600; }
+
+  /* Rate negotiation */
+  .rate-table { width: 100%; border-collapse: collapse; }
+  .rate-table th { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #6B7280; padding: 8px 14px; text-align: left; background: #F9FAFB; border-bottom: 1px solid #E5E7EB; }
+  .rate-table td { padding: 10px 14px; border-bottom: 1px solid #F3F4F6; font-size: 12px; }
+  .rate-table tr:last-child td { border-bottom: none; }
+  .rate-highlight { background: #EEF2FF; font-weight: 700; color: #4F46E5; }
+
+  /* Calendar */
+  .cal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .cal-item { border: 1px solid #E5E7EB; border-radius: 8px; padding: 12px 14px; }
+  .cal-month { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #6B7280; margin-bottom: 4px; }
+  .cal-tag { display: inline-block; font-size: 9px; font-weight: 800; padding: 2px 8px; border-radius: 100px; margin-bottom: 6px; }
+  .cal-tag.prep   { background: #EEF2FF; color: #4F46E5; }
+  .cal-tag.action { background: #FFF7ED; color: #EA580C; }
+  .cal-tag.submit { background: #D1FAE5; color: #065F46; }
+  .cal-tag.meet   { background: #F5F3FF; color: #7C3AED; }
+  .cal-action { font-size: 11px; font-weight: 700; color: #111827; margin-bottom: 3px; line-height: 1.4; }
+  .cal-why   { font-size: 10.5px; color: #6B7280; line-height: 1.4; }
+
+  /* RM note */
+  .rm-note { background: #F5F3FF; border: 1.5px solid #DDD6FE; border-radius: 10px; padding: 18px 20px; }
+  .rm-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .rm-avatar { width: 38px; height: 38px; border-radius: 50%; background: #4F46E5; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 13px; color: #fff; flex-shrink: 0; }
+  .rm-name { font-size: 13px; font-weight: 800; color: #1E1B4B; }
+  .rm-title { font-size: 11px; color: #6B7280; }
+  .rm-message { font-size: 12px; color: #374151; line-height: 1.7; }
+  .rm-call-box { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+  .rm-call-btn { flex: 1; min-width: 140px; padding: 9px 16px; border-radius: 8px; font-size: 12px; font-weight: 700; text-align: center; border: none; cursor: default; }
+  .rm-call-btn.primary { background: #4F46E5; color: #fff; }
+  .rm-call-btn.secondary { background: #EEF2FF; color: #4F46E5; border: 1px solid #C7D2FE; }
+
+  .report-footer { background: #111827; color: #9CA3AF; font-size: 10px; padding: 20px 24px; text-align: center; line-height: 1.7; margin-top: 28px; }
+  .report-footer strong { color: #fff; }
+
+  @media (max-width: 620px) {
+    .cover { padding: 24px 16px 20px; }
+    .score-band { flex-direction: column; }
+    .cal-grid { grid-template-columns: 1fr 1fr; }
+    .body-wrap { padding: 16px 12px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="cover-logo">FINSIGHT<span>ONE</span></div>
+  <div class="cover-badge">Premium Plan · Sample Report</div>
+  <div class="cover-title">Monthly Premium Report</div>
+  <div class="cover-sub">Active guidance through every banker conversation and enhancement</div>
+  <div class="cover-meta">
+    <div><strong>Suresh Industries Pvt Ltd</strong>Client Name</div>
+    <div><strong>May 2026</strong>Report Month</div>
+    <div><strong>SBI + ICICI</strong>Banking with</div>
+    <div><strong>₹1.8Cr</strong>Total Limits</div>
+    <div><strong>Premium</strong>Plan · ₹4,999/mo</div>
+  </div>
+  <div class="cover-rm">
+    <div class="cover-rm-avatar">AK</div>
+    <div>
+      <div class="cover-rm-name">Amit Kumar — Dedicated Relationship Manager</div>
+      <div class="cover-rm-title">Ex-SBI MSME Credit Manager · 14 years banking · Direct line: +91 98XXX XXXXX</div>
+    </div>
+  </div>
+</div>
+
+<div class="body-wrap">
+
+  <!-- SECTION 1: Enhancement Readiness Score -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-title">📊 Enhancement Readiness Score</div>
+      <div style="font-size:11px;color:#6B7280;">Quarterly Assessment — Q1 FY27</div>
+    </div>
+    <div class="score-band">
+      <div class="score-box good">
+        <div class="score-num">81</div>
+        <div class="score-label">Overall Score</div>
+        <div class="score-change up">↑ +9 vs last quarter</div>
+      </div>
+      <div class="score-box good">
+        <div class="score-num" style="font-size:26px;padding-top:4px;">🟢</div>
+        <div class="score-label">Enhancement Verdict</div>
+        <div class="score-change up">Strong — approach now</div>
+      </div>
+      <div class="score-box">
+        <div class="score-num" style="font-size:22px;padding-top:6px;">₹2.4Cr</div>
+        <div class="score-label">Estimated Limit Potential</div>
+        <div class="score-change up">↑ From current ₹1.8Cr</div>
+      </div>
+      <div class="score-box good">
+        <div class="score-num" style="font-size:18px;padding-top:10px;">June '26</div>
+        <div class="score-label">Recommended Window</div>
+        <div class="score-change flat">Post Q4 results filing</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: 8-Ratio Dashboard -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-title">🚦 8-Ratio Banking Dashboard</div>
+      <div style="font-size:11px;color:#6B7280;">vs SBI & ICICI benchmarks</div>
+    </div>
+    <div style="padding:0;">
+      <table class="tl-table">
+        <thead>
+          <tr>
+            <th>Ratio</th>
+            <th>Your Value</th>
+            <th>Benchmark</th>
+            <th>Status</th>
+            <th>RM Note</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight:700;">DSCR</td>
+            <td style="font-weight:700;">1.68</td>
+            <td style="color:#6B7280;font-size:11px;">Min 1.25</td>
+            <td><span class="pill green">Green</span></td>
+            <td style="color:#6B7280;font-size:11px;">Excellent. Use this as your opening number in the meeting.</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;">CC Utilisation</td>
+            <td style="font-weight:700;">68%</td>
+            <td style="color:#6B7280;font-size:11px;">Below 75%</td>
+            <td><span class="pill green">Green</span></td>
+            <td style="color:#6B7280;font-size:11px;">Just under the 75% threshold. Keep below 70% through June.</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;">Debtor Days</td>
+            <td style="font-weight:700;">48 days</td>
+            <td style="color:#6B7280;font-size:11px;">Below 60 days</td>
+            <td><span class="pill green">Green</span></td>
+            <td style="color:#6B7280;font-size:11px;">Healthy collection cycle. Mention this proactively to the banker.</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;">Creditor Days</td>
+            <td style="font-weight:700;">34 days</td>
+            <td style="color:#6B7280;font-size:11px;">20–45 days</td>
+            <td><span class="pill green">Green</span></td>
+            <td style="color:#6B7280;font-size:11px;">Normal. No supplier pressure visible.</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;">Drawing Power vs Limit</td>
+            <td style="font-weight:700;">₹2.1Cr</td>
+            <td style="color:#6B7280;font-size:11px;">DP ≥ Limit</td>
+            <td><span class="pill green">Green</span></td>
+            <td style="color:#6B7280;font-size:11px;">DP of ₹2.1Cr exceeds limit — justifies enhancement ask of ₹2.4Cr.</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;">Turnover vs GST</td>
+            <td style="font-weight:700;">97% match</td>
+            <td style="color:#6B7280;font-size:11px;">Above 90%</td>
+            <td><span class="pill green">Green</span></td>
+            <td style="color:#6B7280;font-size:11px;">Strong consistency. Banker cannot question your revenue numbers.</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;">Cheque Returns (6 mo)</td>
+            <td style="font-weight:700;">0</td>
+            <td style="color:#6B7280;font-size:11px;">Zero</td>
+            <td><span class="pill green">Green</span></td>
+            <td style="color:#6B7280;font-size:11px;">Perfect record. Mention this — most MSMEs have 1–2 returns.</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;">Bureau Score (Promoter)</td>
+            <td style="font-weight:700;">756</td>
+            <td style="color:#6B7280;font-size:11px;">Above 720</td>
+            <td><span class="pill green">Green</span></td>
+            <td style="color:#6B7280;font-size:11px;">756 puts you in the premium tier. Leverage this for rate negotiation.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SECTION 3: Monthly Fix-It Action -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-title">🎯 Monthly Fix-It Action</div>
+    </div>
+    <div class="section-body">
+      <div class="action-box">
+        <div class="action-label">June 2026 Priority Action</div>
+        <div class="action-title">Prepare Enhancement Application — ₹60L Additional Limit</div>
+        <div class="action-desc">
+          Your ratios are green across the board and your Q4 annual accounts are strong. This is the right window to submit a formal enhancement request. The application should cite: 18% turnover growth, DSCR of 1.68, and DP of ₹2.1Cr supporting the ask.<br /><br />
+          <strong>Amit (your RM) will prepare:</strong> The enhancement application letter, supporting ratio summary, and a 1-page business narrative for your credit manager's file. Target submission: first week of June after your Q4 ITR is filed.
+        </div>
+        <div class="action-deadline">📅 Submit application: 10 June 2026</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: Bank-Specific Enhancement Strategy -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-title">🏦 Bank-Specific Enhancement Strategy</div>
+      <div style="font-size:11px;color:#4F46E5;font-weight:700;">Prepared by Amit · SBI Branch, Andheri</div>
+    </div>
+    <div class="section-body">
+      <div class="strat-box">
+        <div class="strat-label">What Your SBI Credit Manager Looks For</div>
+        <div class="strat-body">
+          SBI Andheri branch runs enhancements through the MSME Hub at Andheri East. Your credit manager, Mr. Patil (based on our network knowledge), runs a conservative book — he gives weight to <strong>DSCR above 1.5, zero cheque returns, and ITR consistency with bank statement credits</strong>. His key concern on CC accounts is utilisation spikes — your account had one peak at 74% in March but stayed clean overall.<br /><br />
+          <strong>Your narrative should lead with:</strong> "We are requesting enhancement basis 18% turnover growth year-on-year, improved DSCR, and our plan to route additional export billing through the SBI account." Routing more transactions through SBI is the single most effective thing you can say to a PSU banker.
+        </div>
+      </div>
+      <div class="strat-box" style="background:#F0FDF4; border-color:#BBF7D0;">
+        <div class="strat-label" style="color:#059669;">What NOT to Volunteer in the Meeting</div>
+        <div class="strat-body">
+          Do not mention that you also have an ICICI account with a ₹60L OD unless asked directly. Do not bring up the personal loan you took in January. Do not say "we need funds for expansion" without being specific — vague expansion stories weaken a credit case. Instead say: "We need the additional limit to fund the 45-day gap between invoice raising and payment collection from our top 3 clients."
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 5: Banker Meeting Script -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-title">🗣️ Banker Meeting Script</div>
+      <div style="font-size:11px;color:#6B7280;">June 2026 Enhancement Meeting · SBI</div>
+    </div>
+    <div class="section-body">
+      <div style="font-size:12px;color:#374151;margin-bottom:14px;line-height:1.6;background:#F9FAFB;padding:10px 14px;border-radius:8px;border:1px solid #E5E7EB;">
+        <strong>Opening (first 90 seconds):</strong> "Good morning. We have been banking with SBI for 6 years. Our turnover has grown 18% this year to ₹3.8Cr. We are here to request a CC enhancement from ₹1.2Cr to ₹1.5Cr to support the increase in our receivables cycle."
+      </div>
+      <div class="script-block">
+        <div class="script-q">When banker asks: "Why do you need more limit now?"</div>
+        <div class="script-a">Say: "Our three largest clients — Hindustan Unilever, Tata Consumer, and Reliance Retail — have moved to 45-day payment terms. Our working capital gap has increased proportionally. The enhancement request is directly linked to the billing growth, not new expenses."</div>
+        <div class="script-avoid">Do NOT say: "Business is slow and we need cash."</div>
+      </div>
+      <div class="script-block">
+        <div class="script-q">When banker asks: "Your utilisation was high in March?"</div>
+        <div class="script-a">Say: "March was our peak billing month — we had back-to-back dispatches. The account normalised within 8 days. If you see our average utilisation over 6 months it is 64%, which reflects disciplined usage."</div>
+      </div>
+      <div class="script-block">
+        <div class="script-q">When banker asks: "What security can you offer?"</div>
+        <div class="script-a">Say: "We are offering the existing hypothecation of book debts and stock. If required, we can add a personal guarantee. We believe the strength of our financial ratios — DSCR 1.68, zero cheque returns, clean ITRs — makes this an unsecured-equivalent risk for the bank."</div>
+      </div>
+      <div class="script-block" style="border-color:#059669;background:#F0FDF4;">
+        <div class="script-q" style="color:#059669;">Closing line (most effective):</div>
+        <div class="script-a">"We route all our primary business through SBI. We are asking for this enhancement because we want to grow this relationship further — not split limits across banks."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 6: Pre-Meeting Mock Q&A -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-title">❓ Pre-Meeting Mock Q&A</div>
+      <div style="font-size:11px;color:#6B7280;">10 likely questions from your credit manager</div>
+    </div>
+    <div class="section-body">
+      <div class="qa-item">
+        <div class="qa-q">Q1. Your Net Profit margin seems thin at 4.2% — how will you service enhanced debt?</div>
+        <div class="qa-a">A: Our business model runs on thin margins at the gross level but our DSCR of 1.68 shows comfortable debt servicing capacity. The CC is working capital, not term debt — it gets repaid from collections within 30–45 days, not from profit margins.
+          <div class="qa-tip">💡 Tip: Have your latest P&L in hand. Don't get defensive — acknowledge the margin and redirect to cash flow.</div>
+        </div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q">Q2. You have an OD with ICICI also. Why do you need limit at SBI?</div>
+        <div class="qa-a">A: The ICICI OD is used for a specific set of clients who prefer ICICI collections. Our SBI account handles the bulk of our business — 68% of our total collections come into this account. The two limits serve different purposes and different customer segments.
+          <div class="qa-tip">💡 Tip: Do not say the ICICI limit is insufficient. Frame it as deliberate account management.</div>
+        </div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q">Q3. You haven't taken any term loan with us. Why are you loyal to us for CC only?</div>
+        <div class="qa-a">A: We are fully open to consolidating our banking with SBI. Once this CC enhancement is in place and we see the limit working well, our next step would be to discuss a term loan for our warehouse expansion with SBI. We would prefer a single banking relationship.
+          <div class="qa-tip">💡 Tip: This is an excellent question — treat it as an opening, not a trap.</div>
+        </div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q">Q4. Your debtors are ₹42L — can you share the debtor list?</div>
+        <div class="qa-a">A: Yes, I have the debtor ageing statement with me. Our top 5 debtors account for 78% of the receivables — all are large corporates with regular payment history. The ageing shows 91% of debtors within 60 days.
+          <div class="qa-tip">💡 Tip: Always bring a debtor ageing statement to this meeting. Amit has prepared one for you.</div>
+        </div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q">Q5. What is the purpose of enhancement — stock or debtors?</div>
+        <div class="qa-a">A: Primarily debtors. With the growth in business, our receivables cycle has extended from 35 to 48 days. The additional ₹60L will cover the gap between invoice raise and collection for 2 additional large clients we onboarded in Q3.
+          <div class="qa-tip">💡 Tip: Always tie the enhancement ask to a specific business purpose. Vague answers delay approvals.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 7: Rate Negotiation Brief -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-title">📉 Rate Negotiation Brief</div>
+      <div style="font-size:11px;color:#6B7280;">Market rates to use as leverage · May 2026</div>
+    </div>
+    <div class="section-body">
+      <div style="font-size:12px;color:#374151;line-height:1.6;margin-bottom:16px;">
+        You are currently paying <strong>12.5% on your SBI CC</strong>. Based on your bureau score (756) and account vintage, you qualify to negotiate. Here are comparable rates being offered to similar MSME profiles in May 2026 — use these in your meeting:
+      </div>
+      <table class="rate-table">
+        <thead>
+          <tr>
+            <th>Bank</th>
+            <th>Product</th>
+            <th>Rate (May '26)</th>
+            <th>Profile Required</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight:700;">HDFC Bank</td>
+            <td>CC / OD</td>
+            <td>11.75 – 12.25%</td>
+            <td>CIBIL 720+, 3yr vintage</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;">ICICI Bank</td>
+            <td>Working Capital OD</td>
+            <td>11.50 – 12.00%</td>
+            <td>CIBIL 730+, ₹2Cr+ turnover</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;">Axis Bank</td>
+            <td>CC (MSME)</td>
+            <td>11.75 – 12.50%</td>
+            <td>CIBIL 720+, clean 12 months</td>
+          </tr>
+          <tr class="rate-highlight">
+            <td>Your SBI Rate</td>
+            <td>CC Account</td>
+            <td><strong>12.50%</strong> (current)</td>
+            <td>Negotiate to 11.75–12.00%</td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="margin-top:14px;background:#EEF2FF;border:1px solid #C7D2FE;border-radius:8px;padding:12px 16px;font-size:12px;color:#1E1B4B;line-height:1.6;">
+        <strong>What to say:</strong> "We have received indicative offers from HDFC and ICICI at 11.75%. We would prefer to stay with SBI given our 6-year relationship. Can we agree on a rate of 11.75% as part of the enhancement? A 0.75% reduction on ₹1.5Cr saves us ₹1.12L per year."
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 8: 12-Month Enhancement Calendar -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-title">📅 12-Month Enhancement Roadmap</div>
+      <div style="font-size:11px;color:#6B7280;">June 2026 – May 2027</div>
+    </div>
+    <div class="section-body">
+      <div class="cal-grid">
+        <div class="cal-item">
+          <div class="cal-month">June 2026</div>
+          <div class="cal-tag meet">Meeting</div>
+          <div class="cal-action">Enhancement meeting at SBI</div>
+          <div class="cal-why">Amit will join you on call. Target: ₹1.5Cr approval.</div>
+        </div>
+        <div class="cal-item">
+          <div class="cal-month">July 2026</div>
+          <div class="cal-tag prep">Prepare</div>
+          <div class="cal-action">File Q1 ITR + stock statement</div>
+          <div class="cal-why">Banks check ITR immediately after approval. File within 15 days of June 30.</div>
+        </div>
+        <div class="cal-item">
+          <div class="cal-month">Aug 2026</div>
+          <div class="cal-tag action">Action</div>
+          <div class="cal-action">Initiate ICICI limit review</div>
+          <div class="cal-why">After SBI enhancement, ICICI becomes a rate negotiation target. Amit will brief you.</div>
+        </div>
+        <div class="cal-item">
+          <div class="cal-month">Oct 2026</div>
+          <div class="cal-tag submit">Renewal</div>
+          <div class="cal-action">SBI CC annual renewal</div>
+          <div class="cal-why">Renewal falls 12 months from last sanction. We will prepare the full renewal file.</div>
+        </div>
+        <div class="cal-item">
+          <div class="cal-month">Jan 2027</div>
+          <div class="cal-tag prep">Prepare</div>
+          <div class="cal-action">Provisional financials for FY27</div>
+          <div class="cal-why">Bankers review provisional P&L for H1. Prepare with your CA — Amit will review before submission.</div>
+        </div>
+        <div class="cal-item">
+          <div class="cal-month">Mar 2027</div>
+          <div class="cal-tag meet">Review</div>
+          <div class="cal-action">Annual RM review call</div>
+          <div class="cal-why">Full year performance review. If ratios hold, we will target ₹2Cr+ total limits by FY28.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 9: RM Note -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-title">📝 Note from Your RM</div>
+    </div>
+    <div class="section-body">
+      <div class="rm-note">
+        <div class="rm-header">
+          <div class="rm-avatar">AK</div>
+          <div>
+            <div class="rm-name">Amit Kumar</div>
+            <div class="rm-title">Your Dedicated RM · FinsightOne Premium · Ex-SBI MSME Credit Manager</div>
+          </div>
+        </div>
+        <div class="rm-message">
+          Suresh, this is your best month since you joined us. All 8 ratios are green and your DSCR has improved significantly since December. I have reviewed your FY26 P&L and balance sheet — the story is strong.<br /><br />
+          My recommendation is to approach SBI in the first week of June, after filing your Q4 ITR provisional. Do not wait for the audited accounts — banks accept provisional for CC enhancement requests. I will join you on the branch call if you want me on the line, or I can send a formal note to your relationship manager directly.<br /><br />
+          One thing to prepare before the meeting: get your top 3 client confirmation letters (purchase orders or long-term supply agreements). These are very effective with PSU banks — they show the income is contracted, not speculative.
+        </div>
+        <div class="rm-call-box">
+          <div class="rm-call-btn primary">📞 Book Monthly Review Call</div>
+          <div class="rm-call-btn secondary">💬 WhatsApp Amit Directly</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="report-footer">
+  <strong>FinsightOne · Premium Plan</strong> — Monthly Premium Report · May 2026<br />
+  Prepared by your dedicated RM. This report is confidential and for the exclusive use of the named client.<br />
+  Questions? Contact your RM directly or WhatsApp +91 95794 53635 · <strong>finsightone.co</strong>
+</div>
+
+</body>
+</html>
