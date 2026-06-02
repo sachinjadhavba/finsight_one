@@ -187,7 +187,7 @@ export default function Readiness({ navigate }) {
   };
 
   return (
-    <div style={{ fontFamily: "Arial,'Helvetica Neue',sans-serif", background: WHITE, color: DARK }}>
+    <div style={{ fontFamily: "Arial,sans-serif", background: WHITE, color: DARK }}>
 
       {/* ── HERO ── */}
       <div style={{ background: `linear-gradient(135deg, #0F172A 0%, #1E1B4B 100%)`, padding: "clamp(48px,7vw,80px) clamp(20px,5vw,48px)" }}>
