@@ -38,9 +38,9 @@ function Logo({ navigate }) {
   return (
     <div onClick={() => navigate("home")} style={{ cursor: "pointer", display: "inline-flex", flexDirection: "column", alignItems: "flex-start", userSelect: "none" }}>
       <div style={{ display: "flex", alignItems: "baseline", lineHeight: 1 }}>
-        <span style={{ fontFamily: "Arial,'Helvetica Neue',sans-serif", fontSize: 28, fontWeight: 900, color: INDIGO, letterSpacing: "-0.03em" }}>Fin</span>
-        <span style={{ fontFamily: "Arial,'Helvetica Neue',sans-serif", fontSize: 28, fontWeight: 900, color: DARK,   letterSpacing: "-0.03em" }}>sight</span>
-        <span style={{ fontFamily: "Arial,'Helvetica Neue',sans-serif", fontSize: 28, fontWeight: 200, color: INDIGO, letterSpacing: "-0.02em" }}>&nbsp;One</span>
+        <span style={{ fontFamily: "Arial,sans-serif", fontSize: 28, fontWeight: 900, color: INDIGO, letterSpacing: "-0.03em" }}>Fin</span>
+        <span style={{ fontFamily: "Arial,sans-serif", fontSize: 28, fontWeight: 900, color: DARK,   letterSpacing: "-0.03em" }}>sight</span>
+        <span style={{ fontFamily: "Arial,sans-serif", fontSize: 28, fontWeight: 200, color: INDIGO, letterSpacing: "-0.02em" }}>&nbsp;One</span>
         <span style={{ display: "inline-block", width: 7, height: 7, background: ORANGE, borderRadius: "50%", marginLeft: 3, marginBottom: 9, flexShrink: 0 }} />
       </div>
       <div style={{ display: "flex", alignItems: "center", marginTop: 2 }}>
