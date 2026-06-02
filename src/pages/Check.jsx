@@ -361,7 +361,7 @@ export default function Check({ navigate }) {
 
   // ── START ────────────────────────────────────────────────────────────────
   if (phase === "start") return (
-    <div style={{ fontFamily: "Arial,sans-serif", minHeight: "100vh", background: GRAY }}>
+    <div style={{ fontFamily: "Arial,sans-serif", minHeight: "100vh", background: "linear-gradient(135deg,#0F172A 0%,#1E1B4B 100%)" }}>
       <style>{`
         @media(max-width:480px){
           #check-start-grid { grid-template-columns: 1fr !important; }
@@ -404,7 +404,7 @@ export default function Check({ navigate }) {
 
   // ── FLOW ─────────────────────────────────────────────────────────────────
   if (phase === "flow" && currentStep) return (
-    <div style={{ fontFamily: "Arial,sans-serif", minHeight: "100vh", background: GRAY }}>
+    <div style={{ fontFamily: "Arial,sans-serif", minHeight: "100vh", background: "linear-gradient(135deg,#0F172A 0%,#1E1B4B 100%)" }}>
       <style>{`
         @media(max-width:768px){
           .check-opt-btn { padding: 12px 14px !important; font-size: 14px !important; min-height: 48px !important; }
@@ -525,7 +525,7 @@ export default function Check({ navigate }) {
 
   // ── CONTACT ──────────────────────────────────────────────────────────────
   if (phase === "contact") return (
-    <div style={{ fontFamily: "Arial,sans-serif", minHeight: "100vh", background: GRAY }}>
+    <div style={{ fontFamily: "Arial,sans-serif", minHeight: "100vh", background: "linear-gradient(135deg,#0F172A 0%,#1E1B4B 100%)" }}>
       <div style={{ maxWidth: 540, margin: "0 auto", padding: "clamp(24px,4vw,44px) 20px" }}>
 
         <div style={{ background: WHITE, borderRadius: 14, padding: 20, border: "1px solid #E5E7EB", marginBottom: 16, boxShadow: "0 4px 16px rgba(79,70,229,0.06)" }}>
@@ -573,7 +573,7 @@ export default function Check({ navigate }) {
 
   // ── RESULT ───────────────────────────────────────────────────────────────
   if (phase === "result") return (
-    <div style={{ fontFamily: "Arial,sans-serif", minHeight: "100vh", background: GRAY }}>
+    <div style={{ fontFamily: "Arial,sans-serif", minHeight: "100vh", background: "linear-gradient(135deg,#0F172A 0%,#1E1B4B 100%)" }}>
       <style>{`
         @media(max-width:480px){
           #check-result-wrap { padding: 20px 14px !important; }
