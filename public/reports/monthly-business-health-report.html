@@ -1,207 +1,391 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Monthly Business Health Report — FinsightOne Sample</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Business Health Report — May 2026 | FinsightOne</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Arial,'Helvetica Neue',sans-serif;background:#F9FAFB;color:#111827;font-size:13px}
-.wm{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-35deg);font-size:120px;font-weight:900;color:rgba(0,0,0,0.025);pointer-events:none;white-space:nowrap;z-index:0;letter-spacing:16px}
-.hdr{background:#FAFBFF;border-bottom:2px solid #E0E7FF;padding:14px 48px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}
-.logo{display:flex;flex-direction:column}
-.logo-name{display:flex;align-items:baseline;line-height:1}
-.logo-name .fin{font-size:20px;font-weight:900;color:#4F46E5}
-.logo-name .sight{font-size:20px;font-weight:900;color:#111827}
-.logo-name .one{font-size:20px;font-weight:200;color:#4F46E5}
-.logo-name .dot{display:inline-block;width:5px;height:5px;background:#EA580C;border-radius:50%;margin-left:3px;margin-bottom:6px}
-.logo-tag{display:flex;align-items:center;margin-top:2px;gap:3px}
-.logo-tag span{font-size:7px;font-weight:800;letter-spacing:2px}
-.lt-c{color:#111827}.lt-a{color:#EA580C}.lt-i{color:#111827}
-.lt-sep{color:#FED7AA;font-size:9px}
-.hdr-r{text-align:right;font-size:10px;color:#6B7280;line-height:1.6}
-.cover{padding:32px 48px;background:#fff;border-bottom:1px solid #E5E7EB}
-.badge{display:inline-block;background:#EEF2FF;color:#4F46E5;font-size:10px;font-weight:800;letter-spacing:1.5px;padding:3px 12px;border-radius:3px;border:1px solid #C7D2FE;margin-bottom:10px}
-.sample-badge{display:inline-block;background:#FEF3C7;color:#92400E;font-size:10px;font-weight:700;letter-spacing:1.5px;padding:3px 12px;border-radius:3px;border:1px solid #FDE68A;margin-left:8px;margin-bottom:10px}
-.ctitle{font-size:24px;font-weight:900;color:#111827;margin:10px 0 4px;line-height:1.25}
-.csub{font-size:13px;color:#6B7280;margin-bottom:16px}
-.cmeta{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}
-.mc{background:#F9FAFB;border:1px solid #E5E7EB;border-radius:6px;padding:10px 12px}
-.ml{font-size:10px;color:#9CA3AF;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px}
-.mv{font-size:13px;font-weight:800;color:#111827}
-.sec{padding:24px 48px;border-bottom:1px solid #F3F4F6;position:relative;z-index:1;background:#fff}
-.sec:nth-child(even){background:#FAFBFF}
-h2{font-size:11px;font-weight:800;color:#4F46E5;margin-bottom:14px;padding-bottom:6px;border-bottom:2px solid #E0E7FF;text-transform:uppercase;letter-spacing:1px}
-.score-row{display:grid;grid-template-columns:1fr 80px 180px 60px;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid #F3F4F6}
-.bar-wrap{height:7px;background:#F3F4F6;border-radius:4px;overflow:hidden}
-.bar{height:100%;border-radius:4px}
-.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
-.kpi{background:#F9FAFB;border:1px solid #E5E7EB;border-radius:8px;padding:14px}
-.kpi-label{font-size:10px;color:#9CA3AF;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px}
-.kpi-val{font-size:22px;font-weight:900;color:#111827;line-height:1}
-.kpi-change{font-size:11px;margin-top:4px}
-.up{color:#059669}.down{color:#DC2626}.flat{color:#6B7280}
-table{width:100%;border-collapse:collapse;font-size:12px;margin:10px 0}
-th{background:#4F46E5;color:#fff;padding:8px 12px;text-align:left;font-weight:600;font-size:11px}
-td{padding:7px 12px;border-bottom:1px solid #F3F4F6;vertical-align:top}
-tr:nth-child(even) td{background:#F9FAFB}
-.alert{padding:10px 14px;border-radius:6px;margin-bottom:8px;font-size:12px;line-height:1.5}
-.alert-green{background:#DCFCE7;border-left:3px solid #059669;color:#166534}
-.alert-amber{background:#FEF3C7;border-left:3px solid #D97706;color:#92400E}
-.alert-red{background:#FEE2E2;border-left:3px solid #DC2626;color:#991B1B}
-.gauge{display:flex;align-items:center;gap:16px;margin:10px 0}
-.gauge-bar{flex:1;height:10px;background:#F3F4F6;border-radius:5px;overflow:hidden}
-.loan-ready-score{font-size:40px;font-weight:900;color:#059669;line-height:1}
-.footer{background:#111827;color:#fff;padding:16px 48px;display:flex;justify-content:space-between;align-items:center;font-size:11px}
-.footer a{color:#818CF8;text-decoration:none}
-.tag{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px}
-.tag-green{background:#DCFCE7;color:#166534}
-.tag-amber{background:#FEF3C7;color:#92400E}
-.tag-red{background:#FEE2E2;color:#991B1B}
-.tag-blue{background:#EEF2FF;color:#4F46E5}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, 'Helvetica Neue', sans-serif; background: #F8FAFC; color: #111827; font-size: 13px; }
+
+  /* ── COVER ── */
+  .cover { background: linear-gradient(135deg, #064E3B 0%, #065F46 60%, #059669 100%); color: #fff; padding: 40px 48px 36px; }
+  .cover-logo { font-size: 18px; font-weight: 900; letter-spacing: 1.5px; margin-bottom: 32px; }
+  .cover-logo span { color: #34D399; }
+  .cover-badge { display: inline-block; background: rgba(52,211,153,0.15); border: 1px solid rgba(52,211,153,0.4); color: #34D399; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 4px 14px; border-radius: 100px; margin-bottom: 14px; }
+  .cover-title { font-size: 28px; font-weight: 900; line-height: 1.2; margin-bottom: 8px; }
+  .cover-sub { font-size: 13px; color: #6EE7B7; margin-bottom: 28px; }
+  .cover-meta { display: flex; gap: 32px; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 20px; }
+  .cover-meta div { font-size: 11px; color: rgba(255,255,255,0.55); }
+  .cover-meta strong { display: block; font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+
+  /* ── LAYOUT ── */
+  .body-wrap { max-width: 900px; margin: 0 auto; padding: 32px 24px; }
+  .section { background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; margin-bottom: 20px; overflow: hidden; }
+  .section-header { padding: 14px 20px; border-bottom: 1px solid #F3F4F6; display: flex; align-items: center; justify-content: space-between; }
+  .section-title { font-size: 13px; font-weight: 800; color: #111827; display: flex; align-items: center; gap: 8px; }
+  .section-body { padding: 20px; }
+
+  /* ── SCORE BAND ── */
+  .score-band { display: flex; gap: 16px; flex-wrap: wrap; padding: 20px; }
+  .score-box { flex: 1; min-width: 140px; background: #F0FDF4; border: 1.5px solid #BBF7D0; border-radius: 10px; padding: 16px 18px; text-align: center; }
+  .score-box.amber { background: #FFFBEB; border-color: #FDE68A; }
+  .score-box.red   { background: #FEF2F2; border-color: #FECACA; }
+  .score-num  { font-size: 36px; font-weight: 900; color: #059669; line-height: 1; }
+  .score-box.amber .score-num { color: #D97706; }
+  .score-box.red   .score-num { color: #DC2626; }
+  .score-label { font-size: 10px; color: #6B7280; margin-top: 4px; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
+  .score-change { font-size: 11px; margin-top: 6px; font-weight: 700; }
+  .score-change.up   { color: #059669; }
+  .score-change.down { color: #DC2626; }
+  .score-change.flat { color: #6B7280; }
+
+  /* ── TRAFFIC LIGHT TABLE ── */
+  .tl-table { width: 100%; border-collapse: collapse; }
+  .tl-table th { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #6B7280; padding: 8px 12px; text-align: left; background: #F9FAFB; border-bottom: 1px solid #E5E7EB; }
+  .tl-table td { padding: 10px 12px; border-bottom: 1px solid #F3F4F6; font-size: 12px; vertical-align: middle; }
+  .tl-table tr:last-child td { border-bottom: none; }
+  .pill { display: inline-block; font-size: 10px; font-weight: 800; padding: 3px 10px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .pill.green  { background: #D1FAE5; color: #065F46; }
+  .pill.amber  { background: #FEF3C7; color: #92400E; }
+  .pill.red    { background: #FEE2E2; color: #991B1B; }
+  .ratio-name { font-weight: 700; color: #111827; }
+  .ratio-val  { font-weight: 700; color: #111827; }
+  .ratio-bench { color: #6B7280; font-size: 11px; }
+  .ratio-note { color: #6B7280; font-size: 11px; line-height: 1.4; max-width: 240px; }
+
+  /* ── FIX-IT ACTION ── */
+  .action-box { background: #FFFBEB; border: 1.5px solid #FDE68A; border-radius: 10px; padding: 18px 20px; }
+  .action-label { font-size: 9px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #D97706; margin-bottom: 6px; }
+  .action-title { font-size: 15px; font-weight: 800; color: #111827; margin-bottom: 8px; }
+  .action-desc { font-size: 12px; color: #374151; line-height: 1.6; margin-bottom: 12px; }
+  .action-deadline { display: inline-flex; align-items: center; gap: 6px; background: #D97706; color: #fff; font-size: 11px; font-weight: 700; padding: 5px 14px; border-radius: 100px; }
+
+  /* ── ALERT ITEMS ── */
+  .alert-list { list-style: none; }
+  .alert-list li { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-bottom: 1px solid #F3F4F6; font-size: 12px; color: #374151; line-height: 1.5; }
+  .alert-list li:last-child { border-bottom: none; }
+  .alert-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
+  .alert-dot.green { background: #059669; }
+  .alert-dot.amber { background: #D97706; }
+  .alert-dot.red   { background: #DC2626; }
+
+  /* ── ENHANCEMENT READINESS ── */
+  .er-bar-wrap { background: #F3F4F6; border-radius: 100px; height: 10px; flex: 1; overflow: hidden; }
+  .er-bar { height: 100%; border-radius: 100px; background: linear-gradient(90deg, #059669, #34D399); }
+  .er-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .er-label { font-size: 11px; color: #374151; width: 160px; flex-shrink: 0; font-weight: 600; }
+  .er-val { font-size: 11px; font-weight: 800; color: #059669; width: 36px; text-align: right; flex-shrink: 0; }
+
+  /* ── CALENDAR ── */
+  .cal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .cal-item { border: 1px solid #E5E7EB; border-radius: 8px; padding: 12px 14px; }
+  .cal-month { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #6B7280; margin-bottom: 4px; }
+  .cal-action { font-size: 11px; font-weight: 700; color: #111827; margin-bottom: 4px; line-height: 1.4; }
+  .cal-why { font-size: 10.5px; color: #6B7280; line-height: 1.4; }
+  .cal-tag { display: inline-block; font-size: 9px; font-weight: 800; padding: 2px 8px; border-radius: 100px; margin-bottom: 6px; }
+  .cal-tag.prep { background: #EEF2FF; color: #4F46E5; }
+  .cal-tag.action { background: #FFF7ED; color: #EA580C; }
+  .cal-tag.submit { background: #D1FAE5; color: #065F46; }
+
+  /* ── FOOTER ── */
+  .report-footer { background: #111827; color: #9CA3AF; font-size: 10px; padding: 20px 24px; text-align: center; line-height: 1.7; margin-top: 32px; }
+  .report-footer strong { color: #fff; }
+
+  @media (max-width: 600px) {
+    .cover { padding: 28px 20px 24px; }
+    .cover-title { font-size: 22px; }
+    .body-wrap { padding: 16px 12px; }
+    .score-band { flex-direction: column; }
+    .cal-grid { grid-template-columns: 1fr 1fr; }
+  }
 </style>
 </head>
 <body>
-<div class="wm">SAMPLE</div>
-
-<!-- HEADER -->
-<div class="hdr">
-  <div class="logo">
-    <div class="logo-name">
-      <span class="fin">Fin</span><span class="sight">sight</span><span class="one">&nbsp;One</span><span class="dot"></span>
-    </div>
-    <div class="logo-tag">
-      <span class="lt-c">CREDIT</span><span class="lt-sep">·</span>
-      <span class="lt-a">ADVISORY</span><span class="lt-sep">·</span>
-      <span class="lt-i">INTELLIGENCE</span>
-    </div>
-  </div>
-  <div class="hdr-r">
-    Monthly Business Health Report<br>
-    Business Plan · Confidential · Sample Only<br>
-    Report Period: April 2025
-  </div>
-</div>
 
 <!-- COVER -->
 <div class="cover">
-  <div>
-    <span class="badge">MONTHLY BUSINESS PLAN</span>
-    <span class="sample-badge">SAMPLE REPORT</span>
-  </div>
-  <div class="ctitle">Monthly Business Health Report</div>
-  <div class="csub">Pharma Distribution — Maharashtra · April 2025 · Prepared by FinsightOne Expert Team</div>
-  <div class="cmeta">
-    <div class="mc"><div class="ml">Business Type</div><div class="mv">Pharma Distribution</div></div>
-    <div class="mc"><div class="ml">Existing Loan</div><div class="mv">CC ₹45L @ Axis</div></div>
-    <div class="mc"><div class="ml">Report Month</div><div class="mv">April 2025</div></div>
-    <div class="mc"><div class="ml">Loan Ready Score</div><div class="mv" style="color:#059669">82 / 100 ✓</div></div>
+  <div class="cover-logo">FINSIGHT<span>ONE</span></div>
+  <div class="cover-badge">Business Health Plan · Sample Report</div>
+  <div class="cover-title">Monthly Business Health Report</div>
+  <div class="cover-sub">Your complete banker-readiness assessment for the month</div>
+  <div class="cover-meta">
+    <div><strong>Rajesh Textiles Pvt Ltd</strong>Client Name</div>
+    <div><strong>May 2026</strong>Report Month</div>
+    <div><strong>Axis Bank</strong>Primary Bank</div>
+    <div><strong>₹85L</strong>Current CC Limit</div>
+    <div><strong>Business Health</strong>Plan</div>
   </div>
 </div>
 
-<!-- SECTION 1: EXECUTIVE SUMMARY -->
-<div class="sec">
-  <h2>01 · Executive Summary — April 2025</h2>
-  <div class="alert alert-green"><strong>Overall Status: HEALTHY</strong> — Business fundamentals remain strong. CC utilisation at 68% is within healthy range. No immediate action required. One advisory flag on GST filing timing — see Section 5.</div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:12px">
-    <div>
-      <div style="font-size:11px;font-weight:700;color:#6B7280;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">This Month vs Last Month</div>
-      <table>
-        <tr><th>Parameter</th><th>Mar 2025</th><th>Apr 2025</th><th>Change</th></tr>
-        <tr><td>Monthly Sales (GST)</td><td>₹28.4L</td><td>₹31.2L</td><td class="up">↑ 9.9%</td></tr>
-        <tr><td>Bank Credits</td><td>₹26.8L</td><td>₹29.6L</td><td class="up">↑ 10.4%</td></tr>
-        <tr><td>CC Utilisation</td><td>74%</td><td>68%</td><td class="up">↓ Improved</td></tr>
-        <tr><td>Debtor Days</td><td>38 days</td><td>35 days</td><td class="up">↓ Improved</td></tr>
-        <tr><td>Creditor Days</td><td>22 days</td><td>24 days</td><td class="flat">→ Stable</td></tr>
-        <tr><td>CIBIL Score</td><td>738</td><td>742</td><td class="up">↑ +4</td></tr>
+<div class="body-wrap">
+
+  <!-- SECTION 1: Enhancement Readiness Score -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-title">📊 Enhancement Readiness Score</div>
+      <div style="font-size:11px; color:#6B7280;">Quarterly Assessment</div>
+    </div>
+    <div class="score-band">
+      <div class="score-box">
+        <div class="score-num">72</div>
+        <div class="score-label">Overall Score</div>
+        <div class="score-change up">↑ +4 vs last quarter</div>
+      </div>
+      <div class="score-box">
+        <div class="score-num" style="font-size:28px; padding-top:4px;">🟡</div>
+        <div class="score-label">Enhancement Verdict</div>
+        <div class="score-change flat" style="font-size:10px; margin-top:4px;">Possible — 2 fixes needed</div>
+      </div>
+      <div class="score-box amber">
+        <div class="score-num">₹1.1Cr</div>
+        <div class="score-label">Estimated Limit Potential</div>
+        <div class="score-change up">↑ From current ₹85L</div>
+      </div>
+      <div class="score-box">
+        <div class="score-num" style="font-size:20px; padding-top:8px;">Aug '26</div>
+        <div class="score-label">Ideal Approach Window</div>
+        <div class="score-change flat">After Q1 ITR filed</div>
+      </div>
+    </div>
+    <div style="padding: 0 20px 16px; font-size:12px; color:#374151; line-height:1.6; background:#F9FAFB; border-top:1px solid #F3F4F6; padding-top:14px;">
+      <strong>Summary:</strong> Your financials show good turnover growth (+18% YoY) but two ratios — CC utilisation and debtor days — are pulling your score below 75, which is Axis Bank's internal threshold for automatic enhancement approval. Fix these by July and you can approach in August with a strong case.
+    </div>
+  </div>
+
+  <!-- SECTION 2: Traffic Light Dashboard -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-title">🚦 8-Ratio Banking Dashboard</div>
+      <div style="font-size:11px; color:#6B7280;">vs Axis Bank benchmarks</div>
+    </div>
+    <div class="section-body" style="padding: 0;">
+      <table class="tl-table">
+        <thead>
+          <tr>
+            <th>Ratio</th>
+            <th>Your Value</th>
+            <th>Bank Benchmark</th>
+            <th>Status</th>
+            <th>Note</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="ratio-name">DSCR (Debt Service Coverage)</td>
+            <td class="ratio-val">1.42</td>
+            <td class="ratio-bench">Min 1.25</td>
+            <td><span class="pill green">Green</span></td>
+            <td class="ratio-note">Comfortable. Strong repayment capacity.</td>
+          </tr>
+          <tr>
+            <td class="ratio-name">CC Utilisation</td>
+            <td class="ratio-val">84%</td>
+            <td class="ratio-bench">Below 75%</td>
+            <td><span class="pill red">Red ⚠</span></td>
+            <td class="ratio-note">High. Bank reads this as stress. Reduce to ₹63L by month-end.</td>
+          </tr>
+          <tr>
+            <td class="ratio-name">Debtor Days</td>
+            <td class="ratio-val">62 days</td>
+            <td class="ratio-bench">Below 60 days</td>
+            <td><span class="pill amber">Amber</span></td>
+            <td class="ratio-note">Slightly elevated. 2 large customers paying slow.</td>
+          </tr>
+          <tr>
+            <td class="ratio-name">Creditor Days</td>
+            <td class="ratio-val">38 days</td>
+            <td class="ratio-bench">20–45 days</td>
+            <td><span class="pill green">Green</span></td>
+            <td class="ratio-note">Normal trade credit cycle.</td>
+          </tr>
+          <tr>
+            <td class="ratio-name">Drawing Power vs Limit</td>
+            <td class="ratio-val">₹91L</td>
+            <td class="ratio-bench">DP ≥ Limit</td>
+            <td><span class="pill green">Green</span></td>
+            <td class="ratio-note">DP of ₹91L exceeds current ₹85L limit. Good.</td>
+          </tr>
+          <tr>
+            <td class="ratio-name">Turnover vs GST Filings</td>
+            <td class="ratio-val">96% match</td>
+            <td class="ratio-bench">Above 90%</td>
+            <td><span class="pill green">Green</span></td>
+            <td class="ratio-note">Consistent. No discrepancy risk.</td>
+          </tr>
+          <tr>
+            <td class="ratio-name">Cheque Returns (last 6 mo)</td>
+            <td class="ratio-val">0</td>
+            <td class="ratio-bench">Zero</td>
+            <td><span class="pill green">Green</span></td>
+            <td class="ratio-note">Clean record. Positive signal.</td>
+          </tr>
+          <tr>
+            <td class="ratio-name">Bureau Score (Promoter)</td>
+            <td class="ratio-val">738</td>
+            <td class="ratio-bench">Above 720</td>
+            <td><span class="pill green">Green</span></td>
+            <td class="ratio-note">Good. Improve further by reducing CC to under 30%.</td>
+          </tr>
+        </tbody>
       </table>
     </div>
-    <div>
-      <div style="font-size:11px;font-weight:700;color:#6B7280;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">Loan Readiness Score</div>
-      <div class="loan-ready-score">82</div>
-      <div style="font-size:12px;color:#059669;font-weight:700;margin-bottom:10px">/ 100 — GOOD · Loan Ready</div>
-      <div class="gauge"><span style="font-size:11px;color:#6B7280;width:130px">Credit Bureau</span><div class="gauge-bar"><div class="bar" style="width:84%;background:#4F46E5"></div></div><span style="font-size:11px;font-weight:700;color:#4F46E5">21/25</span></div>
-      <div class="gauge"><span style="font-size:11px;color:#6B7280;width:130px">Banking Behaviour</span><div class="gauge-bar"><div class="bar" style="width:80%;background:#4F46E5"></div></div><span style="font-size:11px;font-weight:700;color:#4F46E5">20/25</span></div>
-      <div class="gauge"><span style="font-size:11px;color:#6B7280;width:130px">GST & Turnover</span><div class="gauge-bar"><div class="bar" style="width:80%;background:#4F46E5"></div></div><span style="font-size:11px;font-weight:700;color:#4F46E5">16/20</span></div>
-      <div class="gauge"><span style="font-size:11px;color:#6B7280;width:130px">Financial Ratios</span><div class="gauge-bar"><div class="bar" style="width:73%;background:#D97706"></div></div><span style="font-size:11px;font-weight:700;color:#D97706">11/15</span></div>
-      <div class="gauge"><span style="font-size:11px;color:#6B7280;width:130px">KYC & Compliance</span><div class="gauge-bar"><div class="bar" style="width:90%;background:#059669"></div></div><span style="font-size:11px;font-weight:700;color:#059669">9/10</span></div>
+  </div>
+
+  <!-- SECTION 3: Monthly Fix-It Action -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-title">🎯 Monthly Fix-It Action</div>
+      <div style="font-size:11px; color:#D97706; font-weight:700;">Action Required</div>
+    </div>
+    <div class="section-body">
+      <div class="action-box">
+        <div class="action-label">June 2026 Priority Action</div>
+        <div class="action-title">Bring CC Utilisation Below 75% Before Month-End</div>
+        <div class="action-desc">
+          Your CC is drawn at ₹71.4L out of ₹85L (84%). Axis Bank's system flags accounts above 75% utilisation as potential stress. Before your credit manager reviews your account for enhancement, this must be corrected.<br /><br />
+          <strong>Exact steps:</strong><br />
+          1. Collect on the 2 outstanding invoices from Mehta Fabrics (₹8.2L due) and Krishna Traders (₹4.6L due) — both overdue by 15+ days.<br />
+          2. Use collections to bring CC outstanding below ₹63.75L (75% of ₹85L).<br />
+          3. Maintain below 75% for the 3 months leading up to your enhancement approach.
+        </div>
+        <div class="action-deadline">📅 Complete by: 30 June 2026</div>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- SECTION 2: BANKING BEHAVIOUR -->
-<div class="sec">
-  <h2>02 · Banking Behaviour — April 2025</h2>
-  <div class="kpi-grid">
-    <div class="kpi"><div class="kpi-label">Avg Monthly Credits</div><div class="kpi-val">₹29.6L</div><div class="kpi-change up">↑ vs ₹26.8L last month</div></div>
-    <div class="kpi"><div class="kpi-label">CC Limit Used</div><div class="kpi-val">68%</div><div class="kpi-change up">↓ Improved from 74%</div></div>
-    <div class="kpi"><div class="kpi-label">Min Balance Maintained</div><div class="kpi-val">₹1.2L</div><div class="kpi-change flat">→ Healthy</div></div>
-    <div class="kpi"><div class="kpi-label">Cheque Returns</div><div class="kpi-val">0</div><div class="kpi-change up">✓ Clean month</div></div>
+  <!-- SECTION 4: Bank View Alerts -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-title">👁️ Bank-View Alerts</div>
+      <div style="font-size:11px; color:#6B7280;">What your banker saw this month</div>
+    </div>
+    <div class="section-body" style="padding: 16px 20px;">
+      <ul class="alert-list">
+        <li>
+          <span class="alert-dot green"></span>
+          <div><strong>GST filings current:</strong> GSTR-3B and GSTR-1 filed on time for April 2026. No gap visible to bank.</div>
+        </li>
+        <li>
+          <span class="alert-dot amber"></span>
+          <div><strong>CC utilisation spike on 14th May:</strong> Your account touched 91% utilisation on 14 May. This was a 3-day spike but gets recorded. Banks monitor peak utilisation, not just month-end. Avoid spikes above 80%.</div>
+        </li>
+        <li>
+          <span class="alert-dot green"></span>
+          <div><strong>Promoter bureau — no new enquiries:</strong> No fresh loan enquiries on your CIBIL this month. Good — multiple hard enquiries signal desperation to banks.</div>
+        </li>
+        <li>
+          <span class="alert-dot green"></span>
+          <div><strong>ROC Annual Return:</strong> MCA filings are current. No compliance gaps that could delay loan processing.</div>
+        </li>
+        <li>
+          <span class="alert-dot amber"></span>
+          <div><strong>2 invoices overdue 30+ days:</strong> Mehta Fabrics (₹8.2L) and Krishna Traders (₹4.6L) have not paid beyond 30 days. If this becomes a pattern, it pushes debtor days above 60 — Axis Bank's amber threshold.</div>
+        </li>
+      </ul>
+    </div>
   </div>
-  <div class="alert alert-green">Banking conduct is strong. Credits match GST turnover within 5%. Utilisation is trending down — this is positive for any limit enhancement request.</div>
-</div>
 
-<!-- SECTION 3: WORKING CAPITAL POSITION -->
-<div class="sec">
-  <h2>03 · Working Capital Position</h2>
-  <table>
-    <tr><th>Component</th><th>Amount</th><th>Days</th><th>Status</th></tr>
-    <tr><td>Debtors (Outstanding)</td><td>₹36.4L</td><td>35 days</td><td><span class="tag tag-green">Healthy</span></td></tr>
-    <tr><td>Stock / Inventory</td><td>₹18.2L</td><td>18 days</td><td><span class="tag tag-green">Healthy</span></td></tr>
-    <tr><td>Creditors (Payable)</td><td>₹14.6L</td><td>24 days</td><td><span class="tag tag-green">Healthy</span></td></tr>
-    <tr><td><strong>Net Working Capital</strong></td><td><strong>₹40.0L</strong></td><td>—</td><td><span class="tag tag-blue">Within CC Limit</span></td></tr>
-    <tr><td>Drawing Power (DP)</td><td>₹43.2L</td><td>—</td><td><span class="tag tag-green">CC ₹45L within DP ✓</span></td></tr>
-  </table>
-  <div class="alert alert-green">Drawing Power is ₹43.2L against CC limit of ₹45L. You are within safe limits. No risk of limit breach this month.</div>
-</div>
-
-<!-- SECTION 4: CREDIT SCORE TRACKING -->
-<div class="sec">
-  <h2>04 · Credit Score Tracking</h2>
-  <div class="kpi-grid">
-    <div class="kpi"><div class="kpi-label">Current CIBIL Score</div><div class="kpi-val" style="color:#059669">742</div><div class="kpi-change up">↑ +4 from last month</div></div>
-    <div class="kpi"><div class="kpi-label">Active Loan Accounts</div><div class="kpi-val">2</div><div class="kpi-change flat">CC + Vehicle Loan</div></div>
-    <div class="kpi"><div class="kpi-label">DPD (Days Past Due)</div><div class="kpi-val">0</div><div class="kpi-change up">✓ Zero DPD — 24 months</div></div>
-    <div class="kpi"><div class="kpi-label">Credit Enquiries</div><div class="kpi-val">1</div><div class="kpi-change flat">Last 6 months — Fine</div></div>
+  <!-- SECTION 5: 12-Month Enhancement Calendar -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-title">📅 12-Month Enhancement Roadmap</div>
+      <div style="font-size:11px; color:#6B7280;">June 2026 – May 2027</div>
+    </div>
+    <div class="section-body">
+      <div class="cal-grid">
+        <div class="cal-item">
+          <div class="cal-month">June 2026</div>
+          <div class="cal-tag action">Action</div>
+          <div class="cal-action">Reduce CC utilisation to &lt;75%</div>
+          <div class="cal-why">Collect from Mehta + Krishna. Essential before enhancement approach.</div>
+        </div>
+        <div class="cal-item">
+          <div class="cal-month">July 2026</div>
+          <div class="cal-tag prep">Prepare</div>
+          <div class="cal-action">File Q1 ITR + maintain clean ratios</div>
+          <div class="cal-why">Q1 ITR shows current year income. File early — banks value this.</div>
+        </div>
+        <div class="cal-item">
+          <div class="cal-month">August 2026</div>
+          <div class="cal-tag submit">Submit</div>
+          <div class="cal-action">Approach bank for ₹1.1Cr enhancement</div>
+          <div class="cal-why">Optimal window — fresh ITR + 3 clean months of utilisation.</div>
+        </div>
+        <div class="cal-item">
+          <div class="cal-month">Sep – Oct 2026</div>
+          <div class="cal-tag prep">Prepare</div>
+          <div class="cal-action">Build stock statements for renewal</div>
+          <div class="cal-why">CC renewal typically due Oct/Nov. Build records now.</div>
+        </div>
+        <div class="cal-item">
+          <div class="cal-month">Nov 2026</div>
+          <div class="cal-tag submit">Renewal</div>
+          <div class="cal-action">CC limit renewal with bank</div>
+          <div class="cal-why">Annual renewal. File with updated CMA and stock statement.</div>
+        </div>
+        <div class="cal-item">
+          <div class="cal-month">Feb 2027</div>
+          <div class="cal-tag prep">Prepare</div>
+          <div class="cal-action">Provisional balance sheet for FY27</div>
+          <div class="cal-why">Prepare early — needed for any fresh enhancement request post-March.</div>
+        </div>
+      </div>
+    </div>
   </div>
-  <table>
-    <tr><th>Month</th><th>CIBIL Score</th><th>Change</th><th>Note</th></tr>
-    <tr><td>Jan 2025</td><td>731</td><td class="flat">—</td><td>Baseline</td></tr>
-    <tr><td>Feb 2025</td><td>735</td><td class="up">+4</td><td>CC repayment on time</td></tr>
-    <tr><td>Mar 2025</td><td>738</td><td class="up">+3</td><td>Enquiry dropped off</td></tr>
-    <tr><td>Apr 2025</td><td>742</td><td class="up">+4</td><td>Consistent on-time payments</td></tr>
-  </table>
-</div>
 
-<!-- SECTION 5: ALERTS & ADVISORY -->
-<div class="sec">
-  <h2>05 · Alerts & Advisory Actions</h2>
-  <div class="alert alert-amber"><strong>⚠ Advisory — GST Filing:</strong> GSTR-3B for March 2025 was filed on 21st April — 1 day before the due date. We recommend filing by the 15th to show proactive compliance behaviour to banks. Lenders review GST filing dates as part of their assessment.</div>
-  <div class="alert alert-green"><strong>✓ Opportunity — Limit Enhancement:</strong> With CC utilisation falling from 74% to 68% and CIBIL improving to 742, your profile is now strong enough to request a limit enhancement from ₹45L to ₹60L. We recommend initiating this in May. We can prepare the enhancement request file for you.</div>
-  <div class="alert alert-green"><strong>✓ Loan Renewal:</strong> Your CC renewal is due in September 2025 — 5 months away. We will begin preparation in July. No action required right now.</div>
-</div>
+  <!-- SECTION 6: Enhancement Readiness Breakdown -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-title">📈 Enhancement Readiness Breakdown</div>
+      <div style="font-size:11px; color:#6B7280;">What is driving your 72/100 score</div>
+    </div>
+    <div class="section-body">
+      <div style="margin-bottom: 20px;">
+        <div class="er-row">
+          <div class="er-label">Repayment Track Record</div>
+          <div class="er-bar-wrap"><div class="er-bar" style="width:95%"></div></div>
+          <div class="er-val">95%</div>
+        </div>
+        <div class="er-row">
+          <div class="er-label">Income / Turnover Growth</div>
+          <div class="er-bar-wrap"><div class="er-bar" style="width:82%"></div></div>
+          <div class="er-val">82%</div>
+        </div>
+        <div class="er-row">
+          <div class="er-label">Drawing Power Coverage</div>
+          <div class="er-bar-wrap"><div class="er-bar" style="width:88%"></div></div>
+          <div class="er-val">88%</div>
+        </div>
+        <div class="er-row">
+          <div class="er-label">CC Utilisation Pattern</div>
+          <div class="er-bar-wrap"><div class="er-bar" style="width:32%; background: linear-gradient(90deg,#DC2626,#F87171)"></div></div>
+          <div class="er-val" style="color:#DC2626">32%</div>
+        </div>
+        <div class="er-row">
+          <div class="er-label">Bureau & Compliance</div>
+          <div class="er-bar-wrap"><div class="er-bar" style="width:90%"></div></div>
+          <div class="er-val">90%</div>
+        </div>
+        <div class="er-row">
+          <div class="er-label">Debtor / Creditor Days</div>
+          <div class="er-bar-wrap"><div class="er-bar" style="width:62%; background: linear-gradient(90deg,#D97706,#FBBF24)"></div></div>
+          <div class="er-val" style="color:#D97706">62%</div>
+        </div>
+      </div>
+      <div style="background:#F0FDF4; border:1px solid #BBF7D0; border-radius:8px; padding:14px 16px; font-size:12px; color:#065F46; line-height:1.6;">
+        <strong>If you fix CC utilisation and debtor days, your score moves to 84+ — above Axis Bank's automatic approval threshold for enhancement.</strong> That turns a "possible" into a near-certain yes at your next branch review.
+      </div>
+    </div>
+  </div>
 
-<!-- SECTION 6: NEXT MONTH FOCUS -->
-<div class="sec">
-  <h2>06 · Focus for May 2025</h2>
-  <table>
-    <tr><th>#</th><th>Action Item</th><th>Owner</th><th>Priority</th></tr>
-    <tr><td>1</td><td>File GSTR-3B by 15th May (not last day)</td><td>Your CA / Team</td><td><span class="tag tag-amber">Medium</span></td></tr>
-    <tr><td>2</td><td>Keep CC utilisation below 65% by month end</td><td>You</td><td><span class="tag tag-blue">Watch</span></td></tr>
-    <tr><td>3</td><td>Prepare limit enhancement request — target ₹60L</td><td>FinsightOne</td><td><span class="tag tag-green">Opportunity</span></td></tr>
-    <tr><td>4</td><td>Collect and update debtors aging statement</td><td>Your team</td><td><span class="tag tag-blue">Routine</span></td></tr>
-  </table>
 </div>
 
 <!-- FOOTER -->
-<div class="footer">
-  <div>
-    <div style="font-weight:700;margin-bottom:2px">FinsightOne — Credit · Advisory · Intelligence</div>
-    <div style="color:#6B7280">This is a sample report. Actual reports are personalised to your business. All data shown is illustrative.</div>
-  </div>
-  <div style="text-align:right">
-    <div><a href="https://finsightone.co">finsightone.co</a> · WhatsApp: 9579453635</div>
-    <div style="color:#6B7280;margin-top:2px">© 2025 FinsightOne · Confidential</div>
-  </div>
+<div class="report-footer">
+  <strong>FinsightOne · Business Health Plan</strong> — Monthly Business Health Report · May 2026<br />
+  This report is prepared for the exclusive use of the named client based on documents submitted. It does not constitute a guarantee of loan approval.<br />
+  Questions? Reply to your email or WhatsApp us at +91 95794 53635 · <strong>finsightone.co</strong>
 </div>
 
 </body>
