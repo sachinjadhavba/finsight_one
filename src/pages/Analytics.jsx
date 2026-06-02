@@ -51,9 +51,11 @@ export default function Analytics({ navigate }) {
                   </li>
                 ))}
               </ul>
-              <button onClick={() => window.open("/reports/monthly-business-health-report.html","_blank")} style={{ width: "100%", padding: 10, borderRadius: 8, fontSize: 12, fontWeight: 600, border: "1px solid #4F46E5", cursor: "pointer", background: "#EEF2FF", color: "#4F46E5", marginBottom: 8 }}>
-                View Sample Report
-              </button>
+              {plan.sampleReport && (
+                <button onClick={() => window.open(plan.sampleReport,"_blank")} style={{ width: "100%", padding: 10, borderRadius: 8, fontSize: 12, fontWeight: 600, border: "1px solid #4F46E5", cursor: "pointer", background: "#EEF2FF", color: "#4F46E5", marginBottom: 8 }}>
+                  View Sample Report
+                </button>
+              )}
               <button onClick={() => navigate("check")} style={{ width: "100%", padding: 12, borderRadius: 10, fontSize: 13, fontWeight: 700, border: plan.featured ? "none" : "1px solid #059669", cursor: "pointer", background: plan.featured ? "#059669" : "#fff", color: plan.featured ? "#fff" : "#059669" }}>
                 Get Started
               </button>
