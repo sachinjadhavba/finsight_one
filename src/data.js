@@ -249,3 +249,39 @@ export const ADVISORY_PRODUCTS = [
     outcome: "Typical outcome: Restructuring agreed and account regularised within 60-90 days",
   },
 ];
+
+export const VALUES = [
+  { icon: "🔍", title: "We Tell You the Truth", desc: "If your application is weak, we tell you — and fix it before submitting." },
+  { icon: "🏦", title: "We Know Banks From Inside", desc: "Our expert team spent 20+ years reviewing loan files. We know exactly what bankers look for." },
+  { icon: "⚡", title: "72-Hour Turnaround", desc: "Bank-ready documents prepared and delivered in 72 hours — not weeks." },
+  { icon: "🔒", title: "Your Data Is Safe", desc: "We never share your financial information without your written consent." },
+];
+
+export const CREDENTIALS = [
+  { period: "2005 – 2010", title: "Retail Lending Officer", org: "Leading Public Sector Bank · Home & Personal Loans" },
+  { period: "2010 – 2018", title: "MSME Credit Manager", org: "Mid-Size Private Bank · Working Capital & Term Loans" },
+  { period: "2018 – 2023", title: "Senior Credit Analyst", org: "Large NBFC · Project Finance & Structured Lending" },
+  { period: "2023 – 2024", title: "Independent Consultant", org: "MSME Advisory · Helped 100+ businesses get approved" },
+  { period: "2025 – Present", title: "Founder, FinsightOne", org: "India's Credit & Loan Advisory Platform" },
+];
+
+export const HOW = [
+  { step: "01", title: "Share Your Case", desc: "Tell us what you need on WhatsApp. We review and confirm scope in 2 hours." },
+  { step: "02", title: "We Assess & Plan", desc: "Full credit assessment — CIBIL, income, banking, collateral. Clear action plan delivered." },
+  { step: "03", title: "Documents Prepared", desc: "LAN, CMA, DPR — everything the bank needs, prepared correctly by ex-bankers." },
+  { step: "04", title: "Submit & Follow Up", desc: "We submit to the right lender and follow up until disbursement." },
+];
+
+export const OUTCOMES = [
+  { metric: "₹60 Cr", label: "Largest loan facilitated" },
+  { metric: "38 Days", label: "Fastest consortium sanction" },
+  { metric: "20+ Yrs", label: "Combined banking experience" },
+  { metric: "3", label: "Strong case studies published" },
+];
+
+export const TRUST = [
+  { icon: "🏦", title: "Ex-Senior Bankers", desc: "We spent 20+ years inside credit departments reviewing and approving loan applications." },
+  { icon: "📋", title: "Credit Committee Experience", desc: "We know what credit committees look for — because we sat on them." },
+  { icon: "🎯", title: "Borrower's Advisor", desc: "We work for you — not for the bank. Our incentive is your approval." },
+  { icon: "🔒", title: "No Blind Applications", desc: "We never submit a file we are not confident about. Your CIBIL is too valuable to waste." },
+];
