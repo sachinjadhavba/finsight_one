@@ -9,8 +9,8 @@ const DROPDOWNS = {
   services: {
     label: "Services",
     items: [
-      { id: "check",     label: "Check Loan Eligibility",   desc: "Free AI-powered eligibility check — 2 minutes" },
-      { id: "check",     label: "Loan Readiness Reports",   desc: "Detailed credit reports from ₹499" },
+      { id: "check",     label: "Apply for a Loan",          desc: "Free — we match you with the right lender" },
+      { id: "check",     label: "Loan Readiness Check",     desc: "Detailed credit reports from ₹799" },
       { id: "analytics", label: "Monthly Tracking Plans",   desc: "Business health monitoring from ₹499/mo" },
       { id: "docs",      label: "Document Preparation",     desc: "CAM, CMA, DPR — banker-ready in 72 hours" },
       { id: "advisory",  label: "Expert Advisory",          desc: "One-on-one loan structuring & recovery" },
@@ -128,3 +128,4 @@ export default function Nav({ page, navigate }) {
     </>
   );
 }
+
