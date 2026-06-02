@@ -115,7 +115,7 @@ export default function Blog({ navigate }) {
   const filtered = active === "all" ? POSTS : POSTS.filter(p => p.filter === active);
 
   return (
-    <div style={{ fontFamily:"Arial,'Helvetica Neue',sans-serif", color:DARK }}>
+    <div style={{ fontFamily:"Arial,sans-serif", color:DARK }}>
 
       {/* HERO */}
       <div style={{ background:`linear-gradient(135deg,#0F172A 0%,#1E1B4B 100%)`, padding:"clamp(48px,7vw,72px) clamp(20px,5vw,48px)", textAlign:"center" }}>
