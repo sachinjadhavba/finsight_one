@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Detailed Project Report — Above ₹5 Cr | FinsightOne</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,'Helvetica Neue',sans-serif;background:#fff;color:#111827;font-size:12.5px;line-height:1.6}
+
+/* ── COVER ─────────────────────────────────────────────── */
+.cover{background:linear-gradient(150deg,#0A1929 0%,#0F2D54 55%,#1A3A6B 100%);color:#fff;min-height:100vh;padding:56px 64px;display:flex;flex-direction:column;justify-content:space-between;page-break-after:always}
+.cover-top{display:flex;justify-content:space-between;align-items:flex-start}
+.brand{font-size:16px;font-weight:900;letter-spacing:2px;color:#fff}.brand span{color:#93C5FD}
+.cover-ref-box{text-align:right;border:1px solid rgba(147,197,253,0.3);border-radius:8px;padding:8px 16px}
+.cover-ref-val{font-size:15px;font-weight:900;color:#FCD34D;letter-spacing:1px}
+.cover-ref-label{font-size:9px;color:rgba(255,255,255,0.35);letter-spacing:1.5px;text-transform:uppercase;margin-top:2px}
+
+.cover-main{flex:1;display:flex;flex-direction:column;justify-content:center;padding:64px 0 48px}
+.cover-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(147,197,253,0.12);border:1px solid rgba(147,197,253,0.3);color:#93C5FD;font-size:10px;font-weight:800;padding:5px 16px;border-radius:100px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:18px;align-self:flex-start}
+.cover-title{font-size:34px;font-weight:900;line-height:1.1;margin-bottom:8px}
+.cover-title em{color:#93C5FD;font-style:normal}
+.cover-subtitle{font-size:14px;color:rgba(255,255,255,0.5);margin-bottom:40px}
+
+.cover-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;border-top:1px solid rgba(255,255,255,0.1);padding-top:28px;margin-bottom:0}
+.cg{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);border-radius:10px;padding:14px 16px}
+.cg label{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.35);display:block;margin-bottom:5px}
+.cg span{font-size:13.5px;font-weight:700;color:#fff;display:block}
+.cg span.ph{color:#93C5FD;font-style:italic}
+
+.cover-foot{font-size:10px;color:rgba(255,255,255,0.3);border-top:1px solid rgba(255,255,255,0.1);padding-top:14px;line-height:1.7;margin-top:28px}
+
+/* ── LAYOUT ─────────────────────────────────────────────── */
+.body{max-width:920px;margin:0 auto;padding:36px 48px}
+
+/* ── SECTION ─────────────────────────────────────────────── */
+.section{margin-bottom:40px}
+.sec-label{font-size:9.5px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:#1E40AF;margin-bottom:4px}
+.sec-title{font-size:20px;font-weight:900;color:#0A1929;border-bottom:2.5px solid #1E40AF;padding-bottom:9px;margin-bottom:20px}
+.sub-head{font-size:13px;font-weight:800;color:#0F2D54;margin:20px 0 8px;padding-left:10px;border-left:3px solid #93C5FD}
+
+/* ── PLACEHOLDER FIELDS ──────────────────────────────────── */
+.field{background:#EFF6FF;border:1.5px dashed #93C5FD;border-radius:8px;padding:13px 16px;margin:8px 0 14px}
+.field-label{font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#1E40AF;margin-bottom:5px}
+.field-hint{font-size:11.5px;color:#374151;line-height:1.65}
+.field-req{display:inline-block;font-size:9px;font-weight:800;background:#FEE2E2;color:#991B1B;padding:2px 7px;border-radius:100px;margin-top:5px;letter-spacing:0.5px}
+.field-opt{display:inline-block;font-size:9px;font-weight:800;background:#D1FAE5;color:#065F46;padding:2px 7px;border-radius:100px;margin-top:5px;letter-spacing:0.5px}
+
+/* ── ADVISORY CALLOUT ────────────────────────────────────── */
+.advisory{background:#F0FDF4;border:1px solid #BBF7D0;border-left:4px solid #059669;border-radius:0 8px 8px 0;padding:12px 16px;margin:12px 0;font-size:12px;color:#374151;line-height:1.65}
+.advisory-title{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:#059669;margin-bottom:5px}
+.advisory-title::before{content:'💡 '}
+
+.note{background:#FFFBEB;border:1px solid #FDE68A;border-left:4px solid #D97706;border-radius:0 8px 8px 0;padding:12px 16px;margin:12px 0;font-size:12px;color:#374151;line-height:1.65}
+.note-title{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:#D97706;margin-bottom:5px}
+.note-title::before{content:'📌 '}
+
+/* ── TABLES ──────────────────────────────────────────────── */
+.t{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:12px}
+.t th{background:#0F2D54;color:#fff;font-size:10px;font-weight:700;padding:9px 12px;text-align:left;letter-spacing:0.5px}
+.t td{padding:9px 12px;border-bottom:1px solid #F3F4F6;vertical-align:top}
+.t tr:nth-child(even) td{background:#F8FAFC}
+.t tr.sub td{background:#EFF6FF;font-weight:700;color:#0F2D54}
+.t tr.tot td{background:#0F2D54;color:#fff;font-weight:800}
+.t td.lc{font-weight:700;color:#0A1929}
+.t td.phc{color:#1E40AF;font-style:italic}
+.t td.rc{text-align:right;font-weight:600}
+
+/* ── KPI BOXES ───────────────────────────────────────────── */
+.kpi-row{display:flex;gap:12px;flex-wrap:wrap;margin:14px 0}
+.kpi{flex:1;min-width:100px;border:1.5px solid #E5E7EB;border-radius:10px;padding:12px;text-align:center}
+.kpi-v{font-size:21px;font-weight:900;color:#0F2D54;line-height:1}
+.kpi-l{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:#6B7280;margin-top:5px}
+.kpi-s{font-size:10px;color:#9CA3AF;margin-top:3px}
+
+/* ── 2-COL ───────────────────────────────────────────────── */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+
+/* ── STEP/TIMELINE ───────────────────────────────────────── */
+.step-row{display:flex;gap:14px;align-items:flex-start;padding:10px 0;border-bottom:1px solid #F3F4F6}
+.step-row:last-child{border-bottom:none}
+.step-dot{width:28px;height:28px;border-radius:50%;background:#0F2D54;color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.step-content{}
+.step-title{font-size:12.5px;font-weight:800;color:#0A1929;margin-bottom:3px}
+.step-desc{font-size:12px;color:#374151}
+
+/* ── PILL ────────────────────────────────────────────────── */
+.pill{display:inline-block;font-size:10px;font-weight:800;padding:3px 10px;border-radius:100px}
+.pill.g{background:#D1FAE5;color:#065F46}
+.pill.a{background:#FEF3C7;color:#92400E}
+.pill.r{background:#FEE2E2;color:#991B1B}
+.pill.b{background:#DBEAFE;color:#1E40AF}
+
+/* ── SENSITIVITY ─────────────────────────────────────────── */
+.sg{background:#D1FAE5;color:#065F46;font-weight:700;text-align:center}
+.sa{background:#FEF3C7;color:#92400E;font-weight:700;text-align:center}
+.sr{background:#FEE2E2;color:#991B1B;font-weight:700;text-align:center}
+
+/* ── TOC ─────────────────────────────────────────────────── */
+.toc-row{display:flex;align-items:baseline;gap:8px;padding:6px 0;border-bottom:1px dotted #E5E7EB}
+.toc-n{font-weight:800;color:#1E40AF;width:28px;flex-shrink:0;font-size:12px}
+.toc-t{flex:1;font-size:12px;color:#374151}
+.toc-p{font-size:11px;color:#9CA3AF}
+.toc-head{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#6B7280;margin:16px 0 6px}
+
+/* ── FOOTER ──────────────────────────────────────────────── */
+.footer{background:#0A1929;color:#6B7280;font-size:10px;padding:16px 48px;text-align:center;line-height:1.7;margin-top:40px}
+.footer strong{color:#93C5FD}
+
+@media print{
+  .cover{min-height:100vh}
+  .body{padding:28px 36px}
+  .section{page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════
+     COVER
+══════════════════════════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-top">
+    <div>
+      <div class="brand">Finsight<span>One</span></div>
+      <div style="font-size:9.5px;color:rgba(255,255,255,0.3);letter-spacing:1.5px;text-transform:uppercase;margin-top:3px">Credit · Advisory · Intelligence</div>
+    </div>
+    <div class="cover-ref-box">
+      <div class="cover-ref-val">DPR / <span class="ph" style="color:#FCD34D;font-style:italic">[REF NO]</span> / FY26</div>
+      <div class="cover-ref-label">Document Reference</div>
+    </div>
+  </div>
+
+  <div class="cover-main">
+    <div class="cover-badge">📘 Detailed Project Report · Above ₹5 Crore</div>
+    <div class="cover-title">
+      <span class="ph" style="color:#93C5FD;font-style:italic">[Project Name]</span><br/>
+      <em><span class="ph" style="color:#fff;font-style:italic">[Business / Entity Name]</span></em>
+    </div>
+    <div class="cover-subtitle">
+      <span class="ph" style="font-style:italic">[Greenfield / Expansion]</span> Project ·
+      <span class="ph" style="font-style:italic">[Sector]</span> ·
+      <span class="ph" style="font-style:italic">[City, State]</span>
+    </div>
+
+    <div class="cover-grid">
+      <div class="cg"><label>Total Project Cost</label><span class="ph">₹[X.XX] Crore</span></div>
+      <div class="cg"><label>Loan Requested</label><span class="ph">₹[X.XX] Crore</span></div>
+      <div class="cg"><label>Promoter's Own Contribution</label><span class="ph">₹[X.XX] Crore ([X]%)</span></div>
+      <div class="cg"><label>Target Lender / Scheme</label><span class="ph">[Bank · Branch / CGTMSE / MUDRA]</span></div>
+      <div class="cg"><label>Promoter(s)</label><span class="ph">[Name(s)]</span></div>
+      <div class="cg"><label>Report Prepared On</label><span class="ph">[Month YYYY]</span></div>
+    </div>
+  </div>
+
+  <div class="cover-foot">
+    Prepared by FinsightOne Financial Services on the basis of information provided by the promoter. This report is prepared to support the financing process and does not constitute a guarantee of approval. Contents are confidential and intended for the named lender only.<br/>
+    <strong style="color:#93C5FD">FinsightOne · +91 95794 53635 · finsightone.co · Pricing: ₹9,999 (Above ₹5 Crore)</strong>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     TABLE OF CONTENTS
+══════════════════════════════════════════════════════════ -->
+<div class="body">
+<div class="section">
+  <div class="sec-label">Contents</div>
+  <div class="sec-title">Table of Contents</div>
+
+  <div class="toc-head">Part A — The Project &amp; The People Behind It</div>
+  <div class="toc-row"><span class="toc-n">01</span><span class="toc-t">Project Summary — What This Proposal Is About</span><span class="toc-p">3</span></div>
+  <div class="toc-row"><span class="toc-n">02</span><span class="toc-t">About the Promoter(s) — Experience &amp; Track Record</span><span class="toc-p">4</span></div>
+  <div class="toc-row"><span class="toc-n">03</span><span class="toc-t">The Business — What We Do &amp; How We Do It</span><span class="toc-p">6</span></div>
+
+  <div class="toc-head">Part B — The Market &amp; The Opportunity</div>
+  <div class="toc-row"><span class="toc-n">04</span><span class="toc-t">The Market We Operate In</span><span class="toc-p">8</span></div>
+  <div class="toc-row"><span class="toc-n">05</span><span class="toc-t">Technical Plan — How the Project Will Be Set Up</span><span class="toc-p">11</span></div>
+
+  <div class="toc-head">Part C — The Numbers</div>
+  <div class="toc-row"><span class="toc-n">06</span><span class="toc-t">What This Project Will Cost &amp; How It Will Be Funded</span><span class="toc-p">14</span></div>
+  <div class="toc-row"><span class="toc-n">07</span><span class="toc-t">Revenue &amp; Profit Projections — 5 Years</span><span class="toc-p">16</span></div>
+  <div class="toc-row"><span class="toc-n">08</span><span class="toc-t">How the Loan Will Be Repaid</span><span class="toc-p">19</span></div>
+  <div class="toc-row"><span class="toc-n">09</span><span class="toc-t">Break-Even — When the Project Covers Its Costs</span><span class="toc-p">21</span></div>
+  <div class="toc-row"><span class="toc-n">10</span><span class="toc-t">Stress Testing — What If Things Don't Go to Plan</span><span class="toc-p">22</span></div>
+
+  <div class="toc-head">Part D — Risks &amp; Execution Plan</div>
+  <div class="toc-row"><span class="toc-n">11</span><span class="toc-t">Risks We Have Identified &amp; How We Will Handle Them</span><span class="toc-p">24</span></div>
+  <div class="toc-row"><span class="toc-n">12</span><span class="toc-t">Implementation Timeline — From Sanction to First Revenue</span><span class="toc-p">26</span></div>
+  <div class="toc-row"><span class="toc-n">13</span><span class="toc-t">Licences, Approvals &amp; Compliances in Place</span><span class="toc-p">27</span></div>
+
+  <div class="toc-head">Annexures (to be attached)</div>
+  <div class="toc-row"><span class="toc-n">A</span><span class="toc-t">Last 3 Years' Audited Accounts</span><span class="toc-p">—</span></div>
+  <div class="toc-row"><span class="toc-n">B</span><span class="toc-t">KYC — Promoter &amp; Company</span><span class="toc-p">—</span></div>
+  <div class="toc-row"><span class="toc-n">C</span><span class="toc-t">Quotations — Machinery &amp; Civil Works</span><span class="toc-p">—</span></div>
+  <div class="toc-row"><span class="toc-n">D</span><span class="toc-t">Land Documents / Factory Lease</span><span class="toc-p">—</span></div>
+  <div class="toc-row"><span class="toc-n">E</span><span class="toc-t">Market Evidence — Orders, MOUs, Tie-ups</span><span class="toc-p">—</span></div>
+</div>
+
+<!-- ══ SECTION 01 — PROJECT SUMMARY ══ -->
+<div class="section">
+  <div class="sec-label">Section 01</div>
+  <div class="sec-title">Project Summary — What This Proposal Is About</div>
+
+  <div class="advisory">
+    <div class="advisory-title">Why this section matters</div>
+    This is the first page a lender reads. A strong summary answers five things in one glance: who is asking, what they are building, how much they need, why it will work, and how they will repay it. We have structured this so those answers are impossible to miss.
+  </div>
+
+  <div class="sub-head">The Project at a Glance</div>
+  <table class="t">
+    <tr><td class="lc">Company / Entity Name</td><td class="phc">[FULL LEGAL NAME — Pvt Ltd / LLP / Proprietorship]</td></tr>
+    <tr><td class="lc">Promoter(s)</td><td class="phc">[Name(s), designation, shareholding %]</td></tr>
+    <tr><td class="lc">What We Are Building</td><td class="phc">[One clear sentence: e.g., "Setting up a 500 MT/month steel fabrication unit in MIDC Pune"]</td></tr>
+    <tr><td class="lc">Sector &amp; Product</td><td class="phc">[e.g., Manufacturing — Structural Steel Components]</td></tr>
+    <tr><td class="lc">Project Location</td><td class="phc">[Full address, Industrial area, City, State, Pin]</td></tr>
+    <tr><td class="lc">Total Project Cost</td><td class="phc">₹[X.XX] Crore</td></tr>
+    <tr><td class="lc">Loan Amount Requested</td><td class="phc">₹[X.XX] Crore ([X]% of total project cost)</td></tr>
+    <tr><td class="lc">Our Own Contribution</td><td class="phc">₹[X.XX] Crore ([X]% — already arranged / in progress)</td></tr>
+    <tr><td class="lc">Loan Type &amp; Tenure Requested</td><td class="phc">[Term Loan / Working Capital Term Loan] — [X] years including [X] months for setup</td></tr>
+    <tr><td class="lc">Revenue in Year 1</td><td class="phc">₹[X.XX] Crore (projected at [X]% capacity utilisation)</td></tr>
+    <tr><td class="lc">Revenue in Year 3</td><td class="phc">₹[X.XX] Crore (at full capacity)</td></tr>
+    <tr><td class="lc">Annual Surplus Available for Repayment</td><td class="phc">₹[XX] Lakh per year from Year 1 — comfortably covers all obligations</td></tr>
+    <tr><td class="lc">Security We Are Offering</td><td class="phc">[Land &amp; Building / Plant &amp; Machinery / Residential property — estimated value ₹X.XX Cr]</td></tr>
+  </table>
+
+  <div class="note">
+    <div class="note-title">Our Advisory View</div>
+    <span class="phc" style="color:#374151;font-style:normal">[2–3 lines written by FinsightOne summarising why this project is strong and what makes the promoter the right person for it — e.g., "With 18 years in the steel industry and an existing supply agreement with Larsen &amp; Toubro, Mr. [Name] brings both the technical know-how and the market access that makes this project viable from day one."]</span>
+  </div>
+</div>
+
+<!-- ══ SECTION 02 — PROMOTER BACKGROUND ══ -->
+<div class="section">
+  <div class="sec-label">Section 02</div>
+  <div class="sec-title">About the Promoter(s) — Experience &amp; Track Record</div>
+
+  <div class="advisory">
+    <div class="advisory-title">Why this section matters</div>
+    Lenders fund people as much as they fund projects. This section builds confidence by showing that the people behind the project have done this before, understand the industry, and have a clean financial history.
+  </div>
+
+  <div class="sub-head">Promoter 1</div>
+  <table class="t">
+    <tr><td class="lc" style="width:38%">Full Name</td><td class="phc">[Name]</td></tr>
+    <tr><td class="lc">Age &amp; Qualification</td><td class="phc">[XX years · B.E. / MBA / ITI / CA / etc.]</td></tr>
+    <tr><td class="lc">Years in This Industry</td><td class="phc">[XX] years — [what they did before launching this project]</td></tr>
+    <tr><td class="lc">Previous Businesses / Ventures</td><td class="phc">[Name and brief description of earlier businesses, if any]</td></tr>
+    <tr><td class="lc">Key Skills &amp; Expertise</td><td class="phc">[e.g., Production management, client relationships, exports, Government contracts]</td></tr>
+    <tr><td class="lc">Annual Personal Income (last year)</td><td class="phc">₹[XX] Lakh — supported by ITR for [FY]</td></tr>
+    <tr><td class="lc">Personal Assets</td><td class="phc">[Residential property at [location], estimated ₹X Cr / Investments / Other]</td></tr>
+    <tr><td class="lc">Credit History</td><td class="phc">No defaults. No loan that ever turned bad. Clean repayment on all past borrowings.</td></tr>
+  </table>
+
+  <div class="field">
+    <div class="field-label">Promoter's Story in Their Own Words</div>
+    <div class="field-hint">Write 3–5 lines that capture what the promoter has been doing for the last 10–15 years, what inspired this project, and why they are confident it will succeed. This should read naturally — not like a resume, but like a conversation.<br/>
+    Example: "I have spent 18 years working in the auto components supply chain, first as a purchase manager at Tata AutoComp and then running my own trading business. I have watched the gap in precision machined parts for small OEMs grow every year. This project is my step to fill that gap — I already have three customers committed."</div>
+    <span class="field-req">Required</span>
+  </div>
+
+  <div class="sub-head">Promoter 2 (if applicable)</div>
+  <div class="field">
+    <div class="field-label">Promoter 2 Profile</div>
+    <div class="field-hint">Same structure as above — name, age, background, income, assets, credit history, and their specific role in the project (e.g., "Handles all technical and production; Promoter 1 handles finance and client relationships").</div>
+    <span class="field-opt">If applicable</span>
+  </div>
+</div>
+
+<!-- ══ SECTION 03 — THE BUSINESS ══ -->
+<div class="section">
+  <div class="sec-label">Section 03</div>
+  <div class="sec-title">The Business — What We Do &amp; How We Do It</div>
+
+  <div class="sub-head">What We Are Building (or Expanding)</div>
+  <div class="field">
+    <div class="field-label">Project Description</div>
+    <div class="field-hint">Describe the project in plain language: what will be produced / offered, at what scale, using what technology or process, from which location. Avoid technical jargon — explain it the way you would to a well-educated person who has never seen your factory.<br/>
+    Include: what the product / service is, how it is made, what capacity you are starting at, what full capacity looks like, and how many people you will employ.</div>
+    <span class="field-req">Required · Suggested length: 200–350 words</span>
+  </div>
+
+  <div class="sub-head">Our Setup</div>
+  <div class="field">
+    <div class="field-label">Land, Building &amp; Infrastructure</div>
+    <div class="field-hint">Describe the land / premises: owned or leased, area in sq ft / sq mt, location, current status (acquired / under construction / ready). If rented, attach the lease agreement.</div>
+    <span class="field-req">Required</span>
+  </div>
+
+  <div class="field">
+    <div class="field-label">Machinery &amp; Equipment</div>
+    <div class="field-hint">List the key machines and equipment being purchased. For each item: what it does, supplier name, cost, lead time for delivery, and whether you already have a quotation. Attach supplier quotations in Annexure C.</div>
+    <span class="field-req">Required · Attach quotations</span>
+  </div>
+
+  <div class="sub-head">How We Will Sell</div>
+  <div class="field">
+    <div class="field-label">Who Will Buy Your Product / Service</div>
+    <div class="field-hint">Describe your customers — industries, companies, or consumer segments. Mention existing relationships, MOUs, orders, or confirmed commitments. The stronger this section, the stronger your application.<br/>
+    If you already have confirmed orders, state the buyer name, amount, and timeline.</div>
+    <span class="field-req">Required</span>
+  </div>
+
+  <div class="field">
+    <div class="field-label">Pricing &amp; How You Compete</div>
+    <div class="field-hint">What price will you sell at? How does that compare to competitors? What makes a customer choose you over someone else — cost, quality, speed, relationships, certification, location?</div>
+    <span class="field-req">Required</span>
+  </div>
+</div>
+
+<!-- ══ SECTION 04 — THE MARKET ══ -->
+<div class="section">
+  <div class="sec-label">Section 04</div>
+  <div class="sec-title">The Market We Operate In</div>
+
+  <div class="advisory">
+    <div class="advisory-title">Why this section matters</div>
+    Lenders want to know that there is real demand for what you are building — not just that you think there is. This section uses industry facts and your own on-ground evidence to show that the market exists, it is growing, and your project is positioned to benefit from it.
+  </div>
+
+  <div class="sub-head">The Industry — Size &amp; Growth</div>
+  <table class="t">
+    <tr><td class="lc" style="width:45%">Industry / Segment We Operate In</td><td class="phc">[Describe the specific market segment]</td></tr>
+    <tr><td class="lc">Estimated Size of This Market (India)</td><td class="phc">₹[X,XXX] Crore / [X] MT / [other unit]</td></tr>
+    <tr><td class="lc">How Fast the Market Is Growing</td><td class="phc">[X]% per year — growing because [key reason]</td></tr>
+    <tr><td class="lc">Key Drivers of This Growth</td><td class="phc">[e.g., Government infra spending / Rising exports / Import substitution / Urbanisation]</td></tr>
+    <tr><td class="lc">Is Government Promoting This Sector?</td><td class="phc">[e.g., PLI Scheme, Make in India, MSME support, export incentives — describe what applies to you]</td></tr>
+    <tr><td class="lc">Our Share We Are Targeting</td><td class="phc">[A realistic number — e.g., "We are targeting [X]% of the [City/Region] market in Year 1"]</td></tr>
+  </table>
+
+  <div class="field">
+    <div class="field-label">Source of Market Information</div>
+    <div class="field-hint">Where did the above numbers come from? (e.g., IBEF industry report, CII data, Ministry of Commerce, Trade association report, your own customer conversations.) Attach the source as part of this report if possible.</div>
+    <span class="field-req">Required · Cite sources</span>
+  </div>
+
+  <div class="sub-head">Who Our Competitors Are</div>
+  <div class="field">
+    <div class="field-label">Competitive Landscape</div>
+    <div class="field-hint">Name 2–4 existing players in your area / segment. For each: approximate size, what they offer, and what gap they leave that you are filling. If you are entering an existing market, explain clearly why customers will prefer you.</div>
+    <span class="field-req">Required</span>
+  </div>
+</div>
+
+<!-- ══ SECTION 05 — TECHNICAL PLAN ══ -->
+<div class="section">
+  <div class="sec-label">Section 05</div>
+  <div class="sec-title">Technical Plan — How the Project Will Be Set Up</div>
+
+  <div class="sub-head">Production / Service Delivery Process</div>
+  <div class="field">
+    <div class="field-label">Step-by-Step Process Flow</div>
+    <div class="field-hint">Describe how raw material enters, what happens at each stage, and how the finished product / service is delivered to the customer. Keep it simple — think of explaining to someone visiting your factory for the first time.</div>
+    <span class="field-req">Required · A simple flowchart or numbered steps work best</span>
+  </div>
+
+  <div class="sub-head">Installed Capacity &amp; Utilisation Plan</div>
+  <table class="t">
+    <thead><tr><th>Year</th><th>Capacity Installed</th><th>Capacity Utilised</th><th>Utilisation %</th><th>Why This Level</th></tr></thead>
+    <tbody>
+      <tr><td class="lc">Year 1</td><td class="phc">[X units / MT / etc.]</td><td class="phc">[X units]</td><td class="phc">[XX]%</td><td class="phc">[Ramp-up phase, trial customers]</td></tr>
+      <tr><td class="lc">Year 2</td><td class="phc">[Full capacity]</td><td class="phc">[X units]</td><td class="phc">[XX]%</td><td class="phc">[Orders confirmed, 2nd shift]</td></tr>
+      <tr><td class="lc">Year 3</td><td class="phc">[Full capacity]</td><td class="phc">[X units]</td><td class="phc">[XX]%</td><td class="phc">[Steady state]</td></tr>
+    </tbody>
+  </table>
+
+  <div class="advisory">
+    <div class="advisory-title">Our guidance on capacity utilisation</div>
+    Starting at 40–60% capacity in Year 1 is realistic and credible. Projecting 90%+ from Day 1 raises doubts. We will work with you to find a utilisation curve that is ambitious but believable — and backed by your existing orders or customer commitments.
+  </div>
+
+  <div class="sub-head">Raw Material &amp; Supply Chain</div>
+  <div class="field">
+    <div class="field-label">Where Your Key Inputs Come From</div>
+    <div class="field-hint">List main raw materials / inputs: where you will source them, approximate cost as % of revenue, whether there are long-term supply arrangements, and any supply risk (e.g., seasonal availability, import dependency). Mention existing supplier relationships.</div>
+    <span class="field-req">Required</span>
+  </div>
+
+  <div class="sub-head">People &amp; Team</div>
+  <div class="field">
+    <div class="field-label">Who Will Run the Operations</div>
+    <div class="field-hint">How many people will you employ? Describe key roles — plant manager, production supervisor, accounts, sales. If key staff are already identified or on board, mention them by name and background.</div>
+    <span class="field-opt">Provide as much detail as available</span>
+  </div>
+</div>
+
+<!-- ══ SECTION 06 — PROJECT COST & FUNDING ══ -->
+<div class="section">
+  <div class="sec-label">Section 06</div>
+  <div class="sec-title">What This Project Will Cost &amp; How It Will Be Funded</div>
+
+  <div class="advisory">
+    <div class="advisory-title">Our guidance on cost estimation</div>
+    Every cost should be backed by a quotation, market rate, or contractor estimate. Vague or rounded numbers reduce your credibility significantly. We will help you prepare a detailed cost sheet — the numbers in the table below should be final figures, not rough estimates.
+  </div>
+
+  <div class="sub-head">Total Project Cost</div>
+  <table class="t">
+    <thead><tr><th>Cost Item</th><th>Description</th><th>Amount (₹ Lakh)</th><th>Supported By</th></tr></thead>
+    <tbody>
+      <tr><td class="lc">Land &amp; Site Development</td><td class="phc">[Owned / Leased — area, location]</td><td class="phc">[XXX]</td><td class="phc">[Sale deed / Lease deed]</td></tr>
+      <tr><td class="lc">Civil Works &amp; Building</td><td class="phc">[Factory / Office / Warehouse — area, type]</td><td class="phc">[XXX]</td><td class="phc">[Contractor quote]</td></tr>
+      <tr><td class="lc">Plant &amp; Machinery</td><td class="phc">[List key equipment]</td><td class="phc">[XXX]</td><td class="phc">[Supplier quote]</td></tr>
+      <tr><td class="lc">Utilities &amp; Electrical</td><td class="phc">[Power connection, transformer, solar, etc.]</td><td class="phc">[XXX]</td><td class="phc">[Estimate / Quote]</td></tr>
+      <tr><td class="lc">Pre-Operative Expenses</td><td class="phc">[Licences, legal, trial runs, interest during construction]</td><td class="phc">[XXX]</td><td class="phc">[Estimate]</td></tr>
+      <tr><td class="lc">Working Capital Margin</td><td class="phc">[Stock, debtors — our own margin contribution]</td><td class="phc">[XXX]</td><td class="phc">[Calculated]</td></tr>
+      <tr><td class="lc">Contingency (5–10%)</td><td class="phc">Buffer for cost overruns</td><td class="phc">[XXX]</td><td class="phc">Standard provision</td></tr>
+      <tr class="tot"><td colspan="2">Total Project Cost</td><td>[X,XXX]</td><td>₹[X.XX] Crore</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sub-head">How We Will Fund This</div>
+  <table class="t">
+    <thead><tr><th>Source of Funds</th><th>Amount (₹ Lakh)</th><th>% Share</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td class="lc">Promoter's Own Contribution</td><td class="phc">[XXX]</td><td class="phc">[XX]%</td><td class="phc">[Already deposited / In savings / From sale of asset]</td></tr>
+      <tr><td class="lc">Unsecured Loan from Family</td><td class="phc">[XXX]</td><td class="phc">[XX]%</td><td class="phc">[Available on call · Non-interest bearing]</td></tr>
+      <tr><td class="lc">Term Loan from [Bank]</td><td class="phc">[XXX]</td><td class="phc">[XX]%</td><td class="phc">Requested through this report</td></tr>
+      <tr class="tot"><td>Total</td><td>[X,XXX]</td><td>100%</td><td>—</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    <div class="note-title">What lenders check here</div>
+    The promoter's own contribution (equity) must typically be at least 25–33% of the total project cost. If it is lower, lenders will want a strong explanation. We will flag this upfront if there is a gap and advise on how to address it.
+  </div>
+</div>
+
+<!-- ══ SECTION 07 — REVENUE & PROFIT PROJECTIONS ══ -->
+<div class="section">
+  <div class="sec-label">Section 07</div>
+  <div class="sec-title">Revenue &amp; Profit Projections — 5 Years</div>
+
+  <div class="advisory">
+    <div class="advisory-title">Our approach to projections</div>
+    We build projections from the ground up — capacity × utilisation × selling price — not by guessing a growth rate. Every assumption is stated clearly so the lender can see exactly how we arrived at each number.
+  </div>
+
+  <div class="sub-head">Revenue Build-Up</div>
+  <table class="t">
+    <thead><tr><th>Revenue Driver</th><th>Year 1</th><th>Year 2</th><th>Year 3</th><th>Year 4</th><th>Year 5</th></tr></thead>
+    <tbody>
+      <tr><td class="lc">Installed Capacity</td><td class="phc">[X units]</td><td class="phc">[X units]</td><td class="phc">[X units]</td><td class="phc">[X units]</td><td class="phc">[X units]</td></tr>
+      <tr><td class="lc">Capacity Utilisation %</td><td class="phc">[XX]%</td><td class="phc">[XX]%</td><td class="phc">[XX]%</td><td class="phc">[XX]%</td><td class="phc">[XX]%</td></tr>
+      <tr><td class="lc">Units Produced / Services Delivered</td><td class="phc">[X units]</td><td class="phc">[X units]</td><td class="phc">[X units]</td><td class="phc">[X units]</td><td class="phc">[X units]</td></tr>
+      <tr><td class="lc">Average Selling Price (₹)</td><td class="phc">[X,XXX]</td><td class="phc">[X,XXX]</td><td class="phc">[X,XXX]</td><td class="phc">[X,XXX]</td><td class="phc">[X,XXX]</td></tr>
+      <tr class="sub"><td>Net Revenue (₹ Lakh)</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sub-head">Projected Profit &amp; Loss (₹ Lakh)</div>
+  <table class="t">
+    <thead><tr><th>Item</th><th>Year 1</th><th>Year 2</th><th>Year 3</th><th>Year 4</th><th>Year 5</th></tr></thead>
+    <tbody>
+      <tr><td class="lc">Net Revenue</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td></tr>
+      <tr><td class="lc">Raw Material &amp; Direct Costs</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td></tr>
+      <tr class="sub"><td>Gross Profit</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td></tr>
+      <tr><td class="lc">Gross Margin %</td><td class="phc">[XX]%</td><td class="phc">[XX]%</td><td class="phc">[XX]%</td><td class="phc">[XX]%</td><td class="phc">[XX]%</td></tr>
+      <tr><td class="lc">Operating Expenses (Salaries, Rent, etc.)</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td></tr>
+      <tr class="sub"><td>Operating Profit (EBIDTA)</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td></tr>
+      <tr><td class="lc">EBIDTA Margin %</td><td class="phc">[XX]%</td><td class="phc">[XX]%</td><td class="phc">[XX]%</td><td class="phc">[XX]%</td><td class="phc">[XX]%</td></tr>
+      <tr><td class="lc">Depreciation</td><td class="phc">[XX]</td><td class="phc">[XX]</td><td class="phc">[XX]</td><td class="phc">[XX]</td><td class="phc">[XX]</td></tr>
+      <tr><td class="lc">Interest on Loan</td><td class="phc">[XX]</td><td class="phc">[XX]</td><td class="phc">[XX]</td><td class="phc">[XX]</td><td class="phc">[XX]</td></tr>
+      <tr class="tot"><td>Net Profit After Tax</td><td>[XX]</td><td>[XX]</td><td>[XX]</td><td>[XX]</td><td>[XX]</td></tr>
+      <tr><td class="lc">Net Profit Margin %</td><td class="phc">[X.X]%</td><td class="phc">[X.X]%</td><td class="phc">[X.X]%</td><td class="phc">[X.X]%</td><td class="phc">[X.X]%</td></tr>
+    </tbody>
+  </table>
+
+  <div class="field">
+    <div class="field-label">Key Assumptions Behind These Numbers</div>
+    <div class="field-hint">List all major assumptions: raw material price (and basis), selling price (and how it was derived), salary assumptions, utility costs, capacity ramp-up rationale, inflation assumptions. These must be written out clearly — one line each.</div>
+    <span class="field-req">Required · List every assumption separately</span>
+  </div>
+</div>
+
+<!-- ══ SECTION 08 — HOW THE LOAN WILL BE REPAID ══ -->
+<div class="section">
+  <div class="sec-label">Section 08</div>
+  <div class="sec-title">How the Loan Will Be Repaid</div>
+
+  <div class="advisory">
+    <div class="advisory-title">What this section shows</div>
+    This section demonstrates, in plain numbers, that the project generates enough surplus to comfortably cover all loan repayments — even in a difficult year. We present this as a straightforward comparison: money coming in vs. money going out on loan repayment.
+  </div>
+
+  <div class="sub-head">Year-by-Year Repayment Plan</div>
+  <table class="t">
+    <thead><tr><th>Year</th><th>Operating Profit (₹ L)</th><th>Principal Due (₹ L)</th><th>Interest Due (₹ L)</th><th>Total Repayment (₹ L)</th><th>Surplus After Repayment</th><th>Coverage Ratio</th></tr></thead>
+    <tbody>
+      <tr><td class="lc">Year 1</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td><td class="phc">[X.XX]x</td></tr>
+      <tr><td class="lc">Year 2</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td><td class="phc">[X.XX]x</td></tr>
+      <tr><td class="lc">Year 3</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td><td class="phc">[X.XX]x</td></tr>
+      <tr><td class="lc">Year 4</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td><td class="phc">[X.XX]x</td></tr>
+      <tr><td class="lc">Year 5</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td><td class="phc">[X.XX]x</td></tr>
+      <tr class="tot"><td>Average (5 years)</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>[X.XX]x</td></tr>
+    </tbody>
+  </table>
+
+  <div class="kpi-row">
+    <div class="kpi"><div class="kpi-v phc">[X.XX]x</div><div class="kpi-l">Average Coverage</div><div class="kpi-s">Minimum acceptable: 1.25x</div></div>
+    <div class="kpi"><div class="kpi-v phc">[X.XX]x</div><div class="kpi-l">Lowest Year Coverage</div><div class="kpi-s">Year [X] — ramp-up phase</div></div>
+    <div class="kpi"><div class="kpi-v phc">₹[XX] L</div><div class="kpi-l">Monthly Repayment</div><div class="kpi-s">Principal + Interest combined</div></div>
+    <div class="kpi"><div class="kpi-v phc">[X] yrs</div><div class="kpi-l">Total Repayment Period</div><div class="kpi-s">Including [X] months setup time</div></div>
+  </div>
+</div>
+
+<!-- ══ SECTION 09 — BREAK-EVEN ══ -->
+<div class="section">
+  <div class="sec-label">Section 09</div>
+  <div class="sec-title">Break-Even — When the Project Covers Its Costs</div>
+
+  <div class="advisory">
+    <div class="advisory-title">What break-even means in simple terms</div>
+    Break-even is the point at which the project's revenue equals its total costs — it is neither making a profit nor a loss. A lower break-even capacity means the project can stay viable even when demand is slow. We calculate this from the actual cost structure.
+  </div>
+
+  <table class="t">
+    <tr><td class="lc" style="width:50%">Fixed Costs Per Year (₹ Lakh)</td><td class="phc">[XXX] — salaries, rent, depreciation, interest, etc.</td></tr>
+    <tr><td class="lc">Variable Cost Per Unit (₹)</td><td class="phc">[X,XXX] — raw material, power, consumables</td></tr>
+    <tr><td class="lc">Selling Price Per Unit (₹)</td><td class="phc">[X,XXX]</td></tr>
+    <tr><td class="lc">Contribution Per Unit (Selling Price − Variable Cost)</td><td class="phc">₹[X,XXX] per unit</td></tr>
+    <tr class="sub"><td>Break-Even Production (units per year)</td><td class="phc">[X,XXX] units — [XX]% of installed capacity</td></tr>
+    <tr class="sub"><td>Break-Even Revenue</td><td class="phc">₹[XXX] Lakh per year</td></tr>
+    <tr><td class="lc">Projected Year 1 Revenue</td><td class="phc">₹[XXX] Lakh — [X]% above break-even from Year 1</td></tr>
+  </table>
+</div>
+
+<!-- ══ SECTION 10 — STRESS TESTING ══ -->
+<div class="section">
+  <div class="sec-label">Section 10</div>
+  <div class="sec-title">Stress Testing — What If Things Don't Go to Plan</div>
+
+  <div class="advisory">
+    <div class="advisory-title">Why we run stress tests</div>
+    A good project should remain viable even when things go wrong. This section shows how the project performs under three difficult scenarios — lower revenue, higher costs, and both together. A project that can absorb these shocks is a much stronger funding case.
+  </div>
+
+  <table class="t">
+    <thead>
+      <tr><th>Scenario</th><th>Assumption</th><th>Year 1 Revenue (₹ L)</th><th>Year 1 EBIDTA (₹ L)</th><th>Repayment Coverage</th><th>Can We Repay?</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="lc">Base Case</td><td>As projected — [XX]% capacity</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td><td class="phc">[X.XX]x</td><td class="sg">✓ Yes</td></tr>
+      <tr><td class="lc">Revenue Down 20%</td><td>Demand slow — capacity at [XX]%</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td><td class="phc">[X.XX]x</td><td class="sa">✓ Yes (tight)</td></tr>
+      <tr><td class="lc">Costs Up 15%</td><td>Raw material price rise</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td><td class="phc">[X.XX]x</td><td class="sa">✓ Yes</td></tr>
+      <tr><td class="lc">Revenue Down 20% + Costs Up 15%</td><td>Worst case — both together</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td><td class="phc">[X.XX]x</td><td class="phc" style="font-weight:700">[Result]</td></tr>
+      <tr><td class="lc">6-Month Delay in Project Start</td><td>Construction overrun</td><td class="phc">[XXX]</td><td class="phc">[XXX]</td><td class="phc">[X.XX]x</td><td class="phc" style="font-weight:700">[Result]</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══ SECTION 11 — RISK ANALYSIS ══ -->
+<div class="section">
+  <div class="sec-label">Section 11</div>
+  <div class="sec-title">Risks We Have Identified &amp; How We Will Handle Them</div>
+
+  <div class="advisory">
+    <div class="advisory-title">Our advisory approach to risk</div>
+    Identifying risks honestly — and having a clear plan for each — builds far more confidence than pretending there are none. A promoter who has thought about what could go wrong is a promoter who is prepared to manage it.
+  </div>
+
+  <table class="t">
+    <thead><tr><th>Risk</th><th>How Likely</th><th>How Serious</th><th>How We Will Handle It</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="lc">Demand takes time to build up</td>
+        <td><span class="pill a">Possible</span></td>
+        <td><span class="pill a">Medium</span></td>
+        <td class="phc">[e.g., We already have confirmed orders from X and Y worth ₹X Crore. Our break-even is at [XX]% capacity, which we are confident of achieving even in a slow start.]</td>
+      </tr>
+      <tr>
+        <td class="lc">Raw material prices increase</td>
+        <td><span class="pill a">Possible</span></td>
+        <td><span class="pill a">Medium</span></td>
+        <td class="phc">[e.g., Our supply agreements allow us to revise prices quarterly. Our gross margin is [XX]% — even a 15% material price rise leaves us with a [X.XX]x repayment surplus.]</td>
+      </tr>
+      <tr>
+        <td class="lc">Construction delay</td>
+        <td><span class="pill a">Possible</span></td>
+        <td><span class="pill g">Manageable</span></td>
+        <td class="phc">[e.g., We have built a [X]-month moratorium request into the repayment plan. Civil work contractor has a penalty clause for delays.]</td>
+      </tr>
+      <tr>
+        <td class="lc">Key person risk — promoter unavailability</td>
+        <td><span class="pill g">Low</span></td>
+        <td><span class="pill a">Medium</span></td>
+        <td class="phc">[e.g., Promoter 2 handles all production independently. Life insurance cover of ₹X Crore is in place. Plant manager [Name] has [X] years experience.]</td>
+      </tr>
+      <tr>
+        <td class="lc">Regulatory / licence delays</td>
+        <td><span class="pill g">Low</span></td>
+        <td><span class="pill g">Low</span></td>
+        <td class="phc">[e.g., Factory licence, pollution NOC, and fire NOC are already in process. We expect them before construction is complete.]</td>
+      </tr>
+      <tr>
+        <td class="lc">Competition from new entrants</td>
+        <td><span class="pill g">Low</span></td>
+        <td><span class="pill a">Medium</span></td>
+        <td class="phc">[e.g., Our competitive advantage is [specific factor]. Entry barriers in this segment include [capital cost / certification / long customer relationships].]</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══ SECTION 12 — IMPLEMENTATION TIMELINE ══ -->
+<div class="section">
+  <div class="sec-label">Section 12</div>
+  <div class="sec-title">Implementation Timeline — From Sanction to First Revenue</div>
+
+  <div class="sub-head">Month-by-Month Plan</div>
+  <table class="t">
+    <thead><tr><th>Months from Sanction</th><th>What Happens</th><th>Who Leads It</th><th>Milestone to Confirm</th></tr></thead>
+    <tbody>
+      <tr><td class="lc">Month 1–2</td><td class="phc">Formalities, first disbursement, construction begins</td><td class="phc">[Name]</td><td class="phc">Loan documents signed, land ready</td></tr>
+      <tr><td class="lc">Month 3–5</td><td class="phc">Civil work in progress, machinery ordered</td><td class="phc">[Name]</td><td class="phc">Foundation complete, order placed</td></tr>
+      <tr><td class="lc">Month 6–8</td><td class="phc">Building complete, machinery arrives and installed</td><td class="phc">[Name]</td><td class="phc">Building handover, installation done</td></tr>
+      <tr><td class="lc">Month 9</td><td class="phc">Trial runs, staff training, utility connections</td><td class="phc">[Name]</td><td class="phc">First production run</td></tr>
+      <tr><td class="lc">Month 10</td><td class="phc">Commercial production starts, first deliveries to customers</td><td class="phc">[Name]</td><td class="phc">First invoice raised</td></tr>
+      <tr class="sub"><td colspan="4">→ First EMI payment begins from Month [X] as proposed</td></tr>
+    </tbody>
+  </table>
+
+  <div class="field">
+    <div class="field-label">Any parts of this already done?</div>
+    <div class="field-hint">If land is already purchased, construction started, or machinery ordered — mention it here. Progress already made is a strong signal to the lender that the project is real and the promoter is committed.</div>
+    <span class="field-opt">Include if applicable — it significantly strengthens the case</span>
+  </div>
+</div>
+
+<!-- ══ SECTION 13 — LICENCES & COMPLIANCE ══ -->
+<div class="section">
+  <div class="sec-label">Section 13</div>
+  <div class="sec-title">Licences, Approvals &amp; Compliances in Place</div>
+
+  <table class="t">
+    <thead><tr><th>Approval / Licence</th><th>Status</th><th>Issued By</th><th>Valid Until / Notes</th></tr></thead>
+    <tbody>
+      <tr><td class="lc">GST Registration</td><td><span class="pill g">Active</span></td><td>GSTN</td><td class="phc">[GSTIN number]</td></tr>
+      <tr><td class="lc">Udyam / MSME Registration</td><td><span class="pill g">Registered</span></td><td>MSME Ministry</td><td class="phc">[Udyam number]</td></tr>
+      <tr><td class="lc">Income Tax (ITR filed)</td><td><span class="pill g">Filed — 3 years</span></td><td>Income Tax Dept</td><td class="phc">FY23, FY24, FY25</td></tr>
+      <tr><td class="lc">Factory / Shop Act Licence</td><td><span class="phc">[In place / Applied / To be obtained post-construction]</span></td><td class="phc">[Labour Dept]</td><td class="phc">[Date / Timeline]</td></tr>
+      <tr><td class="lc">Pollution NOC (if applicable)</td><td class="phc">[In place / Applied / Not required]</td><td class="phc">[SPCB / MoEF]</td><td class="phc">[Date / Category]</td></tr>
+      <tr><td class="lc">Fire NOC</td><td class="phc">[In place / To be obtained]</td><td class="phc">[Fire Dept]</td><td class="phc">[Timeline]</td></tr>
+      <tr><td class="lc">BIS / Quality Certification (if applicable)</td><td class="phc">[Applicable / Not applicable]</td><td class="phc">[BIS / ISO / Other]</td><td class="phc">[Details]</td></tr>
+      <tr><td class="lc">Import / Export Code (if applicable)</td><td class="phc">[Active / Not applicable]</td><td class="phc">[DGFT]</td><td class="phc">[IEC number]</td></tr>
+      <tr><td class="lc">ROC / MCA Compliance</td><td><span class="pill g">Current</span></td><td>MCA21</td><td class="phc">All annual filings up to date</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    <div class="note-title">Our guidance</div>
+    Not all licences need to be in place before applying for a loan — some (like factory licence) are obtained only after construction. What matters is having a clear timeline for each one and being honest about what is pending. We will flag any gaps and advise on the best sequence.
+  </div>
+</div>
+
+<!-- ══ ANNEXURES LIST ══ -->
+<div class="section">
+  <div class="sec-label">Annexures</div>
+  <div class="sec-title">Documents to Be Attached to This Report</div>
+
+  <div class="advisory">
+    <div class="advisory-title">Our checklist for you</div>
+    Every document in the list below must be attached when this report is submitted. Missing annexures are the most common reason for delays at the lender's desk. We will confirm which are ready and which need to be arranged before submission.
+  </div>
+
+  <table class="t">
+    <thead><tr><th>#</th><th>Document</th><th>Required For</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>A</td><td>Audited P&amp;L and Balance Sheet — Last 3 Years</td><td>Financial assessment</td><td class="phc">[Ready / To be arranged]</td></tr>
+      <tr><td>B</td><td>ITR with computation — Promoter, Last 3 Years</td><td>Income verification</td><td class="phc">[Ready / To be arranged]</td></tr>
+      <tr><td>C</td><td>KYC — Aadhaar, PAN, Photo — All Promoters</td><td>Identity verification</td><td class="phc">[Ready / To be arranged]</td></tr>
+      <tr><td>D</td><td>Supplier Quotations — All Major Equipment</td><td>Cost validation</td><td class="phc">[Ready / To be arranged]</td></tr>
+      <tr><td>E</td><td>Civil Work Estimate / Architect Drawing</td><td>Construction cost validation</td><td class="phc">[Ready / To be arranged]</td></tr>
+      <tr><td>F</td><td>Land Sale Deed / Lease Agreement</td><td>Security / land status</td><td class="phc">[Ready / To be arranged]</td></tr>
+      <tr><td>G</td><td>GST Returns — Last 12 Months</td><td>Turnover corroboration</td><td class="phc">[Ready / To be arranged]</td></tr>
+      <tr><td>H</td><td>Bank Statements — Last 12 Months (all accounts)</td><td>Cash flow verification</td><td class="phc">[Ready / To be arranged]</td></tr>
+      <tr><td>I</td><td>Order Letters / MOUs / Offtake Agreements</td><td>Revenue visibility</td><td class="phc">[If available — strongly recommended]</td></tr>
+      <tr><td>J</td><td>Business Plan / Ma
