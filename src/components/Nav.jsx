@@ -12,7 +12,7 @@ const DROPDOWNS = {
       { id: "check",     label: "Apply for a Loan",          desc: "Free — we match you with the right lender" },
       { id: "readiness", label: "Loan Readiness Check",     desc: "Detailed credit reports from ₹799" },
       { id: "analytics", label: "Monthly Tracking Plans",   desc: "Business health monitoring from ₹499/mo" },
-      { id: "docs",      label: "Document Preparation",     desc: "CAM, CMA, DPR — banker-ready in 72 hours" },
+      { id: "docs",      label: "Document Preparation",     desc: "LAN, CMA, DPR — banker-ready in 72 hours" },
       { id: "advisory",  label: "Expert Advisory",          desc: "One-on-one loan structuring & recovery" },
     ],
   },
