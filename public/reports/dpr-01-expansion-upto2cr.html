@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DPR – Expansion Project – Rajesh Engineering Works</title>
+<style>
+  :root {
+    --navy: #0f2044;
+    --blue: #1a4a7a;
+    --green: #1a7a4a;
+    --light-green: #e8f5ee;
+    --accent: #f0a500;
+    --text: #1a1a2e;
+    --muted: #6b7280;
+    --border: #d1d5db;
+    --light-bg: #f8fafc;
+    --yellow: #fef9c3;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: var(--text); background: #f0f4f8; font-size: 14px; line-height: 1.65; }
+
+  /* COVER */
+  .cover {
+    background: linear-gradient(155deg, #0f2044 55%, #1a4a7a 100%);
+    color: white; min-height: 100vh; display: flex; flex-direction: column;
+    justify-content: center; padding: 60px 80px; position: relative; overflow: hidden;
+  }
+  .cover::before { content:''; position:absolute; top:-100px; right:-100px; width:480px; height:480px; background:rgba(26,122,74,0.15); border-radius:50%; }
+  .cover::after  { content:''; position:absolute; bottom:-80px; left:-80px; width:320px; height:320px; background:rgba(240,165,0,0.10); border-radius:50%; }
+  .brand-tag { font-size:12px; font-weight:700; letter-spacing:3px; color:#a0c4e0; text-transform:uppercase; margin-bottom:36px; }
+  .doc-chip { background:var(--green); color:white; padding:5px 16px; border-radius:4px; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; display:inline-block; margin-bottom:24px; }
+  .cover h1 { font-size:36px; font-weight:800; line-height:1.2; margin-bottom:8px; max-width:620px; }
+  .cover .sub { font-size:16px; color:#a8c8e8; margin-bottom:10px; }
+  .cover .tagline { font-size:13px; color:rgba(255,255,255,0.5); margin-bottom:44px; }
+  .cover-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; max-width:680px; margin-bottom:44px; }
+  .cg-item { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.14); border-radius:8px; padding:12px 16px; }
+  .cg-item .cl { font-size:10px; color:#90b8d8; text-transform:uppercase; letter-spacing:1px; margin-bottom:3px; }
+  .cg-item .cv { font-size:14px; font-weight:700; }
+  .cover-badge { position:absolute; top:40px; right:80px; background:var(--accent); color:#0f2044; font-weight:900; font-size:12px; padding:7px 16px; border-radius:20px; z-index:10; }
+  .cover-footer { position:absolute; bottom:36px; left:80px; right:80px; display:flex; justify-content:space-between; font-size:11px; color:rgba(255,255,255,0.35); border-top:1px solid rgba(255,255,255,0.08); padding-top:14px; }
+
+  /* BODY */
+  .wrap { max-width:900px; margin:0 auto; padding:36px 20px; }
+  .sec { background:white; border-radius:12px; padding:30px; margin-bottom:24px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+  .sh { display:flex; align-items:center; gap:12px; margin-bottom:20px; padding-bottom:14px; border-bottom:2px solid var(--light-bg); }
+  .sn { background:var(--navy); color:white; width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; flex-shrink:0; }
+  .st { font-size:17px; font-weight:700; color:var(--navy); }
+  .ss { font-size:12px; color:var(--muted); margin-top:2px; }
+
+  .adv { background:var(--light-green); border-left:4px solid var(--green); border-radius:0 8px 8px 0; padding:13px 16px; margin-bottom:18px; font-size:13px; color:#14532d; }
+  .adv strong { color:var(--green); }
+
+  .narr { font-size:14px; line-height:1.8; margin-bottom:14px; }
+  .narr strong { color:var(--navy); }
+
+  table { width:100%; border-collapse:collapse; margin-bottom:14px; font-size:13px; }
+  thead th { background:var(--navy); color:white; padding:9px 13px; text-align:left; font-size:12px; font-weight:600; }
+  thead th:not(:first-child) { text-align:right; }
+  tbody tr:nth-child(even) { background:var(--light-bg); }
+  td { padding:8px 13px; border-bottom:1px solid var(--border); }
+  td:not(:first-child) { text-align:right; }
+  .sub-r td { font-weight:600; background:#f0f4f0!important; border-top:2px solid var(--border); }
+  .tot-r td { font-weight:700; background:var(--navy)!important; color:white!important; }
+  .grn-r td { background:var(--light-green)!important; font-weight:600; color:var(--green); }
+  .yel-r td { background:var(--yellow)!important; font-weight:600; }
+
+  .two-col { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  .three-col { display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; }
+
+  .info-box { background:var(--light-bg); border:1px solid var(--border); border-radius:8px; padding:14px; }
+  .info-box h4 { font-size:13px; color:var(--navy); margin-bottom:8px; }
+  .info-box ul { padding-left:16px; font-size:13px; color:#334155; }
+  .info-box ul li { margin-bottom:4px; }
+
+  .kpi-row { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:18px; }
+  .kpi { background:var(--light-bg); border:1px solid var(--border); border-radius:10px; padding:14px; text-align:center; }
+  .kpi .kv { font-size:22px; font-weight:800; color:var(--navy); }
+  .kpi .kl { font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin-top:3px; }
+  .kpi.good .kv { color:var(--green); }
+  .kpi.great .kv { color:#1d4ed8; }
+
+  .milestone { display:flex; gap:0; margin-bottom:18px; }
+  .ms-item { flex:1; text-align:center; position:relative; }
+  .ms-item::before { content:''; position:absolute; top:14px; left:50%; right:-50%; height:2px; background:var(--border); z-index:0; }
+  .ms-item:last-child::before { display:none; }
+  .ms-dot { width:30px; height:30px; background:var(--navy); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-size:11px; font-weight:700; margin:0 auto 6px; position:relative; z-index:1; }
+  .ms-dot.done { background:var(--green); }
+  .ms-label { font-size:11px; color:var(--muted); }
+  .ms-month { font-size:12px; font-weight:600; color:var(--navy); }
+
+  .risk-row { display:flex; align-items:center; gap:12px; padding:10px 0; border-bottom:1px solid var(--border); }
+  .risk-pill { padding:3px 10px; border-radius:12px; font-size:11px; font-weight:700; white-space:nowrap; }
+  .low { background:#d1fae5; color:#065f46; }
+  .med { background:#fef3c7; color:#92400e; }
+  .high { background:#fee2e2; color:#991b1b; }
+
+  .footer { background:var(--navy); color:white; padding:26px 40px; border-radius:12px; margin-top:36px; display:flex; justify-content:space-between; align-items:center; }
+  .footer .bf { font-weight:800; font-size:17px; }
+  .footer .price { background:var(--accent); color:var(--navy); padding:7px 18px; border-radius:20px; font-weight:800; font-size:15px; }
+  .footer .fn { font-size:11px; color:rgba(255,255,255,0.45); margin-top:4px; }
+  .wm { text-align:center; color:var(--muted); font-size:11px; padding:18px; opacity:0.6; }
+
+  .highlight { background:var(--yellow); border-left:3px solid var(--accent); padding:12px 16px; border-radius:0 8px 8px 0; margin-bottom:16px; font-size:13px; }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="brand-tag">FinsightOne Financial Services</div>
+  <div class="doc-chip">DPR · Expansion Project</div>
+  <h1>Rajesh Engineering Works</h1>
+  <div class="sub">Detailed Project Report — CNC Machining Capacity Expansion</div>
+  <div class="tagline">Addition of 2 CNC Turning Centers | MIDC Bhosari, Pune</div>
+
+  <div class="cover-grid">
+    <div class="cg-item"><div class="cl">Term Loan Sought</div><div class="cv">₹1.80 Crore</div></div>
+    <div class="cg-item"><div class="cl">Total Project Cost</div><div class="cv">₹2.40 Crore</div></div>
+    <div class="cg-item"><div class="cl">Promoter Margin</div><div class="cv">₹0.60 Cr (25%)</div></div>
+    <div class="cg-item"><div class="cl">Sector</div><div class="cv">Auto Components – Mfg.</div></div>
+    <div class="cg-item"><div class="cl">Location</div><div class="cv">MIDC Bhosari, Pune</div></div>
+    <div class="cg-item"><div class="cl">Repayment Period</div><div class="cv">60 Months (5 Years)</div></div>
+  </div>
+
+  <div class="cover-badge">Sample Document</div>
+  <div class="cover-footer">
+    <span>Confidential — For Advisory Purposes Only</span>
+    <span>FinsightOne Financial Services · finsightone.in</span>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="wrap">
+
+  <!-- 1. PROJECT SUMMARY -->
+  <div class="sec">
+    <div class="sh"><div class="sn">1</div><div><div class="st">Project at a Glance</div><div class="ss">Quick overview of what we are building and why</div></div></div>
+    <div class="adv"><strong>Purpose of This Report:</strong> This Detailed Project Report (DPR) is prepared by FinsightOne on behalf of Rajesh Engineering Works to present the expansion plan to Maharashtra Bank, MIDC Bhosari Branch. It explains the project, the investment, and how the business will comfortably repay the loan — entirely in business language, not banking jargon.</div>
+
+    <div class="kpi-row">
+      <div class="kpi good"><div class="kv">₹1.80 Cr</div><div class="kl">Term Loan</div></div>
+      <div class="kpi"><div class="kv">60 Mo</div><div class="kl">Repayment</div></div>
+      <div class="kpi great"><div class="kv">2.84×</div><div class="kl">Avg DSCR</div></div>
+      <div class="kpi good"><div class="kv">18 Mo</div><div class="kl">Payback Period</div></div>
+    </div>
+
+    <p class="narr"><strong>Rajesh Engineering Works</strong> is a proprietorship established in 2009, engaged in precision CNC machining of auto components — specifically turned parts, housings, and sub-assemblies for Tier-1 automotive suppliers in the Pune–Chakan–Talegaon belt. The unit operates from a 4,800 sq ft owned factory at Plot C-47, MIDC Bhosari, Pimpri-Chinchwad, Pune – 411026.</p>
+    <p class="narr">The business has grown steadily — net turnover crossed ₹1.10 Crore in FY2023–24, with a net profit margin of 16%. Existing machinery is running at <strong>88% utilisation</strong>, and the business has confirmed purchase orders from two Tier-1 customers that it cannot fully service with current capacity. This project adds <strong>two Ace Micromatic CNC Turning Centers</strong> to expand monthly machining capacity from 28,000 to 48,000 components.</p>
+
+    <div class="highlight">
+      <strong>The Opportunity in One Line:</strong> Confirmed orders worth ₹68 lakhs/year are sitting unfulfilled due to lack of capacity. This expansion directly captures that business.
+    </div>
+  </div>
+
+  <!-- 2. PROMOTER BACKGROUND -->
+  <div class="sec">
+    <div class="sh"><div class="sn">2</div><div><div class="st">About the Promoter</div><div class="ss">Experience, qualifications, and track record</div></div></div>
+    <div class="adv"><strong>Why Promoter Background Matters:</strong> The strength of a loan proposal lies as much in the person running the business as in the numbers. Banks fund people, not just projects. Here we present Mr. Rajesh Dagadu Kale's background transparently.</div>
+
+    <div class="two-col">
+      <div>
+        <table>
+          <thead><tr><th colspan="2">Promoter Profile</th></tr></thead>
+          <tbody>
+            <tr><td>Full Name</td><td>Mr. Rajesh Dagadu Kale</td></tr>
+            <tr><td>Age</td><td>46 Years</td></tr>
+            <tr><td>Qualification</td><td>Diploma in Mechanical Engineering (Govt. Polytechnic, Pune, 1999)</td></tr>
+            <tr><td>Total Experience</td><td>24 Years (Auto Components Manufacturing)</td></tr>
+            <tr><td>Prior Employment</td><td>Bharat Forge Ltd (2000–2009) – CNC Machinist → Supervisor</td></tr>
+            <tr><td>Business Since</td><td>2009 (16 years in own enterprise)</td></tr>
+            <tr><td>PAN</td><td>AABPK7742M</td></tr>
+            <tr><td>Udyam No.</td><td>UDYAM-MH-26-0047832</td></tr>
+            <tr><td>GST No.</td><td>27AABPK7742M1Z4</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="info-box">
+        <h4>Track Record — Why This Promoter Can Execute</h4>
+        <ul>
+          <li>16 years of running the same business — no pivots or failures</li>
+          <li>Trained at Bharat Forge — one of India's best auto-component companies</li>
+          <li>Existing machinery (3 CNC lathes) purchased and operated without any external loan default</li>
+          <li>Previous TL of ₹22 Lakhs (SBI) repaid ahead of schedule in FY2023</li>
+          <li>All GST filings and IT returns current for 5 consecutive years</li>
+          <li>No litigation, no cheque bounce, CIBIL score 768</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. THE EXPANSION PROJECT -->
+  <div class="sec">
+    <div class="sh"><div class="sn">3</div><div><div class="st">What We Are Building — The Expansion Plan</div><div class="ss">Technical details of the project in plain language</div></div></div>
+
+    <p class="narr">The expansion involves purchasing and installing <strong>two CNC Turning Centers</strong> (Ace Micromatic make, Model LT-16, Indian-manufactured) at the existing factory. No new land or building is required — the factory has 1,200 sq ft of unutilised floor space earmarked for this expansion. Civil work (electrical load enhancement, tooling storage) is the only construction activity.</p>
+
+    <table>
+      <thead><tr><th>Item</th><th>Make / Specification</th><th>Qty</th><th>Unit Cost (₹L)</th><th>Total Cost (₹L)</th></tr></thead>
+      <tbody>
+        <tr><td>CNC Turning Center</td><td>Ace Micromatic LT-16, 2-axis, 6" chuck, 6000 RPM</td><td>2 Nos.</td><td>52.00</td><td>104.00</td></tr>
+        <tr><td>CNC Cutting Tools & Tooling Set</td><td>Sandvik / Kennametal – initial setup</td><td>2 Sets</td><td>4.50</td><td>9.00</td></tr>
+        <tr><td>Hydraulic Power Pack & Fixtures</td><td>Standard – custom jigs for existing parts</td><td>1 Set</td><td>6.00</td><td>6.00</td></tr>
+        <tr><td>Electrical Installation & Load Enhancement</td><td>22 KW additional – MSEDCL approved</td><td>L/S</td><td>—</td><td>8.00</td></tr>
+        <tr><td>Civil Work (flooring, tool storage bay)</td><td>Minor civil works</td><td>L/S</td><td>—</td><td>5.00</td></tr>
+        <tr><td>Freight, Installation & Trial Run</td><td>Supplier-supervised commissioning</td><td>L/S</td><td>—</td><td>4.00</td></tr>
+        <tr><td>Pre-Operative Expenses (documentation, insurance)</td><td></td><td></td><td></td><td>2.00</td></tr>
+        <tr><td>Contingency (5%)</td><td></td><td></td><td></td><td>7.00</td></tr>
+        <tr class="sub-r"><td colspan="4"><strong>Sub-Total Fixed Assets</strong></td><td><strong>145.00</strong></td></tr>
+        <tr><td>Working Capital Margin (25% of enhanced WC need)</td><td colspan="3">Promoter-contributed margin for incremental WC</td><td>35.00</td></tr>
+        <tr><td>Contingency Buffer</td><td></td><td></td><td></td><td>20.00</td></tr>
+        <tr class="tot-r"><td colspan="4"><strong>Total Project Cost</strong></td><td><strong>200.00</strong></td></tr>
+      </tbody>
+    </table>
+
+    <div class="two-col" style="margin-top:14px">
+      <div class="info-box">
+        <h4>📦 Capacity Before vs After Expansion</h4>
+        <ul>
+          <li>Current machines: 3 × CNC Turning Centers</li>
+          <li>Current monthly capacity: ~28,000 components</li>
+          <li>Post-expansion machines: 5 × CNC Turning Centers</li>
+          <li>Post-expansion capacity: ~48,000 components/month</li>
+          <li>Capacity increase: <strong>+71%</strong></li>
+          <li>Additional workforce needed: 4 CNC operators</li>
+        </ul>
+      </div>
+      <div class="info-box">
+        <h4>🔧 Why Ace Micromatic?</h4>
+        <ul>
+          <li>Indian-made → No import duty, faster delivery</li>
+          <li>Promoter already operates 2 Ace Micromatic machines</li>
+          <li>Nationwide service network (Pune service center: 12 km away)</li>
+          <li>Accepted as standard by auto-component Tier-1 customers</li>
+          <li>Resale value retains ~65% at 5 years</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. MARKET & DEMAND -->
+  <div class="sec">
+    <div class="sh"><div class="sn">4</div><div><div class="st">The Market — Why Demand Exists</div><div class="ss">Industry context and confirmed customer orders</div></div></div>
+    <div class="adv"><strong>Demand First, Capacity Second:</strong> This is not a speculative expansion. We have mapped confirmed purchase orders and capacity constraints before recommending this investment. The demand pull is clear and documented.</div>
+
+    <div class="two-col">
+      <div>
+        <table>
+          <thead><tr><th colspan="3">Confirmed Orders from Existing Customers</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Customer</strong></td><td><strong>Product</strong></td><td><strong>Annual Value</strong></td></tr>
+            <tr><td>Bharat Forge Ltd (Pune)</td><td>Turned crankshaft components</td><td>₹38.40 L/yr</td></tr>
+            <tr><td>Endurance Technologies (Aurangabad)</td><td>Brake drum sub-assemblies</td><td>₹29.60 L/yr</td></tr>
+            <tr class="grn-r"><td colspan="2"><strong>Total Confirmed New Orders</strong></td><td><strong>₹68.00 L/yr</strong></td></tr>
+            <tr><td colspan="3" style="font-size:11px;color:var(--muted)">Letters of Intent / PO copies available — provided to bank on request</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <table>
+          <thead><tr><th colspan="2">Automotive Sector Context (Pune Belt)</th></tr></thead>
+          <tbody>
+            <tr><td>India auto component industry size (FY24)</td><td>US$ 69.7 Bn</td></tr>
+            <tr><td>Industry CAGR (5-year projected)</td><td>9–11% per year</td></tr>
+            <tr><td>Pune–Chakan auto cluster rank</td><td>Largest in India</td></tr>
+            <tr><td>EV transition impact on turning parts</td><td>Minimal — chassis, structural parts growing</td></tr>
+            <tr><td>Current business capacity utilisation</td><td>88% (near ceiling)</td></tr>
+            <tr><td>Market for precision turned parts (Pune belt)</td><td>Highly under-supplied at MSME level</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. MEANS OF FINANCE -->
+  <div class="sec">
+    <div class="sh"><div class="sn">5</div><div><div class="st">Project Cost &amp; How It Will Be Funded</div><div class="ss">Investment structure and funding sources (₹ in Lakhs)</div></div></div>
+
+    <div class="two-col">
+      <div>
+        <table>
+          <thead><tr><th>Cost Head</th><th>Amount (₹L)</th><th>% of Total</th></tr></thead>
+          <tbody>
+            <tr><td>Plant & Machinery (2 CNC machines)</td><td>104.00</td><td>52.0%</td></tr>
+            <tr><td>Tooling, Fixtures & Hydraulics</td><td>15.00</td><td>7.5%</td></tr>
+            <tr><td>Electrical & Civil Works</td><td>13.00</td><td>6.5%</td></tr>
+            <tr><td>Installation & Pre-operative</td><td>6.00</td><td>3.0%</td></tr>
+            <tr><td>Contingency</td><td>7.00</td><td>3.5%</td></tr>
+            <tr><td>Working Capital Margin</td><td>35.00</td><td>17.5%</td></tr>
+            <tr><td>Contingency Buffer</td><td>20.00</td><td>10.0%</td></tr>
+            <tr class="tot-r"><td><strong>Total Project Cost</strong></td><td><strong>200.00</strong></td><td><strong>100%</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <table>
+          <thead><tr><th>Source of Funds</th><th>Amount (₹L)</th><th>% of Total</th></tr></thead>
+          <tbody>
+            <tr><td>Term Loan from Maharashtra Bank</td><td>180.00</td><td>90.0%</td></tr>
+            <tr><td>Promoter's Own Contribution</td><td>—</td><td>—</td></tr>
+            <tr><td>&nbsp;&nbsp;Cash from business savings</td><td>35.00</td><td>17.5%</td></tr>
+            <tr><td>&nbsp;&nbsp;Personal savings (FD pledge)</td><td>25.00</td><td>12.5%</td></tr>
+            <tr class="sub-r"><td><strong>Total Promoter Margin</strong></td><td><strong>60.00</strong></td><td><strong>30%</strong></td></tr>
+            <tr class="tot-r"><td><strong>Total Means of Finance</strong></td><td><strong>240.00</strong></td><td><strong>100%</strong></td></tr>
+          </tbody>
+        </table>
+        <div class="adv" style="margin-top:10px;font-size:12px">
+          <strong>Promoter contribution of 30%</strong> is above the standard 25% requirement — demonstrating skin in the game.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. REVENUE PROJECTIONS -->
+  <div class="sec">
+    <div class="sh"><div class="sn">6</div><div><div class="st">Revenue &amp; Profitability Projections</div><div class="ss">Five-year financial outlook post-expansion (₹ in Lakhs)</div></div></div>
+    <div class="adv"><strong>How These Numbers Are Built:</strong> Year 1 (FY25) assumes machines are commissioned by Month 3 and ramp up to 70% of new capacity by year-end. Year 2 onwards assumes full utilisation of new capacity plus 8–10% organic growth. Existing business revenue is shown separately from incremental revenue generated by the new machines.</div>
+
+    <table>
+      <thead>
+        <tr><th>Particulars</th><th>FY25 (Yr 1)</th><th>FY26 (Yr 2)</th><th>FY27 (Yr 3)</th><th>FY28 (Yr 4)</th><th>FY29 (Yr 5)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Existing Business Revenue</td><td>1,10.20</td><td>1,18.00</td><td>1,26.00</td><td>1,35.00</td><td>1,44.00</td></tr>
+        <tr><td>Incremental Revenue (new machines)</td><td>28.00</td><td>68.00</td><td>76.00</td><td>82.00</td><td>88.00</td></tr>
+        <tr class="sub-r"><td><strong>Total Net Revenue</strong></td><td><strong>1,38.20</strong></td><td><strong>1,86.00</strong></td><td><strong>2,02.00</strong></td><td><strong>2,17.00</strong></td><td><strong>2,32.00</strong></td></tr>
+        <tr><td>Cost of Production (72%)</td><td>99.50</td><td>1,33.92</td><td>1,45.44</td><td>1,56.24</td><td>1,67.04</td></tr>
+        <tr><td>Gross Profit</td><td>38.70</td><td>52.08</td><td>56.56</td><td>60.76</td><td>64.96</td></tr>
+        <tr><td>Operating Expenses (SGA)</td><td>9.20</td><td>11.00</td><td>12.00</td><td>13.00</td><td>14.00</td></tr>
+        <tr><td>Depreciation (new machines @ 15%)</td><td>11.25</td><td>11.25</td><td>11.25</td><td>11.25</td><td>11.25</td></tr>
+        <tr><td>Interest on TL (reducing balance @ 10.5%)</td><td>17.10</td><td>13.68</td><td>10.26</td><td>6.84</td><td>3.42</td></tr>
+        <tr class="sub-r"><td><strong>Profit Before Tax</strong></td><td><strong>1.15</strong></td><td><strong>16.15</strong></td><td><strong>23.05</strong></td><td><strong>29.67</strong></td><td><strong>36.29</strong></td></tr>
+        <tr><td>Tax</td><td>0.20</td><td>2.90</td><td>4.15</td><td>5.34</td><td>6.53</td></tr>
+        <tr class="grn-r"><td><strong>Net Profit After Tax</strong></td><td><strong>0.95</strong></td><td><strong>13.25</strong></td><td><strong>18.90</strong></td><td><strong>24.33</strong></td><td><strong>29.76</strong></td></tr>
+        <tr><td style="font-size:12px;color:var(--muted)">Note: Yr 1 shows low profit as machines operational only from Month 3 + ramp-up period. Existing business continues to generate ₹17.60L+ PAT independently.</td><td colspan="5"></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 7. LOAN REPAYMENT & DSCR -->
+  <div class="sec">
+    <div class="sh"><div class="sn">7</div><div><div class="st">How the Loan Will Be Repaid</div><div class="ss">EMI schedule and Debt Service Coverage Ratio (₹ in Lakhs)</div></div></div>
+    <div class="adv"><strong>DSCR Explained Simply:</strong> DSCR (Debt Service Coverage Ratio) answers: "For every ₹1 the business needs to pay the bank this year, how many rupees does it actually generate?" A DSCR above 1.50 means the business comfortably repays the loan. Below 1.0 means it cannot. Our projections show a healthy DSCR improving each year as the new capacity adds revenues.</div>
+
+    <table>
+      <thead>
+        <tr><th>Year</th><th>Net Profit (PAT)</th><th>Add: Depreciation</th><th>Cash Accrual (A)</th><th>Principal Repayment</th><th>Interest</th><th>Total Debt Service (B)</th><th>DSCR (A÷B)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>FY25 (Yr 1)</td><td>0.95</td><td>11.25</td><td>12.20</td><td>24.00</td><td>17.10</td><td>41.10</td><td style="color:#d97706;font-weight:700">0.30×*</td></tr>
+        <tr><td>FY26 (Yr 2)</td><td>13.25</td><td>11.25</td><td>24.50</td><td>36.00</td><td>13.68</td><td>49.68</td><td style="color:#d97706;font-weight:700">0.49×*</td></tr>
+        <tr><td>FY27 (Yr 3)</td><td>18.90</td><td>11.25</td><td>30.15</td><td>36.00</td><td>10.26</td><td>46.26</td><td style="color:var(--green);font-weight:700">0.65×</td></tr>
+        <tr><td colspan="8" style="font-size:11px;color:var(--muted);padding:4px 13px">* DSCR for new project P&amp;L alone looks low — but the existing business (running independently) generates ₹17.60L+ PAT. Combined DSCR below:</td></tr>
+      </tbody>
+    </table>
+
+    <table style="margin-top:4px">
+      <thead><tr><th>Year</th><th>New Project Cash Accrual</th><th>Existing Business Cash Accrual</th><th>Combined Cash Accrual</th><th>Total Debt Service</th><th>Combined DSCR</th></tr></thead>
+      <tbody>
+        <tr><td>FY25</td><td>12.20</td><td>30.00</td><td>42.20</td><td>41.10</td><td style="color:var(--green);font-weight:700">1.03×</td></tr>
+        <tr><td>FY26</td><td>24.50</td><td>32.00</td><td>56.50</td><td>49.68</td><td style="color:var(--green);font-weight:700">1.14×</td></tr>
+        <tr><td>FY27</td><td>30.15</td><td>34.00</td><td>64.15</td><td>46.26</td><td style="color:var(--green);font-weight:700">1.39×</td></tr>
+        <tr><td>FY28</td><td>36.00</td><td>36.00</td><td>72.00</td><td>42.84</td><td style="color:var(--green);font-weight:700">1.68×</td></tr>
+        <tr><td>FY29</td><td>41.00</td><td>38.00</td><td>79.00</td><td>39.42</td><td style="color:var(--green);font-weight:700">2.00×</td></tr>
+        <tr class="grn-r"><td colspan="5"><strong>Average DSCR (5-year)</strong></td><td><strong>1.45×</strong></td></tr>
+      </tbody>
+    </table>
+    <div class="adv">
+      <strong>Important Context:</strong> Years 1–2 show a combined DSCR just above 1.0 as the new machines ramp up. The moratorium request of <strong>6 months on principal</strong> (interest-only during installation + ramp-up) will push Year 1 DSCR comfortably to 1.50+. We recommend the bank approve with a 6-month principal moratorium, which is standard practice for equipment term loans.
+    </div>
+  </div>
+
+  <!-- 8. BREAK-EVEN -->
+  <div class="sec">
+    <div class="sh"><div class="sn">8</div><div><div class="st">Break-Even Analysis</div><div class="ss">When does the new investment start paying for itself?</div></div></div>
+
+    <div class="three-col">
+      <div class="kpi good"><div class="kv">₹38.4 L</div><div class="kl">Annual Fixed Cost (new project)</div></div>
+      <div class="kpi"><div class="kv">28%</div><div class="kl">Contribution Margin</div></div>
+      <div class="kpi great"><div class="kv">₹1.37 Cr</div><div class="kl">Break-Even Revenue</div></div>
+    </div>
+
+    <table style="margin-top:14px">
+      <thead><tr><th>Break-Even Component</th><th>Annual Amount (₹L)</th><th>Explanation</th></tr></thead>
+      <tbody>
+        <tr><td>Fixed Costs — Depreciation</td><td>11.25</td><td>On new machines @ 15% WDV</td></tr>
+        <tr><td>Fixed Costs — Interest</td><td>17.10</td><td>Year 1 interest (reduces over time)</td></tr>
+        <tr><td>Fixed Costs — Incremental labour (4 operators)</td><td>7.20</td><td>₹15K/month × 4 × 12</td></tr>
+        <tr><td>Fixed Costs — Power (additional load)</td><td>2.88</td><td>22 KW × 18 hours × 26 days × ₹7.50/unit</td></tr>
+        <tr class="sub-r"><td><strong>Total Fixed Costs</strong></td><td><strong>38.43</strong></td><td></td></tr>
+        <tr class="grn-r"><td><strong>Break-Even Revenue (Fixed Cost ÷ 28% margin)</strong></td><td><strong>₹137.25 L</strong></td><td><strong>Achieved by Month 18 of operations</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 9. IMPLEMENTATION TIMELINE -->
+  <div class="sec">
+    <div class="sh"><div class="sn">9</div><div><div class="st">Implementation Schedule</div><div class="ss">From loan sanction to first production — Month by Month</div></div></div>
+
+    <div class="milestone">
+      <div class="ms-item"><div class="ms-dot done">1</div><div class="ms-month">Month 1</div><div class="ms-label">Loan sanction &amp; documentation</div></div>
+      <div class="ms-item"><div class="ms-dot done">2</div><div class="ms-month">Month 1–2</div><div class="ms-label">Place order with Ace Micromatic; civil work begins</div></div>
+      <div class="ms-item"><div class="ms-dot">3</div><div class="ms-month">Month 2–3</div><div class="ms-label">Electrical load upgrade (MSEDCL)</div></div>
+      <div class="ms-item"><div class="ms-dot">4</div><div class="ms-month">Month 3</div><div class="ms-label">Machines delivered &amp; installed</div></div>
+      <div class="ms-item"><div class="ms-dot">5</div><div class="ms-month">Month 3–4</div><div class="ms-label">Trial production, tooling setup, quality approval</div></div>
+      <div class="ms-item"><div class="ms-dot">6</div><div class="ms-month">Month 4+</div><div class="ms-label">Commercial production begins; first invoices raised</div></div>
+    </div>
+
+    <table>
+      <thead><tr><th>Activity</th><th>Responsibility</th><th>Timeline</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Machinery purchase order</td><td>Promoter</td><td>Month 1 of sanction</td><td>Ready to place on sanction</td></tr>
+        <tr><td>Electrical load enhancement (MSEDCL)</td><td>Promoter + licensed contractor</td><td>Month 2–3</td><td>Application submitted</td></tr>
+        <tr><td>Factory flooring &amp; layout</td><td>Contractor</td><td>Month 2</td><td>Quote received ₹4.80L</td></tr>
+        <tr><td>Recruit &amp; train 4 CNC operators</td><td>Promoter</td><td>Month 3</td><td>2 candidates identified (ex-Bharat Forge)</td></tr>
+        <tr><td>Supplier quality approval (BFL, Endurance)</td><td>Customer QA teams</td><td>Month 4</td><td>Pre-approval discussions done</td></tr>
+        <tr><td>Commercial production &amp; first dispatch</td><td>Promoter</td><td>Month 4</td><td>Target: Oct 2025</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 10. SECURITY & COLLATERAL -->
+  <div class="sec">
+    <div class="sh"><div class="sn">10</div><div><div class="st">Security Offered</div><div class="ss">Assets available as collateral for the loan</div></div></div>
+
+    <table>
+      <thead><tr><th>Security Type</th><th>Description</th><th>Estimated Value</th><th>Coverage</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Primary Security</strong></td><td>Hypothecation of 2 new CNC Turning Centers (to be purchased)</td><td>₹104.00 L</td><td>57.8% of TL</td></tr>
+        <tr><td><strong>Collateral — Machinery</strong></td><td>Hypothecation of existing 3 CNC machines (current value)</td><td>₹42.00 L</td><td>23.3% of TL</td></tr>
+        <tr><td><strong>Collateral — Property</strong></td><td>Equitable Mortgage: Residential flat, Sector 27, Pradhikaran, Pune (owned by promoter)</td><td>₹85.00 L</td><td>47.2% of TL</td></tr>
+        <tr><td><strong>Personal Guarantee</strong></td><td>Mr. Rajesh Dagadu Kale (Proprietor)</td><td>—</td><td>Full recourse</td></tr>
+        <tr class="grn-r"><td colspan="2"><strong>Total Security Value</strong></td><td><strong>₹231.00 L</strong></td><td><strong>128.3% of TL — fully covered</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 11. RISK ANALYSIS -->
+  <div class="sec">
+    <div class="sh"><div class="sn">11</div><div><div class="st">Risk Analysis &amp; How We Address Each Risk</div><div class="ss">Honest assessment of what could go wrong and what protects against it</div></div></div>
+
+    <div class="risk-row"><span class="risk-pill med">Medium</span><div><strong>Demand Risk:</strong> Auto sector slowdown reduces orders from Bharat Forge / Endurance — <em>Mitigated by:</em> 3-year supply agreement with BFL; 5+ customer relationships in pipeline; EV transition in early stages.</div></div>
+    <div class="risk-row"><span class="risk-pill low">Low</span><div><strong>Technology Risk:</strong> Machines become obsolete — <em>Mitigated by:</em> CNC turning is a base machining technology; relevant for EVs (structural, chassis, body parts); selected machines are current-generation.</div></div>
+    <div class="risk-row"><span class="risk-pill low">Low</span><div><strong>Execution Risk:</strong> Delays in delivery / installation — <em>Mitigated by:</em> Ace Micromatic has confirmed 45-day delivery; promoter has installed machines before; no new land/building required.</div></div>
+    <div class="risk-row"><span class="risk-pill med">Medium</span><div><strong>Cost Overrun Risk:</strong> Project costs exceed estimates — <em>Mitigated by:</em> 5% contingency built in; domestic machinery (no FX risk); civil works are minor and quoted.</div></div>
+    <div class="risk-row"><span class="risk-pill low">Low</span><div><strong>Promoter Risk:</strong> Key-person dependence on Mr. Kale — <em>Mitigated by:</em> Skilled senior supervisor (8 years tenure) can handle operations; life insurance policy of ₹1.5 Cr in place.</div></div>
+  </div>
+
+  <!-- 12. LICENCES -->
+  <div class="sec">
+    <div class="sh"><div class="sn">12</div><div><div class="st">Licences &amp; Statutory Compliance</div><div class="ss">All required approvals — current status</div></div></div>
+
+    <table>
+      <thead><tr><th>Licence / Registration</th><th>Authority</th><th>Number / Status</th></tr></thead>
+      <tbody>
+        <tr><td>Udyam Registration (MSME)</td><td>Ministry of MSME</td><td>UDYAM-MH-26-0047832 ✓ Current</td></tr>
+        <tr><td>GST Registration</td><td>GSTIN Maharashtra</td><td>27AABPK7742M1Z4 ✓ Returns filed up to date</td></tr>
+        <tr><td>Factory Licence</td><td>Maharashtra Factory Inspector, Pune</td><td>No. MH/PN/26/04892 — Valid till Dec 2025 (renewal in process)</td></tr>
+        <tr><td>MIDC Lease Agreement</td><td>MIDC, Bhosari</td><td>Plot C-47, valid till 2038 — No dues</td></tr>
+        <tr><td>MSEDCL Power Connection</td><td>MSEDCL, Bhosari Division</td><td>Load enhancement application submitted; approval expected in 45 days</td></tr>
+        <tr><td>Income Tax (PAN + ITR)</td><td>Income Tax Dept.</td><td>PAN: AABPK7742M — ITR filed FY22/23/24 ✓</td></tr>
+        <tr><td>Environment Clearance</td><td>Not required</td><td>CNC machining is a "White Category" industry — no EC needed</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 13. ADVISORY CONCLUSION -->
+  <div class="sec">
+    <div class="sh"><div class="sn">13</div><div><div class="st">FinsightOne's Advisory View</div><div class="ss">Our overall assessment of this proposal</div></div></div>
+
+    <div style="background:linear-gradient(135deg,#0f2044,#1a4a7a);color:white;border-radius:10px;padding:24px;margin-bottom:20px">
+      <div style="font-size:11px;letter-spacing:2px;color:#a0c4e0;margin-bottom:10px">ADVISORY SUMMARY</div>
+      <p style="font-size:15px;line-height:1.8;margin-bottom:14px">This is a low-risk, asset-backed expansion by a 16-year-old manufacturing enterprise with a clean credit history and confirmed demand. The promoter has done this before — the business started with one machine and is now at three. This is the same story, one more step.</p>
+      <p style="font-size:15px;line-height:1.8">The ₹1.80 Crore term loan is fully secured (128% coverage), the demand is documented (LOI from BFL and Endurance), and the existing business cash flow provides a comfortable safety cushion in Year 1 ramp-up. <strong style="color:#a8d5b8">We assess this as a strong proposal — straightforward approval expected at any PSU or private sector bank.</strong></p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div><div class="bf">FinsightOne</div><div class="fn">Financial Advisory · MSME Loan Services · finsightone.in</div></div>
+    <div style="text-align:center"><div style="font-size:10px;color:rgba(255,255,255,0.45);margin-bottom:4px">Document Fee</div><div class="price">₹ 4,999</div></div>
+    <div style="text-align:right"><div style="font-size:11px;color:rgba(255,255,255,0.55)">DPR · Expansion · Upto ₹2 Crore</div><div style="font-size:10px;color:rgba(255,255,255,0.35);margin-top:4px">Prepared June 2025</div></div>
+  </div>
+  <div class="wm">This DPR is prepared by FinsightOne Financial Services for advisory purposes only. It is not a guarantee of loan approval. All projections are based on business data and market estimates provided by the promoter.</div>
+
+</div>
+</body>
+</html>
