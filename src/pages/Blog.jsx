@@ -171,7 +171,7 @@ export default function Blog({ navigate }) {
                       {post.tag}
                     </div>
                     {post.badge && (
-                      <div style={{ display:"inline-block", background:ORANGE, color:WHITE, fontSize:9, fontWeight:800, letterSpacing:1px, textTransform:"uppercase", padding:"2px 8px", borderRadius:10, marginLeft:6 }}>
+                      <div style={{ display:"inline-block", background:ORANGE, color:WHITE, fontSize:9, fontWeight:800, letterSpacing:"1px", textTransform:"uppercase", padding:"2px 8px", borderRadius:10, marginLeft:6 }}>
                         ★ {post.badge}
                       </div>
                     )}
@@ -189,7 +189,7 @@ export default function Blog({ navigate }) {
 
                   {/* Related articles */}
                   <div style={{ background:GRAY, borderRadius:8, padding:"10px 12px", marginBottom:14 }}>
-                    <div style={{ fontSize:10, fontWeight:700, color:MUTED, letterSpacing:1px, textTransform:"uppercase", marginBottom:7 }}>Related Articles</div>
+                    <div style={{ fontSize:10, fontWeight:700, color:MUTED, letterSpacing:"1px", textTransform:"uppercase", marginBottom:7 }}>Related Articles</div>
                     {related.map(r => (
                       <div key={r.id}
                         onClick={(e) => { e.stopPropagation(); window.open(r.url, "_blank"); }}
