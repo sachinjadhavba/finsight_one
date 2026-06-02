@@ -12,9 +12,9 @@ const INDIGO = "#4F46E5";
 const WA     = "919579453635";
 
 const STORY_PARAS = [
-  "FinsightOne was built from one observation: most Indians get rejected for loans not because they do not qualify — but because their application is not prepared correctly. We watched this happen from the inside. For 20 years, our team sat on the other side of the table — reviewing files, approving loans, and rejecting applications that should have been approved.",
-  "We rejected good businesses because their CMA was in the wrong format. We declined home loan applications because the co-applicant income was not structured correctly. We turned down MSMEs because nobody had told them that their banking turnover needed to match their GST turnover within a certain range. These were not bad borrowers. They were unprepared borrowers.",
-  "In 2025, we switched sides. FinsightOne exists to give every borrower — MSME owner, salaried professional, self-employed individual — the same quality of credit guidance that bank insiders give to their own families. Not algorithms. Not chatbots. Real ex-bankers, working for you.",
+  "FinsightOne was built from one observation: most Indians get rejected for loans not because they do not qualify — but because their application is not strong enough to survive a credit committee. We watched this happen from the inside. For 20 years, our team sat on the other side of the table — reviewing files, stress-testing projections, and making the calls that decided whether a business got funded or not.",
+  "We declined files where the DSCR was below threshold because the projections were built incorrectly. We rejected proposals where security coverage was thin because nobody had structured the collateral properly. We turned down MSME term loans where the promoter contribution had not been established upfront. In most of these cases, the underlying business was sound — the file was not. A better-prepared submission would have changed the outcome.",
+  "In 2025, we switched sides. FinsightOne combines 20 years of banking expertise with AI-powered analysis to give every borrower the same credit intelligence that was previously only available to those who knew someone inside a bank.",
 ];
 
 const WHAT_WE_DONT = [
