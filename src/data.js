@@ -116,7 +116,7 @@ export const TESTIMONIALS = [
 export const PLANS = [
   {
     name: "Credit Watch", price: "₹499", per: "/ month", featured: false,
-    desc: "Know what your banker sees that you don't — before it becomes a problem.",
+    desc: "Know what your banker sees that you don’t — before it becomes a problem.",
     features: [
       "Monthly bureau score tracking — promoter + business",
       "CC utilisation pattern alert — flags stress before banker notices",
@@ -132,7 +132,7 @@ export const PLANS = [
     features: [
       "Everything in Credit Watch",
       "Monthly review of 8 key banking ratios — DSCR, debtor days, creditor days, drawing power, turnover vs GST",
-      "Traffic light dashboard — Green / Amber / Red vs your bank's actual benchmarks",
+      "Traffic light dashboard — Green / Amber / Red vs your bank’s actual benchmarks",
       "One specific fix-it action every month with a clear deadline",
       "Quarterly enhancement readiness score — know your chances before you ask",
       "12-month enhancement calendar — when to prepare, when to approach, what to say",
@@ -148,7 +148,7 @@ export const PLANS = [
       "Enhancement application preparation — amount, justification, supporting data",
       "Banker meeting script — exactly what to say, what not to volunteer",
       "Pre-meeting mock Q&A — 10 likely credit manager questions with your answers",
-      "Post-meeting debrief — we decode what the banker's signals mean and what to do next",
+      "Post-meeting debrief — we decode what the banker’s signals mean and what to do next",
       "Rate negotiation brief — market comparable rates to use as leverage",
     ],
   },
@@ -157,7 +157,7 @@ export const PLANS = [
 export const WHAT_INCLUDED = [
   { icon: "👁️", title: "Bank-View Monitoring", desc: "We track the signals your banker watches — utilisation patterns, cheque returns, GST gaps, and bureau enquiries — before they quietly damage your creditworthiness." },
   { icon: "📈", title: "Enhancement Readiness Score", desc: "Every quarter we tell you: if you walked into your bank today and asked for a higher limit, here is your actual chance of success." },
-  { icon: "🚦", title: "Traffic Light Dashboard", desc: "Eight key banking ratios rated Green, Amber, or Red against your bank's actual benchmarks — not generic industry averages." },
+  { icon: "🚦", title: "Traffic Light Dashboard", desc: "Eight key banking ratios rated Green, Amber, or Red against your bank’s actual benchmarks — not generic industry averages." },
   { icon: "🎯", title: "Monthly Fix-It Action", desc: "One specific, precise instruction every month based on your exact numbers — not generic advice but a clear action with a deadline." },
   { icon: "📅", title: "12-Month Enhancement Calendar", desc: "A full-year roadmap showing when to prepare your financials, when to approach the bank, and what supporting data to bring." },
   { icon: "🤝", title: "Banker Meeting Prep", desc: "Meeting script, mock Q&A based on your live financials, and post-meeting debrief — so every banker conversation moves you closer to a higher limit. (Premium)" },
@@ -198,55 +198,49 @@ export const DOC_PRODUCTS = [
 
 export const ADVISORY_PRODUCTS = [
   {
-    icon: "📈",
-    name: "Business Loan Enhancement",
-    desc: "Your business has grown but your bank limit has not kept up. We build the enhancement case the way your lender's credit committee wants to see it — with the right numbers, narrative, and timing.",
+    icon: "📈", name: "Business Loan Enhancement",
+    desc: "Your business has grown but your bank limit hasn’t kept up. We build the enhancement case the way your lender’s credit committee wants to see it — with the right numbers, narrative, and timing.",
     color: "#4F46E5",
-    price: "Rs.10,000 - Rs.25,000",
-    priceNote: "Excl. GST - Based on loan size and complexity",
-    who: "For: Existing loan holders needing higher limit",
+    price: "₹10,000 – ₹25,000",
+    priceNote: "Based on loan size & complexity",
+    who: "For: Existing loan holders seeking higher limits",
     bullets: [
-      "Credit limit enhancement strategy",
-      "Updated CMA and banking analysis",
-      "Lender presentation preparation",
-      "CC / TL restructuring if needed",
-      "End-to-end submission support",
+      "Assessment of current limit vs actual business need",
+      "Enhancement application with financial justification",
+      "Banker meeting prep — what to say, what not to volunteer",
+      "Follow-up until sanction or clear rejection reason",
     ],
-    outcome: "Typical outcome: CC limit enhanced within 6-10 weeks of engagement",
+    outcome: "Higher CC or TL limit sanctioned within 4–8 weeks of submission.",
   },
   {
-    icon: "🏢",
-    name: "New Business Loan Setup",
-    desc: "Your business is not yet bankable. We build a 90-day roadmap to make you lender-ready, then structure and submit the right facility to the right bank.",
+    icon: "🏢", name: "New Business Loan Setup",
+    desc: "First-time borrower? We assess your bankability, fix the gaps, and guide you to the right lender with a fully prepared file — so your first application has the best chance of approval.",
     color: "#EA580C",
-    price: "Rs.10,000 - Rs.20,000",
-    priceNote: "Excl. GST - Based on loan size and complexity",
-    who: "For: New businesses or first-time borrowers",
+    price: "₹10,000 – ₹20,000",
+    priceNote: "Based on loan size & complexity",
+    who: "For: First-time or large loan borrowers",
     bullets: [
-      "Bankability gap assessment",
-      "30 / 60 / 90-day readiness roadmap",
-      "Banking conduct improvement plan",
-      "Lender shortlisting and approach strategy",
-      "Full loan file preparation and submission",
+      "Bankability assessment — income, CIBIL, collateral, turnover",
+      "Right lender identification from our 275+ network",
+      "Complete document preparation — LAN, CMA, supporting docs",
+      "Submission and follow-up until decision",
     ],
-    outcome: "Typical outcome: First facility sanctioned within 3-4 months of engagement",
+    outcome: "Loan application submitted to the right lender with a well-prepared file.",
   },
   {
-    icon: "🛡️",
-    name: "NPA Prevention Advisory",
-    desc: "Your loan repayments are under stress. We diagnose the situation, negotiate restructuring with your lender, and build a recovery plan that keeps your account standard and your CIBIL intact.",
+    icon: "⚠️", name: "NPA Prevention Advisory",
+    desc: "Repayments under stress? We step in early — negotiate with your bank, restructure the facility, and protect your credit record before the account slips.",
     color: "#059669",
-    price: "Rs.20,000 - Rs.50,000",
-    priceNote: "Excl. GST - Based on outstanding exposure and complexity",
-    who: "For: Businesses with repayment concerns",
+    price: "₹20,000 – ₹50,000",
+    priceNote: "Based on exposure & complexity",
+    who: "For: Businesses under financial stress",
     bullets: [
-      "NPA risk assessment and timeline",
-      "Bank negotiation strategy",
-      "OTS / restructuring proposal preparation",
-      "CIBIL damage control plan",
-      "Post-resolution monitoring support",
+      "Forensic review of what triggered the stress",
+      "Restructuring proposal to the bank — tenure, moratorium, rate",
+      "One-on-one representation in bank negotiations",
+      "Credit record protection strategy",
     ],
-    outcome: "Typical outcome: Restructuring agreed and account regularised within 60-90 days",
+    outcome: "Account restructured or regularised; credit record protected from NPA classification.",
   },
 ];
 
@@ -262,26 +256,5 @@ export const CREDENTIALS = [
   { period: "2010 – 2018", title: "MSME Credit Manager", org: "Mid-Size Private Bank · Working Capital & Term Loans" },
   { period: "2018 – 2023", title: "Senior Credit Analyst", org: "Large NBFC · Project Finance & Structured Lending" },
   { period: "2023 – 2024", title: "Independent Consultant", org: "MSME Advisory · Helped 100+ businesses get approved" },
-  { period: "2025 – Present", title: "Founder, FinsightOne", org: "India's Credit & Loan Advisory Platform" },
-];
-
-export const HOW = [
-  { step: "01", title: "Share Your Case", desc: "Tell us what you need on WhatsApp. We review and confirm scope in 2 hours." },
-  { step: "02", title: "We Assess & Plan", desc: "Full credit assessment — CIBIL, income, banking, collateral. Clear action plan delivered." },
-  { step: "03", title: "Documents Prepared", desc: "LAN, CMA, DPR — everything the bank needs, prepared correctly by ex-bankers." },
-  { step: "04", title: "Submit & Follow Up", desc: "We submit to the right lender and follow up until disbursement." },
-];
-
-export const OUTCOMES = [
-  { metric: "₹60 Cr", label: "Largest loan facilitated" },
-  { metric: "38 Days", label: "Fastest consortium sanction" },
-  { metric: "20+ Yrs", label: "Combined banking experience" },
-  { metric: "3", label: "Strong case studies published" },
-];
-
-export const TRUST = [
-  { icon: "🏦", title: "Ex-Senior Bankers", desc: "We spent 20+ years inside credit departments reviewing and approving loan applications." },
-  { icon: "📋", title: "Credit Committee Experience", desc: "We know what credit committees look for — because we sat on them." },
-  { icon: "🎯", title: "Borrower's Advisor", desc: "We work for you — not for the bank. Our incentive is your approval." },
-  { icon: "🔒", title: "No Blind Applications", desc: "We never submit a file we are not confident about. Your CIBIL is too valuable to waste." },
+  { period: "2025 – Present", title: "Founder, FinsightOne", org: "India’s Credit & Loan Advisory Platform" },
 ];
