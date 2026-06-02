@@ -13,7 +13,7 @@ const CARD_COLORS = [INDIGO, GREEN, ORANGE];
 
 export default function Docs({ navigate }) {
   return (
-    <div style={{ fontFamily: "Arial,'Helvetica Neue',sans-serif" }}>
+    <div style={{ fontFamily: "Arial,sans-serif" }}>
 
       {/* ── HERO ── */}
       <div style={{ background: WHITE, padding: "clamp(44px,6vw,72px) clamp(20px,4vw,48px)", borderBottom: "1px solid #E5E7EB" }}>
