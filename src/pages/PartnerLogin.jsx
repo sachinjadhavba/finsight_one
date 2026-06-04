@@ -901,13 +901,13 @@ function LoginPage({ onLogin }) {
         {error && <div style={{ background:"#FEF2F2", border:"1px solid #FECACA", borderRadius:7, padding:"9px 12px", fontSize:13, color:"#DC2626", marginBottom:14, fontWeight:500 }}>{error}</div>}
         <div style={{ marginBottom:12 }}>
           <label style={{ fontSize:11, fontWeight:700, color:"#374151", display:"block", marginBottom:4, textTransform:"uppercase", letterSpacing:0.6 }}>Username</label>
-          <input type="text" placeholder="Your username" value={username} onChange={e=>setUsername(e.target.value)} onKeyDown={e=>e.key==="Enter"&&handleLogin()} autoComplete="off" name="partner-username"
+          <input type="text" placeholder="Your username" value={username} onChange={e=>setUsername(e.target.value)} onKeyDown={e=>e.key==="Enter"&&handleLogin()} autoComplete="new-password" name="partner-username"
             style={{ width:"100%", border:`1.5px solid ${C.border}`, borderRadius:7, padding:"10px 12px", fontSize:14, boxSizing:"border-box", fontFamily:"inherit", outline:"none" }} />
         </div>
         <div style={{ marginBottom:18 }}>
           <label style={{ fontSize:11, fontWeight:700, color:"#374151", display:"block", marginBottom:4, textTransform:"uppercase", letterSpacing:0.6 }}>Password</label>
           <div style={{ position:"relative" }}>
-            <input type={showPass?"text":"password"} placeholder="Your password" value={password} onChange={e=>setPassword(e.target.value)} onKeyDown={e=>e.key==="Enter"&&handleLogin()} autoComplete="off" name="partner-password"
+            <input type={showPass?"text":"password"} placeholder="Your password" value={password} onChange={e=>setPassword(e.target.value)} onKeyDown={e=>e.key==="Enter"&&handleLogin()} autoComplete="new-password" name="partner-password"
               style={{ width:"100%", border:`1.5px solid ${C.border}`, borderRadius:7, padding:"10px 44px 10px 12px", fontSize:14, boxSizing:"border-box", fontFamily:"inherit", outline:"none" }} />
             <button onClick={()=>setShowPass(!showPass)} style={{ position:"absolute", right:10, top:"50%", transform:"translateY(-50%)", background:"none", border:"none", cursor:"pointer", color:C.muted, fontSize:12, fontWeight:600 }}>
               {showPass?"Hide":"Show"}
@@ -918,7 +918,7 @@ function LoginPage({ onLogin }) {
           style={{ width:"100%", background:loading?"#A5B4FC":C.indigo, color:C.white, fontSize:14, fontWeight:700, padding:"12px", borderRadius:7, border:"none", cursor:loading?"not-allowed":"pointer", fontFamily:"inherit", marginBottom:14 }}>
           {loading?"Signing in…":"Sign In →"}
         </button>
-        <div style={{ textAlign:"center", fontSize:12, color:C.muted }}>Want to become a partner? <a href="https://finsightone.co/partners" target="_blank" rel="noreferrer" style={{ color:C.indigo, fontWeight:600, textDecoration:"none" }}>Apply here ↗</a></div>
+        <div style={{ textAlign:"center", fontSize:12, color:C.muted }}>Want to become a partner? <a href="https://finsightone.co/partners#register" target="_blank" rel="noreferrer" style={{ color:C.indigo, fontWeight:600, textDecoration:"none" }}>Apply here ↗</a> &nbsp;·&nbsp; <a href="https://wa.me/919579453635" target="_blank" rel="noreferrer" style={{ color:"#16A34A", fontWeight:600, textDecoration:"none" }}>WhatsApp Us ↗</a></div>
       </div>
       <div style={{ marginTop:14, fontSize:11, color:"rgba(255,255,255,0.2)", textAlign:"center" }}>© 2025 FinsightOne</div>
     </div>
