@@ -20,10 +20,11 @@ import Readiness from "./pages/Readiness";
 export default function App() {
   const [page, setPage] = useState("home");
   const navigate = (p) => { setPage(p); window.scrollTo(0, 0); };
+  const isPortal = page === "partnerlogin";
 
   return (
     <div style={{ fontFamily: "Arial,sans-serif", background: "#fff", color: "#111827", minWidth: 320 }}>
-      <Nav page={page} navigate={navigate} />
+      {!isPortal && <Nav page={page} navigate={navigate} />}
       {page === "home"         && <Home navigate={navigate} />}
       {page === "check"        && <Check navigate={navigate} />}
       {page === "readiness"    && <Readiness navigate={navigate} />}
@@ -39,8 +40,7 @@ export default function App() {
       {page === "blog"         && <Blog navigate={navigate} />}
       {page === "partnerlogin" && <PartnerLogin navigate={navigate} />}
       {page === "samplereport" && <SampleReport navigate={navigate} />}
-      <WAButton />
+      {!isPortal && <WAButton />}
     </div>
   );
 }
-
