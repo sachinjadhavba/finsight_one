@@ -918,7 +918,7 @@ function LoginPage({ onLogin }) {
           style={{ width:"100%", background:loading?"#A5B4FC":C.indigo, color:C.white, fontSize:14, fontWeight:700, padding:"12px", borderRadius:7, border:"none", cursor:loading?"not-allowed":"pointer", fontFamily:"inherit", marginBottom:14 }}>
           {loading?"Signing in…":"Sign In →"}
         </button>
-        <div style={{ textAlign:"center", fontSize:12, color:C.muted }}>Access by invitation only · <a href="https://wa.me/919579453635" target="_blank" rel="noreferrer" style={{ color:C.indigo, fontWeight:600, textDecoration:"none" }}>WhatsApp Us ↗</a></div>
+        <div style={{ textAlign:"center", fontSize:12, color:C.muted }}>Want to become a partner? <a href="https://finsightone.co/partners" target="_blank" rel="noreferrer" style={{ color:C.indigo, fontWeight:600, textDecoration:"none" }}>Apply here ↗</a></div>
       </div>
       <div style={{ marginTop:14, fontSize:11, color:"rgba(255,255,255,0.2)", textAlign:"center" }}>© 2025 FinsightOne</div>
     </div>
