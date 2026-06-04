@@ -3,9 +3,12 @@
   "outputDirectory": "dist",
   "framework": "vite",
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
   ],
   "env": {
-    "VITE_BUILD_TIME": "2026-06-02-1730"
+    "VITE_BUILD_TIME": "2026-06-04-1053"
   }
 }
