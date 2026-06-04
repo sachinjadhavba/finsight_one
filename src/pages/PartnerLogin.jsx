@@ -1,37 +1,28 @@
 import { useState } from "react";
 
-const SUPABASE_URL = "https://ujblebpqvkbnvxiscluk.supabase.co";
-const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVqYmxlYnBxdmtibnZ4aXNjbHVrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgyMTkyMjUsImV4cCI6MjA5Mzc5NTIyNX0.usaa2zaABViXVsVfRvKJme-euj3K61hHfeyjIIItWVY";
+const N8N = "https://n8n-production-ccb2.up.railway.app/webhook";
 const WA = "919579453635";
 
-const sb = async (path, opts = {}) => {
-  const res = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
-    ...opts,
-    headers: { apikey:SUPABASE_ANON, Authorization:`Bearer ${SUPABASE_ANON}`, "Content-Type":"application/json", ...(opts.headers||{}) },
+const post = async (endpoint, body) => {
+  const res = await fetch(`${N8N}/${endpoint}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
   });
   if (!res.ok) throw new Error(await res.text());
-  const text = await res.text();
-  return text ? JSON.parse(text) : null;
+  return res.json();
 };
 
 const verifyPassword = async (username, password) => {
-  const rows = await sb(`partners?username=eq.${encodeURIComponent(username)}&active=eq.true&select=id,username,password_hash,name,firm,partner_code,city,type`);
-  if (!rows || rows.length === 0) return null;
-  const partner = rows[0];
-  const rpc = await fetch(`${SUPABASE_URL}/rest/v1/rpc/verify_partner_password`, {
-    method:"POST",
-    headers:{ apikey:SUPABASE_ANON, Authorization:`Bearer ${SUPABASE_ANON}`, "Content-Type":"application/json" },
-    body: JSON.stringify({ p_password:password, p_hash:partner.password_hash }),
-  });
-  return (await rpc.json()) ? partner : null;
+  const data = await post("fo-partner-login", { username, password });
+  if (!data.success) return null;
+  return data.partner;
 };
 
 const fetchDashboard = async (partnerCode) => {
-  const [referrals, payouts] = await Promise.all([
-    sb(`referrals?partner_code=eq.${encodeURIComponent(partnerCode)}&order=created_at.desc&select=*`),
-    sb(`partner_payouts?partner_id=eq.${encodeURIComponent(partnerCode)}&paid=eq.Yes&order=payment_date.desc&select=payout_id,payout_date,payment_date,payout_amount,payment_mode,utr_number,cases_converted`),
-  ]);
-  return { referrals:referrals||[], payouts:payouts||[] };
+  const data = await post("fo-partner-dashboard", { partner_code: partnerCode });
+  if (!data.success) return { referrals: [], payouts: [] };
+  return { referrals: data.referrals || [], payouts: data.payouts || [] };
 };
 
 const C = {
@@ -105,10 +96,7 @@ function ReferModal({ partnerCode, onClose }) {
     if (!/^[6-9]\d{9}$/.test(mobile.trim()))  { setErr("Enter valid 10-digit mobile number."); return; }
     setLoading(true); setErr("");
     try {
-      await sb("referrals", {
-        method:"POST",
-        headers:{ Prefer:"return=minimal" },
-        body: JSON.stringify({
+      await post("fo-submit-referral", {
           partner_code: partnerCode,
           client_name:  name.trim(),
           service:      refType,
@@ -118,8 +106,7 @@ function ReferModal({ partnerCode, onClose }) {
           status:       "Submitted",
           docs_pending: catalogue?.docChecklist || [],
           docs_received: [],
-        }),
-      });
+        });
       setSubmitted(true);
     } catch(e) { setErr("Failed to submit. Please try again."); }
     setLoading(false);
