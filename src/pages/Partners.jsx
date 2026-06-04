@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Footer from "../components/Footer";
 
 const ORANGE = "#EA580C";
@@ -121,6 +121,15 @@ const FAQS = [
 
 export default function Partners({ navigate }) {
   const [openFaq, setOpenFaq] = useState(null);
+
+  useEffect(() => {
+    if (window.location.hash === '#register') {
+      setTimeout(() => {
+        const el = document.getElementById('register');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
+  }, []);
 
   const waLink = (msg) => `https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
 
