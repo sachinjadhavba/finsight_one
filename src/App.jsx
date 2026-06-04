@@ -17,8 +17,30 @@ import PartnerLogin from "./pages/PartnerLogin";
 import SampleReport from "./pages/SampleReport";
 import Readiness from "./pages/Readiness";
 
+const PATH_MAP = {
+  "/partners": "partners",
+  "/check": "check",
+  "/readiness": "readiness",
+  "/analytics": "analytics",
+  "/advisory": "advisory",
+  "/docs": "docs",
+  "/about": "about",
+  "/casestudies": "casestudies",
+  "/msme": "msme",
+  "/individuals": "individuals",
+  "/why": "why",
+  "/blog": "blog",
+  "/partner-login": "partnerlogin",
+  "/samplereport": "samplereport",
+};
+
+function getInitialPage() {
+  const path = window.location.pathname.replace(/\/$/, "") || "/";
+  return PATH_MAP[path] || "home";
+}
+
 export default function App() {
-  const [page, setPage] = useState("home");
+  const [page, setPage] = useState(getInitialPage);
   const navigate = (p) => { setPage(p); window.scrollTo(0, 0); };
   const isPortal = page === "partnerlogin";
 
