@@ -312,7 +312,7 @@ export default function Home({ navigate }) {
             </h1>
             {/* Sub-headline */}
             <p style={{ fontSize: "clamp(13px,1.4vw,15px)", color: "#CBD5E1", lineHeight: 1.7, marginBottom: 20, maxWidth: 520 }}>
-              Loans approved. Documents prepared. Finances monitored — built on 20 years of banking expertise.
+              Expert credit advisory, banker-ready documents and monthly financial monitoring — powered by 20 years of banking experience.
             </p>
             {/* Pills */}
             <div style={{ display: "flex", gap: 7, flexWrap: "wrap", marginBottom: 20 }}>
