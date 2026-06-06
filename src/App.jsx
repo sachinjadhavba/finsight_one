@@ -33,6 +33,7 @@ const PATH_MAP = {
   "/blog": "blog",
   "/partner-login": "partnerlogin",
   "/samplereport": "samplereport",
+  "/admin": "admin",
 };
 
 function getInitialPage() {
@@ -43,7 +44,7 @@ function getInitialPage() {
 export default function App() {
   const [page, setPage] = useState(getInitialPage);
   const navigate = (p) => { setPage(p); window.scrollTo(0, 0); };
-  const isPortal = page === "partnerlogin";
+  const isPortal = page === "partnerlogin" || page === "admin";
 
   return (
     <div style={{ fontFamily: "Arial,sans-serif", background: "#fff", color: "#111827", minWidth: 320 }}>
