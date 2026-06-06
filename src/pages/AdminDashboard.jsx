@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 const SUPABASE_URL = "https://ljwgipoqqeoqcoekmzqg.supabase.co";
-const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imxqd2dpcG9xcWVvcWNvZWttenFnIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4MDU4MjI4OCwiZXhwIjoyMDk2MTU4Mjg4fQ.7BVPtPjxW0VxNJc59gGsyl9P6G0au9AGujgDrMHhC7k";
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imxqd2dpcG9xcWVvcWNvZWttenFnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA1ODIyODgsImV4cCI6MjA5NjE1ODI4OH0.7Tb_FdZsV_BEMbGz5x0FjFnylx11Riil49TeYaHrNUw";
 
 // ── COLORS ──────────────────────────────────────────
 const C = {
@@ -191,6 +191,7 @@ export default function AdminDashboard({ navigate }) {
         headers: {
           "apikey": SUPABASE_KEY,
           "Authorization": `Bearer ${SUPABASE_KEY}`,
+          "Content-Type": "application/json",
           "Accept": "application/json"
         }
       });
