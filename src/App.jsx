@@ -16,6 +16,7 @@ import Blog from "./pages/Blog";
 import PartnerLogin from "./pages/PartnerLogin";
 import SampleReport from "./pages/SampleReport";
 import Readiness from "./pages/Readiness";
+import AdminDashboard from "./pages/AdminDashboard";
 
 const PATH_MAP = {
   "/partners": "partners",
@@ -50,6 +51,7 @@ export default function App() {
       {page === "home"         && <Home navigate={navigate} />}
       {page === "check"        && <Check navigate={navigate} />}
       {page === "readiness"    && <Readiness navigate={navigate} />}
+      {page === "admin"       && <AdminDashboard navigate={navigate} />}
       {page === "analytics"    && <Analytics navigate={navigate} />}
       {page === "advisory"     && <Advisory navigate={navigate} />}
       {page === "docs"         && <Docs navigate={navigate} />}
