@@ -118,7 +118,7 @@ export const TESTIMONIALS = [
 
 export const PLANS = [
   {
-    name: "Credit Watch", price: "₹499", per: "/ month", featured: false,
+    name: "Credit Watch", price: "₹499", per: "/ month", featured: false, sample: "/reports/credit-watch-monthly-report.html",
     desc: "Know what your banker sees — interpreted by ex-bankers with named actions and deadlines, not a generic score.",
     features: [
       "Bureau score tracking with bank-specific floor — know exactly where you stand against your lender's threshold",
@@ -131,7 +131,7 @@ export const PLANS = [
     ],
   },
   {
-    name: "Business Health", price: "₹2,999", per: "/ month", featured: true, badge: "Most Popular",
+    name: "Business Health", price: "₹2,999", per: "/ month", featured: true, badge: "Most Popular", sample: "/reports/monthly-business-health-report.html",
     desc: "Your monthly banker-readiness assessment — 8 ratios, a specific enhancement target in rupees, and a 12-month roadmap to grow your limit.",
     features: [
       "Everything in Credit Watch",
@@ -144,7 +144,7 @@ export const PLANS = [
     ],
   },
   {
-    name: "Premium", price: "₹4,999", per: "/ month", featured: false,
+    name: "Premium", price: "₹4,999", per: "/ month", featured: false, sample: "/reports/premium-monthly-report.html",
     desc: "Your personal credit advisor — delivered monthly. Bank-specific strategy, word-for-word meeting scripts, and a dedicated expert who knows your numbers by name.",
     features: [
       "Everything in Business Health",
