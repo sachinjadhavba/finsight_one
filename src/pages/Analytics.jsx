@@ -148,10 +148,17 @@ export default function Analytics({ navigate }) {
                     </li>
                   ))}
                 </ul>
-                {/* Sample button placeholder — will link once samples built */}
-                <div style={{ fontSize:11, color:"#94A3B8", textAlign:"center", marginBottom:10, fontStyle:"italic" }}>
-                  Sample report coming soon
-                </div>
+                {plan.sample && (
+                  <a href={plan.sample} target="_blank" rel="noreferrer"
+                    style={{ display:"block", textAlign:"center", fontSize:12, color:"#059669", fontWeight:700, marginBottom:10, textDecoration:"none" }}>
+                    View Sample Report →
+                  </a>
+                )}
+                {!plan.sample && (
+                  <div style={{ fontSize:11, color:"#94A3B8", textAlign:"center", marginBottom:10, fontStyle:"italic" }}>
+                    Sample report coming soon
+                  </div>
+                )}
                 <button
                   onClick={() => waOrder(plan.name)}
                   style={{ width:"100%", padding:"11px 0", borderRadius:8, fontSize:13, fontWeight:700, border: plan.featured ? "none" : `1px solid ${GREEN}`, cursor:"pointer", background: plan.featured ? GREEN : WHITE, color: plan.featured ? WHITE : GREEN, fontFamily:"inherit" }}>
@@ -202,9 +209,11 @@ export default function Analytics({ navigate }) {
               <tbody>
                 {[
                   ["CC utilisation creeping above 80%",          "You find out at renewal — when it's too late",   "Flagged in month 2 — fixed before banker sees it"],
+                  ["Peak utilisation spike mid-month",           "Bank records it silently — you never know",      "Flagged with date, context, and fix before your RM sees it"],
                   ["CIBIL hard enquiries from other applications","You don't know — banker notices",                "Tracked monthly — we advise when to pause applications"],
                   ["GST filing gap",                             "Banker spots it during annual review",           "Flagged same month — resolved before annual review"],
                   ["Banking turnover diverging from ITR",        "Rejected at renewal — no explanation given",     "Reconciliation note prepared proactively"],
+                  ["Rate reduction eligibility",                 "You never know you qualify — pay full rate",     "We identify when your ratios qualify and prepare the ask"],
                   ["Enhancement readiness",                      "You ask, get rejected, CIBIL takes the hit",     "We tell you your chance before you ask — and when to wait"],
                 ].map(([what, without, with_fo], i) => (
                   <tr key={what} style={{ background: i%2===0 ? WHITE : GRAY }}>
