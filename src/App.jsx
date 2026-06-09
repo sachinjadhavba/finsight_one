@@ -17,6 +17,7 @@ import PartnerLogin from "./pages/PartnerLogin";
 import SampleReport from "./pages/SampleReport";
 import Readiness from "./pages/Readiness";
 import AdminDashboard from "./pages/AdminDashboard";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 const PATH_MAP = {
   "/partners": "partners",
@@ -34,6 +35,7 @@ const PATH_MAP = {
   "/partner-login": "partnerlogin",
   "/samplereport": "samplereport",
   "/admin": "admin",
+  "/privacy-policy": "privacypolicy",
 };
 
 function getInitialPage() {
@@ -65,6 +67,7 @@ export default function App() {
       {page === "blog"         && <Blog navigate={navigate} />}
       {page === "partnerlogin" && <PartnerLogin navigate={navigate} />}
       {page === "samplereport" && <SampleReport navigate={navigate} />}
+      {page === "privacypolicy" && <PrivacyPolicy navigate={navigate} />}
       {!isPortal && <WAButton />}
     </div>
   );
