@@ -54,8 +54,11 @@ const FAQS = [
 export default function Analytics({ navigate }) {
   const [openFaq, setOpenFaq] = useState(null);
 
-  const waOrder = (planName) =>
-    window.open(`https://wa.me/${WA}?text=${encodeURIComponent("Hi FinsightOne, I want to subscribe to the " + planName + " monthly plan")}`, "_blank");
+  const waOrder = (planName) => {
+    const keywords = { "Credit Watch": "WATCH", "Business Health": "HEALTH", "Premium": "PREMIUM" };
+    const keyword = keywords[planName] || "WATCH";
+    window.open(`https://wa.me/${WA}?text=${encodeURIComponent(keyword)}`, "_blank");
+  };
 
   return (
     <div style={{ fontFamily:"Arial,sans-serif", color:DARK }}>
