@@ -269,9 +269,9 @@ function HeroCard({ navigate }) {
         <div id="wa-msgs-h" style={{ flex: 1, padding: '10px 12px', overflowY: 'hidden', display: 'flex', flexDirection: 'column' }} />
         {/* CTA */}
         <div style={{ padding: '6px 8px 8px', background: '#ECE5DD', flexShrink: 0 }}>
-          <button onClick={() => window.open('https://wa.me/919579453635?text=Hi%20FinsightOne', '_blank')}
+          <button onClick={() => window.location.href = '/check'}
             style={{ width: '100%', background: '#25D366', color: WHITE, border: 'none', borderRadius: 6, padding: 8, fontSize: 10, fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit' }}>
-            💬 Start on WhatsApp — Free
+            💬 ✓ Check My Eligibility — Free
           </button>
         </div>
       </div>
