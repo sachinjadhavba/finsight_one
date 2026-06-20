@@ -352,9 +352,9 @@ export default function Check({ navigate }) {
     if (contact.mobile.replace(/\D/g, "").length !== 10) errs.mobile = "Please enter a valid 10-digit mobile number";
     if (Object.keys(errs).length > 0) { setErrors(errs); return; }
     setErrors({});
-    fetch(import.meta.env.VITE_N8N_WEBHOOK_URL || "https://n8n-production-ccb2.up.railway.app/webhook/eligibility-form", {
+    fetch(import.meta.env.VITE_N8N_WEBHOOK_URL || "https://n8n-production-ccb2.up.railway.app/webhook/eligibility-form-v2", {
       method: "POST", headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name: contact.name, mobile: contact.mobile, loan_type: loanType, answers, source: "website_check", timestamp: new Date().toISOString() }),
+      body: JSON.stringify({ name: contact.name, mobile: contact.mobile, loan_type: loanType, answers, source: "website_check", wa_to: "91" + contact.mobile, submitted_at: new Date().toISOString() }),
     }).catch(() => {});
     setPhase("result");
   };
