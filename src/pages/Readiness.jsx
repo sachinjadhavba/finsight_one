@@ -29,7 +29,7 @@ const PRODUCTS = [
       "Top 2 likely blockers in your profile",
       "Recommended next step",
     ],
-    cta: "Get My Free Score on WhatsApp →",
+    cta: "✓ Start Free Eligibility Check",
     ctaBg: "#25D366",
     ctaColor: WHITE,
     sample: null,
