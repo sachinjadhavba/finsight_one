@@ -20,6 +20,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import ReportViewer from "./pages/ReportViewer";
 import PaymentSuccess from "./pages/PaymentSuccess";
+import SubmitDocs from "./pages/SubmitDocs";
 
 const PATH_MAP = {
   "/partners": "partners",
@@ -38,6 +39,7 @@ const PATH_MAP = {
   "/samplereport": "samplereport",
   "/admin": "admin",
   "/privacy-policy": "privacypolicy",
+  "/submit-docs": "submitdocs",
 };
 
 function getInitialPage() {
@@ -83,6 +85,7 @@ export default function App() {
       {page === "partnerlogin" && <PartnerLogin navigate={navigate} />}
       {page === "samplereport" && <SampleReport navigate={navigate} />}
       {page === "privacypolicy" && <PrivacyPolicy navigate={navigate} />}
+      {page === "submitdocs" && <SubmitDocs navigate={navigate} />}
       {!isPortal && <WAButton />}
     </div>
   );
