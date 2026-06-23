@@ -1,7 +1,8 @@
 export default function PaymentSuccess() {
   const params = new URLSearchParams(window.location.search);
   const caseId = params.get("case") || "";
-  const uploadUrl = caseId ? `https://finsightone.co/submit-docs?case=${caseId}` : "https://finsightone.co/submit-docs";
+  const planType = params.get("type") || "LRP";
+  const uploadUrl = caseId ? `https://finsightone.co/submit-docs?case=${caseId}&type=${planType}` : "https://finsightone.co/submit-docs";
   const emailSubject = caseId ? `Docs - FinsightOne Case ${caseId}` : "Documents - FinsightOne";
 
   return (
