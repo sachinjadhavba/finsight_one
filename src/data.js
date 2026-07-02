@@ -1,5 +1,4 @@
 export const HERO_STATS = [
-  { val: "72 hrs", label: "Document Delivery" },
   { val: "PAN India", label: "Coverage" },
   { val: "20 Yrs", label: "Banking Experience" },
   { val: "₹0", label: "To Check Eligibility" },
@@ -97,7 +96,7 @@ export const SERVICES = [
 
 export const STEPS = [
   { num: 1, title: "Free Eligibility Check", desc: "Know your chances in 2 minutes. No documents needed." },
-  { num: 2, title: "We Prepare Your File", desc: "Our experts prepare every document the bank asks for — in 72 hours." },
+  { num: 2, title: "We Prepare Your File", desc: "Our experts prepare every document the bank asks for, in the exact format lenders expect." },
   { num: 3, title: "We Submit to Lenders", desc: "We send your application to the best-fit lenders and follow up for you." },
   { num: 4, title: "Loan in Your Account", desc: "We track until disbursement. Then help you stay loan-ready for next time." },
 ];
@@ -260,7 +259,6 @@ export const ADVISORY_PRODUCTS = [
 export const VALUES = [
   { icon: "🔍", title: "We Tell You the Truth", desc: "If your application is weak, we tell you — and fix it before submitting." },
   { icon: "🏦", title: "We Know Banks From Inside", desc: "Our expert team spent 20+ years reviewing loan files. We know exactly what bankers look for." },
-  { icon: "⚡", title: "72-Hour Turnaround", desc: "Bank-ready documents prepared and delivered in 72 hours — not weeks." },
   { icon: "🔒", title: "Your Data Is Safe", desc: "We never share your financial information without your written consent." },
 ];
 

@@ -130,7 +130,7 @@ export default function Individuals({ navigate }) {
 
       {/* TRUST BAR */}
       <div style={{ background:GRAY, borderBottom:"1px solid #E5E7EB", padding:"16px clamp(20px,4vw,48px)", display:"flex", justifyContent:"space-around", flexWrap:"wrap", gap:16 }}>
-        {[["₹0","To Check Eligibility"],["72 hrs","Report Delivery"],["20 yrs","Banking Expertise"],["PAN India","Coverage"]].map(([v,l]) => (
+        {[["₹0","To Check Eligibility"],["20 yrs","Banking Expertise"],["PAN India","Coverage"]].map(([v,l]) => (
           <div key={l} style={{ textAlign:"center" }}>
             <div style={{ fontSize:20, fontWeight:900, color:ORANGE }}>{v}</div>
             <div style={{ fontSize:11, color:MUTED, marginTop:2 }}>{l}</div>

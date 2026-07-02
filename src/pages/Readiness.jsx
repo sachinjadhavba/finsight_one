@@ -217,7 +217,7 @@ export default function Readiness({ navigate }) {
       {/* ── TRUST BAR ── */}
       <div style={{ background: "#F8FAFC", borderBottom: "1px solid #E2E8F0", padding: "14px clamp(20px,5vw,48px)" }}>
         <div style={{ maxWidth: 860, margin: "0 auto", display: "flex", justifyContent: "center", gap: "clamp(20px,4vw,56px)", flexWrap: "wrap" }}>
-          {[["20+", "Years Banking Experience"], ["72 hrs", "Report Delivery"], ["₹0", "Free Score — No Card Needed"], ["Ex-Bankers", "Not Algorithms"]].map(([val, label]) => (
+          {[["20+", "Years Banking Experience"], ["₹0", "Free Score — No Card Needed"], ["Ex-Bankers", "Not Algorithms"]].map(([val, label]) => (
             <div key={label} style={{ textAlign: "center" }}>
               <div style={{ fontSize: 16, fontWeight: 800, color: DARK }}>{val}</div>
               <div style={{ fontSize: 11, color: MUTED, marginTop: 2 }}>{label}</div>

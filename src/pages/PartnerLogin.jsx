@@ -865,7 +865,7 @@ function PartnerPortal({ partner, onLogout }) {
       )}
 
       <div style={{ background:C.dark, padding:"12px 20px", textAlign:"center" }}>
-        <div style={{ fontSize:11, color:"#334155" }}>© 2025 FinsightOne · <a href="mailto:info@finsightone.co" style={{ color:"#4F46E5", textDecoration:"none" }}>info@finsightone.co</a></div>
+        <div style={{ fontSize:11, color:"#334155" }}>© {new Date().getFullYear()} FinsightOne · <a href="mailto:info@finsightone.co" style={{ color:"#4F46E5", textDecoration:"none" }}>info@finsightone.co</a></div>
       </div>
     </div>
   );
@@ -920,7 +920,7 @@ function LoginPage({ onLogin }) {
         </button>
         <div style={{ textAlign:"center", fontSize:12, color:C.muted }}>Want to become a partner? <a href="https://finsightone.co/partners#register" target="_blank" rel="noreferrer" style={{ color:C.indigo, fontWeight:600, textDecoration:"none" }}>Apply here ↗</a> &nbsp;·&nbsp; <a href="https://wa.me/919579453635" target="_blank" rel="noreferrer" style={{ color:"#16A34A", fontWeight:600, textDecoration:"none" }}>WhatsApp Us ↗</a></div>
       </div>
-      <div style={{ marginTop:14, fontSize:11, color:"rgba(255,255,255,0.2)", textAlign:"center" }}>© 2025 FinsightOne</div>
+      <div style={{ marginTop:14, fontSize:11, color:"rgba(255,255,255,0.2)", textAlign:"center" }}>© {new Date().getFullYear()} FinsightOne</div>
     </div>
   );
 }

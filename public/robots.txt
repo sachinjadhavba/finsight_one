@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /partner-login
+
+Sitemap: https://finsightone.co/sitemap.xml

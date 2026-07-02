@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://finsightone.co/</loc><priority>1.0</priority></url>
+  <url><loc>https://finsightone.co/check</loc><priority>0.9</priority></url>
+  <url><loc>https://finsightone.co/readiness</loc><priority>0.8</priority></url>
+  <url><loc>https://finsightone.co/analytics</loc><priority>0.7</priority></url>
+  <url><loc>https://finsightone.co/advisory</loc><priority>0.7</priority></url>
+  <url><loc>https://finsightone.co/docs</loc><priority>0.7</priority></url>
+  <url><loc>https://finsightone.co/about</loc><priority>0.6</priority></url>
+  <url><loc>https://finsightone.co/casestudies</loc><priority>0.6</priority></url>
+  <url><loc>https://finsightone.co/msme</loc><priority>0.7</priority></url>
+  <url><loc>https://finsightone.co/individuals</loc><priority>0.7</priority></url>
+  <url><loc>https://finsightone.co/why</loc><priority>0.6</priority></url>
+  <url><loc>https://finsightone.co/blog</loc><priority>0.5</priority></url>
+  <url><loc>https://finsightone.co/samplereport</loc><priority>0.5</priority></url>
+  <url><loc>https://finsightone.co/partners</loc><priority>0.6</priority></url>
+  <url><loc>https://finsightone.co/privacy-policy</loc><priority>0.2</priority></url>
+  <url><loc>https://finsightone.co/terms-of-use</loc><priority>0.2</priority></url>
+  <url><loc>https://finsightone.co/refund-policy</loc><priority>0.2</priority></url>
+</urlset>

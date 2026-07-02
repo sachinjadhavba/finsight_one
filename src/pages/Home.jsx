@@ -1,5 +1,7 @@
 import { useEffect, useRef } from "react";
 import Footer from "../components/Footer";
+import Reveal from "../components/Reveal";
+import CountUp from "../components/CountUp";
 import { SERVICES, STEPS, TESTIMONIALS } from "../data";
 
 const INDIGO = "#4F46E5";
@@ -70,9 +72,25 @@ const ILLUSTRATIONS = [
   </svg>,
 ];
 
+// ── SERVICE ICON SET (replaces emoji) ──────────────────────────────────────
+const SVC_ICONS = {
+  s1: <><path d="M2 8l8-5 8 5"/><rect x="4" y="8" width="12" height="8"/><path d="M8 16v-4h4v4"/></>,
+  s2: <><circle cx="8.5" cy="8.5" r="5.5"/><path d="M13 13l4 4"/></>,
+  s3: <><rect x="4" y="2" width="12" height="16" rx="1"/><path d="M7 7h6M7 10h6M7 13h4"/></>,
+  s4: <><path d="M3 17V9M8 17V4M13 17v-7M18 17v-3"/></>,
+  s5: <><circle cx="10" cy="10" r="7"/><circle cx="10" cy="10" r="3.5"/><circle cx="10" cy="10" r="0.6" fill="currentColor"/></>,
+};
+function SvcIcon({ id, color }) {
+  return (
+    <svg width="26" height="26" viewBox="0 0 20 20" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      {SVC_ICONS[id]}
+    </svg>
+  );
+}
+
 const SVCS = [
   { step:"Step 01 · Free",         title:"Free Eligibility Check",     desc:"Know your approval chances in 2 minutes. No documents needed." },
-  { step:"Step 02 · From ₹1,499",  title:"Loan File Preparation",      desc:"Loan Appraisal Note, financial analysis statements and project reports — bank-ready in 72 hours." },
+  { step:"Step 02 · From ₹1,499",  title:"Loan File Preparation",      desc:"Loan Appraisal Note, financial analysis statements and project reports — bank-ready, in the exact format lenders expect." },
   { step:"Step 03 · From ₹499/mo", title:"Monthly Finance Monitoring",  desc:"Business health reports, loan readiness score and alerts every month." },
   { step:"Step 04 · Expert Help",  title:"Expert Loan Advisory",        desc:"20 years of banking expertise working directly on your loan case." },
 ];
@@ -294,8 +312,14 @@ export default function Home({ navigate }) {
     <div style={{ fontFamily: "Arial, Helvetica Neue, sans-serif" }}>
 
       {/* ── HERO ── */}
-      <div style={{ background: "linear-gradient(135deg,#0F172A 0%,#1E1B4B 100%)", padding: "clamp(24px,4vw,56px) clamp(16px,4vw,48px)", overflow: "hidden" }}>
-        <div id="hero-grid" style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 420px", gap: "clamp(28px,4vw,48px)", alignItems: "stretch" }}>
+      <div style={{ background: "linear-gradient(135deg,#0F172A 0%,#1E1B4B 100%)", padding: "clamp(24px,4vw,56px) clamp(16px,4vw,48px)", overflow: "hidden", position: "relative" }}>
+        <div style={{ position: "absolute", width: 280, height: 280, borderRadius: "50%", background: INDIGO, filter: "blur(80px)", opacity: 0.28, top: -90, left: -70, pointerEvents: "none", animation: "orbDrift1 11s ease-in-out infinite" }} />
+        <div style={{ position: "absolute", width: 220, height: 220, borderRadius: "50%", background: ORANGE, filter: "blur(80px)", opacity: 0.2, bottom: -60, right: 30, pointerEvents: "none", animation: "orbDrift2 13s ease-in-out infinite" }} />
+        <style>{`
+          @keyframes orbDrift1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(28px,22px)} }
+          @keyframes orbDrift2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-24px,-16px)} }
+        `}</style>
+        <div id="hero-grid" style={{ position: "relative", maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 420px", gap: "clamp(28px,4vw,48px)", alignItems: "stretch" }}>
 
           {/* Left — copy */}
           <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
@@ -338,11 +362,11 @@ export default function Home({ navigate }) {
             </div>
             {/* Stats */}
             <div style={{ display: "flex", gap: "clamp(16px,3vw,36px)", flexWrap: "wrap" }}>
-              {[["₹0","To Check Eligibility"],["72 hrs","Document Delivery"],["20 yrs","Banking Expertise"],["PAN India","Coverage"]].map(([v,l]) => (
-                <div key={l}>
-                  <div style={{ fontSize: "clamp(18px,2vw,24px)", fontWeight: 900, color: ORANGE }}>{v}</div>
+              {[["₹0","To Check Eligibility"],["20 yrs","Banking Expertise"],["PAN India","Coverage"]].map(([v,l], i) => (
+                <Reveal key={l} delay={i * 100}>
+                  <div style={{ fontSize: "clamp(18px,2vw,24px)", fontWeight: 900, color: ORANGE }}><CountUp text={v} /></div>
                   <div style={{ fontSize: 11, color: "#9CA3AF", marginTop: 2 }}>{l}</div>
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -356,9 +380,37 @@ export default function Home({ navigate }) {
 
       {/* ── PROBLEM STRIP ── */}
       <div style={{ background: "#EEF2FF", borderBottom: "1px solid #C7D2FE", padding: "11px clamp(16px,3vw,48px)", display: "flex", gap: "clamp(10px,2vw,24px)", justifyContent: "center", flexWrap: "wrap" }}>
-        {["❌ Loan rejected?","📄 Wrong documents?","📉 Don't know why refused?","⏳ Waiting months?"].map(t => (
-          <div key={t} style={{ fontSize: 13, fontWeight: 600, color: INDIGO }}>{t}</div>
+        {[
+          { icon: <path d="M6 6l8 8M14 6l-8 8"/>, t: "Loan rejected?" },
+          { icon: <><rect x="5" y="3" width="10" height="14" rx="1.5"/><path d="M8 8h4M8 11h4"/></>, t: "Wrong documents?" },
+          { icon: <path d="M3 14l5-5 3 3 6-6M17 6h-4v4"/>, t: "Don't know why refused?" },
+          { icon: <><circle cx="10" cy="10" r="7"/><path d="M10 6v4l3 2"/></>, t: "Waiting months?" },
+        ].map(({ icon, t }) => (
+          <div key={t} style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 13, fontWeight: 600, color: INDIGO }}>
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke={INDIGO} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">{icon}</svg>
+            {t}
+          </div>
         ))}
+      </div>
+
+      {/* ── HOW IT WORKS (illustrated) ── */}
+      <div style={{ padding: "clamp(32px,4vw,48px) clamp(20px,4vw,48px)", background: "#0B1220" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+          <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: 2.5, textTransform: "uppercase", color: ORANGE, marginBottom: 10, textAlign: "center" }}>How It Works</div>
+          <h2 style={{ fontSize: "clamp(20px,2.6vw,26px)", fontWeight: 900, textAlign: "center", marginBottom: 28, color: WHITE }}>From First Check to Loan Approved</h2>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", gap: 18 }}>
+            {SVCS.map((s, i) => (
+              <Reveal key={s.title} delay={i * 120}>
+                <div style={{ background: "#111827", borderRadius: 14, padding: "18px 16px", border: "1px solid #1F2937", height: "100%" }}>
+                  {ILLUSTRATIONS[i]}
+                  <div style={{ fontSize: 10, fontWeight: 800, color: ORANGE, letterSpacing: 1.5, textTransform: "uppercase", marginTop: 10 }}>{s.step}</div>
+                  <div style={{ fontSize: 14, fontWeight: 800, color: WHITE, marginTop: 4 }}>{s.title}</div>
+                  <div style={{ fontSize: 11.5, color: "#9CA3AF", marginTop: 4, lineHeight: 1.5 }}>{s.desc}</div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
       </div>
 
       {/* ── SERVICES ── */}
@@ -367,10 +419,10 @@ export default function Home({ navigate }) {
         <h2 style={{ fontSize: "clamp(22px,3vw,30px)", fontWeight: 900, textAlign: "center", marginBottom: 10, color: DARK }}>One Platform for Every Loan Need</h2>
         <p style={{ fontSize: 14, color: MUTED, textAlign: "center", maxWidth: 560, margin: "0 auto 36px", lineHeight: 1.7 }}>Whether you are a business owner or an individual — we have a service that fits your stage and budget.</p>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", gap: 16, maxWidth: 1200, margin: "0 auto" }}>
-          {SERVICES.map(svc => (
-            <div key={svc.id} style={{ borderRadius: 14, border: "1px solid #E5E7EB", background: WHITE, overflow: "hidden", display: "flex", flexDirection: "column" }}>
+          {SERVICES.map((svc, i) => (
+            <Reveal key={svc.id} delay={i * 80} style={{ borderRadius: 14, border: "1px solid #E5E7EB", background: WHITE, overflow: "hidden", display: "flex", flexDirection: "column" }}>
               <div style={{ padding: "18px 16px 14px", background: svc.headBg }}>
-                <div style={{ fontSize: 26, marginBottom: 8 }}>{svc.icon}</div>
+                <div style={{ marginBottom: 8 }}><SvcIcon id={svc.id} color={svc.numColor} /></div>
                 <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: 2, textTransform: "uppercase", marginBottom: 4, color: svc.numColor }}>{svc.num}</div>
                 <div style={{ fontSize: 13, fontWeight: 800, color: DARK, marginBottom: 5 }}>{svc.title}</div>
                 <div style={{ fontSize: 11.5, color: MUTED, lineHeight: 1.5 }}>{svc.pitch}</div>
@@ -391,7 +443,7 @@ export default function Home({ navigate }) {
                   {svc.btn}
                 </button>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

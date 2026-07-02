@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Footer from "../components/Footer";
+import Reveal from "../components/Reveal";
 import { VALUES, CREDENTIALS } from "../data";
 
 const ORANGE = "#EA580C";
@@ -18,19 +19,46 @@ const STORY_PARAS = [
 ];
 
 const WHAT_WE_DONT = [
-  { icon: "🚫", title: "We do not cold call", desc: "We never call you unsolicited. Every conversation starts when you reach out." },
-  { icon: "🚫", title: "We do not spam lenders", desc: "We never submit your file to multiple lenders simultaneously. One right lender, first time." },
-  { icon: "🚫", title: "We do not hide fees", desc: "Our fee is agreed upfront before we start. No surprises at disbursement." },
-  { icon: "🚫", title: "We do not take commission from banks", desc: "For paid advisory, we earn from you — not from the lender. That keeps our incentive aligned with yours." },
+  { title: "We do not cold call", desc: "We never call you unsolicited. Every conversation starts when you reach out." },
+  { title: "We do not spam lenders", desc: "We never submit your file to multiple lenders simultaneously. One right lender, first time." },
+  { title: "We do not hide fees", desc: "Our fee is agreed upfront before we start. No surprises at disbursement." },
+  { title: "We do not take commission from banks", desc: "For paid advisory, we earn from you — not from the lender. That keeps our incentive aligned with yours." },
 ];
+
+const VALUE_ICONS = [
+  <><circle cx="8.5" cy="8.5" r="5.5"/><path d="M13 13l4 4"/></>,
+  <><path d="M2 8l8-5 8 5"/><rect x="4" y="8" width="12" height="8"/><path d="M8 16v-4h4v4"/></>,
+  <><rect x="4" y="9" width="12" height="8" rx="1.5"/><path d="M6.5 9V6a3.5 3.5 0 0 1 7 0v3"/></>,
+];
+function ValueIcon({ i }) {
+  return (
+    <svg width="26" height="26" viewBox="0 0 20 20" fill="none" stroke={ORANGE} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      {VALUE_ICONS[i]}
+    </svg>
+  );
+}
+function NoIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke={ORANGE} strokeWidth="1.8" strokeLinecap="round">
+      <circle cx="10" cy="10" r="7.5"/><path d="M5.5 14.5l9-9"/>
+    </svg>
+  );
+}
 
 export default function About({ navigate }) {
   return (
     <div style={{ fontFamily:"Arial,sans-serif", color:DARK }}>
 
+      <style>{`
+        @keyframes orbDriftA { 0%,100%{transform:translate(0,0)} 50%{transform:translate(26px,20px)} }
+        @keyframes orbDriftB { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-22px,-14px)} }
+      `}</style>
+
       {/* HERO */}
-      <div style={{ background:"linear-gradient(135deg,#0F172A 0%,#1E1B4B 100%)", color:WHITE, padding:"clamp(56px,8vw,88px) clamp(20px,4vw,48px)", textAlign:"center" }}>
-        <div style={{ maxWidth:720, margin:"0 auto" }}>
+      <div style={{ background:"linear-gradient(135deg,#0F172A 0%,#1E1B4B 100%)", color:WHITE, padding:"clamp(56px,8vw,88px) clamp(20px,4vw,48px)", textAlign:"center", position:"relative", overflow:"hidden" }}>
+        <div style={{ position:"absolute", width:260, height:260, borderRadius:"50%", background:INDIGO, filter:"blur(80px)", opacity:0.28, top:-80, left:-60, pointerEvents:"none", animation:"orbDriftA 11s ease-in-out infinite" }} />
+        <div style={{ position:"absolute", width:200, height:200, borderRadius:"50%", background:ORANGE, filter:"blur(80px)", opacity:0.2, bottom:-50, right:20, pointerEvents:"none", animation:"orbDriftB 13s ease-in-out infinite" }} />
+        <div style={{ maxWidth:720, margin:"0 auto", position:"relative" }}>
           <div style={{ display:"inline-block", background:"rgba(234,88,12,0.2)", border:"1px solid rgba(234,88,12,0.4)", color:"#FB923C", fontSize:11, fontWeight:700, letterSpacing:2, textTransform:"uppercase", padding:"5px 16px", borderRadius:100, marginBottom:20 }}>
             Our Story
           </div>
@@ -49,7 +77,7 @@ export default function About({ navigate }) {
 
       {/* TEAM CARD */}
       <div style={{ padding:"0 clamp(20px,4vw,48px) 0", background:GRAY }}>
-        <div style={{ maxWidth:900, margin:"-40px auto 0", background:WHITE, borderRadius:16, padding:"32px 36px", boxShadow:"0 16px 48px rgba(0,0,0,0.10)", position:"relative", zIndex:10, display:"grid", gridTemplateColumns:"auto 1fr", gap:28, alignItems:"start" }}>
+        <Reveal style={{ maxWidth:900, margin:"-40px auto 0", background:WHITE, borderRadius:16, padding:"32px 36px", boxShadow:"0 16px 48px rgba(0,0,0,0.10)", position:"relative", zIndex:10, display:"grid", gridTemplateColumns:"auto 1fr", gap:28, alignItems:"start" }}>
           <div style={{ width:100, height:100, borderRadius:"50%", background:`linear-gradient(135deg,${INDIGO},#0F172A)`, display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>
             <span style={{ fontSize:36, fontWeight:900, color:WHITE }}>FO</span>
           </div>
@@ -66,7 +94,7 @@ export default function About({ navigate }) {
               ))}
             </div>
           </div>
-        </div>
+        </Reveal>
       </div>
 
       {/* OUR STORY */}
@@ -101,12 +129,12 @@ export default function About({ navigate }) {
             <h2 style={{ fontSize:"clamp(22px,3vw,28px)", fontWeight:900, color:DARK }}>No Agent Commissions. No Hidden Fees.<br />Just Expert Help.</h2>
           </div>
           <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(200px,1fr))", gap:16 }}>
-            {VALUES.map(v => (
-              <div key={v.title} style={{ textAlign:"center", padding:"24px 16px", background:GRAY, border:"1px solid #E5E7EB", borderRadius:12 }}>
-                <div style={{ fontSize:28, marginBottom:10 }}>{v.icon}</div>
+            {VALUES.map((v, i) => (
+              <Reveal key={v.title} delay={i * 100} style={{ textAlign:"center", padding:"24px 16px", background:GRAY, border:"1px solid #E5E7EB", borderRadius:12 }}>
+                <div style={{ marginBottom:10, display:"flex", justifyContent:"center" }}><ValueIcon i={i} /></div>
                 <div style={{ fontSize:13, fontWeight:800, color:DARK, marginBottom:6 }}>{v.title}</div>
                 <div style={{ fontSize:12, color:MUTED, lineHeight:1.6 }}>{v.desc}</div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -123,7 +151,7 @@ export default function About({ navigate }) {
             {/* Vertical line */}
             <div style={{ position:"absolute", left:18, top:8, bottom:8, width:2, background:"#E5E7EB", zIndex:0 }} />
             {CREDENTIALS.map((c, i) => (
-              <div key={c.period} style={{ display:"flex", gap:20, marginBottom: i < CREDENTIALS.length - 1 ? 24 : 0, position:"relative", zIndex:1 }}>
+              <Reveal key={c.period} delay={i * 120} style={{ display:"flex", gap:20, marginBottom: i < CREDENTIALS.length - 1 ? 24 : 0, position:"relative", zIndex:1 }}>
                 {/* Dot */}
                 <div style={{ width:38, height:38, borderRadius:"50%", background: i === CREDENTIALS.length - 1 ? ORANGE : WHITE, border:`2px solid ${i === CREDENTIALS.length - 1 ? ORANGE : "#E5E7EB"}`, display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0, marginTop:2 }}>
                   <div style={{ width:10, height:10, borderRadius:"50%", background: i === CREDENTIALS.length - 1 ? WHITE : ORANGE }} />
@@ -134,7 +162,7 @@ export default function About({ navigate }) {
                   <div style={{ fontSize:14, fontWeight:700, color:DARK, marginBottom:3 }}>{c.title}</div>
                   <div style={{ fontSize:12.5, color:MUTED }}>{c.org}</div>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -149,22 +177,23 @@ export default function About({ navigate }) {
             <p style={{ fontSize:14, color:MUTED, maxWidth:480, margin:"10px auto 0", lineHeight:1.6 }}>We think you should know this before you engage us.</p>
           </div>
           <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(220px,1fr))", gap:16 }}>
-            {WHAT_WE_DONT.map(w => (
-              <div key={w.title} style={{ background:GRAY, border:"1px solid #E5E7EB", borderRadius:12, padding:"18px 18px" }}>
+            {WHAT_WE_DONT.map((w, i) => (
+              <Reveal key={w.title} delay={i * 90} style={{ background:GRAY, border:"1px solid #E5E7EB", borderRadius:12, padding:"18px 18px" }}>
                 <div style={{ display:"flex", alignItems:"center", gap:10, marginBottom:8 }}>
-                  <span style={{ fontSize:18 }}>{w.icon}</span>
+                  <NoIcon />
                   <span style={{ fontSize:13.5, fontWeight:700, color:DARK }}>{w.title}</span>
                 </div>
                 <p style={{ fontSize:12.5, color:MUTED, lineHeight:1.65, margin:0 }}>{w.desc}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </div>
 
       {/* BOTTOM CTA */}
-      <div style={{ background:`linear-gradient(135deg,#0F172A 0%,#1E1B4B 100%)`, padding:"clamp(40px,5vw,56px) clamp(20px,4vw,48px)", textAlign:"center" }}>
-        <div style={{ maxWidth:540, margin:"0 auto" }}>
+      <div style={{ background:`linear-gradient(135deg,#0F172A 0%,#1E1B4B 100%)`, padding:"clamp(40px,5vw,56px) clamp(20px,4vw,48px)", textAlign:"center", position:"relative", overflow:"hidden" }}>
+        <div style={{ position:"absolute", width:220, height:220, borderRadius:"50%", background:INDIGO, filter:"blur(80px)", opacity:0.25, top:-60, right:-50, pointerEvents:"none", animation:"orbDriftB 12s ease-in-out infinite" }} />
+        <div style={{ maxWidth:540, margin:"0 auto", position:"relative" }}>
           <h2 style={{ fontSize:"clamp(22px,3vw,28px)", fontWeight:900, color:WHITE, marginBottom:12 }}>
             Ready to Work With Us?
           </h2>

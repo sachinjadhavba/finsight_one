@@ -379,8 +379,8 @@ export default function Check({ navigate }) {
             <span style={{ width: 6, height: 6, background: ORANGE, borderRadius: "50%", display: "inline-block" }} />
             Free · 2 Minutes · No Documents Needed
           </div>
-          <h1 style={{ fontSize: "clamp(22px,4vw,30px)", fontWeight: 900, color: DARK, marginBottom: 10, lineHeight: 1.25 }}>
-            Tell us what you need.<br /><span style={{ color: INDIGO }}>We find you the best path.</span>
+          <h1 style={{ fontSize: "clamp(22px,4vw,30px)", fontWeight: 900, color: WHITE, marginBottom: 10, lineHeight: 1.25 }}>
+            Tell us what you need.<br /><span style={{ color: "#818CF8" }}>We find you the best path.</span>
           </h1>
           <p style={{ fontSize: 14, color: MUTED, maxWidth: 480, margin: "0 auto", lineHeight: 1.7 }}>
             Answer a few questions. Our expert team reviews your profile and sends a personalised eligibility assessment to your WhatsApp — free, within 2 hours.

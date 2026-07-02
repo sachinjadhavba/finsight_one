@@ -20,7 +20,7 @@ export default function Docs({ navigate }) {
         <div style={{ maxWidth: 780, margin: "0 auto", textAlign: "center" }}>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "#EEF2FF", border: "1px solid #C7D2FE", color: INDIGO, fontSize: 11, fontWeight: 700, padding: "5px 14px", borderRadius: 20, marginBottom: 20 }}>
             <span style={{ width: 5, height: 5, background: ORANGE, borderRadius: "50%", display: "inline-block" }} />
-            Expert-Prepared · 72-Hour Delivery · 20 Years Banking Experience
+            Expert-Prepared · Banker-Ready Format · 20 Years Banking Experience
           </div>
           <h1 style={{ fontSize: "clamp(26px,4vw,40px)", fontWeight: 900, color: WHITE, lineHeight: 1.15, marginBottom: 14, letterSpacing: "-0.03em" }}>
             Banker-Ready <span style={{ color: INDIGO }}>Loan Documents</span><br />Prepared by Our Expert Team
@@ -43,7 +43,7 @@ export default function Docs({ navigate }) {
 
       {/* ── STATS ── */}
       <div style={{ background: GRAY, borderBottom: "1px solid #E5E7EB", padding: "18px clamp(20px,4vw,48px)", display: "flex", justifyContent: "space-around", flexWrap: "wrap", gap: 16 }}>
-        {[["72 hrs", "Fastest TAT"], ["3", "Document Types"], ["20 yrs", "Banking Expertise"], ["Ex-Bankers", "Not Algorithms"]].map(([v, l]) => (
+        {[["3", "Document Types"], ["20 yrs", "Banking Expertise"], ["Ex-Bankers", "Not Algorithms"]].map(([v, l]) => (
           <div key={l} style={{ textAlign: "center" }}>
             <div style={{ fontSize: 20, fontWeight: 900, color: ORANGE }}>{v}</div>
             <div style={{ fontSize: 11, color: "#CBD5E1", marginTop: 2 }}>{l}</div>
