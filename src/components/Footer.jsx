@@ -42,7 +42,7 @@ export default function Footer({ navigate }) {
             Built by bankers. For people who need loans. 20 years inside Indian banking credit teams.
           </p>
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-            {["₹0 to Check", "275+ Lenders", "72hr TAT", "20 Yrs"].map(t => (
+            {["₹0 to Check", "PAN India", "72hr TAT", "20 Yrs"].map(t => (
               <div key={t} style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 4, padding: "3px 8px", fontSize: 10, fontWeight: 600, color: "rgba(255,255,255,0.4)" }}>{t}</div>
             ))}
           </div>
@@ -73,11 +73,12 @@ export default function Footer({ navigate }) {
 
       {/* Bottom bar */}
       <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", padding: "18px clamp(20px,4vw,48px)", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 10 }}>
-        <div style={{ fontSize: 12, color: "#4B5563" }}>© 2025 FinsightOne · Sachin Jadhav · Pune, Maharashtra</div>
+        <div style={{ fontSize: 12, color: "#4B5563" }}>© 2025 FinsightOne · Pune, Maharashtra</div>
         <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
-          {[["Privacy Policy","#"],["Terms of Use","#"],["UDYAM: MH-04-XXXXX","#"]].map(([t,h]) => (
-            <a key={t} href={h} style={{ fontSize: 11, color: "#4B5563", textDecoration: "none" }}>{t}</a>
-          ))}
+          <span onClick={() => navigate("privacypolicy")} style={{ fontSize: 11, color: "#4B5563", textDecoration: "none", cursor: "pointer" }}>Privacy Policy</span>
+          <span onClick={() => navigate("termsofuse")} style={{ fontSize: 11, color: "#4B5563", textDecoration: "none", cursor: "pointer" }}>Terms of Use</span>
+          <span onClick={() => navigate("refundpolicy")} style={{ fontSize: 11, color: "#4B5563", textDecoration: "none", cursor: "pointer" }}>Refund Policy</span>
+          <span style={{ fontSize: 11, color: "#4B5563" }}>UDYAM: MH-04-XXXXX</span>
         </div>
       </div>
     </footer>

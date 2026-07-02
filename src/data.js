@@ -1,6 +1,6 @@
 export const HERO_STATS = [
   { val: "72 hrs", label: "Document Delivery" },
-  { val: "275+", label: "Lender Network" },
+  { val: "PAN India", label: "Coverage" },
   { val: "20 Yrs", label: "Banking Experience" },
   { val: "₹0", label: "To Check Eligibility" },
 ];
@@ -234,7 +234,7 @@ export const ADVISORY_PRODUCTS = [
     who: "For: First-time or large loan borrowers",
     bullets: [
       "Bankability assessment — income, CIBIL, collateral, turnover",
-      "Right lender identification from our 275+ network",
+      "Right lender identification from our PAN India network",
       "Complete document preparation — LAN, CMA, supporting docs",
       "Submission and follow-up until decision",
     ],
