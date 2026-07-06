@@ -119,8 +119,14 @@ const FAQS = [
   },
 ];
 
+const PARTNER_WEBHOOK = "https://n8n-production-ccb2.up.railway.app/webhook/partner-register";
+
 export default function Partners({ navigate }) {
   const [openFaq, setOpenFaq] = useState(null);
+  const [form, setForm] = useState({ name: "", firm: "", mobile: "", email: "", city: "", partner_type: "Chartered Accountant" });
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
     if (window.location.hash === '#register') {
@@ -132,6 +138,39 @@ export default function Partners({ navigate }) {
   }, []);
 
   const waLink = (msg) => `https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
+
+  const updateForm = (field) => (e) => setForm(f => ({ ...f, [field]: e.target.value }));
+
+  async function submitPartnerForm() {
+    setSubmitError("");
+    if (!form.name.trim() || !form.mobile.trim()) {
+      setSubmitError("Please enter at least your name and mobile number.");
+      return;
+    }
+    setSubmitting(true);
+    try {
+      const res = await fetch(PARTNER_WEBHOOK, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name, full_name: form.name,
+          firm: form.firm, company: form.firm,
+          mobile: form.mobile, phone: form.mobile,
+          email: form.email,
+          city: form.city,
+          partner_type: form.partner_type,
+          source: "website_partners_form",
+          submitted_at: new Date().toISOString(),
+        }),
+      });
+      if (!res.ok) throw new Error("Request failed: " + res.status);
+      setSubmitted(true);
+    } catch (err) {
+      setSubmitError("Something went wrong submitting your application. Please try WhatsApp instead, or retry.");
+    } finally {
+      setSubmitting(false);
+    }
+  }
 
   return (
     <div style={{ fontFamily:"Arial,sans-serif", color:DARK }}>
@@ -341,37 +380,50 @@ export default function Partners({ navigate }) {
           <div style={{ textAlign:"center", color:MUTED, fontSize:12, marginBottom:20 }}>— or fill the form below —</div>
 
           <div style={{ background:WHITE, border:"1px solid #E5E7EB", borderRadius:14, padding:28 }}>
-            {[
-              { label:"Full Name",      ph:"CA Rajesh Mehta" },
-              { label:"Firm Name",      ph:"Mehta & Associates" },
-              { label:"Mobile Number",  ph:"98xxxxxxxx" },
-              { label:"Email Address",  ph:"rajesh@mehtaassociates.com" },
-              { label:"City",           ph:"Pune" },
-            ].map(f => (
-              <div key={f.label} style={{ marginBottom:14 }}>
-                <div style={{ fontSize:12, fontWeight:700, color:"#374151", marginBottom:5 }}>{f.label}</div>
-                <input placeholder={f.ph} style={{ width:"100%", border:"1px solid #D1D5DB", borderRadius:6, padding:"10px 12px", fontSize:13, color:"#374151", boxSizing:"border-box", fontFamily:"inherit", outline:"none" }} />
+            {submitted ? (
+              <div style={{ textAlign:"center", padding:"20px 0" }}>
+                <div style={{ fontSize:15, fontWeight:800, color:GREEN, marginBottom:8 }}>Application received ✓</div>
+                <div style={{ fontSize:13, color:MUTED, lineHeight:1.6 }}>We'll reach out on WhatsApp within 24 hours to schedule your onboarding call.</div>
               </div>
-            ))}
-            <div style={{ marginBottom:14 }}>
-              <div style={{ fontSize:12, fontWeight:700, color:"#374151", marginBottom:5 }}>I am a...</div>
-              <select style={{ width:"100%", border:"1px solid #D1D5DB", borderRadius:6, padding:"10px 12px", fontSize:13, color:"#374151", boxSizing:"border-box", background:WHITE, fontFamily:"inherit" }}>
-                <option>Chartered Accountant</option>
-                <option>Tax Consultant</option>
-                <option>DSA Agent</option>
-                <option>Financial Advisor</option>
-                <option>Insurance Agent</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <button
-              onClick={() => navigate("partnerlogin")}
-              style={{ width:"100%", background:ORANGE, color:WHITE, fontSize:14, fontWeight:700, padding:13, borderRadius:8, border:"none", cursor:"pointer", marginTop:8, fontFamily:"inherit" }}>
-              Submit Partner Application →
-            </button>
-            <div style={{ fontSize:11, color:"#9CA3AF", textAlign:"center", marginTop:10 }}>
-              We review all applications within 24 hours. Your onboarding call will be booked on WhatsApp.
-            </div>
+            ) : (
+              <>
+                {[
+                  { label:"Full Name",      ph:"CA Rajesh Mehta",                  field:"name" },
+                  { label:"Firm Name",      ph:"Mehta & Associates",               field:"firm" },
+                  { label:"Mobile Number",  ph:"98xxxxxxxx",                       field:"mobile" },
+                  { label:"Email Address",  ph:"rajesh@mehtaassociates.com",       field:"email" },
+                  { label:"City",           ph:"Pune",                             field:"city" },
+                ].map(f => (
+                  <div key={f.label} style={{ marginBottom:14 }}>
+                    <div style={{ fontSize:12, fontWeight:700, color:"#374151", marginBottom:5 }}>{f.label}</div>
+                    <input placeholder={f.ph} value={form[f.field]} onChange={updateForm(f.field)} style={{ width:"100%", border:"1px solid #D1D5DB", borderRadius:6, padding:"10px 12px", fontSize:13, color:"#374151", boxSizing:"border-box", fontFamily:"inherit", outline:"none" }} />
+                  </div>
+                ))}
+                <div style={{ marginBottom:14 }}>
+                  <div style={{ fontSize:12, fontWeight:700, color:"#374151", marginBottom:5 }}>I am a...</div>
+                  <select value={form.partner_type} onChange={updateForm("partner_type")} style={{ width:"100%", border:"1px solid #D1D5DB", borderRadius:6, padding:"10px 12px", fontSize:13, color:"#374151", boxSizing:"border-box", background:WHITE, fontFamily:"inherit" }}>
+                    <option>Chartered Accountant</option>
+                    <option>Tax Consultant</option>
+                    <option>DSA Agent</option>
+                    <option>Financial Advisor</option>
+                    <option>Insurance Agent</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                {submitError && (
+                  <div style={{ fontSize:12, color:"#DC2626", marginBottom:12, textAlign:"center" }}>{submitError}</div>
+                )}
+                <button
+                  onClick={submitPartnerForm}
+                  disabled={submitting}
+                  style={{ width:"100%", background: submitting ? "#FCA783" : ORANGE, color:WHITE, fontSize:14, fontWeight:700, padding:13, borderRadius:8, border:"none", cursor: submitting ? "not-allowed" : "pointer", marginTop:8, fontFamily:"inherit" }}>
+                  {submitting ? "Submitting…" : "Submit Partner Application →"}
+                </button>
+                <div style={{ fontSize:11, color:"#9CA3AF", textAlign:"center", marginTop:10 }}>
+                  We review all applications within 24 hours. Your onboarding call will be booked on WhatsApp.
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>
